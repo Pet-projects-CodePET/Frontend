@@ -1,0 +1,30 @@
+{
+  "name": "code_pet",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "code_pet/node_modules/.bin/next dev",
+    "build": "code_pet/node_modules/.bin/next build",
+    "start": "code_pet/node_modules/.bin/next start",
+    "lint": "code_pet/node_modules/.bin/next lint"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.70.0",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "clsx": "^2.1.0",
+    "commitizen": "^4.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "husky": "^9.0.6",
+    "prettier": "^3.2.4",
+    "typescript": "^5"
+  }
+}
