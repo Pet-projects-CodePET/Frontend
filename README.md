@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+CodePET Frontend
+</h1>
 
-## Getting Started
+<p align="center">
+  <img width="250" height="250" src="https://avatars.githubusercontent.com/u/155900142?s=400&u=42d724fc105d3492a70e9a63b7186381331557f2&v=4">
+</p>
 
-First, run the development server:
+CodePET - это веб-приложение, разработанное для поиска, организации и управления пет-проектами в области разработки программного обеспечения. Оно предназначено для выпускников школ программирования, которые хотят получить практический опыт и совершенствовать свои навыки путем участия в реальных проектах. Также оно будет полезно для опытных разработчиков, которые хотят реализовать что-то новое, менеджеров проектов и компаний, которые хотят создать тестовый MVP нового продукта.
+
+## Технологии FRONTEND
+- TypeScript
+- React
+- Next.js
+- SCSS
+- clsx
+- commitizen
+- husky
+
+## Использование
+Чтобы запустить сервер разработки, выполните следующую команду:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+next dev
 ```
+Откройте http://localhost:3000 в вашем браузере, чтобы просмотреть приложение.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
