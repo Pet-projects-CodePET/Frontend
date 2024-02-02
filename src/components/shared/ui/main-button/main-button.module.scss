@@ -1,6 +1,4 @@
-%base-style {
-	width: 127px;
-	height: 48px;
+%baseButtonStyle {
 	border-radius: 1000px;
 	font-family: Open Sans;
 	font-size: 18px;
@@ -11,15 +9,105 @@
 	border: none;
 }
 
-.button {
-	@extend %base-style;
+.buttonContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 0 15px;
+}
+
+//----------------------buttonPrimary----------------------//
+.buttonPrimary {
+	@extend %baseButtonStyle;
 	background: rgb(28, 28, 30);
 	color: rgb(252, 252, 252);
+
+	&:hover {
+		background: rgb(90, 172, 14);
+	}
+
+	&:active {
+		background: rgb(180, 12, 144);
+	}
+
+	&:disabled {
+		background: rgba(221, 190, 11, 0.973);
+	}
+}
+
+//----------------------buttonSecondary----------------------//
+.buttonSecondary {
+	@extend %baseButtonStyle;
+	box-shadow: 0 0 7px 0 rgba(62, 56, 56, 0.15);
+	background: #fff;
+
+	&:hover {
+		background: rgb(90, 172, 14);
+	}
+
+	&:active {
+		background: rgb(180, 12, 144);
+	}
+
+	&:disabled {
+		background: rgba(221, 190, 11, 0.973);
+	}
+}
+
+//----------------------buttonTrivial----------------------//
+.buttonTrivial {
+	@extend %baseButtonStyle;
+	background: transparent;
+	color: #5677fc;
+
+	&:hover {
+		background: rgb(90, 172, 14);
+	}
+
+	&:active {
+		background: rgb(180, 12, 144);
+	}
+
+	&:disabled {
+		background: rgba(221, 190, 11, 0.973);
+	}
+}
+
+//----------------------buttonInverse----------------------//
+.buttonInverse {
+	@extend %baseButtonStyle;
+	background: #8caaff;
+
+	&:hover {
+		background: rgb(90, 172, 14);
+	}
+
+	&:active {
+		background: rgb(180, 12, 144);
+	}
+
+	&:disabled {
+		background: rgba(221, 190, 11, 0.973);
+	}
+}
+
+.buttonDimensionsRegular {
+	min-width: 159px;
+	min-height: 48px;
+	max-width: fit-content;
+}
+
+.buttonDimensionsMax {
+	min-width: 159px;
+	min-height: 48px;
+	max-width: none;
+	width: 100%;
 }
 
 .icon {
 	background-color: transparent;
-	fill: rgb(17, 230, 81);
+	// fill: rgb(17, 230, 81);
 	width: 20px;
 	height: 20px;
 	transition: fill 0.2s ease-in-out;
