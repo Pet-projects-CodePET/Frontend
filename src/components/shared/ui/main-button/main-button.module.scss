@@ -1,0 +1,30 @@
+%base-style {
+	width: 127px;
+	height: 48px;
+	border-radius: 1000px;
+	font-family: Open Sans;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 32px;
+	letter-spacing: 0px;
+	text-align: center;
+	border: none;
+}
+
+.button {
+	@extend %base-style;
+	background: rgb(28, 28, 30);
+	color: rgb(252, 252, 252);
+}
+
+.icon {
+	background-color: transparent;
+	fill: rgb(17, 230, 81);
+	width: 20px;
+	height: 20px;
+	transition: fill 0.2s ease-in-out;
+}
+
+.icon:hover {
+	fill: rgb(230, 131, 17);
+}
