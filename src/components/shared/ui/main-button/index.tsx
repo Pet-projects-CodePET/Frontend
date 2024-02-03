@@ -8,6 +8,8 @@ const MainButton: FC<MainButtonProps> = ({
 	IconRight,
 	variant,
 	width,
+	handleLeftIconClick = () => {},
+	handleRightIconClick = () => {},
 	...props
 }) => {
 	const getClassnameForType = (
@@ -45,9 +47,25 @@ const MainButton: FC<MainButtonProps> = ({
 				{...props}
 			>
 				<div className={styles.buttonContainer}>
-					{IconLeft && <IconLeft className={styles.icon} />}
+					{IconLeft && (
+						<IconLeft
+							onClick={(e) => {
+								e.stopPropagation();
+								handleLeftIconClick();
+							}}
+							className={styles.icon}
+						/>
+					)}
 					{children}
-					{IconRight && <IconRight className={styles.icon} />}
+					{IconRight && (
+						<IconRight
+							onClick={(e) => {
+								e.stopPropagation();
+								handleRightIconClick();
+							}}
+							className={styles.icon}
+						/>
+					)}
 				</div>
 			</button>
 		</>

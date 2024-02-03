@@ -7,6 +7,7 @@
 	letter-spacing: 0px;
 	text-align: center;
 	border: none;
+	transition: background-color 0.1s ease-in-out;
 }
 
 .buttonContainer {
@@ -20,19 +21,21 @@
 //----------------------buttonPrimary----------------------//
 .buttonPrimary {
 	@extend %baseButtonStyle;
-	background: rgb(28, 28, 30);
+	background-color: rgb(28, 28, 30);
 	color: rgb(252, 252, 252);
 
 	&:hover {
-		background: rgb(90, 172, 14);
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
 	}
 
 	&:active {
-		background: rgb(180, 12, 144);
+		background-color: rgb(166, 166, 166);
 	}
 
 	&:disabled {
-		background: rgba(221, 190, 11, 0.973);
+		background-color: rgb(217, 217, 217);
+		color: rgb(166, 166, 166);
+		box-shadow: none;
 	}
 }
 
@@ -40,55 +43,60 @@
 .buttonSecondary {
 	@extend %baseButtonStyle;
 	box-shadow: 0 0 7px 0 rgba(62, 56, 56, 0.15);
-	background: #fff;
+	background-color: #fff;
+	border: 1px solid rgb(217, 217, 217);
 
 	&:hover {
-		background: rgb(90, 172, 14);
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
 	}
 
 	&:active {
-		background: rgb(180, 12, 144);
+		box-shadow: none;
 	}
 
 	&:disabled {
-		background: rgba(221, 190, 11, 0.973);
+		color: rgb(166, 166, 166);
+		box-shadow: none;
 	}
 }
 
 //----------------------buttonTrivial----------------------//
 .buttonTrivial {
 	@extend %baseButtonStyle;
-	background: transparent;
-	color: #5677fc;
+	background-color: transparent;
+	color: rgb(86, 119, 252);
 
 	&:hover {
-		background: rgb(90, 172, 14);
+		text-decoration: underline;
 	}
 
 	&:active {
-		background: rgb(180, 12, 144);
+		color: rgb(140, 170, 255);
 	}
 
 	&:disabled {
-		background: rgba(221, 190, 11, 0.973);
+		color: rgb(166, 166, 166);
+		text-decoration: none;
 	}
 }
 
 //----------------------buttonInverse----------------------//
 .buttonInverse {
 	@extend %baseButtonStyle;
-	background: #8caaff;
+	background-color: #8caaff;
 
 	&:hover {
-		background: rgb(90, 172, 14);
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
 	}
 
 	&:active {
-		background: rgb(180, 12, 144);
+		background-color: rgb(166, 166, 166);
 	}
 
 	&:disabled {
-		background: rgba(221, 190, 11, 0.973);
+		background-color: rgb(217, 217, 217);
+		color: rgb(166, 166, 166);
+		box-shadow: none;
 	}
 }
 
@@ -107,12 +115,7 @@
 
 .icon {
 	background-color: transparent;
-	// fill: rgb(17, 230, 81);
 	width: 20px;
 	height: 20px;
-	transition: fill 0.2s ease-in-out;
-}
-
-.icon:hover {
-	fill: rgb(230, 131, 17);
+	z-index: 10;
 }

@@ -6,4 +6,6 @@ export type MainButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	width: 'regular' | 'max';
 	IconLeft?: React.ComponentType<React.HTMLAttributes<HTMLElement>>;
 	IconRight?: React.ComponentType<React.HTMLAttributes<HTMLElement>>;
+	handleLeftIconClick?: () => void;
+	handleRightIconClick?: () => void;
 };
