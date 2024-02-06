@@ -18,7 +18,6 @@
 	padding: 0 15px;
 }
 
-//----------------------buttonPrimary----------------------//
 .buttonPrimary {
 	@extend %baseButtonStyle;
 	background-color: rgb(28, 28, 30);
@@ -39,7 +38,6 @@
 	}
 }
 
-//----------------------buttonSecondary----------------------//
 .buttonSecondary {
 	@extend %baseButtonStyle;
 	box-shadow: 0 0 7px 0 rgba(62, 56, 56, 0.15);
@@ -60,7 +58,6 @@
 	}
 }
 
-//----------------------buttonTrivial----------------------//
 .buttonTrivial {
 	@extend %baseButtonStyle;
 	background-color: transparent;
@@ -80,7 +77,6 @@
 	}
 }
 
-//----------------------buttonInverse----------------------//
 .buttonInverse {
 	@extend %baseButtonStyle;
 	background-color: #8caaff;

@@ -1,8 +1,9 @@
 import { FC } from 'react';
+
 import type { MainButtonProps } from './types';
 import styles from './main-button.module.scss';
 
-const MainButton: FC<MainButtonProps> = ({
+export const MainButton: FC<MainButtonProps> = ({
 	children,
 	IconLeft,
 	IconRight,
@@ -72,4 +73,13 @@ const MainButton: FC<MainButtonProps> = ({
 	);
 };
 
-export default MainButton;
+	export const getClassName = (buttonWidth: 'regular' | 'max') => {
+		switch (buttonWidth) {
+			case 'regular':
+				return styles.buttonDimensionsRegular;
+			case 'max':
+				return styles.buttonDimensionsMax;
+			default:
+				return '';
+		}
+	};
