@@ -9,8 +9,6 @@ export const MainButton: FC<MainButtonProps> = ({
 	IconRight,
 	variant,
 	width,
-	handleLeftIconClick = () => {},
-	handleRightIconClick = () => {},
 	...props
 }) => {
 	const getClassnameForType = (
@@ -42,44 +40,15 @@ export const MainButton: FC<MainButtonProps> = ({
 	};
 
 	return (
-		<>
-			<button
-				className={`${getClassnameForType(variant)} ${getClassNameForWidth(width)}`}
-				{...props}
-			>
-				<div className={styles.buttonContainer}>
-					{IconLeft && (
-						<IconLeft
-							onClick={(e) => {
-								e.stopPropagation();
-								handleLeftIconClick();
-							}}
-							className={styles.icon}
-						/>
-					)}
-					{children}
-					{IconRight && (
-						<IconRight
-							onClick={(e) => {
-								e.stopPropagation();
-								handleRightIconClick();
-							}}
-							className={styles.icon}
-						/>
-					)}
-				</div>
-			</button>
-		</>
+		<button
+			className={`${getClassnameForType(variant)} ${getClassNameForWidth(width)}`}
+			{...props}
+		>
+			<div className={styles.buttonContainer}>
+				{IconLeft && <IconLeft className={styles.icon} />}
+				{children}
+				{IconRight && <IconRight className={styles.icon} />}
+			</div>
+		</button>
 	);
 };
-
-	export const getClassName = (buttonWidth: 'regular' | 'max') => {
-		switch (buttonWidth) {
-			case 'regular':
-				return styles.buttonDimensionsRegular;
-			case 'max':
-				return styles.buttonDimensionsMax;
-			default:
-				return '';
-		}
-	};
