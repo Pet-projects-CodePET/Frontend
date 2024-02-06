@@ -1,3 +1,3 @@
-export default function PasswordRecovery() {
+export function PasswordRecovery() {
 	return <div>Восстановление пароля</div>;
 }
