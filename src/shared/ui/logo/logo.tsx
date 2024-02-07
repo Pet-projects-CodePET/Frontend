@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
+
 import styles from './logo.module.scss';
 
-export function Logo({ logoImage }: { logoImage: string }) {
+export function Logo({ children }: { children: React.ReactNode }) {
 	return (
 		<Link href="/" className={styles.link}>
-			<Image className={styles.logo} src={logoImage} alt="logo" />
+			{children}
 		</Link>
 	);
 }
