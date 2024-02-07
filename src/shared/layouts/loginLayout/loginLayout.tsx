@@ -4,13 +4,12 @@ import styles from './loginLayout.module.scss';
 export function LoginLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
-			<div className={styles.login__container}>
-				<div className={styles.login__logo}>
+			<div className={styles.container}>
+				<div className={styles.logo}>
 					<Logo logoImage={logo} />
 				</div>
 
 				{children}
-
 			</div>
 		</>
 	);

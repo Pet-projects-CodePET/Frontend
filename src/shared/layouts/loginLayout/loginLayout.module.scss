@@ -1,5 +1,5 @@
-.login__container {
-	background-image: url('../../assets/images/background2.png');
+.container {
+	background-image: url('../../assets/images/backgroundLoginLayout.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin: 0 auto;
@@ -10,8 +10,7 @@
 	gap: 105px;
 	box-sizing: border-box;
 }
-
-.login__logo {
+.logo {
 	padding: 54px 0 0 348px;
 	max-height: 110px;
 	box-sizing: border-box;

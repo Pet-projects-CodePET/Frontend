@@ -4,7 +4,7 @@ import styles from './logo.module.scss';
 
 export function Logo({ logoImage }: { logoImage: string }) {
 	return (
-		<Link href="/" className={styles.logo__link}>
+		<Link href="/" className={styles.link}>
 			<Image className={styles.logo} src={logoImage} alt="logo" />
 		</Link>
 	);
