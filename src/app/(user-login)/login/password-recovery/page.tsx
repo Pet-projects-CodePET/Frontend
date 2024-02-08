@@ -1,4 +1,4 @@
-import { PasswordRecovery } from "@/sitePages";
+import { PasswordRecovery } from "@/pages/userLogin/passwordRecovery";
 
 export default function Home() {
 	return (

@@ -5,8 +5,7 @@ import { LoginForm } from "@/features/authentication";
 export const NotFoundPage = () => {
     return (
         <>
-            <NavBar/>
-            <LoginForm/>
+           
         </>
     )
 };
