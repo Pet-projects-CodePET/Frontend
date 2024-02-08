@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './login.module.scss';
 import Form from '@/shared/ui/form/form';
 

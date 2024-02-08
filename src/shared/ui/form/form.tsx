@@ -3,17 +3,10 @@
 import React, { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-
+import type { FormProps } from './types';
 import styles from './form.module.scss';
 
-interface FormProps extends React.HTMLAttributes<HTMLFormElement> {
-	extraClass?: string;
-	schema?: yup.AnyObjectSchema;
-	onSubmit: (data: Record<string, any>) => void;
-}
-
-const Form: FC<FormProps> = ({
+export const Form: FC<FormProps> = ({
 	extraClass,
 	children,
 	schema,
