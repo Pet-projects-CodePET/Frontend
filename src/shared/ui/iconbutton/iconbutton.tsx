@@ -1,10 +1,11 @@
 import { FC } from 'react';
-
+import Link from 'next/link';
 import type { IconButtonProps } from './types';
 import styles from './iconbutton.module.scss';
 
 export const IconButton: FC<IconButtonProps> = ({
 	variant,
+	link
 }) => {
 	const getClassnameForType = (
 		buttonType: 'gmail' | 'vk' | 'yandex' | 'git'
@@ -22,22 +23,8 @@ export const IconButton: FC<IconButtonProps> = ({
 				return '';
 		}
 	};
-	// const getClassNameForSize = (buttonSize: 'desktop' | 'mobile') => {
-	// 	switch (buttonSize) {
-	// 		case 'desktop':
-	// 			return styles.buttonSizeDesktop;
-	// 		case 'mobile':
-	// 			return styles.buttonSizeMobile;
-	// 		default:
-	// 			return '';
-	// 	}
-	// };
 
 	return (
-		<button
-			// className={`${getClassnameForType(variant)} ${getClassNameForSize(size)}`}
-			className={`${getClassnameForType(variant)}`}
-		/>
-		// </button>
+			<Link href={`${link}`} className={`${getClassnameForType(variant)}`} />
 	);
 };
