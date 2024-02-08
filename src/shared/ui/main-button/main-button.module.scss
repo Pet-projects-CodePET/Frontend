@@ -1,0 +1,117 @@
+%baseButtonStyle {
+	border-radius: 1000px;
+	font-family: Open Sans;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 32px;
+	letter-spacing: 0px;
+	text-align: center;
+	border: none;
+	transition: background-color 0.1s ease-in-out;
+	cursor: pointer;
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 0 15px;
+}
+
+.buttonPrimary {
+	@extend %baseButtonStyle;
+	background-color: rgb(28, 28, 30);
+	color: rgb(252, 252, 252);
+
+	&:hover {
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
+	}
+
+	&:active {
+		background-color: rgb(166, 166, 166);
+	}
+
+	&:disabled {
+		background-color: rgb(217, 217, 217);
+		color: rgb(166, 166, 166);
+		box-shadow: none;
+	}
+}
+
+.buttonSecondary {
+	@extend %baseButtonStyle;
+	box-shadow: 0 0 7px 0 rgba(62, 56, 56, 0.15);
+	background-color: #fff;
+	border: 1px solid rgb(217, 217, 217);
+
+	&:hover {
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
+	}
+
+	&:active {
+		box-shadow: none;
+	}
+
+	&:disabled {
+		color: rgb(166, 166, 166);
+		box-shadow: none;
+	}
+}
+
+.buttonTrivial {
+	@extend %baseButtonStyle;
+	background-color: transparent;
+	color: rgb(86, 119, 252);
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:active {
+		color: rgb(140, 170, 255);
+	}
+
+	&:disabled {
+		color: rgb(166, 166, 166);
+		text-decoration: none;
+	}
+}
+
+.buttonInverse {
+	@extend %baseButtonStyle;
+	background-color: #8caaff;
+
+	&:hover {
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
+	}
+
+	&:active {
+		background-color: rgb(166, 166, 166);
+	}
+
+	&:disabled {
+		background-color: rgb(217, 217, 217);
+		color: rgb(166, 166, 166);
+		box-shadow: none;
+	}
+}
+
+.buttonDimensionsRegular {
+	min-width: 159px;
+	min-height: 48px;
+	max-width: fit-content;
+}
+
+.buttonDimensionsMax {
+	min-width: 159px;
+	min-height: 48px;
+	max-width: none;
+	width: 100%;
+}
+
+.icon {
+	background-color: transparent;
+	width: 20px;
+	height: 20px;
+}
