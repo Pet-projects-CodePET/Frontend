@@ -1,7 +1,7 @@
 /* сброс стандартных стилей */
 @import url('../shared/style/normalize.css');
 /* подключение переменных */
-@import url('../shared/style/variables.scss');
+/* @import url('../shared/style/variables.scss'); */
 
 /* Подключение шрифтов  */
 @import url('../shared/assets/fonts/Inter/inter.css');
