@@ -1,3 +1,4 @@
+import "./normalize.scss";
 import { MainLayout } from "@/shared/layouts";
 
 export default function RootLayout({
