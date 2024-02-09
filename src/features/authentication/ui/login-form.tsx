@@ -1,5 +1,5 @@
 import { loginThunk } from '../model/login';
-import { LoginSchema } from '../model/loginShema';
+import { LoginSchema } from '../model/login-shema';
 import cls from './loginForm.module.scss';
 
 export const LoginForm = () => {
