@@ -1,5 +1,4 @@
-import { MainPage } from "@/pages/mainPage";
-import Link from "next/link";
+import { MainPage } from "@/pages/main-page";
 
 export default function Home() {
   return (
