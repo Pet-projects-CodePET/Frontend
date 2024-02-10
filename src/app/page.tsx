@@ -1,11 +1,9 @@
-import { MainPage } from "@/pages/mainPage";
-import Link from "next/link";
+import { MainPage } from '@/pages/mainPage';
 
 export default function Home() {
-  return (
-    <>
-        <MainPage/>
-        
-    </>
-  );
+	return (
+		<>
+			<MainPage />
+		</>
+	);
 }
