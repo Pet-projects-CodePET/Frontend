@@ -1,0 +1,49 @@
+%baseButtonStyle {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	border: none;
+	overflow: hidden;
+	background-color: rgb(255, 255, 255);
+	cursor: pointer;
+
+	&:hover {
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.4);
+	}
+
+	&:active {
+		box-shadow: none;
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 48px;
+		height: 48px;
+	}
+}
+
+.buttonGmail {
+	@extend %baseButtonStyle;
+	background: url("../../assets/images/icon_google.png") no-repeat center;
+	background-color: rgb(255, 255, 255);
+}
+
+.buttonVk {
+	@extend %baseButtonStyle;
+	background: url("../../assets/images/icon_vk.png") no-repeat center;
+	background-color: rgb(255, 255, 255);
+}
+
+.buttonYandex {
+	@extend %baseButtonStyle;
+	background: url("../../assets/images/icon_yandex.png") no-repeat center;
+	background-color: rgb(255, 255, 255);
+}
+
+.buttonGit {
+	@extend %baseButtonStyle;
+	background: url("../../assets/images/icon_git.png") no-repeat center;
+	background-color: rgb(255, 255, 255);
+}
