@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 
 import { MainButton } from '@/shared/ui';
@@ -14,7 +12,6 @@ export const Promo = () => {
 				<Image
 					src={backgroundImage}
 					alt="abstract image"
-					className={styles.promo__image}
 					priority={true}
 					fill
 				></Image>
@@ -29,18 +26,18 @@ export const Promo = () => {
 						обмена знаниями и портфолио
 					</p>
 				</div>
-				<div className={styles.promo__squareContainer}>
-					<div className={styles.promo__square}>
-						<p className={styles.promo__squareText}>1714</p>
-						<p className={styles.promo__squareText2}>проектов</p>
+				<div className={styles.promo__itemsContainer}>
+					<div className={styles.promo__items}>
+						<p className={styles.promo__itemOne}>1714</p>
+						<p className={styles.promo__itemTwo}>проектов</p>
 					</div>
-					<div className={styles.promo__square}>
-						<p className={styles.promo__squareText}>1714</p>
-						<p className={styles.promo__squareText2}>участников</p>
+					<div className={styles.promo__items}>
+						<p className={styles.promo__itemOne}>1714</p>
+						<p className={styles.promo__itemTwo}>участников</p>
 					</div>
 				</div>
 				<div className={styles.promo__button}>
-					<MainButton onClick={console.log} variant="primary" width="max">
+					<MainButton variant="primary" width="max">
 						Создать проект
 					</MainButton>
 				</div>
