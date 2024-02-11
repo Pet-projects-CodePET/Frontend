@@ -1,12 +1,12 @@
 @import '../../../shared/style/variables.scss';
 
 .header {
-	padding: 24px 380px;
 	display: flex;
 
 	&__container {
 		display: flex;
-		gap: 194px;
+		justify-content: space-between;
+		width: 1161px;
 	}
 
 	&__wrapper {
@@ -24,20 +24,5 @@
 		height: 50px;
 	}
 
-	&__navList {
-		display: flex;
-		gap: 32px;
-		margin: 0;
-		padding: 0;
-		align-items: center;
-	}
 
-	&__navItem {
-		list-style: none;
-		color: $--White;
-		font-family: 'Open Sans';
-		font-size: 22px;
-		font-weight: 400;
-		line-height: 32px;
-	}
 }

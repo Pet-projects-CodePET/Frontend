@@ -1,11 +1,16 @@
-import styles from './header.module.scss';
+'use client';
+
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import LogoIcon from '../../../shared/assets/images/logo-header.svg';
 import { MainButton } from '@/shared/ui';
+import { NavBar } from '@/widgets/nav-bar';
 import IconUser from '@/shared/assets/icons/icon-user.svg';
+import LogoIcon from '../../../shared/assets/images/logo-header.svg';
+import styles from './header.module.scss';
 
-export const Header = ({ isLoggedIn = true }: { isLoggedIn: boolean }) => {
+export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
+	const router = useRouter();
 	return (
 		<div className={styles.header}>
 			<div className={styles.header__container}>
@@ -14,16 +19,13 @@ export const Header = ({ isLoggedIn = true }: { isLoggedIn: boolean }) => {
 						<Image src={LogoIcon} alt="logo" />
 					</Link>
 
-					<ul className={styles.header__navList}>
-						<li className={styles.header__navItem}>Проекты</li>
-						<li className={styles.header__navItem}>Специалисты</li>
-						<li className={styles.header__navItem}>О нас</li>
-					</ul>
-					<MainButton variant="inverse" width="regular">
+					<NavBar />
+
+					<MainButton variant="inverse" width="regular" onClick={() => router.push('login')}>
 						Войти
 					</MainButton>
 				</div>
-				<div>{isLoggedIn && <Image src={IconUser} alt="iconUser" /> }</div>
+				<div>{isLoggedIn && <Image src={IconUser} alt="iconUser" />}</div>
 			</div>
 		</div>
 	);
