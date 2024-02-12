@@ -1,6 +1,6 @@
 @import '../../../shared/style/variables.scss';
 
-.header__navList {
+.navList {
     display: flex;
     gap: 32px;
     margin: 0;
@@ -8,11 +8,15 @@
     align-items: center;
 }
 
-.header__navItem {
+.navItem {
     list-style: none;
     color: $--White;
     font-family: 'Open Sans';
     font-size: 22px;
     font-weight: 400;
     line-height: 32px;
+}
+
+.navLink {
+    text-decoration: none;
 }

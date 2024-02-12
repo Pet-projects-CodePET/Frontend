@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MainButton } from '@/shared/ui';
 import { NavBar } from '@/widgets/nav-bar';
+import { navBarLinksArray } from '@/shared/constants';
 import IconUser from '@/shared/assets/icons/icon-user.svg';
 import LogoIcon from '../../../shared/assets/images/logo-header.svg';
 import styles from './header.module.scss';
@@ -19,14 +20,33 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 						<Image src={LogoIcon} alt="logo" />
 					</Link>
 
-					<NavBar />
-
-					<MainButton variant="inverse" width="regular" onClick={() => router.push('login')}>
-						Войти
-					</MainButton>
+					<NavBar navBarLinksArray={navBarLinksArray}/>
+					{!isLoggedIn ? (
+						<MainButton
+							variant="inverse"
+							width="regular"
+							onClick={() => router.push('new-project')}
+						>
+							&#43;  Создать проект
+						</MainButton>
+					) : (
+						<MainButton
+							variant="inverse"
+							width="regular"
+							onClick={() => router.push('login')}
+						>
+							Войти
+						</MainButton>
+					)}
 				</div>
-				<div>{isLoggedIn && <Image src={IconUser} alt="iconUser" />}</div>
-			</div>
+				<div>
+					{!isLoggedIn && (
+						<Link href="profile">
+							<Image src={IconUser} alt="iconUser" />
+						</Link>
+					)}
+				</div>
+			</div>		
 		</div>
 	);
 };
