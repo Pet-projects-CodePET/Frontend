@@ -21,10 +21,10 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 					</Link>
 
 					<NavBar navBarLinksArray={navBarLinksArray}/>
-					{!isLoggedIn ? (
+					{isLoggedIn ? (
 						<MainButton
 							variant="inverse"
-							width="regular"
+							width="max"
 							onClick={() => router.push('new-project')}
 						>
 							&#43;  Создать проект
@@ -32,7 +32,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 					) : (
 						<MainButton
 							variant="inverse"
-							width="regular"
+							width="max"
 							onClick={() => router.push('login')}
 						>
 							Войти
@@ -40,7 +40,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 					)}
 				</div>
 				<div>
-					{!isLoggedIn && (
+					{isLoggedIn && (
 						<Link href="profile">
 							<Image src={IconUser} alt="iconUser" />
 						</Link>

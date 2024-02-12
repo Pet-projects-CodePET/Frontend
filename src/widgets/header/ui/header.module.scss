@@ -12,13 +12,12 @@
 
 	&__wrapper {
 		display: flex;
-
 		align-items: center;
 		border-radius: 100px;
 		padding: 8px;
 		background-color: $--Black;
-
 		gap: 56px;
+		min-width: 887px;
 	}
 	&__link {
 		width: 195px;
