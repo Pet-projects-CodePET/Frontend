@@ -1,9 +1,12 @@
+import React from 'react';
 import { LoginLayout } from '@/shared/layouts';
 
-export default function Layout({
+const Layout = ({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
-}>) {
+}>) => {
 	return <LoginLayout>{children}</LoginLayout>;
-}
+};
+
+export default Layout;

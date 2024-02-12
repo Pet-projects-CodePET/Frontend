@@ -1,0 +1,23 @@
+.Footer {
+	&__footer {
+		width: 100%;
+		background: rgb(2, 6, 23);
+		padding: 56px 0;
+	}
+
+	&__desktop {
+		margin: 0 auto;
+		width: 1160px;
+		height: 279px;
+	}
+
+	.tablet {
+		height: 329px;
+		padding: 56px 210px 56px 210px;
+	}
+
+	.mobile {
+		height: 492px;
+		padding: 32px;
+	}
+}

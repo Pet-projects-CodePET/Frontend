@@ -1,4 +1,5 @@
-import './mainLayout.module.scss';
+import React from 'react';
+import './main-layout.module.scss';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,12 +8,6 @@ export const metadata: Metadata = {
 		'CodePET - это веб-приложение, разработанное для поиска, организации и управления пет-проектами в области разработки программного обеспечения. Оно предназначено для выпускников школ программирования, которые хотят получить практический опыт и совершенствовать свои навыки путем участия в реальных проектах. А также оно будет интересно для опытных разработчиков которые хотят реализовать что-то новое, для менеджеров проектов и для компаний которые хотят создать тестовое МВП нового продукта.',
 };
 
-export function MainLayout({ children }: { children: React.ReactNode }) {
-	return (
-		
-		<>
-			{children}
-		</>
-		
-	);
-}
+export const MainLayout = ({ children }: { children: React.ReactNode }) => {
+	return <>{children}</>;
+};

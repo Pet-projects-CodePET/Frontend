@@ -1,10 +1,12 @@
-import { MainPage } from "@/pages/main-page";
+import React from 'react';
+import { MainPage } from '@/pages/main-page';
 
-export default function Home() {
-  return (
-    <>
-        <MainPage/>
-        
-    </>
-  );
-}
+const Home = () => {
+	return (
+		<>
+			<MainPage />
+		</>
+	);
+};
+
+export default Home;

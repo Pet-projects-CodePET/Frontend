@@ -1,1 +1,1 @@
-export { NavBar } from "./ui/nav-bar";
+export { NavBar } from './ui/nav-bar';

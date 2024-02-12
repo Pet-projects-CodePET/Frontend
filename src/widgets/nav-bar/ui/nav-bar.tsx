@@ -1,10 +1,5 @@
-import { useHover } from "@/shared/hooks";
-import { NotificationItem } from "@/entities/notification";
-import { LoginForm } from "@/features/authentication";
-import cls from './navBar.module.scss'
+import React from 'react';
 
 export const NavBar = () => {
-    return (
-        <div></div>
-    )
-}
+	return <div></div>;
+};

@@ -1,3 +1,1 @@
-export const loginThunk = () => {
-    
-}
+export const loginThunk = () => {};

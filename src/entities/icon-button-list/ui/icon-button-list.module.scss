@@ -1,0 +1,18 @@
+.iconButtonList__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.iconButtonList__item {
+	margin: 0;
+	margin-right: 24px;
+	padding: 0;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}

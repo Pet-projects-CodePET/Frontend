@@ -1,11 +1,5 @@
-import { NavBar } from "@/widgets/nav-bar";
-import { NotificationItem } from "@/entities/notification";
-import { LoginForm } from "@/features/authentication";
+import React from 'react';
 
 export const NotFoundPage = () => {
-    return (
-        <>
-           
-        </>
-    )
+	return <></>;
 };

@@ -1,9 +1,12 @@
-import { Signup } from "@/pages/userLogin/registration";
+import React from 'react';
+import { Signup } from '@/pages/user-login/registration';
 
-export default function Home() {
+const Home = () => {
 	return (
 		<>
-			<Signup/>
+			<Signup />
 		</>
 	);
-}
+};
+
+export default Home;
