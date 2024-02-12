@@ -13,6 +13,7 @@ export const Promo = () => {
 					src={backgroundImage}
 					alt="abstract image"
 					priority={true}
+					objectFit="cover"
 					fill
 				></Image>
 			</div>
@@ -28,11 +29,11 @@ export const Promo = () => {
 				</div>
 				<div className={styles.promo__itemsContainer}>
 					<div className={styles.promo__items}>
-						<p className={styles.promo__itemOne}>1714</p>
+						<p className={styles.promo__itemOne}>1 714</p>
 						<p className={styles.promo__itemTwo}>проектов</p>
 					</div>
 					<div className={styles.promo__items}>
-						<p className={styles.promo__itemOne}>1714</p>
+						<p className={styles.promo__itemOne}>1 714</p>
 						<p className={styles.promo__itemTwo}>участников</p>
 					</div>
 				</div>
