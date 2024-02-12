@@ -1,3 +1,4 @@
+import "./globals.css";
 import { MainLayout } from "@/shared/layouts";
 
 export default function RootLayout({
