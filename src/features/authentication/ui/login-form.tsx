@@ -1,9 +1,5 @@
-import { loginThunk } from '../model/login';
-import { LoginSchema } from '../model/login-shema';
-import cls from './loginForm.module.scss';
+import React from 'react';
 
 export const LoginForm = () => {
-    return (
-        <div></div>
-    )
-}
+	return <div></div>;
+};
