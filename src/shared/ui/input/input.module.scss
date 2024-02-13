@@ -33,7 +33,7 @@
     box-sizing: border-box;
     border: 1px solid;
     color: $--Foreground-default;
-    background-color: $--White;
+    background-color: $--bg-primary;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -52,11 +52,11 @@
     }
 
     &_typeSucces{
-        border-color: $--White;
+        border-color: $--bg-primary;
     }
 
     &::placeholder {
-        color: $--Foreground-subtle;
+        color: $--Foreground-subtitle;
     }
 
     &:disabled {
