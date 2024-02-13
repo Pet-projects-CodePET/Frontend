@@ -36,16 +36,20 @@
 	position: relative;
 
 	@media screen and (min-width: 1201px) {
-		mask-image: url('/backgroundLoginLayoutMask.svg');
+		mask-image: url('../../../../shared/assets/icons/backgroundLoginLayoutMask.svg?url');
 	}
 
 	@media screen and (max-width: 1200px) {
-		mask-image: url('/backgroundLoginLayoutMaskSmall.svg');
+		mask-image: url('../../../../shared/assets/icons/backgroundLoginLayoutMaskSmall.svg?url');
 	}
 
 	@media screen and (max-width: 780px) {
 		display: none;
 	}
+}
+
+.promo__image {
+	object-fit: cover;
 }
 
 .promo__absoluteContainer {

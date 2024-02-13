@@ -11,9 +11,9 @@ export const Promo = () => {
 			<div className={styles.promo__imageContainer}>
 				<Image
 					src={backgroundImage}
+					className={styles.promo__image}
 					alt="abstract image"
 					priority={true}
-					objectFit="cover"
 					fill
 				></Image>
 			</div>
