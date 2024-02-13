@@ -16,7 +16,7 @@
 		align-items: center;
 		border-radius: 100px;
 		padding: 8px;
-		background-color: $--Black;
+		background-color: $--Foreground-default;
 	}
 
 	&__link {
@@ -72,7 +72,7 @@
 		}
 
 		&__wrapper {
-			background-color: $--White;
+			background-color: $--Neutral-White;
 		}
 		&__linkProfile {
 			display: none;

@@ -11,11 +11,12 @@
 
 .navItem {
     list-style: none;
-    color: $--White;
+    color: $--Neutral-White;
     font-family: 'Open Sans';
     font-size: 22px;
     font-weight: 400;
     line-height: 32px;
+    letter-spacing: 0.25px;
 }
 
 .navLink {
