@@ -1,9 +1,7 @@
-import { AboutUs } from "@/pages/about-us-page";
+import { AboutUs } from '@/pages/about-us-page';
 
-export default function Home() {
-	return (
-		<>
-			<AboutUs/>
-		</>
-	);
-}
+const Home = () => {
+	return <AboutUs/>;
+};
+
+export default Home;

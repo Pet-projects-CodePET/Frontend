@@ -34,10 +34,14 @@
 
 	&__buttonLogin {
 		margin-left: 56px;
+		width: 200px;
+		margin-right: 1px;
 	}
 
 	&__buttonProject {
 		margin-left: 56px;
+		margin-right: 1px;
+		
 	}
 	&__linkProfile {
 		width: 64px;
@@ -71,6 +75,14 @@
 
 		&__buttonProject {
 			margin-left: 0;
+		}
+		&__link {
+			width: 143px;
+			height: 40px;
+		}
+		&__logo {
+			width: 143px;
+			height: 40px;
 		}
 	}
 }

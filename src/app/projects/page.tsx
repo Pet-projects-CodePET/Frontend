@@ -1,9 +1,7 @@
 import { Projects } from "@/pages/projects-page";
 
-export default function Home() {
-	return (
-		<>
-			<Projects/>
-		</>
-	);
-}
+const Home = () => {
+	return <Projects/>;
+};
+
+export default Home;

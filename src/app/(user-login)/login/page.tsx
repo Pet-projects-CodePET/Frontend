@@ -1,9 +1,7 @@
-import { Login } from "@/pages/userLogin/login";
+import { Login } from '@/pages/userLogin/login';
 
-export default function Home() {
-	return (
-		<>
-			<Login/>
-		</>
-	);
-}
+const Home = () => {
+	return <Login />;
+};
+
+export default Home;

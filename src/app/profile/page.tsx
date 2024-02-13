@@ -1,9 +1,7 @@
 import { ProfileUser } from "@/pages/profile-user-page"; 
 
-export default function Home() {
-	return (
-		<>
-			<ProfileUser/>
-		</>
-	);
-}
+const Home = () => {
+	return <ProfileUser/>;
+};
+
+export default Home;

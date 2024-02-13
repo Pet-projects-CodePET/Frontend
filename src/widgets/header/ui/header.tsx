@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { MainButton } from '@/shared/ui';
 import { NavBar } from '@/widgets/nav-bar';
 import { navBarLinksArray } from '@/shared/constants';
