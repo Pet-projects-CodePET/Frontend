@@ -21,3 +21,9 @@
 .navLink {
     text-decoration: none;
 }
+
+@media screen and (max-width: 1200px) {
+    .navList {
+        display: none;
+    }
+}
