@@ -19,7 +19,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 			<div className={styles.header__container}>
 				<div className={styles.header__wrapper}>
 					<Link href="/" className={styles.header__link}>
-						<Image src={LogoIcon} alt="logo" className={styles.header__logo} />
+						<LogoIcon alt="logo" className={styles.header__logo} />
 					</Link>
 
 					<NavBar navBarLinksArray={navBarLinksArray} />
@@ -30,8 +30,8 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 								variant="inverse"
 								width="max"
 								onClick={() => router.push('new-project')}
+								IconLeft={IconPlus}
 							>
-								<Image src={IconPlus} alt="icon plus" />
 								Создать проект
 							</MainButton>
 						</div>
@@ -42,19 +42,19 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 								width="max"
 								onClick={() => router.push('login')}
 							>
-								Войти 
+								Войти
 							</MainButton>
 						</div>
 					)}
 
 					<button className={styles.header__buttonBurger}>
-						<Image src={MenuBurger} alt="Menu burger" />
+						<MenuBurger className={styles.header__buttonBurgerIcon} />
 					</button>
 				</div>
 				<div>
 					{!isLoggedIn && (
-						<Link href="profile" className={styles.header__linkProfile}>
-							<Image src={IconUser} alt="iconUser" />
+						<Link href="profile">
+							<IconUser className={styles.header__linkProfile} />
 						</Link>
 					)}
 				</div>
