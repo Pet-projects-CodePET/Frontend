@@ -36,11 +36,11 @@
 	position: relative;
 
 	@media screen and (min-width: 1201px) {
-		mask-image: url('../../../../shared/assets/images/backgroundLoginLayoutMask.svg');
+		mask-image: url('/backgroundLoginLayoutMask.svg');
 	}
 
 	@media screen and (max-width: 1200px) {
-		mask-image: url('../../../../shared/assets/images/backgroundLoginLayoutMaskSmall.svg');
+		mask-image: url('/backgroundLoginLayoutMaskSmall.svg');
 	}
 
 	@media screen and (max-width: 780px) {
