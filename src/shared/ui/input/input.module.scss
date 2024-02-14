@@ -1,103 +1,108 @@
 @import '../../style/variables.scss';
 
 .label {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 8px;
-    position: relative;
-    color: $--Foreground-default;
-    font-family: Open Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    min-height: 105px;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 8px;
+	position: relative;
+	color: $--Foreground-default;
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 150%;
+	min-height: 105px;
 }
 
 .inputContainer {
-    padding: 0;
-    margin: 0;
-    position: relative;
+	padding: 0;
+	margin: 0;
+	position: relative;
 }
 
 .input {
-    width: 100%;
-    display: block;
-    padding: 12px 36px 12px 12px;
-    margin: 0;
-    border-radius: 12px;
-    min-height: 50px;
-    box-sizing: border-box;
-    border: 1px solid;
-    color: $--Foreground-default;
-    background-color: $--bg-primary;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 23px;
-    position: relative;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-
-    &_typeError {
-        border-color: $--Foreground-error;
-    }
-
-    &_typeError:focus {
-        outline: 2px solid $--Foreground-error;
-    }
-
-    &_typeSucces{
-        border-color: $--bg-primary;
-    }
-
-    &::placeholder {
-        color: $--Foreground-subtitle;
-    }
-
-    &:disabled {
-        opacity: 0.5;
-    }
+	width: 100%;
+	display: block;
+	padding: 12px 36px 12px 12px;
+	margin: 0;
+	border-radius: 12px;
+	min-height: 50px;
+	box-sizing: border-box;
+	border: 1px solid;
+	color: $--Foreground-default;
+	background-color: $--bg-primary;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 23px;
+	position: relative;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	
+	&_typeError {
+		border-color: $--Foreground-error;
+	}
+	
+	&_typeError:focus {
+		outline: 2px solid $--Foreground-error;
+	}
+	
+	&_typeSucces {
+		border-color: $--bg-primary;
+	}
+	
+	&::placeholder {
+		color: $--Foreground-subtitle;
+		font-family: "Open Sans";
+		font-size: 16px;
+		letter-spacing: 0.25px;
+		vertical-align: center;
+	}
+	
+	&:disabled {
+		opacity: 0.5;
+	}
 }
 
 .inputError {
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    bottom: -21px;
-    color: $--Foreground-error;
-    font-size: 14px;
-    line-height: 136%;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	bottom: -21px;
+	color: $--Foreground-error;
+	font-size: 14px;
+	line-height: 136%;
 }
 
 .eye {
-    position: absolute;
-    top: 14px;
-    right: 12px;
-    &:hover {
-        opacity: 0.7;
-        transition: opacity 100ms ease-in;
-        cursor: pointer;
-    }
+	position: absolute;
+	top: 14px;
+	right: 12px;
+	
+	&:hover {
+		opacity: 0.7;
+		transition: opacity 100ms ease-in;
+		cursor: pointer;
+	}
 }
 
 .inputLink {
-    position: absolute;
-    top: 0px;
-    inset-inline-end: 0px;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-    color: $--Foreground-link-default;
-    text-decoration: none;
-
-    &:hover {
-        opacity: 0.7;
-        transition: opacity 100ms ease-in;
-        cursor: pointer;
-    }
+	position: absolute;
+	top: 0px;
+	inset-inline-end: 0px;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	color: $--Foreground-link-default;
+	text-decoration: none;
+	
+	&:hover {
+		opacity: 0.7;
+		transition: opacity 100ms ease-in;
+		cursor: pointer;
+	}
 }
