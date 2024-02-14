@@ -1,9 +1,7 @@
 import { Signup } from '@/pages/userLogin/registration';
 
-export default function Home() {
-	return (
-		<>
-			<Signup />
-		</>
-	);
-}
+const Home = () => {
+	return <Signup />;
+};
+
+export default Home;

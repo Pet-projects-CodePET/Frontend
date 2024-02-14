@@ -1,9 +1,7 @@
-import { PasswordRecovery } from "@/pages/userLogin/passwordRecovery";
+import { PasswordRecovery } from '@/pages/userLogin/passwordRecovery';
 
-export default function Home() {
-	return (
-		<>
-			<PasswordRecovery/>
-		</>
-	);
-}
+const Home = () => {
+	return <PasswordRecovery />;
+};
+
+export default Home;
