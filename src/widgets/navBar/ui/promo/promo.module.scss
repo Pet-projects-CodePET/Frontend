@@ -2,13 +2,13 @@
 
 .promo__container {
 	box-sizing: border-box;
-	background-color: $--Light-grey-02;
+	background-color: $--Neutral-Light-Grey-02;
 	border-radius: 40px;
 	padding: 24px;
 	width: 100%;
 	position: relative;
 	overflow: hidden;
-	color: $--Black;
+	color: $--Neutral-Black;
   
 	@media screen and (min-width: 1200px) {
 		aspect-ratio: 1.78737;
@@ -181,7 +181,7 @@
 	align-items: center;
 	text-align: center;
 	border-radius: 20px;
-	background-color: $--Сornflower;
+	background-color: $--Colors-ornflower;
 	width: 100%;
 	height: 100%;
 
