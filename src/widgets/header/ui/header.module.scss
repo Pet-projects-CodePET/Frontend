@@ -1,0 +1,122 @@
+@import '../../../shared/style/variables.scss';
+
+.header {
+	display: flex;
+	padding: 24px 0;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		width: 1160px;
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		border-radius: 100px;
+		padding: 8px;
+		background-color: $--Foreground-default;
+	}
+
+	&__link {
+		margin-right: 56px;
+		width: 195px;
+		height: 50px;
+	}
+	&__logo {
+		width: 195px;
+		height: 50px;
+	}
+
+	&__buttonBurger {
+		display: none;
+	}
+
+	&__buttonLogin {
+		margin-left: 56px;
+		width: 200px;
+		margin-right: 1px;
+	}
+
+	&__buttonProject {
+		margin-left: 56px;
+		margin-right: 1px;
+		
+	}
+	&__linkProfile {
+		width: 64px;
+		height: 64px;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.header {
+		padding: 8px;
+
+		&__container {
+			max-width: 780px;
+		}
+
+		&__buttonBurger {
+			display: flex;
+			background-color: transparent;
+			cursor: pointer;
+			border: none;
+			margin-left: 16px;
+		}
+		&__buttonBurgerIcon {
+			width: 24px;
+			height: 24px;
+		}
+
+		&__buttonLogin {
+			margin-left: 0;
+		}
+
+		&__buttonProject {
+			margin-left: 0;
+		}
+		&__link {
+			width: 143px;
+			height: 40px;
+		}
+		&__logo {
+			width: 143px;
+			height: 40px;
+		}
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.header {
+		padding: 16px;
+
+		&__container {
+			max-width: 343px;
+		}
+
+		&__wrapper {
+			background-color: $--Neutral-White;
+		}
+
+		&__linkProfile {
+			display: none;
+		}
+		&__buttonProject {
+			display: none;
+		}
+		&__buttonLogin {
+			display: none;
+		}
+		&__link {
+			width: 145px;
+			height: 40px;
+			background-image: url('../../../shared/assets/images/logo-mobile.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		&__logo {
+			display: none;
+		}
+	}
+}
