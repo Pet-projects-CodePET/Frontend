@@ -42,27 +42,23 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	
+
 	&_typeError {
 		border-color: $--Foreground-error;
 	}
-	
+
 	&_typeError:focus {
 		outline: 2px solid $--Foreground-error;
 	}
-	
+
 	&_typeSucces {
-		border-color: $--border-default;
+		border-color: $--bg-primary;
 	}
-	
+
 	&::placeholder {
 		color: $--Foreground-subtitle;
-		font-family: "Open Sans";
-		font-size: 16px;
-		letter-spacing: 0.25px;
-		vertical-align: center;
 	}
-	
+
 	&:disabled {
 		opacity: 0.5;
 	}
@@ -72,7 +68,7 @@
 	padding: 0;
 	margin: 0;
 	position: absolute;
-	bottom: -23px;
+	bottom: -21px;
 	color: $--Foreground-error;
 	font-size: 14px;
 	line-height: 136%;
@@ -82,7 +78,6 @@
 	position: absolute;
 	top: 14px;
 	right: 12px;
-	
 	&:hover {
 		opacity: 0.7;
 		transition: opacity 100ms ease-in;
@@ -99,7 +94,7 @@
 	display: inline-block;
 	color: $--Foreground-link-default;
 	text-decoration: none;
-	
+
 	&:hover {
 		opacity: 0.7;
 		transition: opacity 100ms ease-in;

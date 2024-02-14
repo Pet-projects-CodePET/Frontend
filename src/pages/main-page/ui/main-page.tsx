@@ -21,7 +21,6 @@ export const MainPage = () => {
 					<JoinUs />
 				</div>
 			</div>
-			<Footer />
-		</>
+		</main>
 	);
 };
