@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FormSignup } from '@/widgets/form-signup/ui/form-signup';
+import { FormSignup } from '@/features/ui/form-signup/form-signup';
 import styles from './signup.module.scss';
 
 export const Signup = () => {

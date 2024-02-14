@@ -1,0 +1,18 @@
+@import '@/shared/assets/fonts/fonts.css';
+
+.title {
+	margin: 0 auto 32px;
+	color: var(--color-foreground-default, #1C1C1E);
+	text-align: center;
+	font-feature-settings: 'clig' off, 'liga' off;
+	font-family: Montserrat-Bold;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 40px;
+	
+}
+
+.input_list {
+	width: 100%;
+}
