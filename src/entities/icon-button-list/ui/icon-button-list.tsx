@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton } from '@/shared/ui';
-import styles from './iconButtonList.module.scss';
+import styles from './icon-button-list.module.scss';
 
 export const IconButtonList = () => {
 	return (

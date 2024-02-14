@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { MainButton } from '@/shared/ui';
 import { Footer } from '@/widgets/footer';
+import Arrow from '@/shared/assets/icons/tg.svg';
 
 export const MainPage = () => {
 	return (
@@ -10,7 +11,7 @@ export const MainPage = () => {
 				<div>CodePET FRONTEND</div>
 				<br />
 				<Link href="/login">
-					<MainButton variant="primary" width="regular">
+					<MainButton variant="primary" width="regular" IconLeft={Arrow}>
 						Login
 					</MainButton>
 				</Link>
@@ -23,7 +24,7 @@ export const MainPage = () => {
 				</Link>
 				<br />
 			</main>
-			<Footer device="desktop" />
+			<Footer />
 		</>
 	);
 };
