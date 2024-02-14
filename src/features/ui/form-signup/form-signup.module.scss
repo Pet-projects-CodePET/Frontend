@@ -1,7 +1,7 @@
 @import '@/shared/assets/fonts/fonts.css';
 
+
 .title {
-	margin: 0 auto 32px;
 	color: var(--color-foreground-default, #1C1C1E);
 	text-align: center;
 	font-feature-settings: 'clig' off, 'liga' off;
@@ -15,4 +15,24 @@
 
 .input_list {
 	width: 100%;
+}
+
+.button_container {
+	width: 100%;
+	
+}
+
+.iconsButtons_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+	
+}
+
+.iconsButtons_line {
+	display: block;
+	text-align: center;
+	text-decoration-line: line-through;
 }

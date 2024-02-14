@@ -1,5 +1,6 @@
 'use client';
 
+import { IconButtonList } from '@/entities/iconButtonList';
 import { Form, Input, MainButton } from '@/shared/ui';
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
@@ -16,7 +17,7 @@ export const FormSignup: FC<FormSignupProps> = ({}) => {
 
 	return (
 		<Form onSubmit={handleSubmit}>
-			<h1 className={styles.title}>Добро пожаловать</h1>
+			<h1 className={styles.title}>Создать аккаунт</h1>
 			<div className={styles.input_list}>
 				<Input
 					label="email"
@@ -43,9 +44,14 @@ export const FormSignup: FC<FormSignupProps> = ({}) => {
 					placeholder="Введите пароль"
 					register={register}
 				/>
-				<MainButton variant={'primary'} width={'max'}>
-					{'Создать аккаунт'}
-				</MainButton>
+			</div>
+			{/* КАПЧА */}
+			<MainButton variant={'primary'} width={'max'}>
+				{'Создать аккаунт'}
+			</MainButton>
+			<div className={styles.iconsButtons_container}>
+				<span className={styles.iconsButtons_line}>или</span>
+				<IconButtonList />
 			</div>
 		</Form>
 	);
