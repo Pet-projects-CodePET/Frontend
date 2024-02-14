@@ -1,17 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import { Header } from '@/widgets/header';
 import { MainButton } from '@/shared/ui';
 import { Footer } from '@/widgets/footer';
-import Arrow from '@/shared/assets/icons/tg.svg';
+import styles from './main-page.module.scss';
 
 export const MainPage = () => {
 	return (
 		<>
-			<main>
+			<div className={styles.mainContainer}>
+				<Header isLoggedIn />
 				<div>CodePET FRONTEND</div>
 				<br />
 				<Link href="/login">
-					<MainButton variant="primary" width="regular" IconLeft={Arrow}>
+					<MainButton variant="primary" width="regular">
 						Login
 					</MainButton>
 				</Link>
@@ -23,7 +25,7 @@ export const MainPage = () => {
 					</MainButton>
 				</Link>
 				<br />
-			</main>
+			</div>
 			<Footer />
 		</>
 	);

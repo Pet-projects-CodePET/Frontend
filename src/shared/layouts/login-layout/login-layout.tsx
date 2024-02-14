@@ -1,4 +1,3 @@
-
 import React from 'react';
 import LogoIcon from '@/shared/assets/images/logo-var-3.svg';
 import styles from './login-layout.module.scss';

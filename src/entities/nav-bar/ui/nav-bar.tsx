@@ -18,9 +18,7 @@ export const NavBar = ({
 			<ul className={styles.navList}>
 				{navBarLinksArray.map((link) => (
 					<Link className={styles.navLink} href={link.path} key={link.id}>
-						<li className={styles.navItem}>
-							{link.label}
-						</li>
+						<li className={styles.navItem}>{link.label}</li>
 					</Link>
 				))}
 			</ul>
