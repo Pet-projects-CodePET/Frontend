@@ -23,7 +23,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 
 					<NavBar navBarLinksArray={navBarLinksArray} />
 
-					{!isLoggedIn ? (
+					{isLoggedIn ? (
 						<div className={styles.header__buttonProject}>
 							<MainButton
 								variant="inverse"
@@ -51,7 +51,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 					</button>
 				</div>
 				<div>
-					{!isLoggedIn && (
+					{isLoggedIn && (
 						<Link href="profile">
 							<IconUser className={styles.header__linkProfile} />
 						</Link>

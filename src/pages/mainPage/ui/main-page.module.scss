@@ -3,14 +3,20 @@
 	margin: 0 auto;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 779px) {
 	.mainContainer {
-		max-width: 780px;
+		max-width: 500px;
 	}
 }
 
-@media screen and (max-width: 779px) {
-	.mainContainer {
-		max-width: 360px;
+.promoSection {
+	padding-top: 80px;
+
+	@media screen and (max-width: 1199px) {
+		padding-top: 56px;
+	}
+
+	@media screen and (max-width: 779px) {
+		padding-top: 0;
 	}
 }
