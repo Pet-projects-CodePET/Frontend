@@ -1,17 +1,19 @@
-import "./globals.css";
-import { MainLayout } from "@/shared/layouts";
+import './globals.css';
+import React from 'react';
+import { MainLayout } from '@/shared/layouts';
 
-export default function RootLayout({
-  children,
+const RootLayout = ({
+	children,
 }: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-        <body>
-            <MainLayout>{children}</MainLayout>
-            
-        </body>
-    </html>
-  );
-}
+	children: React.ReactNode;
+}>) => {
+	return (
+		<html lang="en">
+			<body>
+				<MainLayout>{children}</MainLayout>
+			</body>
+		</html>
+	);
+};
+
+export default RootLayout;

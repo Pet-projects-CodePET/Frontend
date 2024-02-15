@@ -1,5 +1,5 @@
+import React from 'react';
+
 export const Specialists = () => {
-    return (
-       <div>Специалисты</div>
-    )
+	return <div>Специалисты</div>;
 };

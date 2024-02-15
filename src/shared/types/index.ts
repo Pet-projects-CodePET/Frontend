@@ -1,2 +1,2 @@
-export type {DropdownDirection} from './ui';
-export type {SortOrder} from './test';
+export type { DropdownDirection } from './ui';
+export type { FooterProps } from './footer-type';

@@ -1,1 +1,1 @@
-export { useHover } from "./useHover/useHover";
+export { useHover } from './use-hover/use-hover';

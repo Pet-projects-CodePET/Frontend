@@ -1,7 +1,8 @@
-import { NewProject } from "@/pages/new-project-page"; 
+import React from 'react';
+import { NewProject } from '@/pages/new-project-page';
 
 const Home = () => {
-	return <NewProject/>;
+	return <NewProject />;
 };
 
 export default Home;

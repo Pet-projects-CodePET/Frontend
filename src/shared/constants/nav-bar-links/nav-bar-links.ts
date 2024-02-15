@@ -1,24 +1,23 @@
 type NavLink = {
-    id: number,
-     label: string, 
-     path: string
-    }
+	id: number;
+	label: string;
+	path: string;
+};
 
 export const navBarLinksArray: Array<NavLink> = [
 	{
 		id: 0,
 		label: 'Проекты',
-		path: '/projects',		
+		path: '/projects',
 	},
 	{
 		id: 1,
 		label: 'Специалисты',
-		path: '/specialists',		
+		path: '/specialists',
 	},
 	{
 		id: 2,
 		label: 'О нас',
-		path: '/about-us',	
+		path: '/about-us',
 	},
 ];
-
