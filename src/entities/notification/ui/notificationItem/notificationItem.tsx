@@ -1,3 +1,1 @@
-export const NotificationItem = () => {
-
-};
+export const NotificationItem = () => {};
