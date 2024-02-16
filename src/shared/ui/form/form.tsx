@@ -7,8 +7,8 @@ import type { FormProps } from './types';
 import styles from './form.module.scss';
 
 export const Form: FC<FormProps> = ({
-	extraClass,
 	children,
+	extraClass,
 	schema,
 	onSubmit,
 	...FormHTMLAttributes
@@ -24,8 +24,7 @@ export const Form: FC<FormProps> = ({
 			<form
 				className={`${styles.form} ${extraClass}`}
 				onSubmit={handleSubmit(onSubmit)}
-				{...FormHTMLAttributes}
-			>
+				{...FormHTMLAttributes}>
 				{children}
 			</form>
 		</FormProvider>

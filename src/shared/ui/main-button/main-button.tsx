@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import type { MainButtonProps } from './types';
 import styles from './main-button.module.scss';
@@ -42,8 +42,7 @@ export const MainButton: FC<MainButtonProps> = ({
 	return (
 		<button
 			className={`${getClassnameForType(variant)} ${getClassNameForWidth(width)}`}
-			{...props}
-		>
+			{...props}>
 			<div className={styles.buttonContainer}>
 				{IconLeft && <IconLeft className={styles.icon} />}
 				{children}

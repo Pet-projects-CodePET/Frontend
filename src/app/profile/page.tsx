@@ -1,7 +1,8 @@
-import { ProfileUser } from "@/pages/profile-user-page"; 
+import React from 'react';
+import { ProfileUser } from '@/pages/profile-user-page';
 
 const Home = () => {
-	return <ProfileUser/>;
+	return <ProfileUser />;
 };
 
 export default Home;

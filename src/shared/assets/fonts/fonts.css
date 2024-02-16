@@ -1,31 +1,34 @@
 @font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Inter'),
-    url("./Inter/Inter-Regular.woff2") format("woff2"),
-    url("./Inter/Inter-Regular.woff") format("woff");
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src:
+		local('Inter'),
+		url('./Inter/Inter-Regular.woff2') format('woff2'),
+		url('./Inter/Inter-Regular.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Inter'),
-    url("./Inter/Inter-Medium.woff2") format("woff2"),
-    url("./Inter/Inter-Medium.woff") format("woff");
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src:
+		local('Inter'),
+		url('./Inter/Inter-Medium.woff2') format('woff2'),
+		url('./Inter/Inter-Medium.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: local('Inter'),
-    url("./Inter/Inter-Black.woff2") format("woff2"),
-    url("./Inter/Inter-Black.woff") format("woff");
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src:
+		local('Inter'),
+		url('./Inter/Inter-Black.woff2') format('woff2'),
+		url('./Inter/Inter-Black.woff') format('woff');
 }
 
 @font-face {
@@ -58,31 +61,34 @@
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Open Sans'),
-    url("./OpenSans/OpenSans-Regular.woff2") format("woff2"),
-    url("./OpenSans/OpenSans-Regular.woff") format("woff");
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src:
+		local('Open Sans'),
+		url('./OpenSans/OpenSans-Regular.woff2') format('woff2'),
+		url('./OpenSans/OpenSans-Regular.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Open Sans'),
-    url("./OpenSans/OpenSans-SemiBold.woff2") format("woff2"),
-    url("./OpenSans/OpenSans-SemiBold.woff") format("woff");
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src:
+		local('Open Sans'),
+		url('./OpenSans/OpenSans-SemiBold.woff2') format('woff2'),
+		url('./OpenSans/OpenSans-SemiBold.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Open Sans'),
-    url("./OpenSans/OpenSans-Bold.woff2") format("woff2"),
-    url("./OpenSans/OpenSans-Bold.woff") format("woff");
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src:
+		local('Open Sans'),
+		url('./OpenSans/OpenSans-Bold.woff2') format('woff2'),
+		url('./OpenSans/OpenSans-Bold.woff') format('woff');
 }

@@ -1,7 +1,8 @@
+import React from 'react';
 import { AboutUs } from '@/pages/about-us-page';
 
 const Home = () => {
-	return <AboutUs/>;
+	return <AboutUs />;
 };
 
 export default Home;

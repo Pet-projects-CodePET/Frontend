@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 
 import { MainButton } from '@/shared/ui';
@@ -14,8 +15,7 @@ export const Promo = () => {
 					className={styles.promo__image}
 					alt="abstract image"
 					priority={true}
-					fill
-				></Image>
+					fill></Image>
 			</div>
 			<div className={styles.promo__absoluteContainer}>
 				<div className={styles.promo__textContainer}>

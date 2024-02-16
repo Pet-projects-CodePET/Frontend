@@ -1,7 +1,12 @@
-import { Login } from '@/pages/userLogin/login';
+import React from 'react';
+import { Login } from '@/pages/user-login/login';
 
 const Home = () => {
-	return <Login />;
+	return (
+		<>
+			<Login />
+		</>
+	);
 };
 
 export default Home;
