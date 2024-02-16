@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { MainButton } from '@/shared/ui';
-import backgroundImage from '@/shared/assets/images/backgroundLoginLayout.png';
+import backgroundImage from '@/shared/assets/images/background-login-layout.png';
 
 import styles from './promo.module.scss';
 
