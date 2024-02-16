@@ -53,7 +53,7 @@
 		padding: 8px;
 
 		&__container {
-			max-width: 780px;
+			width: 100%;
 		}
 
 		&__buttonBurger {
@@ -89,10 +89,8 @@
 @media screen and (max-width: 779px) {
 	.header {
 		padding: 16px;
-
-		&__container {
-			max-width: 343px;
-		}
+		max-width: 500px;
+		margin: 0 auto;
 
 		&__wrapper {
 			background-color: $--Neutral-White;

@@ -1,16 +1,23 @@
 .mainContainer {
 	max-width: 1160px;
 	margin: 0 auto;
-}
-
-@media screen and (max-width: 1200px) {
-	.mainContainer {
-		max-width: 780px;
-	}
+	flex: 1;
 }
 
 @media screen and (max-width: 779px) {
 	.mainContainer {
-		max-width: 360px;
+		max-width: 500px;
+	}
+}
+
+.promoSection {
+	padding-top: 80px;
+
+	@media screen and (max-width: 1199px) {
+		padding-top: 56px;
+	}
+
+	@media screen and (max-width: 779px) {
+		padding-top: 0;
 	}
 }

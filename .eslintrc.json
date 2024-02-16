@@ -4,7 +4,8 @@
 		"es2021": true
 	},
 	"extends": [
-		"eslint:recommended", "next",
+		"eslint:recommended",
+		"next",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended",
 		"prettier"
