@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React, { FC, useState } from 'react';
 import Link from 'next/link';
@@ -9,19 +9,19 @@ import type { InputProps } from './types';
 import styles from './input.module.scss';
 
 export const Input: FC<InputProps> = ({
-	label,
-	labelName = 'labelName',
-	error = null,
-	register,
-	link = null,
-	className,
-	type = 'text',
-	...props
+  label,
+  labelName = 'labelName',
+  error = null,
+  register,
+  link = null,
+  className,
+  type = 'text',
+  ...props
 }) => {
-	const [visible, setVisible] = useState(false);
-	const handleVisible = () => {
-		setVisible(!visible);
-	};
+  const [visible, setVisible] = useState(false);
+  const handleVisible = () => {
+    setVisible(!visible)
+  };
 
 	return (
 		<label className={clsx(className, styles.label)}>
