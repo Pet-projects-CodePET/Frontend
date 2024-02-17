@@ -2,3 +2,18 @@
 	padding-top: 54px;
 	width: 560px;
 }
+
+
+@media screen and (max-width: 1199px) {
+	.container {
+		padding: 0;
+		width: 560px;
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.container {
+		padding: 0;
+		width: 100vw;
+	}
+}
