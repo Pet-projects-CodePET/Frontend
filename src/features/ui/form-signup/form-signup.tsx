@@ -32,8 +32,8 @@ export const FormSignup: FC = ({}) => {
 
 	return (
 		<Form onSubmit={handleSubmit}>
-			<div className={styles.form_container}>
-				<h1 className={styles.title}>Создать аккаунт</h1>
+			<h1 className={styles.title}>Создать аккаунт</h1>
+			<div className={styles.container}>
 				<div className={styles.input_list}>
 					<Input
 						label="email"
@@ -51,11 +51,13 @@ export const FormSignup: FC = ({}) => {
 					<Input
 						label="password"
 						labelName="Пароль"
+						type={'password'}
 						register={register}
 						placeholder="Введите пароль"
 					/>
 					<Input
 						label="passworf-confirm"
+						type={'password'}
 						labelName="Пароль еще раз"
 						placeholder="Введите пароль"
 						register={register}
@@ -71,23 +73,23 @@ export const FormSignup: FC = ({}) => {
 					{'Создать аккаунт'}
 				</MainButton>
 			</div>
-			<div className={styles.iconsButtons_container}>
+			<div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>
 				<IconButtonList />
 			</div>
-			<div className={styles.iconsButtons_container}>
-				<div>
-					<p>Уже есть аккаунт?</p>
-					<Link href={'/login'}>Войти</Link>
-				</div>
-				<div>
-					<p>
-						При создании аккаунта вы соглашаетесь с&#160;
-						<Link href={'/login'}>
-							политикой об использовании персональных данных
-						</Link>
-					</p>
-				</div>
+			<div className={styles.container}>
+				<p className={styles.text_login}>
+					Уже есть аккаунт?&#160;
+					<Link className={styles.link_login} href={'/login'}>
+						Войти
+					</Link>
+				</p>
+				<p className={styles.text_policy}>
+					При создании аккаунта вы соглашаетесь с&#160;
+					<Link className={styles.link_policy} href={'/login'}>
+						политикой&#160;об&#160;использовании персональных данных
+					</Link>
+				</p>
 			</div>
 		</Form>
 	);

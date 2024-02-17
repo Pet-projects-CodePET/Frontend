@@ -1,54 +1,117 @@
 @import '@/shared/assets/fonts/fonts.css';
-
-.form_gap {
-	display: flex;
-	flex-direction: column;
-	gap: 32px
-}
+@import '@/shared/style/variables';
 
 
-.form_container {
+.container {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 24px;
+	gap: 21px;
 }
 
 .title {
 	margin: 0;
-	
-	color: var(--color-foreground-default, #1C1C1E);
+	color: $--Foreground-default;
 	text-align: center;
-	font-feature-settings: 'clig' off, 'liga' off;
-	font-family: Montserrat-Bold;
+	font-family: Montserrat-Bold, serif;
 	font-size: 32px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: 40px;
-	
 }
 
 .input_list {
 	width: 100%;
-}
-
-.button_container {
-	width: 100%;
-	
-}
-
-.iconsButtons_container {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	
-	
+	gap: 8px;
 }
 
 .iconsButtons_line {
-	display: block;
+	width: 100%;
+	display: inline-block;
 	text-align: center;
-	text-decoration-line: blink;
+	position: relative;
+	color: $--Foreground-default;
+	font-family: "Open Sans";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+}
+
+.iconsButtons_line:before,
+.iconsButtons_line:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	width: calc(50% - 23px); /* Расстояние от края до линии */
+	height: 1px; /* Толщина линии */
+	background: rgba(148, 163, 184, .2); /* Цвет линии */
+}
+
+.iconsButtons_line:before {
+	left: 0;
+}
+
+.iconsButtons_line:after {
+	right: 0;
+}
+
+
+.text_login {
+	margin: 3px 0 0 0;
+	color: $--Foreground-default;
+	font-family: "Open Sans", serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+	text-align: center;
+	
+}
+
+.link_login {
+	margin: 0 8px 0 8px;
+	
+	color: $--Foreground-link-default;
+	text-decoration: none;
+	font-family: "Open Sans", serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+}
+
+.text_policy {
+	margin: 2px 0 0 0;
+	text-align: center;
+	color: $--Foreground-default;
+	font-family: "Open Sans", serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	
+}
+
+.link_policy {
+	margin: 0;
+	
+	color: $--Foreground-link-default;
+	font-feature-settings: 'clig' off, 'liga' off;
+	text-decoration: none;
+	
+	/* Caption/C1 */
+	font-family: "Open Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
 }
