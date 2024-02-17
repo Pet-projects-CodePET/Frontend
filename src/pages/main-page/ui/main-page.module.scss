@@ -1,11 +1,16 @@
+@import '../../../shared//style//variables.scss';
+
 .mainContainer {
 	max-width: 1160px;
-	margin: 0 auto;
+  width: 100%;
 	flex: 1;
-}
+  
+	@media screen and (max-width: 1199px) {
+		width: 100%;
+		max-width: 780px;
+	}
 
-@media screen and (max-width: 779px) {
-	.mainContainer {
+	@media screen and (max-width: 779px) {
 		max-width: 500px;
 	}
 }
