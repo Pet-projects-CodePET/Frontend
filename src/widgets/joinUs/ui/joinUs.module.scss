@@ -1,0 +1,80 @@
+@import '../../../shared/style/variables.scss';
+
+.joinus {
+  box-sizing: border-box;
+  width: 1160px;
+  height: 446px;
+  padding: 80px;
+  border-radius: var(--rounding-l, 20px);
+  background: var(--bg-accent-inverse, #8CAAFF);
+  background-image: url(../../../shared/assets/images/joinus_background.png);
+  background-size: 489px 366px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+
+  @media screen and (max-width: 1199px) {
+    width: 780px;
+    height: 310px;
+    padding: 56px;
+    background-size: 272px auto;
+  }
+
+  @media screen and (max-width: 779px) {
+    margin:0 auto;
+    background-image: none;
+
+    padding: 24px;
+    width: calc(100% - 32px);
+    height: 229px;
+    padding: 24px;
+    background-size: 272px auto;
+  }
+}
+
+.joinus__title {
+  margin-bottom: 16px;
+  color: var(--Neutral-Black, var(--color-foreground-default, #1C1C1E));
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.4px;
+
+  @media screen and (max-width: 1199px) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  @media screen and (max-width: 779px) {
+    font-family: "Open Sans";
+    font-size: 21px;
+    line-height: 27px;
+    letter-spacing: -0.21px;
+  }
+}
+
+.joinus__text {
+  margin-bottom: 32px;
+  color: var(--foreground-default, #020617);
+  font-feature-settings: 'clig' off, 'liga' off;
+  width: 591px;
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+
+  @media screen and (max-width: 1199px) {
+    width: 425px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  @media screen and (max-width: 779px) {
+    width: calc(100% - 48px);
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 24px;
+  }
+}

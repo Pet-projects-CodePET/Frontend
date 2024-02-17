@@ -3,6 +3,7 @@ import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { Promo } from '@/widgets/navBar/ui/promo/promo';
 import styles from './main-page.module.scss';
+import { JoinUs } from '@/widgets/joinUs';
 
 export const MainPage = () => {
 	return (
@@ -11,6 +12,9 @@ export const MainPage = () => {
 				<Header isLoggedIn />
 				<div className={styles.promoSection}>
 					<Promo />
+				</div>
+				<div className={styles.joinUsSection}>
+					<JoinUs />
 				</div>
 			</div>
 			<Footer />
