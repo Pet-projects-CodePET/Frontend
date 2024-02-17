@@ -32,7 +32,7 @@ export const FormLogin: FC = ({}) => {
 
 	return (
 		<Form onSubmit={handleSubmit}>
-			<h1 className={styles.title}>Добро пожаловать</h1>
+			<h1 className={styles.title}>Добро пожаловать!</h1>
 			<div className={styles.container}>
 				<div className={styles.input_list}>
 					<Input
