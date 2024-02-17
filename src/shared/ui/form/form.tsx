@@ -1,10 +1,10 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import React, { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import type { FormProps } from './types';
 import styles from './form.module.scss';
+import type { FormProps } from './types';
 
 export const Form: FC<FormProps> = ({
 	extraClass,
@@ -31,5 +31,3 @@ export const Form: FC<FormProps> = ({
 		</FormProvider>
 	);
 };
-
-export default Form;
