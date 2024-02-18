@@ -1,0 +1,107 @@
+@import '../../../shared/style/variables.scss';
+
+.container {
+	margin: 0 auto;
+	padding: 22px 32px;
+	width: 296px;
+	min-height: 196px;
+	border: 1px solid $--border-default;
+	border-radius: 12px;
+	background-color: $--bg-primary;
+	@media screen and (max-width: 400px) {
+		padding: 24px;
+		width: 280px;
+		min-height: 145px;
+	}
+}
+
+%text {
+	margin: 0;
+	font-family: $--open-sans-font;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19px; /* 135.714% */
+	letter-spacing: 0.25px;
+}
+
+.datetext {
+	@extend %text;
+	color: $--foreground-muted;
+	margin: 0;
+}
+
+.direction {
+	@extend %text;
+	color: $--Foreground-default;
+	margin: 8px 0 0;
+	@media screen and (max-width: 400px) {
+		display: none;
+	}
+}
+
+.date {
+	display: flex;
+	align-items: center;
+	column-gap: 7px;
+}
+
+.title {
+	margin: 24px 0 0;
+	color: $--Foreground-default;
+	font-family: 'Open Sans';
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 30px; /* 125% */
+	@media screen and (max-width: 400px) {
+		margin: 16px 0 0;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: normal;
+	}
+}
+
+.link {
+	padding: 0 8px;
+	text-decoration: none;
+	color: $--Foreground-link-default;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+	cursor: pointer;
+}
+
+.tags {
+	margin: 16px 0 24px;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	@media screen and (max-width: 400px) {
+		margin: 16px 0 16px;
+	}
+}
+
+%tag {
+	padding: 4px 12px;
+	color: $--Foreground-default;
+	display: inline-block;
+	border-radius: 20px;
+	white-space: nowrap;
+}
+
+.tag {
+	@extend %text, %tag;
+	background-color: #b9f18c;
+}
+
+.more {
+	@extend %text, %tag;
+	background-color: transparent;
+	border: 1px solid $--border-default;
+}
