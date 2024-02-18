@@ -1,6 +1,8 @@
 import React from 'react';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
+import { Promo } from '@/widgets/navBar/ui/promo/promo';
+import { CurrentProjects } from '@/widgets/current-projects';
 import { Promo } from '@/widgets/promo';
 import { CurrentProjects } from '@/widgets/current-projects';
 import { JoinUs } from '@/widgets/join-us';
@@ -20,6 +22,9 @@ export const MainPage = () => {
 				<div className={styles.joinUsSection}>
 					<JoinUs />
 				</div>
+				<section className={styles.currentProjectsContainer}>
+					<CurrentProjects />
+				</section>
 			</div>
 		</main>
 	);
