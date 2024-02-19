@@ -1,1 +1,3 @@
-export { AboutUs } from './ui/about-us-page';
+import AboutUs from './ui/about-us-page';
+
+export default AboutUs;

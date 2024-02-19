@@ -1,1 +1,3 @@
-export { Signup } from './ui/registration';
+import Signup from './ui/registration';
+
+export default Signup;

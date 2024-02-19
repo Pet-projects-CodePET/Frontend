@@ -9,3 +9,5 @@ export const ProfileUser = () => {
 		</>
 	);
 };
+
+export default ProfileUser;
