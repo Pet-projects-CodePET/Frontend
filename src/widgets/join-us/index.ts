@@ -1,1 +1,1 @@
-export { JoinUs } from './ui/join-us'
+export { JoinUs } from './ui/join-us';
