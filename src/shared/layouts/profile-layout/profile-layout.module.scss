@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1160px;
+}
+
+.container {
+    display: flex;
+    min-height: 968px;
+    padding: 32px;
+    gap: 40px;
+}

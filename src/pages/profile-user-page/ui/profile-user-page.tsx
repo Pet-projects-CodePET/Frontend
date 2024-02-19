@@ -1,5 +1,10 @@
 import React from 'react';
 
 export const ProfileUser = () => {
-	return <div>Личный кабинет</div>;
+	return (
+		<div>		
+			<div>Форма редактирования профиля</div>
+		</div>
+	)
+	
 };
