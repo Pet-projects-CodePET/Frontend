@@ -1,1 +1,3 @@
-export { ProfileUser } from './ui/profile-user-page';
+import ProfileUser from './ui/profile-user-page';
+
+export default ProfileUser;

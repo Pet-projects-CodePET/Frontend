@@ -1,12 +1,8 @@
 import React from 'react';
-import { PasswordRecovery } from '@/pages/user-login/password-recovery/ui/password-recovery';
+// import { PasswordRecovery } from '@/pages/user-login/password-recovery/ui/password-recovery';
 
-const Page = () => {
-	return (
-		<>
-			<PasswordRecovery />
-		</>
-	);
+const Home = () => {
+	return <>{/* <PasswordRecovery /> */}</>;
 };
 
-export default Page;
+export default Home;
