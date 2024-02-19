@@ -1,7 +1,8 @@
 'use client';
 
+import React from 'react';
 import { MainButton } from '@/shared/ui';
-import styles from './joinUs.module.scss'
+import styles from './join-us.module.scss'
 
 export const JoinUs = () => {
   return (

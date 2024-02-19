@@ -3,7 +3,7 @@ import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { Promo } from '@/widgets/navBar/ui/promo/promo';
 import styles from './main-page.module.scss';
-import { JoinUs } from '@/widgets/joinUs';
+import { JoinUs } from '@/widgets/join-us';
 
 export const MainPage = () => {
 	return (

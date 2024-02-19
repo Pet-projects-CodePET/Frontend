@@ -1,1 +1,0 @@
-export { JoinUs } from './ui/joinUs'
