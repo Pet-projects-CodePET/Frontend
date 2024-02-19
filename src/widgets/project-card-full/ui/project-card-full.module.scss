@@ -1,0 +1,120 @@
+@import '../../../shared/style/variables.scss';
+
+.container {
+	border: 1px solid $--border-default;
+	border-radius: 12px;
+	background: $--bg-primary;
+	padding: 24px 32px;
+	font-family: $--open-sans-font;
+}
+
+.topInfo {
+	display: flex;
+	justify-content: space-between;
+	color: $--Neutral-Light-Grey-03;
+}
+
+.calendarContainer {
+	display: flex;
+	align-items: center;
+}
+
+.calendarIcon {
+	padding-right: 8px;
+	color: $--Foreground-subtitle;
+}
+
+.calendarText {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}
+
+.activeStateContainer {
+	display: flex;
+	align-items: center;
+}
+
+.activeStateIcon {
+	padding-right: 8px;
+
+	&_type_active {
+		color: $--Colors-Pastel-Green;
+	}
+
+	&_type_inactive {
+		color: $--Neutral-Light-Grey-03;
+	}
+}
+
+.activeStateText {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}
+
+.title {
+	color: $--Foreground-default;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 30px;
+	letter-spacing: 0%;
+	padding-top: 24px;
+	margin: 0;
+}
+
+.subtitle {
+	color: $--Foreground-default;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	padding-top: 8px;
+	margin: 0;
+}
+
+.mainText {
+	color: $--Foreground-default;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	padding-top: 16px;
+	margin: 0;
+}
+
+.professionIconsList {
+	padding-top: 16px;
+}
+
+.professionIcon {
+	margin-right: 8px;
+}
+
+.skillsList {
+	display: flex;
+	padding-top: 16px;
+}
+
+.skill {
+	color: $--Neutral-Light-Grey-03;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	padding-right: 8px;
+	margin: 0;
+}
+
+.link {
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	text-decoration: none;
+	display: inline-block;
+	padding-top: 16px;
+}
