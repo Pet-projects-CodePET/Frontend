@@ -1,5 +1,5 @@
 import React from 'react';
-import { AboutUs } from '@/pages/about-us-page';
+import AboutUs from '@/pages/about-us-page';
 
 const Home = () => {
 	return <AboutUs />;

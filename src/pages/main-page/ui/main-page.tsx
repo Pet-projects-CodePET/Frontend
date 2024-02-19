@@ -5,7 +5,7 @@ import { Promo } from '@/widgets/navBar/ui/promo/promo';
 import { JoinUs } from '@/widgets/join-us';
 import styles from './main-page.module.scss';
 
-export const MainPage = () => {
+const MainPage = () => {
 	return (
 		<>
 			<div className={styles.mainContainer}>
@@ -21,3 +21,5 @@ export const MainPage = () => {
 		</>
 	);
 };
+
+export default MainPage;

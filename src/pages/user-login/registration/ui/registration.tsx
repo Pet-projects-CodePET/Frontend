@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './signup.module.scss';
 import Form from '@/shared/ui/form/form';
 
-export const Signup = () => {
+const Signup = () => {
 	const handleSubmit = () => console.log('Форма регистрации отправляет запрос');
 
 	return (
@@ -13,3 +13,5 @@ export const Signup = () => {
 		</div>
 	);
 };
+
+export default Signup;
