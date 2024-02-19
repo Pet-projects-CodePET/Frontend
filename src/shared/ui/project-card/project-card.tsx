@@ -3,10 +3,12 @@
 import React from 'react';
 import { FC } from 'react';
 import Link from 'next/link';
+import { CardProps } from './types';
 import CalendarIcon from '@/shared/assets/icons/calender.svg';
 import styles from './project-card.module.scss';
+import { Tags } from '../tags/tags';
 
-export const ProjectCard: FC<ICard> = ({
+export const ProjectCard: FC<CardProps> = ({
 	date,
 	title,
 	direction,
@@ -21,29 +23,7 @@ export const ProjectCard: FC<ICard> = ({
 			</div>
 			<p className={styles.title}>{title}</p>
 			<p className={styles.direction}>{direction}</p>
-			<ul className={styles.tags}>
-				{tags.map((item, index, arr) => {
-					const { text, color } = item;
-					if (index < 2) {
-						// TODO: key поменять на ID, приходящий с бэка
-						return (
-							<li
-								key={index}
-								className={styles.tag}
-								style={{ backgroundColor: color }}>
-								{text}
-							</li>
-						);
-					}
-					if (arr.length - 1 === index) {
-						return (
-							<li key={index} className={styles.more}>
-								+{arr.length - 2}
-							</li>
-						);
-					}
-				})}
-			</ul>
+			<Tags tags={tags} />
 			<Link href={link} className={styles.link}>
 				Откликнуться
 			</Link>

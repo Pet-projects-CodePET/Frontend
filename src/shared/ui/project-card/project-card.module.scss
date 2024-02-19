@@ -49,7 +49,7 @@
 .title {
 	margin: 24px 0 0;
 	color: $--Foreground-default;
-	font-family: 'Open Sans';
+	font-family: $--open-sans-font;
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 600;
@@ -66,42 +66,11 @@
 	padding: 0 8px;
 	text-decoration: none;
 	color: $--Foreground-link-default;
-	font-family: 'Open Sans';
+	font-family: $--open-sans-font;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 24px; /* 150% */
 	letter-spacing: 0.25px;
 	cursor: pointer;
-}
-
-.tags {
-	margin: 16px 0 24px;
-	padding: 0;
-	list-style-type: none;
-	display: flex;
-	flex-direction: row;
-	gap: 8px;
-	@media screen and (max-width: 400px) {
-		margin: 16px 0 16px;
-	}
-}
-
-%tag {
-	padding: 4px 12px;
-	color: $--Foreground-default;
-	display: inline-block;
-	border-radius: 20px;
-	white-space: nowrap;
-}
-
-.tag {
-	@extend %text, %tag;
-	background-color: #b9f18c;
-}
-
-.more {
-	@extend %text, %tag;
-	background-color: transparent;
-	border: 1px solid $--border-default;
 }

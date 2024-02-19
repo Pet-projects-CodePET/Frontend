@@ -1,14 +1,10 @@
-interface ITag {
-	text: string;
-	color: string;
-}
+import { HTMLAttributes } from 'react';
+import { ITag } from '../tags/types';
 
-interface ICard {
+export type CardProps = HTMLAttributes<HTMLElement> & {
 	date: string;
 	title: string;
 	direction: string;
-	tags: Array<ITag>;
+	tags: ITag[];
 	link: string;
-}
-
-interface ICards extends Array<ICard> {}
+};
