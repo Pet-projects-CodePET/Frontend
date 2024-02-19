@@ -2,9 +2,9 @@
 
 .mainContainer {
 	max-width: 1160px;
-  width: 100%;
+	width: 100%;
 	flex: 1;
-  
+
 	@media screen and (max-width: 1199px) {
 		width: 100%;
 		max-width: 780px;
