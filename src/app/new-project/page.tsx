@@ -1,8 +1,8 @@
 import React from 'react';
 import { NewProject } from '@/pages/new-project-page';
 
-const Home = () => {
+const Page = () => {
 	return <NewProject />;
 };
 
-export default Home;
+export default Page;

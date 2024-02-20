@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
-import { Promo } from '@/widgets/navBar/ui/promo/promo';
+import { Promo } from '@/widgets/promo';
 import { JoinUs } from '@/widgets/join-us';
 import styles from './main-page.module.scss';
 
