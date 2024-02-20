@@ -1,7 +1,5 @@
 import React from 'react';
 
-const ProfileUser = () => {
+export const ProfileUser = () => {
 	return <div>Личный кабинет</div>;
 };
-
-export default ProfileUser;

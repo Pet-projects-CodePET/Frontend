@@ -1,3 +1,1 @@
-import Projects from './ui/projects-page';
-
-export default Projects;
+export { Projects } from './ui/projects-page';

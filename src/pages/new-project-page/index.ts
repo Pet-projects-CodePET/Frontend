@@ -1,3 +1,1 @@
-import NewProject from './ui/new-project-page';
-
-export default NewProject;
+export { NewProject } from './ui/new-project-page';

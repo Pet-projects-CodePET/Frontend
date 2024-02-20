@@ -1,3 +1,1 @@
-import PasswordRecovery from './ui/password-recovery';
-
-export default PasswordRecovery;
+export { PasswordRecovery } from './ui/password-recovery';

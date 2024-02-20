@@ -1,7 +1,5 @@
 import React from 'react';
 
-const Projects = () => {
+export const Projects = () => {
 	return <div>Проекты</div>;
 };
-
-export default Projects;
