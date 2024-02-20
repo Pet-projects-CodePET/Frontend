@@ -1,0 +1,24 @@
+@import '../../../shared/style/variables.scss';
+
+.link {
+	text-decoration: none;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    color: $--Foreground-default;
+    border-radius:  12px;
+    border: 1px solid $--border-default;
+    background: $--bg-primary;
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+.linkActive {
+	color: $--Foreground-link-default;
+}
+.linkText {
+    margin: 0;
+}

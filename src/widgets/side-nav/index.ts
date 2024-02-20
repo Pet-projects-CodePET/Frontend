@@ -1,1 +1,1 @@
-export { SideNuv } from './ui/side-nav';
+export { SideNav } from './ui/side-nav';
