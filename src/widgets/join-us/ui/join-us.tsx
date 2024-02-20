@@ -6,6 +6,7 @@ import { MainButton } from '@/shared/ui';
 // import { Montserrat } from '@next/font/google';
 import styles from './join-us.module.scss';
 
+
 export const JoinUs = () => {
 	const router = useRouter();
 	return (
