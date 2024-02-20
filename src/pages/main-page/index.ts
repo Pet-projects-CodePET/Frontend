@@ -1,3 +1,1 @@
-import MainPage from './ui/main-page';
-
-export default MainPage;
+export { MainPage } from './ui/main-page';

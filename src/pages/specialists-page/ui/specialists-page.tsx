@@ -1,7 +1,5 @@
 import React from 'react';
 
-const Specialists = () => {
+export const Specialists = () => {
 	return <div>Специалисты</div>;
 };
-
-export default Specialists;

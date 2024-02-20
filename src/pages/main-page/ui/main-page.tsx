@@ -6,7 +6,7 @@ import { CurrentProjects } from '@/widgets/current-projects';
 import { JoinUs } from '@/widgets/join-us';
 import styles from './main-page.module.scss';
 
-const MainPage = () => {
+export const MainPage = () => {
 	return (
 		<>
 			<div className={styles.mainContainer}>
@@ -24,5 +24,3 @@ const MainPage = () => {
 		</main>
 	);
 };
-
-export default MainPage;

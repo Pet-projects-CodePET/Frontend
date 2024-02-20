@@ -1,7 +1,5 @@
 import React from 'react';
 
-const NewProject = () => {
+export const NewProject = () => {
 	return <div>Новый проект</div>;
 };
-
-export default NewProject;
