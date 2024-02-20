@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './login.module.scss';
 import Form from '@/shared/ui/form/form';
 
-const Login = () => {
+export const Login = () => {
 	const handleSubmit = () => console.log('Форма входа отправляет запрос');
 
 	return (
@@ -13,5 +13,3 @@ const Login = () => {
 		</div>
 	);
 };
-
-export default Login;
