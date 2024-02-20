@@ -1,7 +1,7 @@
 import React from 'react';
 import { Signup } from '@/pages/user-login/registration';
 
-const Home = () => {
+const Page = () => {
 	return (
 		<>
 			<Signup />
@@ -9,4 +9,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Page;
