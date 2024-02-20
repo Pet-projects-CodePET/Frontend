@@ -1,1 +1,1 @@
-export { PasswordRecovery } from "./ui/password-recovery";
+export { PasswordRecovery } from './ui/password-recovery';
