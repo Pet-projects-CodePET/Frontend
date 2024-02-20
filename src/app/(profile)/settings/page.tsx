@@ -1,8 +1,8 @@
 import React from 'react';
 import { ProfileSettingsPage } from '@/pages/profile-settings-page';
 
-const Home = () => {
+const Page = () => {
 	return <ProfileSettingsPage/>;
 };
 
-export default Home;
+export default Page;

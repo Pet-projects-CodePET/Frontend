@@ -11,8 +11,8 @@ const links = [
 	{ name: 'Управление аккаунтом', href: '/settings' },
 	{ name: 'Проекты', href: '/my-projects' },
 	{ name: 'Избранные проекты', href: '/selected-projects' },
-	{ name: 'Заявки', href: '/' },
-	{ name: 'Создать проекты', href: '/' },
+	{ name: 'Заявки', href: '/application' },
+	{ name: 'Создать проект', href: '/create-project' },
 ];
 
 export const NavLinks = () => {

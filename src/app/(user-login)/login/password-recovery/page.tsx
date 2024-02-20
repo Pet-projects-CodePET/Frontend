@@ -1,7 +1,7 @@
 import React from 'react';
 import { PasswordRecovery } from '@/pages/user-login/password-recovery/ui/password-recovery';
 
-const Home = () => {
+const Page = () => {
 	return (
 		<>
 			<PasswordRecovery />
@@ -9,4 +9,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Page;
