@@ -9,6 +9,11 @@
 	border-radius: 12px;
 	background-color: $--bg-primary;
 
+	&:hover {
+		border-color: $--border-card;
+		background-color: $--bg-card-hover;
+	}
+
 	@media screen and (max-width: 779px) {
 		padding: 24px;
 		width: 280px;
