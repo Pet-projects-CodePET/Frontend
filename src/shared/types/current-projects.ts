@@ -1,5 +1,5 @@
 import { ITag } from '@/shared/ui/tags/types';
-import { tags } from '@/shared/constants/tags/tags';
+import { tags } from '@/shared/types/tags';
 
 type CurrentProject = {
 	id: number;
