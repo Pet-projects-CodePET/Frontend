@@ -3,6 +3,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 import { ActivityIcon, CalendarIcon } from '@/shared/assets';
+import { getClassNameforTag } from '@/shared/utils';
 
 import { ProjectCardFullType } from './type';
 import styles from './project-card-full.module.scss';
@@ -11,13 +12,17 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	professions,
 	skills,
 	isActiveProject,
+	description,
+	duration,
+	title,
+	subtitle,
 }) => {
 	return (
 		<article className={styles.container}>
 			<div className={styles.topInfo}>
 				<div className={styles.calendarContainer}>
 					<CalendarIcon className={styles.calendarIcon} />
-					<div className={styles.calendarText}>15 сентября-22 августа</div>
+					<div className={styles.calendarText}>{duration}</div>
 				</div>
 				<div className={styles.activeStateContainer}>
 					<ActivityIcon
@@ -32,20 +37,27 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</div>
 				</div>
 			</div>
-			<h2 className={styles.title}>Название проекта</h2>
-			<h3 className={styles.subtitle}>Мобильная разработка</h3>
-			<p className={styles.mainText}>{` Lorem ipsum`.repeat(40)}</p>
-			<div className={styles.professionIconsList}>
+			<h2 className={styles.title}>{title}</h2>
+			<h3 className={styles.subtitle}>{subtitle}</h3>
+			<p className={styles.mainText}>{description}</p>
+			<ul className={styles.professionsList}>
 				{professions.map((profession, id) => (
-					<button className={styles.professionIcon} key={id}>
+					<li
+						className={clsx(
+							styles.profession,
+							styles[getClassNameforTag(profession)],
+							styles.profession_type_color
+						)}
+						key={id}>
 						{profession}
-					</button>
+					</li>
 				))}
-			</div>
+			</ul>
 			<div className={styles.skillsList}>
-				{skills.map((skill, id) => (
+				{skills.map((skill, id, arr) => (
 					<p className={styles.skill} key={id}>
 						{skill}
+						{id !== arr.length - 1 && `,`}
 					</p>
 				))}
 			</div>

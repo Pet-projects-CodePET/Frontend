@@ -85,12 +85,46 @@
 	margin: 0;
 }
 
-.professionIconsList {
-	padding-top: 16px;
+.professionsList {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 8px 0 0;
+	margin: 0;
+	list-style: none;
 }
 
-.professionIcon {
-	margin-right: 8px;
+.profession {
+	margin: 8px 8px 0 0;
+	white-space: nowrap;
+	color: $--Foreground-default;
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+
+	&_type_colorSulu {
+		background-color: $--Colors-Sulu;
+	}
+	&_type_colorRajah {
+		background-color: $--Colors-Rajah;
+	}
+	&_type_colorMalibu {
+		background-color: $--Colors-Malibu;
+	}
+	&_type_colorPrelude {
+		background-color: $--Colors-Prelude;
+	}
+	&_type_colorFroly {
+		background-color: $--Colors-Froly;
+	}
+	&_type_colorAnakiwa {
+		background-color: $--Colors-Anakiwa;
+	}
 }
 
 .skillsList {
