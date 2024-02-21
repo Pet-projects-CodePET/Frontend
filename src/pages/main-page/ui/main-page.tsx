@@ -3,6 +3,7 @@ import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { Promo } from '@/widgets/navBar/ui/promo/promo';
 import { CurrentProjects } from '@/widgets/current-projects';
+import { JoinUs } from '@/widgets/join-us';
 import styles from './main-page.module.scss';
 
 export const MainPage = () => {
@@ -16,6 +17,9 @@ export const MainPage = () => {
 				<section className={styles.currentProjectsContainer}>
 					<CurrentProjects />
 				</section>
+				<div className={styles.joinUsSection}>
+					<JoinUs />
+				</div>
 			</div>
 			<Footer />
 		</>
