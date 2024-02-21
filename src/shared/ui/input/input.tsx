@@ -46,9 +46,7 @@ export const Input: FC<InputProps> = ({
 				)}
 				{error && <p className={styles.inputError}>{error}</p>}
 			</div>
-			{description && (
-				<span className={styles.inputDescr}>{descrText}</span>
-			)}
+			{description && <span className={styles.inputDescr}>{descrText}</span>}
 			{link && (
 				<Link href={link.href} className={styles.inputLink}>
 					{link.text}

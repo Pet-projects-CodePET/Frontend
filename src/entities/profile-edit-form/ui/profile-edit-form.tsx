@@ -15,7 +15,7 @@ export const ProfileEditForm = () => {
 
 	const handleSubmit = () => {
 		console.log('Submit');
-	}
+	};
 
 	return (
 		<Form onSubmit={handleSubmit} className={styles.fields}>
@@ -38,28 +38,28 @@ export const ProfileEditForm = () => {
 				labelName="Имя"
 				register={register}
 				description={true}
-				descrText='Укажите свое настоящее имя и фамилию'
+				descrText="Укажите свое настоящее имя и фамилию"
 			/>
 			<Input
 				label="about"
 				labelName="О себе"
 				register={register}
 				description={true}
-				descrText='Не более 750 символов'
+				descrText="Не более 750 символов"
 			/>
 			<Input
 				label="portfolioLink"
 				labelName="Ссылка на портфолио"
 				register={register}
 				description={true}
-				descrText='Добавьте ссылку на любую платформу, где размещено ваше портфолио'
+				descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
 			/>
 			<Input
 				label="contacts"
 				labelName="Контакты для связи"
 				register={register}
 				description={true}
-				descrText='Укажите контакты для связи, например: e-mail, telegram, телефон'
+				descrText="Укажите контакты для связи, например: e-mail, telegram, телефон"
 			/>
 			<Input
 				label="birthDate"
@@ -74,26 +74,21 @@ export const ProfileEditForm = () => {
 					register={register}
 					description
 				/>
-				<Input
-					label="city"
-					labelName="Город"
-					register={register}
-					description
-				/>
+				<Input label="city" labelName="Город" register={register} description />
 			</div>
 			<Input
 				label="speciality"
 				labelName="Специальность"
 				register={register}
 				description={true}
-				descrText='Выберите не более 2 специальностей'
+				descrText="Выберите не более 2 специальностей"
 			/>
 			<Input
 				label="skills"
 				labelName="Навыки"
 				register={register}
 				description={true}
-				descrText='Выберите не более 15 навыков'
+				descrText="Выберите не более 15 навыков"
 			/>
 			<Input
 				label="qualLabel"
@@ -102,12 +97,10 @@ export const ProfileEditForm = () => {
 				description
 			/>
 			<div className={styles.fields_buttonsContainer}>
-				<MainButton
-					variant={"primary"}
-					width={"regular"}>
+				<MainButton variant={'primary'} width={'regular'}>
 					Сохранить
 				</MainButton>
-				<Link href='/'>Как видят мой профиль другие</Link>
+				<Link href="/">Как видят мой профиль другие</Link>
 			</div>
 		</Form>
 	);
