@@ -16,6 +16,8 @@ export const Input: FC<InputProps> = ({
 	link = null,
 	className,
 	type = 'text',
+	description = false,
+	descrText,
 	...props
 }) => {
 	const [visible, setVisible] = useState(false);
@@ -44,6 +46,9 @@ export const Input: FC<InputProps> = ({
 				)}
 				{error && <p className={styles.inputError}>{error}</p>}
 			</div>
+			{description && (
+				<span className={styles.inputDescr}>{descrText}</span>
+			)}
 			{link && (
 				<Link href={link.href} className={styles.inputLink}>
 					{link.text}

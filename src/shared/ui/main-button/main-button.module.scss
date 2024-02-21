@@ -1,7 +1,7 @@
 %baseButtonStyle {
 	border-radius: 1000px;
 	font-family: Open Sans;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 700;
 	line-height: 32px;
 	letter-spacing: 0px;
@@ -98,13 +98,13 @@
 }
 
 .buttonDimensionsRegular {
-	min-width: 159px;
+	min-width: 200px;
 	min-height: 48px;
 	max-width: fit-content;
 }
 
 .buttonDimensionsMax {
-	min-width: 159px;
+	min-width: 200px;
 	min-height: 48px;
 	max-width: none;
 	width: 100%;
