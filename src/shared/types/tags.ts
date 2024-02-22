@@ -1,6 +1,6 @@
-import { ITag } from '@/shared/ui/tags/types';
+import type { Tag } from '@/shared/ui';
 
-export const tags: Array<ITag> = [
+export const tags: Array<Tag> = [
 	{
 		id: 0,
 		text: 'UX/UI',

@@ -5,7 +5,7 @@ import styles from './icon-button.module.scss';
 
 export const IconButton: FC<IconButtonProps> = ({ variant, link }) => {
 	const getClassnameForType = (
-		buttonType: 'gmail' | 'vk' | 'yandex' | 'git'
+		buttonType: 'gmail' | 'vk' | 'yandex' | 'git' | 'pencilBox'
 	) => {
 		switch (buttonType) {
 			case 'gmail':

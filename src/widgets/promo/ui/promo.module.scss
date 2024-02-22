@@ -1,4 +1,4 @@
-@import '../../../../shared/style/variables';
+@import '@/shared/style/variables.scss';
 
 .promo__container {
 	box-sizing: border-box;
@@ -37,11 +37,11 @@
 	position: relative;
 
 	@media screen and (min-width: 1200px) {
-		mask-image: url('../../../../shared/assets/icons/background-login-layout-mask.svg?url');
+		mask-image: url('../../../shared/assets/icons/background-login-layout-mask.svg?url');
 	}
 
 	@media screen and (max-width: 1199px) {
-		mask-image: url('../../../../shared/assets/icons/background-login-layout-mask-small.svg?url');
+		mask-image: url('../../../shared/assets/icons/background-login-layout-mask-small.svg?url');
 	}
 
 	@media screen and (max-width: 779px) {
