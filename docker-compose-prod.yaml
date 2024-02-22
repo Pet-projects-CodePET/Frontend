@@ -9,7 +9,7 @@ services:
     image: postgres:latest
     env_file: .env
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - pg_data:/var/lib/postgresql/data
 
@@ -17,7 +17,7 @@ services:
     image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_backend:latest
     env_file: .env
     ports:
-      - "8000:8000"
+      - '8000:8000'
     volumes:
       - static_volume:/backend_static
     depends_on:
@@ -26,8 +26,8 @@ services:
   nginx:
     image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_nginx:latest
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - static_volume:/static
       - /etc/letsencrypt:/etc/letsencrypt
@@ -38,7 +38,7 @@ services:
     image: ${DOCKERHUB_USERNAME_FRONT}/code-pet:latest
     env_file: .env
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - static_volume:/frontend_static
     depends_on:
