@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { MainButton } from '@/shared/ui';
+// import { Montserrat } from '@next/font/google';
 import styles from './join-us.module.scss';
+
 
 export const JoinUs = () => {
 	return (
