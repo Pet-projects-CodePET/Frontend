@@ -1,8 +1,8 @@
 import React from 'react';
 import { Specialists } from '@/pages/specialists-page';
 
-const Home = () => {
+const Page = () => {
 	return <Specialists />;
 };
 
-export default Home;
+export default Page;

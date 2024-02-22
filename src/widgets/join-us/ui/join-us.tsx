@@ -3,7 +3,9 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { MainButton } from '@/shared/ui';
-import styles from './join-us.module.scss'
+// import { Montserrat } from '@next/font/google';
+import styles from './join-us.module.scss';
+
 
 export const JoinUs = () => {
   const router = useRouter();
