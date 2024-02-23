@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ProfileMyProjectssPage = () => {
+export const ProfileMyProjectsPage = () => {
 	return (
     <div>
        
