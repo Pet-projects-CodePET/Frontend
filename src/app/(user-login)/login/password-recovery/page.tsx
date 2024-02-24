@@ -1,10 +1,10 @@
+import { PasswordRecoveryPage } from '@/pages/user-login/password-recovery';
 import React from 'react';
-import { PasswordRecovery } from '@/pages/user-login/password-recovery/ui/password-recovery';
 
 const Page = () => {
 	return (
 		<>
-			<PasswordRecovery />
+			<PasswordRecoveryPage />
 		</>
 	);
 };
