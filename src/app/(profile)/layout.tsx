@@ -6,7 +6,7 @@ const Layout = ({
 }: Readonly<{
 	children: React.ReactNode;
 }>) => {
-	return <ProfileLayout>{children}</ ProfileLayout >;
+	return <ProfileLayout>{children}</ProfileLayout>;
 };
 
 export default Layout;

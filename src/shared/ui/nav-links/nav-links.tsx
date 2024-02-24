@@ -22,14 +22,12 @@ export const NavLinks = () => {
 		<>
 			{links.map((link) => {
 				return (
-					
 					<Link
 						key={link.name}
 						href={link.href}
 						className={clsx(styles.link, {
 							[styles.linkActive]: pathname === link.href,
-						})}
-						>
+						})}>
 						{link.name}
 					</Link>
 				);
