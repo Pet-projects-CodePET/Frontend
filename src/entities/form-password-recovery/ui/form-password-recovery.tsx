@@ -1,12 +1,12 @@
 'use client';
 
-import { IconButtonList } from '@/entities/icon-button-list';
-import { Form, Input, MainButton } from '@/shared/ui';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
-import Link from 'next/link';
-
 import React, { FC, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import Link from 'next/link';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { IconButtonList } from '@/entities/icon-button-list';
+import { Form, Input, MainButton } from '@/shared/ui';
+
 import styles from './form-password-recovery.module.scss';
 import type { FormPasswordRecoveryProps } from './types';
 

@@ -1,12 +1,12 @@
 'use client';
 
+import React, { FC, useRef } from 'react';
+import { useForm } from 'react-hook-form';
+import Link from 'next/link';
 import { IconButtonList } from '@/entities/icon-button-list';
 import { Form, Input, MainButton } from '@/shared/ui';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import Link from 'next/link';
 
-import React, { FC, useRef } from 'react';
-import { useForm } from 'react-hook-form';
 import styles from './form-login.module.scss';
 import type { FormLoginProps } from './types';
 

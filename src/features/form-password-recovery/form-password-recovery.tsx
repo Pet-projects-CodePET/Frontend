@@ -1,8 +1,8 @@
 'use client';
 
-import { FormPasswordRecovery } from '@/entities/form-password-recovery';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
 import React, { FC, useRef, useState } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { FormPasswordRecovery } from '@/entities/form-password-recovery';
 
 export const FormPasswordRecoveryFeature: FC = () => {
 	const [isPasswordSend, setIsPasswordSend] = useState(false);

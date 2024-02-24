@@ -1,10 +1,10 @@
 'use client';
 
+import React, { FC, useRef } from 'react';
 import { FormSignup } from '@/entities/form-signup';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import React, { FC, useRef } from 'react';
 
-export const FormSignupFeature: FC = ({}) => {
+export const FormSignupFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
 
 	const onLoad = () => {

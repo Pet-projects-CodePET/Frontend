@@ -1,13 +1,13 @@
 'use client';
 
-import type { FormSignupProps } from '@/entities/form-signup/types';
-import { IconButtonList } from '@/entities/icon-button-list';
-import { Form, Input, MainButton } from '@/shared/ui';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
-import Link from 'next/link';
-
 import React, { FC, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import Link from 'next/link';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
+import type { FormSignupProps } from '@/entities/form-signup/ui/types';
+import { IconButtonList } from '@/entities/icon-button-list';
+import { Form, Input, MainButton } from '@/shared/ui';
+
 import styles from './form-signup.module.scss';
 
 export const FormSignup: FC<FormSignupProps> = ({
