@@ -28,7 +28,7 @@ export const FormSignup: FC<FormSignupProps> = ({
 					<Input
 						label="email"
 						labelName="E-mail"
-						placeholder="Введите e-mail"
+						// placeholder="Введите e-mail"
 						register={register}
 						error={'Так выглядит ошибка'}
 					/>
@@ -36,20 +36,20 @@ export const FormSignup: FC<FormSignupProps> = ({
 						label="nickname"
 						labelName="Никнейм"
 						register={register}
-						placeholder="Введите никнейм"
+						// placeholder="Введите никнейм"
 					/>
 					<Input
 						label="password"
 						labelName="Пароль"
 						type={'password'}
 						register={register}
-						placeholder="Введите пароль"
+						// placeholder="Введите пароль"
 					/>
 					<Input
 						label="passworf-confirm"
 						type={'password'}
 						labelName="Пароль еще раз"
-						placeholder="Введите пароль"
+						// placeholder="Введите пароль"
 						register={register}
 					/>
 				</div>

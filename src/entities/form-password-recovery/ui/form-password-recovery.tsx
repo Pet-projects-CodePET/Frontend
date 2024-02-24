@@ -35,7 +35,7 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 					<Input
 						label="email"
 						labelName="E-mail"
-						placeholder="Введите e-mail"
+						// placeholder="Введите e-mail"
 						register={register}
 						error={'Так выглядит ошибка'}
 					/>
@@ -45,7 +45,7 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 							labelName="Пароль"
 							type={'password'}
 							register={register}
-							placeholder="Введите пароль"
+							// placeholder="Введите пароль"
 						/>
 					)}
 				</div>
