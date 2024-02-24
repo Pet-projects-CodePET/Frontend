@@ -1,0 +1,27 @@
+@import '@/shared/style/variables';
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: 1160px;
+	&__title {
+		padding-top: 80px;
+        padding-bottom: 56px;
+		
+	}
+    &__titleText {
+        font-family: $--montserrat-font;
+		font-size: 40px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 48px; /* 120% */
+		letter-spacing: -0.4px;
+        margin: 0;
+    }
+}
+.container {
+	display: flex;
+	min-height: 968px;
+	gap: 40px;
+}
