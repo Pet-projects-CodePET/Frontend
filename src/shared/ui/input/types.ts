@@ -10,4 +10,6 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 		text: string;
 		href: string;
 	};
+	description: boolean;
+	descrText?: string;
 };
