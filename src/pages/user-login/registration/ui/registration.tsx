@@ -1,13 +1,13 @@
 'use client';
 
+import { FormSignupFeature } from '@/features/form-signup/form-signup';
 import React from 'react';
-import { FormSignup } from '@/features/ui/form-signup/form-signup';
 import styles from './signup.module.scss';
 
-export const Signup = () => {
+export const SignupPage = () => {
 	return (
 		<div className={styles.container}>
-			<FormSignup />
+			<FormSignupFeature />
 		</div>
 	);
-}
+};

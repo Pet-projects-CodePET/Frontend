@@ -1,44 +1,26 @@
 'use client';
 
-import { IconButtonList } from '@/entities/iconButtonList';
+import { IconButtonList } from '@/entities/icon-button-list';
 import { Form, Input, MainButton } from '@/shared/ui';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Link from 'next/link';
 
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './form-password-recovery.module.scss';
+import type { FormPasswordRecoveryProps } from './types';
 
-export const FormPasswordRecovery: FC = ({}) => {
-	const [isPasswordSend, setIsPasswordSend] = useState(false);
+export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
+	isPasswordSend,
+	handlePasswordReSend,
+	onLoad,
+	setToken,
+	handleSubmit,
+}) => {
 	const { register } = useForm();
 
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
-
-	console.log(sitekey);
-
-	const onLoad = () => {
-		const executePayload = { async: true };
-		captchaRef.current?.execute(executePayload);
-	};
-
-	const setToken = (token: string) => {
-		console.log('Капча пройдена. Токен:', token);
-	};
-
-	const handlePasswordSend = () => {
-		setIsPasswordSend(true);
-	};
-
-	const handlePasswordReSend = () => {
-		setIsPasswordSend(false);
-	};
-
-	const handleSubmit = (data: unknown) => {
-		handlePasswordSend();
-		console.log(data);
-	};
 
 	return (
 		<Form onSubmit={handleSubmit}>
@@ -104,8 +86,7 @@ export const FormPasswordRecovery: FC = ({}) => {
 				<Link
 					className={styles.link_registration}
 					href={'/login/password-recovery'}
-					onClick={handlePasswordReSend}
-				>
+					onClick={handlePasswordReSend}>
 					Отправить пароль повторно
 				</Link>
 			)}

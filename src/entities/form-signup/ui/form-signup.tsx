@@ -1,38 +1,28 @@
 'use client';
 
-import { IconButtonList } from '@/entities/iconButtonList';
+import type { FormSignupProps } from '@/entities/form-signup/types';
+import { IconButtonList } from '@/entities/icon-button-list';
 import { Form, Input, MainButton } from '@/shared/ui';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Link from 'next/link';
 
 import React, { FC, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import styles from './form-login.module.scss';
+import styles from './form-signup.module.scss';
 
-export const FormLogin: FC = ({}) => {
+export const FormSignup: FC<FormSignupProps> = ({
+	onLoad,
+	setToken,
+	handleSubmit,
+}) => {
 	const { register } = useForm();
 
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
 
-	console.log(sitekey);
-
-	const onLoad = () => {
-		const executePayload = { async: true };
-		captchaRef.current?.execute(executePayload);
-	};
-
-	const setToken = (token: string) => {
-		console.log('Капча пройдена. Токен:', token);
-	};
-
-	const handleSubmit = (data: unknown) => {
-		console.log(data);
-	};
-
 	return (
 		<Form onSubmit={handleSubmit}>
-			<h1 className={styles.title}>Добро пожаловать!</h1>
+			<h1 className={styles.title}>Создать аккаунт</h1>
 			<div className={styles.container}>
 				<div className={styles.input_list}>
 					<Input
@@ -43,12 +33,24 @@ export const FormLogin: FC = ({}) => {
 						error={'Так выглядит ошибка'}
 					/>
 					<Input
-						link={{ text: 'Забыли пароль?', href: '/login/password-recovery' }}
+						label="nickname"
+						labelName="Никнейм"
+						register={register}
+						placeholder="Введите никнейм"
+					/>
+					<Input
 						label="password"
 						labelName="Пароль"
 						type={'password'}
 						register={register}
 						placeholder="Введите пароль"
+					/>
+					<Input
+						label="passworf-confirm"
+						type={'password'}
+						labelName="Пароль еще раз"
+						placeholder="Введите пароль"
+						register={register}
 					/>
 				</div>
 				<HCaptcha
@@ -58,7 +60,7 @@ export const FormLogin: FC = ({}) => {
 					ref={captchaRef}
 				/>
 				<MainButton variant={'primary'} width={'max'}>
-					{'Войти'}
+					{'Создать аккаунт'}
 				</MainButton>
 			</div>
 			<div className={styles.container}>
@@ -66,10 +68,16 @@ export const FormLogin: FC = ({}) => {
 				<IconButtonList />
 			</div>
 			<div className={styles.container}>
-				<p className={styles.text_registration}>
-					Нет аккаунта?&#160;
-					<Link className={styles.link_registration} href={'/registration'}>
-						Зарегистрироваться
+				<p className={styles.text_login}>
+					Уже есть аккаунт?&#160;
+					<Link className={styles.link_login} href={'/login'}>
+						Войти
+					</Link>
+				</p>
+				<p className={styles.text_policy}>
+					При создании аккаунта вы соглашаетесь с&#160;
+					<Link className={styles.link_policy} href={'/login'}>
+						политикой&#160;об&#160;использовании персональных данных
 					</Link>
 				</p>
 			</div>

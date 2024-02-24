@@ -1,13 +1,13 @@
 'use client';
 
+import { FormLoginFeature } from '@/features/form-login/form-login';
 import React from 'react';
-import { FormLogin } from '@/features/ui/form-login/form-login';
 import styles from './login.module.scss';
 
-export const Login = () => {
+export const LoginPage = () => {
 	return (
 		<div className={styles.container}>
-			<FormLogin />
+			<FormLoginFeature />
 		</div>
 	);
-}
+};
