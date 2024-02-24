@@ -1,4 +1,4 @@
-import { ITag } from '@/shared/ui/tags/types';
+import type { Tag } from '@/shared/ui';
 import { tags } from '@/shared/types/tags';
 
 type CurrentProject = {
@@ -6,7 +6,7 @@ type CurrentProject = {
 	date: string;
 	title: string;
 	direction: string;
-	tags: ITag[];
+	tags: Tag[];
 	link: string;
 };
 

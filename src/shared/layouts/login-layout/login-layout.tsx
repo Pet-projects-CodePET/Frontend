@@ -8,7 +8,7 @@ export const LoginLayout = ({ children }: { children: React.ReactNode }) => {
 		<div className={styles.container}>
 			<div className={styles.logo}>
 				<Link href="/" className={styles.logo__link}>
-						<LogoIcon alt="logo" className={styles.logo__icon} />
+					<LogoIcon alt="logo" className={styles.logo__icon} />
 				</Link>
 			</div>
 
