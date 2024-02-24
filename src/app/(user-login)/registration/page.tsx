@@ -1,10 +1,10 @@
+import { SignupPage } from '@/pages/user-login/registration';
 import React from 'react';
-import { Signup } from '@/pages/user-login/registration';
 
 const Page = () => {
 	return (
 		<>
-			<Signup />
+			<SignupPage />
 		</>
 	);
 };

@@ -27,7 +27,6 @@ services:
     image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_nginx:latest
     ports:
       - '80:80'
-      - '443:443'
     volumes:
       - static_volume:/static
       - /etc/letsencrypt:/etc/letsencrypt
@@ -42,6 +41,4 @@ services:
     volumes:
       - static_volume:/frontend_static
     depends_on:
-      - db
       - backend
-      - nginx

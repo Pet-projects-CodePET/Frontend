@@ -1,15 +1,13 @@
 'use client';
 
 import React from 'react';
+import { FormLoginFeature } from '@/features/form-login/form-login';
 import styles from './login.module.scss';
-import Form from '@/shared/ui/form/form';
 
-export const Login = () => {
-	const handleSubmit = () => console.log('Форма входа отправляет запрос');
-
+export const LoginPage = () => {
 	return (
 		<div className={styles.container}>
-			<Form onSubmit={handleSubmit}>Форма входа</Form>
+			<FormLoginFeature />
 		</div>
 	);
 };

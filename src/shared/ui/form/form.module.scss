@@ -1,10 +1,10 @@
 .form {
-	max-width: 560px;
-	width: 100%;
+	width: 560px;
 	min-width: 360px;
 	box-sizing: border-box;
 	padding: 56px;
 	display: flex;
+	gap: 32px;
 	flex-direction: column;
 	align-items: center;
 	border-radius: 12px;
@@ -14,7 +14,21 @@
 
 @media screen and (max-width: 768px) {
 	.form {
-		backdrop-filter: blur(200px);
 		padding: 24px 16px;
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.form {
+		max-width: 777px;
+		min-width: 360px;
+		min-height: 100vh;
+		width: 100vw;
+		padding: 24px 16px;
+		border-radius: 0;
+		gap: 32px;
+		border: none;
+		box-shadow: 0px 20px 20px 0 rgba(217, 217, 217, 0.2) inset;
+		//		backdrop-filter: blur(100px);
 	}
 }
