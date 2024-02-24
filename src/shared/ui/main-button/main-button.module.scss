@@ -1,7 +1,9 @@
+@import '../../style/variables.scss';
+
 %baseButtonStyle {
 	border-radius: 1000px;
-	font-family: Open Sans;
 	font-size: 16px;
+	font-family: $--open-sans-font;
 	font-weight: 700;
 	line-height: 32px;
 	letter-spacing: 0px;
