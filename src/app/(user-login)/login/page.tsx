@@ -1,10 +1,10 @@
+import { LoginPage } from '@/pages/user-login/login';
 import React from 'react';
-import { Login } from '@/pages/user-login/login';
 
 const Page = () => {
 	return (
 		<>
-			<Login />
+			<LoginPage />
 		</>
 	);
 };

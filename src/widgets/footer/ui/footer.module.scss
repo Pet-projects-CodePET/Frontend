@@ -1,9 +1,11 @@
+@import '../../../shared/style/variables.scss';
+
 .footer {
 	box-sizing: border-box;
 	flex-shrink: 0;
 	width: 100%;
 	background: rgb(2, 6, 23);
-	padding: 56px 0;
+	padding: 56px 0 0 0;
 	&__container {
 		margin: 0 auto;
 		max-width: 1160px;
@@ -20,7 +22,7 @@
 		&_title {
 			margin: 0;
 			color: rgb(254, 255, 255);
-			font-family: Open Sans;
+			font-family: $--open-sans-font;
 			font-size: 20px;
 			font-weight: 700;
 			line-height: 27px;
@@ -35,7 +37,7 @@
 			margin-top: 32px;
 			display: flex;
 			flex-direction: column;
-			font-family: Open Sans;
+			font-family: $--open-sans-font;
 			font-size: 20px;
 			font-weight: 400;
 			line-height: 30px;
@@ -53,7 +55,7 @@
 		&_email {
 			margin-top: 32px;
 			color: rgb(148, 163, 184);
-			font-family: Open Sans;
+			font-family: $--open-sans-font;
 			font-size: 20px;
 			font-weight: 400;
 			line-height: 30px;

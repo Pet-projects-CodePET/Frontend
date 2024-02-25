@@ -5,8 +5,8 @@
 	font-display: swap;
 	src:
 		local('Inter'),
-		url('./Inter-Regular.woff2') format('woff2'),
-		url('./Inter-Regular.woff') format('woff');
+		url('Inter-Regular.woff2') format('woff2'),
+		url('Inter-Regular.woff') format('woff');
 }
 @font-face {
 	font-family: 'Inter';
@@ -25,6 +25,6 @@
 	font-display: swap;
 	src:
 		local('Inter'),
-		url('./Inter-Black.woff2') format('woff2'),
-		url('./Inter-Black.woff') format('woff');
+		url('Inter-Black.woff2') format('woff2'),
+		url('Inter-Black.woff') format('woff');
 }

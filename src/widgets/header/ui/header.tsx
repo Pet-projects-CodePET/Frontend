@@ -29,7 +29,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 							<MainButton
 								variant="inverse"
 								width="max"
-								onClick={() => router.push('new-project')}
+								onClick={() => router.push('create-project')}
 								IconLeft={IconPlus}>
 								Создать проект
 							</MainButton>
