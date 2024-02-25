@@ -59,7 +59,6 @@
 
 	&__menuProfile_container {
 		position: relative;
-
 	}
 
 	&__menuProfile {
@@ -87,8 +86,6 @@
 	}
 
 	&__menuProfileItem {
-		display: flex;
-		align-items: center;
 		width: 100%;
 		height: 44px;
 
@@ -98,6 +95,8 @@
 	}
 
 	&__menuProfileLink {
+		display: flex;
+		align-items: center;
 		color: $--Foreground-default;
 		text-decoration: none;
 		font-family: $--open-sans-font;
@@ -106,6 +105,8 @@
 		font-weight: 400;
 		line-height: 24px;
 		letter-spacing: 0.25px;
+		width: 100%;
+		height: 100%;
 	}
 
 	&__menuProfileItem_icon {
