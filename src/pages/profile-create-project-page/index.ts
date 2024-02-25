@@ -1,1 +1,1 @@
-export { ProfileCreateProject } from './ui/profile-create-project-page'
+export { ProfileCreateProject } from './ui/profile-create-project-page';
