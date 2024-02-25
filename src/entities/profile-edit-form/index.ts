@@ -1,1 +1,1 @@
-export { Fields } from './ui/profile-edit-form';
+export { ProfileEditForm } from './ui/profile-edit-form';

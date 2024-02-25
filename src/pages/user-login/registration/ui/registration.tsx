@@ -1,15 +1,13 @@
 'use client';
 
 import React from 'react';
+import { FormSignupFeature } from '@/features/form-signup/form-signup';
 import styles from './signup.module.scss';
-import Form from '@/shared/ui/form/form';
 
-export const Signup = () => {
-	const handleSubmit = () => console.log('Форма регистрации отправляет запрос');
-
+export const SignupPage = () => {
 	return (
 		<div className={styles.container}>
-			<Form onSubmit={handleSubmit}>Форма регистрации</Form>
+			<FormSignupFeature />
 		</div>
 	);
 };

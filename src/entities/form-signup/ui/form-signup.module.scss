@@ -1,0 +1,150 @@
+@import '@/shared/assets/fonts/fonts.css';
+@import '@/shared/style/variables';
+
+.container {
+	max-width: 560px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 21px;
+
+	@media screen and (max-width: 779px) {
+		gap: 13px;
+		max-width: 779px;
+	}
+}
+
+.title {
+	margin: 0;
+	color: $--Foreground-default;
+	text-align: center;
+	font-family: Montserrat, serif;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 40px;
+
+	//	&:after {
+	//		content: 'Платформа для ваших проектов';
+	//		display: block;
+	//		position: relative;
+	//		top: 8px;
+	//		font-family: "Open Sans", serif;
+	//		font-size: 20px;
+	//		font-style: normal;
+	//		font-weight: 400;
+	//		line-height: 30px; /* 150% */
+	//		letter-spacing: 0.25px;
+	//	}
+
+	@media screen and (max-width: 779px) {
+		font-family: 'Open Sans', serif;
+		font-size: 20px;
+		line-height: normal;
+		letter-spacing: 0.25px;
+
+		//		&:after {
+		//			font-size: 16px;
+		//			line-height: 24px; /* 150% */
+		//		}
+	}
+}
+
+.input_list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.iconsButtons_line {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	color: $--Foreground-default;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		width: calc(50% - 23px); /* Расстояние от края до линии */
+		height: 1px; /* Толщина линии */
+		background: rgba(148, 163, 184, 0.2); /* Цвет линии */
+	}
+
+	&:before {
+		left: 0;
+	}
+
+	&:after {
+		right: 0;
+	}
+
+	@media screen and (max-width: 779px) {
+		margin: -10px 0 10px 0;
+	}
+}
+
+.text_login {
+	margin: 3px 0 0 0;
+	color: $--Foreground-default;
+	font-family: 'Open Sans', serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+	text-align: center;
+
+	@media screen and (max-width: 779px) {
+		margin: -5px 0 0 0;
+	}
+}
+
+.link_login {
+	margin: 0 8px 0 8px;
+	color: $--Foreground-link-default;
+	text-decoration: none;
+	font-family: 'Open Sans', serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+}
+
+.text_policy {
+	margin: 2px 0 0 0;
+	text-align: center;
+	color: $--Foreground-default;
+	font-family: 'Open Sans', serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}
+
+.link_policy {
+	margin: 0;
+	color: $--Foreground-link-default;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	text-decoration: none;
+	font-family: 'Open Sans', serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}
