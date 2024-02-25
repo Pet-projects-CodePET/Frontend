@@ -18,7 +18,6 @@ import Exit from '../../../shared/assets/icons/logout.svg';
 import styles from './header.module.scss';
 
 export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
-
 	const router = useRouter();
 	const [isMenuProfileOpen, setIsMenuProfileOpen] = useState(false);
 	const menuProfileRef = useRef(null);
@@ -30,7 +29,6 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 	const handleOpenMenuProfile = () => {
 		if (!isMenuProfileOpen) setIsMenuProfileOpen(true);
 	};
-
 
 	return (
 		<div className={styles.header}>
@@ -72,34 +70,34 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 							onClick={handleOpenMenuProfile}>
 							<IconUser className={styles.header__linkProfile} />
 						</button>
-						{/* <nav ref={menuProfileRef}> */}
-							<ul	className={`${styles.header__menuProfile} ${isMenuProfileOpen ? styles.header__menuProfile_opened : ''}`} ref={menuProfileRef}>
-								<li className={styles.header__menuProfileItem}>
-									<Link href="/" className={styles.header__menuProfileLink}>
-										<User className={styles.header__menuProfileItem_icon} />
-										Личный кабинет
-									</Link>
-								</li>
-								<li className={styles.header__menuProfileItem}>
-									<Link href="/" className={styles.header__menuProfileLink}>
-										<Projects className={styles.header__menuProfileItem_icon} />
-										Moи проекты
-									</Link>
-								</li>
-								<li className={styles.header__menuProfileItem}>
-									<Link href="/" className={styles.header__menuProfileLink}>
-										<Favorites className={styles.header__menuProfileItem_icon} />
-										Избранные проекты
-									</Link>
-								</li>
-								<li className={styles.header__menuProfileItem}>
-									<Link href="/" className={styles.header__menuProfileLink}>
-										<Exit className={styles.header__menuProfileItem_icon} />
-										Выход
-									</Link>
-								</li>
-							</ul>
-						{/* </nav> */}
+						<ul
+							className={`${styles.header__menuProfile} ${isMenuProfileOpen ? styles.header__menuProfile_opened : ''}`}
+							ref={menuProfileRef}>
+							<li className={styles.header__menuProfileItem}>
+								<Link href="/" className={styles.header__menuProfileLink}>
+									<User className={styles.header__menuProfileItem_icon} />
+									Личный кабинет
+								</Link>
+							</li>
+							<li className={styles.header__menuProfileItem}>
+								<Link href="/" className={styles.header__menuProfileLink}>
+									<Projects className={styles.header__menuProfileItem_icon} />
+									Moи проекты
+								</Link>
+							</li>
+							<li className={styles.header__menuProfileItem}>
+								<Link href="/" className={styles.header__menuProfileLink}>
+									<Favorites className={styles.header__menuProfileItem_icon} />
+									Избранные проекты
+								</Link>
+							</li>
+							<li className={styles.header__menuProfileItem}>
+								<Link href="/" className={styles.header__menuProfileLink}>
+									<Exit className={styles.header__menuProfileItem_icon} />
+									Выход
+								</Link>
+							</li>
+						</ul>
 					</div>
 				)}
 			</div>
