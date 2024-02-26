@@ -1,6 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { DatePicker, DatePickerProps } from 'antd';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ru';
 
 import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
@@ -11,10 +14,21 @@ import styles from './profile-edit-form.module.scss';
 import Link from 'next/link';
 
 export const ProfileEditForm = () => {
-	const { register } = useForm();
-
+	dayjs.locale('ru');
+	const initaalBirthDate = dayjs('01/01/2000').valueOf();
+	const [birthDate, setBirthDate] = useState<number | null>(initaalBirthDate);
+  const { register } = useForm();
+  
 	const handleSubmit = () => {
 		console.log('Submit');
+	};
+
+	const onChangeDatePicker: DatePickerProps['onChange'] = (
+		date,
+		dateString
+	) => {
+		typeof dateString === 'string' &&
+			setBirthDate(date ? date.valueOf() : null);
 	};
 
 	return (
@@ -61,12 +75,21 @@ export const ProfileEditForm = () => {
 				description={true}
 				descrText="Укажите контакты для связи, например: e-mail, telegram, телефон"
 			/>
-			<Input
+			{/* <Input
 				label="birthDate"
 				labelName="Дата рождения"
 				register={register}
 				description
-			/>
+			/> */}
+			<div className={styles.datePickerContainer}>
+				<p className={styles.datePickerTitle}>Дата рождения</p>
+				<DatePicker
+					className={styles.datePicker}
+					format="DD/MM/YYYY"
+					onChange={onChangeDatePicker}
+					value={birthDate ? dayjs(birthDate) : null}
+				/>
+			</div>
 			<div className={styles.fields_double}>
 				<Input
 					label="country"

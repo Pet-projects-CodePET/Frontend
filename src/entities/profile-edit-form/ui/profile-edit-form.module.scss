@@ -100,3 +100,26 @@
 		}
 	}
 }
+
+.datePickerContainer {
+	width: 100%;
+}
+
+.datePickerTitle {
+	color: var(--foreground-default, #020617);
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	margin: 16px 0 8px;
+}
+
+.datePicker {
+	width: 100%;
+	min-height: 52px;
+	border-radius: 12px;
+}
