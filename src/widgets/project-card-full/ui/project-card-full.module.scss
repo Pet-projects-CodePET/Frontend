@@ -1,0 +1,154 @@
+@import '../../../shared/style/variables.scss';
+
+.container {
+	border: 1px solid $--border-default;
+	border-radius: 12px;
+	background: $--bg-primary;
+	padding: 24px 32px;
+	font-family: $--open-sans-font;
+}
+
+.topInfo {
+	display: flex;
+	justify-content: space-between;
+	color: $--Neutral-Light-Grey-03;
+}
+
+.calendarContainer {
+	display: flex;
+	align-items: center;
+}
+
+.calendarIcon {
+	padding-right: 8px;
+	color: $--Foreground-subtitle;
+}
+
+.calendarText {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}
+
+.activeStateContainer {
+	display: flex;
+	align-items: center;
+}
+
+.activeStateIcon {
+	padding-right: 8px;
+
+	&_type_active {
+		color: $--Colors-Pastel-Green;
+	}
+
+	&_type_inactive {
+		color: $--Neutral-Light-Grey-03;
+	}
+}
+
+.activeStateText {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}
+
+.title {
+	color: $--Foreground-default;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 30px;
+	letter-spacing: 0%;
+	padding-top: 24px;
+	margin: 0;
+}
+
+.subtitle {
+	color: $--Foreground-default;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	padding-top: 8px;
+	margin: 0;
+}
+
+.mainText {
+	color: $--Foreground-default;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	padding-top: 16px;
+	margin: 0;
+}
+
+.professionsList {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 8px 0 0;
+	margin: 0;
+	list-style: none;
+}
+
+.profession {
+	margin: 8px 8px 0 0;
+	white-space: nowrap;
+	color: $--Foreground-default;
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+
+	&_type_colorSulu {
+		background-color: $--Colors-Sulu;
+	}
+	&_type_colorRajah {
+		background-color: $--Colors-Rajah;
+	}
+	&_type_colorMalibu {
+		background-color: $--Colors-Malibu;
+	}
+	&_type_colorPrelude {
+		background-color: $--Colors-Prelude;
+	}
+	&_type_colorFroly {
+		background-color: $--Colors-Froly;
+	}
+	&_type_colorAnakiwa {
+		background-color: $--Colors-Anakiwa;
+	}
+}
+
+.skillsList {
+	display: flex;
+	padding-top: 16px;
+}
+
+.skill {
+	color: $--Neutral-Light-Grey-03;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	padding-right: 8px;
+	margin: 0;
+}
+
+.link {
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	text-decoration: none;
+	display: inline-block;
+	padding-top: 16px;
+}
