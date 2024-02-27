@@ -1,0 +1,50 @@
+.toggleCheckbox {
+	display: flex;
+	cursor: pointer;
+	&__input {
+		position: absolute;
+		opacity: 0;
+		width: 0;
+		height: 0;
+		appearance: none;
+	}
+	
+	&__text {
+		display: inline-block;
+		position: relative;
+		font-size: 18px;
+	}
+
+	&__text::before {
+		content: '';
+		display: block;
+		width: 48px;
+		height: 26px;
+		background-color: #5677fc;
+		border: 2px solid #5677fc;
+		border-radius: 40px;
+	}
+	
+	&__text::after {
+		content: '';
+		display: block;
+		width: 18px;
+		height: 18px;
+		border-radius: 40px;
+		background-color: white;
+		position: absolute;
+		top: 5px;
+		left: 27px;
+	}
+	
+}
+
+.toggleCheckbox__input:checked + .toggleCheckbox__text::before {
+	background-color: #feffff;
+	border: 2px solid #1e293b;
+}
+
+.toggleCheckbox__input:checked + .toggleCheckbox__text::after {
+	background-color: #1e293b;
+	left: 5px;
+}

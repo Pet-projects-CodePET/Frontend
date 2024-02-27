@@ -3,8 +3,6 @@ import { ProfileSettings } from '@/entities/profile-settings';
 
 export const ProfileSettingsPage = () => {
 	return (
-		<div>
 			<ProfileSettings/>
-		</div>
 	);
 };
