@@ -11,7 +11,10 @@
 }
 
 .wrapper {
-	margin: 0 auto;
+	position: absolute;
+	top: 240px;
+	left: 50%;
+	transform: translateX(-50%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
