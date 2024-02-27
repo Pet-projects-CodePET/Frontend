@@ -1,34 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
-import { DatePicker, DatePickerProps } from 'antd';
-import dayjs from 'dayjs';
-import 'dayjs/locale/ru';
+import React from 'react';
 
 import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
+import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { useForm } from 'react-hook-form';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import styles from './profile-edit-form.module.scss';
 import Link from 'next/link';
 
 export const ProfileEditForm = () => {
-	dayjs.locale('ru');
-	const initaalBirthDate = dayjs('01/01/2000').valueOf();
-	const [birthDate, setBirthDate] = useState<number | null>(initaalBirthDate);
-  const { register } = useForm();
-  
+	const { register, control } = useForm();
+
 	const handleSubmit = () => {
 		console.log('Submit');
-	};
-
-	const onChangeDatePicker: DatePickerProps['onChange'] = (
-		date,
-		dateString
-	) => {
-		typeof dateString === 'string' &&
-			setBirthDate(date ? date.valueOf() : null);
 	};
 
 	return (
@@ -75,20 +62,9 @@ export const ProfileEditForm = () => {
 				description={true}
 				descrText="Укажите контакты для связи, например: e-mail, telegram, телефон"
 			/>
-			{/* <Input
-				label="birthDate"
-				labelName="Дата рождения"
-				register={register}
-				description
-			/> */}
 			<div className={styles.datePickerContainer}>
 				<p className={styles.datePickerTitle}>Дата рождения</p>
-				<DatePicker
-					className={styles.datePicker}
-					format="DD/MM/YYYY"
-					onChange={onChangeDatePicker}
-					value={birthDate ? dayjs(birthDate) : null}
-				/>
+				<DatePickerRHF control={control} name="birthDate" />
 			</div>
 			<div className={styles.fields_double}>
 				<Input
