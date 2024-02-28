@@ -1,50 +1,94 @@
+@import '../../style/variables.scss';
+
 .toggleCheckbox {
+	position: relative;
 	display: flex;
+	width: 48px;
+	height: 26px;
+	box-sizing: border-box;
+	align-items: center;
 	cursor: pointer;
+
 	&__input {
-		position: absolute;
 		opacity: 0;
 		width: 0;
 		height: 0;
-		appearance: none;
 	}
-	
-	&__text {
-		display: inline-block;
-		position: relative;
-		font-size: 18px;
-	}
-
-	&__text::before {
-		content: '';
-		display: block;
-		width: 48px;
-		height: 26px;
+	&__defaultOn {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
 		background-color: #5677fc;
 		border: 2px solid #5677fc;
 		border-radius: 40px;
+		transition: 0.4s;
 	}
-	
-	&__text::after {
+
+	&__defaultOn::before {
 		content: '';
-		display: block;
+		position: absolute;
+		bottom: 2px;
+		right: 2px;
 		width: 18px;
 		height: 18px;
 		border-radius: 40px;
 		background-color: white;
-		position: absolute;
-		top: 5px;
-		left: 27px;
+		transition: 0.4s;
+
+		/*	&__disabledOn {
+		background-color: #94a3b8;
+		cursor: not-allowed;
+		border: 2px solid #94a3b8;
+	}  */
+
+		/*	&_disabled::before {
+			background-color: #e2e8f0;
+		}   */
 	}
-	
-}
+	&__input:checked + &__defaultOn {
+		background-color: #feffff;
+		border: 2px solid #1e293b;
+	}
 
-.toggleCheckbox__input:checked + .toggleCheckbox__text::before {
-	background-color: #feffff;
-	border: 2px solid #1e293b;
-}
+	&__input:checked + &__defaultOn::before {
+		background-color: #1e293b;
+		left: 5px;
+	}
 
-.toggleCheckbox__input:checked + .toggleCheckbox__text::after {
-	background-color: #1e293b;
-	left: 5px;
+	&__defaultOf {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+
+		background-color: white;
+		border: 2px solid #1e293b;
+		border-radius: 40px;
+		transition: 0.4s;
+	}
+
+	&__defaultOf::before {
+		content: '';
+		position: absolute;
+		bottom: 2px;
+		right: 2px;
+		width: 18px;
+		height: 18px;
+		border-radius: 40px;
+		background-color: #1e293b;
+		transition: 0.4s;
+	}
+
+	&__input:checked + &__defaultOf {
+		background-color: #5677fc;
+		border: 2px solid #5677fc;
+	}
+
+	&__input:checked + &__defaultOf::before {
+		background-color: #feffff;
+		left: 5px;
+	}
 }

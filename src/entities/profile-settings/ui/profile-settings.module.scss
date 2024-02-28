@@ -32,6 +32,10 @@
 		letter-spacing: 0.25px;
 		margin: 0;
 	}
+	&__notify {
+		display: flex;
+		flex-direction: column;
+	}
 	&__item {
 		display: flex;
 		justify-content: space-between;
@@ -42,6 +46,11 @@
 	&__item:last-child {
 		border-bottom: none;
 		padding-bottom: 0;
+	}
+
+	&__itemVisible {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	&__subtitle {
@@ -86,6 +95,8 @@
 		flex-direction: column;
 		gap: 19px;
 	}
+
+	
 }
 
 
