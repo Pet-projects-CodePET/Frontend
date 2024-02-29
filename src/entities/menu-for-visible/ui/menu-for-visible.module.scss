@@ -1,0 +1,26 @@
+@import '@/shared/style/variables';
+.menuVisible {
+	display: none;
+}
+.menu {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+    margin-top: 24px;
+	margin-bottom: 24px;
+	&__itemVisible {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__subtitle {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+		margin: 0;
+	}
+}

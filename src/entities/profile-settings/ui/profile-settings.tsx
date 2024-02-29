@@ -5,14 +5,18 @@ import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { useForm } from 'react-hook-form';
-import IconDown from '@/shared/assets/icons/chevron-down.svg';
+import IconDownOne from '@/shared/assets/icons/chevron-down.svg';
+import IconDownTo from '@/shared/assets/icons/chevron-down.svg';
 import styles from './profile-settings.module.scss';
 import Link from 'next/link';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
+import { MenuForVisible } from '@/entities/menu-for-visible';
+// import clsx from 'clsx';
 
 export const ProfileSettings = () => {
 	const { register } = useForm();
 	const [checked, setChecked] = useState(false);
+	const [showVisibleMenu, setShowVisibleMenu] = useState(false);
 
 	const checkedChange = (checked: boolean) => {
 		setChecked(checked);
@@ -27,113 +31,25 @@ export const ProfileSettings = () => {
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
 				<div className={styles.formSettings__list}>
-					<div className={styles.formSettings__item}>
-						<p className={styles.formSettings__subtitle}>Видимость профиля</p>
-						<IconDown className={styles.formSettings__icon} />
-					</div>
+					<div className={styles.menuVisible__popup}>
+						<div className={styles.formSettings__item}>
+							<p className={styles.formSettings__subtitle}>Видимость профиля</p>
+							<IconDownOne
+								className={styles.formSettings__icon}
+								onClick={setShowVisibleMenu}
+								onClose={() => setShowVisibleMenu(false)}
+							/>
+						</div>
 
-					<div className={styles.formSettings__itemVisible}>
-						<label
-							className={styles.formSettings__subtitle}
-							htmlFor="visibleEveryone">
-							Видно всем
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								id="visibleEveryone"
-								name="visibleEveryone"
-								variant="defaultOf"
-								onChange={() => {}}
-							/>
-						</div>
-					</div>
-					<div className={styles.formSettings__itemVisible}>
-						<label
-							className={styles.formSettings__subtitle}
-							htmlFor="visibleOrganizers">
-							Видно организаторам
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								id="visibleOrganizers"
-								name="visibleOrganizers"
-								variant="defaultOf"
-								onChange={() => {}}
-							/>
-						</div>
-					</div>
-
-					<div className={styles.formSettings__itemVisible}>
-						<label
-							className={styles.formSettings__subtitle}
-							htmlFor="noVisible">
-							Не видно никому
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								id="noVsible"
-								name="noVisible"
-								variant="defaultOf"
-								onChange={() => {
-									console.log('не видно');
-								}}
-							/>
-						</div>
+						<MenuForVisible isOpen={showVisibleMenu} />
 					</div>
 
 					<div className={styles.formSettings__item}>
 						<p className={styles.formSettings__subtitle}>Видимость контактов</p>
-						<IconDown className={styles.formSettings__icon} />
+						<IconDownTo className={styles.formSettings__icon} onClick={setShowVisibleMenu}/>
 					</div>
 
-					<div className={styles.formSettings__itemVisible}>
-						<label
-							className={styles.formSettings__subtitle}
-							htmlFor="visible-everyone">
-							Видно всем
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								id="visible-everyone"
-								name="visible-everyone"
-								variant="defaultOf"
-								onChange={() => {}}
-							/>
-						</div>
-					</div>
-					<div className={styles.formSettings__itemVisible}>
-						<label
-							className={styles.formSettings__subtitle}
-							htmlFor="visible-organizers">
-							Видно организаторам
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								id="visible-organizers"
-								name="visible-organizers"
-								variant="defaultOf"
-								onChange={() => {}}
-							/>
-						</div>
-					</div>
-
-					<div className={styles.formSettings__itemVisible}>
-						<label
-							className={styles.formSettings__subtitle}
-							htmlFor="no-visible">
-							Не видно никому
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								id="no-visible"
-								name="no-visible"
-								variant="defaultOf"
-								onChange={() => {
-									console.log('не видно');
-								}}
-							/>
-						</div>
-					</div>
+					<MenuForVisible isOpen={showVisibleMenu} />
 
 					<div className={styles.formSettings__item}>
 						<label className={styles.formSettings__subtitle} htmlFor="notify">

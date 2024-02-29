@@ -3,8 +3,8 @@ import React from 'react';
 
 import styles from './toggle-checkbox.module.scss';
 type ToggleCheck = {
-	id: string;
-	name: string;
+	id?: string;
+	name?: string;
 	variant:  'defaultOn' | 'defaultOf' | 'disabledOn' | 'disabledOf' | 'errorDefaultOn' | 'errorDefaultOF',
 	checked?: boolean;
 	onChange: (checked: boolean) => void;

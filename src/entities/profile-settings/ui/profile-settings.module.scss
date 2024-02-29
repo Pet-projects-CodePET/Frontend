@@ -48,11 +48,6 @@
 		padding-bottom: 0;
 	}
 
-	&__itemVisible {
-		display: flex;
-		justify-content: space-between;
-	}
-
 	&__subtitle {
 		color: $--Foreground-default;
 		font-family: $--open-sans-font;
@@ -95,8 +90,4 @@
 		flex-direction: column;
 		gap: 19px;
 	}
-
-	
 }
-
-
