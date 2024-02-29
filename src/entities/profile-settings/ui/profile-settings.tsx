@@ -6,7 +6,7 @@ import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { useForm } from 'react-hook-form';
 import IconDownOne from '@/shared/assets/icons/chevron-down.svg';
-import IconDownTo from '@/shared/assets/icons/chevron-down.svg';
+import IconDownTwo from '@/shared/assets/icons/chevron-down.svg';
 import styles from './profile-settings.module.scss';
 import Link from 'next/link';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
@@ -17,6 +17,7 @@ export const ProfileSettings = () => {
 	const { register } = useForm();
 	const [checked, setChecked] = useState(false);
 	const [showVisibleMenu, setShowVisibleMenu] = useState(false);
+	const [showVisibleMenuTwo, setShowVisibleMenuTwo] = useState(false);
 
 	const checkedChange = (checked: boolean) => {
 		setChecked(checked);
@@ -46,10 +47,10 @@ export const ProfileSettings = () => {
 
 					<div className={styles.formSettings__item}>
 						<p className={styles.formSettings__subtitle}>Видимость контактов</p>
-						<IconDownTo className={styles.formSettings__icon} onClick={setShowVisibleMenu}/>
+						<IconDownTwo className={styles.formSettings__icon} onClick={setShowVisibleMenuTwo}/>
 					</div>
 
-					<MenuForVisible isOpen={showVisibleMenu} />
+					<MenuForVisible isOpen={showVisibleMenuTwo} />
 
 					<div className={styles.formSettings__item}>
 						<label className={styles.formSettings__subtitle} htmlFor="notify">
