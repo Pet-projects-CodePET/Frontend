@@ -1,6 +1,10 @@
+'use client';
+
 import React from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import styles from './projects-page.module.scss';
+import { SingleSelect } from '@/widgets/single-select/ui/single-select';
+import { statusOptions } from '@/widgets/single-select/type';
 
 // TODO удалить projects когда будут данные с сервера
 const projects = [
@@ -59,21 +63,30 @@ const projects = [
 
 export const Projects = () => {
 	return (
-		<div className={styles.projectsContainer}>
-			{projects.map((project) => {
-				return (
-					<ProjectCardFull
-						isActiveProject={project.isActiveProject}
-						professions={project.professions}
-						skills={project.skills}
-						description={project.description}
-						duration={project.duration}
-						title={project.title}
-						subtitle={project.subtitle}
-						key={project.id}
-					/>
-				);
-			})}
-		</div>
+		<>
+			<div className={styles.filterContainer}>
+				<SingleSelect
+					options={statusOptions}
+					selectedOption={{ value: 'completed', label: 'Завершенный' }}
+					handleChange={(option) => console.log(option?.label)}
+				/>
+			</div>
+			<div className={styles.projectsContainer}>
+				{projects.map((project) => {
+					return (
+						<ProjectCardFull
+							isActiveProject={project.isActiveProject}
+							professions={project.professions}
+							skills={project.skills}
+							description={project.description}
+							duration={project.duration}
+							title={project.title}
+							subtitle={project.subtitle}
+							key={project.id}
+						/>
+					);
+				})}
+			</div>
+		</>
 	);
 };
