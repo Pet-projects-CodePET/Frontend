@@ -18,7 +18,7 @@
 	padding: 54px 0 0 18vw;
 	max-height: 110px;
 	box-sizing: border-box;
-	
+
 	&__icon {
 		width: 195px;
 		height: 50px;
@@ -31,12 +31,12 @@
 		flex-direction: column;
 		align-items: center;
 	}
-	
+
 	.logo {
 		width: 560px;
 		padding: 0;
 		align-self: center;
-		
+
 		&__icon {
 			width: 195px;
 			height: 50px;
@@ -52,7 +52,7 @@
 		align-items: center;
 		background-image: none;
 	}
-	
+
 	.logo {
 		max-width: 779px;
 		width: 100%;
@@ -60,7 +60,7 @@
 		align-self: center;
 		//		max-height: 110px;
 		box-sizing: border-box;
-		
+
 		&__icon {
 			width: 150px;
 			height: 50px;

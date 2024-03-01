@@ -9,7 +9,7 @@
 	gap: 8px;
 	position: relative;
 	color: $--Foreground-default;
-	font-family: Open Sans;
+	font-family: $--open-sans-font;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
@@ -74,7 +74,7 @@
 	line-height: 136%;
 }
 
-.eye {
+.icon {
 	position: absolute;
 	top: 14px;
 	right: 12px;

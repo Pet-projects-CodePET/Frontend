@@ -40,7 +40,7 @@ export const Input: FC<InputProps> = ({
 					{...props}
 				/>
 				{type === 'password' && (
-					<div className={styles.eye} onClick={handleVisible}>
+					<div className={styles.icon} onClick={handleVisible}>
 						{visible ? <EyeOff color="#94a3b8" /> : <Eye color="#94a3b8" />}
 					</div>
 				)}
