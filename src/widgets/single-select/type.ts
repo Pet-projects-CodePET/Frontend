@@ -1,6 +1,5 @@
 export type SingleSelectProps = {
 	options: Option[];
-	handleChange: (option: Option | null) => void;
 	selectedOption: Option | null;
 };
 

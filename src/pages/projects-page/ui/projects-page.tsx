@@ -68,7 +68,6 @@ export const Projects = () => {
 				<SingleSelect
 					options={statusOptions}
 					selectedOption={{ value: 'completed', label: 'Завершенный' }}
-					handleChange={(option) => console.log(option?.label)}
 				/>
 			</div>
 			<div className={styles.projectsContainer}>
