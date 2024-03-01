@@ -1,5 +1,15 @@
 @import '../../style/variables.scss';
 
+%baseDefault {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	border-radius: 40px;
+	transition: 0.4s;
+}
+
 .toggleCheckbox {
 	position: relative;
 	display: flex;
@@ -15,15 +25,19 @@
 		height: 0;
 	}
 	&__defaultOn {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
+		@extend %baseDefault;
 		background-color: #5677fc;
 		border: 2px solid #5677fc;
-		border-radius: 40px;
-		transition: 0.4s;
+
+		&_disabled {
+			background-color: #94a3b8;
+			cursor: not-allowed;
+			border: 2px solid #94a3b8;
+		}
+
+		&_disabled::before {
+			background-color: #e2e8f0;
+		}
 	}
 
 	&__defaultOn::before {
@@ -36,17 +50,8 @@
 		border-radius: 40px;
 		background-color: white;
 		transition: 0.4s;
-
-		/*	&__disabledOn {
-		background-color: #94a3b8;
-		cursor: not-allowed;
-		border: 2px solid #94a3b8;
-	}  */
-
-		/*	&_disabled::before {
-			background-color: #e2e8f0;
-		}   */
 	}
+
 	&__input:checked + &__defaultOn {
 		background-color: #feffff;
 		border: 2px solid #1e293b;
@@ -58,23 +63,16 @@
 	}
 
 	&__defaultOf {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-
+		@extend %baseDefault;
 		background-color: white;
 		border: 2px solid #1e293b;
-		border-radius: 40px;
-		transition: 0.4s;
 	}
 
 	&__defaultOf::before {
 		content: '';
 		position: absolute;
-		bottom: 2px;
-		right: 2px;
+		top: 2px;
+		left: 5px;
 		width: 18px;
 		height: 18px;
 		border-radius: 40px;
@@ -89,6 +87,7 @@
 
 	&__input:checked + &__defaultOf::before {
 		background-color: #feffff;
-		left: 5px;
+		bottom: 2px;
+		left: 24px;
 	}
 }

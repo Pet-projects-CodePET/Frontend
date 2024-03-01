@@ -5,12 +5,13 @@ import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { useForm } from 'react-hook-form';
-import IconDownOne from '@/shared/assets/icons/chevron-down.svg';
-import IconDownTwo from '@/shared/assets/icons/chevron-down.svg';
+import IconDown from '@/shared/assets/icons/chevron-down.svg';
+//import IconDownTwo from '@/shared/assets/icons/chevron-down.svg';
 import styles from './profile-settings.module.scss';
 import Link from 'next/link';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { MenuForVisible } from '@/entities/menu-for-visible';
+import IconUp from '@/shared/assets/icons/chevron-up.svg';
 // import clsx from 'clsx';
 
 export const ProfileSettings = () => {
@@ -32,25 +33,39 @@ export const ProfileSettings = () => {
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
 				<div className={styles.formSettings__list}>
-					<div className={styles.menuVisible__popup}>
-						<div className={styles.formSettings__item}>
-							<p className={styles.formSettings__subtitle}>Видимость профиля</p>
-							<IconDownOne
+					<div className={styles.formSettings__item}>
+						<p className={styles.formSettings__subtitle}>Видимость профиля</p>
+						{showVisibleMenu ? (
+							<IconUp
+								className={styles.formSettings__icon}
+								onClick={() => setShowVisibleMenu(false)}
+							/>
+						) : (
+							<IconDown
 								className={styles.formSettings__icon}
 								onClick={setShowVisibleMenu}
-								onClose={() => setShowVisibleMenu(false)}
 							/>
-						</div>
-
-						<MenuForVisible isOpen={showVisibleMenu} />
+						)}
 					</div>
+
+					<MenuForVisible isOpen={showVisibleMenu} onClose={() => {}} />
 
 					<div className={styles.formSettings__item}>
 						<p className={styles.formSettings__subtitle}>Видимость контактов</p>
-						<IconDownTwo className={styles.formSettings__icon} onClick={setShowVisibleMenuTwo}/>
+						{showVisibleMenuTwo ? (
+							<IconUp
+								className={styles.formSettings__icon}
+								onClick={() => setShowVisibleMenuTwo(false)}
+							/>
+						) : (
+							<IconDown
+								className={styles.formSettings__icon}
+								onClick={setShowVisibleMenuTwo}
+							/>
+						)}
 					</div>
 
-					<MenuForVisible isOpen={showVisibleMenuTwo} />
+					<MenuForVisible isOpen={showVisibleMenuTwo} onClose={() => {}} />
 
 					<div className={styles.formSettings__item}>
 						<label className={styles.formSettings__subtitle} htmlFor="notify">

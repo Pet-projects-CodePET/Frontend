@@ -3,13 +3,15 @@ import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import styles from './menu-for-visible.module.scss';
 import clsx from 'clsx';
 
-export const MenuForVisible = ( { isOpen } : { isOpen : boolean}) => {
+export const MenuForVisible = ( { isOpen, onClose } : { isOpen : boolean, onClose : () => void}) => {
 
 	return (
         <div className={clsx(styles.menuVisible, {
             [styles.menu ] : isOpen
         })}>
-		<div className={styles.menu}>
+		<div className={clsx(styles.menu, {
+            [styles.menuVisible ] : onClose
+        })}>
 			<div className={styles.menu__itemVisible}>
 				<label className={styles.menu__subtitle}>Видно всем</label>
 				<div className={styles.menu__checkbox}>

@@ -1,11 +1,15 @@
 import React from 'react';
-// import { clsx } from 'clsx';
-
 import styles from './toggle-checkbox.module.scss';
+import clsx from 'clsx';
+
 type ToggleCheck = {
 	id?: string;
 	name?: string;
-	variant:  'defaultOn' | 'defaultOf' | 'disabledOn' | 'disabledOf' | 'errorDefaultOn' | 'errorDefaultOF',
+	variant:
+		| 'defaultOn'
+		| 'defaultOf'
+		| 'errorDefaultOn'
+		| 'errorDefaultOF';
 	checked?: boolean;
 	onChange: (checked: boolean) => void;
 	disabled?: boolean;
@@ -19,25 +23,26 @@ export const ToggleCheckbox = ({
 	checked,
 	disabled,
 }: ToggleCheck) => {
-
 	const getClassnameForType = (
-		toggleCheckboxType: 'defaultOn' | 'defaultOf' | 'disabledOn' | 'disabledOf' | 'errorDefaultOn' | 'errorDefaultOF'
+		toggleCheckboxType:
+			| 'defaultOn'
+			| 'defaultOf'
+			| 'errorDefaultOn'
+			| 'errorDefaultOF'
 	) => {
 		switch (toggleCheckboxType) {
 			case 'defaultOn':
-				return styles.toggleCheckbox__defaultOn;
+				return clsx(styles.toggleCheckbox__defaultOn, {
+					[styles.toggleCheckbox__defaultOn_disabled]: disabled,
+				});
 			case 'defaultOf':
 				return styles.toggleCheckbox__defaultOf;
-			case 'disabledOn':
-				return styles.toggleCheckbox__disabledOn;
-			case 'disabledOf':
-				return styles.toggleCheckbox__disabledOf;
-		   case 'errorDefaultOn':
+			case 'errorDefaultOn':
 				return styles.toggleCheckbox__errorDefaultOn;
-		  case 'errorDefaultOF':
+			case 'errorDefaultOF':
 				return styles.toggleCheckbox__errorDefaultOf;
-				default:
-				return '';	
+			default:
+				return '';
 		}
 	};
 
@@ -52,8 +57,7 @@ export const ToggleCheckbox = ({
 				onChange={(e) => onChange(e.target.checked)}
 				disabled={disabled}
 			/>
-			<span
-				className={getClassnameForType(variant)}></span>
+			<span className={getClassnameForType(variant)}></span>
 		</label>
 	);
 };

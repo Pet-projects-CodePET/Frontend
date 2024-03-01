@@ -1,16 +1,23 @@
 @import '@/shared/style/variables';
+
 .menuVisible {
 	display: none;
+	transition: transform 0.8s ease;
 }
 .menu {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
-    margin-top: 24px;
-	margin-bottom: 24px;
+ //   margin-top: 24px;
+//	margin-bottom: 24px;
+	transition: transform 0.8s ease;
+	
+	
 	&__itemVisible {
 		display: flex;
 		justify-content: space-between;
+		
+		
 	}
 
 	&__subtitle {
