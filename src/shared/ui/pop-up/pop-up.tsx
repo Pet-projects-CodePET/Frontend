@@ -35,7 +35,8 @@ export const PopUp = ({
 	if (!visible) return null;
 
 	return (
-		<div className={style.popup_body} onClick={onClose}>
+		<div className={style.popup}>
+			<div className={style.popup_body} onClick={onClose}></div>
 			<div className={style.popup_wrapper}>
 				<div className={style.popup_content}>
 					<div className={style.popup_title}>{title}</div>
