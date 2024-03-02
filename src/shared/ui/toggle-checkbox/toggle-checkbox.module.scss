@@ -24,22 +24,28 @@
 		width: 0;
 		height: 0;
 	}
+
+	// styles for variant 'defaultOn'
+
 	&__defaultOn {
 		@extend %baseDefault;
 		background-color: #5677fc;
 		border: 2px solid #5677fc;
-
+		&:hover {
+			background-color: #6e8afb;
+		}
+		&:active {
+			background-color: #8caaff;
+		}
 		&_disabled {
 			background-color: #94a3b8;
 			cursor: not-allowed;
 			border: 2px solid #94a3b8;
 		}
-
 		&_disabled::before {
 			background-color: #e2e8f0;
 		}
 	}
-
 	&__defaultOn::before {
 		content: '';
 		position: absolute;
@@ -51,7 +57,6 @@
 		background-color: white;
 		transition: 0.4s;
 	}
-
 	&__input:checked + &__defaultOn {
 		background-color: #feffff;
 		border: 2px solid #1e293b;
@@ -62,12 +67,23 @@
 		left: 5px;
 	}
 
+	// styles for variant 'defaultOf'
+
 	&__defaultOf {
 		@extend %baseDefault;
 		background-color: white;
 		border: 2px solid #1e293b;
+		&_disabled {
+			cursor: not-allowed;
+			border: 2px solid #94a3b8;
+		}
+		&:hover {
+			border: 2px solid #475569;
+		}
+		&:active {
+			border: 2px solid #94a3b8;
+		}
 	}
-
 	&__defaultOf::before {
 		content: '';
 		position: absolute;
@@ -79,13 +95,82 @@
 		background-color: #1e293b;
 		transition: 0.4s;
 	}
-
+	&__defaultOf_disabled::before {
+		background-color: #94a3b8;
+	}
 	&__input:checked + &__defaultOf {
 		background-color: #5677fc;
 		border: 2px solid #5677fc;
 	}
-
 	&__input:checked + &__defaultOf::before {
+		background-color: #feffff;
+		bottom: 2px;
+		left: 24px;
+	}
+
+	// styles for variant 'errorDefaultOn'
+
+	&__errorDefaultOn {
+		@extend %baseDefault;
+		background-color: #e75757;
+		border: 2px solid #e75757;
+		&:hover {
+			background-color: #f28482;
+		}
+		&:active {
+			background-color: #f3a9a9;
+		}
+	}
+	&__errorDefaultOn::before {
+		content: '';
+		position: absolute;
+		bottom: 2px;
+		right: 2px;
+		width: 18px;
+		height: 18px;
+		border-radius: 40px;
+		background-color: white;
+		transition: 0.4s;
+	}
+	&__input:checked + &__errorDefaultOn {
+		background-color: #feffff;
+		border: 2px solid #e75757;
+	}
+	&__input:checked + &__errorDefaultOn::before {
+		background-color: #e75757;
+		left: 5px;
+	}
+
+	// styles for variant 'errorDefaultOf'
+
+	&__errorDefaultOf {
+		@extend %baseDefault;
+		background-color: white;
+		border: 2px solid #e75757;
+		&:hover {
+			border: 2px solid #f28482;
+		}
+		&:active {
+			border: 2px solid #f3a9a9;
+		}
+	}
+	&__errorDefaultOf::before {
+		content: '';
+		position: absolute;
+		top: 2px;
+		left: 5px;
+		width: 18px;
+		height: 18px;
+		border-radius: 40px;
+		background-color: #e75757;
+		transition: 0.4s;
+	}	
+	&__input:checked + &__errorDefaultOf {
+		background-color: #e75757;
+		border: 2px solid #e75757;
+	}
+
+	&__input:checked + &__errorDefaultOf::before {
 		background-color: #feffff;
 		bottom: 2px;
 		left: 24px;

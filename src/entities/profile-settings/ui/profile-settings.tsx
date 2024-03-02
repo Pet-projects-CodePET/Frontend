@@ -6,13 +6,11 @@ import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { useForm } from 'react-hook-form';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
-//import IconDownTwo from '@/shared/assets/icons/chevron-down.svg';
 import styles from './profile-settings.module.scss';
 import Link from 'next/link';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { MenuForVisible } from '@/entities/menu-for-visible';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
-// import clsx from 'clsx';
 
 export const ProfileSettings = () => {
 	const { register } = useForm();
