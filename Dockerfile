@@ -14,7 +14,8 @@ ENV NEXT_PUBLIC_CAPTCHA_SITE_KEY=$NEXT_PUBLIC_CAPTCHA_SITE_KEY
 
 ENV NODE_ENV production
 
-ENV NEXT_SHARP_PATH=/node_modules/sharp
+# ENV NEXT_SHARP_PATH=/node_modules/sharp
+ENV NEXT_SHARP_PATH=/tmp/node_modules/sharp
 
 RUN npm run build
 
