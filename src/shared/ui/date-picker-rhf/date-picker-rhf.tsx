@@ -1,5 +1,5 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
 import locale from 'antd/es/date-picker/locale/ru_RU';
@@ -9,12 +9,14 @@ import type { DatePickerRHFProps } from './types';
 import styles from './date-picker-rhf.module.scss';
 
 export const DatePickerRHF = (props: DatePickerRHFProps) => {
+	const { control } = useFormContext();
+
 	return (
 		<Controller
-			control={props.control}
+			control={control}
 			name={props.name}
 			rules={{
-				required: 'This field is required',
+				required: 'Пожалуйста, заполните дату рождения',
 			}}
 			render={({ field, fieldState }) => {
 				return (
@@ -22,7 +24,10 @@ export const DatePickerRHF = (props: DatePickerRHFProps) => {
 						<DatePicker
 							{...field}
 							className={styles.datePicker}
-							style={{ borderRadius: '12px' }}
+							style={{
+								borderRadius: '12px',
+								borderColor: fieldState.error && '#E75757',
+							}}
 							placeholder=""
 							status={fieldState.error ? 'error' : undefined}
 							ref={field.ref}
@@ -37,7 +42,7 @@ export const DatePickerRHF = (props: DatePickerRHFProps) => {
 						/>
 						<br />
 						{fieldState.error ? (
-							<span style={{ color: 'red' }}>{fieldState.error?.message}</span>
+							<span className={styles.error}>{fieldState.error?.message}</span>
 						) : null}
 					</>
 				);
