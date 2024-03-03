@@ -6,6 +6,7 @@ import { Option, SingleSelectProps } from '../type';
 
 export const SingleSelect: FC<SingleSelectProps> = ({
 	name,
+	caption,
 	options,
 	selectedOption,
 }) => {
@@ -22,8 +23,8 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 				isClearable={false}
 				isSearchable={false}
 				isDisabled={false}
-				placeholder="Статус проекта"
-				formatOptionLabel={() => 'Статус проекта'}
+				placeholder={caption}
+				formatOptionLabel={() => caption}
 				onChange={(option) => console.log(option)}
 				styles={{
 					container: (base) => ({ ...base, width: '100%' }),
