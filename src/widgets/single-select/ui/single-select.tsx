@@ -5,13 +5,17 @@ import Select, { components, OptionProps } from 'react-select';
 import { Option, SingleSelectProps } from '../type';
 
 export const SingleSelect: FC<SingleSelectProps> = ({
+	name,
 	options,
 	selectedOption,
 }) => {
 	return (
 		<div>
 			<Select
+				instanceId={name}
+				name={name}
 				// closeMenuOnSelect={false}
+				// menuIsOpen={true}
 				components={{ Option, DropdownIndicator: () => null }}
 				defaultValue={selectedOption}
 				options={options}
@@ -29,8 +33,8 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 					}),
 					option: (base, state) => ({
 						...base,
-						minHeight: '40px',
-						padding: '8px 16px',
+						minHeight: '44px',
+						padding: '0px 16px',
 						display: 'flex',
 						justifyContent: 'space-between',
 						alignItems: 'center',
@@ -45,10 +49,10 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 									? '#020617'
 									: 'inherit',
 						backgroundColor: state.isFocused
-							? '#E8EEFF'
+							? '#E8EEFF' // не выбранная опция
 							: state.isSelected
-								? 'white'
-								: 'white',
+								? 'transparent' // выбранная опция
+								: 'transparent', // обычное состояние
 					}),
 					control: (base, state) => ({
 						...base,
@@ -62,13 +66,21 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 						fontSize: '16px',
 						fontWeight: '700',
 						color: state.isFocused ? '#020617' : '#E2E8F0',
-						backgroundColor: state.isFocused ? '#E8EEFF' : 'white',
+						// backgroundColor: state.isFocused ? '#E8EEFF' : 'white',
+
 						boxShadow: '0 0 0 0 transparent',
 						cursor: 'pointer',
+					}),
+					menuList: (base) => ({
+						...base,
+						padding: '8px 0px',
 					}),
 					menu: (base) => ({
 						...base,
 						width: '320px',
+						borderRadius: '12px',
+						border: '1px solid #E2E8F0',
+						boxShadow: '2px 2px 12px 0px rgba(62, 56, 56, 0.10)',
 					}),
 					singleValue: (base) => ({
 						...base,
