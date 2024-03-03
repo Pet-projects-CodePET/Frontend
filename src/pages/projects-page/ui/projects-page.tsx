@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
-import styles from './projects-page.module.scss';
-import { SingleSelect } from '@/widgets/single-select/ui/single-select';
+import { SingleSelect } from '@/shared/ui/single-select/single-select';
 import { statusOptions } from '@/shared/types/status-options';
 import { projects } from '@/shared/types/projects';
 import { recruitmentStatus } from '@/shared/types/recruitment-status';
+import styles from './projects-page.module.scss';
 
 export const Projects = () => {
 	return (

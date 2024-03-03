@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import Select, { components, OptionProps } from 'react-select';
-import { Option, SingleSelectProps } from '../type';
+import { Option, SingleSelectProps } from './type';
 
 export const SingleSelect: FC<SingleSelectProps> = ({
 	name,
