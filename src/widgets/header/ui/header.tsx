@@ -7,14 +7,14 @@ import { useClickOutside } from '@/shared/hooks';
 import { MainButton } from '@/shared/ui';
 import { NavBar } from '@/entities/nav-bar';
 import { navBarLinksArray } from '@/shared/constants';
-import IconUser from '@/shared/assets/icons/icon-user.svg';
+// import IconUser from '@/shared/assets/icons/icon-user.svg';
 import LogoIcon from '@/shared/assets/images/logo-header.svg';
 import MenuBurger from '@/shared/assets/icons/dots-vertical.svg';
 import IconPlus from '@/shared/assets/icons/plus-large.svg';
-import User from '../../../shared/assets/icons/user.svg';
-import Projects from '../../../shared/assets/icons/projects.svg';
-import Favorites from '../../../shared/assets/icons/heart.svg';
-import Exit from '../../../shared/assets/icons/logout.svg';
+import User from '@/shared/assets/icons/user.svg';
+import Projects from '@/shared/assets/icons/my-projects.svg';
+import Favorites from '@/shared/assets/icons/heart.svg';
+import Exit from '@/shared/assets/icons/logout.svg';
 import styles from './header.module.scss';
 
 export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
@@ -66,13 +66,14 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 				{isLoggedIn && (
 					<div className={styles.header__menuProfile_container}>
 						<button
-							className={styles.header__profile}
+							className={styles.header__buttonProfile}
 							onClick={handleOpenMenuProfile}>
-							<IconUser className={styles.header__linkProfile} />
+							<User className={styles.header__linkProfile} />
 						</button>
 						<ul
 							className={`${styles.header__menuProfile} ${isMenuProfileOpen ? styles.header__menuProfile_opened : ''}`}
-							ref={menuProfileRef}>
+							ref={menuProfileRef}
+						>
 							<li className={styles.header__menuProfileItem}>
 								<Link href="/" className={styles.header__menuProfileLink}>
 									<User className={styles.header__menuProfileItem_icon} />

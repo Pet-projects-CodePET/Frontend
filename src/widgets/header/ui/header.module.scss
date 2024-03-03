@@ -7,6 +7,7 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		width: 1160px;
 	}
 
@@ -44,17 +45,25 @@
 		margin-right: 1px;
 	}
 
-	&__profile {
+	&__buttonProfile {
+		width: 64px;
+		height: 64px;
+		padding: 0;
 		display: flex;
+		justify-content: center;
+		align-items: center;
 		border: none;
 		background: none;
 		border-radius: 50%;
 		cursor: pointer;
+		overflow: hidden;
+		background-color: $--Foreground-default;
 	}
 
 	&__linkProfile {
-		width: 64px;
-		height: 64px;
+		width: 24px;
+		height: 24px;
+		fill: $--bg-primary;
 	}
 
 	&__menuProfile_container {
@@ -67,7 +76,7 @@
 		justify-content: center;
 		align-items: flex-start;
 		list-style: none;
-		padding: 0;
+		padding: 8px 0;
 		margin: 0;
 		margin-top: 8px;
 		position: absolute;
@@ -76,6 +85,7 @@
 		width: 238px;
 		background: $--bg-primary;
 		border-radius: 12px;
+		overflow: hidden;
 		border: 1px solid $--border-default;
 		box-shadow: 2px 2px 12px 0px rgba(62, 56, 56, 0.05);
 
@@ -90,6 +100,10 @@
 
 		&:last-child {
 			border-top: 1px solid $--border-default;
+		}
+
+		&:hover {
+			background: $--bg-card-hover;
 		}
 	}
 
@@ -113,6 +127,7 @@
 		width: 24px;
 		height: 24px;
 		margin-right: 8px;
+		fill: $--foreground-muted;
 	}
 }
 
@@ -165,10 +180,19 @@
 
 		&__wrapper {
 			background-color: $--Neutral-White;
+			height: auto;
+		}
+
+		&__buttonProfile {
+			width: 48px;
+			height: 48px;
+			background-color: $--Neutral-White;
 		}
 
 		&__linkProfile {
-			display: none;
+			width: 24px;
+			height: 24px;
+			fill: $--Foreground-default;
 		}
 
 		&__buttonProject {
