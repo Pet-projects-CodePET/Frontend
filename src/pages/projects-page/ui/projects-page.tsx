@@ -6,6 +6,7 @@ import styles from './projects-page.module.scss';
 import { SingleSelect } from '@/widgets/single-select/ui/single-select';
 import { statusOptions } from '@/shared/types/status-options';
 import { projects } from '@/shared/types/projects';
+import { recruitmentStatus } from '@/shared/types/recruitment-status';
 
 export const Projects = () => {
 	return (
@@ -13,7 +14,14 @@ export const Projects = () => {
 			<div className={styles.filterContainer}>
 				<SingleSelect
 					name="select-status"
+					caption="Статус проекта"
 					options={statusOptions}
+					selectedOption={null}
+				/>
+				<SingleSelect
+					name="select-recruitment-status"
+					caption="Статус набора"
+					options={recruitmentStatus}
 					selectedOption={null}
 				/>
 			</div>
