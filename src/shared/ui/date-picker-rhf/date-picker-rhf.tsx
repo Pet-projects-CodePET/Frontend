@@ -2,6 +2,9 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
+import locale from 'antd/es/date-picker/locale/ru_RU';
+import 'dayjs/locale/ru';
+
 import type { DatePickerRHFProps } from './types';
 import styles from './date-picker-rhf.module.scss';
 
@@ -27,6 +30,7 @@ export const DatePickerRHF = (props: DatePickerRHFProps) => {
 							onBlur={field.onBlur}
 							format="DD/MM/YYYY"
 							value={field.value ? dayjs(field.value) : ''}
+							locale={locale}
 							onChange={(date) => {
 								field.onChange(date ? date.valueOf() : null);
 							}}
