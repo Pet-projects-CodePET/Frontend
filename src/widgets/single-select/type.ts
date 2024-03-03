@@ -1,14 +1,10 @@
 export type SingleSelectProps = {
+	name: string;
 	options: Option[];
-	selectedOption: Option | null;
+	selectedOption?: Option | null;
 };
 
 export type Option = {
 	value: string;
 	label: string;
 };
-
-export const statusOptions: Option[] = [
-	{ value: 'active', label: 'Активный' },
-	{ value: 'completed', label: 'Завершенный' },
-];
