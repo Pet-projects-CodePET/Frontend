@@ -7,12 +7,12 @@ import { clsx } from 'clsx';
 
 import type { InputProps } from './types';
 import styles from './input.module.scss';
+import { useFormContext } from 'react-hook-form';
 
 export const Input: FC<InputProps> = ({
-	label,
+	name,
 	labelName = 'labelName',
 	error = null,
-	register,
 	link = null,
 	className,
 	type = 'text',
@@ -20,6 +20,8 @@ export const Input: FC<InputProps> = ({
 	descrText,
 	...props
 }) => {
+	const { register } = useFormContext();
+
 	const [visible, setVisible] = useState(false);
 	const handleVisible = () => {
 		setVisible(!visible);
@@ -30,7 +32,7 @@ export const Input: FC<InputProps> = ({
 			{labelName}
 			<div className={styles.inputContainer}>
 				<input
-					{...register(label)}
+					{...register(`${name}`, { shouldUnregister: true })}
 					type={type === 'password' ? (visible ? 'text' : 'password') : type}
 					className={clsx({
 						[styles.input]: true,
