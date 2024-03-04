@@ -3,9 +3,9 @@
 import React from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { SingleSelect } from '@/shared/ui/single-select/single-select';
-import { statusOptions } from '@/shared/types/status-options';
-import { projects } from '@/shared/types/projects';
-import { recruitmentStatus } from '@/shared/types/recruitment-status';
+import { statusOptions } from '@/shared/constants/status-options/status-options';
+import { projectsArray } from '@/shared/constants/projects/projects';
+import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
 import styles from './projects-page.module.scss';
 
 export const Projects = () => {
@@ -26,7 +26,7 @@ export const Projects = () => {
 				/>
 			</div>
 			<div className={styles.projectsContainer}>
-				{projects.map((project) => {
+				{projectsArray.map((project) => {
 					return (
 						<ProjectCardFull
 							isActiveProject={project.isActiveProject}

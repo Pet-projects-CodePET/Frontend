@@ -1,4 +1,4 @@
-export const projects = [
+export const projectsArray = [
 	{
 		id: 1,
 		professions: [

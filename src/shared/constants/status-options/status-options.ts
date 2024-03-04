@@ -1,4 +1,4 @@
-import { Option } from '@/shared/ui/single-select/type';
+import { Option } from '@/shared/types/option';
 
 export const statusOptions: Option[] = [
 	{ value: 'active', label: 'Активный' },

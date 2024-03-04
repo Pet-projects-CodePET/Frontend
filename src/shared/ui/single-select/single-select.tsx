@@ -2,7 +2,9 @@
 
 import React, { FC } from 'react';
 import Select, { components, OptionProps } from 'react-select';
-import { Option, SingleSelectProps } from './type';
+import { SingleSelectProps } from './type';
+import { Option } from '@/shared/types/option';
+import CheckIcon from '@/shared/assets/icons/check-icon.svg';
 
 export const SingleSelect: FC<SingleSelectProps> = ({
 	name,
@@ -74,7 +76,7 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 					}),
 					menuList: (base) => ({
 						...base,
-						padding: '8px 0px',
+						padding: '0px 0px',
 					}),
 					menu: (base) => ({
 						...base,
@@ -100,21 +102,7 @@ const Option = (props: OptionProps<Option>) => {
 	return (
 		<components.Option {...props}>
 			{props.label}
-			{props.isSelected && (
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none">
-					<path
-						fillRule="evenodd"
-						clipRule="evenodd"
-						d="M20.7096 5.79536C21.0987 6.18724 21.0965 6.82041 20.7046 7.20957L9.62772 18.2096C9.23776 18.5968 8.60839 18.5968 8.21844 18.2096L3.29536 13.3207C2.90348 12.9315 2.90127 12.2984 3.29043 11.9065C3.67959 11.5146 4.31276 11.5124 4.70464 11.9015L8.92308 16.0907L19.2954 5.79043C19.6872 5.40127 20.3204 5.40348 20.7096 5.79536Z"
-						fill="#475569"
-					/>
-				</svg>
-			)}
+			{props.isSelected && <CheckIcon />}
 		</components.Option>
 	);
 };
