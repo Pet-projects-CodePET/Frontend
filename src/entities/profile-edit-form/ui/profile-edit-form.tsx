@@ -5,13 +5,14 @@ import React from 'react';
 import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
+import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { useForm } from 'react-hook-form';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import styles from './profile-edit-form.module.scss';
 import Link from 'next/link';
 
 export const ProfileEditForm = () => {
-	const { register } = useForm();
+	const { register, control } = useForm();
 
 	const handleSubmit = () => {
 		console.log('Submit');
@@ -61,12 +62,10 @@ export const ProfileEditForm = () => {
 				description={true}
 				descrText="Укажите контакты для связи, например: e-mail, telegram, телефон"
 			/>
-			<Input
-				label="birthDate"
-				labelName="Дата рождения"
-				register={register}
-				description
-			/>
+			<div className={styles.datePickerContainer}>
+				<p className={styles.datePickerTitle}>Дата рождения</p>
+				<DatePickerRHF control={control} name="birthDate" />
+			</div>
 			<div className={styles.fields_double}>
 				<Input
 					label="country"
