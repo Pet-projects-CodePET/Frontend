@@ -1,9 +1,8 @@
 import React from 'react';
+import { ProfileSettings } from '@/entities/profile-settings';
 
 export const ProfileSettingsPage = () => {
 	return (
-		<div>
-			<div>Форма настройки профиля</div>
-		</div>
+			<ProfileSettings/>
 	);
 };

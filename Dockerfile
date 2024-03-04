@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /usr/src/app
 
@@ -12,8 +12,13 @@ ARG NEXT_PUBLIC_CAPTCHA_SITE_KEY
 
 ENV NEXT_PUBLIC_CAPTCHA_SITE_KEY=$NEXT_PUBLIC_CAPTCHA_SITE_KEY
 
+ENV NODE_ENV production
+
+# ENV NEXT_SHARP_PATH=/node_modules/sharp
+ENV NEXT_SHARP_PATH=/tmp/node_modules/sharp
+
 RUN npm run build
 
 EXPOSE  3000
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]

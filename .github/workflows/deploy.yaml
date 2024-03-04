@@ -54,6 +54,11 @@ jobs:
               DOCKERHUB_USERNAME_FRONT=${{ secrets.DOCKERHUB_USERNAME_FRONT }}
               DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
               ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
+              EMAIL_HOST=${{ secrets.EMAIL_HOST }}
+              EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}
+              EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}
+              NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
+              NEXT_SHARP_PATH=${{ secrets.NEXT_SHARP_PATH }}
             _EOF_
       - name: Copy docker-compose-prod.yaml via ssh
         uses: appleboy/scp-action@master
