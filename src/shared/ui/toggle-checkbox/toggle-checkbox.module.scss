@@ -29,21 +29,21 @@
 
 	&__defaultOn {
 		@extend %baseDefault;
-		background-color: #5677fc;
-		border: 2px solid #5677fc;
+		background-color: $--bg-accent-default;
+		border: 2px solid $--bg-accent-default;
 		&:hover {
-			background-color: #6e8afb;
+			background-color: $--bg-accent-hover;
 		}
 		&:active {
-			background-color: #8caaff;
+			background-color: $--bg-accent-pressed;
 		}
 		&_disabled {
-			background-color: #94a3b8;
+			background-color: $--bg-disabled;
 			cursor: not-allowed;
-			border: 2px solid #94a3b8;
+			border: 2px solid $--bg-disabled;
 		}
 		&_disabled::before {
-			background-color: #e2e8f0;
+			background-color: $--bg-secondary;
 		}
 	}
 	&__defaultOn::before {
@@ -54,16 +54,16 @@
 		width: 18px;
 		height: 18px;
 		border-radius: 40px;
-		background-color: white;
+		background-color: $--bg-primary;
 		transition: 0.4s;
 	}
 	&__input:checked + &__defaultOn {
-		background-color: #feffff;
-		border: 2px solid #1e293b;
+		background-color: $--bg-primary;
+		border: 2px solid $--bg-pressed;
 	}
 
 	&__input:checked + &__defaultOn::before {
-		background-color: #1e293b;
+		background-color: $--bg-pressed;
 		left: 5px;
 	}
 
@@ -71,17 +71,17 @@
 
 	&__defaultOf {
 		@extend %baseDefault;
-		background-color: white;
-		border: 2px solid #1e293b;
+		background-color: $--bg-primary;
+		border: 2px solid $--bg-pressed;
 		&_disabled {
 			cursor: not-allowed;
-			border: 2px solid #94a3b8;
+			border: 2px solid $--bg-disabled;
 		}
 		&:hover {
-			border: 2px solid #475569;
+			border: 2px solid $--bg-hover;
 		}
 		&:active {
-			border: 2px solid #94a3b8;
+			border: 2px solid $--bg-disabled;
 		}
 	}
 	&__defaultOf::before {
@@ -92,18 +92,18 @@
 		width: 18px;
 		height: 18px;
 		border-radius: 40px;
-		background-color: #1e293b;
+		background-color: $--bg-pressed;
 		transition: 0.4s;
 	}
 	&__defaultOf_disabled::before {
-		background-color: #94a3b8;
+		background-color: $--bg-disabled;
 	}
 	&__input:checked + &__defaultOf {
-		background-color: #5677fc;
-		border: 2px solid #5677fc;
+		background-color: $--bg-accent-default;
+		border: 2px solid $--bg-accent-default;
 	}
 	&__input:checked + &__defaultOf::before {
-		background-color: #feffff;
+		background-color: $--bg-primary;
 		bottom: 2px;
 		left: 24px;
 	}
@@ -112,13 +112,13 @@
 
 	&__errorDefaultOn {
 		@extend %baseDefault;
-		background-color: #e75757;
-		border: 2px solid #e75757;
+		background-color: $--foreground-error-default;
+		border: 2px solid $--foreground-error-default;
 		&:hover {
-			background-color: #f28482;
+			background-color: $--border-error-hover;
 		}
 		&:active {
-			background-color: #f3a9a9;
+			background-color: $--border-error-pressed;
 		}
 	}
 	&__errorDefaultOn::before {
@@ -129,15 +129,15 @@
 		width: 18px;
 		height: 18px;
 		border-radius: 40px;
-		background-color: white;
+		background-color: $--bg-primary;
 		transition: 0.4s;
 	}
 	&__input:checked + &__errorDefaultOn {
-		background-color: #feffff;
-		border: 2px solid #e75757;
+		background-color: $--bg-primary;
+		border: 2px solid $--foreground-error-default;
 	}
 	&__input:checked + &__errorDefaultOn::before {
-		background-color: #e75757;
+		background-color: $--foreground-error-default;
 		left: 5px;
 	}
 
@@ -145,13 +145,13 @@
 
 	&__errorDefaultOf {
 		@extend %baseDefault;
-		background-color: white;
-		border: 2px solid #e75757;
+		background-color: $--bg-primary;
+		border: 2px solid $--foreground-error-default;
 		&:hover {
-			border: 2px solid #f28482;
+			border: 2px solid $--border-error-hover;
 		}
 		&:active {
-			border: 2px solid #f3a9a9;
+			border: 2px solid $--border-error-pressed;
 		}
 	}
 	&__errorDefaultOf::before {
@@ -162,16 +162,16 @@
 		width: 18px;
 		height: 18px;
 		border-radius: 40px;
-		background-color: #e75757;
+		background-color: $--foreground-error-default;
 		transition: 0.4s;
 	}	
 	&__input:checked + &__errorDefaultOf {
-		background-color: #e75757;
-		border: 2px solid #e75757;
+		background-color: $--foreground-error-default;
+		border: 2px solid $--foreground-error-default;
 	}
 
 	&__input:checked + &__errorDefaultOf::before {
-		background-color: #feffff;
+		background-color: $--bg-primary;
 		bottom: 2px;
 		left: 24px;
 	}
