@@ -73,7 +73,7 @@ export const ProfileSettings = () => {
 							<ToggleCheckbox
 								id="notify"
 								name="notify"
-								variant="defaultOn"	
+								variant="defaultOn"
 								checked={checked}
 								onChange={checkedChange}
 							/>
