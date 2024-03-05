@@ -12,6 +12,13 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
+		authUser: builder.mutation<IUser, IUser>({
+			query: (user) => ({
+				url: '/users/',
+				method: 'POST',
+				body: user,
+			}),
+		}),
 	}),
 });
 

@@ -13,6 +13,7 @@ export const FormSignup: FC<FormSignupProps> = ({
 	onLoad,
 	setToken,
 	handleSubmit,
+	// errorText,
 }) => {
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
@@ -55,6 +56,7 @@ export const FormSignup: FC<FormSignupProps> = ({
 				<MainButton variant={'primary'} width={'max'}>
 					{'Создать аккаунт'}
 				</MainButton>
+				{/* <span>{errorText}</span> */}
 			</div>
 			<div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>
