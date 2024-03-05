@@ -1,18 +1,13 @@
-import {
-	createApi,
-	fetchBaseQuery
-} from '@reduxjs/toolkit/query/react'
-import { IUser } from '@/services/models/IUser'
-import { BASE_URL } from '@/utils/constants'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IUser } from '@/services/models/IUser';
 
-// Define a service using a base URL and expected endpoints
 export const userApi = createApi({
 	reducerPath: 'userApi',
-	baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+	baseQuery: fetchBaseQuery({ baseUrl: 'http://89.23.117.80/api/v1' }),
 	endpoints: (builder) => ({
 		createUser: builder.mutation<IUser, IUser>({
 			query: (user) => ({
-				url: '/users',
+				url: '/users/',
 				method: 'POST',
 				body: user,
 			}),
@@ -20,6 +15,4 @@ export const userApi = createApi({
 	}),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useCreateUserMutation } = userApi;
