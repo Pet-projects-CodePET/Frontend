@@ -1,1 +1,1 @@
-export { MenuForVisible } from "./ui/menu-for-visible";
+export { MenuForVisible } from './ui/menu-for-visible';
