@@ -3,11 +3,15 @@
 import React, { FC, useRef, useState } from 'react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { FormPasswordRecovery } from '@/entities/form-password-recovery';
+import { useResetPasswordUserMutation } from '@/services/UserService';
+import { IUser } from '@/services/models/IUser';
 
 export const FormPasswordRecoveryFeature: FC = () => {
 	const [isPasswordSend, setIsPasswordSend] = useState(false);
 
 	const captchaRef = useRef<HCaptcha>(null);
+
+	const [resetPasswordUser, { error }] = useResetPasswordUserMutation();
 
 	const onLoad = () => {
 		const executePayload = { async: true };
@@ -18,17 +22,17 @@ export const FormPasswordRecoveryFeature: FC = () => {
 		console.log('Капча пройдена. Токен:', token);
 	};
 
-	const handlePasswordSend = () => {
-		setIsPasswordSend(true);
-	};
-
 	const handlePasswordReSend = () => {
 		setIsPasswordSend(false);
 	};
 
-	const handleSubmit = (data: unknown) => {
-		handlePasswordSend();
-		console.log(data);
+	const handleSubmit = (userData: IUser) => {
+		resetPasswordUser(userData)
+			.unwrap()
+			.then((payload) => console.log('fulfilled', payload))
+			.catch((error) => console.error('rejected', error));
+
+		console.log('resetPasswordUser error', error);
 	};
 
 	return (

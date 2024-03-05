@@ -10,7 +10,7 @@ import { IUser } from '@/services/models/IUser';
 export const FormSignupFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
 
-	const [createUser, {error}] = useCreateUserMutation();
+	const [createUser, { error }] = useCreateUserMutation();
 
 	const onLoad = () => {
 		const executePayload = { async: true };
@@ -23,9 +23,9 @@ export const FormSignupFeature: FC = () => {
 
 	const handleSubmit = (userData: IUser) => {
 		createUser(userData)
-		.unwrap()
-    .then((payload) => console.log('fulfilled', payload))
-	  .catch((error) => console.error('rejected', error));
+			.unwrap()
+			.then((payload) => console.log('fulfilled', payload))
+			.catch((error) => console.error('rejected', error));
 
 		console.log('createUser error', error);
 	};

@@ -14,7 +14,14 @@ export const userApi = createApi({
 		}),
 		authUser: builder.mutation<IUser, IUser>({
 			query: (user) => ({
-				url: '/users/',
+				url: '/token/login/',
+				method: 'POST',
+				body: user,
+			}),
+		}),
+		resetPasswordUser: builder.mutation<IUser, IUser>({
+			query: (user) => ({
+				url: 'users/reset_password/',
 				method: 'POST',
 				body: user,
 			}),
@@ -22,4 +29,8 @@ export const userApi = createApi({
 	}),
 });
 
-export const { useCreateUserMutation } = userApi;
+export const {
+	useCreateUserMutation,
+	useAuthUserMutation,
+	useResetPasswordUserMutation,
+} = userApi;

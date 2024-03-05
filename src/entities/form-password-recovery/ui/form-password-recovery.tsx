@@ -1,7 +1,6 @@
 'use client';
 
 import React, { FC, useRef } from 'react';
-import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { IconButtonList } from '@/entities/icon-button-list';
@@ -17,8 +16,6 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 	setToken,
 	handleSubmit,
 }) => {
-	const { register } = useForm();
-
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
 
@@ -33,18 +30,16 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 			<div className={styles.container}>
 				<div className={styles.input_list}>
 					<Input
-						label="email"
+						name="email"
 						labelName="E-mail"
 						// placeholder="Введите e-mail"
-						register={register}
 						error={'Так выглядит ошибка'}
 					/>
 					{isPasswordSend && (
 						<Input
-							label="password"
+							name="password"
 							labelName="Пароль"
 							type={'password'}
-							register={register}
 							// placeholder="Введите пароль"
 						/>
 					)}
