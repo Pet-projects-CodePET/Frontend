@@ -9,7 +9,5 @@ export const ProfileUser = () => {
 	// const [isPopup, setIsPopup] = useState(false);
 	// const onClose = () => setIsPopup(false);
 
-	return (
-			<ProfileEditForm />
-	);
+	return <ProfileEditForm />;
 };
