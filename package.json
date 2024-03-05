@@ -24,6 +24,7 @@
 		"react-select": "^5.8.0",
 		"sass": "^1.70.0",
 		"scss": "^0.2.4",
+		"sharp": "^0.33.2",
 		"yup": "^1.3.3"
 	},
 	"devDependencies": {
