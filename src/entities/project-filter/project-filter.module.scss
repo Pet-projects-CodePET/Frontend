@@ -1,0 +1,86 @@
+@import '@/shared/style/variables';
+
+.form {
+	position: relative;
+	max-width: 760px;
+	box-sizing: border-box;
+	border-radius: var(--radius-M, 12px);
+	border: 1px solid var(--border-default, #e2e8f0);
+	background: var(--bg-primary, #feffff);
+	padding: 56px;
+}
+
+.closeIcon {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	width: 24px;
+	height: 24px;
+}
+
+.title {
+	color: var(--color-foreground-default, #1c1c1e);
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	font-family: $--montserrat-font;
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 40px;
+	margin: 0 0 32px 0;
+}
+
+.fieldset {
+	border: none;
+	padding: 0;
+}
+
+.groupName {
+	margin: 0;
+	color: #000;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	font-family: $--open-sans-font;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 30px;
+}
+
+.inputContainer {
+	display: grid;
+	gap: 0 20px;
+	justify-items: start;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-auto-flow: column;
+	margin-top: 15px;
+}
+
+.buttonsContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.inputLabel {
+	flex-direction: row-reverse;
+	align-items: center;
+	color: var(--foreground-default, #020617);
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	font-family: $--open-sans-font;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	min-height: 48px;
+	max-height: 10px;
+}
+
+.divider {
+	opacity: 0.2;
+	background: var(--foreground-subtle, #94a3b8);
+	margin: 24px 0 16px;
+}
