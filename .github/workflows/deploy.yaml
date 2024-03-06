@@ -24,6 +24,8 @@ jobs:
           context: ./
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME_FRONT }}/${{ secrets.PROJECT_NAME }}_frontend:latest
+          build-args: |
+            NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
 
   deploy:
     runs-on: ubuntu-latest
