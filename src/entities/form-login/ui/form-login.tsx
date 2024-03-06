@@ -13,6 +13,7 @@ export const FormLogin: FC<FormLoginProps> = ({
 	onLoad,
 	setToken,
 	handleSubmit,
+	serverErrorText,
 }) => {
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
@@ -48,6 +49,10 @@ export const FormLogin: FC<FormLoginProps> = ({
 				<MainButton variant={'primary'} width={'max'}>
 					{'Войти'}
 				</MainButton>
+				<span>
+				{/* -------TODO---- стили для отображения ошибки */}
+					{serverErrorText}
+				</span>
 			</div>
 			<div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>

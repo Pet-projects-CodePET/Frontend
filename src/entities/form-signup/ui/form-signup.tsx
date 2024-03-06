@@ -33,6 +33,7 @@ export const FormSignup: FC<FormSignupProps> = ({
 						name="username"
 						labelName="Никнейм"
 						// placeholder="Введите никнейм"
+						// error = {clientError || serverError}
 					/>
 					<Input
 						name="password"

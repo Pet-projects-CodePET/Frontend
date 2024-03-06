@@ -3,7 +3,16 @@ import { IUser } from '@/services/models/IUser';
 
 export const userApi = createApi({
 	reducerPath: 'userApi',
-	baseQuery: fetchBaseQuery({ baseUrl: 'http://89.23.117.80/api/v1' }),
+	baseQuery: fetchBaseQuery({
+		baseUrl: 'http://89.23.117.80/api/v1',
+		prepareHeaders: async (headers) => {
+			const accessToken = localStorage.getItem('token');
+			if (accessToken) {
+				headers.set('Authorization', `Token ${accessToken}`);
+			}
+			return headers;
+		},
+	}),
 	endpoints: (builder) => ({
 		createUser: builder.mutation<IUser, IUser>({
 			query: (user) => ({
@@ -26,6 +35,12 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
+		getUserMe: builder.query ({
+			query: () => ({
+				url: '/users/me/',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -33,4 +48,5 @@ export const {
 	useCreateUserMutation,
 	useAuthUserMutation,
 	useResetPasswordUserMutation,
+	useGetUserMeQuery,
 } = userApi;
