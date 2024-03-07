@@ -2,7 +2,8 @@ import { Option } from '@/shared/types/option';
 
 export type SingleSelectProps = {
 	name: string;
-	caption: string;
+	buttonLabel: string;
 	options: Option[];
-	selectedOption?: Option | null;
+	value?: Option;
+	onChange: (value: Option) => void;
 };

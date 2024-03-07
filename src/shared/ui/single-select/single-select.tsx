@@ -14,9 +14,9 @@ import CheckIcon from '@/shared/assets/icons/check-icon.svg';
 
 export const SingleSelect: FC<SingleSelectProps> = ({
 	name,
-	caption,
+	buttonLabel,
 	options,
-	selectedOption,
+	value,
 }) => {
 	const containerStyles = (base: CSSObjectWithLabel) => ({
 		...base,
@@ -106,13 +106,13 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 				// closeMenuOnSelect={false}
 				// menuIsOpen={true}
 				components={{ Option, DropdownIndicator: () => null }}
-				defaultValue={selectedOption}
+				defaultValue={value}
 				options={options}
 				isClearable={false}
 				isSearchable={false}
 				isDisabled={false}
-				placeholder={caption}
-				formatOptionLabel={() => caption}
+				placeholder={buttonLabel}
+				formatOptionLabel={() => buttonLabel}
 				onChange={(option) => console.log(option)}
 				styles={{
 					container: (base) => containerStyles(base),
