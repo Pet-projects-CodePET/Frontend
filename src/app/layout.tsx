@@ -1,5 +1,6 @@
 import './globals.css';
 import React from 'react';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { MainLayout } from '@/shared/layouts';
 
 const RootLayout = ({
@@ -8,9 +9,11 @@ const RootLayout = ({
 	children: React.ReactNode;
 }>) => {
 	return (
-		<html lang="en">
+		<html lang="ru">
 			<body>
-				<MainLayout>{children}</MainLayout>
+				<AntdRegistry>
+					<MainLayout>{children}</MainLayout>
+				</AntdRegistry>
 			</body>
 		</html>
 	);
