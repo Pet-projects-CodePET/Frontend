@@ -30,7 +30,7 @@
 		justify-content: center;
 		align-items: flex-start;
 		list-style: none;
-		padding: 8px 0;
+		padding: 0;
 		margin: 0;
 		margin-top: 8px;
 		position: absolute;
@@ -41,7 +41,7 @@
 		border-radius: 12px;
 		overflow: hidden;
 		border: 1px solid $--border-default;
-		box-shadow: 2px 2px 12px 0px rgba(62, 56, 56, 0.05);
+		box-shadow: 2px 2px 12px 0px $--box-shadow;
 
 		&_opened {
 			display: flex;
