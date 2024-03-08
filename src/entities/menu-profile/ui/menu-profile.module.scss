@@ -1,0 +1,105 @@
+@import '../../../shared/style/variables.scss';
+
+.menuProfile {
+	position: relative;
+
+	&__buttonProfile {
+		width: 64px;
+		height: 64px;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: none;
+		background: none;
+		border-radius: 50%;
+		cursor: pointer;
+		overflow: hidden;
+		background-color: $--Foreground-default;
+	}
+
+	&__linkProfile {
+		width: 24px;
+		height: 24px;
+		fill: $--bg-primary;
+	}
+
+	&__list {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		list-style: none;
+		padding: 8px 0;
+		margin: 0;
+		margin-top: 8px;
+		position: absolute;
+		right: 0;
+		z-index: 10;
+		width: 238px;
+		background: $--bg-primary;
+		border-radius: 12px;
+		overflow: hidden;
+		border: 1px solid $--border-default;
+		box-shadow: 2px 2px 12px 0px rgba(62, 56, 56, 0.05);
+
+		&_opened {
+			display: flex;
+		}
+	}
+
+	&__item {
+		width: 100%;
+		height: 44px;
+
+		&:last-child {
+			border-top: 1px solid $--border-default;
+		}
+
+		&:hover {
+			background: $--bg-card-hover;
+		}
+		&_icon {
+			margin-left: 16px;
+			width: 24px;
+			height: 24px;
+			margin-right: 8px;
+			fill: $--foreground-muted;
+		}
+	}
+
+	&__link {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+		display: flex;
+		align-items: center;
+		color: $--Foreground-default;
+		text-decoration: none;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+		width: 100%;
+		height: 100%;
+    &:hover {
+      cursor: pointer;
+    }
+	}
+
+	@media screen and (max-width: 779px) {
+		&__buttonProfile {
+			width: 48px;
+			height: 48px;
+			background-color: $--Neutral-White;
+		}
+		&__linkProfile {
+			width: 24px;
+			height: 24px;
+			fill: $--Foreground-default;
+		}
+	}
+}
