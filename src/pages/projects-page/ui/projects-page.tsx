@@ -2,22 +2,26 @@
 
 import React from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
-import { SingleSelect } from '@/shared/ui/single-select/single-select';
 import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { projectsArray } from '@/shared/constants/projects/projects';
-// import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
+import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
 import { months } from '@/shared/constants/months/months';
 import styles from './projects-page.module.scss';
 import { Option } from '@/shared/types/option';
+import { SingleSelect } from '@/shared/ui/single-select/single-select';
 
 export const Projects = () => {
 	const handleMonthChange = (selectedItems: Option[]) => {
-		console.info(selectedItems);
+		console.info('selected options: ', selectedItems);
 	};
 
-	const handleStatusProjectChange = (selectedItem: Option) => {
-		console.info(selectedItem);
+	const handleStatusProjectChange = (selectedOptions: Option[]) => {
+		console.info('selected option: ', selectedOptions?.[0]);
+	};
+
+	const handleRecruitmentStatusChange = (selectedOptions: Option[]) => {
+		console.info('selected option: ', selectedOptions?.[0]);
 	};
 
 	return (
@@ -25,8 +29,9 @@ export const Projects = () => {
 			<div className={styles.filterContainer}>
 				<SingleSelect
 					name="select-status"
-					buttonLabel="Статус проекта"
 					options={statusOptions}
+					buttonLabel="Статус проекта"
+					value={{ value: 'completed', label: 'Завершенный' }}
 					onChange={handleStatusProjectChange}
 				/>
 				<MultiSelect
@@ -36,12 +41,13 @@ export const Projects = () => {
 					values={[]}
 					onChange={handleMonthChange}
 				/>
-				{/* <SingleSelect
+				<SingleSelect
 					name="select-recruitment-status"
-					caption="Статус набора"
 					options={recruitmentStatus}
-					selectedOption={null}
-				/> */}
+					buttonLabel="Статус набора"
+					value={undefined}
+					onChange={handleRecruitmentStatusChange}
+				/>
 			</div>
 			<div className={styles.projectsContainer}>
 				{projectsArray.map((project) => {

@@ -29,6 +29,7 @@
 		"sass": "^1.70.0",
 		"scss": "^0.2.4",
 		"sharp": "^0.33.2",
+		"styled-components": "^6.1.8",
 		"yup": "^1.3.3"
 	},
 	"devDependencies": {
