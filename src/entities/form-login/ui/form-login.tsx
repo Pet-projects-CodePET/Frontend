@@ -13,6 +13,7 @@ import { useFormContext } from 'react-hook-form';
 export const FormFieldsLogin: FC<FormLoginProps> = ({
 	onLoad,
 	setToken,
+	captchaVerified,
 	serverErrorText,
 }) => {
 	const captchaRef = useRef<HCaptcha>(null);
@@ -51,7 +52,10 @@ export const FormFieldsLogin: FC<FormLoginProps> = ({
 					onLoad={onLoad}
 					ref={captchaRef}
 				/>
-				<MainButton variant={'primary'} width={'max'} disabled={!isValid}>
+				<MainButton
+					variant={'primary'}
+					width={'max'}
+					disabled={!captchaVerified || !isValid}>
 					{'Войти'}
 				</MainButton>
 				<span className={styles.server_error}>{serverErrorText}</span>

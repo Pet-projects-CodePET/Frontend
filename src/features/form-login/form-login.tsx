@@ -15,18 +15,19 @@ export const FormLoginFeature: FC = () => {
 	const [authUser] = useAuthUserMutation();
 	const router = useRouter();
 	const [serverErrorText, setServerErrorText] = useState('');
+	const [captchaVerified, setCaptchaVerified] = useState(false);
 
 	const onLoad = () => {
 		const executePayload = { async: true };
 		captchaRef.current?.execute(executePayload);
 	};
 
-	const setToken = (token: string) => {
-		console.log('Капча пройдена. Токен:', token);
+	const hCaptchaToken = (token: string) => {
+		token && setCaptchaVerified(true);
 	};
+	console.log(captchaVerified);
 
 	const handleSubmit = (userData: IUser) => {
-		console.log(userData);
 		authUser(userData)
 			.unwrap()
 			.then((payload) => {
@@ -48,7 +49,8 @@ export const FormLoginFeature: FC = () => {
 			schema={FormLoginSchema}>
 			<FormFieldsLogin
 				onLoad={onLoad}
-				setToken={setToken}
+				setToken={hCaptchaToken}
+				captchaVerified={captchaVerified}
 				serverErrorText={serverErrorText}
 			/>
 		</Form>
