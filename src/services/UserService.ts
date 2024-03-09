@@ -35,7 +35,7 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
-		getUserMe: builder.query ({
+		getUserMe: builder.query({
 			query: () => ({
 				url: '/users/me/',
 				method: 'GET',

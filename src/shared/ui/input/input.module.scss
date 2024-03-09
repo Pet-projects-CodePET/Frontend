@@ -42,23 +42,23 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	
+
 	&_typeError {
 		border-color: $--Foreground-error;
 	}
-	
+
 	&_typeError:focus {
 		outline: 2px solid $--Foreground-error;
 	}
-	
+
 	&_typeSucces {
 		border-color: $--border-default;
 	}
-	
+
 	&::placeholder {
 		color: $--Foreground-subtitle;
 	}
-	
+
 	&:disabled {
 		opacity: 0.5;
 	}
@@ -78,7 +78,7 @@
 	position: absolute;
 	top: 14px;
 	right: 12px;
-	
+
 	&:hover {
 		opacity: 0.7;
 		transition: opacity 100ms ease-in;
@@ -95,7 +95,7 @@
 	display: inline-block;
 	color: $--Foreground-link-default;
 	text-decoration: none;
-	
+
 	&:hover {
 		opacity: 0.7;
 		transition: opacity 100ms ease-in;
