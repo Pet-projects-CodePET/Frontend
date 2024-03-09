@@ -46,6 +46,12 @@
 		width: 64px;
 		height: 64px;
 	}
+	&__linkProfileMobile {
+		display: none;
+	}
+	&__iconLogin {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 1199px) {
@@ -54,6 +60,8 @@
 
 		&__container {
 			width: 100%;
+			display: flex;
+			align-items: center;
 		}
 
 		&__buttonBurger {
@@ -94,15 +102,27 @@
 
 		&__wrapper {
 			background-color: $--Neutral-White;
+		//	min-width: 100%;
+		//	justify-content: space-between;
+		
 		}
 
 		&__linkProfile {
 			display: none;
 		}
+		&__linkProfileMobile {
+			display: block;
+			width: 48px;
+			height: 48px;
+		}
 		&__buttonProject {
 			display: none;
+			
 		}
 		&__buttonLogin {
+		width: 48px;
+		}
+		&__button {
 			display: none;
 		}
 		&__link {
@@ -113,6 +133,15 @@
 			background-size: cover;
 		}
 		&__logo {
+			display: none;
+		}
+		&__iconLogin {
+			display: block;
+			width: 48px;
+			 height: 48px;
+			
+		}
+		&__buttonBurger {
 			display: none;
 		}
 	}

@@ -7,6 +7,8 @@ import { MainButton } from '@/shared/ui';
 import { NavBar } from '@/entities/nav-bar';
 import { navBarLinksArray } from '@/shared/constants';
 import IconUser from '@/shared/assets/icons/icon-user.svg';
+import IconButton from'@/shared/assets/icons/icon-button.svg';
+import IconLogin from '@/shared/assets/icons/icon-button-login.svg';
 import LogoIcon from '@/shared/assets/images/logo-header.svg';
 import MenuBurger from '@/shared/assets/icons/dots-vertical.svg';
 import IconPlus from '@/shared/assets/icons/plus-large.svg';
@@ -36,12 +38,21 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 						</div>
 					) : (
 						<div className={styles.header__buttonLogin}>
+							<div className={styles.header__button}>
 							<MainButton
 								variant="inverse"
 								width="max"
 								onClick={() => router.push('login')}>
 								Войти
 							</MainButton>
+							</div>
+							<Link href='/login'  className={styles.header__iconLogin}>
+								<IconLogin className={styles.header__iconLogin}/>
+								</Link>
+							
+						
+							
+
 						</div>
 					)}
 
@@ -53,6 +64,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 					{isLoggedIn && (
 						<Link href="profile">
 							<IconUser className={styles.header__linkProfile} />
+							<IconButton className={styles.header__linkProfileMobile}/>
 						</Link>
 					)}
 				</div>

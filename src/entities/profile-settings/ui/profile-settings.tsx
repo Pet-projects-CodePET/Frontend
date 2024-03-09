@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { MenuForVisible } from '@/entities/menu-for-visible';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
+import IconLeft from '@/shared/assets/icons/chevron-left.svg';
 
 export const ProfileSettings = () => {
 	const { register } = useForm();
@@ -28,6 +29,13 @@ export const ProfileSettings = () => {
 	};
 	return (
 		<section className={styles.profileSettings}>
+			<Link className={styles.profileSettings__link} href='/profile-navigation'>
+				<IconLeft className={styles.profileSettings__iconLeft}/>
+			{'Личный кабинет'}
+
+				
+				</Link>
+			<h2  className={styles.profileSettings__title}>Управление аккаунтом</h2>
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
 				<div className={styles.formSettings__list}>
