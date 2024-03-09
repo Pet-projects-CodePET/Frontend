@@ -91,3 +91,19 @@
 		gap: 19px;
 	}
 }
+
+@media screen and (max-width: 1199px) {
+
+}
+
+@media screen and (max-width: 779px) {
+	.profileSettings{
+		min-width: 100vw;
+		margin-bottom: 0;
+	}
+	.formSettings{
+		min-width: 100%;
+		border: none;
+		
+	}
+}

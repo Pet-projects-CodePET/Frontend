@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-
 import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
