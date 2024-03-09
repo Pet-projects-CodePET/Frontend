@@ -8,7 +8,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 21px;
-
+	
 	@media screen and (max-width: 779px) {
 		gap: 13px;
 		max-width: 779px;
@@ -24,7 +24,7 @@
 	font-style: normal;
 	font-weight: 700;
 	line-height: 40px;
-
+	
 	&:after {
 		content: 'Платформа для ваших проектов';
 		display: block;
@@ -37,13 +37,13 @@
 		line-height: 30px; /* 150% */
 		letter-spacing: 0.25px;
 	}
-
+	
 	@media screen and (max-width: 779px) {
 		font-family: 'Open Sans', serif;
 		font-size: 20px;
 		line-height: normal;
 		letter-spacing: 0.25px;
-
+		
 		&:after {
 			font-size: 16px;
 			line-height: 24px; /* 150% */
@@ -57,7 +57,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-
+	
 	@media screen and (max-width: 779px) {
 		margin: 0;
 	}
@@ -75,7 +75,7 @@
 	font-weight: 400;
 	line-height: 24px;
 	letter-spacing: 0.25px;
-
+	
 	&:before,
 	&:after {
 		content: '';
@@ -85,15 +85,15 @@
 		height: 1px; /* Толщина линии */
 		background: rgba(148, 163, 184, 0.2); /* Цвет линии */
 	}
-
+	
 	&:before {
 		left: 0;
 	}
-
+	
 	&:after {
 		right: 0;
 	}
-
+	
 	@media screen and (max-width: 779px) {
 		margin: -10px 0 10px 0;
 	}
@@ -109,7 +109,7 @@
 	line-height: 24px; /* 150% */
 	letter-spacing: 0.25px;
 	text-align: center;
-
+	
 	@media screen and (max-width: 779px) {
 		margin: -5px 0 0 0;
 	}
@@ -117,7 +117,7 @@
 
 .link_registration {
 	margin: 0 8px 0 8px;
-
+	
 	color: $--Foreground-link-default;
 	text-decoration: none;
 	font-family: 'Open Sans', serif;
@@ -126,4 +126,21 @@
 	font-weight: 400;
 	line-height: 24px; /* 150% */
 	letter-spacing: 0.25px;
+}
+
+.server_error {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 714px;
+	font-family: $--open-sans-font;
+	color: $--Foreground-error;
+	font-size: 14px;
+	line-height: 24px;
+	transition: opacity 0.5s ease-out; /* Плавное исчезновение */
+	opacity: 1;
+}
+
+.server-error-hidden {
+	opacity: 0;
 }

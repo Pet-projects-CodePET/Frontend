@@ -20,11 +20,16 @@ export const Input: FC<InputProps> = ({
 	descrText,
 	...props
 }) => {
-	const { register } = useFormContext();
-
 	const [visible, setVisible] = useState(false);
 	const handleVisible = () => {
 		setVisible(!visible);
+	};
+
+	const { register, trigger } = useFormContext();
+
+	const handleBlur = async (event: React.FocusEvent<HTMLInputElement>) => {
+		event.target.value = event.target.value.trim();
+		await trigger(name);
 	};
 
 	return (
@@ -40,6 +45,7 @@ export const Input: FC<InputProps> = ({
 						[styles.input_typeError]: Boolean(error) === true,
 					})}
 					{...props}
+					onBlur={handleBlur}
 				/>
 				{type === 'password' && (
 					<div className={styles.icon} onClick={handleVisible}>

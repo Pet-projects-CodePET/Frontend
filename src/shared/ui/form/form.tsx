@@ -14,6 +14,7 @@ export const Form: FC<FormProps> = ({
 	...FormHTMLAttributes
 }) => {
 	const methods = useForm({
+		shouldUnregister: true,
 		resolver: schema ? yupResolver(schema) : undefined,
 	});
 

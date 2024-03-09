@@ -3,23 +3,27 @@
 import React, { FC, useRef } from 'react';
 import Link from 'next/link';
 import { IconButtonList } from '@/entities/icon-button-list';
-import { Form, Input, MainButton } from '@/shared/ui';
+import { Input, MainButton } from '@/shared/ui';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import styles from './form-login.module.scss';
 import type { FormLoginProps } from './types';
+import { useFormContext } from 'react-hook-form';
 
-export const FormLogin: FC<FormLoginProps> = ({
+export const FormFieldsLogin: FC<FormLoginProps> = ({
 	onLoad,
 	setToken,
-	handleSubmit,
 	serverErrorText,
 }) => {
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
 
+	const {
+		formState: { isValid, errors },
+	} = useFormContext();
+
 	return (
-		<Form onSubmit={handleSubmit}>
+		<>
 			<h1 className={styles.title}>Добро пожаловать!</h1>
 			<div className={styles.container}>
 				<div className={styles.input_list}>
@@ -27,7 +31,7 @@ export const FormLogin: FC<FormLoginProps> = ({
 						name="email"
 						labelName="E-mail"
 						// placeholder="Введите e-mail"
-						error={'Так выглядит ошибка'}
+						error={errors.email ? `${errors.email?.message}` : ''}
 					/>
 					<Input
 						link={{
@@ -38,6 +42,7 @@ export const FormLogin: FC<FormLoginProps> = ({
 						labelName="Пароль"
 						type={'password'}
 						// placeholder="Введите пароль"
+						error={errors.password ? `${errors.password?.message}` : ''}
 					/>
 				</div>
 				<HCaptcha
@@ -46,13 +51,10 @@ export const FormLogin: FC<FormLoginProps> = ({
 					onLoad={onLoad}
 					ref={captchaRef}
 				/>
-				<MainButton variant={'primary'} width={'max'}>
+				<MainButton variant={'primary'} width={'max'} disabled={!isValid}>
 					{'Войти'}
 				</MainButton>
-				<span>
-				{/* -------TODO---- стили для отображения ошибки */}
-					{serverErrorText}
-				</span>
+				<span className={styles.server_error}>{serverErrorText}</span>
 			</div>
 			<div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>
@@ -66,6 +68,6 @@ export const FormLogin: FC<FormLoginProps> = ({
 					</Link>
 				</p>
 			</div>
-		</Form>
+		</>
 	);
 };
