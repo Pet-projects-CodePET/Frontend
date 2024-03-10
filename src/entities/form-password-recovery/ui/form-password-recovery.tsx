@@ -4,23 +4,29 @@ import React, { FC, useRef } from 'react';
 import Link from 'next/link';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { IconButtonList } from '@/entities/icon-button-list';
-import { Form, Input, MainButton } from '@/shared/ui';
+import { Input, MainButton } from '@/shared/ui';
 
 import styles from './form-password-recovery.module.scss';
 import type { FormPasswordRecoveryProps } from './types';
+import { useFormContext } from 'react-hook-form';
 
-export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
+export const FormFieldsPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 	isPasswordSend,
 	handlePasswordReSend,
+	serverErrorText,
+	captchaVerified,
 	onLoad,
 	setToken,
-	handleSubmit,
 }) => {
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
 
+	const {
+		formState: { isValid, errors },
+	} = useFormContext();
+
 	return (
-		<Form onSubmit={handleSubmit}>
+		<>
 			<h1 className={styles.title}>Восстановление пароля</h1>
 			{isPasswordSend && (
 				<p className={styles.title_message}>
@@ -33,7 +39,7 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 						name="email"
 						labelName="E-mail"
 						// placeholder="Введите e-mail"
-						error={'Так выглядит ошибка'}
+						error={errors.email ? `${errors.email?.message}` : ''}
 					/>
 					{isPasswordSend && (
 						<Input
@@ -52,9 +58,13 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 						ref={captchaRef}
 					/>
 				)}
-				<MainButton variant={'primary'} width={'max'}>
+				<MainButton
+					variant={'primary'}
+					width={'max'}
+					disabled={!captchaVerified || !isValid}>
 					{!isPasswordSend ? 'Восстановить пароль' : 'Войти'}
 				</MainButton>
+				<span className={styles.server_error}>{serverErrorText}</span>
 			</div>
 			{!isPasswordSend ? (
 				<>
@@ -85,6 +95,6 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 					Отправить пароль повторно
 				</Link>
 			)}
-		</Form>
+		</>
 	);
 };
