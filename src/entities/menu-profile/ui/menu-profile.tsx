@@ -19,7 +19,7 @@ export const MenuProfile = () => {
 		if (isMenuProfileOpen) setIsMenuProfileOpen(false);
 	});
 	const handleToggleOpenMenuProfile = () => {
-		if (!isMenuProfileOpen) setIsMenuProfileOpen(true);
+		setIsMenuProfileOpen(!isMenuProfileOpen);
 	};
 
 	const handleLogout = () => {
@@ -30,6 +30,7 @@ export const MenuProfile = () => {
 	return (
 		<div className={styles.menuProfile}>
 			<button
+				type="button"
 				className={styles.menuProfile__buttonProfile}
 				onClick={handleToggleOpenMenuProfile}>
 				{isMenuProfileOpen ? (
@@ -42,7 +43,7 @@ export const MenuProfile = () => {
 				className={`${styles.menuProfile__list} ${isMenuProfileOpen ? styles.menuProfile__list_opened : ''}`}
 				ref={menuProfileRef}>
 				<li className={styles.menuProfile__item}>
-					<Link href="'/profile" className={styles.menuProfile__link}>
+					<Link href="/profile" className={styles.menuProfile__link}>
 						<User className={styles.menuProfile__item_icon} />
 						Личный кабинет
 					</Link>
