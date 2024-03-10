@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import styles from './profile-edit-form.module.scss';
 import Link from 'next/link';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 
 export const ProfileEditForm = () => {
 	const { register, control } = useForm();
@@ -18,6 +19,9 @@ export const ProfileEditForm = () => {
 	};
 
 	return (
+       <>
+		<ProfileLink title='Профиль'/>
+
 		<Form onSubmit={handleSubmit} className={styles.fields}>
 			<div className={styles.fields_photo}>
 				<div className={styles.fields_avatar}>
@@ -101,5 +105,6 @@ export const ProfileEditForm = () => {
 				<Link href="/">Как видят мой профиль другие</Link>
 			</div>
 		</Form>
+		</>
 	);
 };

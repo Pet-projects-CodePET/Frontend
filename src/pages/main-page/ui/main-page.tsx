@@ -10,7 +10,7 @@ export const MainPage = () => {
 	return (
 		<>
 			<div className={styles.mainContainer}>
-				<Header isLoggedIn={false} />
+				<Header isLoggedIn={true} />
 				<div className={styles.promoSection}>
 					<Promo />
 				</div>
