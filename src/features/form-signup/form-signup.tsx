@@ -34,10 +34,11 @@ export const FormSignupFeature: FC = () => {
 			.unwrap()
 			.then((payload) => console.log('fulfilled', payload))
 			.catch((error) => {
-				setServerErrorText(error.data.non_field_errors);
-				setServerEmailError(error.data.email[0]);
+				console.log(error.data);
+				setServerErrorText(error.data?.non_field_errors || '');
+				setServerEmailError(error.data.email);
 				setServerUsernameError(error.data.username);
-				setServerPasswordError(error.data.non_field_errors);
+				setServerPasswordError(error.data.password);
 			});
 
 		console.log('createUser error', error);
@@ -53,6 +54,9 @@ export const FormSignupFeature: FC = () => {
 				serverEmailError={serverEmailError}
 				serverUsernameError={serverUsernameError}
 				serverPasswordError={serverPasswordError}
+				setServerEmailError={setServerEmailError as () => string}
+				setServerUsernameError={setServerUsernameError as () => string}
+				setServerPasswordError={setServerPasswordError as () => string}
 			/>
 		</Form>
 	);

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useRef } from 'react';
+import React, { FC, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import type { FormSignupProps } from '@/entities/form-signup/ui/types';
@@ -18,6 +18,9 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 	serverEmailError,
 	serverUsernameError,
 	serverPasswordError,
+	setServerEmailError,
+	setServerUsernameError,
+	setServerPasswordError,
 }) => {
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
@@ -26,7 +29,17 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 		formState: { isValid, errors },
 	} = useFormContext();
 
-	console.log('server', serverEmailError);
+	useEffect(() => {
+		errors.email?.message && setServerEmailError('');
+	}, [errors.email?.message]);
+
+	useEffect(() => {
+		errors.username?.message && setServerUsernameError('');
+	}, [errors.username?.message]);
+
+	useEffect(() => {
+		errors.password?.message && setServerPasswordError('');
+	}, [errors.password?.message]);
 
 	return (
 		<>
@@ -43,7 +56,6 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 						name="username"
 						labelName="Никнейм"
 						// placeholder="Введите никнейм"
-						// error = {clientError || serverError}
 						error={
 							errors.username
 								? `${errors.username?.message}`
