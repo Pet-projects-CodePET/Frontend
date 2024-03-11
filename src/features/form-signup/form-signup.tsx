@@ -13,6 +13,7 @@ export const FormSignupFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
 
 	const [createUser, { error }] = useCreateUserMutation();
+
 	const [captchaVerified, setCaptchaVerified] = useState(false);
 	const [serverErrorText, setServerErrorText] = useState('');
 	const [serverEmailError, setServerEmailError] = useState('');
@@ -34,8 +35,8 @@ export const FormSignupFeature: FC = () => {
 			.then((payload) => console.log('fulfilled', payload))
 			.catch((error) => {
 				setServerErrorText(error.data.non_field_errors);
-				setServerEmailError(error.data.non_field_errors);
-				setServerUsernameError(error.data.non_field_errors);
+				setServerEmailError(error.data.email[0]);
+				setServerUsernameError(error.data.username);
 				setServerPasswordError(error.data.non_field_errors);
 			});
 
@@ -43,10 +44,7 @@ export const FormSignupFeature: FC = () => {
 	};
 
 	return (
-		<Form
-			onSubmit={handleSubmit}
-			serverErrorText={serverErrorText}
-			schema={FormSignupSchema}>
+		<Form onSubmit={handleSubmit} schema={FormSignupSchema}>
 			<FormFieldsSignup
 				onLoad={onLoad}
 				setToken={hCaptchaToken}

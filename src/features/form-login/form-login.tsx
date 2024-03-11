@@ -13,6 +13,7 @@ export const FormLoginFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
 
 	const [authUser] = useAuthUserMutation();
+
 	const router = useRouter();
 	const [serverErrorText, setServerErrorText] = useState('');
 	const [captchaVerified, setCaptchaVerified] = useState(false);
@@ -25,14 +26,13 @@ export const FormLoginFeature: FC = () => {
 	const hCaptchaToken = (token: string) => {
 		token && setCaptchaVerified(true);
 	};
-	console.log(captchaVerified);
 
 	const handleSubmit = (userData: IUser) => {
 		authUser(userData)
 			.unwrap()
 			.then((payload) => {
 				console.log('token', payload.auth_token);
-				localStorage.setItem('token', payload.auth_token);
+				localStorage.setItem('token', payload.auth_token as string);
 			})
 			.then(() => {
 				router.push('/');
@@ -43,10 +43,7 @@ export const FormLoginFeature: FC = () => {
 	};
 
 	return (
-		<Form
-			onSubmit={handleSubmit}
-			serverErrorText={serverErrorText}
-			schema={FormLoginSchema}>
+		<Form onSubmit={handleSubmit} schema={FormLoginSchema}>
 			<FormFieldsLogin
 				onLoad={onLoad}
 				setToken={hCaptchaToken}

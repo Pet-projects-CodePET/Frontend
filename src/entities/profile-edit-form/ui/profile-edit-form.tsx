@@ -2,9 +2,7 @@
 
 import React from 'react';
 
-import { MainButton } from '@/shared/ui';
-import { Input } from '@/shared/ui';
-import { Form } from '@/shared/ui';
+import { MainButton, Input, Form } from '@/shared/ui';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { useForm } from 'react-hook-form';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
@@ -12,7 +10,7 @@ import styles from './profile-edit-form.module.scss';
 import Link from 'next/link';
 
 export const ProfileEditForm = () => {
-	const { register, control } = useForm();
+	const { control } = useForm();
 
 	const handleSubmit = () => {
 		console.log('Submit');
@@ -28,37 +26,28 @@ export const ProfileEditForm = () => {
 					<Edit />
 				</button>
 			</div>
+			<Input name="nick_name" labelName="Никнейм" description />
 			<Input
-				label="nick_name"
-				labelName="Никнейм"
-				register={register}
-				description
-			/>
-			<Input
-				label="name"
+				name="name"
 				labelName="Имя"
-				register={register}
 				description={true}
 				descrText="Укажите свое настоящее имя и фамилию"
 			/>
 			<Input
-				label="about"
+				name="about"
 				labelName="О себе"
-				register={register}
 				description={true}
 				descrText="Не более 750 символов"
 			/>
 			<Input
-				label="portfolioLink"
+				name="portfolioLink"
 				labelName="Ссылка на портфолио"
-				register={register}
 				description={true}
 				descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
 			/>
 			<Input
-				label="contacts"
+				name="contacts"
 				labelName="Контакты для связи"
-				register={register}
 				description={true}
 				descrText="Укажите контакты для связи, например: e-mail, telegram, телефон"
 			/>
@@ -67,34 +56,22 @@ export const ProfileEditForm = () => {
 				<DatePickerRHF control={control} name="birthDate" />
 			</div>
 			<div className={styles.fields_double}>
-				<Input
-					label="country"
-					labelName="Страна"
-					register={register}
-					description
-				/>
-				<Input label="city" labelName="Город" register={register} description />
+				<Input name="country" labelName="Страна" description />
+				<Input name="city" labelName="Город" description />
 			</div>
 			<Input
-				label="speciality"
+				name="speciality"
 				labelName="Специальность"
-				register={register}
 				description={true}
 				descrText="Выберите не более 2 специальностей"
 			/>
 			<Input
-				label="skills"
+				name="skills"
 				labelName="Навыки"
-				register={register}
 				description={true}
 				descrText="Выберите не более 15 навыков"
 			/>
-			<Input
-				label="qualLabel"
-				labelName="Уровень квалификации"
-				register={register}
-				description
-			/>
+			<Input name="qualLabel" labelName="Уровень квалификации" description />
 			<div className={styles.fields_buttonsContainer}>
 				<MainButton variant={'primary'} width={'regular'}>
 					Сохранить

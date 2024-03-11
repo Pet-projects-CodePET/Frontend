@@ -26,6 +26,8 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 		formState: { isValid, errors },
 	} = useFormContext();
 
+	console.log('server', serverEmailError);
+
 	return (
 		<>
 			<h1 className={styles.title}>Создать аккаунт</h1>

@@ -43,10 +43,7 @@ export const FormPasswordRecoveryFeature: FC = () => {
 	};
 
 	return (
-		<Form
-			onSubmit={handleSubmit}
-			serverErrorText={serverErrorText}
-			schema={FormRecoveryPasswordSchema}>
+		<Form onSubmit={handleSubmit} schema={FormRecoveryPasswordSchema}>
 			<FormFieldsPasswordRecovery
 				onLoad={onLoad}
 				setToken={hCaptchaToken}
