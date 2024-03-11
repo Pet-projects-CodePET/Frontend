@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Form } from '@/shared/ui/form/form';
-import { Input, MainButton } from '@/shared/ui';
+import { MainButton, Checkbox } from '@/shared/ui';
 import { CloseIcon } from '@/shared/assets';
 
 import styles from './project-filter.module.scss';
@@ -35,28 +35,28 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Уровень квалификации</p>
 				<div className={styles.inputContainer}>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="Junior"
 						label="optionJunior"
+						id="optionJunior"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="Middle"
 						label="optionMiddle"
+						id="optionMiddle"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="Senior"
 						label="optionSenior"
+						id="optionSenior"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="Lead"
 						label="optionLead"
+						id="optionLead"
 						type="checkbox"
 					/>
 				</div>
@@ -65,28 +65,28 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Занятость</p>
 				<div className={styles.inputContainer}>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="10 часов в неделю"
 						label="option10hours"
+						id="option10hours"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="20 часов в неделю"
 						label="option20hours"
+						id="option20hours"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="30 часов в неделю"
 						label="option30hours"
+						id="option30hours"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="40 часов в неделю"
 						label="option40hours"
+						id="option40hours"
 						type="checkbox"
 					/>
 				</div>
@@ -95,22 +95,22 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Направление разработки</p>
 				<div className={styles.inputContainer}>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="Десктоп"
 						label="optionDesctop"
+						id="optionDesctop"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="Мобильная"
 						label="optionMobile"
+						id="optionMobile"
 						type="checkbox"
 					/>
-					<Input
-						className={styles.inputLabel}
+					<Checkbox
 						labelName="Веб"
 						label="optionWeb"
+						id="optionWeb"
 						type="checkbox"
 					/>
 				</div>
