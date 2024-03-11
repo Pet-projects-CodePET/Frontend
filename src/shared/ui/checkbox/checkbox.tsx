@@ -20,7 +20,7 @@ export const Checkbox: FC<CheckboxProps> = ({
 				{...register(label)}
 				className={styles.checkbox}
 				id={id}
-        {...props}
+				{...props}
 			/>
 			<label className={styles.label} htmlFor={id}>
 				{labelName}
