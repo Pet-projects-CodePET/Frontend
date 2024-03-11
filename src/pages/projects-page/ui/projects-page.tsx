@@ -10,6 +10,8 @@ import { months } from '@/shared/constants/months/months';
 import styles from './projects-page.module.scss';
 import { Option } from '@/shared/types/option';
 import { SingleSelect } from '@/shared/ui/single-select/single-select';
+import { specialties } from '@/shared/constants/specialties/specialties';
+import { MultiSelectWithDisable } from '@/shared/ui/multi-select-with-disable/multi-select-with-disable';
 
 export const Projects = () => {
 	const handleMonthChange = (selectedItems: Option[]) => {
@@ -22,6 +24,10 @@ export const Projects = () => {
 
 	const handleRecruitmentStatusChange = (selectedOptions: Option[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
+	};
+
+	const handleSpecialtiesChange = (selectedItems: Option[]) => {
+		console.info('selected options: ', selectedItems);
 	};
 
 	return (
@@ -40,6 +46,7 @@ export const Projects = () => {
 					options={months}
 					values={[]}
 					onChange={handleMonthChange}
+					selectedAll={true}
 				/>
 				<SingleSelect
 					name="select-recruitment-status"
@@ -47,6 +54,24 @@ export const Projects = () => {
 					buttonLabel="Статус набора"
 					value={undefined}
 					onChange={handleRecruitmentStatusChange}
+				/>
+				<MultiSelectWithDisable
+					name="select-specialties"
+					caption="Специальность"
+					options={specialties}
+					values={[
+						{
+							value: 'software-developer',
+							label: 'Десктоп разработчик / Software Developer',
+						},
+						{
+							value: 'performance-engineer',
+							label:
+								'Инженер по нагрузочному тестированию / Performance Engineer',
+						},
+					]}
+					onChange={handleSpecialtiesChange}
+					maxSelections={2}
 				/>
 			</div>
 			<div className={styles.projectsContainer}>
