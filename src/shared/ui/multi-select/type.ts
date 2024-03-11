@@ -6,4 +6,5 @@ export type MultiSelectProps = {
 	options: Option[];
 	values: Option[];
 	onChange: (options: Option[]) => void;
+	selectedAll: boolean;
 };

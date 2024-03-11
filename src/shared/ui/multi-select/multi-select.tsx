@@ -10,6 +10,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 	options,
 	values,
 	onChange,
+	selectedAll,
 }) => {
 	const customContentRenderer = ({ state, methods }) => (
 		<div style={buttonMenuCaptionStyle}>
@@ -22,7 +23,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 	const itemRenderer = ({ item, methods, itemIndex }) => {
 		return (
 			<StyledItem>
-				{itemIndex === 0 ? (
+				{itemIndex === 0 && selectedAll ? (
 					<div
 						onClick={
 							methods.areAllSelected() ? methods.clearAll : methods.selectAll
