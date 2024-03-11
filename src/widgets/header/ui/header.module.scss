@@ -96,15 +96,12 @@
 
 @media screen and (max-width: 779px) {
 	.header {
-		padding: 16px;
-		max-width: 500px;
+		padding: 8px 16px;
+		min-width: 100%;
 		margin: 0 auto;
 
 		&__wrapper {
-			background-color: $--Neutral-White;
-		//	min-width: 100%;
-		//	justify-content: space-between;
-		
+			background-color: $--Neutral-White;	
 		}
 
 		&__linkProfile {
@@ -114,6 +111,7 @@
 			display: block;
 			width: 48px;
 			height: 48px;
+			margin-right: 16px;
 		}
 		&__buttonProject {
 			display: none;

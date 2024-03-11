@@ -31,7 +31,10 @@ export const ProfileSettings = () => {
 	};
 	return (
 		<section className={styles.profileSettings}>
+			<div className={styles.profileSettings__profileLink}>
 			<ProfileLink title="Управление аккаунтом" />
+			</div>
+			
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
 				<div className={styles.formSettings__list}>
@@ -152,7 +155,7 @@ export const ProfileSettings = () => {
 					/>
 				</div>
 
-				<div>
+				<div className={styles.formSettings__button}>
 					<MainButton variant={'primary'} width={'regular'}>
 						Сохранить
 					</MainButton>
