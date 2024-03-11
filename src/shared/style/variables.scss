@@ -44,18 +44,19 @@ $--border-default: #e2e8f0;
 $--foreground-muted: #475569;
 $--border-card: #5677fc;
 $--bg-card-hover: #e8eeff;
+$--box-shadow: rgba(62, 56, 56, 0.05);
 
 $--inter-font: 'Inter', sans-serif;
 $--montserrat-font: 'Montserrat', sans-serif;
 $--open-sans-font: 'Open Sans', sans-serif;
 
-$--bg-accent-default: #5677FC;
-$--bg-accent-hover: #6E8AFB;
-$--bg-accent-pressed: #8CAAFF;
-$--bg-disabled: #94A3B8;
-$--bg-secondary: #E2E8F0;
-$--bg-pressed: #1E293B;
+$--bg-accent-default: #5677fc;
+$--bg-accent-hover: #6e8afb;
+$--bg-accent-pressed: #8caaff;
+$--bg-disabled: #94a3b8;
+$--bg-secondary: #e2e8f0;
+$--bg-pressed: #1e293b;
 $--bg-hover: #475569;
-$--foreground-error-default: #E75757;
-$--border-error-hover: #F28482;
-$--border-error-pressed: #F3A9A9;
+$--foreground-error-default: #e75757;
+$--border-error-hover: #f28482;
+$--border-error-pressed: #f3a9a9;

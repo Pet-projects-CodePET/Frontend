@@ -164,7 +164,7 @@
 		border-radius: 40px;
 		background-color: $--foreground-error-default;
 		transition: 0.4s;
-	}	
+	}
 	&__input:checked + &__errorDefaultOf {
 		background-color: $--foreground-error-default;
 		border: 2px solid $--foreground-error-default;

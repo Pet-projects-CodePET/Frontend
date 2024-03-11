@@ -7,6 +7,7 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		width: 1160px;
 	}
 
@@ -23,6 +24,7 @@
 		width: 195px;
 		height: 50px;
 	}
+
 	&__logo {
 		width: 195px;
 		height: 50px;
@@ -71,6 +73,7 @@
 			border: none;
 			margin-left: 16px;
 		}
+
 		&__buttonBurgerIcon {
 			width: 24px;
 			height: 24px;
@@ -83,10 +86,12 @@
 		&__buttonProject {
 			margin-left: 0;
 		}
+
 		&__link {
 			width: 143px;
 			height: 40px;
 		}
+
 		&__logo {
 			width: 143px;
 			height: 40px;
@@ -113,16 +118,20 @@
 			height: 48px;
 			margin-right: 16px;
 		}
+		
+
 		&__buttonProject {
 			display: none;
 			
 		}
+
 		&__buttonLogin {
 		width: 48px;
 		}
 		&__button {
 			display: none;
 		}
+
 		&__link {
 			width: 145px;
 			height: 40px;
@@ -130,6 +139,7 @@
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
+
 		&__logo {
 			display: none;
 		}
