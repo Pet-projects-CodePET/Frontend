@@ -6,9 +6,13 @@
 	width: 100%;
 	box-sizing: border-box;
 	border-radius: var(--radius-M, 12px);
-	border: 1px solid var(--border-default, #e2e8f0);
+	// border: 1px solid var(--border-default, #e2e8f0);
 	background: var(--bg-primary, #feffff);
-	padding: 56px;
+	// padding: 56px;
+
+	@media screen and (max-width: 779px) {
+		padding: 30px 16px;
+	}
 }
 
 .closeIcon {
@@ -17,6 +21,10 @@
 	right: 24px;
 	width: 24px;
 	height: 24px;
+
+	@media screen and (max-width: 779px) {
+		top: 34px;
+	}
 }
 
 .title {
@@ -24,11 +32,27 @@
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
-	font-family: $--montserrat-font;
-	font-size: 32px;
+
+	font-family: 'Open Sans';
+	font-size: 28px;
+	font-style: normal;
 	font-weight: 700;
-	line-height: 40px;
+	line-height: 32px;
+	letter-spacing: -0.28px;
 	margin: 0 0 32px 0;
+
+	@media screen and (max-width: 779px) {
+		color: var(--color-foreground-default, #1c1c1e);
+		font-feature-settings:
+			'clig' off,
+			'liga' off;
+		font-family: 'Open Sans';
+		font-size: 20px;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		margin: 0 0 20px 0;
+	}
 }
 
 .fieldset {
@@ -39,15 +63,28 @@
 
 .groupName {
 	margin: 0;
-	color: #000;
+	color: var(--foreground-default, #020617);
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
-	font-family: $--open-sans-font;
-	font-size: 24px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 30px;
+	font-family: 'Open Sans';
+	font-size: 20px;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.25px;
+
+	@media screen and (max-width: 779px) {
+		color: var(--foreground-default, #020617);
+		font-feature-settings:
+			'clig' off,
+			'liga' off;
+		font-family: 'Open Sans';
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+	}
 }
 
 .inputContainer {
@@ -57,16 +94,48 @@
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
 	grid-auto-flow: column;
-	margin-top: 30px;
+	margin-top: 25px;
+	grid-auto-columns: 1fr 1fr;
+
+	@media screen and (max-width: 779px) {
+		margin-top: 16px;
+	}
+}
+
+.notExpandedList {
+	grid-template-rows: repeat(3, 1fr);
+}
+
+.expandedList {
+	grid-template-rows: repeat(7, 1fr);
+}
+
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	grid-template-rows: none;
 }
 
 .buttonsContainer {
 	display: flex;
 	justify-content: space-between;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 40px;
+		flex-direction: column;
+		gap: 8px;
+	}
 }
 
 .divider {
 	opacity: 0.2;
 	background: var(--foreground-subtle, #94a3b8);
-	margin: 24px 0 32px;
+	margin: 22px 0 30px;
+
+	@media screen and (max-width: 779px) {
+		margin: 14px 0 15px;
+	}
 }
