@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
 
 import { Form } from '@/shared/ui/form/form';
-import { MainButton, Checkbox, RadioButton } from '@/shared/ui';
+import { MainButton, CheckboxAndRadio } from '@/shared/ui';
 import { CloseIcon } from '@/shared/assets';
 
 import styles from './project-filter.module.scss';
@@ -92,25 +92,25 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Уровень квалификации</p>
 				<div className={styles.inputContainer}>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="Junior"
 						label="optionJunior"
 						id="optionJunior"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="Middle"
 						label="optionMiddle"
 						id="optionMiddle"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="Senior"
 						label="optionSenior"
 						id="optionSenior"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="Lead"
 						label="optionLead"
 						id="optionLead"
@@ -122,25 +122,25 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Занятость</p>
 				<div className={styles.inputContainer}>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="10 часов в неделю"
 						label="option10hours"
 						id="option10hours"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="20 часов в неделю"
 						label="option20hours"
 						id="option20hours"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="30 часов в неделю"
 						label="option30hours"
 						id="option30hours"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="40 часов в неделю"
 						label="option40hours"
 						id="option40hours"
@@ -152,19 +152,19 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Направление разработки</p>
 				<div className={styles.inputContainer}>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="Десктоп"
 						label="optionDesctop"
 						id="optionDesctop"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="Мобильная"
 						label="optionMobile"
 						id="optionMobile"
 						type="checkbox"
 					/>
-					<Checkbox
+					<CheckboxAndRadio
 						labelName="Веб"
 						label="optionWeb"
 						id="optionWeb"
@@ -178,14 +178,14 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 					<fieldset className={styles.fieldset}>
 						<p className={styles.groupName}>Статус проекта</p>
 						<div className={clsx(styles.inputContainer, styles.row)}>
-							<RadioButton
+							<CheckboxAndRadio
 								labelName="Активный"
 								label="radioProjectStatus"
 								id="radioActive"
 								type="radio"
 								value="Активный"
 							/>
-							<RadioButton
+							<CheckboxAndRadio
 								labelName="Завершенный"
 								label="radioProjectStatus"
 								id="radioFinished"
@@ -198,14 +198,14 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 					<fieldset className={styles.fieldset}>
 						<p className={styles.groupName}>Статус набора</p>
 						<div className={clsx(styles.inputContainer, styles.row)}>
-							<RadioButton
+							<CheckboxAndRadio
 								labelName="Набор открыт"
 								label="radioRecruitmentStatus"
 								id="radioOpen"
 								type="radio"
 								value="Набор открыт"
 							/>
-							<RadioButton
+							<CheckboxAndRadio
 								labelName="Набор закрыт"
 								label="radioRecruitmentStatus"
 								id="radioClosed"
@@ -224,7 +224,7 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 							})}>
 							{getMonthsList(months, isExpandedMonthsList).map((m, ind) => {
 								return (
-									<Checkbox
+									<CheckboxAndRadio
 										key={ind}
 										labelName={m}
 										label={`optionMonth${ind}`}
@@ -249,7 +249,7 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 							{getProfessionsList(professions, isExpandedProfessionsList).map(
 								(p, ind) => {
 									return (
-										<Checkbox
+										<CheckboxAndRadio
 											key={ind}
 											labelName={p}
 											label={`optionProfession${ind}`}
