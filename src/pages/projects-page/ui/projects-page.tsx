@@ -12,6 +12,8 @@ import { Option } from '@/shared/types/option';
 import { SingleSelect } from '@/shared/ui/single-select/single-select';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { MultiSelectWithDisable } from '@/shared/ui/multi-select-with-disable/multi-select-with-disable';
+import { MultiSelectWithFilter } from '@/shared/ui/multi-select-with-filter/multi-select-with-filter';
+import { skills } from '@/shared/constants/skills/skills';
 
 export const Projects = () => {
 	const handleMonthChange = (selectedItems: Option[]) => {
@@ -27,6 +29,10 @@ export const Projects = () => {
 	};
 
 	const handleSpecialtiesChange = (selectedItems: Option[]) => {
+		console.info('selected options: ', selectedItems);
+	};
+
+	const handleSkillsChange = (selectedItems: Option[]) => {
 		console.info('selected options: ', selectedItems);
 	};
 
@@ -72,6 +78,14 @@ export const Projects = () => {
 					]}
 					onChange={handleSpecialtiesChange}
 					maxSelections={2}
+				/>
+				<MultiSelectWithFilter
+					name="select-skills"
+					caption="Навыки"
+					options={skills}
+					values={[]}
+					onChange={handleSkillsChange}
+					maxSelections={5}
 				/>
 			</div>
 			<div className={styles.projectsContainer}>
