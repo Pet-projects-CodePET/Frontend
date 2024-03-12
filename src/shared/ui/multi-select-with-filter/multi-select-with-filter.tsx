@@ -131,7 +131,7 @@ const StyledSelect = styled(Select)`
 		flex-direction: column;
 		border-radius: 12px;
 		max-height: 308px;
-
+		overflow: hidden;
 		z-index: 9;
 		background: #fff;
 		box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
