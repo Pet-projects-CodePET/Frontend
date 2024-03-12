@@ -112,6 +112,11 @@
 	width: 100%;
 }
 
+.buttonDimensionsMin {
+	min-height: 48px;
+	max-width: fit-content;
+}
+
 .icon {
 	background-color: transparent;
 	width: 20px;
