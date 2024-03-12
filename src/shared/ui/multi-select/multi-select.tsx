@@ -69,7 +69,6 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 			options={options}
 			values={values}
 			style={buttonMenuStyle}
-			// keepOpen={true}
 		/>
 	);
 };
