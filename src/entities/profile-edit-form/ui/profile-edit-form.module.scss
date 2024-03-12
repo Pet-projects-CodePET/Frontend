@@ -117,3 +117,19 @@
 	letter-spacing: 0.25px;
 	margin: 16px 0 8px;
 }
+
+.button__preview {
+	display: block;
+		padding: 0 8px;
+		font-family: $--open-sans-font;
+		color: $--Foreground-link-default;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+		width: 250px;
+}

@@ -1,0 +1,39 @@
+@import '@/shared/style/variables';
+
+.previewWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+.previewButton {
+	display: block;
+	padding: 0 8px;
+	font-family: $--open-sans-font;
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	width: 250px;
+}
+
+.previewFoto {
+	display: flex;
+	gap: 16px;
+
+	&__avatar {
+		background-image: url('../../assets/icons/avatar-girl.svg');
+		width: 136px;
+		height: 136px;
+		object-fit: cover;
+		background-repeat: no-repeat;
+	}
+	&__info {
+		display: flex;
+		flex-direction: column;
+	}
+}
