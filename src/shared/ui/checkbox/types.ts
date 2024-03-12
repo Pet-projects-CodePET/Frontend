@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+export type CheckboxAndRadioProps = InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	id: string;
 	type: string;
