@@ -4,6 +4,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+	border: 1px solid $--border-default;
+	border-radius: 12px;
+	padding: 32px;
 }
 .previewButton {
 	display: block;
@@ -35,25 +38,27 @@
 	&__info {
 		display: flex;
 		flex-direction: column;
+		margin: 0;
+		gap: 8px;
 	}
 	&__infoName {
 		color: $--Foreground-default;
-
 		font-family: $--open-sans-font;
 		font-size: 24px;
 		font-style: normal;
 		font-weight: 600;
 		line-height: 30px;
+		margin: 0;
 	}
 	&__infoTelegram {
 		color: $--Foreground-muted;
-
 		font-family: $--open-sans-font;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: normal;
 		letter-spacing: 0.25px;
+		margin: 0;
 	}
 	&__infoRole {
 		color: $--Foreground-default;
@@ -63,6 +68,7 @@
 		font-weight: 700;
 		line-height: normal;
 		letter-spacing: 0.25px;
+		margin: 0;
 	}
 	&__infoStatus {
 		color: $--Foreground-muted;
@@ -72,26 +78,39 @@
 		font-weight: 400;
 		line-height: 19px; /* 135.714% */
 		letter-spacing: 0.25px;
+		margin: 0;
 	}
 }
+.previewItem {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 
-.previewItem__title {
-	color: $--Foreground-default;
+	&__title {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		margin: 0;
+	}
+	&__subtitle {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+		margin: 0;
+		&_link {
+		color: $--Foreground-link-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		}
+	}
 
-	font-family: $--open-sans-font;
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: normal;
-	letter-spacing: 0.25px;
 }
-.previewItem__subtitle {
-	color: $--Foreground-default;
 
-	font-family: $--open-sans-font;
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 24px;
-	letter-spacing: 0.25px;
-}

@@ -1,11 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProfileEditForm } from '@/entities/profile-edit-form';
 import Link from 'next/link';
 import styles from './preview-profile.module.scss';
 
 export const PreviewProfile = () => {
+
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
+
 	const [visible, setVisible] = useState(false);
 
 	const handleClick = () => {
@@ -52,6 +57,7 @@ export const PreviewProfile = () => {
 								Excepteur sint occaecat cupidatat non proident, sunt in culpa
 								qui officia deserunt mollit anim id est laborum, но приходится.
 							</p>
+							</div>
 
 							<div className={styles.previewItem}>
 								<h2 className={styles.previewItem__title}>
@@ -60,7 +66,7 @@ export const PreviewProfile = () => {
 								<Link
 									href="#"
 									target="_blank"
-									className={styles.previewItem__subtitle}>
+									className={styles.previewItem__subtitle_link}>
 									behance
 								</Link>
 							</div>
@@ -79,7 +85,7 @@ export const PreviewProfile = () => {
 								<h2 className={styles.previewItem__title}>Регион</h2>
 								<p className={styles.previewItem__subtitle}>Россия, Омск</p>
 							</div>
-						</div>
+						
 
 						<button
 							className={styles.previewButton}

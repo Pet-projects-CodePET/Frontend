@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
@@ -12,6 +12,11 @@ import Edit from '@/shared/assets/icons/edit-icon.svg';
 import styles from './profile-edit-form.module.scss';
 
 export const ProfileEditForm = () => {
+
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
+	
 	const { register, control } = useForm();
 
 	const handleSubmit = () => {
