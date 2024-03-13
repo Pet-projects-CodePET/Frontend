@@ -7,6 +7,7 @@ import { Form } from '@/shared/ui';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { useForm } from 'react-hook-form';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
+import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import styles from './profile-edit-form.module.scss';
 
@@ -109,6 +110,22 @@ export const ProfileEditForm = () => {
 						register={register}
 						description
 					/>
+					
+					<div className={styles.fields__checkbox}>
+						<p className={styles.fields__checkboxTitle}>
+						Готовность к участию в проектах
+						</p>
+						<div className={styles.fields__checkboxItem}>
+						<ToggleCheckbox
+								id="participation"
+								name="participation"
+								variant="defaultOf"
+								//checked={checked}
+								onChange={() => {}}
+							/>
+						</div>				
+					</div>
+
 					<div className={styles.fields_buttonsContainer}>
 						<MainButton variant={'primary'} width={'regular'}>
 							Сохранить
