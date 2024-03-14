@@ -192,7 +192,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 					dropdownRenderer={({ props, state, methods }) =>
 						dropdownRenderer({ props, state, methods })
 					}
-					searchable={isSearchable}
+					searchable={true}
 				/>
 			) : (
 				<StyledSelect
@@ -209,7 +209,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 					itemRenderer={({ item, itemIndex, props, state, methods }) =>
 						itemRenderer({ item, itemIndex, props, state, methods })
 					}
-					searchable={isSearchable}
+					searchable={false}
 				/>
 			)}
 		</>
