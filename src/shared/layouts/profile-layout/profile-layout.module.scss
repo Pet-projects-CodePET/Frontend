@@ -24,3 +24,37 @@
 	min-height: 968px;
 	gap: 40px;
 }
+
+
+@media screen and (max-width: 1199px) {
+.wrapper {
+	max-width: 760px;
+	margin: 0;
+	&__title {
+		display: none;
+	}
+}
+.container {
+	flex-direction: column;
+	padding: 0;
+}
+.sideNav {
+	display: none;
+}
+
+}
+@media screen and (max-width: 779px) {
+	.wrapper {
+		max-width: 100%;
+		box-sizing: border-box;
+		padding: 0;
+		overflow: hidden;
+		&__titleText {
+			font-size: 28px;
+			padding: 0 16px 0 16px;
+		}
+	}
+	.container {
+		min-width: 100%;
+	}
+}
