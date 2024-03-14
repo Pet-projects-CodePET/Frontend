@@ -8,31 +8,30 @@ import { projectsArray } from '@/shared/constants/projects/projects';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
 import { months } from '@/shared/constants/months/months';
 import styles from './projects-page.module.scss';
-import { Option } from '@/shared/types/option';
 import { SingleSelect } from '@/shared/ui/single-select/single-select';
 import { specialties } from '@/shared/constants/specialties/specialties';
-import { MultiSelectWithDisable } from '@/shared/ui/multi-select-with-disable/multi-select-with-disable';
-import { MultiSelectWithFilter } from '@/shared/ui/multi-select-with-filter/multi-select-with-filter';
 import { skills } from '@/shared/constants/skills/skills';
 
 export const Projects = () => {
-	const handleMonthChange = (selectedItems: Option[]) => {
-		console.info('selected options: ', selectedItems);
-	};
-
-	const handleStatusProjectChange = (selectedOptions: Option[]) => {
+	const handleStatusProjectChange = (selectedOptions: (string | object)[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
 	};
 
-	const handleRecruitmentStatusChange = (selectedOptions: Option[]) => {
-		console.info('selected option: ', selectedOptions?.[0]);
-	};
-
-	const handleSpecialtiesChange = (selectedItems: Option[]) => {
+	const handleMonthChange = (selectedItems: object) => {
 		console.info('selected options: ', selectedItems);
 	};
 
-	const handleSkillsChange = (selectedItems: Option[]) => {
+	const handleRecruitmentStatusChange = (
+		selectedOptions: (string | object)[]
+	) => {
+		console.info('selected option: ', selectedOptions?.[0]);
+	};
+
+	const handleSpecialtiesChange = (selectedItems: object) => {
+		console.info('selected options: ', selectedItems);
+	};
+
+	const handleSkillsChange = (selectedItems: object) => {
 		console.info('selected options: ', selectedItems);
 	};
 
@@ -53,6 +52,7 @@ export const Projects = () => {
 					values={[]}
 					onChange={handleMonthChange}
 					selectedAll={true}
+					buttonWidth={124}
 				/>
 				<SingleSelect
 					name="select-recruitment-status"
@@ -61,7 +61,7 @@ export const Projects = () => {
 					value={undefined}
 					onChange={handleRecruitmentStatusChange}
 				/>
-				<MultiSelectWithDisable
+				<MultiSelect
 					name="select-specialties"
 					caption="Специальность"
 					options={specialties}
@@ -78,14 +78,17 @@ export const Projects = () => {
 					]}
 					onChange={handleSpecialtiesChange}
 					maxSelections={2}
+					buttonWidth={207}
 				/>
-				<MultiSelectWithFilter
+				<MultiSelect
 					name="select-skills"
 					caption="Навыки"
 					options={skills}
 					values={[]}
 					onChange={handleSkillsChange}
 					maxSelections={5}
+					buttonWidth={142}
+					isSearchable
 				/>
 			</div>
 			<div className={styles.projectsContainer}>

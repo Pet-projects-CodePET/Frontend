@@ -5,6 +5,9 @@ export type MultiSelectProps = {
 	caption: string;
 	options: Option[];
 	values: Option[];
-	onChange: (options: Option[]) => void;
-	selectedAll: boolean;
+	onChange: (options: (string | object)[]) => void;
+	selectedAll?: boolean;
+	maxSelections?: number;
+	buttonWidth: number;
+	isSearchable?: boolean;
 };

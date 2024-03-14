@@ -56,3 +56,8 @@
 .customCheckbox:disabled + label::before {
 	background-color: #e9ecef;
 }
+
+.disabledOption {
+	color: #ccc;
+	cursor: not-allowed;
+}

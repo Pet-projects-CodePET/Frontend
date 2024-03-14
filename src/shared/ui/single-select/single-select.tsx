@@ -1,8 +1,6 @@
-'use client';
-
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import Select from 'react-dropdown-select';
+import Select, { SelectRenderer } from 'react-dropdown-select';
 import { SingleSelectProps } from './type';
 import CheckIcon from '@/shared/assets/icons/check-icon.svg';
 
@@ -13,21 +11,34 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 	value,
 	onChange,
 }) => {
-	const customContentRenderer = () => (
+	// Кнопка с надписью
+	const contentRenderer = () => (
 		<div style={buttonMenuCaptionStyle}>{buttonLabel}</div>
 	);
 
-	const customDropdownRenderer = ({ props, state, methods }) => {
+	// Отображение выпадающего списка с опциями и фильтром
+	const dropdownRenderer = ({
+		props,
+		state,
+		methods,
+	}: SelectRenderer<string | object>) => {
 		return (
 			<>
 				{props.options.map((option) => {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
 					const isSelected = state.values?.[0]?.value === option.value;
 
 					return (
 						<Item
-							disabled={option.disabled}
-							key={option[props.valueField]}
+							key={
+								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+								// @ts-ignore
+								option[props.valueField]
+							}
 							onClick={() => {
+								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+								// @ts-ignore
 								if (option.disabled) return;
 
 								if (isSelected) {
@@ -35,9 +46,14 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 								} else {
 									methods.addItem(option);
 								}
-							}}
-							isSelected={isSelected}>
-							<div>{option[props.labelField]}</div>
+							}}>
+							<div>
+								{
+									// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+									// @ts-ignore
+									option[props.labelField]
+								}
+							</div>
 							{isSelected && <CheckIcon />}
 						</Item>
 					);
@@ -54,8 +70,10 @@ export const SingleSelect: FC<SingleSelectProps> = ({
 				options={options}
 				values={value ? [value] : []}
 				onChange={onChange}
-				contentRenderer={customContentRenderer}
-				dropdownRenderer={customDropdownRenderer}
+				contentRenderer={contentRenderer}
+				dropdownRenderer={({ props, state, methods }) =>
+					dropdownRenderer({ props, state, methods })
+				}
 				dropdownHandle={false}
 				valueField="value"
 				labelField="label"

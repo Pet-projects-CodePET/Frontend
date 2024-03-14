@@ -1,8 +1,12 @@
 import React from 'react';
 import { MultiSelectProps } from './type';
 import styled from '@emotion/styled';
-import Select from 'react-dropdown-select';
+import Select, {
+	SelectItemRenderer,
+	SelectRenderer,
+} from 'react-dropdown-select';
 import styles from './multi-select.module.scss';
+import { InputSearch } from '../input-search/input-search';
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
 	name,
@@ -11,80 +15,205 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 	values,
 	onChange,
 	selectedAll,
+	maxSelections,
+	buttonWidth,
+	isSearchable,
 }) => {
-	const customContentRenderer = ({ state, methods }) => (
-		<div style={buttonMenuCaptionStyle}>
-			{caption}{' '}
-			{state.values?.length > 0 &&
-				`(${methods.areAllSelected() ? state.values.length - 1 : state.values.length})`}
-		</div>
-	);
+	// Кнопка с надписью
+	const contentRenderer = ({
+		state,
+		methods,
+	}: SelectRenderer<object | string>) => {
+		return (
+			<div style={buttonMenuCaptionStyle}>
+				{caption}{' '}
+				{state.values?.length > 0 &&
+					`(${methods.areAllSelected() ? state.values.length - 1 : state.values.length})`}
+			</div>
+		);
+	};
 
-	const itemRenderer = ({ item, methods, itemIndex }) => {
+	// Отображение опции
+	const itemRenderer = ({
+		item,
+		itemIndex,
+		state,
+		methods,
+	}: SelectItemRenderer<object | string>) => {
+		const disabledOption =
+			state?.values?.length >= (maxSelections || Infinity) &&
+			!methods.isSelected(item);
+
 		return (
 			<StyledItem>
 				{itemIndex === 0 && selectedAll ? (
+					// Отображение опции для выбора всех опций
 					<div
-						onClick={
-							methods.areAllSelected() ? methods.clearAll : methods.selectAll
-						}>
+						onClick={() => {
+							return methods.areAllSelected()
+								? methods.clearAll()
+								: methods.selectAll();
+						}}>
 						<input
 							className={styles.customCheckbox}
-							onChange={
-								methods.areAllSelected() ? methods.clearAll : methods.selectAll
-							}
+							onChange={() => {
+								return methods.areAllSelected()
+									? methods.clearAll()
+									: methods.selectAll();
+							}}
 							type="checkbox"
 							checked={methods.areAllSelected() ? true : false}
 						/>{' '}
 						<label>Все</label>
 					</div>
-				) : item.disabled ? (
-					<div aria-disabled>
-						<label>{item.label}</label>
-					</div>
 				) : (
-					<div onClick={() => methods.addItem(item)}>
+					// Отображение стандартной опции
+					<div
+						className={disabledOption ? styles.disabledOption : ''}
+						onClick={() => !disabledOption && methods.addItem(item)}>
 						<input
 							className={styles.customCheckbox}
 							onChange={() => methods.addItem(item)}
 							type="checkbox"
 							checked={methods.isSelected(item)}
-						/>{' '}
-						<label>{item.label}</label>
+						/>
+						<label>
+							{
+								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+								// @ts-ignore
+								item.label
+							}
+						</label>
 					</div>
 				)}
 			</StyledItem>
 		);
 	};
 
+	// Отображение выпадающего списка с опциями и фильтром
+	const dropdownRenderer = ({
+		props,
+		state,
+		methods,
+	}: SelectRenderer<string | object>) => {
+		const regexp = new RegExp(state.search, 'i');
+
+		return (
+			<div>
+				<Search>
+					<InputSearch
+						search={() => state.search}
+						onChange={methods.setSearch}
+					/>
+				</Search>
+				<StyledItems>
+					{props.options
+						.filter((item) => {
+							console.log('item', item);
+							const searchBy = props.searchBy || '';
+							const labelField = props.labelField || '';
+							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+							// @ts-ignore
+							return regexp.test(item[searchBy] || item[labelField]);
+						})
+						.map((option) => {
+							if (!props.keepSelectedInList && methods.isSelected(option)) {
+								return null;
+							}
+
+							const disabledOption =
+								state?.values?.length >= (maxSelections || Infinity) &&
+								!methods.isSelected(option);
+
+							return (
+								<StyledItem
+									// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+									// @ts-ignore
+									key={option[props.valueField]}
+									style={{
+										color: disabledOption ? '#ccc' : undefined,
+										cursor: disabledOption ? 'not-allowed' : undefined,
+									}}
+									onClick={() => {
+										!disabledOption && methods.addItem(option);
+										methods.searchResults;
+									}}>
+									<input
+										className={styles.customCheckbox}
+										type="checkbox"
+										checked={methods.isSelected(option)}
+										onChange={() => {
+											methods.addItem(option);
+										}}
+									/>
+									<label>
+										{
+											// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+											// @ts-ignore
+											option[props.labelField]
+										}
+									</label>
+								</StyledItem>
+							);
+						})}
+				</StyledItems>
+			</div>
+		);
+	};
+
+	const buttonMenuStyle = {
+		borderRadius: '50px',
+		minHeight: '48px',
+		minWidth: `${buttonWidth}px`,
+	};
+
+	const buttonMenuCaptionStyle = {
+		cursor: 'pointer',
+		padding: '0px 16px',
+		fontFamily: 'sans-serif',
+		fontSize: '16px',
+		fontWeight: '700',
+	};
+
 	return (
-		<StyledSelect
-			multi
-			instanceId={name}
-			name={name}
-			contentRenderer={customContentRenderer}
-			dropdownHandle={false}
-			onChange={onChange}
-			itemRenderer={itemRenderer}
-			options={options}
-			values={values}
-			style={buttonMenuStyle}
-		/>
+		<>
+			{isSearchable ? (
+				<StyledSelect
+					multi
+					name={name}
+					contentRenderer={({ props, state, methods }) =>
+						contentRenderer({ props, state, methods })
+					}
+					dropdownHandle={false}
+					onChange={(options) => onChange(options)}
+					options={options}
+					values={values}
+					style={buttonMenuStyle}
+					dropdownRenderer={({ props, state, methods }) =>
+						dropdownRenderer({ props, state, methods })
+					}
+					searchable={isSearchable}
+				/>
+			) : (
+				<StyledSelect
+					multi
+					name={name}
+					contentRenderer={({ props, state, methods }) =>
+						contentRenderer({ props, state, methods })
+					}
+					dropdownHandle={false}
+					onChange={(options) => onChange(options)}
+					options={options}
+					values={values}
+					style={buttonMenuStyle}
+					itemRenderer={({ item, itemIndex, props, state, methods }) =>
+						itemRenderer({ item, itemIndex, props, state, methods })
+					}
+					searchable={isSearchable}
+				/>
+			)}
+		</>
 	);
-};
-
-const buttonMenuStyle = {
-	borderRadius: '50px',
-	minHeight: '48px',
-	minWidth: '124px',
-};
-
-const buttonMenuCaptionStyle = {
-	cursor: 'pointer',
-	padding: '0px 16px',
-	fontFamily: 'sans-serif',
-	fontSize: '16px',
-	fontWeight: '700',
 };
 
 const StyledSelect = styled(Select)`
@@ -117,7 +246,10 @@ const StyledSelect = styled(Select)`
 		flex-direction: column;
 		border-radius: 12px;
 		max-height: 308px;
-		overflow: auto;
+		${({ searchable }) =>
+			searchable && searchable !== undefined
+				? 'overflow: hidden;'
+				: 'overflow: auto;'}
 		z-index: 9;
 		background: #fff;
 		box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
@@ -164,9 +296,31 @@ const StyledSelect = styled(Select)`
 	}
 `;
 
+const StyledItems = styled.div`
+	color: black;
+	overflow: auto;
+	min-height: 10px;
+	max-height: 200px;
+
+	::-webkit-scrollbar {
+		width: 8px;
+		background-color: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #e2e8f0;
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: #cdd4db;
+	}
+`;
+
 const StyledItem = styled.div`
 	padding: 8px 16px;
 	color: #020617;
+
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	font-style: normal;
@@ -188,4 +342,8 @@ const StyledItem = styled.div`
 	:hover {
 		background: #e8eeff;
 	}
+`;
+
+const Search = styled.div`
+	margin: 8px 16px 16px;
 `;
