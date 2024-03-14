@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ProfileEditForm } from '@/entities/profile-edit-form';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import ActiveIcon from '@/shared/assets/icons/activity-icon.svg';
 import Link from 'next/link';
 import styles from './preview-profile.module.scss';
@@ -21,7 +22,8 @@ export const PreviewProfile = () => {
 	return (
 		<section className={styles.preview}>
 			{!visible ? (
-				<>
+				<> 
+				<ProfileLink title='Профиль'/>
 					<div className={styles.previewWrapper}>
 						<div className={styles.previewFoto}>
 							<div className={styles.previewFoto__avatar} />

@@ -31,11 +31,12 @@ export const ProfileEditForm = () => {
 
 	return (
 		<section>
-			<ProfileLink title="Профиль" />
+			
 			{preview ? (
 				<PreviewProfile /*visible={preview} */ />
 			) : (
-				<>
+				<> 
+				<ProfileLink title="Профиль" />
 					<Form onSubmit={handleSubmit} className={styles.fields}>
 						<div className={styles.fields_photo}>
 							<div className={styles.fields_avatar}>
