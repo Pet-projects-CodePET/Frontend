@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ProfileEditForm } from '@/entities/profile-edit-form';
+import ActiveIcon from '@/shared/assets/icons/activity-icon.svg';
 import Link from 'next/link';
 import styles from './preview-profile.module.scss';
 
@@ -33,8 +34,8 @@ export const PreviewProfile = () => {
 									UX/UI designer / UX/UI дизайнер, Middle
 								</p>
 								<p className={styles.previewFoto__infoStatus}>
-									{' '}
-									готов(а) к участию в проекте
+									<ActiveIcon className={styles.previewFoto__infoStatusActive}/>
+									{' готов(а) к участию в проекте'}
 								</p>
 							</div>
 						</div>

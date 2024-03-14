@@ -80,6 +80,9 @@
 		letter-spacing: 0.25px;
 		margin: 0;
 	}
+	&__infoStatusActive {
+		color: $--Colors-Pastel-Green;
+	}
 }
 .previewItem {
 	display: flex;
