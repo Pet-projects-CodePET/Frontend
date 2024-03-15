@@ -30,7 +30,7 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 	const {
 		formState: { isValid, errors },
 	} = useFormContext();
-
+	/* eslint-disable */
 	useEffect(() => {
 		errors.email?.message && setServerEmailError('');
 	}, [errors.email?.message]);
@@ -42,7 +42,7 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 	useEffect(() => {
 		errors.password?.message && setServerPasswordError('');
 	}, [errors.password?.message]);
-
+	/* eslint-enable */
 	return (
 		<>
 			<h1 className={styles.title}>Создать аккаунт</h1>

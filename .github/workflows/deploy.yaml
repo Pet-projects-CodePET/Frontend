@@ -24,6 +24,8 @@ jobs:
           context: ./
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME_FRONT }}/${{ secrets.PROJECT_NAME }}_frontend:latest
+          build-args: |
+            NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,6 +53,7 @@ jobs:
               POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
               PROJECT_NAME=${{ secrets.PROJECT_NAME }}
               SECRET_KEY=${{ secrets.SECRET_KEY }}
+              DJANGO_SETTINGS_MODULE=${{ secrets.DJANGO_SETTINGS_MODULE }}
               DOCKERHUB_USERNAME_FRONT=${{ secrets.DOCKERHUB_USERNAME_FRONT }}
               DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
               ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}

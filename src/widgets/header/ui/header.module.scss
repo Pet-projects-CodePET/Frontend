@@ -7,6 +7,7 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		width: 1160px;
 	}
 
@@ -23,6 +24,7 @@
 		width: 195px;
 		height: 50px;
 	}
+
 	&__logo {
 		width: 195px;
 		height: 50px;
@@ -46,6 +48,12 @@
 		width: 64px;
 		height: 64px;
 	}
+	&__linkProfileMobile {
+		display: none;
+	}
+	&__iconLogin {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 1199px) {
@@ -54,6 +62,8 @@
 
 		&__container {
 			width: 100%;
+			display: flex;
+			align-items: center;
 		}
 
 		&__buttonBurger {
@@ -63,6 +73,7 @@
 			border: none;
 			margin-left: 16px;
 		}
+
 		&__buttonBurgerIcon {
 			width: 24px;
 			height: 24px;
@@ -75,10 +86,12 @@
 		&__buttonProject {
 			margin-left: 0;
 		}
+
 		&__link {
 			width: 143px;
 			height: 40px;
 		}
+
 		&__logo {
 			width: 143px;
 			height: 40px;
@@ -88,8 +101,8 @@
 
 @media screen and (max-width: 779px) {
 	.header {
-		padding: 16px;
-		max-width: 500px;
+		padding: 8px 16px;
+		min-width: 100%;
 		margin: 0 auto;
 
 		&__wrapper {
@@ -99,12 +112,24 @@
 		&__linkProfile {
 			display: none;
 		}
+		&__linkProfileMobile {
+			display: block;
+			width: 48px;
+			height: 48px;
+			margin-right: 16px;
+		}
+
 		&__buttonProject {
 			display: none;
 		}
+
 		&__buttonLogin {
+			width: 48px;
+		}
+		&__button {
 			display: none;
 		}
+
 		&__link {
 			width: 145px;
 			height: 40px;
@@ -112,7 +137,16 @@
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
+
 		&__logo {
+			display: none;
+		}
+		&__iconLogin {
+			display: block;
+			width: 48px;
+			height: 48px;
+		}
+		&__buttonBurger {
 			display: none;
 		}
 	}

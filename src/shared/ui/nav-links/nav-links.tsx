@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import styles from './nav-links.module.scss';
+import IconRight from '@/shared/assets/icons/chevron-right-icon.svg';
 
 const links = [
 	{ name: 'Профиль', href: '/profile' },
@@ -29,6 +30,7 @@ export const NavLinks = () => {
 							[styles.linkActive]: pathname === link.href,
 						})}>
 						{link.name}
+						<IconRight className={styles.link__iconRight} />
 					</Link>
 				);
 			})}
