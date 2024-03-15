@@ -1,10 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MainButton } from '@/shared/ui';
-import { Input } from '@/shared/ui';
-import { Form } from '@/shared/ui';
-import { useForm } from 'react-hook-form';
+import { MainButton, Input, Form } from '@/shared/ui';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
 import styles from './profile-settings.module.scss';
 import Link from 'next/link';
@@ -13,7 +10,6 @@ import { MenuForVisible } from '@/entities/menu-for-visible';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
 
 export const ProfileSettings = () => {
-	const { register } = useForm();
 	const [checked, setChecked] = useState(false);
 	const [showVisibleMenu, setShowVisibleMenu] = useState(false);
 	const [showVisibleMenuTwo, setShowVisibleMenuTwo] = useState(false);
@@ -108,26 +104,23 @@ export const ProfileSettings = () => {
 				<div className={styles.formSettings__listPassword}>
 					<Input
 						className={styles.formSettings__input}
-						label="password"
+						name="password"
 						type="password"
 						labelName="Старый пароль"
-						register={register}
 						description
 					/>
 					<Input
 						className={styles.formSettings__input}
-						label="new-password"
+						name="new-password"
 						type="password"
 						labelName="Новый пароль"
-						register={register}
 						description
 					/>
 					<Input
 						className={styles.formSettings__input}
-						label="repeat-new-password"
+						name="repeat-new-password"
 						type="password"
 						labelName="Новый пароль еще раз"
-						register={register}
 						description
 					/>
 				</div>

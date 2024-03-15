@@ -20,7 +20,6 @@ export const MainPage = () => {
 			localStorage.setItem('token', urlToken);
 		}
 
-		// Проверяем, есть ли токен в localStorage
 		const token = localStorage.getItem('token');
 		if (token) {
 			setIsLoggedIn(true);

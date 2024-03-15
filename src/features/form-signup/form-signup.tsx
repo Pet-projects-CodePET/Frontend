@@ -30,6 +30,7 @@ export const FormSignupFeature: FC = () => {
 	};
 
 	const handleSubmit = (userData: IUser) => {
+		localStorage.setItem('userData', JSON.stringify(userData));
 		createUser(userData)
 			.unwrap()
 			.then((payload) => console.log('fulfilled', payload))
