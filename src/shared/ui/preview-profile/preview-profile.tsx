@@ -8,7 +8,6 @@ import Link from 'next/link';
 import styles from './preview-profile.module.scss';
 
 export const PreviewProfile = () => {
-
 	useEffect(() => {
 		window.scroll(0, 0);
 	}, []);
@@ -20,10 +19,10 @@ export const PreviewProfile = () => {
 	};
 
 	return (
-		<section className={styles.preview}>
+		<>
 			{!visible ? (
-				<> 
-				<ProfileLink title='Профиль'/>
+				<>
+					<ProfileLink title="Профиль" />
 					<div className={styles.previewWrapper}>
 						<div className={styles.previewFoto}>
 							<div className={styles.previewFoto__avatar} />
@@ -32,15 +31,19 @@ export const PreviewProfile = () => {
 									Длиннофамильная Екатерина
 								</h1>
 								<p className={styles.previewFoto__infoTelegram}>@nickname</p>
+
 								<p className={styles.previewFoto__infoRole}>
 									UX/UI designer / UX/UI дизайнер, Middle
 								</p>
 								<p className={styles.previewFoto__infoStatus}>
-									<ActiveIcon className={styles.previewFoto__infoStatusActive}/>
+									<ActiveIcon
+										className={styles.previewFoto__infoStatusActive}
+									/>
 									{' готов(а) к участию в проекте'}
 								</p>
 							</div>
 						</div>
+
 						<div className={styles.previewItem}>
 							<h2 className={styles.previewItem__title}>Навыки</h2>
 							<p className={styles.previewItem__subtitle}>
@@ -60,35 +63,30 @@ export const PreviewProfile = () => {
 								Excepteur sint occaecat cupidatat non proident, sunt in culpa
 								qui officia deserunt mollit anim id est laborum, но приходится.
 							</p>
-							</div>
+						</div>
 
-							<div className={styles.previewItem}>
-								<h2 className={styles.previewItem__title}>
-									Ссылка на портфолио
-								</h2>
-								<Link
-									href="#"
-									target="_blank"
-									className={styles.previewItem__subtitle_link}>
-									behance
-								</Link>
-							</div>
+						<div className={styles.previewItem}>
+							<h2 className={styles.previewItem__title}>Ссылка на портфолио</h2>
+							<Link
+								href="#"
+								target="_blank"
+								className={styles.previewItem__subtitle_link}>
+								behance
+							</Link>
+						</div>
 
-							<div className={styles.previewItem}>
-								<h2 className={styles.previewItem__title}>
-									Контакты для связи
-								</h2>
-							</div>
-							<div className={styles.previewItem}>
-								<h2 className={styles.previewItem__title}>Дата рождения</h2>
-								<p className={styles.previewItem__subtitle}>01.02.1987</p>
-							</div>
+						<div className={styles.previewItem}>
+							<h2 className={styles.previewItem__title}>Контакты для связи</h2>
+						</div>
+						<div className={styles.previewItem}>
+							<h2 className={styles.previewItem__title}>Дата рождения</h2>
+							<p className={styles.previewItem__subtitle}>01.02.1987</p>
+						</div>
 
-							<div className={styles.previewItem}>
-								<h2 className={styles.previewItem__title}>Регион</h2>
-								<p className={styles.previewItem__subtitle}>Россия, Омск</p>
-							</div>
-						
+						<div className={styles.previewItem}>
+							<h2 className={styles.previewItem__title}>Регион</h2>
+							<p className={styles.previewItem__subtitle}>Россия, Омск</p>
+						</div>
 
 						<button
 							className={styles.previewButton}
@@ -101,6 +99,6 @@ export const PreviewProfile = () => {
 			) : (
 				<ProfileEditForm />
 			)}
-		</section>
+		</>
 	);
 };

@@ -16,7 +16,7 @@
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 24px; /* 150% */
+	line-height: 24px;
 	letter-spacing: 0.25px;
 	border: none;
 	background-color: transparent;
@@ -39,7 +39,7 @@
 		display: flex;
 		flex-direction: column;
 		margin: 0;
-		gap: 8px;
+		gap: 16px;
 	}
 	&__infoName {
 		color: $--Foreground-default;
@@ -84,6 +84,10 @@
 		color: $--Colors-Pastel-Green;
 	}
 }
+.previewFotoItem {
+	display: flex;
+	flex-direction: column;
+}
 .previewItem {
 	display: flex;
 	flex-direction: column;
@@ -109,11 +113,28 @@
 		letter-spacing: 0.25px;
 		margin: 0;
 		&_link {
-		color: $--Foreground-link-default;
-		font-family: $--open-sans-font;
-		font-size: 16px;
+			color: $--Foreground-link-default;
+			font-family: $--open-sans-font;
+			font-size: 16px;
 		}
 	}
-
 }
 
+@media screen and (max-width: 779px) {
+	.previewWrapper {
+		border: none;
+	}
+	.previewFoto {
+		&__infoName {
+			font-size: 16px;
+		}
+		&__infoTelegram {
+			font-size: 14px;
+		}
+	}
+}
+@media screen and (max-width: 450px) {
+	.previewFoto {
+		flex-direction: column;
+	}
+}

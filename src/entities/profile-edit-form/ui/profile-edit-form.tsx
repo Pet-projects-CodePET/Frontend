@@ -30,10 +30,9 @@ export const ProfileEditForm = () => {
 	};
 
 	return (
-		<section>
-			
+		<>		
 			{preview ? (
-				<PreviewProfile /*visible={preview} */ />
+				<PreviewProfile />
 			) : (
 				<> 
 				<ProfileLink title="Профиль" />
@@ -148,6 +147,6 @@ export const ProfileEditForm = () => {
 					</Form>
 				</>
 			)}
-		</section>
+		</>
 	);
 };

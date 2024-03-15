@@ -69,7 +69,7 @@
 		width: 100%;
 		div {
 			border-radius: 12px;
-		//	border: 1px solid $--border-default;
+			//	border: 1px solid $--border-default;
 			min-height: 52px;
 			padding: 12px;
 		}
@@ -100,15 +100,14 @@
 		}
 	}
 	&__checkbox {
-	    display: flex;
+		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		box-sizing: border-box;	
+		box-sizing: border-box;
 	}
 	&__checkboxTitle {
 		display: block;
-		min-width: 267px;
 		color: $--Foreground-default;
 		font-family: $--open-sans-font;
 		font-size: 16px;
@@ -143,26 +142,27 @@
 
 .button__preview {
 	display: block;
-		padding: 0 8px;
-		font-family: $--open-sans-font;
-		color: $--Foreground-link-default;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 24px; /* 150% */
-		letter-spacing: 0.25px;
-		border: none;
-		background-color: transparent;
-		cursor: pointer;
-		width: 250px;
+	padding: 0 8px;
+	font-family: $--open-sans-font;
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	min-width: 250px;
 }
 
-
-
-	
 @media screen and (max-width: 779px) {
 	.fields {
 		margin-top: 32px;
+		border: none;
+		&_buttonsContainer {
+			flex-direction: column;
+			gap: 26px;
+		}
 	}
 }
-
