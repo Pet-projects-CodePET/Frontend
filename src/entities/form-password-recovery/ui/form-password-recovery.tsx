@@ -15,6 +15,7 @@ export const FormFieldsPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 	handlePasswordReSend,
 	serverErrorText,
 	captchaVerified,
+	serverSuccessText,
 	onLoad,
 	setToken,
 }) => {
@@ -29,9 +30,7 @@ export const FormFieldsPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 		<>
 			<h1 className={styles.title}>Восстановление пароля</h1>
 			{isPasswordSend && (
-				<p className={styles.title_message}>
-					На ваш e-mail был отправлен новый пароль
-				</p>
+				<p className={styles.title_message}>{serverSuccessText}</p>
 			)}
 			<div className={styles.container}>
 				<div className={styles.input_list}>
@@ -40,6 +39,8 @@ export const FormFieldsPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 						labelName="E-mail"
 						// placeholder="Введите e-mail"
 						error={errors.email ? `${errors.email?.message}` : ''}
+						description={!isPasswordSend}
+						descrText={'На указанную почту придет пароль'}
 					/>
 					{isPasswordSend && (
 						<Input

@@ -4,5 +4,6 @@ export type FormPasswordRecoveryProps = {
 	isPasswordSend: boolean;
 	handlePasswordReSend: () => void;
 	serverErrorText: string;
+	serverSuccessText: string;
 	captchaVerified: boolean;
 };
