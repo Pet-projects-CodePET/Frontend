@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { getClassNameforTag } from '@/shared/utils';
+import  LikeIcon  from '@/shared/assets/icons/heart.svg';
 
 import { ProjectCardFullType } from './type';
 import styles from './project-card-full.module.scss';
@@ -20,10 +21,6 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	return (
 		<article className={styles.container}>
 			<div className={styles.topInfo}>
-				<div className={styles.calendarContainer}>
-					<CalendarIcon className={styles.calendarIcon} />
-					<div className={styles.calendarText}>{duration}</div>
-				</div>
 				<div className={styles.activeStateContainer}>
 					<ActivityIcon
 						className={clsx(
@@ -36,6 +33,13 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 						{isActiveProject ? 'активный' : 'неактивный'}
 					</div>
 				</div>
+				<div className={styles.likeContainer}>
+					<LikeIcon className={styles.likeIcon} />
+				</div>
+			</div>
+			<div className={styles.calendarContainer}>
+				<CalendarIcon className={styles.calendarIcon} />
+				<div className={styles.calendarText}>{duration}</div>
 			</div>
 			<h2 className={styles.title}>{title}</h2>
 			<h3 className={styles.subtitle}>{subtitle}</h3>
