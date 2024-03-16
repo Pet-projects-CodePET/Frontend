@@ -30,6 +30,13 @@
 		border: 1px solid $--border-default;
 		background: $--bg-primary;
 		z-index: 2;
+
+		@media screen and (max-width: 779px) {
+			top: 0;
+			background-color: $--Neutral-Grey;
+			width: 100%;
+			padding: 32px 0;
+		}
 	}
 
 	&_content {
@@ -57,4 +64,10 @@
 	right: 24px;
 	top: 24px;
 	cursor: pointer;
+
+	@media screen and (max-width: 779px) {
+		right: 20px;
+		top: 65px;
+		z-index: 10;
+	}
 }
