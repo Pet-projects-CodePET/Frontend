@@ -60,20 +60,18 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 				))}
 			</ul>
 			<p className={styles.groupName}>Навыки</p>
-			<div className={styles.skillsList}>
-				{skills.map((skill, id, arr) => (
-					<p className={styles.skill} key={id}>
+			<ul className={styles.skillsList}>
+				{skills.map((skill, id) => (
+					<li className={styles.skill} key={id}>
 						{skill}
-						{id !== arr.length - 1 && `,`}
-					</p>
+					</li>
 				))}
-			</div>
+			</ul>
 			{isActiveProject && (
-        <Link className={styles.link} href="/">
-          <MainButton variant='primary' width='regular' type='button'>
-
-					Откликнуться
-          </MainButton>
+				<Link className={styles.link} href="/">
+					<MainButton variant="primary" width="regular" type="button">
+						Откликнуться
+					</MainButton>
 				</Link>
 			)}
 		</article>

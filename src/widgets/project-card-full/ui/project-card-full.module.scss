@@ -6,6 +6,7 @@
 	background: $--bg-primary;
 	padding: 24px 32px;
 	font-family: $--open-sans-font;
+	color: $--Foreground-default;
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
@@ -21,11 +22,13 @@
 .calendarContainer {
 	display: flex;
 	align-items: center;
-	padding-top: 20px;
+	padding-top: 15px;
 }
 
 .calendarIcon {
-	padding-right: 8px;
+	padding-right: 13px;
+	width: 22px;
+	height: 22px;
 	color: $--Foreground-subtitle;
 }
 
@@ -34,15 +37,17 @@
 	font-weight: 400;
 	line-height: 19px;
 	letter-spacing: 0.25px;
+	color: $--foreground-muted;
 }
 
 .activeStateContainer {
 	display: flex;
 	align-items: center;
+	padding: 5px 0 0 5px;
 }
 
 .activeStateIcon {
-	padding-right: 8px;
+	padding-right: 14px;
 
 	&_type_active {
 		color: $--Colors-Pastel-Green;
@@ -58,6 +63,7 @@
 	font-weight: 400;
 	line-height: 19px;
 	letter-spacing: 0.25px;
+	color: $--foreground-muted;
 }
 
 .likeContainer {
@@ -66,40 +72,37 @@
 	right: 0;
 	border-radius: 50%;
 	border: 1px solid $--border-default;
-	width: 48px;
-	height: 48px;
+	width: 40px;
+	height: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .likeIcon {
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
 }
 
 .title {
-	color: $--Foreground-default;
 	font-size: 24px;
 	font-weight: 600;
 	line-height: 30px;
 	letter-spacing: 0%;
-	padding-top: 24px;
+	padding-top: 22px;
 	margin: 0;
 }
 
 .subtitle {
-	color: $--Foreground-default;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 19px;
 	letter-spacing: 0.25px;
-	padding-top: 8px;
+	padding-top: 7px;
 	margin: 0;
 }
 
 .mainText {
-	color: $--Foreground-default;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 24px;
@@ -120,14 +123,14 @@
 	font-weight: 700;
 	line-height: normal;
 	letter-spacing: 0.25px;
-	padding-top: 24px;
+	padding-top: 17px;
 	margin: 0;
 }
 
 .professionsList {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 16px 0 0;
+	padding: 9px 0 0;
 	margin: 0;
 	list-style: none;
 }
@@ -135,12 +138,9 @@
 .profession {
 	margin: 8px 8px 0 0;
 	white-space: nowrap;
-	color: $--Foreground-default;
+
 	border-radius: 20px;
-	padding: 4px 12px;
-	font-feature-settings:
-		'clig' off,
-		'liga' off;
+	padding: 4px 13px;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 19px;
@@ -168,21 +168,25 @@
 
 .skillsList {
 	display: flex;
-	padding-top: 16px;
+	padding: 9px 0 0;
+	margin: 0;
+	list-style: none;
 }
 
 .skill {
-	color: $--Neutral-Light-Grey-03;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 400;
-	line-height: 24px;
+	line-height: 19px;
 	letter-spacing: 0.25px;
-	padding-right: 8px;
-	margin: 0;
+	margin: 8px 8px 0 0;
+	padding: 4px 13px;
+
+	border-radius: 20px;
+	border: 1px solid $--border-default;
 }
 
 .link {
 	display: flex;
-	justify-content: flex-end;
-	padding-top: 24px;
+	justify-content: flex-start;
+	padding-top: 21px;
 }
