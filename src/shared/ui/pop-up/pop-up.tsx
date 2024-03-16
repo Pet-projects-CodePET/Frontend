@@ -2,7 +2,7 @@
 
 import React, { ReactNode, useEffect } from 'react';
 import style from './pop-up.module.scss';
-import XmarkIcon from '@/shared/assets/icons/xmark.svg';
+import XmarkIcon from '@/shared/assets/icons/close-icon.svg';
 
 type PopUpProps = {
 	children: ReactNode;
