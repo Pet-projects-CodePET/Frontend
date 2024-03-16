@@ -32,10 +32,12 @@
 		z-index: 2;
 
 		@media screen and (max-width: 779px) {
+			overflow-y: auto;
+			height: 100%;
+			width: 100%;
+			padding: 32px 0 0;
 			top: 0;
 			background-color: $--Neutral-Grey;
-			width: 100%;
-			padding: 32px 0;
 		}
 	}
 
