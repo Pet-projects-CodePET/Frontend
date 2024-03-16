@@ -1,13 +1,21 @@
 @import '@/shared/style/variables';
 
+%normalText {
+	font-family: $--open-sans-font;
+	font-weight: 700;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+}
+
 .form {
 	position: relative;
 	max-width: 760px;
 	width: 100%;
 	box-sizing: border-box;
-	border-radius: var(--radius-M, 12px);
-	// border: 1px solid var(--border-default, #e2e8f0);
-	background: var(--bg-primary, #feffff);
+	border-radius: 12px;
+	// border: 1px solid  $--border-default;
+	background: $--bg-primary;
 	// padding: 56px;
 
 	@media screen and (max-width: 779px) {
@@ -28,27 +36,16 @@
 }
 
 .title {
-	color: var(--color-foreground-default, #1c1c1e);
-	font-feature-settings:
-		'clig' off,
-		'liga' off;
-
-	font-family: 'Open Sans';
+	@extend %normalText;
+	color: $--Neutral-Black;
 	font-size: 28px;
 	font-style: normal;
-	font-weight: 700;
 	line-height: 32px;
 	letter-spacing: -0.28px;
 	margin: 0 0 32px 0;
 
 	@media screen and (max-width: 779px) {
-		color: var(--color-foreground-default, #1c1c1e);
-		font-feature-settings:
-			'clig' off,
-			'liga' off;
-		font-family: 'Open Sans';
 		font-size: 20px;
-		font-weight: 700;
 		line-height: normal;
 		letter-spacing: 0.25px;
 		margin: 0 0 20px 0;
@@ -62,28 +59,15 @@
 }
 
 .groupName {
+	@extend %normalText;
 	margin: 0;
-	color: var(--foreground-default, #020617);
-	font-feature-settings:
-		'clig' off,
-		'liga' off;
-	font-family: 'Open Sans';
+	color: $--Foreground-default;
 	font-size: 20px;
-	font-weight: 700;
 	line-height: normal;
 	letter-spacing: 0.25px;
 
 	@media screen and (max-width: 779px) {
-		color: var(--foreground-default, #020617);
-		font-feature-settings:
-			'clig' off,
-			'liga' off;
-		font-family: 'Open Sans';
 		font-size: 16px;
-		font-style: normal;
-		font-weight: 700;
-		line-height: normal;
-		letter-spacing: 0.25px;
 	}
 }
 
@@ -132,7 +116,7 @@
 
 .divider {
 	opacity: 0.2;
-	background: var(--foreground-subtle, #94a3b8);
+	background: $--Foreground-subtitle;
 	margin: 22px 0 30px;
 
 	@media screen and (max-width: 779px) {

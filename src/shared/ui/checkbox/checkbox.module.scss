@@ -18,7 +18,7 @@
 	align-items: center;
 	gap: 8px;
 	cursor: pointer;
-	color: var(--foreground-default, #020617);
+	color: $--Foreground-default;
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
