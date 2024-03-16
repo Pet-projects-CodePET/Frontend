@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { getClassNameforTag } from '@/shared/utils';
 import LikeIcon from '@/shared/assets/icons/heart.svg';
+import { MainButton } from '@/shared/ui';
 
 import { ProjectCardFullType } from './type';
 import styles from './project-card-full.module.scss';
@@ -68,8 +69,11 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 				))}
 			</div>
 			{isActiveProject && (
-				<Link className={styles.link} href="/">
+        <Link className={styles.link} href="/">
+          <MainButton variant='primary' width='regular' type='button'>
+
 					Откликнуться
+          </MainButton>
 				</Link>
 			)}
 		</article>
