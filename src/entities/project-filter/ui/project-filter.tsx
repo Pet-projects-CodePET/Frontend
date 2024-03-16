@@ -6,15 +6,22 @@ import clsx from 'clsx';
 
 import { Form } from '@/shared/ui/form/form';
 import { MainButton, CheckboxAndRadio } from '@/shared/ui';
-import { CloseIcon } from '@/shared/assets';
+// import { CloseIcon } from '@/shared/assets';
 
 import styles from './project-filter.module.scss';
 
 type ProjectFilterType = {
 	// handleSubmit: (data: React.FormEvent<HTMLFormElement>) => void;
+	isMobile: boolean;
+	months: string[];
+	professions: string[];
 };
 
-export const ProjectFilter: FC<ProjectFilterType> = () => {
+export const ProjectFilter: FC<ProjectFilterType> = ({
+	isMobile,
+	months,
+	professions,
+}) => {
 	const { reset } = useForm();
 	const [isExpandedMonthsList, setIsExpandedMonthsList] = useState(false);
 	const [isExpandedProfessionsList, setIsExpandedProfessionsList] =
@@ -24,43 +31,13 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 		console.log(data);
 	};
 
-	const handleCloseFilter = () => {
-		console.log('закрытие фильтра');
-	};
+	// const handleCloseFilter = () => {
+	// 	console.log('закрытие фильтра');
+	// };
 
 	const handleReset = () => {
 		reset();
 	};
-
-	const isMobile = true;
-
-	const months = [
-		'Все',
-		'Январь',
-		'Февраль',
-		'Март',
-		'Апрель',
-		'Май',
-		'Июнь',
-		'Июль',
-		'Август',
-		'Сентябрь',
-		'Октябрь',
-		'Ноябрь',
-		'Декабрь',
-	];
-
-	const professions = [
-		'Инженер по нагрузочному тестированию / Performance Engineer',
-		'Десктоп разработчик / Software Developer',
-		'DevOps-инженер / DevOps',
-		'Инженер по ...',
-		'Десктоп разработчик ...',
-		'DevOps-инженер .....',
-		'DevOps-инженер .....',
-		'DevOps-инженер .....',
-		'DevOps-инженер .....',
-	];
 
 	const getMonthsList = (months: string[], isExpandedList: boolean) => {
 		if (!isExpandedList) return months.slice(0, 6);
@@ -85,9 +62,9 @@ export const ProjectFilter: FC<ProjectFilterType> = () => {
 
 	return (
 		<Form className={styles.form} onSubmit={handleSubmit}>
-			{isMobile && (
+			{/* {isMobile && (
 				<CloseIcon onClick={handleCloseFilter} className={styles.closeIcon} />
-			)}
+			)} */}
 			<h2 className={styles.title}>Фильтры</h2>
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Уровень квалификации</p>
