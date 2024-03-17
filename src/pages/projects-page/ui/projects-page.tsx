@@ -84,17 +84,19 @@ export const Projects = () => {
 						tooltip="Не более 2 специальностей"
 					/>
 				</Tooltip>
-
-				<MultiSelect
-					name="select-skills"
-					caption="Навыки"
-					options={skills}
-					values={[]}
-					onChange={handleSkillsChange}
-					maxSelections={5}
-					buttonWidth={131}
-					isSearchable
-				/>
+				<Tooltip text="Не более 5 навыков">
+					<MultiSelect
+						name="select-skills"
+						caption="Навыки"
+						options={skills}
+						values={[]}
+						onChange={handleSkillsChange}
+						maxSelections={5}
+						buttonWidth={131}
+						isSearchable
+						tooltip="Не более 5 навыков"
+					/>
+				</Tooltip>
 			</div>
 			<div className={styles.projectsContainer}>
 				{projectsArray.map((project) => {
