@@ -11,6 +11,7 @@ import styles from './projects-page.module.scss';
 import { SingleSelect } from '@/shared/ui/single-select/single-select';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
+import { Tooltip } from '@/widgets/tooltip';
 
 export const Projects = () => {
 	const handleStatusProjectChange = (selectedOptions: (string | object)[]) => {
@@ -52,7 +53,7 @@ export const Projects = () => {
 					values={[]}
 					onChange={handleMonthChange}
 					selectedAll={true}
-					buttonWidth={124}
+					buttonWidth={114}
 				/>
 				<SingleSelect
 					name="select-recruitment-status"
@@ -61,25 +62,29 @@ export const Projects = () => {
 					value={undefined}
 					onChange={handleRecruitmentStatusChange}
 				/>
-				<MultiSelect
-					name="select-specialties"
-					caption="Специальность"
-					options={specialties}
-					values={[
-						{
-							value: 'software-developer',
-							label: 'Десктоп разработчик / Software Developer',
-						},
-						{
-							value: 'performance-engineer',
-							label:
-								'Инженер по нагрузочному тестированию / Performance Engineer',
-						},
-					]}
-					onChange={handleSpecialtiesChange}
-					maxSelections={2}
-					buttonWidth={207}
-				/>
+				<Tooltip text="Не более 2 специальностей">
+					<MultiSelect
+						name="select-specialties"
+						caption="Специальность"
+						options={specialties}
+						values={[
+							{
+								value: 'software-developer',
+								label: 'Десктоп разработчик / Software Developer',
+							},
+							{
+								value: 'performance-engineer',
+								label:
+									'Инженер по нагрузочному тестированию / Performance Engineer',
+							},
+						]}
+						onChange={handleSpecialtiesChange}
+						maxSelections={2}
+						buttonWidth={207}
+						tooltip="Не более 2 специальностей"
+					/>
+				</Tooltip>
+
 				<MultiSelect
 					name="select-skills"
 					caption="Навыки"
@@ -87,7 +92,7 @@ export const Projects = () => {
 					values={[]}
 					onChange={handleSkillsChange}
 					maxSelections={5}
-					buttonWidth={142}
+					buttonWidth={131}
 					isSearchable
 				/>
 			</div>

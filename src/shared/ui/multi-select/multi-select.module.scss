@@ -61,3 +61,11 @@
 	color: #ccc;
 	cursor: not-allowed;
 }
+
+.iconInformation {
+	display: none;
+
+	@media screen and (max-width: 1199px) {
+		display: flex;
+	}
+}

@@ -7,6 +7,7 @@ import Select, {
 } from 'react-dropdown-select';
 import styles from './multi-select.module.scss';
 import { InputSearch } from '../input-search/input-search';
+import IconInformation from '../../assets/icons/information.svg';
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
 	name,
@@ -18,6 +19,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 	maxSelections,
 	buttonWidth,
 	isSearchable,
+	tooltip,
 }) => {
 	// Кнопка с надписью
 	const contentRenderer = ({
@@ -29,6 +31,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 				{caption}{' '}
 				{state.values?.length > 0 &&
 					`(${methods.areAllSelected() ? state.values.length - 1 : state.values.length})`}
+				{tooltip && <IconInformation className={styles.iconInformation} />}
 			</div>
 		);
 	};
@@ -173,6 +176,9 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 		fontFamily: 'sans-serif',
 		fontSize: '16px',
 		fontWeight: '700',
+		display: 'flex',
+		alignItems: 'center',
+		gap: '8px',
 	};
 
 	return (

@@ -10,4 +10,5 @@ export type MultiSelectProps = {
 	maxSelections?: number;
 	buttonWidth: number;
 	isSearchable?: boolean;
+	tooltip?: string;
 };
