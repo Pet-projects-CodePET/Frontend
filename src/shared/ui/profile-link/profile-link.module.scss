@@ -1,8 +1,8 @@
 @import '@/shared/style/variables';
 .profileLink {
-//	min-width: 760px;
-box-sizing: border-box;
-width: 100%;
+	//	min-width: 760px;
+	box-sizing: border-box;
+	width: 100%;
 	&__link {
 		display: none;
 	}
@@ -47,7 +47,7 @@ width: 100%;
 @media screen and (max-width: 779px) {
 	.profileLink {
 		padding: 20px 32px 0 32px;
-	//	min-width: 100%;
+		//	min-width: 100%;
 		&__link {
 			margin-top: 0;
 		}

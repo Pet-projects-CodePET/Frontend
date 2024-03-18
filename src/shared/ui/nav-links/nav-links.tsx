@@ -30,9 +30,7 @@ export const NavLinks = () => {
 							[styles.linkActive]: pathname === link.href,
 						})}>
 						{link.name}
-						<IconRight className={styles.link__iconRight}/>
-						
-						
+						<IconRight className={styles.link__iconRight} />
 					</Link>
 				);
 			})}

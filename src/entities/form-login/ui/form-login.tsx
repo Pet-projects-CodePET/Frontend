@@ -1,44 +1,49 @@
 'use client';
 
 import React, { FC, useRef } from 'react';
-import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { IconButtonList } from '@/entities/icon-button-list';
-import { Form, Input, MainButton } from '@/shared/ui';
+import { Input, MainButton } from '@/shared/ui';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import styles from './form-login.module.scss';
 import type { FormLoginProps } from './types';
+import { useFormContext } from 'react-hook-form';
 
-export const FormLogin: FC<FormLoginProps> = ({
+export const FormFieldsLogin: FC<FormLoginProps> = ({
 	onLoad,
 	setToken,
-	handleSubmit,
+	captchaVerified,
+	serverErrorText,
 }) => {
-	const { register } = useForm();
-
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
 
+	const {
+		formState: { isValid, errors },
+	} = useFormContext();
+
 	return (
-		<Form onSubmit={handleSubmit}>
+		<>
 			<h1 className={styles.title}>Добро пожаловать!</h1>
 			<div className={styles.container}>
 				<div className={styles.input_list}>
 					<Input
-						label="email"
+						name="email"
 						labelName="E-mail"
 						// placeholder="Введите e-mail"
-						register={register}
-						error={'Так выглядит ошибка'}
+						error={errors.email ? `${errors.email?.message}` : ''}
 					/>
 					<Input
-						link={{ text: 'Забыли пароль?', href: '/login/password-recovery' }}
-						label="password"
+						link={{
+							text: 'Забыли пароль?',
+							href: '/login/password-recovery',
+						}}
+						name="password"
 						labelName="Пароль"
 						type={'password'}
-						register={register}
 						// placeholder="Введите пароль"
+						error={errors.password ? `${errors.password?.message}` : ''}
 					/>
 				</div>
 				<HCaptcha
@@ -47,9 +52,13 @@ export const FormLogin: FC<FormLoginProps> = ({
 					onLoad={onLoad}
 					ref={captchaRef}
 				/>
-				<MainButton variant={'primary'} width={'max'}>
+				<MainButton
+					variant={'primary'}
+					width={'max'}
+					disabled={!captchaVerified || !isValid}>
 					{'Войти'}
 				</MainButton>
+				<span className={styles.server_error}>{serverErrorText}</span>
 			</div>
 			<div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>
@@ -63,6 +72,6 @@ export const FormLogin: FC<FormLoginProps> = ({
 					</Link>
 				</p>
 			</div>
-		</Form>
+		</>
 	);
 };
