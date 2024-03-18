@@ -2,28 +2,101 @@
 
 import React from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
-import { SingleSelect } from '@/shared/ui/single-select/single-select';
+import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { projectsArray } from '@/shared/constants/projects/projects';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
+import { months } from '@/shared/constants/months/months';
 import styles from './projects-page.module.scss';
+import { SingleSelect } from '@/shared/ui/single-select/single-select';
+import { specialties } from '@/shared/constants/specialties/specialties';
+import { skills } from '@/shared/constants/skills/skills';
+import { Tooltip } from '@/widgets/tooltip';
 
 export const Projects = () => {
+	const handleStatusProjectChange = (selectedOptions: (string | object)[]) => {
+		console.info('selected option: ', selectedOptions?.[0]);
+	};
+
+	const handleMonthChange = (selectedItems: object) => {
+		console.info('selected options: ', selectedItems);
+	};
+
+	const handleRecruitmentStatusChange = (
+		selectedOptions: (string | object)[]
+	) => {
+		console.info('selected option: ', selectedOptions?.[0]);
+	};
+
+	const handleSpecialtiesChange = (selectedItems: object) => {
+		console.info('selected options: ', selectedItems);
+	};
+
+	const handleSkillsChange = (selectedItems: object) => {
+		console.info('selected options: ', selectedItems);
+	};
+
 	return (
 		<>
 			<div className={styles.filterContainer}>
 				<SingleSelect
 					name="select-status"
-					caption="Статус проекта"
 					options={statusOptions}
-					selectedOption={null}
+					buttonLabel="Статус проекта"
+					value={{ value: 'completed', label: 'Завершенный' }}
+					onChange={handleStatusProjectChange}
+				/>
+				<MultiSelect
+					name="select-months"
+					caption="Дата"
+					options={months}
+					values={[]}
+					onChange={handleMonthChange}
+					selectedAll={true}
+					buttonWidth={114}
 				/>
 				<SingleSelect
 					name="select-recruitment-status"
-					caption="Статус набора"
 					options={recruitmentStatus}
-					selectedOption={null}
+					buttonLabel="Статус набора"
+					value={undefined}
+					onChange={handleRecruitmentStatusChange}
 				/>
+				<Tooltip text="Не более 2 специальностей">
+					<MultiSelect
+						name="select-specialties"
+						caption="Специальность"
+						options={specialties}
+						values={[
+							{
+								value: 'software-developer',
+								label: 'Десктоп разработчик / Software Developer',
+							},
+							{
+								value: 'performance-engineer',
+								label:
+									'Инженер по нагрузочному тестированию / Performance Engineer',
+							},
+						]}
+						onChange={handleSpecialtiesChange}
+						maxSelections={2}
+						buttonWidth={207}
+						tooltip="Не более 2 специальностей"
+					/>
+				</Tooltip>
+				<Tooltip text="Не более 5 навыков">
+					<MultiSelect
+						name="select-skills"
+						caption="Навыки"
+						options={skills}
+						values={[]}
+						onChange={handleSkillsChange}
+						maxSelections={5}
+						buttonWidth={131}
+						isSearchable
+						tooltip="Не более 5 навыков"
+					/>
+				</Tooltip>
 			</div>
 			<div className={styles.projectsContainer}>
 				{projectsArray.map((project) => {

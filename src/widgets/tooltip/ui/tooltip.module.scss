@@ -1,0 +1,48 @@
+@import '../../../shared/style/variables.scss';
+
+.tooltipWrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip {
+	position: relative;
+	cursor: pointer;
+}
+
+.tooltipContent {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 25px;
+	padding: 16px;
+	background-color: $--bg-card-hover;
+	border-radius: 12px;
+	z-index: 1;
+	white-space: nowrap;
+
+	color: $--Foreground-default;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+	/* Caption/C1 */
+	font-family: $--open-sans-font;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19px; /* 135.714% */
+	letter-spacing: 0.25px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -17px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 40px;
+		height: 20px;
+		background-image: url(../../../shared/assets/icons/tooltip-polygon.svg);
+		background-size: cover;
+	}
+}
