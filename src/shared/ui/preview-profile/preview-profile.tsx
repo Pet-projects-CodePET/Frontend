@@ -27,20 +27,29 @@ export const PreviewProfile = () => {
 						<div className={styles.previewFoto}>
 							<div className={styles.previewFoto__avatar} />
 							<div className={styles.previewFoto__info}>
-								<h1 className={styles.previewFoto__infoName}>
+
+                               <div className={styles.previewFoto__infoItem}>
+									<h1 className={styles.previewFoto__infoName}>
 									Длиннофамильная Екатерина
 								</h1>
-								<p className={styles.previewFoto__infoTelegram}>@nickname</p>
+								
+									<p className={styles.previewFoto__infoTelegram}>@nickname</p>
+                                </div>
+							
 
-								<p className={styles.previewFoto__infoRole}>
-									UX/UI designer / UX/UI дизайнер, Middle
-								</p>
-								<p className={styles.previewFoto__infoStatus}>
-									<ActiveIcon
-										className={styles.previewFoto__infoStatusActive}
-									/>
-									{' готов(а) к участию в проекте'}
-								</p>
+                                   <div className={styles.previewFoto__infoActive}>
+								   <p className={styles.previewFoto__infoRole}>
+										UX/UI designer / UX/UI дизайнер, Middle
+									</p>
+									<p className={styles.previewFoto__infoStatus}>
+										<ActiveIcon
+											className={styles.previewFoto__infoStatusActive}
+										/>
+										{'готов(а) к участию в проекте'}
+									</p>
+								
+								   </div>
+								
 							</div>
 						</div>
 

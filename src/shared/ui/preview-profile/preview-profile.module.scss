@@ -41,6 +41,16 @@
 		margin: 0;
 		gap: 16px;
 	}
+	&__infoItem {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+	&__infoActive {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
 	&__infoName {
 		color: $--Foreground-default;
 		font-family: $--open-sans-font;
@@ -62,7 +72,7 @@
 	}
 	&__infoRole {
 		color: $--Foreground-default;
-		font-family: 'Open Sans';
+		font-family: $--open-sans-font;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 700;
@@ -72,15 +82,20 @@
 	}
 	&__infoStatus {
 		color: $--Foreground-muted;
-		font-family: 'Open Sans';
+		font-family: $--open-sans-font;
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: 19px; /* 135.714% */
 		letter-spacing: 0.25px;
 		margin: 0;
+		display: flex;
+		gap: 8px;
+		align-items: center;
 	}
 	&__infoStatusActive {
+		width: 16px;
+		height: 16px;
 		color: $--Colors-Pastel-Green;
 	}
 }
@@ -125,16 +140,24 @@
 		border: none;
 	}
 	.previewFoto {
+
 		&__infoName {
 			font-size: 16px;
 		}
 		&__infoTelegram {
 			font-size: 14px;
 		}
+		&__avatar {
+			width: 80px;
+			height: 80px;
+		}
 	}
+	
 }
 @media screen and (max-width: 450px) {
 	.previewFoto {
 		flex-direction: column;
 	}
 }
+
+
