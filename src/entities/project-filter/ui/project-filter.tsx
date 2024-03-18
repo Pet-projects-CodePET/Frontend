@@ -6,16 +6,9 @@ import clsx from 'clsx';
 
 import { Form } from '@/shared/ui/form/form';
 import { MainButton, CheckboxAndRadio } from '@/shared/ui';
-// import { CloseIcon } from '@/shared/assets';
 
+import { ProjectFilterType } from './types';
 import styles from './project-filter.module.scss';
-
-type ProjectFilterType = {
-	// handleSubmit: (data: React.FormEvent<HTMLFormElement>) => void;
-	isMobile: boolean;
-	months: string[];
-	professions: string[];
-};
 
 export const ProjectFilter: FC<ProjectFilterType> = ({
 	isMobile,
@@ -30,10 +23,6 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 	const handleSubmit = (data: React.FormEvent<HTMLFormElement>) => {
 		console.log(data);
 	};
-
-	// const handleCloseFilter = () => {
-	// 	console.log('закрытие фильтра');
-	// };
 
 	const handleReset = () => {
 		reset();
@@ -62,9 +51,6 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 
 	return (
 		<Form className={styles.form} onSubmit={handleSubmit}>
-			{/* {isMobile && (
-				<CloseIcon onClick={handleCloseFilter} className={styles.closeIcon} />
-			)} */}
 			<h2 className={styles.title}>Фильтры</h2>
 			<fieldset className={styles.fieldset}>
 				<p className={styles.groupName}>Уровень квалификации</p>
