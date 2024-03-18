@@ -11,14 +11,18 @@ export const FormSignupConfirmFeature: FC = () => {
 	const [secondsRemaining, setSecondsRemaining] = useState(10);
 
 	const handleSubmit = () => {
-		const userData = JSON.parse(localStorage.getItem('userData') as string);
-		createUser(userData as IUser)
-			.unwrap()
-			.then((payload) => console.log('fulfilled', payload))
-			.catch((error) => {
-				console.log(error.data);
-			});
-		setSecondsRemaining(10);
+		if (typeof window !== 'undefined') {
+			const userData = localStorage.getItem('userData');
+			createUser(userData as IUser)
+				.unwrap()
+				.then((payload) => console.log('fulfilled', payload))
+				.catch((error) => {
+					console.log(error.data);
+				});
+			setSecondsRemaining(10);
+		} else {
+			console.error('localStorage is not available on the server side.');
+		}
 
 		console.log('createUser error', error);
 	};

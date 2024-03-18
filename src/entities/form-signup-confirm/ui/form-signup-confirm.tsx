@@ -9,7 +9,10 @@ interface IFormSignupConfirm {
 }
 
 export const SignupConfirm: FC<IFormSignupConfirm> = ({ secondsRemaining }) => {
-	const { email } = JSON.parse(localStorage.getItem('userData') as string);
+	const userDataString =
+		typeof window !== 'undefined' ? localStorage.getItem('userData') : null;
+	const email = userDataString ? JSON.parse(userDataString).email : '';
+
 	return (
 		<>
 			<div className={styles.container}>
