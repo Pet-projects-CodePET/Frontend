@@ -165,17 +165,10 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 	};
 
 	const buttonMenuStyle = {
-		borderRadius: '50px',
-		minHeight: '48px',
 		minWidth: `${buttonWidth}px`,
 	};
 
 	const buttonMenuCaptionStyle = {
-		cursor: 'pointer',
-		padding: '0px 16px',
-		fontFamily: 'sans-serif',
-		fontSize: '16px',
-		fontWeight: '700',
 		display: 'flex',
 		alignItems: 'center',
 		gap: '8px',
@@ -224,6 +217,23 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
 const StyledSelect = styled(Select)`
 	color: #020617;
+	background-color: #feffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 50px;
+	min-height: 48px;
+	cursor: pointer;
+	padding: 0px 16px;
+	font-family:
+		Open Sans,
+		sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+
+	:hover,
+	:focus {
+		border: 1px solid #8caaff;
+		box-shadow: none;
+	}
 
 	.react-dropdown-select-clear,
 	.react-dropdown-select-dropdown-handle {
