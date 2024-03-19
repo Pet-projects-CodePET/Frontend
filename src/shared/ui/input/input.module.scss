@@ -68,16 +68,17 @@
 	padding: 0;
 	margin: 0;
 	position: absolute;
-	bottom: -23px;
+	top: 54px;
 	color: $--Foreground-error;
 	font-size: 14px;
-	line-height: 136%;
+	line-height: 111%;
 }
 
 .icon {
 	position: absolute;
 	top: 14px;
 	right: 12px;
+
 	&:hover {
 		opacity: 0.7;
 		transition: opacity 100ms ease-in;
@@ -105,9 +106,10 @@
 .inputDescr {
 	color: $--Foreground-subtitle;
 	font-family: $--open-sans-font;
+	margin: -6px 0 0 0;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 20px;
+	line-height: 19px;
 	letter-spacing: 0.25px;
 }

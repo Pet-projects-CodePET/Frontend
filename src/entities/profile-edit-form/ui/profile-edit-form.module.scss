@@ -69,7 +69,7 @@
 		width: 100%;
 		div {
 			border-radius: 12px;
-			border: 1px solid $--border-default;
+			//	border: 1px solid $--border-default;
 			min-height: 52px;
 			padding: 12px;
 		}
@@ -116,4 +116,10 @@
 	line-height: 24px;
 	letter-spacing: 0.25px;
 	margin: 16px 0 8px;
+}
+
+@media screen and (max-width: 779px) {
+	.fields {
+		margin-top: 32px;
+	}
 }

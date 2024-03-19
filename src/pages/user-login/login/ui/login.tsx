@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FormLoginFeature } from '@/features/form-login/form-login';
+import { FormLoginFeature } from '@/features';
 import styles from './login.module.scss';
 
 export const LoginPage = () => {

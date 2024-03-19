@@ -1,50 +1,52 @@
 'use client';
 
 import React, { FC, useRef } from 'react';
-import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { IconButtonList } from '@/entities/icon-button-list';
-import { Form, Input, MainButton } from '@/shared/ui';
+import { Input, MainButton } from '@/shared/ui';
 
 import styles from './form-password-recovery.module.scss';
 import type { FormPasswordRecoveryProps } from './types';
+import { useFormContext } from 'react-hook-form';
 
-export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
+export const FormFieldsPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 	isPasswordSend,
 	handlePasswordReSend,
+	serverErrorText,
+	captchaVerified,
+	serverSuccessText,
 	onLoad,
 	setToken,
-	handleSubmit,
 }) => {
-	const { register } = useForm();
-
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
 
+	const {
+		formState: { isValid, errors },
+	} = useFormContext();
+
 	return (
-		<Form onSubmit={handleSubmit}>
+		<>
 			<h1 className={styles.title}>Восстановление пароля</h1>
 			{isPasswordSend && (
-				<p className={styles.title_message}>
-					На ваш e-mail был отправлен новый пароль
-				</p>
+				<p className={styles.title_message}>{serverSuccessText}</p>
 			)}
 			<div className={styles.container}>
 				<div className={styles.input_list}>
 					<Input
-						label="email"
+						name="email"
 						labelName="E-mail"
 						// placeholder="Введите e-mail"
-						register={register}
-						error={'Так выглядит ошибка'}
+						error={errors.email ? `${errors.email?.message}` : ''}
+						description={!isPasswordSend}
+						descrText={'На указанную почту придет пароль'}
 					/>
 					{isPasswordSend && (
 						<Input
-							label="password"
+							name="password"
 							labelName="Пароль"
 							type={'password'}
-							register={register}
 							// placeholder="Введите пароль"
 						/>
 					)}
@@ -57,9 +59,13 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 						ref={captchaRef}
 					/>
 				)}
-				<MainButton variant={'primary'} width={'max'}>
+				<MainButton
+					variant={'primary'}
+					width={'max'}
+					disabled={!captchaVerified || !isValid}>
 					{!isPasswordSend ? 'Восстановить пароль' : 'Войти'}
 				</MainButton>
+				<span className={styles.server_error}>{serverErrorText}</span>
 			</div>
 			{!isPasswordSend ? (
 				<>
@@ -90,6 +96,6 @@ export const FormPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 					Отправить пароль повторно
 				</Link>
 			)}
-		</Form>
+		</>
 	);
 };

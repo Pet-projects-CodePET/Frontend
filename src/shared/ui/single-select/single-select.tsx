@@ -1,139 +1,169 @@
-'use client';
-
 import React, { FC } from 'react';
-import Select, {
-	components,
-	ControlProps,
-	CSSObjectWithLabel,
-	GroupBase,
-	OptionProps,
-} from 'react-select';
+import styled from '@emotion/styled';
+import Select, { SelectRenderer } from 'react-dropdown-select';
 import { SingleSelectProps } from './type';
-import { Option } from '@/shared/types/option';
 import CheckIcon from '@/shared/assets/icons/check-icon.svg';
 
 export const SingleSelect: FC<SingleSelectProps> = ({
 	name,
-	caption,
+	buttonLabel,
 	options,
-	selectedOption,
+	value,
+	onChange,
 }) => {
-	const containerStyles = (base: CSSObjectWithLabel) => ({
-		...base,
-		width: '100%',
-	});
+	// Кнопка с надписью
+	const contentRenderer = () => (
+		<div style={buttonMenuCaptionStyle}>{buttonLabel}</div>
+	);
 
-	const placeholderStyles = (base: CSSObjectWithLabel) => ({
-		...base,
-		color: '#020617',
-	});
+	// Отображение выпадающего списка с опциями и фильтром
+	const dropdownRenderer = ({
+		props,
+		state,
+		methods,
+	}: SelectRenderer<string | object>) => {
+		return (
+			<>
+				{props.options.map((option) => {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					const isSelected = state.values?.[0]?.value === option.value;
 
-	const optionStyles = (
-		base: CSSObjectWithLabel,
-		state: OptionProps<Option, boolean, GroupBase<Option>>
-	) => ({
-		...base,
-		minHeight: '44px',
-		padding: '0px 16px',
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		fontFamily: 'Open Sans, sans-serif',
-		fontSize: '16px',
-		fontWeight: '400',
-		color: state.isSelected
-			? '#020617'
-			: state.isDisabled
-				? 'gray'
-				: state.isFocused
-					? '#020617'
-					: 'inherit',
-		backgroundColor: state.isFocused
-			? '#E8EEFF' // не выбранная опция
-			: state.isSelected
-				? 'transparent' // выбранная опция
-				: 'transparent', // обычное состояние
-	});
+					return (
+						<Item
+							key={
+								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+								// @ts-ignore
+								option[props.valueField]
+							}
+							onClick={() => {
+								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+								// @ts-ignore
+								if (option.disabled) return;
 
-	const controlStyles = (
-		base: CSSObjectWithLabel,
-		state: ControlProps<Option, boolean, GroupBase<Option>>
-	) => ({
-		...base,
-		width: '170px',
-		height: '48px',
-		padding: '8px 12px',
-		border: '1px solid #E2E8F0',
-		borderRadius: '1000px',
-		outline: 'none',
-		fontFamily: 'Open Sans, sans-serif',
-		fontSize: '16px',
-		fontWeight: '700',
-		color: state.isFocused ? '#020617' : '#E2E8F0',
-		// backgroundColor: state.isFocused ? '#E8EEFF' : 'white',
-		boxShadow: '0 0 0 0 transparent',
-		cursor: 'pointer',
-	});
-
-	const menuListStyles = (base: CSSObjectWithLabel) => ({
-		...base,
-		padding: '0px 0px',
-	});
-
-	const menuStyles = (base: CSSObjectWithLabel) => ({
-		...base,
-		width: '320px',
-		borderRadius: '12px',
-		border: '1px solid #E2E8F0',
-		boxShadow: '2px 2px 12px 0px rgba(62, 56, 56, 0.10)',
-	});
-
-	const singleValueStyles = (base: CSSObjectWithLabel) => ({
-		...base,
-		color: '#020617',
-	});
-
-	const indicatorSeparatorStyles = (base: CSSObjectWithLabel) => ({
-		...base,
-		display: 'none',
-	});
+								if (isSelected) {
+									methods.clearAll();
+								} else {
+									methods.addItem(option);
+								}
+							}}>
+							<div>
+								{
+									// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+									// @ts-ignore
+									option[props.labelField]
+								}
+							</div>
+							{isSelected && <CheckIcon />}
+						</Item>
+					);
+				})}
+			</>
+		);
+	};
 
 	return (
 		<div>
-			<Select
-				instanceId={name}
+			<StyledSelect
 				name={name}
-				// closeMenuOnSelect={false}
-				// menuIsOpen={true}
-				components={{ Option, DropdownIndicator: () => null }}
-				defaultValue={selectedOption}
+				style={buttonMenuStyle}
 				options={options}
-				isClearable={false}
-				isSearchable={false}
-				isDisabled={false}
-				placeholder={caption}
-				formatOptionLabel={() => caption}
-				onChange={(option) => console.log(option)}
-				styles={{
-					container: (base) => containerStyles(base),
-					placeholder: (base) => placeholderStyles(base),
-					option: (base, state) => optionStyles(base, state),
-					control: (base, state) => controlStyles(base, state),
-					menuList: (base) => menuListStyles(base),
-					menu: (base) => menuStyles(base),
-					singleValue: (base) => singleValueStyles(base),
-					indicatorSeparator: (base) => indicatorSeparatorStyles(base),
-				}}
+				values={value ? [value] : []}
+				onChange={onChange}
+				contentRenderer={contentRenderer}
+				dropdownRenderer={({ props, state, methods }) =>
+					dropdownRenderer({ props, state, methods })
+				}
+				dropdownHandle={false}
+				valueField="value"
+				labelField="label"
+				multi={false}
 			/>
 		</div>
 	);
 };
 
-const Option = (props: OptionProps<Option>) => {
-	return (
-		<components.Option {...props}>
-			{props.label}
-			{props.isSelected && <CheckIcon />}
-		</components.Option>
-	);
+const buttonMenuStyle = {
+	minWidth: '124px',
 };
+
+const buttonMenuCaptionStyle = {
+	display: 'flex',
+	alignItems: 'center',
+	gap: '8px',
+};
+
+const StyledSelect = styled(Select)`
+	color: #020617;
+	background-color: #feffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 50px;
+	min-height: 48px;
+	cursor: pointer;
+	padding: 0px 16px;
+	font-family:
+		Open Sans,
+		sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+
+	:hover,
+	:focus {
+		border: 1px solid #8caaff;
+		box-shadow: none;
+	}
+
+	.react-dropdown-select-dropdown {
+		position: absolute;
+		left: 0;
+		border: 1px solid #e2e8f0;
+		width: 320px;
+		padding: 8px 0;
+		display: flex;
+		flex-direction: column;
+		border-radius: 12px;
+		max-height: 308px;
+		overflow: auto;
+		z-index: 9;
+		background: #fff;
+		box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
+
+		::-webkit-scrollbar {
+			width: 8px;
+			background-color: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #e2e8f0;
+			border-radius: 4px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background-color: #cdd4db;
+		}
+	}
+
+	.react-dropdown-select-content {
+		justify-content: center;
+	}
+`;
+
+const Item = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	padding: 10px 16px;
+	color: #020617;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+	cursor: pointer;
+	border: none;
+
+	:hover {
+		background-color: #e8eeff;
+	}
+`;

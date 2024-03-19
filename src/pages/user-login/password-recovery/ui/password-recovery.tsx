@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormPasswordRecoveryFeature } from '@/features/form-password-recovery/form-password-recovery';
+import { FormPasswordRecoveryFeature } from '@/features';
 import styles from './password-recovery.module.scss';
 
 export const PasswordRecoveryPage = () => {

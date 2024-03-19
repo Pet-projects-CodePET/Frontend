@@ -4,16 +4,17 @@ import React, { useState } from 'react';
 import { MainButton } from '@/shared/ui';
 import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
-import { useForm } from 'react-hook-form';
+import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
 import styles from './profile-settings.module.scss';
-import Link from 'next/link';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { MenuForVisible } from '@/entities/menu-for-visible';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 
 export const ProfileSettings = () => {
-	const { register } = useForm();
+	const [isPopup, setIsPopup] = useState(false);
+	const isOpen = () => setIsPopup(true);
 	const [checked, setChecked] = useState(false);
 	const [showVisibleMenu, setShowVisibleMenu] = useState(false);
 	const [showVisibleMenuTwo, setShowVisibleMenuTwo] = useState(false);
@@ -28,6 +29,10 @@ export const ProfileSettings = () => {
 	};
 	return (
 		<section className={styles.profileSettings}>
+			<div className={styles.profileSettings__profileLink}>
+				<ProfileLink title="Управление аккаунтом" />
+			</div>
+
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
 				<div className={styles.formSettings__list}>
@@ -98,9 +103,27 @@ export const ProfileSettings = () => {
 						</div>
 					</div>
 				</div>
-				<Link className={styles.formSettings__link} href={'/'}>
+				<button className={styles.formSettings__deleteButton} onClick={isOpen}>
 					Удалить аккаунт
-				</Link>
+				</button>
+				<PopUp
+					visible={isPopup}
+					title="Удаление аккаунта"
+					onClose={() => setIsPopup(false)}>
+					<>
+						<p className={styles.popup__text}>
+							Вы уверены, что хотите удалить аккаунт?
+						</p>
+						<div className={styles.popup__buttons}>
+							<MainButton variant={'primary'} width={'regular'}>
+								Вернуться в настройки
+							</MainButton>
+							<MainButton variant={'secondary'} width={'regular'}>
+								Удалить аккаунт
+							</MainButton>
+						</div>
+					</>
+				</PopUp>
 			</Form>
 
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
@@ -108,31 +131,28 @@ export const ProfileSettings = () => {
 				<div className={styles.formSettings__listPassword}>
 					<Input
 						className={styles.formSettings__input}
-						label="password"
+						name="password"
 						type="password"
 						labelName="Старый пароль"
-						register={register}
 						description
 					/>
 					<Input
 						className={styles.formSettings__input}
-						label="new-password"
+						name="new-password"
 						type="password"
 						labelName="Новый пароль"
-						register={register}
 						description
 					/>
 					<Input
 						className={styles.formSettings__input}
-						label="repeat-new-password"
+						name="repeat-new-password"
 						type="password"
 						labelName="Новый пароль еще раз"
-						register={register}
 						description
 					/>
 				</div>
 
-				<div>
+				<div className={styles.formSettings__button}>
 					<MainButton variant={'primary'} width={'regular'}>
 						Сохранить
 					</MainButton>
