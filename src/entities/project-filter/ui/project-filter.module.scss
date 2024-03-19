@@ -14,11 +14,10 @@
 	width: 100%;
 	box-sizing: border-box;
 	border-radius: 12px;
-	// border: 1px solid  $--border-default;
 	background: $--bg-primary;
-	// padding: 56px;
 
 	@media screen and (max-width: 779px) {
+		border: 1px solid $--border-default;
 		padding: 30px 16px;
 	}
 }

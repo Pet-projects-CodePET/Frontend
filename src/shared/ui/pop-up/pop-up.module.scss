@@ -35,9 +35,8 @@
 			overflow-y: auto;
 			height: 100%;
 			width: 100%;
-			padding: 32px 0 0;
+			padding: 0;
 			top: 0;
-			background-color: $--Neutral-Grey;
 		}
 	}
 
@@ -69,7 +68,7 @@
 
 	@media screen and (max-width: 779px) {
 		right: 20px;
-		top: 65px;
+		top: 33px;
 		z-index: 10;
 	}
 }
