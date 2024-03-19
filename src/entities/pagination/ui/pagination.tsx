@@ -2,7 +2,7 @@
 import React from 'react';
 
 import clsx from 'clsx';
-import { usePagination, DOTS } from '@/shared/hooks';
+import { usePagination, DOTS } from '../lib/use-pagination';
 import styles from '../ui/pagination.module.scss';
 import Left from '@/shared/assets/icons/chevron-left.svg';
 import Right from '@/shared/assets/icons/chevron-right-icon.svg';
