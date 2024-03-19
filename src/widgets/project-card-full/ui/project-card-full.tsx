@@ -6,6 +6,7 @@ import { ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { getClassNameforTag } from '@/shared/utils';
 import LikeIcon from '@/shared/assets/icons/heart.svg';
 import { MainButton } from '@/shared/ui';
+import { useMediaQuery } from '@/shared/hooks';
 
 import { ProjectCardFullType } from './type';
 import styles from './project-card-full.module.scss';
@@ -19,6 +20,8 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	title,
 	subtitle,
 }) => {
+	const isMobile = useMediaQuery('(max-width:779px)');
+
 	return (
 		<article className={styles.container}>
 			<div className={styles.topInfo}>
@@ -44,7 +47,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 			</div>
 			<h2 className={styles.title}>{title}</h2>
 			<h3 className={styles.subtitle}>{subtitle}</h3>
-			<p className={styles.mainText}>{description}</p>
+			{!isMobile && <p className={styles.mainText}>{description}</p>}
 			<p className={styles.groupName}>Специальности</p>
 			<ul className={styles.professionsList}>
 				{professions.map((profession, id) => (
