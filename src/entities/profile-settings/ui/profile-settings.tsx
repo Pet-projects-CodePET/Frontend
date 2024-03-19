@@ -105,7 +105,7 @@ export const ProfileSettings = () => {
 				</div>
 				<button className={styles.formSettings__deleteButton} onClick={isOpen}>
 					Удалить аккаунт
-				</button>
+				</button>				
 				<PopUp
 					visible={isPopup}
 					title="Удаление аккаунта"
@@ -123,7 +123,7 @@ export const ProfileSettings = () => {
 							</MainButton>
 						</div>
 					</>
-				</PopUp>
+				</PopUp>			
 			</Form>
 
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
