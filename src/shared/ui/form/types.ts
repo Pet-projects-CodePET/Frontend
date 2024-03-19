@@ -1,9 +1,10 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, FormEventHandler } from 'react';
 import * as yup from 'yup';
+import { IUser } from '@/services/models/IUser';
 
 export type FormProps = HTMLAttributes<HTMLFormElement> & {
 	children: ReactNode;
 	extraClass?: string;
 	schema?: yup.AnyObjectSchema;
-	onSubmit: (data: Record<string, undefined>) => void;
+	onSubmit: FormEventHandler<HTMLFormElement> & ((data: IUser) => void);
 };

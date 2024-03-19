@@ -8,16 +8,16 @@ export const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
 			<div className={styles.wrapper}>
-				<Header isLoggedIn/>
+				<Header isLoggedIn />
 				<div className={styles.wrapper__title}>
 					<h2 className={styles.wrapper__titleText}>Личный кабинет</h2>
 				</div>
 
 				<div className={styles.container}>
 					<div className={styles.sideNav}>
-					<SideNav />
+						<SideNav />
 					</div>
-					
+
 					<div>{children}</div>
 				</div>
 			</div>

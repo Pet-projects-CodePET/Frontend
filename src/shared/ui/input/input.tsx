@@ -7,12 +7,12 @@ import { clsx } from 'clsx';
 
 import type { InputProps } from './types';
 import styles from './input.module.scss';
+import { useFormContext } from 'react-hook-form';
 
 export const Input: FC<InputProps> = ({
-	label,
+	name,
 	labelName = 'labelName',
 	error = null,
-	register,
 	link = null,
 	className,
 	type = 'text',
@@ -25,12 +25,19 @@ export const Input: FC<InputProps> = ({
 		setVisible(!visible);
 	};
 
+	const { register, trigger } = useFormContext();
+
+	const handleBlur = async (event: React.FocusEvent<HTMLInputElement>) => {
+		event.target.value = event.target.value.trim();
+		await trigger(name);
+	};
+
 	return (
 		<label className={clsx(className, styles.label)}>
 			{labelName}
 			<div className={styles.inputContainer}>
 				<input
-					{...register(label)}
+					{...register(`${name}`, { shouldUnregister: true })}
 					type={type === 'password' ? (visible ? 'text' : 'password') : type}
 					className={clsx({
 						[styles.input]: true,
@@ -38,6 +45,7 @@ export const Input: FC<InputProps> = ({
 						[styles.input_typeError]: Boolean(error) === true,
 					})}
 					{...props}
+					onBlur={handleBlur}
 				/>
 				{type === 'password' && (
 					<div className={styles.icon} onClick={handleVisible}>
@@ -46,7 +54,9 @@ export const Input: FC<InputProps> = ({
 				)}
 				{error && <p className={styles.inputError}>{error}</p>}
 			</div>
-			{description && <span className={styles.inputDescr}>{descrText}</span>}
+			{!error && description && (
+				<span className={styles.inputDescr}>{descrText}</span>
+			)}
 			{link && (
 				<Link href={link.href} className={styles.inputLink}>
 					{link.text}

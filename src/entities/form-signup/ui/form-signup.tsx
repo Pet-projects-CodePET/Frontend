@@ -1,56 +1,90 @@
 'use client';
 
-import React, { FC, useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { FC, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import type { FormSignupProps } from '@/entities/form-signup/ui/types';
 import { IconButtonList } from '@/entities/icon-button-list';
-import { Form, Input, MainButton } from '@/shared/ui';
+import { Input, MainButton } from '@/shared/ui';
 
 import styles from './form-signup.module.scss';
+import { useFormContext } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
-export const FormSignup: FC<FormSignupProps> = ({
+export const FormFieldsSignup: FC<FormSignupProps> = ({
 	onLoad,
 	setToken,
-	handleSubmit,
+	captchaVerified,
+	serverErrorText,
+	serverEmailError,
+	serverUsernameError,
+	serverPasswordError,
+	setServerEmailError,
+	setServerUsernameError,
+	setServerPasswordError,
 }) => {
-	const { register } = useForm();
-
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
+	const router = useRouter();
 
+	const {
+		formState: { isValid, errors },
+	} = useFormContext();
+	/* eslint-disable */
+	useEffect(() => {
+		errors.email?.message && setServerEmailError('');
+	}, [errors.email?.message]);
+
+	useEffect(() => {
+		errors.username?.message && setServerUsernameError('');
+	}, [errors.username?.message]);
+
+	useEffect(() => {
+		errors.password?.message && setServerPasswordError('');
+	}, [errors.password?.message]);
+	/* eslint-enable */
 	return (
-		<Form onSubmit={handleSubmit}>
+		<>
 			<h1 className={styles.title}>Создать аккаунт</h1>
 			<div className={styles.container}>
 				<div className={styles.input_list}>
 					<Input
-						label="email"
+						name="email"
 						labelName="E-mail"
 						// placeholder="Введите e-mail"
-						register={register}
-						error={'Так выглядит ошибка'}
+						error={errors.email ? `${errors.email?.message}` : serverEmailError}
 					/>
 					<Input
-						label="nickname"
+						name="username"
 						labelName="Никнейм"
-						register={register}
 						// placeholder="Введите никнейм"
+						error={
+							errors.username
+								? `${errors.username?.message}`
+								: serverUsernameError
+						}
 					/>
 					<Input
-						label="password"
+						name="password"
 						labelName="Пароль"
 						type={'password'}
-						register={register}
 						// placeholder="Введите пароль"
+						error={
+							errors.password
+								? `${errors.password?.message}`
+								: serverPasswordError
+						}
 					/>
 					<Input
-						label="passworf-confirm"
+						name="re_password"
 						type={'password'}
 						labelName="Пароль еще раз"
 						// placeholder="Введите пароль"
-						register={register}
+						error={
+							errors.re_password
+								? `${errors.re_password?.message}`
+								: serverPasswordError
+						}
 					/>
 				</div>
 				<HCaptcha
@@ -59,9 +93,14 @@ export const FormSignup: FC<FormSignupProps> = ({
 					onLoad={onLoad}
 					ref={captchaRef}
 				/>
-				<MainButton variant={'primary'} width={'max'}>
+				<MainButton
+					variant={'primary'}
+					width={'max'}
+					disabled={!captchaVerified || !isValid}
+					onClick={() => router.push('registration/confirm')}>
 					{'Создать аккаунт'}
 				</MainButton>
+				<span className={styles.server_error}>{serverErrorText}</span>
 			</div>
 			<div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>
@@ -81,6 +120,6 @@ export const FormSignup: FC<FormSignupProps> = ({
 					</Link>
 				</p>
 			</div>
-		</Form>
+		</>
 	);
 };

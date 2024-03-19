@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { MainButton } from '@/shared/ui';
-import { Input } from '@/shared/ui';
-import { Form } from '@/shared/ui';
+import { MainButton, Input, Form } from '@/shared/ui';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { useForm } from 'react-hook-form';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
@@ -17,7 +15,7 @@ export const ProfileEditForm = () => {
 		window.scroll(0, 0);
 	}, []);
 
-	const { register, control } = useForm();
+	const { control } = useForm();
 
 	const handleSubmit = () => {
 		console.log('Submit');
@@ -46,36 +44,31 @@ export const ProfileEditForm = () => {
 							</button>
 						</div>
 						<Input
-							label="nick_name"
+							name="nick_name"
 							labelName="Никнейм"
-							register={register}
 							description
 						/>
 						<Input
-							label="name"
+							name="name"
 							labelName="Имя"
-							register={register}
 							description={true}
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
 						<Input
-							label="about"
+							name="about"
 							labelName="О себе"
-							register={register}
 							description={true}
 							descrText="Не более 750 символов"
 						/>
 						<Input
-							label="portfolioLink"
+							name="portfolioLink"
 							labelName="Ссылка на портфолио"
-							register={register}
 							description={true}
 							descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
 						/>
 						<Input
-							label="contacts"
+							name="contacts"
 							labelName="Контакты для связи"
-							register={register}
 							description={true}
 							descrText="Укажите контакты для связи, например: e-mail, telegram, телефон"
 						/>
@@ -85,36 +78,31 @@ export const ProfileEditForm = () => {
 						</div>
 						<div className={styles.fields_double}>
 							<Input
-								label="country"
+								name="country"
 								labelName="Страна"
-								register={register}
 								description
 							/>
 							<Input
-								label="city"
+								name="city"
 								labelName="Город"
-								register={register}
 								description
 							/>
 						</div>
 						<Input
-							label="speciality"
+							name="speciality"
 							labelName="Специальность"
-							register={register}
 							description={true}
 							descrText="Выберите не более 2 специальностей"
 						/>
 						<Input
-							label="skills"
+							name="skills"
 							labelName="Навыки"
-							register={register}
 							description={true}
 							descrText="Выберите не более 15 навыков"
 						/>
 						<Input
-							label="qualLabel"
+							name="qualLabel"
 							labelName="Уровень квалификации"
-							register={register}
 							description
 						/>
 

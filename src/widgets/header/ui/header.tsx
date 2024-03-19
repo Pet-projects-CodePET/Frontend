@@ -37,20 +37,16 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 					) : (
 						<div className={styles.header__buttonLogin}>
 							<div className={styles.header__button}>
-							<MainButton
-								variant="inverse"
-								width="max"
-								onClick={() => router.push('login')}>
-								Войти
-							</MainButton>
+								<MainButton
+									variant="inverse"
+									width="max"
+									onClick={() => router.push('login')}>
+									Войти
+								</MainButton>
 							</div>
-							<Link href='/login'  className={styles.header__iconLogin}>
-								<IconLogin className={styles.header__iconLogin}/>
-								</Link>
-							
-						
-							
-
+							<Link href="/login" className={styles.header__iconLogin}>
+								<IconLogin className={styles.header__iconLogin} />
+							</Link>
 						</div>
 					)}
 
