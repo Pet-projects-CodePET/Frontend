@@ -10,6 +10,10 @@
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
+
+	@media screen and (max-width: 779px) {
+		padding: 16px;
+	}
 }
 
 .topInfo {
@@ -23,6 +27,10 @@
 	display: flex;
 	align-items: center;
 	padding-top: 15px;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 6px;
+	}
 }
 
 .calendarIcon {
@@ -44,6 +52,10 @@
 	display: flex;
 	align-items: center;
 	padding: 5px 0 0 5px;
+
+	@media screen and (max-width: 779px) {
+		padding: 3px 0 0 3px;
+	}
 }
 
 .activeStateIcon {
@@ -91,6 +103,14 @@
 	letter-spacing: 0%;
 	padding-top: 22px;
 	margin: 0;
+
+	@media screen and (max-width: 779px) {
+		font-size: 20px;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		padding-top: 27px;
+	}
 }
 
 .subtitle {
@@ -100,6 +120,10 @@
 	letter-spacing: 0.25px;
 	padding-top: 7px;
 	margin: 0;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 11px;
+	}
 }
 
 .mainText {
@@ -125,6 +149,10 @@
 	letter-spacing: 0.25px;
 	padding-top: 17px;
 	margin: 0;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 18px;
+	}
 }
 
 .professionsList {
@@ -133,6 +161,10 @@
 	padding: 9px 0 0;
 	margin: 0;
 	list-style: none;
+
+	@media screen and (max-width: 779px) {
+		padding: 2px 0 0;
+	}
 }
 
 .profession {
@@ -164,13 +196,22 @@
 	&_type_colorAnakiwa {
 		background-color: $--Colors-Anakiwa;
 	}
+
+	@media screen and (max-width: 779px) {
+		padding: 4px 12px;
+	}
 }
 
 .skillsList {
 	display: flex;
+	flex-wrap: wrap;
 	padding: 9px 0 0;
 	margin: 0;
 	list-style: none;
+
+	@media screen and (max-width: 779px) {
+		padding: 2px 0 0;
+	}
 }
 
 .skill {
@@ -180,7 +221,7 @@
 	letter-spacing: 0.25px;
 	margin: 8px 8px 0 0;
 	padding: 4px 13px;
-
+	white-space: nowrap;
 	border-radius: 20px;
 	border: 1px solid $--border-default;
 }
