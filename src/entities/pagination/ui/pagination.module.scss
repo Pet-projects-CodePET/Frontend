@@ -1,0 +1,82 @@
+@import '../../../shared/style/variables.scss';
+
+.paginator {
+	padding: 0;
+	margin: 0 auto;
+	margin-top: 48px;
+	margin-bottom: 80px;
+	width: 352px;
+	height: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style-type: none;
+	font-family: $--open-sans-font;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	text-align: center;
+
+	&__item {
+		width: 48px;
+		height: 48px;
+		padding: 6px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		&_arrow {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-right: 16px;
+			min-width: 40px;
+			min-height: 40px;
+			border-radius: 50%;
+			border: 1px solid $--border-default;
+			&.right {
+				margin-right: 0px;
+				margin-left: 16px;
+			}
+		}
+		&.disabled {
+			pointer-events: none;
+		}
+		&.selected span {
+			width: 36px;
+			height: 36px;
+			background-color: $--bg-accent-default;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $--Foreground-inverse;
+		}
+		&:hover span {
+			width: 36px;
+			height: 36px;
+			background-color: $--bg-accent-default;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: $--bg-card-hover;
+			color: $--Foreground-default;
+		}
+	}
+	& > span {
+		width: 48px;
+		height: 48px;
+		padding: 6px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		color: $--Foreground-subtitle;
+		text-align: center;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+	}
+}
