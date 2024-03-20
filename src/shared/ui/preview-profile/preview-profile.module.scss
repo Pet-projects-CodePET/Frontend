@@ -86,7 +86,7 @@
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 400;
-		line-height: 19px; 
+		line-height: 19px;
 		letter-spacing: 0.25px;
 		margin: 0;
 		display: flex;
@@ -140,7 +140,6 @@
 		border: none;
 	}
 	.previewFoto {
-
 		&__infoName {
 			font-size: 16px;
 		}
@@ -152,12 +151,9 @@
 			height: 80px;
 		}
 	}
-	
 }
 @media screen and (max-width: 450px) {
 	.previewFoto {
 		flex-direction: column;
 	}
 }
-
-

@@ -34,12 +34,12 @@ export const ProfileEditForm = () => {
 	}, []);
 
 	return (
-		<>		
+		<>
 			{preview ? (
 				<PreviewProfile />
 			) : (
-				<> 
-				<ProfileLink title="Профиль" />
+				<>
+					<ProfileLink title="Профиль" />
 					<Form onSubmit={handleSubmit} className={styles.fields}>
 				<div className={styles.fields_photo}>
 					<div className={styles.fields_avatar}>
@@ -104,16 +104,8 @@ export const ProfileEditForm = () => {
 							<DatePickerRHF control={control} name="birthDate" />
 						</div>
 						<div className={styles.fields_double}>
-							<Input
-								name="country"
-								labelName="Страна"
-								description
-							/>
-							<Input
-								name="city"
-								labelName="Город"
-								description
-							/>
+							<Input name="country" labelName="Страна" description />
+							<Input name="city" labelName="Город" description />
 						</div>
 						<Input
 							name="speciality"
