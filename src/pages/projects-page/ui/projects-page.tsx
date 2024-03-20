@@ -230,7 +230,6 @@ import { Tooltip } from '@/widgets/tooltip';
 // ];
 
 export const Projects = () => {
-
 	// const pageSize = 3;
 	// const [currentPage, setCurrentPage] = useState(1);
 
