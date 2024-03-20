@@ -33,6 +33,13 @@
 			display: none;
 		}
 	}
+	.container {
+		flex-direction: column;
+		padding: 0;
+	}
+	.sideNav {
+		display: none;
+	}
 }
 @media screen and (max-width: 779px) {
 	.wrapper {
