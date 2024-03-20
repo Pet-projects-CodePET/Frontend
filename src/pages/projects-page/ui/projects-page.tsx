@@ -61,65 +61,67 @@ export const Projects = () => {
 			</PopUp>
 			{(isMobile && !isPopupOpen) || !isMobile ? (
 				<>
-					<div className={styles.filterContainer}>
-						<SingleSelect
-							name="select-status"
-							options={statusOptions}
-							buttonLabel="Статус проекта"
-							value={{ value: 'completed', label: 'Завершенный' }}
-							onChange={handleStatusProjectChange}
-						/>
-						<MultiSelect
-							name="select-months"
-							caption="Дата"
-							options={months}
-							values={[]}
-							onChange={handleMonthChange}
-							selectedAll={true}
-							buttonWidth={114}
-						/>
-						<SingleSelect
-							name="select-recruitment-status"
-							options={recruitmentStatus}
-							buttonLabel="Статус набора"
-							value={undefined}
-							onChange={handleRecruitmentStatusChange}
-						/>
-						<Tooltip text="Не более 2 специальностей">
-							<MultiSelect
-								name="select-specialties"
-								caption="Специальность"
-								options={specialties}
-								values={[
-									{
-										value: 'software-developer',
-										label: 'Десктоп разработчик / Software Developer',
-									},
-									{
-										value: 'performance-engineer',
-										label:
-											'Инженер по нагрузочному тестированию / Performance Engineer',
-									},
-								]}
-								onChange={handleSpecialtiesChange}
-								maxSelections={2}
-								buttonWidth={207}
-								tooltip="Не более 2 специальностей"
+					<div className={styles.allFilterContainer}>
+						<div className={styles.filterContainer}>
+							<SingleSelect
+								name="select-status"
+								options={statusOptions}
+								buttonLabel="Статус проекта"
+								value={{ value: 'completed', label: 'Завершенный' }}
+								onChange={handleStatusProjectChange}
 							/>
-						</Tooltip>
-						<Tooltip text="Не более 5 навыков">
 							<MultiSelect
-								name="select-skills"
-								caption="Навыки"
-								options={skills}
+								name="select-months"
+								caption="Дата"
+								options={months}
 								values={[]}
-								onChange={handleSkillsChange}
-								maxSelections={5}
-								buttonWidth={131}
-								isSearchable
-								tooltip="Не более 5 навыков"
+								onChange={handleMonthChange}
+								selectedAll={true}
+								buttonWidth={114}
 							/>
-						</Tooltip>
+							<SingleSelect
+								name="select-recruitment-status"
+								options={recruitmentStatus}
+								buttonLabel="Статус набора"
+								value={undefined}
+								onChange={handleRecruitmentStatusChange}
+							/>
+							<Tooltip text="Не более 2 специальностей">
+								<MultiSelect
+									name="select-specialties"
+									caption="Специальность"
+									options={specialties}
+									values={[
+										{
+											value: 'software-developer',
+											label: 'Десктоп разработчик / Software Developer',
+										},
+										{
+											value: 'performance-engineer',
+											label:
+												'Инженер по нагрузочному тестированию / Performance Engineer',
+										},
+									]}
+									onChange={handleSpecialtiesChange}
+									maxSelections={2}
+									buttonWidth={207}
+									tooltip="Не более 2 специальностей"
+								/>
+							</Tooltip>
+							<Tooltip text="Не более 5 навыков">
+								<MultiSelect
+									name="select-skills"
+									caption="Навыки"
+									options={skills}
+									values={[]}
+									onChange={handleSkillsChange}
+									maxSelections={5}
+									buttonWidth={131}
+									isSearchable
+									tooltip="Не более 5 навыков"
+								/>
+							</Tooltip>
+						</div>
 						<MainButton
 							variant="primary"
 							width="regular"
