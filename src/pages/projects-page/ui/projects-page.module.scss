@@ -10,3 +10,14 @@
 	gap: 8px;
 	flex-wrap: wrap;
 }
+
+.allFilterContainer {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.allFilterContainer > button:last-of-type {
+	margin-left: auto;
+}
