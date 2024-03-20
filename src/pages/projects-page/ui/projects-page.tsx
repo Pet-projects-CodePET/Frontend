@@ -48,7 +48,7 @@ export const Projects = () => {
 	};
 
 	return (
-		<>
+		<div className={styles.pageContainer}>
 			<PopUp
 				visible={isPopupOpen}
 				title=""
@@ -148,6 +148,6 @@ export const Projects = () => {
 					</div>
 				</>
 			) : null}
-		</>
+		</div>
 	);
 };
