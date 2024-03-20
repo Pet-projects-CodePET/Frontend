@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { Form } from '@/shared/ui/form/form';
 import { MainButton, CheckboxAndRadio } from '@/shared/ui';
 
+import { IUser } from '@/services/models/IUser';
 import { ProjectFilterType } from './types';
 import styles from './project-filter.module.scss';
 
@@ -20,7 +21,7 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 	const [isExpandedProfessionsList, setIsExpandedProfessionsList] =
 		useState(false);
 
-	const handleSubmit = (data: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (data: React.FormEvent<HTMLFormElement> | IUser) => {
 		console.log(data);
 	};
 
