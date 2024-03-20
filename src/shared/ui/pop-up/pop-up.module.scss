@@ -49,11 +49,10 @@
 		line-height: 40px;
 		color: $--Foreground-default;
 	}
-}
-
-.xmark {
-	position: absolute;
-	right: 24px;
-	top: 24px;
-	cursor: pointer;
+	.xmark {
+		position: absolute;
+		right: 56px;
+		top: 56px;
+		cursor: pointer;
+	}
 }
