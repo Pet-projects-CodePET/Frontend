@@ -26,11 +26,12 @@
 }
 
 @media screen and (max-width: 1199px) {
-.wrapper {
-	max-width: 780px;
-	margin: 0;
-	&__title {
-		display: none;
+	.wrapper {
+		max-width: 780px;
+		margin: 0;
+		&__title {
+			display: none;
+		}
 	}
 }
 @media screen and (max-width: 779px) {
