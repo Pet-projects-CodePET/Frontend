@@ -11,7 +11,7 @@ const links = [
 	{ name: 'Профиль', href: '/profile' },
 	{ name: 'Управление аккаунтом', href: '/settings' },
 	{ name: 'Мои проекты', href: '/my-projects' },
-	{ name: 'Избранные проекты', href: '/selected-projects' },
+	{ name: 'Избранные', href: '/selected-projects' },
 	{ name: 'Заявки', href: '/application' },
 	{ name: 'Создать проект', href: '/create-project' },
 ];

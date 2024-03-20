@@ -6,12 +6,12 @@
 	margin: 0 auto;
 	max-width: 1160px;
 	&__title {
-		padding-top: 80px;
-		padding-bottom: 56px;
+		padding-top: 32px;
+		padding-bottom: 48px;
 	}
 	&__titleText {
 		font-family: $--montserrat-font;
-		font-size: 40px;
+		font-size: 28px;
 		font-style: normal;
 		font-weight: 700;
 		line-height: 48px; /* 120% */
@@ -21,25 +21,26 @@
 }
 .container {
 	display: flex;
-	min-height: 968px;
-	gap: 40px;
+	gap: 24px;
+	margin-bottom: 80px;
 }
 
 @media screen and (max-width: 1199px) {
-	.wrapper {
-		max-width: 760px;
-		margin: 0;
-		&__title {
-			display: none;
-		}
-	}
-	.container {
-		flex-direction: column;
-		padding: 0;
-	}
-	.sideNav {
+.wrapper {
+	max-width: 780px;
+	margin: 0;
+	&__title {
 		display: none;
 	}
+}
+.container {
+	flex-direction: column;
+	padding: 0;
+}
+.sideNav {
+	display: none;
+}
+
 }
 @media screen and (max-width: 779px) {
 	.wrapper {
@@ -54,5 +55,6 @@
 	}
 	.container {
 		min-width: 100%;
+		margin-bottom: 0;
 	}
 }
