@@ -9,8 +9,7 @@
 	padding: 32px;
 }
 .previewButton {
-	display: block;
-	padding: 0 8px;
+	display: flex;
 	font-family: $--open-sans-font;
 	color: $--Foreground-link-default;
 	font-size: 16px;
@@ -20,8 +19,8 @@
 	letter-spacing: 0.25px;
 	border: none;
 	background-color: transparent;
+	max-width: 253px;
 	cursor: pointer;
-	width: 250px;
 }
 
 .previewFoto {
