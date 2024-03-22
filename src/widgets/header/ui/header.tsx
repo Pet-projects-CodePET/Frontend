@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { MainButton } from '@/shared/ui';
 import { NavBar } from '@/entities/nav-bar';
 import { navBarLinksArray } from '@/shared/constants';
 import { MenuProfile } from '@/entities/menu-profile';
+import { BurgerNavBar } from '@/entities/burger-nav-bar';
 import LogoIcon from '@/shared/assets/images/logo-header.svg';
 import MenuBurger from '@/shared/assets/icons/dots-vertical.svg';
 import IconPlus from '@/shared/assets/icons/plus-large.svg';
@@ -15,6 +16,10 @@ import styles from './header.module.scss';
 
 export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 	const router = useRouter();
+	const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+	const handleToggleBurger = () => {
+		setIsBurgerOpen(!isBurgerOpen);
+	}
 
 	return (
 		<div className={styles.header}>
@@ -37,9 +42,10 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 						</div>
 					)}
 
-					<button className={styles.header__buttonBurger}>
+					<button className={styles.header__buttonBurger} onClick={handleToggleBurger}>
 						<MenuBurger className={styles.header__buttonBurgerIcon} />
 					</button>
+					{isBurgerOpen ? <BurgerNavBar isBurgerOpen/> : ''}
 				</div>
 				{isLoggedIn ? (
 					<MenuProfile />
