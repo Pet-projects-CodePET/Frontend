@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
+// import { useMemo } from 'react';
 
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
@@ -238,7 +239,6 @@ import { Tooltip } from '@/widgets/tooltip';
 // ];
 
 export const Projects = () => {
-
 	// const pageSize = 3;
 	// const [currentPage, setCurrentPage] = useState(1);
 	// const currentData = useMemo(() => {
@@ -246,7 +246,7 @@ export const Projects = () => {
 	// 	const lastPageIndex = firstPageIndex + pageSize;
 	// 	return data.slice(firstPageIndex, lastPageIndex);
 	// }, [currentPage]);
-  
+
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
 
@@ -371,7 +371,7 @@ export const Projects = () => {
 							);
 						})}
 					</div>
-              {/* <Pagination
+					{/* <Pagination
 				onPageChange={(page) => setCurrentPage(page)}
 				totalCount={data.length}
 				currentPage={currentPage}

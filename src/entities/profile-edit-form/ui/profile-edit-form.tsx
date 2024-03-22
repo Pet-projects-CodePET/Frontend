@@ -10,26 +10,25 @@ import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Plus from '@/shared/assets/icons/plus-large.svg';
 import styles from './profile-edit-form.module.scss';
-import Link from 'next/link';
 import { PopUp } from '@/shared/ui';
-	
+
 export const ProfileEditForm = () => {
 	const [isPopup, setIsPopup] = useState(false);
-  const [preview, setPreview] = useState(false);
-  
-  const { control } = useForm();
+	const [preview, setPreview] = useState(false);
+
+	const { control } = useForm();
 
 	const handlePreview = () => {
-		setPreview(true)
-  };
-  const saveAvatar = () => {
-		setIsPopup(false)
-  };
-  const handleSubmit = () => {
-		console.log('Submit')
-  };
-  
-  useEffect(() => {
+		setPreview(true);
+	};
+	const saveAvatar = () => {
+		setIsPopup(false);
+	};
+	const handleSubmit = () => {
+		console.log('Submit');
+	};
+
+	useEffect(() => {
 		window.scroll(0, 0);
 	}, []);
 
@@ -41,33 +40,35 @@ export const ProfileEditForm = () => {
 				<>
 					<ProfileLink title="Профиль" />
 					<Form onSubmit={handleSubmit} className={styles.fields}>
-				<div className={styles.fields_photo}>
-					<div className={styles.fields_avatar}>
-						<div className={styles.fields_text}>A</div>
-					</div>
-					<button
-						className={styles.fields_edit}
-						onClick={() => setIsPopup(true)}>
-						<Edit />
-					</button>
-					<PopUp
-						visible={isPopup}
-						title="Изменить фото"
-						onClose={() => setIsPopup(false)}>
-						<Input name="Foto" type="file" labelName="Изменить фото"></Input>
-						<MainButton variant="primary" width="regular" onClick={saveAvatar}>
-							Сохранить
-						</MainButton>
-					</PopUp>
-					<div className={styles.fields_photo_descr}>
-						Загрузите файл в формате: JPEG, PNG, размером не более 10 Мбайт
-					</div>
-				</div>
-						<Input
-							name="nick_name"
-							labelName="Никнейм"
-							description
-						/>
+						<div className={styles.fields_photo}>
+							<div className={styles.fields_avatar}>
+								<div className={styles.fields_text}>A</div>
+							</div>
+							<button
+								className={styles.fields_edit}
+								onClick={() => setIsPopup(true)}>
+								<Edit />
+							</button>
+							<PopUp
+								visible={isPopup}
+								title="Изменить фото"
+								onClose={() => setIsPopup(false)}>
+								<Input
+									name="Foto"
+									type="file"
+									labelName="Изменить фото"></Input>
+								<MainButton
+									variant="primary"
+									width="regular"
+									onClick={saveAvatar}>
+									Сохранить
+								</MainButton>
+							</PopUp>
+							<div className={styles.fields_photo_descr}>
+								Загрузите файл в формате: JPEG, PNG, размером не более 10 Мбайт
+							</div>
+						</div>
+						<Input name="nick_name" labelName="Никнейм" description />
 						<Input
 							name="name"
 							labelName="Имя"
@@ -87,18 +88,18 @@ export const ProfileEditForm = () => {
 							descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
 						/>
 						<div className={styles.fields_contacts}>
-					<Input
-						name="contacts"
-						labelName="Контакты для связи"
-						description={true}
-						descrText="Выберите ресурс"
-					/>
-					<Input name="source" labelName=" x" />
-					<MainButton variant="secondary" width="regular" IconLeft={Plus}>
-						Добавить
-					</MainButton>
-					<button>Сбросить все</button>
-				</div>
+							<Input
+								name="contacts"
+								labelName="Контакты для связи"
+								description={true}
+								descrText="Выберите ресурс"
+							/>
+							<Input name="source" labelName=" " />
+							<MainButton variant="secondary" width="regular" IconLeft={Plus}>
+								Добавить
+							</MainButton>
+							<button>Сбросить все</button>
+						</div>
 						<div className={styles.datePickerContainer}>
 							<p className={styles.datePickerTitle}>Дата рождения</p>
 							<DatePickerRHF control={control} name="birthDate" />
@@ -134,7 +135,7 @@ export const ProfileEditForm = () => {
 									id="participation"
 									name="participation"
 									variant="defaultOf"
-									//checked={checked}
+									// checked={checked}
 									onChange={() => {}}
 								/>
 							</div>
