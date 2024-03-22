@@ -8,7 +8,7 @@ import Left from '@/shared/assets/icons/chevron-left.svg';
 import Right from '@/shared/assets/icons/chevron-right-icon.svg';
 
 type PaginationProps = {
-	onPageChange: (pageNum: string | number) => void;
+	onPageChange: (pageNumber: string | number) => void;
 	totalCount: number;
 	siblingCount?: number;
 	currentPage: number;
