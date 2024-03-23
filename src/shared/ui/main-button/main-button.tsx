@@ -28,12 +28,14 @@ export const MainButton: FC<MainButtonProps> = ({
 		}
 	};
 
-	const getClassNameForWidth = (buttonWidth: 'regular' | 'max') => {
+	const getClassNameForWidth = (buttonWidth: 'regular' | 'max' | 'min') => {
 		switch (buttonWidth) {
 			case 'regular':
 				return styles.buttonDimensionsRegular;
 			case 'max':
 				return styles.buttonDimensionsMax;
+			case 'min':
+				return styles.buttonDimensionsMin;
 			default:
 				return '';
 		}

@@ -6,13 +6,13 @@
 
 .menuVisible {
 	display: none;
-	transition: transform 0.8s ease;
+	//transition: transform 0.8s ease;
 }
 .menu {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
-	transition: transform 0.8s ease;
+	//transition: transform 0.8s ease;
 
 	&__itemVisible {
 		display: flex;
