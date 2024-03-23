@@ -38,7 +38,7 @@ export const FormLoginFeature: FC = () => {
 				router.push('/');
 			})
 			.catch((error) => {
-				setServerErrorText(error.data.non_field_errors);
+				setServerErrorText(error.data?.non_field_errors || 'Сервис недоступен');
 			});
 	};
 
