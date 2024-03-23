@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { useClickOutside } from '@/shared/hooks';
 import Link from 'next/link';
 import { MainButton } from '@/shared/ui';
 import { NavBar } from '@/entities/nav-bar';
@@ -16,16 +17,18 @@ import styles from './header.module.scss';
 
 export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 	const router = useRouter();
+	const burgerRef = useRef(null);
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 	const handleToggleBurger = () => {
 		setIsBurgerOpen(!isBurgerOpen);
-	}
-
+	};
+	useClickOutside(burgerRef, () => {
+		if (isBurgerOpen) setIsBurgerOpen(false);
+	});
 	return (
 		<div className={styles.header}>
 			<div className={styles.header__container}>
-				<div
-					className={styles.header__wrapper}>
+				<div className={styles.header__wrapper} ref={burgerRef}>
 					<Link href="/" className={styles.header__link}>
 						<LogoIcon alt="logo" className={styles.header__logo} />
 					</Link>
@@ -42,10 +45,12 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 						</div>
 					)}
 
-					<button className={styles.header__buttonBurger} onClick={handleToggleBurger}>
+					<button
+						className={styles.header__buttonBurger}
+						onClick={handleToggleBurger}>
 						<MenuBurger className={styles.header__buttonBurgerIcon} />
 					</button>
-					{isBurgerOpen ? <BurgerNavBar isBurgerOpen/> : ''}
+					{isBurgerOpen ? <BurgerNavBar isBurgerOpen /> : ''}
 				</div>
 				{isLoggedIn ? (
 					<MenuProfile />
