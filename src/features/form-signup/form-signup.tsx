@@ -39,9 +39,9 @@ export const FormSignupFeature: FC = () => {
 			.catch((error) => {
 				console.log(error.data);
 				setServerErrorText(error.data?.non_field_errors || '');
-				setServerEmailError(error.data.email);
-				setServerUsernameError(error.data.username);
-				setServerPasswordError(error.data.password);
+				setServerEmailError(error.data?.email);
+				setServerUsernameError(error.data?.username);
+				setServerPasswordError(error.data?.password);
 			});
 
 		console.log('createUser error', error);
