@@ -1,0 +1,93 @@
+@import '../../style/variables.scss';
+
+.container {
+	display: flex;
+	// position: relative;
+	min-width: 355px;
+	min-height: 72px;
+	// align-items: center;
+	border-radius: 4px;
+	overflow: hidden;
+	// box-shadow: 0px 0px 10px 0px #1516171a;
+	padding-left: 5px;
+	// background-color: $--Foreground-tertiary-button-pressed;
+	// padding-left: 5px;
+	// &::before {
+
+	// 	content: '';
+	// 	display: flex;
+	// 	// flex: 1;
+	// 	left: 0;
+	// 	top: 0;
+	// 	bottom: 0;
+	// 	width: 5px;
+	// 	height: 100%;
+	// 	position: absolute;
+	// 	overflow: hidden;
+	// 	z-index: 1;
+	// 	background-color: $--bg-accent-default;
+	// 	// background: $--Foreground-tertiary-button-pressed;
+	
+	// }
+
+	&_success {
+		// height: inherit;
+		// &::before {
+		// 	min-height: inherit;
+		// 	background-color: $--Foreground-tertiary-button-pressed;
+		// }
+		// background-color: $--bg-accent-default;
+	}
+	// &_error {
+	// }
+}
+
+.banner {
+display: flex;
+padding: 16px;
+&_success {
+ background-color: $--bg-accent-default;
+ // height: inherit;
+	// &::before {
+	// 	min-height: inherit;
+	// 	background-color: $--Foreground-tertiary-button-pressed;
+	// }
+	// background-color: $--bg-accent-default;
+}
+}
+
+.icon {
+	width: 24px;
+	height: 24px;
+		// background-color: $--Foreground-inverse;
+		&_success {
+		// background-image: url('@/shared/assets/icons/check.svg');
+		background-color: $--Foreground-inverse;
+		background-image: url('../../assets/icons/check.svg');
+		fill: $--Foreground-inverse; ;
+		// background-color: $--bg-accent-default;
+	}
+	&_error {
+		background-image: url('../../assets/icons/xmark.svg');
+		color: $--Foreground-error;
+	}
+	// &_pending {
+	// }
+}
+.textWrapper {
+	// width: calc(100% - 5px);
+	background-color: $--bg-accent-default;
+	margin: 0;
+}
+.title {
+	font-family: $--open-sans-font;
+	color: $--Foreground-inverse;
+	margin: 0;
+	padding: 0;
+}
+.subtitle {
+	font-family: $--open-sans-font;
+	color: $--Foreground-inverse;
+	margin: 0;
+	padding: 0;
+}

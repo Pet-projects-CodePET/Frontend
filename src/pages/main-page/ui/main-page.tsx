@@ -8,6 +8,7 @@ import { Promo } from '@/widgets/promo';
 import React, { useEffect, useState } from 'react';
 import styles from './main-page.module.scss';
 import { useRouter } from 'next/navigation';
+import { NotificationExample } from '@/widgets/notification-toast';
 
 export const MainPage = () => {
 	// const { isSuccess: isLoggedIn } = useGetUserMeQuery(null);
@@ -33,6 +34,7 @@ export const MainPage = () => {
 			<div className={styles.mainContainer}>
 				<Header isLoggedIn={isLoggedIn} />
 				<div className={styles.promoSection}>
+					<NotificationExample />
 					<Promo />
 				</div>
 				<section className={styles.currentProjectsContainer}>
