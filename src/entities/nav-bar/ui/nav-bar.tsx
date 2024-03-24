@@ -14,7 +14,7 @@ export const NavBar = ({
 	navBarLinksArray: Array<NavBarLinks>;
 }) => {
 	return (
-		<div>
+		<nav>
 			<ul className={styles.navList}>
 				{navBarLinksArray.map((link) => (
 					<Link className={styles.navLink} href={link.path} key={link.id}>
@@ -22,6 +22,6 @@ export const NavBar = ({
 					</Link>
 				))}
 			</ul>
-		</div>
+		</nav>
 	);
 };

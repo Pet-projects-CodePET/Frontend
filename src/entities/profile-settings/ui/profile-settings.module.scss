@@ -66,8 +66,7 @@
 		cursor: pointer;
 	}
 	&__deleteButton {
-		display: block;
-		padding: 0 8px;
+		display: flex;
 		font-family: $--open-sans-font;
 		color: $--Foreground-link-default;
 		font-size: 16px;
@@ -78,7 +77,7 @@
 		border: none;
 		background-color: transparent;
 		cursor: pointer;
-		width: 148px;
+		max-width: 148px;
 	}
 
 	&__input {

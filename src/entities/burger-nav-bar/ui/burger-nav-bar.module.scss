@@ -1,6 +1,6 @@
 @import '../../../shared/style/variables.scss';
 
-.menuProfile {
+.burgerNavBar {
 	position: relative;
 
 	&__buttonProfile {
@@ -32,7 +32,7 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
-		margin-top: 8px;
+		margin-top: 35px;
 		position: absolute;
 		right: 0;
 		z-index: 10;
