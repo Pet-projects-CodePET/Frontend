@@ -52,9 +52,10 @@ services:
     ports:
       - '80:80'
       - '443:443'
+    env_file: .env
     volumes:
       - static_volume:/staticfiles/
-      - media_value:/var/html/media/
+      - media_value:/mediafiles/
       - certbot:/certbot/
       - letsencrypt:/letsencrypt/
     restart: unless-stopped
@@ -63,10 +64,11 @@ services:
       - frontend
 
   certbot:
-    image: certbot/certbot
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_certbot:latest
+    env_file: .env
     volumes:
-      - certbot:/certbot/
-      - letsencrypt:/letsencrypt/
+      - certbot:/var/www/certbot/
+      - letsencrypt:/etc/letsencrypt/
     restart: unless-stopped
     depends_on:
       - backend

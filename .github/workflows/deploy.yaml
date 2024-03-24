@@ -54,6 +54,8 @@ jobs:
               DOCKERHUB_USERNAME_FRONT=${{ secrets.DOCKERHUB_USERNAME_FRONT }}
               DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
               ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
+              NGINX_NAME=${{ secrets.NGINX_DEV }}
+              DOMAIN_NAME=${{ secrets.DOMAIN_DEV }}
               EMAIL_HOST=${{ secrets.EMAIL_HOST }}
               EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}
               EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}
