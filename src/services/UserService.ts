@@ -30,7 +30,7 @@ export const userApi = createApi({
 		}),
 		resetPasswordUser: builder.mutation<IUser, IUser>({
 			query: (user) => ({
-				url: ' /users/reset_password/',
+				url: '/users/reset_password/',
 				method: 'POST',
 				body: user,
 			}),
