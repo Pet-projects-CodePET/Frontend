@@ -1,0 +1,70 @@
+@import '@/shared/style/variables';
+
+.container {
+	background-image: url('../../assets/images/background-login-layout.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0 auto;
+	max-width: 100vw;
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	padding: 72px 32px;
+	gap: 105px;
+	box-sizing: border-box;
+}
+
+.logo {
+	padding: 54px 0 0 18vw;
+	max-height: 110px;
+	box-sizing: border-box;
+
+	&__icon {
+		width: 195px;
+		height: 50px;
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	.container {
+		gap: 26px;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.logo {
+		width: 560px;
+		padding: 0;
+		align-self: center;
+
+		&__icon {
+			width: 195px;
+			height: 50px;
+		}
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.container {
+		margin: 0;
+		padding: 0;
+		gap: 5px;
+		align-items: center;
+		background-image: none;
+	}
+
+	.logo {
+		max-width: 779px;
+		width: 100%;
+		padding: 0;
+		align-self: center;
+		//		max-height: 110px;
+		box-sizing: border-box;
+
+		&__icon {
+			width: 150px;
+			height: 50px;
+			margin: 21px 0 0 12px;
+		}
+	}
+}

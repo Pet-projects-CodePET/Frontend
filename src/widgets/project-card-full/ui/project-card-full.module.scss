@@ -1,0 +1,234 @@
+@import '@/shared/style/variables.scss';
+
+.container {
+	border: 1px solid $--border-default;
+	border-radius: 12px;
+	background: $--bg-primary;
+	padding: 24px 32px;
+	font-family: $--open-sans-font;
+	color: $--Foreground-default;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+
+	@media screen and (max-width: 779px) {
+		padding: 16px;
+	}
+}
+
+.topInfo {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	color: $--Neutral-Light-Grey-03;
+}
+
+.calendarContainer {
+	display: flex;
+	align-items: center;
+	padding-top: 15px;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 6px;
+	}
+}
+
+.calendarIcon {
+	padding-right: 13px;
+	width: 22px;
+	height: 22px;
+	color: $--Foreground-subtitle;
+}
+
+.calendarText {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	color: $--foreground-muted;
+}
+
+.activeStateContainer {
+	display: flex;
+	align-items: center;
+	padding: 5px 0 0 5px;
+
+	@media screen and (max-width: 779px) {
+		padding: 3px 0 0 3px;
+	}
+}
+
+.activeStateIcon {
+	padding-right: 14px;
+
+	&_type_active {
+		color: $--Colors-Pastel-Green;
+	}
+
+	&_type_inactive {
+		color: $--Neutral-Light-Grey-03;
+	}
+}
+
+.activeStateText {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	color: $--foreground-muted;
+}
+
+.likeContainer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-radius: 50%;
+	border: 1px solid $--border-default;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.likeIcon {
+	width: 20px;
+	height: 20px;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 30px;
+	letter-spacing: 0%;
+	padding-top: 22px;
+	margin: 0;
+
+	@media screen and (max-width: 779px) {
+		font-size: 20px;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		padding-top: 27px;
+	}
+}
+
+.subtitle {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	padding-top: 7px;
+	margin: 0;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 11px;
+	}
+}
+
+.mainText {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	padding-top: 16px;
+	margin: 0;
+
+	// text  limited for 3 lines
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.groupName {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.25px;
+	padding-top: 17px;
+	margin: 0;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 18px;
+	}
+}
+
+.professionsList {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 9px 0 0;
+	margin: 0;
+	list-style: none;
+
+	@media screen and (max-width: 779px) {
+		padding: 2px 0 0;
+	}
+}
+
+.profession {
+	margin: 8px 8px 0 0;
+	white-space: nowrap;
+
+	border-radius: 20px;
+	padding: 4px 13px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+
+	&_type_colorSulu {
+		background-color: $--Colors-Sulu;
+	}
+	&_type_colorRajah {
+		background-color: $--Colors-Rajah;
+	}
+	&_type_colorMalibu {
+		background-color: $--Colors-Malibu;
+	}
+	&_type_colorPrelude {
+		background-color: $--Colors-Prelude;
+	}
+	&_type_colorFroly {
+		background-color: $--Colors-Froly;
+	}
+	&_type_colorAnakiwa {
+		background-color: $--Colors-Anakiwa;
+	}
+
+	@media screen and (max-width: 779px) {
+		padding: 4px 12px;
+	}
+}
+
+.skillsList {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 9px 0 0;
+	margin: 0;
+	list-style: none;
+
+	@media screen and (max-width: 779px) {
+		padding: 2px 0 0;
+	}
+}
+
+.skill {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	margin: 8px 8px 0 0;
+	padding: 4px 13px;
+	white-space: nowrap;
+	border-radius: 20px;
+	border: 1px solid $--border-default;
+}
+
+.link {
+	display: flex;
+	justify-content: flex-start;
+	padding-top: 21px;
+	text-decoration: none;
+}

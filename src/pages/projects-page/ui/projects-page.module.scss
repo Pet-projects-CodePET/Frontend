@@ -1,0 +1,44 @@
+.pageContainer {
+	max-width: 1160px;
+
+	@media screen and (max-width: 1199px) {
+		max-width: 780px;
+	}
+
+	@media screen and (max-width: 779px) {
+		padding: 0 16px;
+	}
+}
+
+.projectsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding-top: 48px;
+
+	@media screen and (max-width: 1199px) {
+		gap: 16px;
+		padding-top: 32px;
+	}
+
+	@media screen and (max-width: 779px) {
+		padding: 24px 0 0;
+	}
+}
+
+.filterContainer {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.allFilterContainer {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.allFilterContainer > button:last-of-type {
+	margin-left: auto;
+}

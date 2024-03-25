@@ -1,0 +1,50 @@
+@import '../../../shared//style//variables.scss';
+
+.mainContainer {
+	max-width: 1160px;
+	width: 100%;
+	flex: 1;
+
+	@media screen and (max-width: 1199px) {
+		width: 100%;
+		max-width: 780px;
+	}
+
+	@media screen and (max-width: 779px) {
+		max-width: 500px;
+	}
+}
+
+.promoSection {
+	padding-top: 48px;
+
+	@media screen and (max-width: 1199px) {
+		padding-top: 56px;
+	}
+
+	@media screen and (max-width: 779px) {
+		padding-top: 0;
+	}
+}
+
+.currentProjectsContainer {
+	margin: 120px auto;
+
+	@media screen and (max-width: 1199px) {
+		margin: 80px auto;
+		max-width: 756px;
+	}
+
+	@media screen and (max-width: 779px) {
+		margin: 32px auto;
+		padding: 0 16px;
+	}
+}
+
+.joinUsSection {
+	margin: 10px auto;
+}
+
+.currentProjectsContainer {
+	margin: 120px auto;
+}

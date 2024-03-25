@@ -1,0 +1,59 @@
+@import '@/shared/style/variables';
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: 1160px;
+	&__title {
+		padding-top: 16px;
+		padding-bottom: 32px;
+	}
+	&__titleText {
+		font-family: $--montserrat-font;
+		font-size: 28px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 48px; /* 120% */
+		letter-spacing: -0.4px;
+		margin: 0;
+	}
+}
+.container {
+	display: flex;
+	gap: 24px;
+	margin-bottom: 80px;
+}
+
+@media screen and (max-width: 1199px) {
+	.wrapper {
+		max-width: 780px;
+		margin: 0;
+		&__title {
+			display: none;
+		}
+	}
+	.container {
+		flex-direction: column;
+		padding: 0;
+	}
+	.sideNav {
+		display: none;
+	}
+}
+@media screen and (max-width: 779px) {
+	.wrapper {
+		max-width: 100%;
+		box-sizing: border-box;
+		padding: 0;
+		overflow: hidden;
+		&__titleText {
+			font-size: 28px;
+			padding: 0 16px 0 16px;
+		}
+	}
+	.container {
+		min-width: 100%;
+		margin-bottom: 0;
+	}
+}

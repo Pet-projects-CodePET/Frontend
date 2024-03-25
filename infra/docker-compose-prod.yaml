@@ -1,0 +1,75 @@
+version: '3'
+
+volumes:
+  pg_data:
+  static_volume:
+  media_value:
+  certbot:
+  letsencrypt:
+
+services:
+  db:
+    image: postgres:16.2-alpine
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_PASSWORD}',
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  backend:
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_backend:latest
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - static_volume:/backend_static/
+      - media_value:/backend_media/
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    image: ${DOCKERHUB_USERNAME_FRONT}/${PROJECT_NAME}_frontend:latest
+    command: cp -r out/. /frontend_static/
+    env_file: .env
+    volumes:
+      - static_volume:/frontend_static
+    depends_on:
+      db:
+        condition: service_healthy
+
+  nginx:
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_nginx:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    env_file: .env
+    volumes:
+      - static_volume:/staticfiles/
+      - media_value:/mediafiles/
+      - certbot:/certbot/
+      - letsencrypt:/letsencrypt/
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - frontend
+
+  certbot:
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_certbot:latest
+    env_file: .env
+    volumes:
+      - certbot:/var/www/certbot/
+      - letsencrypt:/etc/letsencrypt/
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - frontend

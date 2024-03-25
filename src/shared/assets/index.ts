@@ -1,4 +1,6 @@
-import imgLogo from './logo.png';
+import ActivityIcon from '@/shared/assets/icons/activity-icon.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar-icon.svg';
+import CloseIcon from './icons/xmark.svg';
+import FilterIcon from './icons/filter-icon.svg';
 
-export {imgLogo};
-export {default as ArrowIcon} from './icons/arrow-icon.svg';
+export { ActivityIcon, CalendarIcon, CloseIcon, FilterIcon };

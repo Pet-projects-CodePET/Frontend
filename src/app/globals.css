@@ -1,0 +1,17 @@
+/* сброс стандартных стилей */
+@import url('../shared/style/normalize.css');
+
+/* Подключение шрифтов  */
+@import url('../shared/assets/fonts/fonts.css');
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: max-content;
+	align-items: center;
+}
