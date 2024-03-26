@@ -270,6 +270,7 @@ export const Projects = () => {
 
 	const handleSkillsChange = (selectedItems: object) => {
 		console.info('selected options: ', selectedItems);
+		console.log(currentData);
 	};
 
 	return (
@@ -373,7 +374,7 @@ export const Projects = () => {
 					</div>
 					<Pagination
 						onPageChange={(page) => setCurrentPage(Number(page))}
-						totalCount={currentData.length}
+						totalCount={data.length}
 						currentPage={currentPage}
 						pageSize={pageSize}
 					/>

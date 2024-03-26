@@ -198,12 +198,43 @@
 	min-width: 250px;
 }
 
+@media screen and (max-width: 1199px) {
+	.fields {
+		width: 716px;
+		border: none;
+	}
+}
+
 @media screen and (max-width: 779px) {
 	.fields {
-		border: none;
-		&_buttonsContainer {
-			flex-direction: column;
-			gap: 26px;
+		width: 328px;
+		padding: 16px;
+		&_photo {
+			position: relative;
+			display: flex;
+			justify-content: space-around;
+			align-self: stretch;
+			margin-bottom: 16px;
+			width: 100%;
+			height: 171px;
+			&_descr {
+				color: $--Foreground-subtitle;
+				font-family: $--open-sans-font;
+				font-size: 14px;
+				font-weight: 400;
+				margin-left: 150px;
+				margin-top: 63px;
+			}
+		}
+		&_avatar {
+			background-color: $--bg-accent-inverse;
+			border-radius: 100px;
+			height: 80px;
+			width: 80px;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 	}
 }
