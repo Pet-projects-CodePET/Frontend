@@ -8,24 +8,29 @@ import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
+import Plus from '@/shared/assets/icons/plus-large.svg';
 import styles from './profile-edit-form.module.scss';
+import { PopUp } from '@/shared/ui';
 
 export const ProfileEditForm = () => {
-	useEffect(() => {
-		window.scroll(0, 0);
-	}, []);
+	const [isPopup, setIsPopup] = useState(false);
+	const [preview, setPreview] = useState(false);
 
 	const { control } = useForm();
-
-	const handleSubmit = () => {
-		console.log('Submit');
-	};
-
-	const [preview, setPreview] = useState(false);
 
 	const handlePreview = () => {
 		setPreview(true);
 	};
+	const saveAvatar = () => {
+		setIsPopup(false);
+	};
+	const handleSubmit = () => {
+		console.log('Submit');
+	};
+
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
 
 	return (
 		<>
@@ -39,9 +44,29 @@ export const ProfileEditForm = () => {
 							<div className={styles.fields_avatar}>
 								<div className={styles.fields_text}>A</div>
 							</div>
-							<button className={styles.fields_edit}>
+							<button
+								className={styles.fields_edit}
+								onClick={() => setIsPopup(true)}>
 								<Edit />
 							</button>
+							<PopUp
+								visible={isPopup}
+								title="Изменить фото"
+								onClose={() => setIsPopup(false)}>
+								<Input
+									name="Foto"
+									type="file"
+									labelName="Изменить фото"></Input>
+								<MainButton
+									variant="primary"
+									width="regular"
+									onClick={saveAvatar}>
+									Сохранить
+								</MainButton>
+							</PopUp>
+							<div className={styles.fields_photo_descr}>
+								Загрузите файл в формате: JPEG, PNG, размером не более 10 Мбайт
+							</div>
 						</div>
 						<Input name="nick_name" labelName="Никнейм" description />
 						<Input
@@ -62,12 +87,19 @@ export const ProfileEditForm = () => {
 							description={true}
 							descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
 						/>
-						<Input
-							name="contacts"
-							labelName="Контакты для связи"
-							description={true}
-							descrText="Укажите контакты для связи, например: e-mail, telegram, телефон"
-						/>
+						<div className={styles.fields_contacts}>
+							<Input
+								name="contacts"
+								labelName="Контакты для связи"
+								description={true}
+								descrText="Выберите ресурс"
+							/>
+							<Input name="source" labelName=" " />
+							<MainButton variant="secondary" width="regular" IconLeft={Plus}>
+								Добавить
+							</MainButton>
+							<button>Сбросить все</button>
+						</div>
 						<div className={styles.datePickerContainer}>
 							<p className={styles.datePickerTitle}>Дата рождения</p>
 							<DatePickerRHF control={control} name="birthDate" />
@@ -103,12 +135,11 @@ export const ProfileEditForm = () => {
 									id="participation"
 									name="participation"
 									variant="defaultOf"
-									//checked={checked}
+									// checked={checked}
 									onChange={() => {}}
 								/>
 							</div>
 						</div>
-
 						<div className={styles.fields_buttonsContainer}>
 							<MainButton variant={'primary'} width={'regular'}>
 								Сохранить

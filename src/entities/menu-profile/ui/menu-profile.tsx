@@ -6,7 +6,7 @@ import User from '@/shared/assets/icons/user.svg';
 import Projects from '@/shared/assets/icons/my-projects.svg';
 import Favorites from '@/shared/assets/icons/heart.svg';
 import Exit from '@/shared/assets/icons/logout.svg';
-import Xmark from '@/shared/assets/icons/xmark.svg';
+import Xmark from '@/shared/assets/icons/close-icon.svg';
 
 import styles from './menu-profile.module.scss';
 
