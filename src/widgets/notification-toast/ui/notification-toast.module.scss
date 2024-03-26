@@ -1,23 +1,15 @@
 .container {
 	margin: 0;
-	// margin-bottom: 5px;
 	padding: 0;
 	width: auto;
 	box-shadow: none;
-	// border-style: no;
-	// border: 1px solid red;
-	// position: fixed;
-	// top: 16px;
-	// right: 16px;
-	// transform: translate(0, 360px);
-
-
+	background: transparent;
 }
-// .bodyClassNameTest {
-// 	margin: 0;
-// 	padding: 0;
-// 	border: 1px solid greenyellow;
-// }
-.Toastify__toast-container {
-	// width: 700px;
+.body {
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
 }

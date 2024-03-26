@@ -2,92 +2,89 @@
 
 .container {
 	display: flex;
-	// position: relative;
-	min-width: 355px;
+	width: 360px;
 	min-height: 72px;
-	// align-items: center;
 	border-radius: 4px;
 	overflow: hidden;
-	// box-shadow: 0px 0px 10px 0px #1516171a;
+	box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
 	padding-left: 5px;
-	// background-color: $--Foreground-tertiary-button-pressed;
-	// padding-left: 5px;
-	// &::before {
-
-	// 	content: '';
-	// 	display: flex;
-	// 	// flex: 1;
-	// 	left: 0;
-	// 	top: 0;
-	// 	bottom: 0;
-	// 	width: 5px;
-	// 	height: 100%;
-	// 	position: absolute;
-	// 	overflow: hidden;
-	// 	z-index: 1;
-	// 	background-color: $--bg-accent-default;
-	// 	// background: $--Foreground-tertiary-button-pressed;
-	
-	// }
-
 	&_success {
-		// height: inherit;
-		// &::before {
-		// 	min-height: inherit;
-		// 	background-color: $--Foreground-tertiary-button-pressed;
-		// }
-		// background-color: $--bg-accent-default;
+		background-color: $--bg-accent-pressed;
 	}
-	// &_error {
-	// }
+	&_error {
+		background-color: $--border-error-pressed;
+	}
 }
 
 .banner {
-display: flex;
-padding: 16px;
-&_success {
- background-color: $--bg-accent-default;
- // height: inherit;
-	// &::before {
-	// 	min-height: inherit;
-	// 	background-color: $--Foreground-tertiary-button-pressed;
-	// }
-	// background-color: $--bg-accent-default;
-}
+	display: flex;
+	padding: 16px;
+	width: 355px;
+	overflow: hidden;
+	&_success {
+		background-color: $--bg-accent-default;
+	}
+	&_error {
+		background-color: $--bg-primary;
+	}
 }
 
 .icon {
+	display: flex;
 	width: 24px;
 	height: 24px;
-		// background-color: $--Foreground-inverse;
-		&_success {
-		// background-image: url('@/shared/assets/icons/check.svg');
-		background-color: $--Foreground-inverse;
-		background-image: url('../../assets/icons/check.svg');
-		fill: $--Foreground-inverse; ;
-		// background-color: $--bg-accent-default;
+	align-self: flex-start;
+	margin-right: 8px;
+
+	&_success {
+		fill: $--Foreground-inverse;
 	}
 	&_error {
-		background-image: url('../../assets/icons/xmark.svg');
-		color: $--Foreground-error;
+		fill: $--Foreground-error-default;
 	}
 	// &_pending {
 	// }
 }
 .textWrapper {
-	// width: calc(100% - 5px);
-	background-color: $--bg-accent-default;
 	margin: 0;
+	// &_success {
+	// }
+	// &_error {
+	// }
 }
 .title {
 	font-family: $--open-sans-font;
-	color: $--Foreground-inverse;
 	margin: 0;
+	margin-bottom: 4px;
 	padding: 0;
+	width: 100%;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.25px;
+	&_success {
+		color: $--Foreground-inverse;
+	}
+	&_error {
+		color: $--Foreground-error-default;
+	}
 }
 .subtitle {
+	width: 100%;
 	font-family: $--open-sans-font;
-	color: $--Foreground-inverse;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 14px; /* 116.667% */
+	letter-spacing: 0.25px;
+	// color: $--Foreground-inverse;
 	margin: 0;
 	padding: 0;
+	&_success {
+		color: $--Foreground-inverse;
+	}
+	&_error {
+		color: $--Foreground-error-default;
+	}
 }
