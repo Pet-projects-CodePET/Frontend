@@ -372,7 +372,7 @@ export const Projects = () => {
 						})}
 					</div>
 					<Pagination
-						onPageChange={(page) => setCurrentPage(page)}
+						onPageChange={(page) => setCurrentPage(Number(page))}
 						totalCount={currentData.length}
 						currentPage={currentPage}
 						pageSize={pageSize}
