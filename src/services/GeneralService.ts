@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-
 export const generalApi = createApi({
 	reducerPath: 'generalApi',
 	baseQuery: fetchBaseQuery({
@@ -15,9 +14,16 @@ export const generalApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		getSection: builder.query({
+			query:  () => ({
+				url: '/section/',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
 export const {
-useGetCountQuery
+useGetCountQuery,
+useGetSectionQuery
 } = generalApi;
