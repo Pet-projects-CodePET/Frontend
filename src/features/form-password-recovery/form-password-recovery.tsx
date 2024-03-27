@@ -50,7 +50,7 @@ export const FormPasswordRecoveryFeature: FC = () => {
 						router.push('/');
 					})
 					.catch((error) => {
-						setServerErrorText(error.data.non_field_errors);
+						setServerErrorText(error.data?.non_field_errors);
 					})
 			: resetPasswordUser(userData)
 					.unwrap()

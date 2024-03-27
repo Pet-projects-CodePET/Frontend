@@ -2,7 +2,7 @@
 @import url('../shared/style/normalize.css');
 
 /* Подключение шрифтов  */
-/* @import url('../shared/assets/fonts/fonts.css'); */
+@import url('../shared/assets/fonts/fonts.css');
 
 html,
 body {

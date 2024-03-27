@@ -1,0 +1,158 @@
+@import '@/shared/style/variables';
+
+.previewWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	border: 1px solid $--border-default;
+	border-radius: 12px;
+	padding: 32px;
+}
+.previewButton {
+	display: flex;
+	font-family: $--open-sans-font;
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	border: none;
+	background-color: transparent;
+	max-width: 253px;
+	cursor: pointer;
+}
+
+.previewFoto {
+	display: flex;
+	gap: 16px;
+
+	&__avatar {
+		background-image: url('../../assets/icons/avatar-girl.svg');
+		width: 136px;
+		height: 136px;
+		object-fit: cover;
+		background-repeat: no-repeat;
+	}
+	&__info {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		gap: 16px;
+	}
+	&__infoItem {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+	&__infoActive {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+	&__infoName {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: 30px;
+		margin: 0;
+	}
+	&__infoTelegram {
+		color: $--Foreground-muted;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		margin: 0;
+	}
+	&__infoRole {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		margin: 0;
+	}
+	&__infoStatus {
+		color: $--Foreground-muted;
+		font-family: $--open-sans-font;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 19px;
+		letter-spacing: 0.25px;
+		margin: 0;
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
+	&__infoStatusActive {
+		width: 16px;
+		height: 16px;
+		color: $--Colors-Pastel-Green;
+	}
+}
+.previewFotoItem {
+	display: flex;
+	flex-direction: column;
+}
+.previewItem {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	&__title {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		margin: 0;
+	}
+	&__subtitle {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+		margin: 0;
+		&_link {
+			color: $--Foreground-link-default;
+			font-family: $--open-sans-font;
+			font-size: 16px;
+		}
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.previewWrapper {
+		border: none;
+	}
+	.previewFoto {
+		&__infoName {
+			font-size: 16px;
+		}
+		&__infoTelegram {
+			font-size: 14px;
+		}
+		&__avatar {
+			width: 80px;
+			height: 80px;
+		}
+	}
+}
+@media screen and (max-width: 450px) {
+	.previewFoto {
+		flex-direction: column;
+	}
+}

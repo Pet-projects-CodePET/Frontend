@@ -1,7 +1,6 @@
 @import '@/shared/style/variables';
 
 .profileSettings {
-	margin-bottom: 160px;
 	&__profileLink {
 		width: 100%;
 	}
@@ -13,7 +12,7 @@
 	padding: 32px;
 	gap: 32px;
 	box-sizing: border-box;
-	min-width: 760px;
+	min-width: 816px;
 	border-radius: 12px;
 	border: 1px solid $--border-default;
 	margin-bottom: 24px;
@@ -67,8 +66,7 @@
 		cursor: pointer;
 	}
 	&__deleteButton {
-		display: block;
-		padding: 0 8px;
+		display: flex;
 		font-family: $--open-sans-font;
 		color: $--Foreground-link-default;
 		font-size: 16px;
@@ -79,7 +77,7 @@
 		border: none;
 		background-color: transparent;
 		cursor: pointer;
-		width: 148px;
+		max-width: 148px;
 	}
 
 	&__input {
@@ -94,8 +92,11 @@
 	&__listPassword {
 		display: flex;
 		flex-direction: column;
-		gap: 19px;
+		gap: 8px;
 	}
+}
+.popap__text {
+	margin: 0;
 }
 
 @media screen and (max-width: 1199px) {

@@ -16,19 +16,30 @@
 
 	&_wrapper {
 		position: fixed;
-		top: 240px;
+		top: 50%;
 		left: 50%;
-		transform: translateX(-50%);
+		transform: translate(-50%, -50%);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 760px;
+		box-sizing: border-box;
 		padding: 56px;
 		gap: 32px;
 		border-radius: 12px;
 		border: 1px solid $--border-default;
 		background: $--bg-primary;
 		z-index: 2;
+
+		@media screen and (max-width: 779px) {
+			overflow-y: auto;
+			height: 100%;
+			width: 100%;
+			padding: 0;
+			transform: none;
+			top: 0;
+			left: 0;
+		}
 	}
 
 	&_content {
@@ -36,7 +47,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 32px;
+		// gap: 32px;
 		align-self: stretch;
 		font-family: $--montserrat-font;
 	}
@@ -56,4 +67,10 @@
 	right: 24px;
 	top: 24px;
 	cursor: pointer;
+
+	@media screen and (max-width: 779px) {
+		right: 20px;
+		top: 33px;
+		z-index: 10;
+	}
 }
