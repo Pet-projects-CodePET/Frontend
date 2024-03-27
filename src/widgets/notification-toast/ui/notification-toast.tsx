@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './notification-toast.module.scss';
@@ -26,14 +26,42 @@ export const toaster = ({ status, title, subtitle }: NotificationPropsType) =>
 		})
 	);
 export const NotificationToastContainer = () => {
+	const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 	return (
-		<ToastContainer
-			className={styles.container}
-			toastClassName={styles.body}
-			autoClose={5000}
-			icon={false}
-			closeButton={false}
-			hideProgressBar={true}
-		/>
+		<>
+			{ width < 780 ? (
+				<ToastContainer
+					className={styles.container}
+					toastClassName={styles.body}
+					autoClose={5000}
+					icon={false}
+					closeButton={true}
+					hideProgressBar={true}
+					position="top-center"
+				/>
+			) : (
+				<ToastContainer
+					className={styles.container}
+					toastClassName={styles.body}
+					autoClose={5000}
+					icon={false}
+					closeButton={true}
+					hideProgressBar={true}
+					position="bottom-right"
+				/>
+			)}
+		</>
 	);
 };
