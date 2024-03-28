@@ -1,0 +1,89 @@
+name: Codepet QA_deploy front
+on:
+  push:
+    branches: ['QA']
+jobs:
+  build_and_push_to_docker_hub_frontend:
+    name: Push Docker image to DockerHub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME_FRONT }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD_FRONT }}
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v5
+        with:
+          context: ./
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME_FRONT }}/${{ secrets.PROJECT_NAME }}_frontend:latest
+          build-args: |
+            NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - build_and_push_to_docker_hub_frontend
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Create project directory and .env-file
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script: |
+            sudo rm -r ${{ secrets.PROJECT_NAME }}
+            sudo mkdir -p ${{ secrets.PROJECT_NAME }}/infra
+            sudo chmod 777 ${{ secrets.PROJECT_NAME }}/infra
+            sudo cat > ${{ secrets.PROJECT_NAME }}/infra/.env << _EOF_
+              POSTGRES_DB=${{ secrets.POSTGRES_DB }}
+              POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
+              POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
+              POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+              POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+              PROJECT_NAME=${{ secrets.PROJECT_NAME }}
+              SECRET_KEY=${{ secrets.SECRET_KEY }}
+              DOCKERHUB_USERNAME_FRONT=${{ secrets.DOCKERHUB_USERNAME_FRONT }}
+              DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+              ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
+              NGINX_NAME=${{ secrets.NGINX_QA }}
+              DOMAIN_NAME=${{ secrets.DOMAIN_QA }}
+              EMAIL_HOST=${{ secrets.EMAIL_HOST }}
+              EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}
+              EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}
+              NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
+              NEXT_SHARP_PATH=${{ secrets.NEXT_SHARP_PATH }}
+            _EOF_
+      - name: Copy docker-compose-prod.yaml via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST_QA }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          source: 'infra/docker-compose-prod.yaml'
+          target: 'codepet'
+      - name: Executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_QA }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script: |
+            cd codepet/infra
+            sudo docker compose -f docker-compose-prod.yaml pull
+            sudo docker compose -f docker-compose-prod.yaml down
+            sudo docker compose -f docker-compose-prod.yaml up -d
+            sudo docker compose -f docker-compose-prod.yaml exec backend python manage.py migrate
+            sudo docker compose -f docker-compose-prod.yaml exec backend python manage.py collectstatic --no-input
+            sudo docker compose -f docker-compose-prod.yaml exec backend cp -r static/. /backend_static/static/
+            sudo docker compose -f docker-compose-prod.yaml run --rm certbot certonly --webroot --webroot-path /var/www/certbot/ -d testcodepet.tw1.ru --agree-tos --force-renewal
+            sudo docker system prune -f
