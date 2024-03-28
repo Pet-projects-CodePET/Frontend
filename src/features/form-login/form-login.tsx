@@ -8,6 +8,10 @@ import { useRouter } from 'next/navigation';
 import { FormFieldsLogin } from '@/entities/form-login';
 import { Form } from '@/shared/ui';
 import FormLoginSchema from '@/shared/utils/validation-schemas/form-login-schema';
+import {
+	NotificationToastContainer,
+	toaster,
+} from '@/widgets/notification-toast/';
 
 export const FormLoginFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
@@ -31,6 +35,11 @@ export const FormLoginFeature: FC = () => {
 		authUser(userData)
 			.unwrap()
 			.then((payload) => {
+				// toaster({
+				// 	status: 'success',
+				// 	title: 'все ОКЕЙ',
+				// 	subtitle: 'dsfdsfsdfsdfsdfsdfsdfsdf',
+				// });
 				console.log('token', payload.auth_token);
 				localStorage.setItem('token', payload.auth_token as string);
 			})
@@ -38,7 +47,13 @@ export const FormLoginFeature: FC = () => {
 				router.push('/');
 			})
 			.catch((error) => {
-				setServerErrorText(error.data?.non_field_errors || 'Сервис недоступен');
+				console.log('error', error);
+				setServerErrorText(error.data.non_field_errors);
+				toaster({
+					status: 'error',
+					title: 'Ошибка авторизации',
+					subtitle: `${error.data.non_field_errors}`,
+				});
 			});
 	};
 
@@ -50,6 +65,7 @@ export const FormLoginFeature: FC = () => {
 				captchaVerified={captchaVerified}
 				serverErrorText={serverErrorText}
 			/>
+			<NotificationToastContainer />
 		</Form>
 	);
 };

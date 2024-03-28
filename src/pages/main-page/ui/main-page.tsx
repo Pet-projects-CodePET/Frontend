@@ -8,6 +8,10 @@ import { Promo } from '@/widgets/promo';
 import React, { useEffect, useState } from 'react';
 import styles from './main-page.module.scss';
 import { useRouter } from 'next/navigation';
+import {
+	NotificationToastContainer,
+	toaster,
+} from '@/widgets/notification-toast';
 
 export const MainPage = () => {
 	// const { isSuccess: isLoggedIn } = useGetUserMeQuery(null);
@@ -30,6 +34,21 @@ export const MainPage = () => {
 
 	return (
 		<>
+		{/*  -------EXAMPLE TOAST notification */}
+			<button
+				type="button"
+				onClick={() => {
+					toaster({
+						status: 'error',
+						title: 'Проект опубликован ',
+						subtitle: 'Управлять проектами можно в разделе проекты',
+					});
+				}}>
+				{' '}
+				TEST
+			</button>
+			<NotificationToastContainer />
+			
 			<div className={styles.mainContainer}>
 				<Header isLoggedIn={isLoggedIn} />
 				<div className={styles.promoSection}>
