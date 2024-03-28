@@ -4,6 +4,7 @@ import { SpecialistCard } from '@/widgets/specialist-card';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
+import { specialistsArray } from '@/shared/constants/specialists/specialists';
 import styles from './specialists-page.module.scss';
 
 export const Specialists = () => {
@@ -20,7 +21,16 @@ export const Specialists = () => {
 					</div>
 					<div>Селекторы </div>
 				</div>
-				<SpecialistCard />
+				{specialistsArray.map((specialist) => {
+					return (
+						<SpecialistCard
+							specialization={specialist.specialization}
+							specialty={specialist.specialty}
+							key={specialist.id}
+						/>
+					);
+				})}
+
 				<div>ПАГИНАЦИЯ</div>
 			</section>
 			<Footer />
