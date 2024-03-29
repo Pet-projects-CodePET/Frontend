@@ -4,7 +4,7 @@ import { IUser } from '@/services/models/IUser';
 export const userApi = createApi({
 	reducerPath: 'userApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://89.23.117.80/api/v1',
+		baseUrl: 'http://devcodepet.tw1.ru/api/v1/users/',
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');
 			if (accessToken) {
