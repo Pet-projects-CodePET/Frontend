@@ -21,6 +21,7 @@ export const Specialists = () => {
 					</div>
 					<div>Селекторы </div>
 				</div>
+				<div className={styles.specialists__cards}>
 				{specialistsArray.map((specialist) => {
 					return (
 						<SpecialistCard
@@ -30,6 +31,7 @@ export const Specialists = () => {
 						/>
 					);
 				})}
+				</div>
 
 				<div>ПАГИНАЦИЯ</div>
 			</section>

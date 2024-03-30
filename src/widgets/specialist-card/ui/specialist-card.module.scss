@@ -22,6 +22,7 @@
 		display: flex;
 		gap: 16px;
 		border-bottom: 1px solid $--Foreground-subtitle;
+		position: relative;
 	}
 	&__personImage {
 		width: 92px;
@@ -31,6 +32,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
+		flex-wrap: wrap;
 	}
 	&__personStatus {
 		display: flex;
@@ -43,7 +45,12 @@
 		color: $--Colors-Pastel-Green;
 	}
 	&__statusTitle {
-		margin: 0;
+		@extend %baseText;
+		color: $--foreground-muted;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 19px;
+		letter-spacing: 0.25px;
 	}
 	&__name {
 		@extend %baseText;
@@ -83,5 +90,40 @@
 		white-space: nowrap;
 		border-radius: 20px;
 		border: 1px solid $--border-default;
+	}
+	&__likeContainer {
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 50%;
+		border: 1px solid $--border-default;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__likeIcon {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.specialist {
+		padding: 16px;
+	}
+	.info {
+		&__name {
+			font-size: 20px;
+			font-weight: 700;
+		}
+		&__person {
+			gap: 8px;
+		}
+		&__personImage {
+			width: 48px;
+			height: 48px;
+		}
 	}
 }
