@@ -3,7 +3,7 @@ import { IUser } from '@/services/models/IUser' // const BASE_DEV_URL = process.
 
 // const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
 // const BASE_TEST_URL = process.env.NEXT_PUBLIC_BASE_TEST_URL;
-const BASE_URL = process.env.DOMAIN_NAME;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const userApi = createApi({
 	reducerPath: 'userApi',
