@@ -8,7 +8,9 @@ export const userApi = createApi({
 	reducerPath: 'userApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl:
-			process.env.NODE_ENV === 'production' ? BASE_DEV_URL : BASE_TEST_URL,
+			process.env.NODE_ENV === 'production'
+				? `${BASE_DEV_URL}api/v1/`
+				: `${BASE_TEST_URL}api/v1/`,
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');
 			if (accessToken) {
