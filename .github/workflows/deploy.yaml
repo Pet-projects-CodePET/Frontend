@@ -1,7 +1,7 @@
 name: Codepet deploy front
 on:
   push:
-    branches: ['main', 'develop']
+    branches: [ 'main', 'develop' ]
 jobs:
   build_and_push_to_docker_hub_frontend:
     name: Push Docker image to DockerHub
@@ -26,6 +26,8 @@ jobs:
             NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
             NEXT_PUBLIC_BASE_DEV_URL=${{ secrets.NEXT_PUBLIC_BASE_DEV_URL }}
             NEXT_PUBLIC_BASE_TEST_URL=${{ secrets.NEXT_PUBLIC_BASE_TEST_URL }}
+            NEXT_PUBLIC_BASE_URL=${{ secrets.DOMAIN_DEV }}
+
   deploy:
     runs-on: ubuntu-latest
     needs:
