@@ -26,8 +26,8 @@ export const Promo = () => {
 			</div>
 			<div className={styles.promo__absoluteContainer}>
 				<div className={styles.promo__textContainer}>
-					<p className={styles.promo__title}>{section ? section[0].title : ' '}</p>
-					<p className={styles.promo__subtitle}>{section ? section[0].description : ' '}
+					<p className={styles.promo__title}>{section ? section.results[0].title : ' '}</p>
+					<p className={styles.promo__subtitle}>{section ? section.results[0].description : ' '}
 					</p>
 				</div>
 				<div className={styles.promo__itemsContainer}>

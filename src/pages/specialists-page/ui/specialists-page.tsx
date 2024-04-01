@@ -28,6 +28,8 @@ export const Specialists = () => {
 							specialization={specialist.specialization}
 							specialty={specialist.specialty}
 							key={specialist.id}
+							telegram={specialist.telegram}
+							skills={specialist.skills}
 						/>
 					);
 				})}

@@ -10,9 +10,9 @@ export const CurrentProjects = () => {
 	const { data: section } = useGetSectionQuery([]);  
 	return (
 		<>
-			<h2 className={styles.header}>{section ? section[1].title : ' '}</h2>
+			<h2 className={styles.header}>{section ? section.results[1].title : ' '}</h2>
 			<p className={styles.text}>
-			{section ? section[1].description : ' '}
+			{section ? section.results[1].description : ' '}
 			</p>
 			<p className={styles.textMobile}>Присоединитесь к актуальным проектам.</p>
 			<div className={styles.projectCards}>
