@@ -39,6 +39,8 @@ services:
 
   frontend:
     image: ${DOCKERHUB_USERNAME_FRONT}/${PROJECT_NAME}_frontend:latest
+    environment:
+      - NODE_ENV=test
     command: cp -r out/. /frontend_static/
     env_file: .env
     volumes:
