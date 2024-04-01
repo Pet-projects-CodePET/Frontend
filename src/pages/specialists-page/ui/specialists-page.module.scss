@@ -32,6 +32,11 @@
 		flex-direction: column;
 		gap: 24px;
 	}
+	&__filterContainer {
+		display: flex;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
 }
 
 @media screen and (max-width: 1199px) {

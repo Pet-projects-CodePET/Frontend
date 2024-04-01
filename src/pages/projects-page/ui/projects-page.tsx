@@ -15,11 +15,13 @@ import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { MainButton } from '@/shared/ui';
 import { FilterIcon } from '@/shared/assets';
 import { useMediaQuery } from '@/shared/hooks';
-
-import styles from './projects-page.module.scss';
+import { Header } from '@/widgets/header';
+import { Footer } from '@/widgets/footer';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
+import { InputSearch } from '@/shared/ui/input-search/input-search';
+import styles from './projects-page.module.scss';
 
 export const Projects = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -48,7 +50,15 @@ export const Projects = () => {
 	};
 
 	return (
+		<>
 		<div className={styles.pageContainer}>
+			<Header isLoggedIn/>
+			<div className={styles.projects__container}>
+						<h1 className={styles.projects__title}>Проекты</h1>
+						<div className={styles.projects__inputSearch}>
+							<InputSearch search={() => {}} onChange={() => {}} />
+						</div>
+					</div>
 			<PopUp
 				visible={isPopupOpen}
 				title=""
@@ -149,5 +159,7 @@ export const Projects = () => {
 				</>
 			) : null}
 		</div>
+		<Footer />
+		</>
 	);
 };
