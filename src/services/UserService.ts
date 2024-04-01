@@ -1,14 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IUser } from '@/services/models/IUser';
 
-const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
-const BASE_TEST_URL = process.env.NEXT_PUBLIC_BASE_TEST_URL;
-
 export const userApi = createApi({
 	reducerPath: 'userApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl:
-			process.env.NODE_ENV === 'production' ? BASE_DEV_URL : BASE_TEST_URL,
+		baseUrl: 'https://devcodepet.tw1.ru/api/v1',
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');
 			if (accessToken) {
