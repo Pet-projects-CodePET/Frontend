@@ -1,11 +1,10 @@
-
 name: Codepet QA_deploy front
 on:
   push:
     branches: ['QA']
 jobs:
   build_and_push_to_docker_hub_frontend:
-  name: Push Docker image to DockerHub
+    name: Push Docker image to DockerHub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
