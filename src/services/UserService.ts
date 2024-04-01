@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IUser } from '@/services/models/IUser' // const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IUser } from '@/services/models/IUser'; // const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
 
 // const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
 // const BASE_TEST_URL = process.env.NEXT_PUBLIC_BASE_TEST_URL;
