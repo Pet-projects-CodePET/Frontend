@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
@@ -21,9 +21,23 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
+
 import styles from './projects-page.module.scss';
 
 export const Projects = () => {
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	useEffect(() => {
+		const { 1: urlToken } = window.location.hash.split('#/login/');
+		if (urlToken) {
+			localStorage.setItem('token', urlToken);
+		}
+
+		const token = localStorage.getItem('token');
+		if (token) {
+			setIsLoggedIn(true);
+		}
+	}, []);
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
 
@@ -52,7 +66,7 @@ export const Projects = () => {
 	return (
 		<>
 			<div className={styles.pageContainer}>
-				<Header isLoggedIn />
+				<Header isLoggedIn={isLoggedIn} />
 				<div className={styles.projects__container}>
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>

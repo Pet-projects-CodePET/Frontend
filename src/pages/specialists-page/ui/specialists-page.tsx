@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SpecialistCard } from '@/widgets/specialist-card';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
@@ -17,6 +17,19 @@ import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import styles from './specialists-page.module.scss';
 
 export const Specialists = () => {
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	useEffect(() => {
+		const { 1: urlToken } = window.location.hash.split('#/login/');
+		if (urlToken) {
+			localStorage.setItem('token', urlToken);
+		}
+
+		const token = localStorage.getItem('token');
+		if (token) {
+			setIsLoggedIn(true);
+		}
+	}, []);
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const handleStatusChange = (selectedOptions: (string | object)[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
@@ -35,7 +48,7 @@ export const Specialists = () => {
 		<>
 			<section className={styles.specialists}>
 				<div className={styles.specialists__wrapper}>
-					<Header isLoggedIn />
+					<Header isLoggedIn={isLoggedIn} />
 					<div className={styles.specialists__container}>
 						<h1 className={styles.specialists__title}>Специалисты</h1>
 						<div className={styles.specialists__item}>
