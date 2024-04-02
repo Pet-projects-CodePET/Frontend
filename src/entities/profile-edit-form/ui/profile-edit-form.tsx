@@ -14,7 +14,6 @@ export const ProfileEditForm = () => {
 	useEffect(() => {
 		window.scroll(0, 0);
 	}, []);
-	console.log(isDesktop, isTablet, isMobile);
 	return (
 		<>
 			{isDesktop && <DesktopView />}
