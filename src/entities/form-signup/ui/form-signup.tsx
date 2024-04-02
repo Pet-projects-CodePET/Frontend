@@ -9,7 +9,6 @@ import { Input, MainButton } from '@/shared/ui';
 
 import styles from './form-signup.module.scss';
 import { useFormContext } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
 
 export const FormFieldsSignup: FC<FormSignupProps> = ({
 	onLoad,
@@ -25,7 +24,6 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 }) => {
 	const captchaRef = useRef<HCaptcha>(null);
 	const sitekey: string = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY || '';
-	const router = useRouter();
 
 	const {
 		formState: { isValid, errors },
@@ -96,8 +94,7 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 				<MainButton
 					variant={'primary'}
 					width={'max'}
-					disabled={!captchaVerified || !isValid}
-					onClick={() => router.push('registration/confirm')}>
+					disabled={!captchaVerified || !isValid}>
 					{'Создать аккаунт'}
 				</MainButton>
 				<span className={styles.server_error}>{serverErrorText}</span>

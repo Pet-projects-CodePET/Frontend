@@ -1,10 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IUser } from '@/services/models/IUser';
+import { IUser } from '@/services/models/IUser'; // const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
+
+// const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
+// const BASE_TEST_URL = process.env.NEXT_PUBLIC_BASE_TEST_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const userApi = createApi({
 	reducerPath: 'userApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://devcodepet.tw1.ru/api/v1/users/',
+		baseUrl: `https://${BASE_URL}/api/v1`,
+		// process.env.NODE_ENV === 'production' ? BASE_TEST_URL : BASE_DEV_URL,
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');
 			if (accessToken) {
@@ -30,7 +35,7 @@ export const userApi = createApi({
 		}),
 		resetPasswordUser: builder.mutation<IUser, IUser>({
 			query: (user) => ({
-				url: 'users/reset_password/',
+				url: '/users/reset_password/',
 				method: 'POST',
 				body: user,
 			}),

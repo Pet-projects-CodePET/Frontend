@@ -8,9 +8,11 @@ import { IUser } from '@/services/models/IUser';
 import { Form } from '@/shared/ui';
 import { FormFieldsSignup } from '@/entities/form-signup/ui/form-signup';
 import FormSignupSchema from '@/shared/utils/validation-schemas/form-signup-schema';
+import { useRouter } from 'next/navigation';
 
 export const FormSignupFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
+	const router = useRouter();
 
 	const [createUser, { error }] = useCreateUserMutation();
 
@@ -33,13 +35,13 @@ export const FormSignupFeature: FC = () => {
 		localStorage.setItem('userData', JSON.stringify(userData));
 		createUser(userData)
 			.unwrap()
-			.then((payload) => console.log('fulfilled', payload))
+			.then(() => router.push('registration/confirm'))
 			.catch((error) => {
 				console.log(error.data);
 				setServerErrorText(error.data?.non_field_errors || '');
-				setServerEmailError(error.data.email);
-				setServerUsernameError(error.data.username);
-				setServerPasswordError(error.data.password);
+				setServerEmailError(error.data?.email);
+				setServerUsernameError(error.data?.username);
+				setServerPasswordError(error.data?.password);
 			});
 
 		console.log('createUser error', error);
