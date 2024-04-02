@@ -28,20 +28,20 @@ export const toaster = ({ status, title, subtitle }: NotificationPropsType) =>
 export const NotificationToastContainer = () => {
 	const [width, setWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
+	useEffect(() => {
+		const handleResize = () => {
+			setWidth(window.innerWidth);
+		};
 
-    window.addEventListener('resize', handleResize);
+		window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 	return (
 		<>
-			{ width < 780 ? (
+			{width < 780 ? (
 				<ToastContainer
 					className={styles.container}
 					toastClassName={styles.body}
