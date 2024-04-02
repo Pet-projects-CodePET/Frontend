@@ -5,4 +5,5 @@ export { Input } from './input/input';
 export { NavLinks } from './nav-links/nav-links';
 export { ProjectCard } from './project-card/project-card';
 export { CheckboxAndRadio } from './checkbox/checkbox';
+export { NotificationBanner } from './notification-banner/notification-banner';
 export type { TagsProps, Tag } from './tags/types';
