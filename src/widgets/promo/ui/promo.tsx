@@ -38,7 +38,7 @@ export const Promo = () => {
 					</div>
 					<div className={styles.promo__items}>
 						<p className={styles.promo__itemOne}>{counters?.users}</p>
-						<p className={styles.promo__itemTwo}>{NounsDeclension(counters?.users, ['участник', 'участникаа', 'участников'])}</p>
+						<p className={styles.promo__itemTwo}>{NounsDeclension(counters?.users, ['участник', 'участника', 'участников'])}</p>
 					</div>
 				</div>
 				<div className={styles.promo__button}>
