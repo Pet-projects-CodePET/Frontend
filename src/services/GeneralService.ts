@@ -1,9 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+// const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
+// const BASE_TEST_URL = process.env.NEXT_PUBLIC_BASE_TEST_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 export const generalApi = createApi({
 	reducerPath: 'generalApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://devcodepet.tw1.ru/api/v1',
+		baseUrl: `https://${BASE_URL}/api/v1`,
+		// process.env.NODE_ENV === 'production' ? BASE_TEST_URL : BASE_DEV_URL,
 		
 	}),
 	endpoints: (builder) => ({
