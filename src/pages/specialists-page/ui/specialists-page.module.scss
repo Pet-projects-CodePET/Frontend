@@ -18,6 +18,15 @@
 	&__inputSearch {
 		min-width: 396px;
 	}
+	&__filterButton {
+		display: none;
+		width: 40px;
+		height: 40px;
+		background-color: $--Foreground-default;
+		border-radius: 1000px;
+		padding: 8px;
+		cursor: pointer;
+	}
 	&__title {
 		margin: 0;
 		color: $--Foreground-default;
@@ -55,11 +64,22 @@
 		&__inputSearch {
 			min-width: 272px;
 		}
+		&__filterButton {
+			display: flex;
+			align-items: center;
+		}
+		&__item {
+			display: flex;
+			justify-content: space-between;
+		}
 		&__wrapper {
 			gap: 24px;
 		}
 		&__cards {
 			gap: 16px;
+		}
+		&__filterContainer {
+			display: none;
 		}
 	}
 }

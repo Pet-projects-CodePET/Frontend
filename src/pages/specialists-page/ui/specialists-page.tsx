@@ -1,20 +1,23 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { SpecialistCard } from '@/widgets/specialist-card';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { specialistsArray } from '@/shared/constants/specialists/specialists';
 import { SingleSelect } from '@/shared/ui/single-select/single-select';
-import { statusOptions } from '@/shared/constants/status-options/status-options';
+import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
 import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
 import { qualification } from '@/shared/constants/qualification/qualification';
 import { Tooltip } from '@/widgets/tooltip';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
+import FilterIcon from '@/shared/assets/icons/filter-icon.svg';
+import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import styles from './specialists-page.module.scss';
 
 export const Specialists = () => {
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const handleStatusChange = (selectedOptions: (string | object)[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
 	};
@@ -35,16 +38,30 @@ export const Specialists = () => {
 					<Header isLoggedIn />
 					<div className={styles.specialists__container}>
 						<h1 className={styles.specialists__title}>Специалисты</h1>
-						<div className={styles.specialists__inputSearch}>
-							<InputSearch search={() => {}} onChange={() => {}} />
+						<div className={styles.specialists__item}>
+							<div className={styles.specialists__inputSearch}>
+								<InputSearch search={() => {}} onChange={() => {}} />
+							</div>
+							<button
+								className={styles.specialists__filterButton}
+								type="button"
+								onClick={() => setIsPopupOpen(true)}>
+								<FilterIcon />
+							</button>
+							<PopUp
+								visible={isPopupOpen}
+								title=""
+								onClose={() => setIsPopupOpen(false)}>
+								{' '}
+							</PopUp>
 						</div>
 					</div>
 					<div className={styles.specialists__filterContainer}>
 						<SingleSelect
 							name="select-status"
-							options={statusOptions}
+							options={statusSpecialist}
 							buttonLabel="Статус специалиста"
-							value={{ value: 'completed', label: 'Завершенный' }}
+							value={{ value: 'ready', label: 'Готов(а) к участию в проектах' }}
 							onChange={handleStatusChange}
 						/>
 
