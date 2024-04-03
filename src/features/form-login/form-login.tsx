@@ -43,11 +43,11 @@ export const FormLoginFeature: FC = () => {
 			})
 			.catch((error) => {
 				console.log('error', error);
-				setServerErrorText(error.data.non_field_errors);
+				setServerErrorText(error.data?.non_field_errors || 'Сервис недоступен');
 				toaster({
 					status: 'error',
 					title: 'Ошибка авторизации',
-					subtitle: `${error.data.non_field_errors}`,
+					subtitle: `${serverErrorText || 'Сервис недоступен'}`,
 				});
 			});
 	};
