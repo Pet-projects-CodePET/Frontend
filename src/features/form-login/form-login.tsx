@@ -35,12 +35,7 @@ export const FormLoginFeature: FC = () => {
 		authUser(userData)
 			.unwrap()
 			.then((payload) => {
-				// toaster({
-				// 	status: 'success',
-				// 	title: 'все ОКЕЙ',
-				// 	subtitle: 'dsfdsfsdfsdfsdfsdfsdfsdf',
-				// });
-				console.log('token', payload.auth_token);
+				// console.log('token', payload.auth_token);
 				localStorage.setItem('token', payload.auth_token as string);
 			})
 			.then(() => {
@@ -48,11 +43,11 @@ export const FormLoginFeature: FC = () => {
 			})
 			.catch((error) => {
 				console.log('error', error);
-				setServerErrorText(error.data.non_field_errors);
+				setServerErrorText(error.data?.non_field_errors || 'Сервис недоступен');
 				toaster({
 					status: 'error',
 					title: 'Ошибка авторизации',
-					subtitle: `${error.data.non_field_errors}`,
+					subtitle: `${serverErrorText || 'Сервис недоступен'}`,
 				});
 			});
 	};
