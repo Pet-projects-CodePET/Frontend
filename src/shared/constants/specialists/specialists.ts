@@ -55,4 +55,44 @@ export const specialistsArray = [
 		skills: ['Bootstrap', 'Figma', 'Figma', 'Redux']
 	
 	},
+	{
+		id: 8,
+		specialty: 'Длиннофамильная Екатерина',
+		telegram: '@nickname',
+		specialization: 'DevOps-инженер / DevOps, Middle',
+		skills: ['Bootstrap', 'Figma', 'Figma', 'Redux']
+	
+	},
+	{
+		id: 9,
+		specialty: 'Длиннофамильная Екатерина',
+		telegram: '@nickname',
+		specialization: 'UX/UI designer / UX/UI дизайнер, Middle',
+		skills: ['Bootstrap', 'Figma', 'Figma', 'Redux', 'Bootstrap', 'Figma', 'Figma', 'Redux']
+	
+	},
+	{
+		id: 10,
+		specialty: 'Длиннофамильная Екатерина',
+		telegram: '@nickname',
+		specialization: 'DevOps-инженер / DevOps, Middle',
+		skills: ['Bootstrap', 'Figma', 'Figma', 'Redux']
+	
+	},
+	{
+		id: 11,
+		specialty: 'Длиннофамильная Екатерина',
+		telegram: '@nickname',
+		specialization: 'DevOps-инженер / DevOps, Middle',
+		skills: ['Bootstrap', 'Figma', 'Figma', 'Redux']
+	
+	},
+	{
+		id: 12,
+		specialty: 'Длиннофамильная Екатерина',
+		telegram: '@nickname',
+		specialization: 'DevOps-инженер / DevOps, Middle',
+		skills: ['Bootstrap', 'Figma', 'Figma', 'Redux']
+	
+	},
 ];

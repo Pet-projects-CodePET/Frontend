@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { SpecialistCard } from '@/widgets/specialist-card';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
@@ -14,6 +14,9 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import FilterIcon from '@/shared/assets/icons/filter-icon.svg';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
+import { Pagination } from '@/entities/pagination/ui/pagination';
+import { SpecialistsFilter } from '@/entities/specialists-filter';
+import { useMediaQuery } from '@/shared/hooks';
 import styles from './specialists-page.module.scss';
 
 export const Specialists = () => {
@@ -42,7 +45,18 @@ export const Specialists = () => {
 	};
 	const handleSkillsChange = (selectedItems: object) => {
 		console.info('selected options: ', selectedItems);
+		console.log(currentData);
 	};
+
+	const pageSize = 3;
+	const [currentPage, setCurrentPage] = useState(1);
+	const currentData = useMemo(() => {
+		const firstPageIndex = (currentPage - 1) * pageSize;
+		const lastPageIndex = firstPageIndex + pageSize;
+		return specialistsArray.slice(firstPageIndex, lastPageIndex);
+	}, [currentPage]);
+
+	const isMobile = useMediaQuery('(max-width:779px)');
 
 	return (
 		<>
@@ -61,12 +75,14 @@ export const Specialists = () => {
 								onClick={() => setIsPopupOpen(true)}>
 								<FilterIcon />
 							</button>
-							<PopUp
-								visible={isPopupOpen}
-								title=""
-								onClose={() => setIsPopupOpen(false)}>
-								{' '}
-							</PopUp>
+							{isMobile ? (
+								<PopUp
+									visible={isPopupOpen}
+									title=""
+									onClose={() => setIsPopupOpen(false)}>
+									<SpecialistsFilter />
+								</PopUp>
+							) : null}
 						</div>
 					</div>
 					<div className={styles.specialists__filterContainer}>
@@ -140,7 +156,12 @@ export const Specialists = () => {
 					})}
 				</div>
 
-				<div>ПАГИНАЦИЯ</div>
+				<Pagination
+					onPageChange={(page) => setCurrentPage(Number(page))}
+					totalCount={specialistsArray.length}
+					currentPage={currentPage}
+					pageSize={pageSize}
+				/>
 			</section>
 			<Footer />
 		</>
