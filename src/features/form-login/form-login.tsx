@@ -32,20 +32,10 @@ export const FormLoginFeature: FC = () => {
 	};
 
 	const handleSubmit = (userData: IUser) => {
-		toaster({
-			status: 'error',
-			title: 'Ошибка авторизации',
-			subtitle: `TEST TEST TEST`,
-		});
 		authUser(userData)
 			.unwrap()
 			.then((payload) => {
-				// toaster({
-				// 	status: 'success',
-				// 	title: 'все ОКЕЙ',
-				// 	subtitle: 'dsfdsfsdfsdfsdfsdfsdfsdf',
-				// });
-				console.log('token', payload.auth_token);
+				// console.log('token', payload.auth_token);
 				localStorage.setItem('token', payload.auth_token as string);
 			})
 			.then(() => {
