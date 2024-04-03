@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { MainButton, Input, Form } from '@/shared/ui';
+import { MainButton, Input, Form, PopUp } from '@/shared/ui';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
@@ -9,7 +9,6 @@ import { useForm } from 'react-hook-form';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
 import styles from './profile-edit-form.module.scss';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
-import { PopUp } from '@/shared/ui';
 import Plus from '@/shared/assets/icons/plus-large.svg';
 
 export const DesktopView = () => {
