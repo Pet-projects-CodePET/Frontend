@@ -32,6 +32,11 @@ export const FormLoginFeature: FC = () => {
 	};
 
 	const handleSubmit = (userData: IUser) => {
+		toaster({
+			status: 'error',
+			title: 'Ошибка авторизации',
+			subtitle: `TEST TEST TEST`,
+		});
 		authUser(userData)
 			.unwrap()
 			.then((payload) => {
