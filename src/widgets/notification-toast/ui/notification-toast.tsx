@@ -17,6 +17,8 @@ type NotificationPropsType = {
 	subtitle?: string;
 };
 
+type HandleResizeType = () => void;
+
 export const toaster = ({ status, title, subtitle }: NotificationPropsType) =>
 	toast(
 		NotificationBanner({
@@ -26,11 +28,13 @@ export const toaster = ({ status, title, subtitle }: NotificationPropsType) =>
 		})
 	);
 export const NotificationToastContainer = () => {
-	const [width, setWidth] = useState(window.innerWidth);
+	const [width, setWidth] = useState(0);
 
 	useEffect(() => {
-		const handleResize = () => {
-			setWidth(window.innerWidth);
+		const handleResize: HandleResizeType = () => {
+			if (typeof window !== 'undefined') {
+				setWidth(window.innerWidth);
+			}
 		};
 
 		window.addEventListener('resize', handleResize);
@@ -39,6 +43,7 @@ export const NotificationToastContainer = () => {
 			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
+
 	return (
 		<>
 			{width < 780 ? (
