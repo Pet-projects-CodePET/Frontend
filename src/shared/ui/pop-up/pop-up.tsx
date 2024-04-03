@@ -40,7 +40,13 @@ export const PopUp = ({
 			<div className={style.popup_wrapper}>
 				<div className={style.popup_content}>
 					<div className={style.popup_title}>{title}</div>
-					<XmarkIcon className={style.xmark} data-close onClick={onClose} />
+					<XmarkIcon
+						className={style.xmark}
+						data-close
+						onClick={onClose}
+						width={24}
+						height={24}
+					/>
 					{children}
 				</div>
 			</div>

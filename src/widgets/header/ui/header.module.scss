@@ -17,7 +17,6 @@
 		border-radius: 100px;
 		padding: 8px;
 		background-color: $--Foreground-default;
-	
 	}
 
 	&__link {
@@ -143,7 +142,7 @@
 			display: none;
 		}
 		&__iconLogin {
-		    display: none;
+			display: none;
 		}
 		&__linkLogin {
 			background-image: url('../../../shared/assets/icons/icon-button-login.svg');
