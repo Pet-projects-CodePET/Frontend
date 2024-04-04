@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { MainButton, CheckboxAndRadio } from '@/shared/ui';
 import { IUser } from '@/services/models/IUser';
 import { professions } from '@/shared/constants';
+import { Input } from '@/shared/ui';
 import clsx from 'clsx';
 import styles from './specialists-filter.module.scss';
 
@@ -106,6 +107,15 @@ export const SpecialistsFilter = () => {
 					width="min">
 					{isExpandedProfessionsList ? 'Свернуть' : 'Развернуть'}
 				</MainButton>
+			</fieldset>
+			<fieldset className={styles.fieldset}>
+				<p className={styles.groupName}>Навыки</p>
+				<Input
+					name="skills"
+					labelName=" "
+					description={true}
+					descrText="Не более 5 навыков"
+				/>
 			</fieldset>
 			<div className={styles.buttonsContainer}>
 				<div>

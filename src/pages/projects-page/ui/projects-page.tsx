@@ -297,7 +297,15 @@ export const Projects = () => {
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
 						<InputSearch search={() => {}} onChange={() => {}} />
+						
+					 <button
+									className={styles.projects__filterButton}
+									onClick={() => setIsPopupOpen(true)}>
+									<FilterIcon />
+								</button>
+						
 					</div>
+				
 				</div>
 				<PopUp
 					visible={isPopupOpen}
@@ -370,14 +378,10 @@ export const Projects = () => {
 										isSearchable
 										tooltip="Не более 5 навыков"
 									/>
-								</Tooltip>
+								</Tooltip>									
 							</div>
 							{isMobile ? (
-								<button
-									className={styles.projects__filterButton}
-									onClick={() => setIsPopupOpen(true)}>
-									<FilterIcon />
-								</button>
+								null
 							) : (
 								<MainButton
 									variant="primary"
