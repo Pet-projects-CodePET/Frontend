@@ -4,6 +4,11 @@
 /* Подключение шрифтов  */
 @import url('../shared/assets/fonts/fonts.css');
 
+@font-face {
+	src: url(../shared/assets/fonts/OpenSans/OpenSans-Regular.woff);
+	font-family: OpenSans-Regular;
+}
+
 html,
 body {
 	height: 100%;
@@ -15,3 +20,56 @@ body {
 	height: max-content;
 	align-items: center;
 }
+
+/*  */
+
+.quill > * {
+    border-color: inherit !important;
+    color: inherit !important;
+  }
+  .quill > .ql-toolbar {
+    /* border radius of the toolbar */
+    border: 1px solid #E2E8F0 !important;
+    border-bottom: none !important;
+    border-radius: 10px 10px 0 0;
+    background-color: #E8EEFF;
+  }
+
+  .quill > .ql-container {
+    /* border radius of the container and for font size*/
+    font-size: inherit;
+    border: 1px solid #E2E8F0 !important;
+    border-top: none !important;
+    border-radius: 0 0 10px 10px;
+    min-height: 200px !important;
+  }
+
+  .ql-toolbar.ql-snow .ql-picker-label {
+    color: inherit !important;
+    opacity: 0.76;
+  }
+  .ql-snow .ql-picker {
+    color: inherit !important;
+  }
+  .quill > .ql-container > .ql-editor.ql-blank::before {
+    /* for placeholder */
+    color: #475569;
+    font-family: OpenSans-Regular;
+    font-style: normal;
+  }
+  .ql-snow.ql-toolbar button svg {
+    opacity: 0.76;
+    color: currentColor;
+  }
+  .ql-snow .ql-stroke {
+    /* for the border of the editor */
+    stroke: currentColor !important;
+  }
+  .ql-snow .ql-fill {
+    /* for the bg color */
+    fill: currentColor !important;
+  }
+  .ql-picker-item {
+    /* for dropdown */
+    color: #444 !important;
+  }
