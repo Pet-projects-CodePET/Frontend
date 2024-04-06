@@ -10,6 +10,7 @@ import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
 import styles from './profile-edit-form.module.scss';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Plus from '@/shared/assets/icons/plus-large.svg';
+import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -75,11 +76,10 @@ export const DesktopView = () => {
 							description={true}
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
-						<Input
-							name="about"
+						<TextEditor
 							labelName="О себе"
-							description={true}
-							descrText="Не более 750 символов"
+							placeholder=''
+							desc="Не более 750 символов"
 						/>
 						<Input
 							name="portfolioLink"
