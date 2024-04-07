@@ -1,17 +1,20 @@
 'use client';
 
 import React from 'react';
-import styles from './current-projects.module.scss';
+import { useRouter } from 'next/navigation';
 import { MainButton, ProjectCard } from '@/shared/ui';
 import { currentProjects } from '@/shared/types/current-projects';
+import { useGetSectionQuery } from '@/services/GeneralService';
+import styles from './current-projects.module.scss';
 
 export const CurrentProjects = () => {
+	const router = useRouter();
+	const { data: section } = useGetSectionQuery([]);  
 	return (
 		<>
-			<h2 className={styles.header}>Актуальные проекты</h2>
+			<h2 className={styles.header}>{section ? section.results[1].title : ' '}</h2>
 			<p className={styles.text}>
-				Примените свои навыки и получите опыт работы в команде единомышленников,
-				присоединившись к актуальным проектам.
+			{section ? section.results[1].description : ' '}
 			</p>
 			<p className={styles.textMobile}>Присоединитесь к актуальным проектам.</p>
 			<div className={styles.projectCards}>
@@ -30,7 +33,8 @@ export const CurrentProjects = () => {
 				})}
 			</div>
 			<div className={styles.showAll}>
-				<MainButton variant="primary" width="max">
+				<MainButton variant="primary" width="max"
+				onClick={() => router.push('projects')}>
 					Все проекты
 				</MainButton>
 			</div>

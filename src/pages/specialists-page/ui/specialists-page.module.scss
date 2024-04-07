@@ -1,0 +1,85 @@
+@import '@/shared/style/variables.scss';
+
+.specialists {
+	display: flex;
+	max-width: 1160px;
+	flex-direction: column;
+	gap: 48px;
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+	}
+	&__container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	&__inputSearch {
+		min-width: 396px;
+	}
+	&__filterButton {
+		display: none;
+		width: 40px;
+		height: 40px;
+		background-color: $--Foreground-default;
+		border-radius: 1000px;
+		padding: 8px;
+		cursor: pointer;
+	}
+	&__title {
+		margin: 0;
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 28px;
+		font-weight: 700;
+		line-height: 32px;
+		letter-spacing: -0.28px;
+	}
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+	&__filterContainer {
+		display: flex;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	.specialists {
+		max-width: 828px;
+	}
+}
+@media screen and (max-width: 779px) {
+	.specialists {
+		max-width: 100vw;
+		padding: 0 16px;
+		&__container {
+			flex-direction: column;
+			gap: 16px;
+		}
+		&__inputSearch {
+			min-width: 272px;
+		}
+		&__filterButton {
+			display: flex;
+			align-items: center;
+		}
+		&__item {
+			display: flex;
+			justify-content: space-between;
+		}
+		&__wrapper {
+			gap: 24px;
+		}
+		&__cards {
+			gap: 16px;
+		}
+		&__filterContainer {
+			display: none;
+		}
+	}
+}

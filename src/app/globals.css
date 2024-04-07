@@ -19,6 +19,12 @@ body {
 	flex-direction: column;
 	height: max-content;
 	align-items: center;
+	/* Синяя подсветка сливается с фоном */
+	-webkit-tap-highlight-color: transparent;
+	/* Предотвращаем появление контекстного меню на устройствах Apple */
+	-webkit-touch-callout: none;
+	/* Осторожно относимся к выбору контента */
+	-webkit-user-select: none;
 }
 
 /*  */

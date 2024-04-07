@@ -1,5 +1,4 @@
 @import '@/shared/style/variables';
-
 %normalText {
 	font-family: $--open-sans-font;
 	font-weight: 700;
@@ -15,25 +14,11 @@
 	box-sizing: border-box;
 	border-radius: 12px;
 	background: transparent;
-
 	@media screen and (max-width: 779px) {
 		border: 1px solid $--border-default;
 		padding: 30px 16px;
 	}
 }
-
-.closeIcon {
-	position: absolute;
-	top: 24px;
-	right: 24px;
-	width: 24px;
-	height: 24px;
-
-	@media screen and (max-width: 779px) {
-		top: 34px;
-	}
-}
-
 .title {
 	@extend %normalText;
 	color: $--Neutral-Black;
@@ -41,13 +26,12 @@
 	font-style: normal;
 	line-height: 32px;
 	letter-spacing: -0.28px;
-	margin: 0 0 32px 0;
 
 	@media screen and (max-width: 779px) {
 		font-size: 20px;
 		line-height: normal;
 		letter-spacing: 0.25px;
-		margin: 0 0 20px 0;
+		margin-top: 25px;
 	}
 }
 
@@ -55,8 +39,8 @@
 	border: none;
 	padding: 0;
 	margin: 0;
+	margin-bottom: 16px;
 }
-
 .groupName {
 	@extend %normalText;
 	margin: 0;
@@ -69,14 +53,13 @@
 		font-size: 16px;
 	}
 }
-
 .inputContainer {
 	display: grid;
 	gap: 16px 16px;
 	justify-items: start;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-	grid-auto-flow: column;
+	//grid-template-rows: 1fr 1fr;
+	grid-auto-flow: row;
 	margin-top: 25px;
 	grid-auto-columns: 1fr 1fr;
 
@@ -84,24 +67,10 @@
 		margin-top: 16px;
 	}
 }
-
-.notExpandedList {
-	grid-template-rows: repeat(3, 1fr);
-}
-
-.expandedList {
-	grid-template-rows: repeat(7, 1fr);
-}
-
 .flexColumn {
 	display: flex;
 	flex-direction: column;
 }
-
-.row {
-	grid-template-rows: none;
-}
-
 .buttonsContainer {
 	display: flex;
 	justify-content: space-between;
@@ -110,15 +79,5 @@
 		padding-top: 40px;
 		flex-direction: column;
 		gap: 8px;
-	}
-}
-
-.divider {
-	opacity: 0.2;
-	background: $--Foreground-subtitle;
-	margin: 22px 0 30px;
-
-	@media screen and (max-width: 779px) {
-		margin: 14px 0 15px;
 	}
 }
