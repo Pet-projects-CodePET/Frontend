@@ -46,6 +46,13 @@ export const userApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		changePassword: builder.mutation<IUser, IUser>({
+			query: (user) => ({
+				url: '/users/set_password/',
+				method: 'POST',
+				body: user,
+			}),
+		}),
 	}),
 });
 
@@ -54,4 +61,5 @@ export const {
 	useAuthUserMutation,
 	useResetPasswordUserMutation,
 	useGetUserMeQuery,
+	useChangePasswordMutation,
 } = userApi;

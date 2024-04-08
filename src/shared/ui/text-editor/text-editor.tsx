@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import styles from "./text-editor.module.scss"
@@ -20,7 +20,7 @@ export const TextEditor: FC<TextEditorProps> = ({
         } else alert("Превышено количество символов.")
     }
 
-    const module = {
+    const module2 = {
         toolbar: [
             ['bold', 'italic', 'underline'],        // toggled buttons
             [{ 'list': 'ordered' }, { 'list': 'bullet' }],
@@ -38,7 +38,7 @@ export const TextEditor: FC<TextEditorProps> = ({
                     <ReactQuill
                         ref={quillRef}
                         placeholder={placeholder}
-                        modules={module}
+                        modules={module2}
                         theme="snow" value={value}
                         onChange={handleChange}
                         className={styles.inputMain}
