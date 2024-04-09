@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import styles from "./text-editor.module.scss"
@@ -15,19 +15,24 @@ export const TextEditor: FC<TextEditorProps> = ({
 
     const handleChange = (content: string) => {
         const text = quillRef.current?.editor?.getText() || ""
-        if (text.length <= 750) {
+        if (text.length <= 751) {
             setValue(content)
-        } else alert("Превышено количество символов.")
+        } else {
+            alert("Превышено количество символов.")
+            quillRef.current?.editor?.deleteText(750, 10)
+        }
     }
 
-    const module = {
-        toolbar: [
-            ['bold', 'italic', 'underline'],        // toggled buttons
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-            [{ 'background': [] }],          // dropdown with defaults from theme
-            [{ 'align': [] }]
-        ],
+    const myModule = {
+        toolbar: {
+            container: [
+                ['bold', 'italic', 'underline'],        // toggled buttons
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                [{ 'background': [] }],          // dropdown with defaults from theme
+                [{ 'align': [] }]
+            ]
+        }
     }
 
     return (
@@ -38,11 +43,12 @@ export const TextEditor: FC<TextEditorProps> = ({
                     <ReactQuill
                         ref={quillRef}
                         placeholder={placeholder}
-                        modules={module}
-                        theme="snow" value={value}
+                        modules={myModule}
+                        theme="snow"
+                        value={value}
                         onChange={handleChange}
                         className={styles.inputMain}
-                        { ...props }
+                        {...props}
                     />
                 </div>
                 <p className={styles.desc}>{desc}</p>

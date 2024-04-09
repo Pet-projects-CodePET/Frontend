@@ -1,55 +1,56 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .textEditor {
-  width: 100%;
+	width: 100%;
 }
 
 .container {
-  width: 100%;
+	width: 100%;
 }
 
 .inputMain {
-  // padding: 0 10px;
-  // max-width: 502px;
-  // max-height: 270px;
-  max-width: 816px;
-  max-height: 256px;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: $--Foreground-default;
-  font-family: $--open-sans-font;
-  overflow-y: scroll;
+	// padding: 0 10px;
+	// max-width: 502px;
+	// max-height: 270px;
+	max-width: 816px;
+	max-height: 256px;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	// overflow-y: scroll;
+	// overflow: scroll;
 }
 
 .title {
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: $--Foreground-default;
-  font-family: $--open-sans-font;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
 }
 
 .desc {
-  font-size: 14px;
-  line-height: 19px;
-  letter-spacing: 0.25px;
-  color: #94a3b8;
-  font-family: $--open-sans-font;
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	color: #94a3b8;
+	font-family: $--open-sans-font;
 }
 
 @media all and (max-width: 1199px) {
-  .inputMain {
-    // padding: 0 10px;
-    max-width: 716px;
-    max-height: 280px;
-  }
+	.inputMain {
+		// padding: 0 10px;
+		max-width: 716px;
+		max-height: 280px;
+	}
 }
 
 @media all and (max-width: 779px) {
-  .inputMain {
-    // padding: 0 10px;
-    max-width: 328px;
-    max-height: 280px;
-  }
+	.inputMain {
+		// padding: 0 10px;
+		max-width: 328px;
+		max-height: 280px;
+	}
 }
