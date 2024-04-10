@@ -80,20 +80,6 @@
 		max-width: 148px;
 	}
 
-	&__input {
-		font-family: $--open-sans-font;
-		color: $--Foreground-default;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 24px; /* 150% */
-		letter-spacing: 0.25px;
-	}
-	&__listPassword {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	}
 }
 .popap__text {
 	margin: 0;

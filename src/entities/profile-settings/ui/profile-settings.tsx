@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { MainButton } from '@/shared/ui';
-import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
@@ -11,6 +10,7 @@ import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { MenuForVisible } from '@/entities/menu-for-visible';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
+// import { FormChangePasswordFeature } from '@/features/form-change-password/form-change-password';
 
 export const ProfileSettings = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -27,6 +27,7 @@ export const ProfileSettings = () => {
 	const handleSubmit = () => {
 		console.log('Submit');
 	};
+	
 	return (
 		<section className={styles.profileSettings}>
 			<div className={styles.profileSettings__profileLink}>
@@ -126,38 +127,9 @@ export const ProfileSettings = () => {
 				</PopUp>
 			</Form>
 
-			<Form onSubmit={handleSubmit} className={styles.formSettings}>
-				<h2 className={styles.formSettings__title}>Смена пароля</h2>
-				<div className={styles.formSettings__listPassword}>
-					<Input
-						className={styles.formSettings__input}
-						name="password"
-						type="password"
-						labelName="Старый пароль"
-						description
-					/>
-					<Input
-						className={styles.formSettings__input}
-						name="new-password"
-						type="password"
-						labelName="Новый пароль"
-						description
-					/>
-					<Input
-						className={styles.formSettings__input}
-						name="repeat-new-password"
-						type="password"
-						labelName="Новый пароль еще раз"
-						description
-					/>
-				</div>
+	{ /* <FormChangePasswordFeature/> */ }
+		
 
-				<div className={styles.formSettings__button}>
-					<MainButton variant={'primary'} width={'regular'}>
-						Сохранить
-					</MainButton>
-				</div>
-			</Form>
 		</section>
 	);
 };
