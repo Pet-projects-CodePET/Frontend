@@ -13,13 +13,22 @@ export const FormChangePassword : FC<FormChangePasswordProps> = ({
 }) => {
 
 	const {
-		formState: { isValid, errors },
+		reset,
+		formState: { isValid, errors, isSubmitSuccessful },
 	} = useFormContext();
+	
 	
 	useEffect(() => {
 		errors.password?.message && setServerPasswordError('');
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [errors.password?.message]);  
+
+	useEffect(() => {
+		if (isSubmitSuccessful) {
+			reset()
+		}
+	}, [isSubmitSuccessful, reset])
+	
 	return (
 	<>
 			<h2 className={styles.formSettings__title}>Смена пароля</h2>
@@ -33,7 +42,7 @@ export const FormChangePassword : FC<FormChangePasswordProps> = ({
 						errors.password
 							? `${errors.password?.message}`
 							: serverPasswordError
-					}  
+					} 
 				/>
 				<Input
 					className={styles.formSettings__input}

@@ -30,8 +30,8 @@ export const FormChangePasswordFeature: FC = () => {
 				setServerErrorText(error.data?.non_field_errors || 'Сервис недоступен');
 				toaster({
 					status: 'error',
-					title: 'Ошибка авторизации',
-					subtitle: `${serverErrorText || 'Сервис недоступен'}`,
+					title: 'Ошибка',
+					subtitle: `${serverErrorText || 'Ошибка, попробуйте еще раз'}`,
 				});
 			});
 
