@@ -9,10 +9,8 @@ export const generalApi = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: `https://${BASE_URL}/api/v1`,
 		// process.env.NODE_ENV === 'production' ? BASE_TEST_URL : BASE_DEV_URL,
-		
 	}),
 	endpoints: (builder) => ({
-	
 		getCount: builder.query({
 			query: () => ({
 				url: '/counter/',
@@ -20,7 +18,7 @@ export const generalApi = createApi({
 			}),
 		}),
 		getSection: builder.query({
-			query:  () => ({
+			query: () => ({
 				url: '/section/',
 				method: 'GET',
 			}),
@@ -28,7 +26,4 @@ export const generalApi = createApi({
 	}),
 });
 
-export const {
-useGetCountQuery,
-useGetSectionQuery
-} = generalApi;
+export const { useGetCountQuery, useGetSectionQuery } = generalApi;

@@ -11,7 +11,6 @@ import styles from './profile-edit-form.module.scss';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import { PopUp } from '@/shared/ui';
 import Plus from '@/shared/assets/icons/plus-large.svg';
-import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 
 export const TabletView = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -79,10 +78,11 @@ export const TabletView = () => {
 								descrText="Укажите свое настоящее имя и фамилию"
 							/>
 						</div>
-						<TextEditor
+						<Input
+							name="about"
 							labelName="О себе"
-							placeholder=''
-							desc="Не более 750 символов"
+							description={true}
+							descrText="Не более 750 символов"
 						/>
 						<Input
 							name="portfolioLink"

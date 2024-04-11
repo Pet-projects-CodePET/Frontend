@@ -11,7 +11,6 @@ import styles from './profile-edit-form.module.scss';
 import Photo from '@/shared/assets/icons/icon-photo.svg';
 import { PopUp } from '@/shared/ui';
 import Plus from '@/shared/assets/icons/plus-large.svg';
-import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 
 export const MobileView = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -74,10 +73,11 @@ export const MobileView = () => {
 							description={true}
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
-						<TextEditor
+						<Input
+							name="about"
 							labelName="О себе"
-							placeholder=''
-							desc="Не более 750 символов"
+							description={true}
+							descrText="Не более 750 символов"
 						/>
 						<Input
 							name="portfolioLink"
