@@ -8,4 +8,4 @@ export const NounsDeclension = (number: number, wordsArray: string[]) => {
 	if (oneDecimalPlaces === 1) return wordsArray[0];
 
 	return wordsArray[2];
-}
+};

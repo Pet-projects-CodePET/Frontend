@@ -9,12 +9,14 @@ import styles from './current-projects.module.scss';
 
 export const CurrentProjects = () => {
 	const router = useRouter();
-	const { data: section } = useGetSectionQuery([]);  
+	const { data: section } = useGetSectionQuery([]);
 	return (
 		<>
-			<h2 className={styles.header}>{section ? section.results[1].title : ' '}</h2>
+			<h2 className={styles.header}>
+				{section ? section.results[1].title : ' '}
+			</h2>
 			<p className={styles.text}>
-			{section ? section.results[1].description : ' '}
+				{section ? section.results[1].description : ' '}
 			</p>
 			<p className={styles.textMobile}>Присоединитесь к актуальным проектам.</p>
 			<div className={styles.projectCards}>
@@ -33,8 +35,10 @@ export const CurrentProjects = () => {
 				})}
 			</div>
 			<div className={styles.showAll}>
-				<MainButton variant="primary" width="max"
-				onClick={() => router.push('projects')}>
+				<MainButton
+					variant="primary"
+					width="max"
+					onClick={() => router.push('projects')}>
 					Все проекты
 				</MainButton>
 			</div>

@@ -38,9 +38,7 @@ export const MainPage = () => {
 				<section className={styles.currentProjectsContainer}>
 					<CurrentProjects />
 				</section>
-				<div className={styles.joinUsSection}>
-				{!isLoggedIn &&	<JoinUs /> }
-				</div>
+				<div className={styles.joinUsSection}>{!isLoggedIn && <JoinUs />}</div>
 			</div>
 			<Footer />
 		</>
