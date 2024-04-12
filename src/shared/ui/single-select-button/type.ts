@@ -1,6 +1,6 @@
 import { Option } from '@/shared/types/option';
 
-export type SingleSelectProps = {
+export type SingleSelectButtonProps = {
 	name: string;
 	buttonLabel: string;
 	options: Option[];

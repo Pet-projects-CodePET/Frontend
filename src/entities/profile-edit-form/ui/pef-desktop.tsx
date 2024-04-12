@@ -1,15 +1,22 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { MainButton, Input, Form, PopUp } from '@/shared/ui';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
+import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
+import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
-import { useForm } from 'react-hook-form';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
-import styles from './profile-edit-form.module.scss';
+
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Plus from '@/shared/assets/icons/plus-large.svg';
+
+import { specialties } from '@/shared/constants/specialties/specialties';
+import { skills } from '@/shared/constants/skills/skills';
+
+import styles from './profile-edit-form.module.scss';
 
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -88,13 +95,20 @@ export const DesktopView = () => {
 							descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
 						/>
 						<div className={styles.fields_contacts}>
-							<Input
-								name="contacts"
-								labelName="Контакты для связи"
-								description={true}
-								descrText="Выберите ресурс"
+							<SingleSelectInput
+								name="select-contacts"
+								label="Контакты для связи"
+								description="Выберите ресурс"
+								options={[
+									{ value: 'email', label: 'E-mail' },
+									{ value: 'tg', label: 'Telegram' },
+									{ value: 'phone', label: 'Phone' },
+								]}
+								onChange={(item) => {
+									console.log(item);
+								}}
 							/>
-							<Input name="source" labelName=" " />
+							<Input name="source" labelName="&nbsp;" />
 							<MainButton variant="secondary" width="regular" IconLeft={Plus}>
 								Добавить
 							</MainButton>
@@ -105,25 +119,70 @@ export const DesktopView = () => {
 							<DatePickerRHF control={control} name="birthDate" />
 						</div>
 						<div className={styles.fields_double}>
-							<Input name="country" labelName="Страна" description />
-							<Input name="city" labelName="Город" description />
+							<SingleSelectInput
+								name="select-country"
+								label="Страна"
+								isSearchable
+								options={[
+									{ value: '1', label: 'Россия' },
+									{ value: '2', label: 'Беларусь' },
+									{ value: '3', label: 'Казахстан' },
+								]}
+								onChange={(item) => {
+									console.log(item);
+								}}
+							/>
+							<SingleSelectInput
+								name="select-city"
+								label="Город"
+								isSearchable
+								options={[
+									{ value: '1', label: 'Москва' },
+									{ value: '2', label: 'Екатеринбург' },
+									{ value: '3', label: 'Пермь' },
+								]}
+								onChange={(item) => {
+									console.log(item);
+								}}
+							/>
 						</div>
-						<Input
-							name="speciality"
-							labelName="Специальность"
-							description={true}
-							descrText="Выберите не более 2 специальностей"
+						<div style={{ width: '100%' }}>
+							{' '}
+							<MultiSelectInput
+								name="select-specialties"
+								label="Специальность"
+								description="Выберите не более 2 специальностей"
+								maxSelections={2}
+								options={specialties}
+								values={[]}
+								onChange={(item) => {
+									console.log(item);
+								}}
+							/>
+						</div>
+						<MultiSelectInput
+							name="select-skills"
+							label="Навыки"
+							description="Выберите не более 15 навыков"
+							maxSelections={15}
+							isSearchable
+							options={skills}
+							values={[]}
+							onChange={(item) => {
+								console.log(item);
+							}}
 						/>
-						<Input
-							name="skills"
-							labelName="Навыки"
-							description={true}
-							descrText="Выберите не более 15 навыков"
-						/>
-						<Input
-							name="qualLabel"
-							labelName="Уровень квалификации"
-							description
+						<SingleSelectInput
+							name="select-qualifications"
+							label="Уровень квалификации"
+							options={[
+								{ value: 'junior', label: 'Junior' },
+								{ value: 'middle', label: 'Middle' },
+								{ value: 'senior', label: 'Senior' },
+							]}
+							onChange={(item) => {
+								console.log(item);
+							}}
 						/>
 
 						<div className={styles.fields__checkbox}>

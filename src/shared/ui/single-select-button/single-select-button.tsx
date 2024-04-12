@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import Select, { SelectRenderer } from 'react-dropdown-select';
-import { SingleSelectProps } from './type';
+import { SingleSelectButtonProps } from './type';
 import CheckIcon from '@/shared/assets/icons/check-icon.svg';
 
-export const SingleSelect: FC<SingleSelectProps> = ({
+export const SingleSelectButton: FC<SingleSelectButtonProps> = ({
 	name,
 	buttonLabel,
 	options,

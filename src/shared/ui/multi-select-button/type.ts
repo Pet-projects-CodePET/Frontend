@@ -1,6 +1,6 @@
 import { Option } from '@/shared/types/option';
 
-export type MultiSelectProps = {
+export type MultiSelectButtonProps = {
 	name: string;
 	caption: string;
 	options: Option[];
