@@ -239,7 +239,6 @@ const data = [
 ];
 
 export const Projects = () => {
-
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	useEffect(() => {
@@ -261,7 +260,6 @@ export const Projects = () => {
 		const lastPageIndex = firstPageIndex + pageSize;
 		return data.slice(firstPageIndex, lastPageIndex);
 	}, [currentPage]);
-
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
@@ -297,15 +295,13 @@ export const Projects = () => {
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
 						<InputSearch search={() => {}} onChange={() => {}} />
-						
-					 <button
-									className={styles.projects__filterButton}
-									onClick={() => setIsPopupOpen(true)}>
-									<FilterIcon />
-								</button>
-						
+
+						<button
+							className={styles.projects__filterButton}
+							onClick={() => setIsPopupOpen(true)}>
+							<FilterIcon />
+						</button>
 					</div>
-				
 				</div>
 				<PopUp
 					visible={isPopupOpen}
@@ -378,11 +374,9 @@ export const Projects = () => {
 										isSearchable
 										tooltip="Не более 5 навыков"
 									/>
-								</Tooltip>									
+								</Tooltip>
 							</div>
-							{isMobile ? (
-								null
-							) : (
+							{isMobile ? null : (
 								<MainButton
 									variant="primary"
 									width="regular"
@@ -393,33 +387,32 @@ export const Projects = () => {
 							)}
 						</div>
 
-	
-					<div className={styles.projectsContainer}>
-						{projectsArray.map((project) => {
-							return (
-								<ProjectCardFull
-									isActiveProject={project.isActiveProject}
-									professions={project.professions}
-									skills={project.skills}
-									description={project.description}
-									duration={project.duration}
-									title={project.title}
-									subtitle={project.subtitle}
-									key={project.id}
-								/>
-							);
-						})}
-					</div>
-					<Pagination
-						onPageChange={(page) => setCurrentPage(Number(page))}
-						totalCount={data.length}
-						currentPage={currentPage}
-						pageSize={pageSize}
-					/>
-				</>
-			) : null}
-		</div>
-		<Footer />
-</>
+						<div className={styles.projectsContainer}>
+							{projectsArray.map((project) => {
+								return (
+									<ProjectCardFull
+										isActiveProject={project.isActiveProject}
+										professions={project.professions}
+										skills={project.skills}
+										description={project.description}
+										duration={project.duration}
+										title={project.title}
+										subtitle={project.subtitle}
+										key={project.id}
+									/>
+								);
+							})}
+						</div>
+						<Pagination
+							onPageChange={(page) => setCurrentPage(Number(page))}
+							totalCount={data.length}
+							currentPage={currentPage}
+							pageSize={pageSize}
+						/>
+					</>
+				) : null}
+			</div>
+			<Footer />
+		</>
 	);
 };

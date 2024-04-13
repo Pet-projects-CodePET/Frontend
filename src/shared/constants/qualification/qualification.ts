@@ -19,5 +19,4 @@ export const qualification = [
 		value: '4',
 		label: 'Lead',
 	},
-	
 ];

@@ -10,7 +10,7 @@ import styles from './current-projects.module.scss';
 
 export const CurrentProjects = () => {
 	const router = useRouter();
-	const { data: section } = useGetSectionQuery([]);  
+	const { data: section } = useGetSectionQuery([]);
 	return (
 		<>
 			<h2 className={styles.header}>{section ? section.results[1].title : titleCurrentProjects}</h2>
@@ -34,8 +34,10 @@ export const CurrentProjects = () => {
 				})}
 			</div>
 			<div className={styles.showAll}>
-				<MainButton variant="primary" width="max"
-				onClick={() => router.push('projects')}>
+				<MainButton
+					variant="primary"
+					width="max"
+					onClick={() => router.push('projects')}>
 					Все проекты
 				</MainButton>
 			</div>

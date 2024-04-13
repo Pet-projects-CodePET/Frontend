@@ -11,8 +11,8 @@ import styles from './specialist-card.module.scss';
 export const SpecialistCard: FC<SpecialistCardType> = ({
 	specialization,
 	specialty,
-	telegram, 
-	skills
+	telegram,
+	skills,
 }) => {
 	const isMobile = useMediaQuery('(max-width:779px)');
 	return (
@@ -40,10 +40,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 				</div>
 
 				<div className={styles.specialist__info}>
-					<div
-						className={
-							styles.info__role
-						}>{specialization}</div>
+					<div className={styles.info__role}>{specialization}</div>
 					<ul className={styles.info__skillsList}>
 						{skills.map((skill, id) => {
 							return (

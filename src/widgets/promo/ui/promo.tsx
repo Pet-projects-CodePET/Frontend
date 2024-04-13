@@ -12,10 +12,9 @@ import { titleMainPage, descriptionMainPage } from '@/shared/constants';
 import styles from './promo.module.scss';
 
 export const Promo = () => {
-
 	const { data: counters } = useGetCountQuery(0);
-	const { data: section } = useGetSectionQuery([]);  
-	
+	const { data: section } = useGetSectionQuery([]);
+
 	return (
 		<section className={styles.promo__container}>
 			<div className={styles.promo__imageContainer}>
@@ -28,18 +27,30 @@ export const Promo = () => {
 			</div>
 			<div className={styles.promo__absoluteContainer}>
 				<div className={styles.promo__textContainer}>
+
 					<p className={styles.promo__title}>{section ? section.results[0].title : titleMainPage}</p>
-					<p className={styles.promo__subtitle}>{section ? section.results[0].description : descriptionMainPage}
-					</p>
+					<p className={styles.promo__subtitle}>{section ? section.results[0].description : descriptionMainPage}</p>
 				</div>
 				<div className={styles.promo__itemsContainer}>
 					<div className={styles.promo__items}>
 						<p className={styles.promo__itemOne}>{counters?.projects}</p>
-						<p className={styles.promo__itemTwo}>{NounsDeclension(counters?.projects, ['проект', 'проекта', 'проектов'])}</p> 
+						<p className={styles.promo__itemTwo}>
+							{NounsDeclension(counters?.projects, [
+								'проект',
+								'проекта',
+								'проектов',
+							])}
+						</p>
 					</div>
 					<div className={styles.promo__items}>
 						<p className={styles.promo__itemOne}>{counters?.users}</p>
-						<p className={styles.promo__itemTwo}>{NounsDeclension(counters?.users, ['участник', 'участника', 'участников'])}</p>
+						<p className={styles.promo__itemTwo}>
+							{NounsDeclension(counters?.users, [
+								'участник',
+								'участника',
+								'участников',
+							])}
+						</p>
 					</div>
 				</div>
 				<div className={styles.promo__button}>
