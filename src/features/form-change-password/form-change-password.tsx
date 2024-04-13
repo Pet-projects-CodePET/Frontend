@@ -15,6 +15,7 @@ import styles from './form-change-password.module.scss';
 export const FormChangePasswordFeature: FC = () => {
 	const [changePassword, { error }] = useChangePasswordMutation();
 	const [serverErrorText, setServerErrorText] = useState('');
+	const [isSubmitSuccessful, setSubmitSuccessful] = useState(false);
 
 	const handleSubmit = ({ newPassword, password }: IUser) => {
 		changePassword({ newPassword, password })
@@ -24,6 +25,7 @@ export const FormChangePasswordFeature: FC = () => {
 					status: 'success',
 					title: 'Пароль успешно изменен',
 				});
+				setSubmitSuccessful(true);
 			})
 			.catch((error) => {
 				console.log('error', error);
@@ -31,7 +33,7 @@ export const FormChangePasswordFeature: FC = () => {
 				toaster({
 					status: 'error',
 					title: 'Ошибка',
-					subtitle: `${serverErrorText || 'Ошибка, попробуйте еще раз'}`,
+					subtitle: `${serverErrorText || 'Попробуйте еще раз'}`,
 				});
 			});
 
@@ -47,6 +49,7 @@ export const FormChangePasswordFeature: FC = () => {
 			<FormChangePassword
 				serverPasswordError={serverPasswordError}
 				setServerPasswordError={setServerPasswordError as () => string}
+				isSubmitSuccessful={isSubmitSuccessful}
 			/>
 			<NotificationToastContainer />
 		</Form>

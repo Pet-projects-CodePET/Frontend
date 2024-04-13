@@ -10,11 +10,12 @@ export const FormChangePassword : FC<FormChangePasswordProps> = ({
 	serverPasswordError,
 	setServerPasswordError,
 	serverErrorText,
+	isSubmitSuccessful,
 }) => {
 
 	const {
 		reset,
-		formState: { isValid, errors, isSubmitSuccessful },
+		formState: { isValid, errors, },  
 	} = useFormContext();
 	
 	
