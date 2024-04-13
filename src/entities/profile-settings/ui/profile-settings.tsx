@@ -10,7 +10,6 @@ import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { MenuForVisible } from '@/entities/menu-for-visible';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
-// import { FormChangePasswordFeature } from '@/features/form-change-password/form-change-password';
 
 export const ProfileSettings = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -126,10 +125,6 @@ export const ProfileSettings = () => {
 					</>
 				</PopUp>
 			</Form>
-
-	{ /* <FormChangePasswordFeature/> */ }
-		
-
 		</section>
 	);
 };
