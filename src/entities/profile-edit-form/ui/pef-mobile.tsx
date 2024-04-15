@@ -6,6 +6,7 @@ import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { useForm } from 'react-hook-form';
+import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
 import styles from './profile-edit-form.module.scss';
 import Photo from '@/shared/assets/icons/icon-photo.svg';
@@ -73,11 +74,10 @@ export const MobileView = () => {
 							description={true}
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
-						<Input
-							name="about"
+						<TextEditor 
 							labelName="О себе"
-							description={true}
-							descrText="Не более 750 символов"
+							placeholder=""
+							desc="Не более 750 символов"
 						/>
 						<Input
 							name="portfolioLink"

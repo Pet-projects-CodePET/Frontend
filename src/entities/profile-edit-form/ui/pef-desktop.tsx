@@ -7,6 +7,7 @@ import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { useForm } from 'react-hook-form';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
+import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import styles from './profile-edit-form.module.scss';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Plus from '@/shared/assets/icons/plus-large.svg';
@@ -75,11 +76,10 @@ export const DesktopView = () => {
 							description={true}
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
-						<Input
-							name="about"
+						<TextEditor 
 							labelName="О себе"
-							description={true}
-							descrText="Не более 750 символов"
+							placeholder=""
+							desc="Не более 750 символов"
 						/>
 						<Input
 							name="portfolioLink"
