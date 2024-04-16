@@ -14,10 +14,11 @@ import styles from './form-change-password.module.scss';
 
 export const FormChangePasswordFeature: FC = () => {
 	const [changePassword, { error }] = useChangePasswordMutation();
-	const [serverErrorText, setServerErrorText] = useState('');
-	const [isSubmitSuccessful, setSubmitSuccessful] = useState(false);
+	const [isSubmitSuccessfulReset, setSubmitSuccessfulReset] = useState(false);
+	const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
 	const handleSubmit = ({ newPassword, password }: IUser) => {
+		setIsSubmitDisabled(true);
 		changePassword({ newPassword, password })
 			.unwrap()
 			.then(() => {
@@ -25,16 +26,19 @@ export const FormChangePasswordFeature: FC = () => {
 					status: 'success',
 					title: 'Пароль успешно изменен',
 				});
-				setSubmitSuccessful(true);
+				setSubmitSuccessfulReset(true);
 			})
+
 			.catch((error) => {
 				console.log('error', error);
-				setServerErrorText(error.data?.non_field_errors || 'Сервис недоступен');
 				toaster({
 					status: 'error',
 					title: 'Ошибка',
-					subtitle: `${serverErrorText || 'Попробуйте еще раз'}`,
+					subtitle: `${error.data?.current_password || error.data?.new_password || 'Попробуйте еще раз'}`,
 				});
+			})
+			.finally(() => {
+				setIsSubmitDisabled(false);
 			});
 
 		console.log('change password', error);
@@ -49,7 +53,9 @@ export const FormChangePasswordFeature: FC = () => {
 			<FormChangePassword
 				serverPasswordError={serverPasswordError}
 				setServerPasswordError={setServerPasswordError as () => string}
-				isSubmitSuccessful={isSubmitSuccessful}
+				isSubmitSuccessfulReset={isSubmitSuccessfulReset}
+				isSubmitDisabled={isSubmitDisabled}
+				setSubmitSuccessfulReset={setSubmitSuccessfulReset}
 			/>
 			<NotificationToastContainer />
 		</Form>

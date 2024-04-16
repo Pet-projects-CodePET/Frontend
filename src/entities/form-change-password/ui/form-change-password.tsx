@@ -6,32 +6,33 @@ import { useFormContext } from 'react-hook-form';
 import type { FormChangePasswordProps } from './types';
 import styles from './form-change-password.module.scss';
 
-export const FormChangePassword : FC<FormChangePasswordProps> = ({
+export const FormChangePassword: FC<FormChangePasswordProps> = ({
 	serverPasswordError,
 	setServerPasswordError,
-	serverErrorText,
-	isSubmitSuccessful,
+	isSubmitSuccessfulReset,
+	isSubmitDisabled,
+	setSubmitSuccessfulReset,
 }) => {
-
 	const {
 		reset,
-		formState: { isValid, errors, },  
+		formState: { isValid, errors },
 	} = useFormContext();
-	
-	
-	useEffect(() => {
-		errors.password?.message && setServerPasswordError('');
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [errors.password?.message]);  
 
 	useEffect(() => {
-		if (isSubmitSuccessful) {
-			reset()
+		errors.password?.message && setServerPasswordError('');
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [errors.password?.message]);
+
+	useEffect(() => {
+		if (isSubmitSuccessfulReset) {
+			reset();
+			setSubmitSuccessfulReset(false);
 		}
-	}, [isSubmitSuccessful, reset])
-	
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isSubmitSuccessfulReset]); //setIsSubmitDisabled
+
 	return (
-	<>
+		<>
 			<h2 className={styles.formSettings__title}>Смена пароля</h2>
 			<div className={styles.formSettings__listPassword}>
 				<Input
@@ -43,7 +44,7 @@ export const FormChangePassword : FC<FormChangePasswordProps> = ({
 						errors.password
 							? `${errors.password?.message}`
 							: serverPasswordError
-					} 
+					}
 				/>
 				<Input
 					className={styles.formSettings__input}
@@ -54,7 +55,7 @@ export const FormChangePassword : FC<FormChangePasswordProps> = ({
 						errors.newPassword
 							? `${errors.newPassword?.message}`
 							: serverPasswordError
-					}  
+					}
 				/>
 				<Input
 					className={styles.formSettings__input}
@@ -65,15 +66,17 @@ export const FormChangePassword : FC<FormChangePasswordProps> = ({
 						errors.repeatNewPassword
 							? `${errors.repeatNewPassword?.message}`
 							: serverPasswordError
-					}   
+					}
 				/>
 			</div>
 
 			<div className={styles.formSettings__button}>
-				<MainButton variant={'primary'} width={'regular'} disabled={!isValid}>
+				<MainButton
+					variant={'primary'}
+					width={'regular'}
+					disabled={!isValid || isSubmitDisabled}>
 					Сохранить
 				</MainButton>
-				<span className={styles.server_error}>{serverErrorText}</span>  
 			</div>
 		</>
 	);
