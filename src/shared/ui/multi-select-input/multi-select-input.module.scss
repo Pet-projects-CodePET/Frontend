@@ -105,3 +105,15 @@
 		display: flex;
 	}
 }
+
+.selectedItem {
+	display: flex;
+	padding: 2px 12px;
+	border: 1px solid #e2e8f0;
+	border-radius: 20px;
+	gap: 4px;
+	span {
+		display: flex;
+		align-items: center;
+	}
+}

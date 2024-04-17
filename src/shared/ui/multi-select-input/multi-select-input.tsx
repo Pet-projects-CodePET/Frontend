@@ -8,6 +8,7 @@ import Select, {
 } from 'react-dropdown-select';
 import { InputSearch } from '../input-search/input-search';
 import { Option } from '@/shared/types/option';
+import CloseIcon from '@/shared/assets/icons/xmark.svg';
 
 export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 	name,
@@ -22,10 +23,8 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 	description = '',
 	selectedItemsType = 'list',
 }) => {
-	// Кнопка с надписью
-	const customContentRenderer = ({
-		state,
-	}: SelectRenderer<object | string>) => {
+	// Отображение в виде текста, через запятую
+	const contentRendererList = ({ state }: SelectRenderer<object | string>) => {
 		return (
 			<div>
 				{state.values?.length > 0 &&
@@ -33,6 +32,30 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 						.map((item: Option) => item.label)
 						.join(', ')}
 			</div>
+		);
+	};
+
+	// Отображение в виде блоков текста с кнопкой удаления
+	const contentRendererBlock = ({
+		state,
+		methods,
+	}: SelectRenderer<object | string>) => {
+		return (
+			state.values?.length > 0 &&
+			Object.assign(state.values).map((currentOption: Option) => {
+				return (
+					<span key={currentOption.value} className={styles.selectedItem}>
+						{currentOption.label}
+						<span
+							onClick={(event) =>
+								methods.removeItem(event, currentOption, true)
+							}>
+							{' '}
+							<CloseIcon />
+						</span>
+					</span>
+				);
+			})
 		);
 	};
 
@@ -181,7 +204,9 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 		border-radius: 12px;
 		min-height: 48px;
 		cursor: pointer;
-		${selectedItemsType === 'list' ? 'padding: 10px;' : 'padding: 8px 16px;'}
+		${selectedItemsType === 'list'
+			? 'padding: 8px 12px;'
+			: 'padding: 8px 16px;'}
 
 		:hover,
 		:focus {
@@ -267,7 +292,7 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 
 		.react-dropdown-select-content {
 			justify-content: flex-start;
-			gap: 3px;
+			gap: 8px;
 		}
 	`;
 
@@ -329,14 +354,14 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 	};
 
 	return (
-		<label className={styles.inputLabel}>
-			{label}
+		<>
+			<label className={styles.inputLabel}>{label}</label>
 			{isSearchable ? (
 				<StyledSelect
 					multi
 					name={name}
 					className={styles.inputSelect}
-					contentRenderer={undefined}
+					contentRenderer={contentRendererBlock}
 					dropdownHandle={false}
 					onChange={(options) => onChange(options)}
 					options={options}
@@ -351,7 +376,7 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 					multi
 					name={name}
 					className={styles.inputSelect}
-					contentRenderer={customContentRenderer}
+					contentRenderer={contentRendererList}
 					dropdownHandle={false}
 					onChange={(options) => onChange(options)}
 					options={options}
@@ -365,6 +390,6 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 			{description?.length > 0 && (
 				<span className={styles.description}>{description}</span>
 			)}
-		</label>
+		</>
 	);
 };

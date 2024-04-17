@@ -17,6 +17,7 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 
 import styles from './profile-edit-form.module.scss';
+import clsx from 'clsx';
 
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -115,10 +116,10 @@ export const DesktopView = () => {
 							<button>Сбросить все</button>
 						</div>
 						<div className={styles.datePickerContainer}>
-							<p className={styles.datePickerTitle}>Дата рождения</p>
+							<label className={styles.datePickerTitle}>Дата рождения</label>
 							<DatePickerRHF control={control} name="birthDate" />
 						</div>
-						<div className={styles.fields_double}>
+						<div className={clsx(styles.inputBlock, styles.countryBlock)}>
 							<SingleSelectInput
 								name="select-country"
 								label="Страна"
@@ -146,7 +147,7 @@ export const DesktopView = () => {
 								}}
 							/>
 						</div>
-						<div style={{ width: '100%' }}>
+						<div className={styles.inputBlock}>
 							{' '}
 							<MultiSelectInput
 								name="select-specialties"
@@ -160,35 +161,38 @@ export const DesktopView = () => {
 								}}
 							/>
 						</div>
-						<MultiSelectInput
-							name="select-skills"
-							label="Навыки"
-							description="Выберите не более 15 навыков"
-							maxSelections={15}
-							isSearchable
-							options={skills}
-							values={[]}
-							onChange={(item) => {
-								console.log(item);
-							}}
-						/>
-						<SingleSelectInput
-							name="select-qualifications"
-							label="Уровень квалификации"
-							options={[
-								{ value: 'junior', label: 'Junior' },
-								{ value: 'middle', label: 'Middle' },
-								{ value: 'senior', label: 'Senior' },
-							]}
-							onChange={(item) => {
-								console.log(item);
-							}}
-						/>
-
+						<div className={styles.inputBlock}>
+							<MultiSelectInput
+								name="select-skills"
+								label="Навыки"
+								description="Выберите не более 15 навыков"
+								maxSelections={15}
+								isSearchable
+								options={skills}
+								values={[]}
+								onChange={(item) => {
+									console.log(item);
+								}}
+							/>
+						</div>
+						<div className={styles.inputBlock}>
+							<SingleSelectInput
+								name="select-qualifications"
+								label="Уровень квалификации"
+								options={[
+									{ value: 'junior', label: 'Junior' },
+									{ value: 'middle', label: 'Middle' },
+									{ value: 'senior', label: 'Senior' },
+								]}
+								onChange={(item) => {
+									console.log(item);
+								}}
+							/>
+						</div>
 						<div className={styles.fields__checkbox}>
-							<p className={styles.fields__checkboxTitle}>
+							<span className={styles.fields__checkboxTitle}>
 								Готовность к участию в проектах
-							</p>
+							</span>
 							<div className={styles.fields__checkboxItem}>
 								<ToggleCheckbox
 									id="participation"
