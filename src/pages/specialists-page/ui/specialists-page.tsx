@@ -5,9 +5,9 @@ import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { specialistsArray } from '@/shared/constants/specialists/specialists';
-import { SingleSelect } from '@/shared/ui/single-select/single-select';
+
 import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
-import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
+
 import { qualification } from '@/shared/constants/qualification/qualification';
 import { Tooltip } from '@/widgets/tooltip';
 import { specialties } from '@/shared/constants/specialties/specialties';
@@ -18,6 +18,8 @@ import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SpecialistsFilter } from '@/entities/specialists-filter';
 import { useMediaQuery } from '@/shared/hooks';
 import styles from './specialists-page.module.scss';
+import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
+import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 
 export const Specialists = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -86,7 +88,7 @@ export const Specialists = () => {
 						</div>
 					</div>
 					<div className={styles.specialists__filterContainer}>
-						<SingleSelect
+						<SingleSelectButton
 							name="select-status"
 							options={statusSpecialist}
 							buttonLabel="Статус специалиста"
@@ -94,7 +96,7 @@ export const Specialists = () => {
 							onChange={handleStatusChange}
 						/>
 
-						<MultiSelect
+						<MultiSelectButton
 							name="select-months"
 							caption="Уровень квалификации"
 							options={qualification}
@@ -105,7 +107,7 @@ export const Specialists = () => {
 						/>
 
 						<Tooltip text="Не более 2 специальностей">
-							<MultiSelect
+							<MultiSelectButton
 								name="select-specialties"
 								caption="Специальность"
 								options={specialties}
@@ -128,7 +130,7 @@ export const Specialists = () => {
 						</Tooltip>
 
 						<Tooltip text="Не более 5 навыков">
-							<MultiSelect
+							<MultiSelectButton
 								name="select-skills"
 								caption="Навыки"
 								options={skills}
