@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { MainButton } from '@/shared/ui';
-import { Input } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
@@ -27,6 +26,7 @@ export const ProfileSettings = () => {
 	const handleSubmit = () => {
 		console.log('Submit');
 	};
+	
 	return (
 		<section className={styles.profileSettings}>
 			<div className={styles.profileSettings__profileLink}>
@@ -124,39 +124,6 @@ export const ProfileSettings = () => {
 						</div>
 					</>
 				</PopUp>
-			</Form>
-
-			<Form onSubmit={handleSubmit} className={styles.formSettings}>
-				<h2 className={styles.formSettings__title}>Смена пароля</h2>
-				<div className={styles.formSettings__listPassword}>
-					<Input
-						className={styles.formSettings__input}
-						name="password"
-						type="password"
-						labelName="Старый пароль"
-						description
-					/>
-					<Input
-						className={styles.formSettings__input}
-						name="new-password"
-						type="password"
-						labelName="Новый пароль"
-						description
-					/>
-					<Input
-						className={styles.formSettings__input}
-						name="repeat-new-password"
-						type="password"
-						labelName="Новый пароль еще раз"
-						description
-					/>
-				</div>
-
-				<div className={styles.formSettings__button}>
-					<MainButton variant={'primary'} width={'regular'}>
-						Сохранить
-					</MainButton>
-				</div>
 			</Form>
 		</section>
 	);

@@ -47,7 +47,7 @@ export const SpecialistsFilter = () => {
 					/>
 					<CheckboxAndRadio
 						labelName="Не готов(а) к участию в проектах"
-						label="radioNotReadyStatus"
+						label="radioReadyStatus"
 						id="radioNotReady"
 						type="radio"
 						value="Не готов(а) к участию в проектах"

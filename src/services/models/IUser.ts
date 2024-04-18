@@ -4,4 +4,5 @@ export type IUser = {
 	password?: string;
 	re_password?: string;
 	auth_token?: string;
+	newPassword?: string;
 };
