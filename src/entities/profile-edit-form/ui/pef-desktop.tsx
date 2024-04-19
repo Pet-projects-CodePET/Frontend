@@ -10,7 +10,6 @@ import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-in
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import styles from './profile-edit-form.module.scss';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Plus from '@/shared/assets/icons/plus-large.svg';
 
