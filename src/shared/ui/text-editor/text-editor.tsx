@@ -18,8 +18,14 @@ export const TextEditor: FC<TextEditorProps> = ({
 	useEffect(() => {
 		setIsWindowLoaded(true);
 	}, []);
-	// eslint-disable-next-line
-	const handleChange = (content: string,delta: any,source: any,editor: Quill.UnprivilegedEditor) => {
+	const handleChange = (
+		content: string,
+		// eslint-disable-next-line
+		delta: any,
+		// eslint-disable-next-line
+		source: any,
+		editor: Quill.UnprivilegedEditor
+	) => {
 		if (typeof window === 'object') {
 			if (editor.getLength() <= 751) {
 				setValue(content);
