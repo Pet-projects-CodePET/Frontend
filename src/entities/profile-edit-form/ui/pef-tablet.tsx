@@ -79,7 +79,7 @@ export const TabletView = () => {
 								descrText="Укажите свое настоящее имя и фамилию"
 							/>
 						</div>
-						<TextEditor 
+						<TextEditor
 							labelName="О себе"
 							placeholder=""
 							desc="Не более 750 символов"

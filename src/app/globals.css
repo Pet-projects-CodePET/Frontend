@@ -47,8 +47,7 @@ body {
 	border: 1px solid #e2e8f0 !important;
 	border-top: none !important;
 	border-radius: 0 0 10px 10px;
-	/* min-height: 200px !important; */
-	overflow-y: scroll !important;
+	/* overflow-y: scroll !important; */
 	height: 192px;
 }
 
