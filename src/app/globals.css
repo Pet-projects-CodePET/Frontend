@@ -47,9 +47,8 @@ body {
 	border: 1px solid #e2e8f0 !important;
 	border-top: none !important;
 	border-radius: 0 0 10px 10px;
-	/* min-height: 200px !important; */
-	overflow-y: scroll !important;
-	height: 200px;
+	/* overflow-y: scroll !important; */
+	height: 192px;
 }
 
 .ql-toolbar.ql-snow .ql-picker-label {
@@ -80,4 +79,16 @@ body {
 .ql-picker-item {
 	/* for dropdown */
 	color: #444 !important;
+}
+
+@media all and (max-width: 1199px) {
+	.quill > .ql-container {
+		height: 228px;
+	}
+}
+
+@media all and (max-width: 779px) {
+	.quill > .ql-container {
+		height: 204px;
+	}
 }
