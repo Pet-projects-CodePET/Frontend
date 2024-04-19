@@ -2,13 +2,11 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
-import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { projectsArray } from '@/shared/constants/projects/projects';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
 import { months2, professions } from '@/shared/constants';
 import { months } from '@/shared/constants/months/months';
-import { SingleSelect } from '@/shared/ui/single-select/single-select';
 import { ProjectFilter } from '@/entities/project-filter';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { MainButton } from '@/shared/ui';
@@ -24,6 +22,8 @@ import { InputSearch } from '@/shared/ui/input-search/input-search';
 import styles from './projects-page.module.scss';
 
 import { Pagination } from '@/entities/pagination/ui/pagination';
+import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
+import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 
 const data = [
 	{
@@ -317,14 +317,14 @@ export const Projects = () => {
 					<>
 						<div className={styles.allFilterContainer}>
 							<div className={styles.filterContainer}>
-								<SingleSelect
+								<SingleSelectButton
 									name="select-status"
 									options={statusOptions}
 									buttonLabel="Статус проекта"
 									value={{ value: 'completed', label: 'Завершенный' }}
 									onChange={handleStatusProjectChange}
 								/>
-								<MultiSelect
+								<MultiSelectButton
 									name="select-months"
 									caption="Дата"
 									options={months}
@@ -333,7 +333,7 @@ export const Projects = () => {
 									selectedAll={true}
 									buttonWidth={114}
 								/>
-								<SingleSelect
+								<SingleSelectButton
 									name="select-recruitment-status"
 									options={recruitmentStatus}
 									buttonLabel="Статус набора"
@@ -341,7 +341,7 @@ export const Projects = () => {
 									onChange={handleRecruitmentStatusChange}
 								/>
 								<Tooltip text="Не более 2 специальностей">
-									<MultiSelect
+									<MultiSelectButton
 										name="select-specialties"
 										caption="Специальность"
 										options={specialties}
@@ -363,7 +363,7 @@ export const Projects = () => {
 									/>
 								</Tooltip>
 								<Tooltip text="Не более 5 навыков">
-									<MultiSelect
+									<MultiSelectButton
 										name="select-skills"
 										caption="Навыки"
 										options={skills}

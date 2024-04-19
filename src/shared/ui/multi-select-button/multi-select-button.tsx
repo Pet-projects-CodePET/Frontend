@@ -1,15 +1,15 @@
 import React from 'react';
-import { MultiSelectProps } from './type';
+import { MultiSelectButtonProps } from './type';
 import styled from '@emotion/styled';
 import Select, {
 	SelectItemRenderer,
 	SelectRenderer,
 } from 'react-dropdown-select';
-import styles from './multi-select.module.scss';
+import styles from './multi-select-button.module.scss';
 import { InputSearch } from '../input-search/input-search';
 import IconInformation from '../../assets/icons/information.svg';
 
-export const MultiSelect: React.FC<MultiSelectProps> = ({
+export const MultiSelectButton: React.FC<MultiSelectButtonProps> = ({
 	name,
 	caption,
 	options,
@@ -112,7 +112,6 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 				<StyledItems>
 					{props.options
 						.filter((item) => {
-							console.log('item', item);
 							const searchBy = props.searchBy || '';
 							const labelField = props.labelField || '';
 							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
