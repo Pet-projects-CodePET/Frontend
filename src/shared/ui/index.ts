@@ -8,3 +8,4 @@ export { PopUp } from './pop-up/pop-up';
 export { CheckboxAndRadio } from './checkbox/checkbox';
 export { NotificationBanner } from './notification-banner/notification-banner';
 export type { TagsProps, Tag } from './tags/types';
+export { Counter } from './counter/counter';

@@ -1,0 +1,40 @@
+@import '@/shared/style/variables';
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+}
+.buttonWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 48px;
+	height: 48px;
+}
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 6px;
+	border: none;
+	border-radius: 20px;
+	background-color: $--bg-accent-default;
+}
+.count {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 48px;
+	height: 48px;
+    font-family: $--open-sans-font;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.25px;
+}
+.icon {
+	width: 24px;
+	height: 24px;
+}
