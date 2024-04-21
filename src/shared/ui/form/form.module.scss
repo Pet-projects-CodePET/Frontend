@@ -1,5 +1,4 @@
 .form {
-	width: 560px;
 	min-width: 360px;
 	box-sizing: border-box;
 	padding: 56px;
@@ -20,10 +19,8 @@
 
 @media screen and (max-width: 779px) {
 	.form {
-		max-width: 777px;
-		min-width: 360px;
 		min-height: 100vh;
-		width: 100vw;
+		//		width: 100vw;
 		padding: 24px 16px;
 		border-radius: 0;
 		gap: 32px;

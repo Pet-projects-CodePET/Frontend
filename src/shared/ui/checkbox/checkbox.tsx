@@ -8,7 +8,7 @@ import type { CheckboxAndRadioProps } from './types';
 import styles from './checkbox.module.scss';
 
 export const CheckboxAndRadio: FC<CheckboxAndRadioProps> = ({
-	label,
+	name,
 	id,
 	labelName,
 	type,
@@ -19,7 +19,7 @@ export const CheckboxAndRadio: FC<CheckboxAndRadioProps> = ({
 	return (
 		<div className={styles.checkboxContainer}>
 			<input
-				{...register(label)}
+				{...register(name)}
 				className={styles.checkbox}
 				id={id}
 				type={type}
