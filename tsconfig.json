@@ -14,19 +14,19 @@
 		"incremental": true,
 		"plugins": [
 			{
-				"name": "next"
-			}
+				"name": "next",
+			},
 		],
 		"paths": {
-			"@/*": ["./src/*"]
-		}
+			"@/*": ["./src/*"],
+		},
 	},
 	"include": [
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"src/shared/lib/index.js"
+		"src/shared/lib/index.js",
 	],
-	"exclude": ["code_pet/node_modules"]
+	"exclude": ["code_pet/node_modules"],
 }

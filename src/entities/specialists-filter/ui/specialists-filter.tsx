@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Form } from '@/shared/ui/form/form';
 import { useForm } from 'react-hook-form';
-import { MainButton, CheckboxAndRadio } from '@/shared/ui';
+import { MainButton, CheckboxAndRadio, Input } from '@/shared/ui';
 import { IUser } from '@/services/models/IUser';
 import { professions } from '@/shared/constants';
-import { Input } from '@/shared/ui';
 import clsx from 'clsx';
 import styles from './specialists-filter.module.scss';
 
@@ -40,14 +39,14 @@ export const SpecialistsFilter = () => {
 				<div className={styles.inputContainer}>
 					<CheckboxAndRadio
 						labelName="Готов(а) к участию в проектах"
-						label="radioReadyStatus"
+						name="radioReadyStatus"
 						id="radioReady"
 						type="radio"
 						value="Готов(а) к участию в проектах"
 					/>
 					<CheckboxAndRadio
 						labelName="Не готов(а) к участию в проектах"
-						label="radioReadyStatus"
+						name="radioReadyStatus"
 						id="radioNotReady"
 						type="radio"
 						value="Не готов(а) к участию в проектах"
@@ -59,25 +58,25 @@ export const SpecialistsFilter = () => {
 				<div className={styles.inputContainer}>
 					<CheckboxAndRadio
 						labelName="Junior"
-						label="optionJunior"
+						name="optionJunior"
 						id="optionJunior"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Middle"
-						label="optionMiddle"
+						name="optionMiddle"
 						id="optionMiddle"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Senior"
-						label="optionSenior"
+						name="optionSenior"
 						id="optionSenior"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Lead"
-						label="optionLead"
+						name="optionLead"
 						id="optionLead"
 						type="checkbox"
 					/>
@@ -92,7 +91,7 @@ export const SpecialistsFilter = () => {
 								<CheckboxAndRadio
 									key={ind}
 									labelName={p}
-									label={`optionProfession${ind}`}
+									name={`optionProfession${ind}`}
 									id={`optionProfession${ind}`}
 									type="checkbox"
 								/>

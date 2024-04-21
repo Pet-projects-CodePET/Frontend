@@ -58,25 +58,25 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 				<div className={styles.inputContainer}>
 					<CheckboxAndRadio
 						labelName="Junior"
-						label="optionJunior"
+						name="optionJunior"
 						id="optionJunior"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Middle"
-						label="optionMiddle"
+						name="optionMiddle"
 						id="optionMiddle"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Senior"
-						label="optionSenior"
+						name="optionSenior"
 						id="optionSenior"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Lead"
-						label="optionLead"
+						name="optionLead"
 						id="optionLead"
 						type="checkbox"
 					/>
@@ -88,25 +88,25 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 				<div className={styles.inputContainer}>
 					<CheckboxAndRadio
 						labelName="10 часов в неделю"
-						label="option10hours"
+						name="option10hours"
 						id="option10hours"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="20 часов в неделю"
-						label="option20hours"
+						name="option20hours"
 						id="option20hours"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="30 часов в неделю"
-						label="option30hours"
+						name="option30hours"
 						id="option30hours"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="40 часов в неделю"
-						label="option40hours"
+						name="option40hours"
 						id="option40hours"
 						type="checkbox"
 					/>
@@ -118,19 +118,19 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 				<div className={styles.inputContainer}>
 					<CheckboxAndRadio
 						labelName="Десктоп"
-						label="optionDesctop"
+						name="optionDesctop"
 						id="optionDesctop"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Мобильная"
-						label="optionMobile"
+						name="optionMobile"
 						id="optionMobile"
 						type="checkbox"
 					/>
 					<CheckboxAndRadio
 						labelName="Веб"
-						label="optionWeb"
+						name="optionWeb"
 						id="optionWeb"
 						type="checkbox"
 					/>
@@ -144,14 +144,14 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 						<div className={clsx(styles.inputContainer, styles.row)}>
 							<CheckboxAndRadio
 								labelName="Активный"
-								label="radioProjectStatus"
+								name="radioProjectStatus"
 								id="radioActive"
 								type="radio"
 								value="Активный"
 							/>
 							<CheckboxAndRadio
 								labelName="Завершенный"
-								label="radioProjectStatus"
+								name="radioProjectStatus"
 								id="radioFinished"
 								type="radio"
 								value="Завершенный"
@@ -164,14 +164,14 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 						<div className={clsx(styles.inputContainer, styles.row)}>
 							<CheckboxAndRadio
 								labelName="Набор открыт"
-								label="radioRecruitmentStatus"
+								name="radioRecruitmentStatus"
 								id="radioOpen"
 								type="radio"
 								value="Набор открыт"
 							/>
 							<CheckboxAndRadio
 								labelName="Набор закрыт"
-								label="radioRecruitmentStatus"
+								name="radioRecruitmentStatus"
 								id="radioClosed"
 								type="radio"
 								value="Набор закрыт"
@@ -191,7 +191,7 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 									<CheckboxAndRadio
 										key={ind}
 										labelName={m}
-										label={`optionMonth${ind}`}
+										name={`optionMonth${ind}`}
 										id={`optionMonth${ind}`}
 										type="checkbox"
 									/>
@@ -216,7 +216,7 @@ export const ProjectFilter: FC<ProjectFilterType> = ({
 										<CheckboxAndRadio
 											key={ind}
 											labelName={p}
-											label={`optionProfession${ind}`}
+											name={`optionProfession${ind}`}
 											id={`optionProfession${ind}`}
 											type="checkbox"
 										/>
