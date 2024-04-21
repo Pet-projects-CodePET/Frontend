@@ -3,9 +3,9 @@ import { Counter } from '@/shared/ui';
 
 export const ProfileCreateProject = () => {
 	return (
-		<div>
-			<div>Создать проект</div>
-			<Counter/>
-		</div>
+		<section>
+			<div>Форма создания проекта</div>
+			<Counter disabled={false}/>
+		</section>
 	);
 };
