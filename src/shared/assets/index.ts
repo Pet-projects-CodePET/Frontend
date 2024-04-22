@@ -7,4 +7,13 @@ import IconMinus from './icons/minus.svg';
 import IconPlusDisabled from './icons/plus-counter-disabled.svg';
 import IconMinusDisabled from './icons/minus-disabled.svg';
 
-export { ActivityIcon, CalendarIcon, CloseIcon, FilterIcon, IconPlus, IconMinus, IconPlusDisabled, IconMinusDisabled};
+export {
+	ActivityIcon,
+	CalendarIcon,
+	CloseIcon,
+	FilterIcon,
+	IconPlus,
+	IconMinus,
+	IconPlusDisabled,
+	IconMinusDisabled,
+};
