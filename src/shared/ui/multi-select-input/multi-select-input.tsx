@@ -23,10 +23,165 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 	description = '',
 	selectedItemsType = 'list',
 }) => {
+	const StyledSelect = styled(Select)`
+		color: #020617 !important;
+		background-color: #feffff !important;
+		border: 1px solid #e2e8f0 !important;
+		border-radius: 12px !important;
+		min-height: 50px !important;
+
+		${selectedItemsType === 'list'
+			? 'padding: 8px 12px !important;'
+			: 'padding: 8px 16px !important;'}
+
+		:hover,
+		:focus {
+			border: 1px solid #8caaff !important;
+			box-shadow: none !important;
+		}
+
+		.react-dropdown-select-clear,
+		.react-dropdown-select-dropdown-handle {
+			color: #fff;
+		}
+
+		.react-dropdown-select-option {
+			padding: 4px 12px;
+			color: #020617;
+			border: 1px solid #e2e8f0;
+			border-radius: 20px;
+			background-color: transparent;
+		}
+
+		.react-dropdown-select-item {
+			color: #333;
+		}
+
+		.react-dropdown-select-input {
+			color: #fff;
+		}
+
+		.react-dropdown-select-dropdown {
+			position: absolute;
+			left: 0;
+			border: 1px solid #e2e8f0;
+			width: 100%;
+			padding: 8px 0;
+			display: flex;
+			flex-direction: column;
+			border-radius: 12px;
+			max-height: 308px;
+			${({ searchable }) =>
+				searchable && searchable !== undefined
+					? 'overflow: hidden;'
+					: 'overflow: auto;'}
+			z-index: 9;
+			background: #fff;
+			box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
+
+			::-webkit-scrollbar {
+				width: 8px;
+				background-color: transparent;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background-color: #e2e8f0;
+				border-radius: 4px;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background-color: #cdd4db;
+			}
+		}
+
+		.react-dropdown-select-item {
+			color: #f2f2f2;
+			border-bottom: 1px solid #333;
+
+			:hover {
+				color: #ffffff80;
+			}
+		}
+
+		.react-dropdown-select-item.react-dropdown-select-item-selected,
+		.react-dropdown-select-item.react-dropdown-select-item-active {
+			background: #111;
+			border-bottom: 1px solid #333;
+			color: #fff;
+			font-weight: bold;
+		}
+
+		.react-dropdown-select-item.react-dropdown-select-item-disabled {
+			background: #777;
+			color: #ccc;
+		}
+
+		.react-dropdown-select-content {
+			justify-content: flex-start;
+			gap: 8px;
+		}
+	`;
+
+	const StyledItems = styled.div`
+		color: black;
+		overflow: auto;
+		min-height: 10px;
+		max-height: 200px;
+
+		::-webkit-scrollbar {
+			width: 8px;
+			background-color: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #e2e8f0;
+			border-radius: 4px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background-color: #cdd4db;
+		}
+	`;
+
+	const StyledItem = styled.div`
+		padding: 8px 16px;
+		color: #020617;
+
+		font-family: 'Open Sans', sans-serif;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+		cursor: pointer;
+
+		> div {
+			display: flex;
+
+			align-items: center;
+		}
+
+		input {
+			margin-right: 8px;
+		}
+
+		:hover {
+			background: #e8eeff;
+		}
+	`;
+
+	const Search = styled.div`
+		margin: 8px 16px 16px;
+	`;
+
+	const buttonMenuStyle = {
+		minWidth: width,
+	};
+
 	// Отображение в виде текста, через запятую
 	const contentRendererList = ({ state }: SelectRenderer<object | string>) => {
 		return (
-			<div>
+			<div className={styles.input}>
 				{state.values?.length > 0 &&
 					Object.assign(state.values)
 						.map((item: Option) => item.label)
@@ -186,181 +341,14 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 		);
 	};
 
-	const StyledSelect = styled(Select)`
-		color: #020617;
-		font-feature-settings:
-			'clig' off,
-			'liga' off;
-		font-family:
-			Open Sans,
-			sans-serif;
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 24px; /* 150% */
-		letter-spacing: 0.25px;
-
-		background-color: #feffff;
-		border: 1px solid #e2e8f0;
-		border-radius: 12px;
-		min-height: 48px;
-		cursor: pointer;
-		${selectedItemsType === 'list'
-			? 'padding: 8px 12px;'
-			: 'padding: 8px 16px;'}
-
-		:hover,
-		:focus {
-			border: 1px solid #8caaff;
-			box-shadow: none;
-		}
-
-		.react-dropdown-select-clear,
-		.react-dropdown-select-dropdown-handle {
-			color: #fff;
-		}
-
-		.react-dropdown-select-option {
-			padding: 4px 12px;
-			color: #020617;
-			border: 1px solid #e2e8f0;
-			border-radius: 20px;
-			background-color: transparent;
-		}
-
-		.react-dropdown-select-item {
-			color: #333;
-		}
-
-		.react-dropdown-select-input {
-			color: #fff;
-		}
-
-		.react-dropdown-select-dropdown {
-			position: absolute;
-			left: 0;
-			border: 1px solid #e2e8f0;
-			width: 100%;
-			padding: 8px 0;
-			display: flex;
-			flex-direction: column;
-			border-radius: 12px;
-			max-height: 308px;
-			${({ searchable }) =>
-				searchable && searchable !== undefined
-					? 'overflow: hidden;'
-					: 'overflow: auto;'}
-			z-index: 9;
-			background: #fff;
-			box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
-
-			::-webkit-scrollbar {
-				width: 8px;
-				background-color: transparent;
-			}
-
-			::-webkit-scrollbar-thumb {
-				background-color: #e2e8f0;
-				border-radius: 4px;
-			}
-
-			::-webkit-scrollbar-thumb:hover {
-				background-color: #cdd4db;
-			}
-		}
-
-		.react-dropdown-select-item {
-			color: #f2f2f2;
-			border-bottom: 1px solid #333;
-
-			:hover {
-				color: #ffffff80;
-			}
-		}
-
-		.react-dropdown-select-item.react-dropdown-select-item-selected,
-		.react-dropdown-select-item.react-dropdown-select-item-active {
-			background: #111;
-			border-bottom: 1px solid #333;
-			color: #fff;
-			font-weight: bold;
-		}
-
-		.react-dropdown-select-item.react-dropdown-select-item-disabled {
-			background: #777;
-			color: #ccc;
-		}
-
-		.react-dropdown-select-content {
-			justify-content: flex-start;
-			gap: 8px;
-		}
-	`;
-
-	const StyledItems = styled.div`
-		color: black;
-		overflow: auto;
-		min-height: 10px;
-		max-height: 200px;
-
-		::-webkit-scrollbar {
-			width: 8px;
-			background-color: transparent;
-		}
-
-		::-webkit-scrollbar-thumb {
-			background-color: #e2e8f0;
-			border-radius: 4px;
-		}
-
-		::-webkit-scrollbar-thumb:hover {
-			background-color: #cdd4db;
-		}
-	`;
-
-	const StyledItem = styled.div`
-		padding: 8px 16px;
-		color: #020617;
-
-		font-family: 'Open Sans', sans-serif;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 24px; /* 150% */
-		letter-spacing: 0.25px;
-		cursor: pointer;
-
-		> div {
-			display: flex;
-
-			align-items: center;
-		}
-
-		input {
-			margin-right: 8px;
-		}
-
-		:hover {
-			background: #e8eeff;
-		}
-	`;
-
-	const Search = styled.div`
-		margin: 8px 16px 16px;
-		color: 'green';
-	`;
-
-	const buttonMenuStyle = {
-		minWidth: width,
-	};
-
 	return (
 		<>
-			<label className={styles.inputLabel}>{label}</label>
+			<label className={styles.label}>{label}</label>
 			{isSearchable ? (
 				<StyledSelect
 					multi
 					name={name}
-					className={styles.inputSelect}
+					className={styles.input}
 					contentRenderer={contentRendererBlock}
 					dropdownHandle={false}
 					onChange={(options) => onChange(options)}
@@ -375,7 +363,7 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({
 				<StyledSelect
 					multi
 					name={name}
-					className={styles.inputSelect}
+					className={styles.input}
 					contentRenderer={contentRendererList}
 					dropdownHandle={false}
 					onChange={(options) => onChange(options)}
