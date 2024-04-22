@@ -9,7 +9,7 @@ import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
-
+import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Plus from '@/shared/assets/icons/plus-large.svg';
 
@@ -83,11 +83,10 @@ export const DesktopView = () => {
 							description={true}
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
-						<Input
-							name="about"
+						<TextEditor
 							labelName="О себе"
-							description={true}
-							descrText="Не более 750 символов"
+							placeholder=""
+							desc="Не более 750 символов"
 						/>
 						<Input
 							name="portfolioLink"
