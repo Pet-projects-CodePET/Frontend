@@ -47,14 +47,14 @@ export const userApi = createApi({
 			}),
 		}),
 		changePassword: builder.mutation<IUser, IUser>({
-			query: ({newPassword, password}) => ({
+			query: ({ newPassword, password }) => ({
 				url: '/users/set_password/',
 				method: 'POST',
 				body: {
 					// eslint-disable-next-line camelcase
 					new_password: newPassword,
 					// eslint-disable-next-line camelcase
-					current_password: password
+					current_password: password,
 				},
 			}),
 		}),

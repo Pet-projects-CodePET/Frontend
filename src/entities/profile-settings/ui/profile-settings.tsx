@@ -26,7 +26,7 @@ export const ProfileSettings = () => {
 	const handleSubmit = () => {
 		console.log('Submit');
 	};
-	
+
 	return (
 		<section className={styles.profileSettings}>
 			<div className={styles.profileSettings__profileLink}>

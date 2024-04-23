@@ -169,6 +169,8 @@
 }
 
 .datePickerTitle {
+	display: inline-block;
+	margin-bottom: 8px;
 	color: $--Foreground-default;
 	font-feature-settings:
 		'clig' off,
