@@ -1,14 +1,12 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-
 import { ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { getClassNameforTag } from '@/shared/utils';
-import LikeIcon from '@/shared/assets/icons/heart.svg';
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
-
 import { ProjectCardFullType } from './type';
+import { LikeButton } from '@/shared/ui';
 import styles from './project-card-full.module.scss';
 
 export const ProjectCardFull: FC<ProjectCardFullType> = ({
@@ -38,8 +36,10 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</div>
 				</div>
 				<div className={styles.likeContainer}>
-					<LikeIcon className={styles.likeIcon} />
+				<LikeButton variant='secondary'/>
 				</div>
+					
+					
 			</div>
 			<div className={styles.calendarContainer}>
 				<CalendarIcon className={styles.calendarIcon} />

@@ -1,0 +1,48 @@
+@import '@/shared/style/variables.scss';
+
+%baseButtonLikeStyle {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+.buttonLikeSecondary {
+	@extend %baseButtonLikeStyle;
+	border: 1px solid $--border-default;
+	&:hover {
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
+	}
+	&:active {
+		border: 1px solid $--bg-accent-pressed;
+	}
+	&:disabled {
+		box-shadow: none;
+	}
+}
+
+.buttonLikeActive {
+	background-color: $--bg-card-hover;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+	fill: $--foreground-muted;
+}
+
+.iconActive {
+	width: 20px;
+	height: 20px;
+	fill: $--Foreground-link-default;
+	&:hover {
+		fill: $--Foreground-tertiary-button-hover;
+	}
+	&:active {
+		fill: $--Foreground-tertiary-button-pressed;
+	}
+}

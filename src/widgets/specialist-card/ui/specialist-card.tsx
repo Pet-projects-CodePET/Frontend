@@ -5,7 +5,7 @@ import { SpecialistCardType } from './type';
 // import { skills } from '@/shared/constants/skills/skills';
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
-import LikeIcon from '@/shared/assets/icons/heart.svg';
+import { LikeButton } from '@/shared/ui';
 import styles from './specialist-card.module.scss';
 
 export const SpecialistCard: FC<SpecialistCardType> = ({
@@ -35,7 +35,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						<p className={styles.info__nickname}>{telegram}</p>
 					</div>
 					<div className={styles.info__likeContainer}>
-						<LikeIcon className={styles.info__likeIcon} />
+						<LikeButton variant="secondary" />
 					</div>
 				</div>
 
