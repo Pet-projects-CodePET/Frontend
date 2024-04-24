@@ -1,9 +1,9 @@
 name: Codepet push front and call QA deploy
 on:
   push:
-    branches: [ 'main', 'QA' ]
+    branches: [ 'QA' ]
   pull_request:
-    branches: [ 'main', 'QA' ]
+    branches: [ 'QA' ]
   workflow_dispatch:
   
 jobs:
@@ -39,7 +39,7 @@ jobs:
         refs/heads/QA
         refs/heads/main
       ', github.ref)
-    uses: Pet-projects-CodePET/Backend/.github/workflows/qa_deploy.yml@develop
+    uses: Pet-projects-CodePET/Backend/.github/workflows/qa_deploy.yml@QA
     needs:
       - build_and_push_to_docker_hub_frontend
     secrets: inherit
