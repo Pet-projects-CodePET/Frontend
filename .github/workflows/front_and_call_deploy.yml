@@ -1,4 +1,4 @@
-name: Codepet deploy front
+name: Codepet push front and call deploy
 on:
   push:
     branches: ['main', 'develop']
@@ -38,7 +38,7 @@ jobs:
         refs/heads/develop
         refs/heads/main
       ', github.ref)
-    uses: Pet-projects-CodePET/Backend/.github/workflows/qa_deploy.yml@develop
+    uses: Pet-projects-CodePET/Backend/.github/workflows/deploy.yml@develop
     needs:
       - build_and_push_to_docker_hub_frontend
     secrets: inherit
