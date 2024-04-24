@@ -8,5 +8,22 @@ import IconPlusDisabled from './icons/plus-counter-disabled.svg';
 import IconMinusDisabled from './icons/minus-disabled.svg';
 import HeartIcon from './icons/heart.svg';
 import HeartIconActive from './icons/heart-active.svg';
+import MobileIcon from './icons/mobile.svg';
+import TelegramIcon from './icons/tg.svg';
+import MailIcon from './icons/mail.svg';
 
-export { ActivityIcon, CalendarIcon, CloseIcon, FilterIcon, IconPlus, IconMinus, IconPlusDisabled, IconMinusDisabled, HeartIcon, HeartIconActive};
+export {
+	ActivityIcon,
+	CalendarIcon,
+	CloseIcon,
+	FilterIcon,
+	IconPlus,
+	IconMinus,
+	IconPlusDisabled,
+	IconMinusDisabled,
+	HeartIcon,
+	HeartIconActive,
+    MailIcon,
+    TelegramIcon,
+    MobileIcon
+};

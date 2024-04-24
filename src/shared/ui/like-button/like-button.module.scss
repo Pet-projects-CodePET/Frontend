@@ -10,7 +10,40 @@
 	cursor: pointer;
 	background-color: transparent;
 }
+%baseHeartIconStyle {
+	width: 20px;
+	height: 20px;
 
+}
+// variant 'primary'
+.buttonLikePrimary {
+	@extend %baseButtonLikeStyle;
+	background-color: $--Foreground-default;
+	border: none;
+	&:hover {
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.50)
+		
+	}
+	&:active {
+		background-color: $--bg-pressed;
+		
+	}
+	&:disabled {
+		background-color: $--bg-disabled;
+	}
+}
+
+.iconHeartPrimary {
+	@extend %baseHeartIconStyle;
+	fill: $--Foreground-inverse;
+}
+.iconHeartPrimaryDisabled {
+	@extend %baseHeartIconStyle;
+	fill: $--Foreground-muted;
+}
+
+
+// variant 'secondary'
 .buttonLikeSecondary {
 	@extend %baseButtonLikeStyle;
 	border: 1px solid $--border-default;
@@ -22,22 +55,46 @@
 	}
 	&:disabled {
 		box-shadow: none;
+		border: none
+	}
+}
+.iconHeartSecondary {
+	@extend %baseHeartIconStyle;
+	fill: $--foreground-muted;
+}
+.iconHeartSecondaryDisabled {
+	@extend %baseHeartIconStyle;
+	fill: $--Foreground-subtitle;
+}
+
+// variant 'trivial'
+.buttonLikeTrivial {
+	@extend %baseButtonLikeStyle;
+	border: none;
+}
+
+.iconHeartTrivial {
+	@extend %baseHeartIconStyle;
+	fill: $--foreground-muted;
+	&:hover {
+		fill: $--Foreground-default;
+	}
+	&:active {
+		fill: $--Foreground-subtitle;
 	}
 }
 
+
+// active styles
+
 .buttonLikeActive {
 	background-color: $--bg-card-hover;
+	&:active {
+		background-color: $--bg-card-hover;
+	}
 }
-
-.icon {
-	width: 20px;
-	height: 20px;
-	fill: $--foreground-muted;
-}
-
 .iconActive {
-	width: 20px;
-	height: 20px;
+	@extend %baseHeartIconStyle;
 	fill: $--Foreground-link-default;
 	&:hover {
 		fill: $--Foreground-tertiary-button-hover;
