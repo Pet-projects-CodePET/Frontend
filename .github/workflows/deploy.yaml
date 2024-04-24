@@ -35,7 +35,7 @@ jobs:
   deploy_uses_other_file:
     if:
       contains('
-        refs/heads/QA
+        refs/heads/develop
         refs/heads/main
       ', github.ref)
     uses: Pet-projects-CodePET/Backend/.github/workflows/qa_deploy.yml@develop
