@@ -3,9 +3,9 @@ on:
   push:
     branches: ['main', 'develop']
   pull_request:
-    branches: [ 'main', 'develop' ]
+    branches: ['main', 'develop']
   workflow_dispatch:
-  
+
 jobs:
   build_and_push_to_docker_hub_frontend:
     name: Push Docker image to DockerHub
@@ -33,10 +33,9 @@ jobs:
             NEXT_PUBLIC_BASE_URL=${{ secrets.DOMAIN_DEV }}
 
   deploy_uses_other_file:
-    if:
-      contains('
-        refs/heads/develop
-        refs/heads/main
+    if: contains('
+      refs/heads/develop
+      refs/heads/main
       ', github.ref)
     uses: Pet-projects-CodePET/Backend/.github/workflows/deploy.yml@develop
     needs:
