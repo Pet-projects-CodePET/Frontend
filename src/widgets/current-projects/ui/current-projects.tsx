@@ -17,10 +17,10 @@ export const CurrentProjects = () => {
 	return (
 		<>
 			<h2 className={styles.header}>
-				{section ? section.results[1].title : titleCurrentProjects}
+				{section ? section[1].title : titleCurrentProjects}
 			</h2>
 			<p className={styles.text}>
-				{section ? section.results[1].description : descriptionCurrentProjects}
+				{section ? section[1].description : descriptionCurrentProjects}
 			</p>
 			<p className={styles.textMobile}>Присоединитесь к актуальным проектам.</p>
 			<div className={styles.projectCards}>
