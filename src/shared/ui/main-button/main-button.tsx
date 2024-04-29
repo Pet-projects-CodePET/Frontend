@@ -43,6 +43,7 @@ export const MainButton: FC<MainButtonProps> = ({
 
 	return (
 		<button
+			// type="button"
 			className={`${getClassnameForType(variant)} ${getClassNameForWidth(width)}`}
 			{...props}>
 			<div className={styles.buttonContainer}>

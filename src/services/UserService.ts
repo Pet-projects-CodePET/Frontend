@@ -64,6 +64,12 @@ export const userApi = createApi({
 				method: 'DELETE',
 			}),
 		}),
+		getSettingsProfileVisibility: builder.query({
+			query: () => ({
+				url: '/profile_visibility/22/', //это мой id для теста!
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -74,4 +80,5 @@ export const {
 	useGetUserMeQuery,
 	useChangePasswordMutation,
 	useDeleteAccountMutation,
+	useGetSettingsProfileVisibilityQuery,
 } = userApi;
