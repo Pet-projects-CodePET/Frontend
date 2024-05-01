@@ -1,6 +1,6 @@
 
 export type FormProfileSettingsProps = {
   handleDeleteAccount: () => void;
-  handleSubmit: () => void;
+  handleSubmit: (data:unknown) => void;
   // settingsProfile: unknown;
 }

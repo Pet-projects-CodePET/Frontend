@@ -1,7 +1,8 @@
 import * as yup from 'yup';
 
 const FormChangePasswordSchema = yup.object().shape({
-	password: yup.string()
+	password: yup
+		.string()
 		.required('Поле обязательно для заполнения')
 		.min(8, 'Длина поля от 8 до 20 символов')
 		.max(20, 'Длина поля от 8 до 20 символов')
@@ -10,7 +11,8 @@ const FormChangePasswordSchema = yup.object().shape({
 			'Проверьте правильность ввода'
 		),
 
-	newPassword: yup.string()
+	newPassword: yup
+		.string()
 		.required('Поле обязательно для заполнения')
 		.min(8, 'Длина поля от 8 до 20 символов')
 		.max(20, 'Длина поля от 8 до 20 символов')
@@ -19,7 +21,8 @@ const FormChangePasswordSchema = yup.object().shape({
 			'Проверьте правильность ввода'
 		),
 
-	repeatNewPassword: yup.string()
+	repeatNewPassword: yup
+		.string()
 		.required('Поле обязательно для заполнения')
 		.min(8, 'Проверьте правильность ввода')
 		.max(20, 'Проверьте правильность ввода')

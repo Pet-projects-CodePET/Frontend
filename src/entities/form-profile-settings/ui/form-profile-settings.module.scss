@@ -17,12 +17,6 @@
 	border: 1px solid $--border-default;
 	margin-bottom: 24px;
 
-	&__list {
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
-	}
-
 	&__title {
 		display: block;
 		color: $--Foreground-default;
@@ -34,21 +28,29 @@
 		letter-spacing: 0.25px;
 		margin: 0;
 	}
-	&__notify {
+
+	&__list {
 		display: flex;
 		flex-direction: column;
 	}
+	&__listItem {
+		border-bottom: 1px solid $--Foreground-subtitle;
+		padding: 24px 0;
+		&:last-child {
+			border-bottom: none;
+		}
+	}
 	&__item {
+		cursor: pointer;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-bottom: 24px;
-		border-bottom: 1px solid $--Foreground-subtitle;
 	}
-	&__item:last-child {
-		border-bottom: none;
-		padding-bottom: 0;
-	}
+
+	// &__notify {
+	// 	display: flex;
+	// 	flex-direction: column;
+	// }
 
 	&__subtitle {
 		color: $--Foreground-default;
@@ -60,11 +62,31 @@
 		letter-spacing: 0.25px;
 		margin: 0;
 	}
+
 	&__icon {
 		width: 24px;
 		height: 24px;
 		cursor: pointer;
 	}
+
+	&__menuList {
+		display: none;
+		flex-direction: column;
+		list-style: none;
+		margin: 24px 0 0;
+
+		padding: 0;
+		gap: 24px;
+
+		&_open {
+			display: flex;
+		}
+	}
+
+	// &__menuListItem {
+		
+	// }
+
 	&__deleteButton {
 		display: flex;
 		font-family: $--open-sans-font;
@@ -117,7 +139,8 @@
 	}
 	&__text {
 		margin: 0;
-		margin-bottom: 32px;		color: $--Foreground-default;
+		margin-bottom: 32px;
+		color: $--Foreground-default;
 		font-family: $--open-sans-font;
 		font-size: 16px;
 		font-style: normal;

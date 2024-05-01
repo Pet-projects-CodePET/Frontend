@@ -1,36 +1,37 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { MainButton } from '@/shared/ui';
+// import { useForm } from 'react-hook-form';
+import { CheckboxAndRadio, MainButton } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
 import styles from './form-profile-settings.module.scss';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
-import { MenuForVisible } from '@/entities/menu-for-visible';
+// import { MenuForVisible } from '@/entities/menu-for-visible';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { FormProfileSettingsProps } from './types';
-// import clsx from 'clsx';
+import clsx from 'clsx';
 
 export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	handleSubmit,
 	handleDeleteAccount,
 	// settingsProfile,
 }) => {
-	const { register } = useForm();
+	// const { register } = useForm();
 
 	const [isPopup, setIsPopup] = useState(false);
 	const isOpen = () => setIsPopup(true);
-	const [checked, setChecked] = useState(false);
+	const [isSendNotification, setIsSendNotification] = useState(false);
+	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(false);
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
 	const [showVisibleContactsMenu, setShowVisibleContactsMenu] = useState(false);
 
-	const checkedChange = (checked: boolean) => {
-		setChecked(checked);
-		console.log('выполнить действие чекбокса');
-	};
+	// const checkedChange = (checked: boolean) => {
+	// 	setChecked(checked);
+	// 	console.log('выполнить действие чекбокса');
+	// };
 
 	const handleClosePopup = () => setIsPopup(false);
 
@@ -47,79 +48,165 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 			<Form onSubmit={handleSubmit} className={styles.formSettings}>
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
 				<div className={styles.formSettings__list}>
-					<div className={styles.formSettings__item}>
-						<p className={styles.formSettings__subtitle}>Видимость профиля</p>
-						{showVisibleProfileMenu ? (
-							<IconUp
-								className={styles.formSettings__icon}
-								onClick={() => setShowVisibleProfileMenu(false)}
-							/>
-						) : (
-							<IconDown
-								className={styles.formSettings__icon}
-								onClick={setShowVisibleProfileMenu}
-							/>
-						)}
+					<div className={styles.formSettings__listItem}>
+						<div
+							className={styles.formSettings__item}
+							onClick={() =>
+								setShowVisibleProfileMenu(!showVisibleProfileMenu)
+							}>
+							<p className={styles.formSettings__subtitle}>Видимость профиля</p>
+							{showVisibleProfileMenu ? (
+								<IconUp className={styles.formSettings__icon} />
+							) : (
+								<IconDown className={styles.formSettings__icon} />
+							)}
+						</div>
+						<ul
+							className={clsx(styles.formSettings__menuList, {
+								[styles.formSettings__menuList_open]: showVisibleProfileMenu,
+							})}>
+							<li className={styles.formSettings__menuListItem}>
+								<CheckboxAndRadio
+									label={'visible_status'}
+									type="radio"
+									defaultChecked={true}
+									id={'visible_status_1'}
+									value="1"
+									// {...register('visible_status')}
+									labelName={'Видно всем'}
+								/>
+							</li>
+							<li className={styles.formSettings__menuListItem}>
+								<CheckboxAndRadio
+									label={'visible_status'}
+									type="radio"
+									defaultChecked={false}
+									id={'visible_status_2'}
+									value="2"
+									// {...register('visible_status')}
+									labelName={'Видно организаторам'}
+								/>
+							</li>
+							<li className={styles.formSettings__menuListItem}>
+								<CheckboxAndRadio
+									label={'visible_status'}
+									type="radio"
+									defaultChecked={false}
+									id={'visible_status_3'}
+									value="3"
+									// {...register('visible_status')}
+									labelName={'Не видно никому'}
+								/>
+							</li>
+						</ul>
+						{/* <MenuForVisible
+							isOpen={showVisibleProfileMenu}
+							onClose={() => {}}
+							settings={3}
+							nameSettings={'visible_status'}
+						/> */}
 					</div>
-					<MenuForVisible
-						isOpen={showVisibleProfileMenu}
-						onClose={() => {}}
-						settings={3}
-						nameSettings={'visible_status'}
-					/>
-					<div className={styles.formSettings__item}>
-						<p className={styles.formSettings__subtitle}>Видимость контактов</p>
-						{showVisibleContactsMenu ? (
-							<IconUp
-								className={styles.formSettings__icon}
-								onClick={() => setShowVisibleContactsMenu(false)}
-							/>
-						) : (
-							<IconDown
-								className={styles.formSettings__icon}
-								onClick={setShowVisibleContactsMenu}
-							/>
-						)}
+					<div className={styles.formSettings__listItem}>
+						<div
+							className={styles.formSettings__item}
+							onClick={() =>
+								setShowVisibleContactsMenu(!showVisibleContactsMenu)
+							}>
+							<p className={styles.formSettings__subtitle}>
+								Видимость контактов
+							</p>
+							{showVisibleContactsMenu ? (
+								<IconUp className={styles.formSettings__icon} />
+							) : (
+								<IconDown className={styles.formSettings__icon} />
+							)}
+						</div>
+						<ul
+							className={clsx(styles.formSettings__menuList, {
+								[styles.formSettings__menuList_open]: showVisibleContactsMenu,
+							})}>
+							<li className={styles.formSettings__menuListItem}>
+								<CheckboxAndRadio
+									label={'visible_status_contacts'}
+									type="radio"
+									defaultChecked={false}
+									id={'visible_status_contacts_1'}
+									value="1"
+									// {...register('visible_status_contacts')}
+									labelName={'Видно всем'}
+								/>
+							</li>
+							<li className={styles.formSettings__menuListItem}>
+								<CheckboxAndRadio
+									label={'visible_status_contacts'}
+									type="radio"
+									defaultChecked={true}
+									id={'visible_status_contacts_2'}
+									value="2"
+									// {...register('visible_status_contacts')}
+									labelName={'Видно организаторам'}
+								/>
+							</li>
+							<li className={styles.formSettings__menuListItem}>
+								<CheckboxAndRadio
+									label={'visible_status_contacts'}
+									type="radio"
+									defaultChecked={false}
+									id={'visible_status_contacts_3'}
+									value="3"
+									// {...register('visible_status_contacts')}
+									labelName={'Не видно никому'}
+								/>
+							</li>
+						</ul>
+						{/* <MenuForVisible
+							isOpen={showVisibleContactsMenu}
+							onClose={() => {}}
+							settings={2}
+							nameSettings={'visible_status_contacts'}
+						/> */}
 					</div>
-					<MenuForVisible
-						isOpen={showVisibleContactsMenu}
-						onClose={() => {}}
-						settings={2}
-						nameSettings={'visible_status_contacts'}
-					/>
 
-					<div className={styles.formSettings__item}>
-						<label className={styles.formSettings__subtitle} htmlFor="notify">
-							Отправка уведомлений
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								{...register('sendNotification')}
-								id="notify"
-								name="notify"
-								variant="defaultOn"
-								checked={checked}
-								onChange={checkedChange}
-							/>
+					<div className={styles.formSettings__listItem}>
+						<div className={styles.formSettings__item}>
+							<label className={styles.formSettings__subtitle} htmlFor="notify">
+								Отправка уведомлений
+							</label>
+							<div className={styles.formSettings__checkbox}>
+								<ToggleCheckbox
+									// {...register('sendNotification')}
+									id="notify"
+									name="notify"
+									variant="defaultOn"
+									checked={isSendNotification}
+									onChange={() => {
+										setIsSendNotification(!isSendNotification);
+									}}
+								/>
+							</div>
 						</div>
 					</div>
 
-					<div className={styles.formSettings__item}>
-						<label
-							className={styles.formSettings__subtitle}
-							htmlFor="subscription">
-							Подписка на проекты
-						</label>
-						<div className={styles.formSettings__checkbox}>
-							<ToggleCheckbox
-								{...register('subscriptionProjects')}
-								variant="defaultOn"
-								id="subscription"
-								name="subscription"
-								onChange={() => {
-									console.log('Подписка на проекты');
-								}}
-							/>
+					<div className={styles.formSettings__listItem}>
+						<div className={styles.formSettings__item}>
+							<label
+								className={styles.formSettings__subtitle}
+								htmlFor="subscription">
+								Подписка на проекты
+							</label>
+							<div className={styles.formSettings__checkbox}>
+								<ToggleCheckbox
+									// {...register('subscriptionProjects')}
+									variant="defaultOn"
+									id="subscription"
+									name="subscription"
+									checked={isSubscriptionProjects}
+									onChange={() => {
+										setIsSubscriptionProjects(!isSubscriptionProjects);
+										// console.log('Подписка на проекты');
+									}}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -149,7 +236,9 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 								type="button"
 								variant={'primary'}
 								width={'regular'}
-								onClick={handleDeleteAccount}>
+								onClick={() => {
+									handleDeleteAccount();
+								}}>
 								Удалить аккаунт
 							</MainButton>
 							<MainButton
