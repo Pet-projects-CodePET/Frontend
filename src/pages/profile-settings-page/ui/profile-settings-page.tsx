@@ -5,8 +5,8 @@ import { FormChangePasswordFeature } from '@/features/form-change-password/form-
 export const ProfileSettingsPage = () => {
 	return (
 		<>
-	<ProfileSettings />
-	<FormChangePasswordFeature/>
-	</>
-)
+			<ProfileSettings />
+			<FormChangePasswordFeature />
+		</>
+	);
 };

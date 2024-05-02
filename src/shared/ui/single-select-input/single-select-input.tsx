@@ -16,25 +16,17 @@ export const SingleSelectInput: FC<SingleSelectInputProps> = ({
 	isSearchable = false,
 }) => {
 	const StyledSelect = styled(Select)`
-		color: #020617;
-		background-color: #feffff;
-		border: 1px solid #e2e8f0;
-		border-radius: 12px;
-		min-height: 50px;
-		cursor: pointer;
-		padding: 0px 16px;
-		font-family:
-			Open Sans,
-			sans-serif;
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 24px; /* 150% */
-		letter-spacing: 0.25px;
+		color: #020617 !important;
+		background-color: #feffff !important;
+		border: 1px solid #e2e8f0 !important;
+		border-radius: 12px !important;
+		min-height: 50px !important;
+		padding: 0px 16px !important;
 
 		:hover,
 		:focus {
-			border: 1px solid #8caaff;
-			box-shadow: none;
+			border: 1px solid #8caaff !important;
+			box-shadow: none !important;
 		}
 
 		.react-dropdown-select-dropdown {
@@ -166,11 +158,11 @@ export const SingleSelectInput: FC<SingleSelectInputProps> = ({
 	};
 
 	return (
-		<div style={{ width: '100%' }}>
-			<label className={styles.inputLabel}>{label}</label>
+		<div className={styles.wrapper}>
+			<label className={styles.label}>{label}</label>
 			<StyledSelect
 				name={name}
-				className={styles.inputSelect}
+				className={styles.input}
 				options={options}
 				values={value ? [value] : []}
 				onChange={onChange}

@@ -1,6 +1,9 @@
 @import '../../style/variables.scss';
 
-.inputLabel {
+.label {
+	display: inline-block;
+	margin-bottom: 8px;
+
 	color: $--Foreground-default;
 	font-feature-settings:
 		'clig' off,
@@ -15,8 +18,12 @@
 	letter-spacing: 0.25px;
 }
 
-.inputSelect {
-	margin: 8px 0 0;
+.input {
+	font-family: $--open-sans-font;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
 }
 
 .description {
