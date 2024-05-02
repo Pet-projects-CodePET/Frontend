@@ -6,7 +6,7 @@ import { getClassNameforTag } from '@/shared/utils';
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { ProjectCardFullType } from './type';
-import { LikeButton } from '@/shared/ui';
+import { LikeButtonFeature } from '@/features/like-button/like-button';
 import styles from './project-card-full.module.scss';
 
 export const ProjectCardFull: FC<ProjectCardFullType> = ({
@@ -36,7 +36,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</div>
 				</div>
 				<div className={styles.likeContainer}>
-				<LikeButton variant='secondary'/>
+			<LikeButtonFeature variant='secondary' />
 				</div>
 					
 					

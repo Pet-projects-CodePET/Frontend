@@ -1,15 +1,16 @@
 'use client';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import type { LikeButtonProps } from './types';
 import { HeartIcon, HeartIconActive } from '@/shared/assets';
 import clsx from 'clsx';
 import styles from './like-button.module.scss';
 
-export const LikeButton: FC<LikeButtonProps> = ({ variant, disabled }) => {
-	const [isActive, setIsActive] = useState(false);
-	const handleActiveLikeButton = () => {
-		setIsActive(!isActive);
-	};
+export const LikeButton: FC<LikeButtonProps> = ({
+	variant,
+	disabled,
+	isActive,
+	handleActiveLikeButton,
+}) => {
 	const getClassnameForTypeLikeButton = (
 		buttonType: 'primary' | 'secondary' | 'trivial'
 	) => {
