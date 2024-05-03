@@ -6,7 +6,7 @@ import { getClassNameforTag } from '@/shared/utils';
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { ProjectCardFullType } from './type';
-import { LikeButtonFeature } from '@/features/like-button/like-button';
+import { LikeButtonFeature } from '@/features';
 import styles from './project-card-full.module.scss';
 
 export const ProjectCardFull: FC<ProjectCardFullType> = ({

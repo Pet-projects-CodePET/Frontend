@@ -51,6 +51,7 @@ export const LikeButton: FC<LikeButtonProps> = ({
 
 	return (
 		<button
+		    type='button'
 			disabled={disabled}
 			className={getClassnameForTypeLikeButton(variant)}
 			onClick={handleActiveLikeButton}>

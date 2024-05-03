@@ -5,7 +5,7 @@ import { SpecialistCardType } from './type';
 // import { skills } from '@/shared/constants/skills/skills';
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
-import { LikeButtonFeature } from '@/features/like-button/like-button';
+import { LikeButtonFeature } from '@/features';
 import styles from './specialist-card.module.scss';
 
 export const SpecialistCard: FC<SpecialistCardType> = ({
