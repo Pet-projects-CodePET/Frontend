@@ -1,6 +1,6 @@
 
 export type FormProfileSettingsProps = {
-  handleDeleteAccount: () => void;
+  handleDeleteAccount: (currentPassword: string) => void;
   handleSubmit: (data:unknown) => void;
   // settingsProfile: unknown;
 }

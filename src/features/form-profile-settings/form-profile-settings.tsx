@@ -3,7 +3,7 @@
 import React, { FC } from 'react';
 import { FormProfileSettings } from '@/entities/form-profile-settings';
 import {
-	// useDeleteAccountMutation,
+	useDeleteAccountMutation,
 	// useGetSettingsProfileVisibilityQuery,
 } from '@/services/UserService';
 // import {
@@ -12,30 +12,30 @@ import {
 // } from '@/widgets/notification-toast/';
 
 export const FormProfileSettingsFeature: FC = () => {
-	// const [deleteAccount] = useDeleteAccountMutation();
+	const [deleteAccount, error] = useDeleteAccountMutation();
 	// const { data } = useGetSettingsProfileVisibilityQuery(null);
 
-	const handleDeleteAccount = () => {
-		console.log('handleDeleteAccount ');
-		// deleteAccount(null)
-		// 	.then((res) => {
-		// 		console.log('deleteAccount res', res);
-		// 		toaster({
-		// 			status: 'success',
-		// 			title: 'Аккаунт успешно удален',
-		// 		});
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log('deleteAccount err', err);
-		// 		toaster({
-		// 			status: 'error',
-		// 			title: 'Аккаунт не удален!',
-		// 		});
-		// 	});
+	const handleDeleteAccount = (password: string) => {
+		console.log('handleDeleteAccount ', password);
+		deleteAccount(password)
+			.then((res) => {
+				console.log('deleteAccount res', res);
+				console.log('deleteAccount error', error);
+				// toaster({
+				// 			status: 'success',
+				// 			title: 'Аккаунт успешно удален',
+				// });
+			})
+			.catch((err) => {
+				console.log('deleteAccount err', err);
+				// 		toaster({
+				// 			status: 'error',
+				// 			title: 'Аккаунт не удален!',
+				// 		});
+			});
 	};
 
-
-	const handleSubmit = (data:unknown) => {
+	const handleSubmit = (data: unknown) => {
 		console.log('handleSubmit data', data);
 	};
 

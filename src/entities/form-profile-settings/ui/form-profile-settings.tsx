@@ -2,7 +2,7 @@
 
 import React, { FC, useState } from 'react';
 // import { useForm } from 'react-hook-form';
-import { CheckboxAndRadio, MainButton } from '@/shared/ui';
+import { CheckboxAndRadio, Input, MainButton } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
@@ -21,23 +21,28 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 }) => {
 	// const { register } = useForm();
 
-	const [isPopup, setIsPopup] = useState(false);
-	const isOpen = () => setIsPopup(true);
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [isSendNotification, setIsSendNotification] = useState(false);
 	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(false);
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
 	const [showVisibleContactsMenu, setShowVisibleContactsMenu] = useState(false);
+	const [currentPasswordValue, setCurrentPasswordValue] = useState('');
 
-	// const checkedChange = (checked: boolean) => {
-	// 	setChecked(checked);
-	// 	console.log('выполнить действие чекбокса');
-	// };
+	const handleOpenPopup = () => setIsPopupOpen(true);
 
-	const handleClosePopup = () => setIsPopup(false);
+	const handleClosePopup = () => setIsPopupOpen(false);
 
-	// const handleSubmit = () => {
-	// 	console.log('Submit');
-	// };
+	const handleChangeInput = (
+		evt: React.ChangeEvent<HTMLInputElement>
+	): void => {
+		evt.preventDefault();
+		setCurrentPasswordValue(evt.target.value);
+	};
+	const handleDeleteAccountAction = () => {
+		handleDeleteAccount(currentPasswordValue);
+		setCurrentPasswordValue('');
+		setIsPopupOpen(false);
+	};
 
 	return (
 		<section className={styles.profileSettings}>
@@ -213,7 +218,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 				<button
 					type="button"
 					className={styles.formSettings__deleteButton}
-					onClick={isOpen}>
+					onClick={handleOpenPopup}>
 					Удалить аккаунт
 				</button>
 				<MainButton
@@ -224,21 +229,25 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 					Сохранить настройки
 				</MainButton>
 				<PopUp
-					visible={isPopup}
+					visible={isPopupOpen}
 					title="Удаление аккаунта"
 					onClose={handleClosePopup}>
 					<div className={styles.deleteAccount}>
-						<p className={styles.deleteAccount__text}>
-							Вы уверены, что хотите удалить аккаунт?
-						</p>
+						<Input
+							className={styles.deleteAccount__input}
+							onChange={handleChangeInput}
+							name="repeatNewPassword"
+							type="password"
+							labelName="Для удаления введите пароль"
+							value={currentPasswordValue}
+						/>
 						<div className={styles.deleteAccount__buttons}>
 							<MainButton
 								type="button"
 								variant={'primary'}
+								disabled={currentPasswordValue.length < 10}
 								width={'regular'}
-								onClick={() => {
-									handleDeleteAccount();
-								}}>
+								onClick={handleDeleteAccountAction}>
 								Удалить аккаунт
 							</MainButton>
 							<MainButton

@@ -6,6 +6,11 @@ import IconPlus from './icons/plus-counter.svg';
 import IconMinus from './icons/minus.svg';
 import IconPlusDisabled from './icons/plus-counter-disabled.svg';
 import IconMinusDisabled from './icons/minus-disabled.svg';
+import HeartIcon from './icons/heart.svg';
+import HeartIconActive from './icons/heart-active.svg';
+import MobileIcon from './icons/mobile.svg';
+import TelegramIcon from './icons/tg.svg';
+import MailIcon from './icons/mail.svg';
 
 export {
 	ActivityIcon,
@@ -16,4 +21,9 @@ export {
 	IconMinus,
 	IconPlusDisabled,
 	IconMinusDisabled,
+	HeartIcon,
+	HeartIconActive,
+    MailIcon,
+    TelegramIcon,
+    MobileIcon
 };

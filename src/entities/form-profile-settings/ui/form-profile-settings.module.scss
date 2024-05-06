@@ -84,7 +84,7 @@
 	}
 
 	// &__menuListItem {
-		
+
 	// }
 
 	&__deleteButton {
@@ -147,5 +147,10 @@
 		font-weight: 400;
 		line-height: 24px;
 		letter-spacing: 0.25px;
+	}
+	&__input {
+		// display: block;
+		width: 576px;
+		margin-bottom: 7px;
 	}
 }
