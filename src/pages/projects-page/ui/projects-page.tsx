@@ -18,6 +18,7 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
+import Link from 'next/link';
 
 import styles from './projects-page.module.scss';
 
@@ -287,6 +288,7 @@ export const Projects = () => {
 		console.log(currentData);
 	};
 
+
 	return (
 		<>
 			<div className={styles.pageContainer}>
@@ -388,8 +390,13 @@ export const Projects = () => {
 						</div>
 
 						<div className={styles.projectsContainer}>
+							
 							{projectsArray.map((project) => {
+								
+								
 								return (
+									<>
+									<Link href={`projects/${project.id}`} style={{'textDecoration': 'none'}}>
 									<ProjectCardFull
 										isActiveProject={project.isActiveProject}
 										professions={project.professions}
@@ -399,9 +406,13 @@ export const Projects = () => {
 										title={project.title}
 										subtitle={project.subtitle}
 										key={project.id}
+									
 									/>
+									</Link>
+									</>
 								);
 							})}
+							
 						</div>
 						<Pagination
 							onPageChange={(page) => setCurrentPage(Number(page))}

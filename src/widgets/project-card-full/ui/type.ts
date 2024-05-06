@@ -6,4 +6,5 @@ export type ProjectCardFullType = {
 	title: string;
 	subtitle: string;
 	isActiveProject: boolean;
+	
 };
