@@ -78,7 +78,7 @@
 	color: $--foreground-muted;
 }
 
-.likeContainer {
+.like {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -225,4 +225,8 @@
 	justify-content: flex-start;
 	padding-top: 21px;
 	text-decoration: none;
+}
+.linkProject {
+	text-decoration: none;
+	color: $--Foreground-default;
 }

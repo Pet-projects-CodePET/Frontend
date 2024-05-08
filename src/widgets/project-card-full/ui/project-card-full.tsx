@@ -17,66 +17,69 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	duration,
 	title,
 	subtitle,
+	id,
 }) => {
 	const isMobile = useMediaQuery('(max-width:779px)');
 
 	return (
-		<article className={styles.container}>
-			<div className={styles.topInfo}>
-				<div className={styles.activeStateContainer}>
-					<ActivityIcon
-						className={clsx(
-							styles.activeStateIcon,
-							isActiveProject && styles.activeStateIcon_type_active,
-							!isActiveProject && styles.activeStateIcon_type_inactive
-						)}
-					/>
-					<div className={styles.activeStateText}>
-						{isActiveProject ? 'активный' : 'неактивный'}
+			<article className={styles.container}> 
+				<div className={styles.topInfo}>
+					<div className={styles.activeStateContainer}>
+						<ActivityIcon
+							className={clsx(
+								styles.activeStateIcon,
+								isActiveProject && styles.activeStateIcon_type_active,
+								!isActiveProject && styles.activeStateIcon_type_inactive
+							)}
+						/>
+						<div className={styles.activeStateText}>
+							{isActiveProject ? 'активный' : 'неактивный'}
+						</div>
+					</div>
+					<div className={styles.like}>
+						<LikeButtonFeature variant="secondary" />
 					</div>
 				</div>
-				<div className={styles.likeContainer}>
-			<LikeButtonFeature variant='secondary' />
+				<div>
+					<Link href={`projects/${id}`} className={styles.linkProject}>
+						<div className={styles.calendarContainer}>
+							<CalendarIcon className={styles.calendarIcon} />
+							<div className={styles.calendarText}>{duration}</div>
+						</div>
+						<h2 className={styles.title}>{title}</h2>
+						<h3 className={styles.subtitle}>{subtitle}</h3>
+						{!isMobile && <p className={styles.mainText}>{description}</p>}
+						<p className={styles.groupName}>Специальности</p>
+						<ul className={styles.professionsList}>
+							{professions.map((profession, id) => (
+								<li
+									className={clsx(
+										styles.profession,
+										styles[getClassNameforTag(profession)],
+										styles.profession_type_color
+									)}
+									key={id}>
+									{profession}
+								</li>
+							))}
+						</ul>
+						<p className={styles.groupName}>Навыки</p>
+						<ul className={styles.skillsList}>
+							{skills.map((skill, id) => (
+								<li className={styles.skill} key={id}>
+									{skill}
+								</li>
+							))}
+						</ul>
+					</Link>
 				</div>
-					
-					
-			</div>
-			<div className={styles.calendarContainer}>
-				<CalendarIcon className={styles.calendarIcon} />
-				<div className={styles.calendarText}>{duration}</div>
-			</div>
-			<h2 className={styles.title}>{title}</h2>
-			<h3 className={styles.subtitle}>{subtitle}</h3>
-			{!isMobile && <p className={styles.mainText}>{description}</p>}
-			<p className={styles.groupName}>Специальности</p>
-			<ul className={styles.professionsList}>
-				{professions.map((profession, id) => (
-					<li
-						className={clsx(
-							styles.profession,
-							styles[getClassNameforTag(profession)],
-							styles.profession_type_color
-						)}
-						key={id}>
-						{profession}
-					</li>
-				))}
-			</ul>
-			<p className={styles.groupName}>Навыки</p>
-			<ul className={styles.skillsList}>
-				{skills.map((skill, id) => (
-					<li className={styles.skill} key={id}>
-						{skill}
-					</li>
-				))}
-			</ul>
-			{isActiveProject && (
-				<Link className={styles.link} href="/">
-					<MainButton variant="primary" width="regular" type="button">
-						Откликнуться
-					</MainButton>
-				</Link>
-			)}
-		</article>
+				{isActiveProject && (
+					<Link className={styles.link} href="#">
+						<MainButton variant="primary" width="regular" type="button">
+							Откликнуться
+						</MainButton>
+					</Link>
+				)}
+			</article>
 	);
 };

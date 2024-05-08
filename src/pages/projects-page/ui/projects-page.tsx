@@ -18,10 +18,8 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
-import Link from 'next/link';
-
+//import Link from 'next/link';
 import styles from './projects-page.module.scss';
-
 import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
@@ -239,7 +237,7 @@ const data = [
 	},
 ];
 
-export const Projects = () => {
+export const Projects = () => {   //{id} : {id: string}
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	useEffect(() => {
@@ -396,7 +394,7 @@ export const Projects = () => {
 								
 								return (
 									<>
-									<Link href={`projects/${project.id}`} style={{'textDecoration': 'none'}}>
+								{/*	<Link href={`projects/${project.id}`} style={{'textDecoration': 'none'}}>  */}
 									<ProjectCardFull
 										isActiveProject={project.isActiveProject}
 										professions={project.professions}
@@ -405,10 +403,10 @@ export const Projects = () => {
 										duration={project.duration}
 										title={project.title}
 										subtitle={project.subtitle}
-										key={project.id}
-									
+										key={project.id}	
+										id={project.id}		
 									/>
-									</Link>
+								{/*	</Link>  */}
 									</>
 								);
 							})}
