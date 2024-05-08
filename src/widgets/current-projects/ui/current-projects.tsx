@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { MainButton, ProjectCard } from '@/shared/ui';
 import { currentProjects } from '@/shared/types/current-projects';
 import { useGetSectionQuery } from '@/services/GeneralService';
+import { useGetProjectsQuery } from '@/services/ProjectService';
 import {
 	titleCurrentProjects,
 	descriptionCurrentProjects,
@@ -14,6 +15,8 @@ import styles from './current-projects.module.scss';
 export const CurrentProjects = () => {
 	const router = useRouter();
 	const { data: section } = useGetSectionQuery([]);
+	const {data: projects } = useGetProjectsQuery([]);
+	console.log(projects)
 	return (
 		<>
 			<h2 className={styles.header}>
