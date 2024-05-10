@@ -7,13 +7,13 @@ export const projectsApi = createApi({
 		baseUrl: `https://${BASE_URL}/api/v1`,
 	}),
 	endpoints: (builder) => ({
-		getProjects: builder.query({
+		getProjectsPreviewMain: builder.query({
 			query: () => ({
-				url: '/projects/',
+				url: '/projects/preview_main/',
 				method: 'GET',
 			}),
 		}),
 	}),
 });
 
-export const { useGetProjectsQuery } = projectsApi;
+export const { useGetProjectsPreviewMainQuery } = projectsApi;

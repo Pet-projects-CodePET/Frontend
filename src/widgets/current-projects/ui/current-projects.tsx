@@ -1,22 +1,26 @@
+/* eslint-disable camelcase */
 'use client';
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { MainButton, ProjectCard } from '@/shared/ui';
-import { currentProjects } from '@/shared/types/current-projects';
+//import { currentProjects } from '@/shared/types/current-projects';
 import { useGetSectionQuery } from '@/services/GeneralService';
-import { useGetProjectsQuery } from '@/services/ProjectService';
+import { useGetProjectsPreviewMainQuery } from '@/services/ProjectService';
 import {
 	titleCurrentProjects,
 	descriptionCurrentProjects,
 } from '@/shared/constants';
 import styles from './current-projects.module.scss';
+import { CardProps } from '@/shared/ui/project-card/types';
 
 export const CurrentProjects = () => {
 	const router = useRouter();
 	const { data: section } = useGetSectionQuery([]);
-	const {data: projects } = useGetProjectsQuery([]);
-	console.log(projects)
+	const { data: projects } = useGetProjectsPreviewMainQuery([]);
+
+	console.log(projects);
+
 	return (
 		<>
 			<h2 className={styles.header}>
@@ -27,16 +31,17 @@ export const CurrentProjects = () => {
 			</p>
 			<p className={styles.textMobile}>Присоединитесь к актуальным проектам.</p>
 			<div className={styles.projectCards}>
-				{currentProjects.map((item) => {
-					const { id, date, title, direction, tags, link } = item;
+				{projects?.results.map((item: CardProps) => {
+					const { id, started, ended, name, directions, project_specialists } =
+						item;
 					return (
 						<ProjectCard
 							key={id}
-							date={date}
-							title={title}
-							direction={direction}
-							tags={tags}
-							link={link}
+							started={started}
+							ended={ended}
+							name={name}
+							directions={directions}
+							project_specialists={project_specialists}
 						/>
 					);
 				})}

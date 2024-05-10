@@ -1,13 +1,24 @@
 import { HTMLAttributes } from 'react';
 
 export type CardProps = HTMLAttributes<HTMLElement> & {
-	date: string;
-	title: string;
-	direction: string;
-	tags: {
-		id: number;
-		text: string;
-		color: string;
-	}[];
-	link: string;
+	started?: string,
+	ended?: string,
+	name?: string;
+	description?: string;
+	directions?: [
+		{
+			id: number,
+			name: string,
+		},
+	];
+	project_specialists?: [
+		{
+			id: number;
+			profession?: {
+				id: number,
+				specialization?: string,
+				specialty?: string,
+			}
+		}
+	]
 };
