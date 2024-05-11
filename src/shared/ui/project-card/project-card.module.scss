@@ -40,7 +40,7 @@
 .direction {
 	@extend %text;
 	color: $--Foreground-default;
-	//margin: 8px 0 0;
+//	margin: 8px 0 0;
 	overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -119,7 +119,8 @@
 
 .tag {
 	@extend %text, %tag;
-	background-color: #b9f18c;
+	border: 1px solid #E2E8F0;
+//	background-color: #b9f18c;
 }
 
 .more {

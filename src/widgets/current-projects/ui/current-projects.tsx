@@ -19,8 +19,6 @@ export const CurrentProjects = () => {
 	const { data: section } = useGetSectionQuery([]);
 	const { data: projects } = useGetProjectsPreviewMainQuery([]);
 
-	console.log(projects);
-
 	return (
 		<>
 			<h2 className={styles.header}>
