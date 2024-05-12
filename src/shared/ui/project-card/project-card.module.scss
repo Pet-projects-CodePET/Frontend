@@ -120,11 +120,5 @@
 .tag {
 	@extend %text, %tag;
 	border: 1px solid #E2E8F0;
-//	background-color: #b9f18c;
 }
 
-.more {
-	@extend %text, %tag;
-	background-color: transparent;
-	border: 1px solid $--border-default;
-}

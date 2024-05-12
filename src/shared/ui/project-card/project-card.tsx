@@ -29,15 +29,13 @@ export const ProjectCard: FC<CardProps> = ({
 		'ноября',
 		'декабря',
 	];
+	const startDate = `${started?.slice(-2)} ${months[new Date(started).getMonth()]}`;
+	const endDate = `${ended?.slice(-2)} ${months[new Date(ended).getMonth()]}`;
 	return (
 		<div className={styles.container}>
 			<div className={styles.date}>
 				<CalendarIcon width="24" height="24" />
-				<p className={styles.datetext}>
-					{`${`${started?.slice(-2)} ${months[new Date(started).getMonth()]}`}
-					-
-					${`${ended?.slice(-2)} ${months[new Date(ended).getMonth()]}`}`}
-				</p>
+				<p className={styles.datetext}>{`${startDate}-${endDate}`}</p>
 			</div>
 			<p className={styles.title}>{name}</p>
 			{directions?.map((item) => {
@@ -50,21 +48,23 @@ export const ProjectCard: FC<CardProps> = ({
 			<ul className={styles.tags}>
 				{project_specialists?.map((item) => {
 					const color = () => {
-						if (item.profession?.specialty === 'Тестирование') {
-							return '#F6BD60';
-						} else if (item.profession?.specialty === 'Разработка') {
-							return '#F28482';
-						} else if (item.profession?.specialty === 'Дизайнер') {
-							return '#B9F18C';
-						} else if (item.profession?.specialty === 'Менеджмент') {
-							return '#8CAAFF';
-						} else if (item.profession?.specialty === 'Аналитика') {
-							return '#CDB4DB';
-						} else if (item.profession?.specialty === 'Администрирование') {
-							return '#A2D2FF';
+						switch (item.profession?.specialty) {
+							case 'Тестирование':
+								return '#F6BD60';
+							case 'Разработка':
+								return '#F28482';
+							case 'Дизайнер':
+								return '#B9F18C';
+							case 'Менеджмент':
+								return '#8CAAFF';
+							case 'Аналитика':
+								return '#CDB4DB';
+							case 'Администрирование':
+								return '#A2D2FF';
+							default:
+								return '';
 						}
 					};
-
 					return (
 						<li
 							key={item.id}
