@@ -1,19 +1,19 @@
 'use client';
 
-import React, { FC, useState } from 'react'
-import type { direction } from '@/entities/form-create-project/ui/types'
-import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types' // import { useGetDirectionsQuery } from '@/services/ProjectService';
-import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui'
+import React, { FC, useState } from 'react';
+import type { direction } from '@/entities/form-create-project/ui/types';
+import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types'; // import { useGetDirectionsQuery } from '@/services/ProjectService';
+import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui';
 
-import styles from './form-create-project.module.scss'
-import { useFormContext } from 'react-hook-form'
-import { TextEditor } from '@/shared/ui/text-editor/text-editor'
-import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox'
-import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input'
-import Plus from '@/shared/assets/icons/plus-large.svg'
-import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input'
-import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf'
-import { FormCreateProjectCard } from '@/entities/form-create-project-card' //todo когда сделают бекенд добавить это
+import styles from './form-create-project.module.scss';
+import { useFormContext } from 'react-hook-form';
+import { TextEditor } from '@/shared/ui/text-editor/text-editor';
+import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
+import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
+import Plus from '@/shared/assets/icons/plus-large.svg';
+import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
+import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
+import { FormCreateProjectCard } from '@/entities/form-create-project-card'; //todo когда сделают бекенд добавить это
 
 //todo когда сделают бекенд добавить это
 // const { data: directions } = useGetDirectionsQuery([]);
