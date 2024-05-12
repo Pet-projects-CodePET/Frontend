@@ -5,6 +5,7 @@ import { ProfileEditForm } from '@/entities/profile-edit-form';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import ActiveIcon from '@/shared/assets/icons/activity-icon.svg';
 import Link from 'next/link';
+import { MailIcon, TelegramIcon, MobileIcon } from '@/shared/assets';
 import styles from './preview-profile.module.scss';
 
 export const PreviewProfile = () => {
@@ -82,6 +83,35 @@ export const PreviewProfile = () => {
 
 						<div className={styles.previewItem}>
 							<h2 className={styles.previewItem__title}>Контакты для связи</h2>
+							<ul className={styles.contactsList}>
+								<li className={styles.contactItem}>
+									<MobileIcon className={styles.contactIcon} />
+									<Link
+										href="#"
+										target="_blank"
+										className={styles.previewItem__subtitle_link}>
+										behance
+									</Link>
+								</li>
+								<li className={styles.contactItem}>
+									<MailIcon className={styles.contactIcon} />
+									<Link
+										href="#"
+										target="_blank"
+										className={styles.previewItem__subtitle_link}>
+										behance
+									</Link>
+								</li>
+								<li className={styles.contactItem}>
+									<TelegramIcon className={styles.contactIcon} />
+									<Link
+										href="#"
+										target="_blank"
+										className={styles.previewItem__subtitle_link}>
+										behance
+									</Link>
+								</li>
+							</ul>
 						</div>
 						<div className={styles.previewItem}>
 							<h2 className={styles.previewItem__title}>Дата рождения</h2>
