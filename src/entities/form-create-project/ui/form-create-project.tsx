@@ -1,17 +1,17 @@
 'use client';
 
-import React, { FC, useState } from 'react';
-import type { direction } from '@/entities/form-create-project/ui/types';
-import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types'; // import { useGetDirectionsQuery } from '@/services/ProjectService';
-import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui';
+import React, { FC, useState } from 'react'
+import type { direction } from '@/entities/form-create-project/ui/types'
+import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types' // import { useGetDirectionsQuery } from '@/services/ProjectService';
+import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui'
 
-import styles from './form-create-project.module.scss';
-import { useFormContext, useFieldArray } from 'react-hook-form';
-import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
-import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
-import Plus from '@/shared/assets/icons/plus-large.svg';
-import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input'; //todo когда сделают бекенд добавить это
+import styles from './form-create-project.module.scss'
+import { useFormContext, useFieldArray } from 'react-hook-form'
+import { TextEditor } from '@/shared/ui/text-editor/text-editor'
+import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox'
+import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input'
+import Plus from '@/shared/assets/icons/plus-large.svg'
+import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input' //todo когда сделают бекенд добавить это
 
 //todo когда сделают бекенд добавить это
 // const { data: directions } = useGetDirectionsQuery([]);
@@ -31,11 +31,11 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 			name: 'Десктоп',
 		},
 		{
-			id: 1,
+			id: 2,
 			name: 'Мобильная',
 		},
 		{
-			id: 1,
+			id: 3,
 			name: 'Веб',
 		},
 	];
@@ -120,6 +120,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 						options={[]}
 						description="Выберите одну специальность"
 					/>
+					{/* <div> */}
 					<MultiSelectInput
 						name={`project_specialists.${0}`}
 						onChange={() => {}}
@@ -127,6 +128,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 						values={[]}
 						label={'Уровень квалификации'}
 					/>
+					{/* </div> */}
 					<MultiSelectInput
 						name={`project_specialists.${0}`}
 						onChange={() => {}}
@@ -147,13 +149,15 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 								description="Выберите одну специальность"
 								isSearchable
 							/>
-							<MultiSelectInput
-								name={`project_specialists.${++index}`}
-								onChange={() => {}}
-								options={[]}
-								values={[]}
-								label={'Уровень квалификации'}
-							/>
+							<div className={styles.select}>
+								<MultiSelectInput
+									name={`project_specialists.${++index}`}
+									onChange={() => {}}
+									options={[]}
+									values={[]}
+									label={'Уровень квалификации'}
+								/>
+							</div>
 							<MultiSelectInput
 								name={`project_specialists.${++index}`}
 								onChange={() => {}}
