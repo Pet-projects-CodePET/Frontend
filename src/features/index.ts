@@ -3,3 +3,4 @@ export { FormSignupConfirmFeature } from '@/features/form-signup-confirm/form-si
 export { FormLoginFeature } from '@/features/form-login/form-login';
 export { FormPasswordRecoveryFeature } from '@/features/form-password-recovery/form-password-recovery';
 export { LikeButtonFeature } from '@/features/like-button/like-button';
+export { FormCreateProjectFeature } from '@/features/form-create-project/form-create-project';

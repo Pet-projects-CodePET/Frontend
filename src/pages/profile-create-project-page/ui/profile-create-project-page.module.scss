@@ -1,18 +1,11 @@
 .container {
-	padding-top: 54px;
 	width: 816px;
-}
-
-@media screen and (max-width: 1199px) {
-	.container {
-		padding: 0;
+	
+	@media screen and (max-width: 1199px) {
 		width: 560px;
 	}
-}
-
-@media screen and (max-width: 779px) {
-	.container {
-		padding: 0;
+	
+	@media screen and (max-width: 779px) {
 		width: 100vw;
 	}
 }
