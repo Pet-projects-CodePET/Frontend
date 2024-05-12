@@ -1,9 +1,9 @@
 name: Codepet push front and call QA deploy
 on:
   push:
-    branches: [ 'QA' ]
+    branches: ['QA']
   pull_request:
-    branches: [ 'QA' ]
+    branches: ['QA']
   workflow_dispatch:
 
 jobs:
@@ -34,8 +34,7 @@ jobs:
             NEXT_PUBLIC_BASE_URL=${{ secrets.DOMAIN_QA }}
 
   deploy_uses_other_file:
-    if:
-      contains('
+    if: contains('
       refs/heads/QA
       refs/heads/main
       ', github.ref)

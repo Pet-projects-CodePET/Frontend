@@ -1,9 +1,9 @@
 name: Codepet push front and call deploy
 on:
   push:
-    branches: [ 'main', 'develop' ]
+    branches: ['main', 'develop']
   pull_request:
-    branches: [ 'main', 'develop' ]
+    branches: ['main', 'develop']
   workflow_dispatch:
 
 jobs:
@@ -33,8 +33,7 @@ jobs:
             NEXT_PUBLIC_BASE_URL=${{ secrets.DOMAIN_DEV }}
 
   deploy_uses_other_file:
-    if:
-      contains('
+    if: contains('
       refs/heads/develop
       refs/heads/main
       ', github.ref)
