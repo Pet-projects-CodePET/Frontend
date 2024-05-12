@@ -1,25 +1,25 @@
 'use client';
 
-import React, { FC, useState } from 'react';
-import type { direction } from '@/entities/form-create-project/ui/types';
-import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types'; // import { useGetDirectionsQuery } from '@/services/ProjectService';
-import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui';
+import React, { FC, useState } from 'react'
+import type { direction } from '@/entities/form-create-project/ui/types'
+import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types' // import { useGetDirectionsQuery } from '@/services/ProjectService';
+import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui'
 
-import styles from './form-create-project.module.scss';
-import { useFormContext } from 'react-hook-form';
-import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
-import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
-import Plus from '@/shared/assets/icons/plus-large.svg';
-import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
-import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf'; //todo когда сделают бекенд добавить это
+import styles from './form-create-project.module.scss'
+import { useFormContext } from 'react-hook-form'
+import { TextEditor } from '@/shared/ui/text-editor/text-editor'
+import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox'
+import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input'
+import Plus from '@/shared/assets/icons/plus-large.svg'
+import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input'
+import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf'
+import { FormCreateProjectCard } from '@/entities/form-create-project-card' //todo когда сделают бекенд добавить это
 
 //todo когда сделают бекенд добавить это
 // const { data: directions } = useGetDirectionsQuery([]);
 // import { useGetDirectionsQuery } from '@/services/ProjectService';
 
 export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
-	const [status, setStatus] = useState(true);
 	//todo добавить в запрос токен или подождать когда бекенд его уберет
 	// const { data: directions } = useGetDirectionsQuery([]);
 	const directionsStatic = [
@@ -57,8 +57,11 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 	];
 
 	const { control } = useFormContext();
-	const handlerStatus = () => {
-		return setStatus(!status);
+
+	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
+
+	const handleRecruitmentIsOpen = () => {
+		setRecruitmentIsOpen(!recruitmentIsOpen);
 	};
 
 	return (
@@ -97,15 +100,13 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 			<div className={styles.specialists}>
 				<h3 className={styles.input_list_title}>Кто нужен в проект</h3>
 				<div className={styles.specialists_toggle}>
-					<span>Набор открыт</span>
-					{/* todo статус не переключается, посмотреть onChange */}
+					<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
 					<ToggleCheckbox
-						name={'recruitment_status'}
-						variant={'defaultOn'}
-						onChange={handlerStatus}
-						checked={status}
+						variant="defaultOf"
+						onChange={handleRecruitmentIsOpen}
 					/>
 				</div>
+				<FormCreateProjectCard />
 				<SingleSelectInput
 					name={`project_specialists`}
 					label={'Специальность'}
