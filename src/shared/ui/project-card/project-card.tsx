@@ -6,6 +6,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { CardProps } from './types';
 import CalendarIcon from '@/shared/assets/icons/calender.svg';
+import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import styles from './project-card.module.scss';
 
 export const ProjectCard: FC<CardProps> = ({
@@ -15,22 +16,8 @@ export const ProjectCard: FC<CardProps> = ({
 	directions,
 	project_specialists,
 }) => {
-	const months = [
-		'января',
-		'февраля',
-		'марта',
-		'апреля',
-		'мая',
-		'июня',
-		'июля',
-		'августа',
-		'сентября',
-		'октября',
-		'ноября',
-		'декабря',
-	];
-	const startDate = `${started?.slice(-2)} ${months[new Date(started).getMonth()]}`;
-	const endDate = `${ended?.slice(-2)} ${months[new Date(ended).getMonth()]}`;
+	const startDate = getStartDate(started);
+	const endDate = getEndDate(ended);
 	return (
 		<div className={styles.container}>
 			<div className={styles.date}>
@@ -47,29 +34,11 @@ export const ProjectCard: FC<CardProps> = ({
 			})}
 			<ul className={styles.tags}>
 				{project_specialists?.map((item) => {
-					const color = () => {
-						switch (item.profession?.specialty) {
-							case 'Тестирование':
-								return '#F6BD60';
-							case 'Разработка':
-								return '#F28482';
-							case 'Дизайнер':
-								return '#B9F18C';
-							case 'Менеджмент':
-								return '#8CAAFF';
-							case 'Аналитика':
-								return '#CDB4DB';
-							case 'Администрирование':
-								return '#A2D2FF';
-							default:
-								return '';
-						}
-					};
 					return (
 						<li
 							key={item.id}
 							className={styles.tag}
-							style={{ backgroundColor: `${color()}` }}>
+							style={{ backgroundColor: `${getColorTag(item.profession.specialty)}` }}>
 							{item.profession?.specialization}
 						</li>
 					);
