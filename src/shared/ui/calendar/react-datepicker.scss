@@ -16,6 +16,9 @@
 	border-radius: $datepicker__border-radius;
 	display: inline-block;
 	position: relative;
+	box-shadow:
+		0px 0px 2px 0px rgba(0, 0, 0, 0.2),
+		0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .react-datepicker--time-only {
@@ -425,7 +428,7 @@
 	cursor: pointer;
 
 	&:hover {
-		border-radius: $datepicker__border-radius;
+		border-radius: $datepicker__item-border-radius;
 		background-color: $datepicker__background-color;
 	}
 
@@ -488,7 +491,7 @@
 	&--selected,
 	&--in-selecting-range,
 	&--in-range {
-		border-radius: $datepicker__border-radius;
+		border-radius: $datepicker__item-border-radius;
 		background-color: $datepicker__selected-color;
 		color: #fff;
 
@@ -734,4 +737,28 @@
 	width: 1em;
 	height: 1em;
 	vertical-align: -0.125em;
+}
+
+.react-datepicker__input-container {
+	input {
+		margin: 8px 0 0;
+
+		font-family: 'Open Sans', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+
+		color: #020617;
+		background-color: #feffff;
+		min-height: 50px;
+		padding: 0px 16px;
+		border: 1px solid #e2e8f0;
+		border-radius: 12px;
+
+		&:hover,
+		&:focus {
+			border: 1px solid #8caaff;
+		}
+	}
 }
