@@ -1,7 +1,7 @@
 name: Codepet deploy front
 on:
   push:
-    branches: ['main', 'develop']
+    branches: ['develop']
 jobs:
   build_and_push_to_docker_hub_frontend:
     name: Push Docker image to DockerHub
@@ -32,7 +32,6 @@ jobs:
     if:
       contains('
         refs/heads/develop
-        refs/heads/main
       ', github.ref)
     uses: Pet-projects-CodePET/Backend/.github/workflows/deploy.yml@develop
     needs:
