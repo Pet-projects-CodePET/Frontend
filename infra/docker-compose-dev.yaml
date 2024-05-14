@@ -6,6 +6,8 @@ volumes:
   media_value:
   certbot:
   letsencrypt:
+  backend_logs:
+
 
 services:
   db:
@@ -37,6 +39,7 @@ services:
     volumes:
       - static_volume:/backend_static/
       - media_value:/backend_media/
+      - ./backend_logs:/backend/data/logs
     depends_on:
       db:
         condition: service_healthy
