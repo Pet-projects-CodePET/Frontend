@@ -1,0 +1,156 @@
+@import '@/shared/style/variables';
+
+%text {
+	margin: 0;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	font-style: normal;
+}
+.projectsCard {
+	display: flex;
+	flex-direction: column;
+	margin-top: 16px;
+	margin-bottom: 80px;
+	gap: 32px;
+}
+.link {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+.icon {
+	width: 20px;
+	height: 20px;
+}
+.linkProjects {
+	text-decoration: none;
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-family: $--open-sans-font;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+}
+.projectContainer {
+	max-width: 1160px;
+	padding: 32px;
+	border-radius: 12px;
+	border: 1px solid $--border-default;
+	display: flex;
+	flex-direction: column;
+	@media screen and (max-width: 779px) {
+		border: none;
+	}
+}
+
+.topInfo {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	color: $--Neutral-Light-Grey-03;
+}
+
+.activeStateContainer {
+	display: flex;
+	align-items: center;
+	padding: 5px 0 0 5px;
+
+	@media screen and (max-width: 779px) {
+		padding: 3px 0 0 3px;
+	}
+}
+
+.activeStateIcon {
+	padding-right: 14px;
+	color: $--Colors-Pastel-Green;
+
+	&_type_inactive {
+		color: $--Neutral-Light-Grey-03;
+	}
+}
+
+.activeStateText {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	color: $--foreground-muted;
+}
+
+.like {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.calendarContainer {
+	display: flex;
+	align-items: center;
+	padding-top: 15px;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 6px;
+	}
+}
+
+.calendarIcon {
+	padding-right: 13px;
+	width: 22px;
+	height: 22px;
+	color: $--Foreground-subtitle;
+}
+
+.date {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	color: $--foreground-muted;
+}
+
+.subtitleWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+.projectInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+.title {
+	@extend %text;
+	margin-top: 32px;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 32px;
+	letter-spacing: -0.28px;
+}
+.subtitle {
+	@extend %text;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.25px;
+}
+.description {
+	@extend %text;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+}
+.descriptionLink {
+	@extend %text;
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+}

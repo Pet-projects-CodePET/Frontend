@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { projectsArray } from '@/shared/constants/projects/projects';
@@ -12,8 +12,6 @@ import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { MainButton } from '@/shared/ui';
 import { FilterIcon } from '@/shared/assets';
 import { useMediaQuery } from '@/shared/hooks';
-import { Header } from '@/widgets/header';
-import { Footer } from '@/widgets/footer';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
@@ -238,19 +236,6 @@ const data = [
 ];
 
 export const Projects = () => {   //{id} : {id: string}
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-	useEffect(() => {
-		const { 1: urlToken } = window.location.hash.split('#/login/');
-		if (urlToken) {
-			localStorage.setItem('token', urlToken);
-		}
-
-		const token = localStorage.getItem('token');
-		if (token) {
-			setIsLoggedIn(true);
-		}
-	}, []);
 
 	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
@@ -290,7 +275,7 @@ export const Projects = () => {   //{id} : {id: string}
 	return (
 		<>
 			<div className={styles.pageContainer}>
-				<Header isLoggedIn={isLoggedIn} />
+				
 				<div className={styles.projects__container}>
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
@@ -421,7 +406,6 @@ export const Projects = () => {   //{id} : {id: string}
 					</>
 				) : null}
 			</div>
-			<Footer />
 		</>
 	);
 };
