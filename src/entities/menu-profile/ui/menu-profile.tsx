@@ -25,6 +25,7 @@ export const MenuProfile = () => {
 	const handleLogout = () => {
 		localStorage.clear();
 		router.push('/');
+		router.refresh();
 	};
 
 	return (

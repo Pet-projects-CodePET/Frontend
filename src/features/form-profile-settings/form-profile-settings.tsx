@@ -6,32 +6,35 @@ import {
 	useDeleteAccountMutation,
 	// useGetSettingsProfileVisibilityQuery,
 } from '@/services/UserService';
-// import {
-// 	NotificationToastContainer,
-// 	toaster,
-// } from '@/widgets/notification-toast/';
+import {
+	NotificationToastContainer,
+	toaster,
+} from '@/widgets/notification-toast/';
+import { useRouter } from 'next/navigation';
 
 export const FormProfileSettingsFeature: FC = () => {
-	const [deleteAccount, error] = useDeleteAccountMutation();
+	const [deleteAccount] = useDeleteAccountMutation();
+	const router = useRouter();
 	// const { data } = useGetSettingsProfileVisibilityQuery(null);
 
 	const handleDeleteAccount = (password: string) => {
 		console.log('handleDeleteAccount ', password);
 		deleteAccount(password)
-			.then((res) => {
-				console.log('deleteAccount res', res);
-				console.log('deleteAccount error', error);
-				// toaster({
-				// 			status: 'success',
-				// 			title: 'Аккаунт успешно удален',
-				// });
+			.unwrap()
+			.then(() => {
+				toaster({
+					status: 'success',
+					title: 'Аккаунт успешно удален',
+				});
+				localStorage.clear();
+				router.push('/');
 			})
-			.catch((err) => {
-				console.log('deleteAccount err', err);
-				// 		toaster({
-				// 			status: 'error',
-				// 			title: 'Аккаунт не удален!',
-				// 		});
+			.catch((error) => {
+				toaster({
+					status: 'error',
+					title: 'Ошбка удаления',
+					subtitle: `${error.data?.current_password || 'Попробуйте еще раз'}`,
+				});
 			});
 	};
 
@@ -46,7 +49,7 @@ export const FormProfileSettingsFeature: FC = () => {
 				handleDeleteAccount={handleDeleteAccount}
 				// settingsProfile={data}
 			/>
-			{/* <NotificationToastContainer /> */}
+			<NotificationToastContainer />
 		</>
 	);
 };

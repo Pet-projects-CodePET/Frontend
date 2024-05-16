@@ -245,7 +245,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 							<MainButton
 								type="button"
 								variant={'primary'}
-								disabled={currentPasswordValue.length < 10}
+								disabled={currentPasswordValue.length < 8}
 								width={'regular'}
 								onClick={handleDeleteAccountAction}>
 								Удалить аккаунт
