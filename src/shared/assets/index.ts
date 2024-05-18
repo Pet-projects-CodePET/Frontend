@@ -12,6 +12,8 @@ import MobileIcon from './icons/mobile.svg';
 import TelegramIcon from './icons/tg.svg';
 import MailIcon from './icons/mail.svg';
 import IconLeft from './icons/chevron-left.svg';
+import PersonIcon from './icons/person.svg';
+import IconSpecialists from './icons/specialists.svg';
 
 export {
 	ActivityIcon,
@@ -28,4 +30,6 @@ export {
     TelegramIcon,
     MobileIcon,
 	IconLeft,
+	PersonIcon,
+	IconSpecialists
 };
