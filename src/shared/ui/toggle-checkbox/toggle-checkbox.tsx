@@ -2,6 +2,7 @@ import React from 'react';
 import { ToggleCheck } from './types';
 import clsx from 'clsx';
 import styles from './toggle-checkbox.module.scss';
+import { useFormContext } from 'react-hook-form';
 
 export const ToggleCheckbox = ({
 	id,
@@ -36,10 +37,13 @@ export const ToggleCheckbox = ({
 		}
 	};
 
+	const { register } = useFormContext();
+
 	return (
 		<label className={styles.toggleCheckbox} htmlFor={name}>
 			<input
 				className={styles.toggleCheckbox__input}
+				{...register(name as string)}
 				type="checkbox"
 				id={id}
 				name={name}

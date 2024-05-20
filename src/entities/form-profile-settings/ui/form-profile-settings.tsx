@@ -1,7 +1,6 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-// import { Controller, useForm } from 'react-hook-form';
 import { MainButton } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 // import { PopUp } from '@/shared/ui/pop-up/pop-up';
@@ -18,30 +17,11 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	// handleDeleteAccount,
 	// settingsProfile,
 }) => {
-	// const methods = useForm();
-	// const { control, handleSubmit } = methods;
 
 	const [isSendNotification, setIsSendNotification] = useState(false);
 	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(false);
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
 	const [showVisibleContactsMenu, setShowVisibleContactsMenu] = useState(false);
-	// const [currentPasswordValue, setCurrentPasswordValue] = useState('');
-
-	// const handleOpenPopup = () => setIsPopupOpen(true);
-
-	// const handleClosePopup = () => setIsPopupOpen(false);
-
-	// const handleChangeInput = (
-	// 	evt: React.ChangeEvent<HTMLInputElement>
-	// ): void => {
-	// 	evt.preventDefault();
-	// 	setCurrentPasswordValue(evt.target.value);
-	// };
-	// const handleDeleteAccountAction = () => {
-	// 	handleDeleteAccount(currentPasswordValue);
-	// 	setCurrentPasswordValue('');
-	// 	// setIsPopupOpen(false);
-	// };
 
 	return (
 		<section className={styles.profileSettings}>
@@ -67,7 +47,6 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 						</div>
 						<MenuForVisible
 							isOpen={showVisibleProfileMenu}
-							onClose={() => {}}
 							settings={3}
 							nameSettings={'visible_status'}
 						/>
@@ -89,7 +68,6 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 						</div>
 						<MenuForVisible
 							isOpen={showVisibleContactsMenu}
-							onClose={() => {}}
 							settings={2}
 							nameSettings={'visible_status_contacts'}
 						/>
@@ -101,24 +79,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 								Отправка уведомлений
 							</label>
 							<div className={styles.formSettings__checkbox}>
-								{/* <Controller
-									control={control}
-									name="notify"
-									render={({ field: { value } }) => (
-										<ToggleCheckbox
-											// {...register('sendNotification')}
-											id="notify"
-											name="notify"
-											variant="defaultOn"
-											checked={value}
-											onChange={() => {
-												setIsSendNotification(!isSendNotification);
-											}}
-										/>
-									)}
-								/> */}
-								
-								 <ToggleCheckbox 
+								<ToggleCheckbox
 									// {...register('sendNotification')}
 									id="notify"
 									name="notify"
@@ -141,7 +102,6 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 							</label>
 							<div className={styles.formSettings__checkbox}>
 								<ToggleCheckbox
-									// {...register('subscriptionProjects')}
 									variant="defaultOn"
 									id="subscription"
 									name="subscription"

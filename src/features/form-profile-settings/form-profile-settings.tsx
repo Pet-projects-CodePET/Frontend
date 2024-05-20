@@ -39,15 +39,21 @@ export const FormProfileSettingsFeature: FC = () => {
 	// 		});
 	// };
 
-	const handleSubmitForm = (data: unknown) => {
-		console.log('handleSubmit data', data);
+	const handleSubmitForm = (data: unknown
+	// { 
+	// 	notify: boolean,
+	// 	subscription: boolean,
+	// 	visible_status: number,
+	// 	visible_status_contacts: number
+	// }
+) => {
+	console.log('handleSubmit data', data);
 	};
 
 	return (
 		<>
 			<FormProfileSettings
 				handleSubmitForm={handleSubmitForm}
-				// handleDeleteAccount={handleDeleteAccount}
 				// settingsProfile={data}
 			/>
 			<NotificationToastContainer />

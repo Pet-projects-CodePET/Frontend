@@ -14,7 +14,7 @@ export const MenuForVisible = ({
 	const { register } = useFormContext();
 
 	return (
-		<ul
+		<ul 
 			className={clsx(styles.menuList, {
 				[styles.menuList_visible]: isOpen,
 			})}>
@@ -24,8 +24,11 @@ export const MenuForVisible = ({
 					type="radio"
 					defaultChecked={settings === 1}
 					id={`${nameSettings}_1`}
-					value="1"
-					{...register(nameSettings)}
+					value={1}
+					{...register(nameSettings, {
+						valueAsNumber: true,
+					})}
+					// {...register(nameSettings)}
 					labelName={'Видно всем'}
 				/>
 			</li>
@@ -35,8 +38,11 @@ export const MenuForVisible = ({
 					type="radio"
 					defaultChecked={settings === 2}
 					id={`${nameSettings}_2`}
-					value="2"
-					{...register(nameSettings)}
+					value={2}
+					{...register(nameSettings, {
+						valueAsNumber: true,
+					})}
+					// {...register(nameSettings)}
 					labelName={'Видно организаторам'}
 				/>
 			</li>
@@ -46,59 +52,14 @@ export const MenuForVisible = ({
 					type="radio"
 					defaultChecked={settings === 3}
 					id={`${nameSettings}_3`}
-					value="3"
-					{...register(nameSettings)}
+					value={3}
+					{...register(nameSettings, {
+						valueAsNumber: true,
+					})}
+					// {...register(nameSettings)}
 					labelName={'Не видно никому'}
 				/>
 			</li>
 		</ul>
-		// <div
-		// 	className={clsx(styles.menuVisible, {
-		// 		[styles.menu]: isOpen,
-		// 	})}>
-		// 	<div
-		// 		className={clsx(styles.menu, {
-		// 			[styles.menuVisible]: onClose,
-		// 		})}>
-		// 		<div className={styles.menu__itemVisible}>
-		// 			<CheckboxAndRadio
-		// 				label={nameSettings}
-		// 				type="radio"
-		// 				defaultChecked={settings === 1}
-		// 				id={`${nameSettings}_1`}
-		// 				value="1"
-		// 				{...register(`${nameSettings}`)}
-		// 				labelName={'Видно всем'}
-		// 			/>
-		// 			{/* <label className={styles.menu__subtitle}>Видно всем</label> */}
-		// 		</div>
-		// 		<div className={styles.menu__itemVisible}>
-		// 			<CheckboxAndRadio
-		// 				labelName={'Видно организаторам'}
-		// 				label={nameSettings}
-		// 				type="radio"
-		// 				defaultChecked={settings === 2}
-		// 				id={`${nameSettings}_2`}
-		// 				// id="2"
-		// 				value="2"
-		// 				{...register(`${nameSettings}`)}
-		// 			/>
-		// 			{/* <label className={styles.menu__subtitle}>Видно организаторам</label> */}
-		// 		</div>
-		// 		<div className={styles.menu__itemVisible}>
-		// 			<CheckboxAndRadio
-		// 				labelName={'Не видно никому'}
-		// 				label={nameSettings}
-		// 				type="radio"
-		// 				defaultChecked={settings === 3}
-		// 				id={`${nameSettings}_3`}
-		// 				// id="3"
-		// 				value="3"
-		// 				{...register(`${nameSettings}`)}
-		// 			/>
-		// 			{/* <label className={styles.menu__subtitle}>Не видно никому</label> */}
-		// 		</div>
-		// 	</div>
-		// </div>
 	);
 };

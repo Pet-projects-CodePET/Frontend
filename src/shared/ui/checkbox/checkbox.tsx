@@ -7,17 +7,19 @@ import clsx from 'clsx';
 import type { CheckboxAndRadioProps } from './types';
 import styles from './checkbox.module.scss';
 
-export const CheckboxAndRadio: FC<CheckboxAndRadioProps> = ({
+// eslint-disable-next-line react/display-name
+export const CheckboxAndRadio: FC<CheckboxAndRadioProps> = React.forwardRef<HTMLDivElement, CheckboxAndRadioProps> (({
 	label,
 	id,
 	labelName,
 	type,
 	...props
-}) => {
+}, ref) => {
+
 	const { register } = useFormContext();
 
 	return (
-		<div className={styles.checkboxContainer}>
+		<div className={styles.checkboxContainer} ref={ref}>
 			<input
 				{...register(label)}
 				className={styles.checkbox}
@@ -35,4 +37,4 @@ export const CheckboxAndRadio: FC<CheckboxAndRadioProps> = ({
 			</label>
 		</div>
 	);
-};
+});
