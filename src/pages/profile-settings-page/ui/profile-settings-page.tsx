@@ -3,6 +3,7 @@ import React from 'react';
 import {
 	FormProfileSettingsFeature,
 	FormChangePasswordFeature,
+	DeleteAccountFeature,
 } from '@/features';
 
 export const ProfileSettingsPage = () => {
@@ -10,6 +11,7 @@ export const ProfileSettingsPage = () => {
 		<>
 			<FormProfileSettingsFeature />
 			<FormChangePasswordFeature />
+			<DeleteAccountFeature />
 		</>
 	);
 };

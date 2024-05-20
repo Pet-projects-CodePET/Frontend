@@ -1,1 +1,1 @@
-export {FormProfileSettings} from './ui/form-profile-settings';
+export { FormProfileSettings } from './ui/form-profile-settings';
