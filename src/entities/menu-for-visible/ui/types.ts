@@ -1,6 +1,6 @@
 export type MenuForVisibleProps = {
 	isOpen: boolean;
-	onClose: () => void;
+	onClose?: () => void;
 	settings: number;
 	nameSettings: string;
 }

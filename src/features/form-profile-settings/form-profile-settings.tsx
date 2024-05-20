@@ -30,22 +30,23 @@ export const FormProfileSettingsFeature: FC = () => {
 				router.push('/');
 			})
 			.catch((error) => {
+				console.log('Error status:', error);
 				toaster({
 					status: 'error',
-					title: 'Ошбка удаления',
-					subtitle: `${error.data?.current_password || 'Попробуйте еще раз'}`,
+					title: 'Ошбка удаления аккаунта',
+					// subtitle: `${error.data?.current_password || 'Попробуйте еще раз'}`,
 				});
 			});
 	};
 
-	const handleSubmit = (data: unknown) => {
+	const handleSubmitForm = (data: unknown) => {
 		console.log('handleSubmit data', data);
 	};
 
 	return (
 		<>
 			<FormProfileSettings
-				handleSubmit={handleSubmit}
+				handleSubmitForm={handleSubmitForm}
 				handleDeleteAccount={handleDeleteAccount}
 				// settingsProfile={data}
 			/>
