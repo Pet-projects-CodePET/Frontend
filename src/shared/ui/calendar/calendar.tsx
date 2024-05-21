@@ -1,35 +1,46 @@
 import React, { FC, useState } from 'react';
-import { CalendarProps } from './types';
+import { CalendarProps, MonthProps, YearProps } from './types';
 import ReactDatePicker, {
 	ReactDatePickerCustomHeaderProps,
 } from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
 import './react-datepicker.scss';
+import styles from './calendar.module.scss';
 import { ru } from 'date-fns/locale';
 import Chevron from '../../assets/icons/chevron-right-icon.svg';
+import {
+	getLastOneHundredYearsArray,
+	months,
+} from '@/shared/constants/calendar-filter/calendar-filter';
 
 export const Calendar: FC<CalendarProps> = ({ name }) => {
 	const [startDate, setStartDate] = useState(new Date());
+	const years = getLastOneHundredYearsArray();
 
-	const years = [
-		2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-		2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,
-		2024, 2025, 2026, 2027, 2028, 2029,
-	];
-	const months = [
-		'Январь',
-		'Февраль',
-		'Март',
-		'Апрель',
-		'Май',
-		'Июнь',
-		'Июль',
-		'Август',
-		'Сентябрь',
-		'Октябрь',
-		'Ноябрь',
-		'Декабрь',
-	];
+	const MonthFilter = ({ handleChange, value }: MonthProps) => (
+		<select
+			className={styles.selectFilter}
+			value={value}
+			onChange={({ target: { value } }) => handleChange(months.indexOf(value))}>
+			{months.map((option) => (
+				<option key={option} value={option}>
+					{option}
+				</option>
+			))}
+		</select>
+	);
+
+	const YearFilter = ({ handleChange, value }: YearProps) => (
+		<select
+			className={styles.selectFilter}
+			value={value}
+			onChange={({ target: { value } }) => handleChange(Number(value))}>
+			{years.map((option) => (
+				<option key={option} value={option}>
+					{option}
+				</option>
+			))}
+		</select>
+	);
 
 	const header = ({
 		date,
@@ -40,78 +51,25 @@ export const Calendar: FC<CalendarProps> = ({ name }) => {
 		prevMonthButtonDisabled,
 		nextMonthButtonDisabled,
 	}: ReactDatePickerCustomHeaderProps) => (
-		<div
-			style={{
-				margin: 10,
-				display: 'flex',
-				justifyContent: 'space-between',
-			}}>
+		<div className={styles.filterContainer}>
 			<button
-				style={{
-					fontWeight: '700',
-					cursor: 'pointer',
-					backgroundColor: 'transparent',
-					border: 'none',
-				}}
+				className={styles.buttonChevron}
 				onClick={decreaseMonth}
 				disabled={prevMonthButtonDisabled}>
-				<Chevron style={{ transform: 'rotate(180deg)' }} />
+				<Chevron className={styles.chevronLeft} />
 			</button>
-			<div
-				style={{
-					display: 'grid',
-					gridTemplateColumns: '1fr 1fr',
-					gap: '12px',
-					width: '300px',
-				}}>
-				<select
-					style={{
-						minHeight: '40px',
-						borderRadius: '8px',
-						border: '1px solid #E2E8F0',
-						background: '#FEFFFF',
-						padding: '12px',
-					}}
-					value={date.getFullYear()}
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					onChange={({ target: { value } }) => changeYear(value)}>
-					{years.map((option) => (
-						<option key={option} value={option}>
-							{option}
-						</option>
-					))}
-				</select>
-
-				<select
-					style={{
-						minHeight: '40px',
-						borderRadius: '8px',
-						border: '1px solid #E2E8F0',
-						background: '#FEFFFF',
-						padding: '12px',
-					}}
+			<div className={styles.selectContainer}>
+				<MonthFilter
+					handleChange={changeMonth}
 					value={months[date.getMonth()]}
-					onChange={({ target: { value } }) =>
-						changeMonth(months.indexOf(value))
-					}>
-					{months.map((option) => (
-						<option key={option} value={option}>
-							{option}
-						</option>
-					))}
-				</select>
+				/>
+				<YearFilter handleChange={changeYear} value={date.getFullYear()} />
 			</div>
 			<button
-				style={{
-					fontWeight: '700',
-					cursor: 'pointer',
-					backgroundColor: 'transparent',
-					border: 'none',
-				}}
+				className={styles.buttonChevron}
 				onClick={increaseMonth}
 				disabled={nextMonthButtonDisabled}>
-				<Chevron />
+				<Chevron className={styles.chevronRight} />
 			</button>
 		</div>
 	);
@@ -122,10 +80,9 @@ export const Calendar: FC<CalendarProps> = ({ name }) => {
 			name={name}
 			renderCustomHeader={header}
 			selected={startDate}
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			onChange={(date) => setStartDate(date)}
-			fixedHeight
+			dateFormat="dd.MM.yyyy"
+			strictParsing
+			onChange={(date: Date) => setStartDate(date)}
 		/>
 	);
 };
