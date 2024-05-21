@@ -1,9 +1,7 @@
 name: Codepet push front and call deploy
 on:
   push:
-    branches: ['main', 'develop']
-  pull_request:
-    branches: ['main', 'develop']
+    branches: ['develop']
   workflow_dispatch:
 
 jobs:
@@ -35,7 +33,6 @@ jobs:
   deploy_uses_other_file:
     if: contains('
       refs/heads/develop
-      refs/heads/main
       ', github.ref)
     uses: Pet-projects-CodePET/Backend/.github/workflows/deploy.yml@develop
     needs:
