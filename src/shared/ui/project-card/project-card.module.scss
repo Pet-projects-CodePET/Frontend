@@ -40,9 +40,9 @@
 .direction {
 	@extend %text;
 	color: $--Foreground-default;
-//	margin: 8px 0 0;
+	//	margin: 8px 0 0;
 	overflow: hidden;
-    text-overflow: ellipsis;
+	text-overflow: ellipsis;
 }
 
 .date {
@@ -60,7 +60,7 @@
 	font-weight: 600;
 	line-height: 30px; /* 125% */
 	overflow: hidden;
-    text-overflow: ellipsis;
+	text-overflow: ellipsis;
 
 	@media screen and (max-width: 779px) {
 		margin: 16px 0 0;
@@ -119,6 +119,5 @@
 
 .tag {
 	@extend %text, %tag;
-	border: 1px solid #E2E8F0;
+	border: 1px solid #e2e8f0;
 }
-

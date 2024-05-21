@@ -36,10 +36,8 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</div>
 				</div>
 				<div className={styles.likeContainer}>
-			<LikeButtonFeature variant='secondary' />
+					<LikeButtonFeature variant="secondary" />
 				</div>
-					
-					
 			</div>
 			<div className={styles.calendarContainer}>
 				<CalendarIcon className={styles.calendarIcon} />

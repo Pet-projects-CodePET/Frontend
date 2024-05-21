@@ -11,10 +11,10 @@ export const LikeButtonFeature = ({
 }) => {
 	const [isActive, setIsActive] = useState(false);
 	const handleActiveLikeButton = () => {
-        setTimeout(() => {
-            console.log('лайк')
-            setIsActive(!isActive);
-        }, 300)
+		setTimeout(() => {
+			console.log('лайк');
+			setIsActive(!isActive);
+		}, 300);
 	};
 	return (
 		<LikeButton

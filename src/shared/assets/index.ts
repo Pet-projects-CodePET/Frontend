@@ -23,7 +23,7 @@ export {
 	IconMinusDisabled,
 	HeartIcon,
 	HeartIconActive,
-    MailIcon,
-    TelegramIcon,
-    MobileIcon
+	MailIcon,
+	TelegramIcon,
+	MobileIcon,
 };
