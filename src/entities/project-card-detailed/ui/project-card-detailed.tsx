@@ -103,22 +103,15 @@ export const ProjectCardDetailed = ({ id }: { id: string }) => {
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Организатор</h3>
 						<div className={styles.personWrapper}>
-							<Person title="Oрганизатор" link=" " color='#F6BD60'/>
+							<Person title="Oрганизатор" color="#F6BD60" />
 						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Команда проекта</h3>
 						<ul className={styles.personList}>
-							<Person
-								title="Oрганизатор"
-								link=" "
-								color="#A2D2FF"
-							/>
-							<Person
-								title="Oрганизатор"
-								color="#8CAAFF"
-								link=" "
-							/>
+							{/* Для определения цвета будет использоваться функция getColorTag из utils*/}
+							<Person title="Oрганизатор" color="#A2D2FF" />
+							<Person title="Oрганизатор" color="#8CAAFF" />
 							<Person title="Oрганизатор" color="#CDB4DB" />
 							<Person title="Oрганизатор" color="#F28482" />
 							<Person title="Oрганизатор" color="#B9F18C" />
@@ -141,9 +134,22 @@ export const ProjectCardDetailed = ({ id }: { id: string }) => {
 				</div>
 				<div className={styles.cardsContainer}>
 					<h2 className={styles.title}>Требуются в проект</h2>
-					<VacancyCard/>
-					<VacancyCard/>
-					<VacancyCard/>
+					<VacancyCard
+						title="UI/UX дизайнер / UI/UX Designer, Junior"
+						skills={skills}
+					/>
+					<VacancyCard
+						title="Инженер по ручному тестированию / Manual Test Engineer, Инженер по нагрузочному тестированию / Performance Engineer"
+						skills={skills}
+					/>
+					<VacancyCard
+						title="UI/UX дизайнер / UI/UX Designer, Junior"
+						skills={skills}
+					/>
+					<VacancyCard
+						title="UI/UX дизайнер / UI/UX Designer, Junior"
+						skills={skills}
+					/>
 				</div>
 			</div>
 		</section>

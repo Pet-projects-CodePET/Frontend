@@ -5,19 +5,19 @@ import styles from './person.module.scss';
 
 export const Person = ({
 	title,
-	link,
+	avatar,
 	color,
 }: {
 	title: string;
-	link?: string;
+	avatar?: string;
 	color?: string;
 }) => {
 	return (
 		<div className={styles.container}>
-			{link ? (
+			{avatar ? (
 				<div
 					className={styles.iconLink}
-					style={{ backgroundImage: `url(${link})` }}></div>
+					style={{ backgroundImage: `url(${avatar})` }}></div>
 			) : (
 				<PersonIcon className={styles.icon} />
 			)}
