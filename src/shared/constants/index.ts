@@ -7,3 +7,4 @@ export {
 	titleCurrentProjects,
 	descriptionCurrentProjects,
 } from './title-main-page/title-main-page';
+export { projectTeamArray } from './project-team/project-team';

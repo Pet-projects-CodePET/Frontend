@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { IconLeft, ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { LikeButtonFeature } from '@/features';
 import { Person, VacancyCard } from '@/shared/ui';
+import { getColorTag } from '@/shared/utils';
+import { projectTeamArray } from '@/shared/constants';
 import styles from './project-card-detailed.module.scss';
 
 export const ProjectCardDetailed = ({ id }: { id: string }) => {
@@ -109,14 +111,15 @@ export const ProjectCardDetailed = ({ id }: { id: string }) => {
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Команда проекта</h3>
 						<ul className={styles.personList}>
-							{/* Для определения цвета будет использоваться функция getColorTag из utils*/}
-							<Person title="Oрганизатор" color="#A2D2FF" />
-							<Person title="Oрганизатор" color="#8CAAFF" />
-							<Person title="Oрганизатор" color="#CDB4DB" />
-							<Person title="Oрганизатор" color="#F28482" />
-							<Person title="Oрганизатор" color="#B9F18C" />
-							<Person title="Организатор" color="#CDB4DB" />
-							<Person title="Организатор" color="#A2D2FF" />
+							{projectTeamArray.map((person) => {
+								return (
+									<Person
+										title={person.profession.specialization}
+										color={getColorTag(person.profession.specialty)}
+										key={person.id}
+									/>
+								);
+							})}
 						</ul>
 					</div>
 					<div className={styles.subtitleWrapper}>

@@ -235,7 +235,7 @@ const data = [
 	},
 ];
 
-export const Projects = () => {   //{id} : {id: string}
+export const Projects = () => {   
 
 	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
@@ -374,12 +374,8 @@ export const Projects = () => {   //{id} : {id: string}
 
 						<div className={styles.projectsContainer}>
 							
-							{projectsArray.map((project) => {
-								
-								
+							{projectsArray.map((project) => {				
 								return (
-									<>
-								{/*	<Link href={`projects/${project.id}`} style={{'textDecoration': 'none'}}>  */}
 									<ProjectCardFull
 										isActiveProject={project.isActiveProject}
 										professions={project.professions}
@@ -391,8 +387,6 @@ export const Projects = () => {   //{id} : {id: string}
 										key={project.id}	
 										id={project.id}		
 									/>
-								{/*	</Link>  */}
-									</>
 								);
 							})}
 							
