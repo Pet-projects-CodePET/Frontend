@@ -13,7 +13,6 @@
 %baseHeartIconStyle {
 	width: 20px;
 	height: 20px;
-
 }
 // variant 'primary'
 .buttonLikePrimary {
@@ -21,12 +20,10 @@
 	background-color: $--Foreground-default;
 	border: none;
 	&:hover {
-		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.50)
-		
+		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
 	}
 	&:active {
 		background-color: $--bg-pressed;
-		
 	}
 	&:disabled {
 		background-color: $--bg-disabled;
@@ -42,7 +39,6 @@
 	fill: $--Foreground-muted;
 }
 
-
 // variant 'secondary'
 .buttonLikeSecondary {
 	@extend %baseButtonLikeStyle;
@@ -55,7 +51,7 @@
 	}
 	&:disabled {
 		box-shadow: none;
-		border: none
+		border: none;
 	}
 }
 .iconHeartSecondary {
@@ -83,7 +79,6 @@
 		fill: $--Foreground-subtitle;
 	}
 }
-
 
 // active styles
 

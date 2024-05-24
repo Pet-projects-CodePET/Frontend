@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { MainButton, Input, Form, PopUp } from '@/shared/ui';
-import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
@@ -18,6 +16,7 @@ import { skills } from '@/shared/constants/skills/skills';
 
 import styles from './profile-edit-form.module.scss';
 import clsx from 'clsx';
+import { Calendar } from '@/shared/ui/calendar/calendar';
 
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -30,7 +29,6 @@ export const DesktopView = () => {
 		setPreview(true);
 	};
 
-	const { control } = useForm();
 	const saveAvatar = () => {
 		setIsPopup(false);
 	};
@@ -116,7 +114,7 @@ export const DesktopView = () => {
 						</div>
 						<div className={styles.datePickerContainer}>
 							<label className={styles.datePickerTitle}>Дата рождения</label>
-							<DatePickerRHF control={control} name="birthDate" />
+							<Calendar name="birthdate" />
 						</div>
 						<div className={clsx(styles.inputBlock, styles.countryBlock)}>
 							<SingleSelectInput
