@@ -1,0 +1,59 @@
+@import '../../../shared//style/variables.scss';
+
+.deleteAccount {
+	&__popup {
+		display: flex;
+		flex-direction: column;
+		margin-top: 8px;
+		align-self: flex-start;
+	}
+
+	&__buttons {
+		display: flex;
+		gap: 16px;
+		// justify-content: space-between;
+		// width: 648px;
+	}
+	&__text {
+		// margin: 0;
+		margin-bottom: 8px;
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+	}
+	&__input {
+		// display: block;
+		width: 552px;
+		margin-top: 8px;
+		margin-bottom: 51px;
+		border-radius: 8px;
+		border: 1px solid $--border-default;
+		background: $--bg-primary;
+
+		display: flex;
+		height: 24px;
+		// min-height: 40px;
+		padding: 8px 12px;
+		align-items: center;
+		gap: 8px;
+		align-self: stretch;
+	}
+	&__deleteButton {
+		display: flex;
+		font-family: $--open-sans-font;
+		color: $--Foreground-link-default;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+		max-width: 148px;
+	}
+}

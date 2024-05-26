@@ -2,10 +2,9 @@
 
 import React, { FC } from 'react';
 import { FormProfileSettings } from '@/entities/form-profile-settings';
-import {
-	// useDeleteAccountMutation,
-	// useGetSettingsProfileVisibilityQuery,
-} from '@/services/UserService';
+import {} from // useDeleteAccountMutation,
+// useGetSettingsProfileVisibilityQuery,
+'@/services/UserService';
 import {
 	NotificationToastContainer,
 	// toaster,
@@ -13,7 +12,6 @@ import {
 // import { useRouter } from 'next/navigation';
 
 export const FormProfileSettingsFeature: FC = () => {
-	// const [deleteAccount] = useDeleteAccountMutation();
 	// const router = useRouter();
 	// const { data } = useGetSettingsProfileVisibilityQuery(null);
 
@@ -39,15 +37,8 @@ export const FormProfileSettingsFeature: FC = () => {
 	// 		});
 	// };
 
-	const handleSubmitForm = (data: unknown
-	// { 
-	// 	notify: boolean,
-	// 	subscription: boolean,
-	// 	visible_status: number,
-	// 	visible_status_contacts: number
-	// }
-) => {
-	console.log('handleSubmit data', data);
+	const handleSubmitForm = (data: unknown) => {
+		console.log('handleSubmit data', data);
 	};
 
 	return (

@@ -2,12 +2,13 @@
 
 import React, { FC, useState } from 'react';
 import { DeleteAccountProps } from './types';
-import { Input, MainButton, PopUp } from '@/shared/ui';
+import { MainButton, PopUp } from '@/shared/ui';
 import styles from './delete-account.module.scss';
-
 
 export const DeleteAccount: FC<DeleteAccountProps> = ({
 	handleDeleteAccount,
+	isLoading,
+	isSuccess,
 }) => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [currentPasswordValue, setCurrentPasswordValue] = useState('');
@@ -24,14 +25,14 @@ export const DeleteAccount: FC<DeleteAccountProps> = ({
 	const handleDeleteAccountAction = () => {
 		handleDeleteAccount(currentPasswordValue);
 		setCurrentPasswordValue('');
-		// setIsPopupOpen(false);
+		if (isSuccess) setIsPopupOpen(false);
 	};
 
 	return (
 		<>
 			<button
 				type="button"
-				className={styles.formSettings__deleteButton}
+				className={styles.deleteAccount__deleteButton}
 				onClick={handleOpenPopup}>
 				Удалить аккаунт
 			</button>
@@ -40,19 +41,23 @@ export const DeleteAccount: FC<DeleteAccountProps> = ({
 				title="Удаление аккаунта"
 				onClose={handleClosePopup}>
 				<div className={styles.deleteAccount}>
-					<Input
+					<span className={styles.deleteAccount__text}>
+						Для удаления введите пароль
+					</span>
+					<input
 						className={styles.deleteAccount__input}
 						onChange={handleChangeInput}
-						name="repeatNewPassword"
+						name="password"
 						type="password"
-						labelName="Для удаления введите пароль"
+						aria-label="Для удаления введите пароль"
+						// labelName="Для удаления введите пароль"
 						value={currentPasswordValue}
 					/>
 					<div className={styles.deleteAccount__buttons}>
 						<MainButton
 							type="button"
 							variant={'primary'}
-							disabled={currentPasswordValue.length < 8}
+							disabled={isLoading || currentPasswordValue.length === 0}
 							width={'regular'}
 							onClick={handleDeleteAccountAction}>
 							Удалить аккаунт

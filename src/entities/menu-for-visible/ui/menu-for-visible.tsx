@@ -11,6 +11,7 @@ export const MenuForVisible = ({
 	settings,
 	nameSettings,
 }: MenuForVisibleProps) => {
+	
 	const { register } = useFormContext();
 
 	return (

@@ -59,12 +59,12 @@ export const userApi = createApi({
 			}),
 		}),
 		deleteAccount: builder.mutation({
-			query: (currentPassword) => ({
+			query: (password) => ({
 				url: '/users/me/',
 				method: 'DELETE',
 				body: {
 					// eslint-disable-next-line camelcase
-					current_password: currentPassword,
+					current_password: password,
 				},
 			}),
 		}),

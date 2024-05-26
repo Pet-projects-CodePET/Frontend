@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import { DeleteAccount } from '@/entities/delete-account';
 
 export const DeleteAccountFeature: FC = () => {
-	const [deleteAccount] = useDeleteAccountMutation();
+	const [deleteAccount, { isLoading, isSuccess }] = useDeleteAccountMutation();
 	const router = useRouter();
 
 	const handleDeleteAccount = (password: string) => {
@@ -26,17 +26,20 @@ export const DeleteAccountFeature: FC = () => {
 				router.push('/');
 			})
 			.catch((error) => {
-				console.log('Error status:', error);
 				toaster({
 					status: 'error',
 					title: 'Ошибка удаления аккаунта',
-					// subtitle: `${error.data?.current_password || 'Попробуйте еще раз'}`,
+					subtitle: `${error.data?.current_password || 'Попробуйте еще раз'}`,
 				});
 			});
 	};
 	return (
 		<>
-			<DeleteAccount handleDeleteAccount={handleDeleteAccount} />
+			<DeleteAccount
+				handleDeleteAccount={handleDeleteAccount}
+				isLoading={isLoading}
+				isSuccess={isSuccess}
+			/>
 			<NotificationToastContainer />
 		</>
 	);

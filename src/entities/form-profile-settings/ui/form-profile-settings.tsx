@@ -3,7 +3,6 @@
 import React, { FC, useState } from 'react';
 import { MainButton } from '@/shared/ui';
 import { Form } from '@/shared/ui';
-// import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
 import styles from './form-profile-settings.module.scss';
@@ -17,7 +16,6 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	// handleDeleteAccount,
 	// settingsProfile,
 }) => {
-
 	const [isSendNotification, setIsSendNotification] = useState(false);
 	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(false);
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
