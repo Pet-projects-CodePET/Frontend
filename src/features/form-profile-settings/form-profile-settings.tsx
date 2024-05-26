@@ -2,8 +2,7 @@
 
 import React, { FC } from 'react';
 import { FormProfileSettings } from '@/entities/form-profile-settings';
-import {} from // useDeleteAccountMutation,
-// useGetSettingsProfileVisibilityQuery,
+import {} from // useGetSettingsProfileVisibilityQuery,
 '@/services/UserService';
 import {
 	NotificationToastContainer,
@@ -15,29 +14,12 @@ export const FormProfileSettingsFeature: FC = () => {
 	// const router = useRouter();
 	// const { data } = useGetSettingsProfileVisibilityQuery(null);
 
-	// const handleDeleteAccount = (password: string) => {
-	// 	console.log('handleDeleteAccount ', password);
-	// 	deleteAccount(password)
-	// 		.unwrap()
-	// 		.then(() => {
-	// 			toaster({
-	// 				status: 'success',
-	// 				title: 'Аккаунт успешно удален',
-	// 			});
-	// 			localStorage.clear();
-	// 			router.push('/');
-	// 		})
-	// 		.catch((error) => {
-	// 			console.log('Error status:', error);
-	// 			toaster({
-	// 				status: 'error',
-	// 				title: 'Ошбка удаления аккаунта',
-	// 				// subtitle: `${error.data?.current_password || 'Попробуйте еще раз'}`,
-	// 			});
-	// 		});
-	// };
-
-	const handleSubmitForm = (data: unknown) => {
+	const handleSubmitForm = (data: {
+		notify: boolean;
+		subscription: boolean;
+		visible_status: number;
+		visible_status_contacts: number;
+	}) => {
 		console.log('handleSubmit data', data);
 	};
 

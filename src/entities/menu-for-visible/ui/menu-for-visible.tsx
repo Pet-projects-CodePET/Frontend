@@ -11,11 +11,10 @@ export const MenuForVisible = ({
 	settings,
 	nameSettings,
 }: MenuForVisibleProps) => {
-	
 	const { register } = useFormContext();
 
 	return (
-		<ul 
+		<ul
 			className={clsx(styles.menuList, {
 				[styles.menuList_visible]: isOpen,
 			})}>
