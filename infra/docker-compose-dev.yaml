@@ -8,7 +8,6 @@ volumes:
   letsencrypt:
   backend_logs:
 
-
 services:
   db:
     image: postgres:16.2-alpine
@@ -17,13 +16,9 @@ services:
     environment:
       - TZ=Europe/Moscow
     ports:
-      - "5432:5432"
+      - '5432:5432'
     healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"
-        ]
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
       interval: 5s
       timeout: 3s
       retries: 5
@@ -59,8 +54,8 @@ services:
   nginx:
     image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_nginx:latest
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     env_file: .env
     environment:
       - TZ=Europe/Moscow

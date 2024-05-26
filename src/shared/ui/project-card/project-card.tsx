@@ -38,7 +38,9 @@ export const ProjectCard: FC<CardProps> = ({
 						<li
 							key={item.id}
 							className={styles.tag}
-							style={{ backgroundColor: `${getColorTag(item.profession.specialty)}` }}>
+							style={{
+								backgroundColor: `${getColorTag(item.profession.specialty)}`,
+							}}>
 							{item.profession?.specialization}
 						</li>
 					);

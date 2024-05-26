@@ -1,0 +1,46 @@
+.filterContainer {
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.buttonChevron {
+	font-weight: 700;
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+}
+
+%chevron {
+	width: 24px;
+	height: 24px;
+}
+
+.chevronLeft {
+	@extend %chevron;
+	transform: rotate(180deg);
+}
+
+.chevronRight {
+	@extend %chevron;
+}
+
+.selectContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+	width: 300px;
+}
+
+.selectFilter {
+	min-height: 40px;
+	border-radius: 8px;
+	border: 1px solid #e2e8f0;
+	background: #feffff url(../../assets/icons/chevron-down.svg) no-repeat right
+		10px center;
+	padding: 8px 12px;
+
+	-webkit-appearance: none; /* Стиль для Safari */
+	-moz-appearance: none; /* Стиль для Firefox */
+	appearance: none; /* Стиль для прочих браузеров */
+}

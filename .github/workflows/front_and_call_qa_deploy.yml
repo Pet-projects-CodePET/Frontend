@@ -1,9 +1,9 @@
 name: Codepet push front and call QA deploy
 on:
   push:
-    branches: [ 'QA' ]
+    branches: ['QA']
   workflow_dispatch:
-  
+
 jobs:
   build_and_push_to_docker_hub_frontend:
     name: Push Docker image to DockerHub
@@ -30,11 +30,10 @@ jobs:
             NEXT_PUBLIC_BASE_DEV_URL=${{ secrets.NEXT_PUBLIC_BASE_DEV_URL }}
             NEXT_PUBLIC_BASE_TEST_URL=${{ secrets.NEXT_PUBLIC_BASE_TEST_URL }}
             NEXT_PUBLIC_BASE_URL=${{ secrets.DOMAIN_QA }}
-            
+
   deploy_uses_other_file:
-    if:
-      contains('
-        refs/heads/QA
+    if: contains('
+      refs/heads/QA
       ', github.ref)
     uses: Pet-projects-CodePET/Backend/.github/workflows/qa_deploy.yml@QA
     needs:
