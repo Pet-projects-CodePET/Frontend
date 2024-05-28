@@ -7,8 +7,7 @@ import { getColorTag } from '@/shared/utils';
 import { projectTeamArray } from '@/shared/constants';
 import styles from './project-card-detailed.module.scss';
 
-export const ProjectCardDetailed = ({ id }: { id: string }) => {
-	console.log(id);
+export const ProjectCardDetailed = () => {  
 	const skills = [
 		{ id: 1, name: 'React' },
 		{ id: 2, name: 'Redux' },

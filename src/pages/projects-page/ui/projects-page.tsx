@@ -16,7 +16,7 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
-//import Link from 'next/link';
+import Link from 'next/link';
 import styles from './projects-page.module.scss';
 import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
@@ -235,8 +235,7 @@ const data = [
 	},
 ];
 
-export const Projects = () => {   
-
+export const Projects = () => {
 	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
 	const currentData = useMemo(() => {
@@ -271,11 +270,9 @@ export const Projects = () => {
 		console.log(currentData);
 	};
 
-
 	return (
 		<>
 			<div className={styles.pageContainer}>
-				
 				<div className={styles.projects__container}>
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
@@ -373,23 +370,26 @@ export const Projects = () => {
 						</div>
 
 						<div className={styles.projectsContainer}>
-							
-							{projectsArray.map((project) => {				
+							{projectsArray.map((project) => {
 								return (
-									<ProjectCardFull
-										isActiveProject={project.isActiveProject}
-										professions={project.professions}
-										skills={project.skills}
-										description={project.description}
-										duration={project.duration}
-										title={project.title}
-										subtitle={project.subtitle}
-										key={project.id}	
-										id={project.id}		
-									/>
+									<>
+										<Link
+											href={`projects/${project.id}`}
+											className={styles.linkProject}>
+											<ProjectCardFull
+												isActiveProject={project.isActiveProject}
+												professions={project.professions}
+												skills={project.skills}
+												description={project.description}
+												duration={project.duration}
+												title={project.title}
+												subtitle={project.subtitle}
+												key={project.id}
+											/>
+										</Link>
+									</>
 								);
 							})}
-							
 						</div>
 						<Pagination
 							onPageChange={(page) => setCurrentPage(Number(page))}

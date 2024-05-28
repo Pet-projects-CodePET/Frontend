@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Link from 'next/link';
 import clsx from 'clsx';
 import { ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { getClassNameforTag } from '@/shared/utils';
@@ -17,13 +16,11 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	duration,
 	title,
 	subtitle,
-	id,
 }) => {
 	const isMobile = useMediaQuery('(max-width:779px)');
 
 	return (
 		<article className={styles.container}>
-			<Link href={`projects/${id}`} className={styles.linkProject}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
 						<ActivityIcon
@@ -83,7 +80,6 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 						</MainButton>
 					</div>
 				)}
-			</Link>
 		</article>
 	);
 };

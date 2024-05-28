@@ -68,6 +68,10 @@
 		display: none;
 	}
 }
+.linkProject {
+	text-decoration: none;
+	color: $--Foreground-default;	
+}
 @media screen and (max-width: 1199px) {
 	.projects {
 		max-width: 828px;

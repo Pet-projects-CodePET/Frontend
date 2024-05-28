@@ -1,10 +1,10 @@
 import React from "react";
 import { ProjectCardDetailed } from "@/entities/project-card-detailed";
 
-export const Project = ({id} : {id : string}) => {
+export const Project = () => {  
     return (
         <div>
-          <ProjectCardDetailed id={id}/>
+           <ProjectCardDetailed />
         </div>
     )
 
