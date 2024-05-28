@@ -35,7 +35,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						<p className={styles.info__nickname}>{telegram}</p>
 					</div>
 					<div className={styles.info__likeContainer}>
-					<LikeButtonFeature variant='secondary' />
+						<LikeButtonFeature variant="secondary" />
 					</div>
 				</div>
 
