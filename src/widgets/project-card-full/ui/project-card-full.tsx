@@ -73,11 +73,15 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</ul>
 				</div>
 				{isActiveProject && (
-					<Link className={styles.link} href="#">
-						<MainButton variant="primary" width="regular" type="button">
+					<div className={styles.buttonRespond}>
+						<MainButton
+							variant="primary"
+							width="regular"
+							type="button"
+							onClick={(evt) => evt.preventDefault()}>
 							Откликнуться
 						</MainButton>
-					</Link>
+					</div>
 				)}
 			</Link>
 		</article>
