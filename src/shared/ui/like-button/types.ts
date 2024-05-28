@@ -4,6 +4,6 @@ export type LikeButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	variant: 'primary' | 'secondary' | 'trivial';
 	disabled?: boolean;
 	isActive: boolean;
-	handleActiveLikeButton: () => void;
+	handleActiveLikeButton: (evt: React.MouseEvent | React.TouchEvent) => void;
 	setIsActive: (arg: boolean) => void;
 };

@@ -10,7 +10,6 @@
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
-
 	@media screen and (max-width: 779px) {
 		padding: 16px;
 	}
@@ -229,5 +228,5 @@
 }
 .linkProject {
 	text-decoration: none;
-	color: $--Foreground-default;
+	color: $--Foreground-default;	
 }

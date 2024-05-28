@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-//import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { ActivityIcon, CalendarIcon } from '@/shared/assets';
@@ -21,36 +20,28 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	id,
 }) => {
 	const isMobile = useMediaQuery('(max-width:779px)');
-   // const router = useRouter()
-	
-//	function handleProject(evt:  React.ChangeEvent<HTMLInputElement>) {
-//		if (!/like__Rp6I6 /.test(evt.target.className))
-//			router.push(`projects/${id}`);
-//	}
 
 	return (
-		<article className={styles.container} > {/*onClick={handleProject}*/}
-			{/*	<Link href={`projects/${id}`} className={styles.linkProject}>  */}
-
-			<div className={styles.topInfo}>
-				<div className={styles.activeStateContainer}>
-					<ActivityIcon
-						className={clsx(
-							styles.activeStateIcon,
-							isActiveProject && styles.activeStateIcon_type_active,
-							!isActiveProject && styles.activeStateIcon_type_inactive
-						)}
-					/>
-					<div className={styles.activeStateText}>
-						{isActiveProject ? 'активный' : 'завершенный'}
+		<article className={styles.container}>
+			<Link href={`projects/${id}`} className={styles.linkProject}>
+				<div className={styles.topInfo}>
+					<div className={styles.activeStateContainer}>
+						<ActivityIcon
+							className={clsx(
+								styles.activeStateIcon,
+								isActiveProject && styles.activeStateIcon_type_active,
+								!isActiveProject && styles.activeStateIcon_type_inactive
+							)}
+						/>
+						<div className={styles.activeStateText}>
+							{isActiveProject ? 'активный' : 'завершенный'}
+						</div>
+					</div>
+					<div className={styles.like}>
+						<LikeButtonFeature variant="secondary" />
 					</div>
 				</div>
-				<div className={styles.like}>
-					<LikeButtonFeature variant="secondary" />
-				</div>
-			</div>
-			<div>
-				<Link href={`projects/${id}`} className={styles.linkProject}>
+				<div>
 					<div className={styles.calendarContainer}>
 						<CalendarIcon className={styles.calendarIcon} />
 						<div className={styles.calendarText}>{duration}</div>
@@ -80,16 +71,15 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 							</li>
 						))}
 					</ul>
-				</Link> 
-			</div>
-			{isActiveProject && (
-				<Link className={styles.link} href="#">
-					<MainButton variant="primary" width="regular" type="button">
-						Откликнуться
-					</MainButton>
-				</Link>
-			)}
-			{/*	</Link>  */}
+				</div>
+				{isActiveProject && (
+					<Link className={styles.link} href="#">
+						<MainButton variant="primary" width="regular" type="button">
+							Откликнуться
+						</MainButton>
+					</Link>
+				)}
+			</Link>
 		</article>
 	);
 };
