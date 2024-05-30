@@ -7,6 +7,7 @@ import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { LikeButtonFeature } from '@/features';
 import styles from './specialist-card.module.scss';
+import Link from 'next/link';
 
 export const SpecialistCard: FC<SpecialistCardType> = ({
 	specialization,
@@ -50,10 +51,11 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 							);
 						})}
 					</ul>
-
-					<MainButton variant="primary" width="regular">
-						Пригласить в проект
-					</MainButton>
+					<Link href={'/specialists/details-about-specialist'}>
+						<MainButton variant="primary" width="regular">
+							Пригласить в проект
+						</MainButton>
+					</Link>
 				</div>
 			</div>
 		</article>

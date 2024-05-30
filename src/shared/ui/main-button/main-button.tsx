@@ -28,6 +28,9 @@ export const MainButton: FC<MainButtonProps> = ({
 		}
 	};
 
+	// this should be separated into different file with styles functions 
+	// check 
+
 	const getClassNameForWidth = (buttonWidth: 'regular' | 'max' | 'min') => {
 		switch (buttonWidth) {
 			case 'regular':

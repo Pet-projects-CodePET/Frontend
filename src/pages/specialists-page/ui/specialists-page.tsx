@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { SpecialistCard } from '@/widgets/specialist-card';
 import { Header } from '@/widgets/header';
-import { Footer } from '@/widgets/footer';
+// import { Footer } from '@/widgets/footer';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { specialistsArray } from '@/shared/constants/specialists/specialists';
 
@@ -64,6 +64,7 @@ export const Specialists = () => {
 		<>
 			<section className={styles.specialists}>
 				<div className={styles.specialists__wrapper}>
+{/* header should be modified in the way, that we can add it into layout.tsx, make conditional rendering for specific button, etc */}
 					<Header isLoggedIn={isLoggedIn} />
 					<div className={styles.specialists__container}>
 						<h1 className={styles.specialists__title}>Специалисты</h1>
@@ -165,7 +166,7 @@ export const Specialists = () => {
 					pageSize={pageSize}
 				/>
 			</section>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 };
