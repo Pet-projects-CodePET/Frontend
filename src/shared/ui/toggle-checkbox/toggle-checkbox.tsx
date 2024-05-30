@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import styles from './toggle-checkbox.module.scss';
 import { useFormContext } from 'react-hook-form';
 
+
 export const ToggleCheckbox = ({
 	id,
 	name,
@@ -13,21 +14,27 @@ export const ToggleCheckbox = ({
 	disabled,
 }: ToggleCheck) => {
 	const getClassnameForType = (
+		// {toggleCheckboxType, checked}
 		toggleCheckboxType:
 			| 'defaultOn'
 			| 'defaultOf'
 			| 'errorDefaultOn'
-			| 'errorDefaultOf'
+			| 'errorDefaultOf',
+			// checked
 	) => {
 		switch (toggleCheckboxType) {
 			case 'defaultOn':
-				return clsx(styles.toggleCheckbox__defaultOn, {
-					[styles.toggleCheckbox__defaultOn_disabled]: disabled,
-				});
-			case 'defaultOf':
-				return clsx(styles.toggleCheckbox__defaultOf, {
-					[styles.toggleCheckbox__defaultOf_disabled]: disabled,
-				});
+				return clsx(
+					styles.toggleCheckbox__defaultOn, 
+					{
+						[styles.toggleCheckbox__defaultOn_disabled]: !checked,
+					}
+					// {[styles.toggleCheckbox__defaultOn_disabled]: disabled,}
+				);
+			// case 'defaultOf':
+			// 	return clsx(styles.toggleCheckbox__defaultOf, {
+			// 		[styles.toggleCheckbox__defaultOf_disabled]: disabled,
+			// 	});
 			case 'errorDefaultOn':
 				return styles.toggleCheckbox__errorDefaultOn;
 			case 'errorDefaultOf':

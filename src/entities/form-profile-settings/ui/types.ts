@@ -1,12 +1,8 @@
+import { IUser } from "@/services/models/IUser";
 
 export type FormProfileSettingsProps = {
   handleSubmitForm: (
-    data: {
-      notify: boolean;
-      subscription: boolean;
-      visible_status: number;
-      visible_status_contacts: number;
-    }
+    data: IUser
   ) => void;
   // settingsProfile: unknown;
 }

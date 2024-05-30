@@ -8,20 +8,18 @@ import type { CheckboxAndRadioProps } from './types';
 import styles from './checkbox.module.scss';
 
 // eslint-disable-next-line react/display-name
-export const CheckboxAndRadio: FC<CheckboxAndRadioProps> = React.forwardRef<HTMLDivElement, CheckboxAndRadioProps> (({
-	label,
-	id,
-	labelName,
-	type,
-	...props
-}, ref) => {
-
+export const CheckboxAndRadio: FC<CheckboxAndRadioProps> = React.forwardRef<
+	HTMLDivElement,
+	CheckboxAndRadioProps
+>(({ label, id, labelName, type, ...props }, ref) => {
 	const { register } = useFormContext();
 
 	return (
 		<div className={styles.checkboxContainer} ref={ref}>
 			<input
-				{...register(label)}
+				{...register(label, {
+					valueAsNumber: true,
+				})}
 				className={styles.checkbox}
 				id={id}
 				type={type}

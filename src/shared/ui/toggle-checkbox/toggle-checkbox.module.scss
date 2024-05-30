@@ -55,7 +55,7 @@
 		height: 18px;
 		border-radius: 40px;
 		background-color: $--bg-primary;
-		transition: 0.4s;
+		transition: 2s;
 	}
 	&__input:checked + &__defaultOn {
 		background-color: $--bg-primary;
@@ -64,7 +64,7 @@
 
 	&__input:checked + &__defaultOn::before {
 		background-color: $--bg-pressed;
-		left: 5px;
+		left: 2px;
 	}
 
 	// styles for variant 'defaultOf'
