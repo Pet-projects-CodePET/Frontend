@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { MainButton, Input, Form, PopUp } from '@/shared/ui';
-import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
+import { Toggler } from '@/shared/ui/toggler/toggler';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
@@ -21,6 +21,7 @@ import { Calendar } from '@/shared/ui/calendar/calendar';
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
 	const [preview, setPreview] = useState(false);
+	const [isParticipation, setIsParticipation] = useState(true);
 
 	const handleSubmit = () => {
 		console.log('Submit');
@@ -191,13 +192,12 @@ export const DesktopView = () => {
 								Готовность к участию в проектах
 							</span>
 							<div className={styles.fields__checkboxItem}>
-								<ToggleCheckbox
-									id="participation"
-									name="participation"
-									variant="defaultOf"
-									// checked={checked}
-									onChange={() => {}}
-								/>
+								<Toggler checked={isParticipation}
+									name={'participation'}
+									id={'participation'}
+									onChange={(checked: boolean) => {
+										setIsParticipation(checked);
+									}}/>
 							</div>
 						</div>
 						<div className={styles.fields_buttonsContainer}>
