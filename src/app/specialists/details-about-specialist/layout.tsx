@@ -8,6 +8,7 @@ const RootLayout = ({
 	children: React.ReactNode;
 }>) => {
 	return (
+		// has to be separeted into layout wrapper
 		<>
 			<Header isLoggedIn={true} />
 			{children}

@@ -1,2 +1,1 @@
-export { DetailedSpecialistPage } from "./ui/detailed-specialist-page";
-
+export { DetailedSpecialistPage } from './ui/detailed-specialist-page';

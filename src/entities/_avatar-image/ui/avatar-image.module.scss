@@ -1,18 +1,17 @@
 @import '@/shared/style/variables';
 
-
 .base {
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: rgb(255, 0, 0);
-    width: 48px;
-    height: 48px;
-    &__small {
-        width: 32px;
-        height: 32px;
-    }
-    &__large {
-        width: 64px;
-        height: 64px;
-    }
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: rgb(255, 0, 0);
+	width: 48px;
+	height: 48px;
+	&__small {
+		width: 32px;
+		height: 32px;
+	}
+	&__large {
+		width: 64px;
+		height: 64px;
+	}
 }

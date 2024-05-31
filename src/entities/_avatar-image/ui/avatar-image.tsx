@@ -1,28 +1,22 @@
 import React, { FC } from 'react';
 import styles from './avatar-image.module.scss';
 import Image from 'next/image';
-
-// import clsx from 'clsx';
-
+import clsx from 'clsx';
 import type { AvatarImageType } from './types';
-import { generateClassName } from '@/shared/utils/width-variant-function/width-variant-function';
 
 export const AvatarImage: FC<AvatarImageType> = ({ imageURL, size }) => {
-	const baseStyle = generateClassName(styles.base, size);
+	const avatarStyle = clsx(
+		styles.base, 
+		size === "small" && styles.base__small,
+		size === "large" && styles.base__large,
+	  );
+	  
 
 	return (
 		<>
-			<div className={`${baseStyle}`}>
+			<div className={`${avatarStyle}`}>
 				<Image src={imageURL} width={500} height={500} alt="" />
 			</div>
 		</>
 	);
 };
-// const className = clsx(
-// 	styles.base, // Add your base class here
-// 	{
-// 		[styles.base__small]: size === 'small',
-// 		[styles.base__medium]: size === 'medium',
-// 		[styles.base__large]: size === 'large',
-// 	}
-// );

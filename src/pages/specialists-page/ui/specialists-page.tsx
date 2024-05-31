@@ -64,7 +64,7 @@ export const Specialists = () => {
 		<>
 			<section className={styles.specialists}>
 				<div className={styles.specialists__wrapper}>
-{/* header should be modified in the way, that we can add it into layout.tsx, make conditional rendering for specific button, etc */}
+					{/* header should be modified in the way, that we can add it into layout.tsx, make conditional rendering for specific button, etc */}
 					<Header isLoggedIn={isLoggedIn} />
 					<div className={styles.specialists__container}>
 						<h1 className={styles.specialists__title}>Специалисты</h1>
