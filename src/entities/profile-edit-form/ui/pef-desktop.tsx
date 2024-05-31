@@ -21,7 +21,7 @@ import { Calendar } from '@/shared/ui/calendar/calendar';
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
 	const [preview, setPreview] = useState(false);
-	const [isParticipation, setIsParticipation] = useState(true);
+	const [isParticipation, setIsParticipation] = useState(false);
 
 	const handleSubmit = () => {
 		console.log('Submit');

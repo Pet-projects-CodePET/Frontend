@@ -17,8 +17,8 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	// handleDeleteAccount,
 	// settingsProfile,
 }) => {
-	const [isSendNotification, setIsSendNotification] = useState(false);
-	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(false);
+	const [isSendNotification, setIsSendNotification] = useState(true);
+	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(true);
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
 	const [showVisibleContactsMenu, setShowVisibleContactsMenu] = useState(false);
 
