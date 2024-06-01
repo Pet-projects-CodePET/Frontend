@@ -32,11 +32,10 @@ export const MainButton: FC<MainButtonProps> = ({
 	// this should be separated into different file, check functions
 	// check
 	const getClassNameForWidth = clsx(
-		width === "min" && styles.buttonDimensionsMin,
-		width === "regular" && styles.buttonDimensionsRegular,
-		width === "max" && styles.buttonDimensionsMax
-	  );
-	  
+		width === 'min' && styles.buttonDimensionsMin,
+		width === 'regular' && styles.buttonDimensionsRegular,
+		width === 'max' && styles.buttonDimensionsMax
+	);
 
 	// const getClassNameForWidth = (buttonWidth: 'regular' | 'max' | 'min') => {
 	// 	switch (buttonWidth) {

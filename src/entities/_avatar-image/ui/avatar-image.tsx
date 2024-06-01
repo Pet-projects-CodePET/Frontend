@@ -6,11 +6,10 @@ import type { AvatarImageType } from './types';
 
 export const AvatarImage: FC<AvatarImageType> = ({ imageURL, size }) => {
 	const avatarStyle = clsx(
-		styles.base, 
-		size === "small" && styles.base__small,
-		size === "large" && styles.base__large,
-	  );
-	  
+		styles.base,
+		size === 'small' && styles.base__small,
+		size === 'large' && styles.base__large
+	);
 
 	return (
 		<>

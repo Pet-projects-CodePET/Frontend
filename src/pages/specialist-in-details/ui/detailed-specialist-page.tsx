@@ -3,8 +3,7 @@ import { DetailedSpecialistPageType } from './types';
 import React, { FC } from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
 export const DetailedSpecialistPage: FC<DetailedSpecialistPageType> = () => {
-	//fetch of the data from the api should be in this compoentn 
-
+	//fetch of the data from the api should be in this compoentn
 
 	return (
 		<>

@@ -8,8 +8,7 @@ const Page = () => {
 			specialty={'full/stack'}
 			specialization={''}
 			skills={[]}
-			socials={[
-			]}
+			socials={[]}
 		/>
 	);
 };
