@@ -10,7 +10,8 @@ export const LikeButtonFeature = ({
 	disabled?: boolean;
 }) => {
 	const [isActive, setIsActive] = useState(false);
-	const handleActiveLikeButton = () => {
+	const handleActiveLikeButton = (evt: React.MouseEvent | React.TouchEvent) => {
+		evt.preventDefault();
 		setTimeout(() => {
 			console.log('лайк');
 			setIsActive(!isActive);

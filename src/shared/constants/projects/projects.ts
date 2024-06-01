@@ -178,5 +178,5 @@ export const projectsArray = [
 		duration: '01 октября-05 декабря',
 		title: 'Quiz App',
 		subtitle: 'Веб-разработка',
-	},
+	},  
 ];

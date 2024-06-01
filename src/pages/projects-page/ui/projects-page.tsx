@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { projectsArray } from '@/shared/constants/projects/projects';
@@ -12,15 +12,12 @@ import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { MainButton } from '@/shared/ui';
 import { FilterIcon } from '@/shared/assets';
 import { useMediaQuery } from '@/shared/hooks';
-import { Header } from '@/widgets/header';
-import { Footer } from '@/widgets/footer';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
-
+import Link from 'next/link';
 import styles from './projects-page.module.scss';
-
 import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
@@ -239,20 +236,6 @@ const data = [
 ];
 
 export const Projects = () => {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-	useEffect(() => {
-		const { 1: urlToken } = window.location.hash.split('#/login/');
-		if (urlToken) {
-			localStorage.setItem('token', urlToken);
-		}
-
-		const token = localStorage.getItem('token');
-		if (token) {
-			setIsLoggedIn(true);
-		}
-	}, []);
-
 	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
 	const currentData = useMemo(() => {
@@ -290,7 +273,6 @@ export const Projects = () => {
 	return (
 		<>
 			<div className={styles.pageContainer}>
-				<Header isLoggedIn={isLoggedIn} />
 				<div className={styles.projects__container}>
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
@@ -390,16 +372,22 @@ export const Projects = () => {
 						<div className={styles.projectsContainer}>
 							{projectsArray.map((project) => {
 								return (
-									<ProjectCardFull
-										isActiveProject={project.isActiveProject}
-										professions={project.professions}
-										skills={project.skills}
-										description={project.description}
-										duration={project.duration}
-										title={project.title}
-										subtitle={project.subtitle}
-										key={project.id}
-									/>
+									<>
+										<Link
+											href={`projects/${project.id}`}
+											className={styles.linkProject}>
+											<ProjectCardFull
+												isActiveProject={project.isActiveProject}
+												professions={project.professions}
+												skills={project.skills}
+												description={project.description}
+												duration={project.duration}
+												title={project.title}
+												subtitle={project.subtitle}
+												key={project.id}
+											/>
+										</Link>
+									</>
 								);
 							})}
 						</div>
@@ -412,7 +400,6 @@ export const Projects = () => {
 					</>
 				) : null}
 			</div>
-			<Footer />
 		</>
 	);
 };

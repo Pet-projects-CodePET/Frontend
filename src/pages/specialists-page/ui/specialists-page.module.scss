@@ -51,12 +51,12 @@
 @media screen and (max-width: 1199px) {
 	.specialists {
 		max-width: 828px;
+		padding: 0 16px;
 	}
 }
 @media screen and (max-width: 779px) {
 	.specialists {
 		max-width: 100vw;
-		padding: 0 16px;
 		&__container {
 			flex-direction: column;
 			gap: 16px;
