@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ReactNode, useEffect } from 'react';
-import style from './pop-up.module.scss';
+import styles from './pop-up.module.scss';
 import XmarkIcon from '@/shared/assets/icons/close-icon.svg';
 
 type PopUpProps = {
@@ -35,13 +35,13 @@ export const PopUp = ({
 	if (!visible) return null;
 
 	return (
-		<div className={style.popup}>
-			<div className={style.popup_body} onClick={onClose}></div>
-			<div className={style.popup_wrapper}>
-				<div className={style.popup_content}>
-					<div className={style.popup_title}>{title}</div>
+		<div className={styles.popup}>
+			<div className={styles.popup_body} onClick={onClose}></div>
+			<div className={styles.popup_wrapper}>
+				<div className={styles.popup_content}>
+					<div className={styles.popup_title}>{title}</div>
 					<XmarkIcon
-						className={style.xmark}
+						className={styles.xmark}
 						data-close
 						onClick={onClose}
 						width={24}

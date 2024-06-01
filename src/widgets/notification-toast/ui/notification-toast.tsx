@@ -55,6 +55,7 @@ export const NotificationToastContainer = () => {
 					toastClassName={styles.body}
 					autoClose={5000}
 					icon={false}
+					limit={1}
 					closeButton={true}
 					hideProgressBar={true}
 					position="top-center"
@@ -64,8 +65,10 @@ export const NotificationToastContainer = () => {
 					className={styles.container}
 					toastClassName={styles.body}
 					autoClose={5000}
+					limit={1}
 					icon={false}
 					closeButton={true}
+					pauseOnFocusLoss={false}
 					hideProgressBar={true}
 					position="bottom-right"
 				/>

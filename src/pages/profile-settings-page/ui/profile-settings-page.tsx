@@ -1,12 +1,17 @@
 import React from 'react';
-import { ProfileSettings } from '@/entities/profile-settings';
-import { FormChangePasswordFeature } from '@/features/form-change-password/form-change-password';
+
+import {
+	FormProfileSettingsFeature,
+	FormChangePasswordFeature,
+	DeleteAccountFeature,
+} from '@/features';
 
 export const ProfileSettingsPage = () => {
 	return (
 		<>
-			<ProfileSettings />
+			<FormProfileSettingsFeature />
 			<FormChangePasswordFeature />
+			<DeleteAccountFeature />
 		</>
 	);
 };

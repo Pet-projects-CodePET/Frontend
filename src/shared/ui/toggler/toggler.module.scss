@@ -1,0 +1,130 @@
+@import '../../style/variables.scss';
+
+// .switch {
+//   position: relative;
+//   display: inline-block;
+//   width: 48px;
+//   height: 26px;
+// }
+
+// .switch input {
+//   opacity: 0;
+//   width: 0;
+//   height: 0;
+// }
+
+// .slider {
+//   position: absolute;
+//   cursor: pointer;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-color: $--bg-disabled;
+//   -webkit-transition: .4s;
+//   transition: .4s;
+// }
+
+// .slider:before {
+//   position: absolute;
+//   content: "";
+//   height: 18px;
+//   width: 18px;
+//   left: 4px;
+//   bottom: 4px;
+//   background-color: $--bg-primary;
+//   -webkit-transition: .4s;
+//   transition: .4s;
+// }
+
+// input:checked + .slider {
+//   background-color: $--bg-accent-default;
+// 	outline: none;
+// }
+
+// input:focus + .slider {
+//   box-shadow: 0 0 1px $--bg-accent-default;
+
+// }
+
+// input:checked + .slider:before {
+//   -webkit-transform: translateX(22px);
+//   -ms-transform: translateX(22px);
+//   transform: translateX(22px);
+// }
+
+// /* Rounded sliders */
+// .slider.round {
+//   border-radius: 26px;
+// }
+
+// .slider.round:before {
+//   border-radius: 50%;
+// }
+
+%baseDefault {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	border-radius: 40px;
+	transition: 0.2s;
+}
+
+.toggleCheckbox {
+	position: relative;
+	display: flex;
+	width: 48px;
+	height: 26px;
+	box-sizing: border-box;
+	align-items: center;
+	cursor: pointer;
+
+	&__input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	// styles for variant 'default'
+
+	&__default {
+		@extend %baseDefault;
+		background-color: $--bg-primary;
+		border: 2px solid $--bg-pressed;
+
+		&:hover {
+			border: 2px solid $--bg-hover;
+		}
+		&:active {
+			border: 2px solid $--bg-disabled;
+		}
+	}
+	&__default::before {
+		content: ' ';
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: 18px;
+		height: 18px;
+		border-radius: 40px;
+		background-color: $--bg-pressed;
+		transition: 0.2s;
+	}
+
+	&__input:checked + &__default {
+		background-color: $--bg-accent-default;
+		border: 2px solid $--bg-accent-default;
+		&:hover {
+			background-color: $--bg-accent-hover;
+		}
+		&:active {
+			background-color: $--bg-accent-pressed;
+		}
+	}
+	&__input:checked + &__default::before {
+		background-color: $--bg-primary;
+		left: 24px;
+	}
+}
