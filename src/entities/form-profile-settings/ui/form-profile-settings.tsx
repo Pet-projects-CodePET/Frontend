@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { MainButton } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
