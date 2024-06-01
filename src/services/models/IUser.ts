@@ -12,8 +12,8 @@ export type IUser = {
   birthday?: string;
   country?: string;
   city?: string;
-  visible_status?: string;
-  visible_status_contacts?: string;
+  visible_status?: number;
+  visible_status_contacts?: number;
   allow_notifications?: boolean;
   subscribe_to_projects?: boolean;
 };

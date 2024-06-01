@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { MainButton } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
@@ -15,12 +15,21 @@ import { Toggler } from '@/shared/ui/toggler/toggler';
 export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	handleSubmitForm,
 	// handleDeleteAccount,
-	// settingsProfile,
+	userData,
 }) => {
 	const [isSendNotification, setIsSendNotification] = useState(true);
 	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(true);
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
 	const [showVisibleContactsMenu, setShowVisibleContactsMenu] = useState(false);
+
+	// // if (userData) {
+	// 	setIsSendNotification(userData?.allow_notifications as boolean);
+	// 	setIsSubscriptionProjects(userData?.subscribe_to_projects as boolean);
+	// // }
+	// useEffect(() => {
+	// 	setIsSendNotification(userData?.allow_notifications as boolean);
+	// 	setIsSubscriptionProjects(userData?.subscribe_to_projects as boolean);
+	// },[userData]);
 
 	return (
 		<section className={styles.profileSettings}>
@@ -46,7 +55,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 						</div>
 						<MenuForVisible
 							isOpen={showVisibleProfileMenu}
-							settings={3}
+							settings={userData?.visible_status || 3}
 							nameSettings={'visible_status'}
 						/>
 					</div>
@@ -67,7 +76,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 						</div>
 						<MenuForVisible
 							isOpen={showVisibleContactsMenu}
-							settings={2}
+							settings={userData?.visible_status_contacts || 3}
 							nameSettings={'visible_status_contacts'}
 						/>
 					</div>
@@ -85,17 +94,6 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 									onChange={(checked: boolean) => {
 										setIsSendNotification(checked);
 									}}/>
-
-								{/* <ToggleCheckbox
-									// {...register('sendNotification')}
-									id="allow_notifications"
-									name="allow_notifications"
-									variant={'defaultOn'}
-									checked={isSendNotification}
-									onChange={() => {
-										setIsSendNotification(!isSendNotification);
-									}}
-								/> */}
 							</div>
 						</div>
 					</div>
@@ -107,16 +105,6 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 								Подписка на проекты
 							</label>
 							<div className={styles.formSettings__checkbox}>
-								{/* <ToggleCheckbox
-									variant={"defaultOn"}
-									id="subscribe_to_projects"
-									name="subscribe_to_projects"
-									checked={isSubscriptionProjects}
-									onChange={() => {
-										setIsSubscriptionProjects(!isSubscriptionProjects);
-										// console.log('Подписка на проекты');
-									}}
-								/> */}
 								<Toggler
 									// variant={'default'}
 									checked={isSubscriptionProjects}

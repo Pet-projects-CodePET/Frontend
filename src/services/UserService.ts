@@ -46,6 +46,7 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
+		// не нужен 
 		getUserMe: builder.query({
 			query: () => ({
 				url: '/users/me/',
@@ -74,9 +75,9 @@ export const userApi = createApi({
 				},
 			}),
 		}),
-		getSettingsProfileVisibility: builder.query({
+		getProfileInfo: builder.query({
 			query: () => ({
-				url: '/profile_visibility/22/', //это мой id для теста!
+				url: '/profiles/me/', 
 				method: 'GET',
 			}),
 		}),
@@ -91,5 +92,5 @@ export const {
 	useGetUserMeQuery,
 	useChangePasswordMutation,
 	useDeleteAccountMutation,
-	useGetSettingsProfileVisibilityQuery,
+	useGetProfileInfoQuery,
 } = userApi;
