@@ -1,13 +1,20 @@
-'use client';
-import { DetailedSpecialistPageType } from './types';
-// import styles from './detailed-specialist-page.module.scss';
 import React, { FC } from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
-// import { useGetUserDataQuery } from '@/services/GetUserData';
-export const DetailedSpecialistPage: FC<DetailedSpecialistPageType> = () => {
-	//fetch of the data from the api should be in this compoentn
+import { getDataAxiosInstance } from '@/utils/declension/axiosInstance';
+
+export const DetailedSpecialistPage: FC = async () => {
 	// const { data } = useGetUserDataQuery()
-	// console.log(JSON.stringify(data))
+
+	const data = getDataAxiosInstance
+		.get('/profiles/171')
+		.then((response) => {
+			console.log(response.data);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+
+	console.log(data);
 
 	return (
 		<>
