@@ -4,14 +4,15 @@ import styles from './detailed-specialist-card.module.scss';
 import React, { FC } from 'react';
 import { LikeButtonFeature } from '@/features';
 import { MainButton } from '@/shared/ui';
-import Image from 'next/image';
+import { ActivityIcon } from '@/shared/assets';
 
 export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
+	name,
+	userName,
 	specialization,
-	specialty,
-	socials,
 	skills,
 	image,
+	readyToParticipate,
 }) => {
 	return (
 		<>
@@ -20,15 +21,20 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					<div className={styles.info__person}>
 						<AvatarImage imageURL={image} size={'large'} />
 						<div className={styles.info__personDescription}>
-							<h2 className={styles.info__name}>{specialty}</h2>
-							<p className={styles.info__nickname}>{socials}</p>
+							<h2 className={styles.info__name}>{name}</h2>
+							<p className={styles.info__nickname}>{userName}</p>
 							<div className={styles.info__personStatus}>
-								<Image
-									src={'ActivityIcon'}
-									width={16}
-									height={16}
-									alt={'image'}></Image>
-								готов(а) к участию в проекте
+								{readyToParticipate ? (
+									<>
+										<ActivityIcon />
+										Не готов(а) к участию в проекте
+									</>
+								) : (
+									<>
+										<ActivityIcon />
+										Готов к участию в проекте
+									</>
+								)}
 							</div>
 						</div>
 						<div className={styles.info__likeContainer}>

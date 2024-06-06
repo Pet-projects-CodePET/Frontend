@@ -5,27 +5,21 @@ import { getDataAxiosInstance } from '@/utils/declension/axiosInstance';
 export const DetailedSpecialistPage: FC = async () => {
 	// const { data } = useGetUserDataQuery()
 
-	const data = getDataAxiosInstance
-		.get('/profiles/171')
-		.then((response) => {
-			console.log(response.data);
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-
-	console.log(data);
+	const response = (await getDataAxiosInstance.get('/profiles/171/')).data;
+	console.log(response);
 
 	return (
 		<>
 			<div>
 				<DetailedSpecialistCard
-					name={''}
+					name={response.name}
+					userName={response.username}
 					specialty={''}
 					specialization={''}
 					socials={[]}
 					skills={[]}
-					image={''}
+					image={response.image}
+					readyToParticipate={response.ready_to_participate}
 				/>
 			</div>
 		</>

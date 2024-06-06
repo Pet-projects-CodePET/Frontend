@@ -1,5 +1,7 @@
-import ActivityIcon from '@/shared/assets/icons/activity-icon.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar-icon.svg';
+import ActivityIcon from './icons/activity-icon.svg';
+import ActivityIconRed from './icons/activity-icon-red.svg';
+import ActivityIconGreen from './icons/activity-icon-green.svg';
+import CalendarIcon from './icons/calendar-icon.svg';
 import CloseIcon from './icons/close-icon.svg';
 import FilterIcon from './icons/filter-icon.svg';
 import IconPlus from './icons/plus-counter.svg';
@@ -14,6 +16,8 @@ import MailIcon from './icons/mail.svg';
 
 export {
 	ActivityIcon,
+	ActivityIconRed,
+	ActivityIconGreen,
 	CalendarIcon,
 	CloseIcon,
 	FilterIcon,
