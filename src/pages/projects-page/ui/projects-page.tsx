@@ -6,7 +6,6 @@ import { statusOptions } from '@/shared/constants/status-options/status-options'
 import { projectsArray } from '@/shared/constants/projects/projects';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
 import { months2, professions } from '@/shared/constants';
-import { months } from '@/shared/constants/months/months';
 import { ProjectFilter } from '@/entities/project-filter';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { MainButton } from '@/shared/ui';
@@ -21,6 +20,7 @@ import styles from './projects-page.module.scss';
 import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
+import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
 
 const data = [
 	{
@@ -251,10 +251,6 @@ export const Projects = () => {
 		console.info('selected option: ', selectedOptions?.[0]);
 	};
 
-	const handleMonthChange = (selectedItems: object) => {
-		console.info('selected options: ', selectedItems);
-	};
-
 	const handleRecruitmentStatusChange = (
 		selectedOptions: (string | object)[]
 	) => {
@@ -306,14 +302,10 @@ export const Projects = () => {
 									value={{ value: 'completed', label: 'Завершенный' }}
 									onChange={handleStatusProjectChange}
 								/>
-								<MultiSelectButton
-									name="select-months"
+								<CalendarButton
+									name="select-date"
 									caption="Дата"
-									options={months}
-									values={[]}
-									onChange={handleMonthChange}
-									selectedAll={true}
-									buttonWidth={114}
+									isSelectsRange={true}
 								/>
 								<SingleSelectButton
 									name="select-recruitment-status"

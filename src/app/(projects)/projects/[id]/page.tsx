@@ -8,8 +8,6 @@ export function generateStaticParams() {
 	return projects;
 }
 const Page = () => {
-	return (
-			<Project />
-	);
+	return <Project />;
 };
 export default Page;

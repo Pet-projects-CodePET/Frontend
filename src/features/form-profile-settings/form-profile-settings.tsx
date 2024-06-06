@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import { FormProfileSettings } from '@/entities/form-profile-settings';
-'@/services/UserService';
+('@/services/UserService');
 import {
 	NotificationToastContainer,
 	// toaster,
@@ -17,19 +17,17 @@ export const FormProfileSettingsFeature: FC = () => {
 
 	const handleSubmitForm = (data: IUser) => {
 		// const {visible_status} = data;
-		
+
 		// console.log('handleSubmit visible_status', parseInt(data.visible_status as string));
 		// console.log('handleSubmit visible_status_contacts',parseInt(data.visible_status_contacts as string) );
 		// console.log('handleSubmit allow_notifications', data.allow_notifications as boolean);
 		// console.log('handleSubmit subscribe_to_projects', data.subscribe_to_projects as boolean);
-		
-		console.log('handleSubmit data', data);
 
-		
+		console.log('handleSubmit data', data);
 	};
 	// useEffect(() => {
-	// 	if (data) { 
-			
+	// 	if (data) {
+
 	// 		// console.log(data);
 	// 	}
 	// },[]);

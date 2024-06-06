@@ -3,4 +3,4 @@ export type MenuForVisibleProps = {
 	// onClose?: () => void;
 	settings: number;
 	nameSettings: string;
-}
+};

@@ -10,7 +10,7 @@ export const Toggler = ({ checked, name, id, onChange }: TogglerProps) => {
 	return (
 		<label className={styles.toggleCheckbox}>
 			<input
-			    className={styles.toggleCheckbox__input}
+				className={styles.toggleCheckbox__input}
 				{...register(name as string)}
 				type="checkbox"
 				checked={checked}

@@ -46,7 +46,7 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
-		// не нужен 
+		// не нужен
 		getUserMe: builder.query({
 			query: () => ({
 				url: '/users/me/',
@@ -77,7 +77,7 @@ export const userApi = createApi({
 		}),
 		getProfileInfo: builder.query({
 			query: () => ({
-				url: '/profiles/me/', 
+				url: '/profiles/me/',
 				method: 'GET',
 			}),
 		}),
