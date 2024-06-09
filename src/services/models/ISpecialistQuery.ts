@@ -1,4 +1,4 @@
-export interface QuerySpecialistData {
+export type SpecialistInfoType = {
 	avatar: string;
 	username: string;
 	name: string;
@@ -33,4 +33,4 @@ export interface QuerySpecialistData {
 			additionalProp3: string;
 		},
 	];
-}
+};

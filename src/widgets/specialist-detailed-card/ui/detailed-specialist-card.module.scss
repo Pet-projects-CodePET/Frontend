@@ -7,7 +7,7 @@
 	font-style: normal;
 }
 %secondaryText {
-    color: rgba(0, 0, 0, 0.5); 
+	color: rgba(0, 0, 0, 0.5);
 	font-family: $--open-sans-font;
 	margin: 0;
 	font-style: normal;
@@ -16,9 +16,11 @@
 	display: flex;
 	border-radius: 12px;
 	border: 1px solid #e2e8f0;
-	height: 1160px;
-	width: 1040px;
+	height: auto;
+	width: fit-content;
+	min-width: 1096px;
 	padding: 32px;
+	margin-bottom: 32px;
 
 	&__info {
 		display: flex;
@@ -29,13 +31,11 @@
 .info {
 	&__person {
 		display: flex;
-		gap: 16px;
-		border-bottom: 1px solid $--Foreground-subtitle;
 		position: relative;
+		margin-bottom: 32px;
 	}
-	&__personImage {
-		width: 92px;
-		height: 92px;
+	&__avatar {
+		margin-right: 16px;
 	}
 	&__personDescription {
 		display: flex;
@@ -65,23 +65,37 @@
 		@extend %baseText;
 		font-size: 24px;
 		font-weight: 600;
-		line-height: 30px;
 	}
 	&__nickname {
 		@extend %secondaryText;
 		font-size: 16px;
 		font-weight: 700;
-		line-height: normal;
 		letter-spacing: 0.25px;
-		margin-bottom: 16px;
+	}
+	&__skill {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+		margin: 8px 8px 0 0;
 	}
 	&__role {
 		@extend %baseText;
 		font-size: 16px;
 		font-weight: 700;
-		line-height: normal;
-		margin-top: 16px;
+		padding: 16px 0px;
 	}
+
+	&__title {
+		@extend %baseText;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 19px;
+		letter-spacing: 0.25px;
+		padding-bottom: 8px;
+	}
+
 	&__skillsList {
 		display: flex;
 		flex-wrap: wrap;
@@ -89,17 +103,33 @@
 		margin: 0 0 24px 0;
 		list-style: none;
 	}
-	&__skill {
-		font-size: 14px;
+	&__sideText {
+		@extend %baseText;
+		font-size: 16px;
 		font-weight: 400;
-		line-height: 19px;
-		letter-spacing: 0.25px;
-		margin: 8px 8px 0 0;
-		padding: 4px 13px;
-		white-space: nowrap;
-		border-radius: 20px;
-		border: 1px solid $--border-default;
+		display: flex;
+		flex-direction: column;
 	}
+	&__wrapper {
+		margin-bottom: 32px;
+	}
+	&__contacts__wrapper {
+		margin-bottom: 16px;
+	}
+	&__contacts {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 400;
+		color: #0075ff;
+		display: flex;
+		align-items: center;
+		margin: 0 8px 8px 0;
+	}
+	&__icons {
+		font-size: 24px;
+		margin-right: 8px;
+	}
+
 	&__likeContainer {
 		position: absolute;
 		top: 0;

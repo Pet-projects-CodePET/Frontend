@@ -1,10 +1,29 @@
 export type DetailedSpecialistCardTypes = {
-	name: string;
+	avatar: string;
 	userName: string;
-	image: string;
-	specialty: string;
-	specialization: string;
-	socials: string[];
-	skills: string[];
+	name: string;
 	readyToParticipate: boolean;
+	specialists: [
+		{
+			id: number;
+			profession: {
+				id: number;
+				specialty: string;
+				specialization: string;
+			};
+			level: number;
+			skills: [{ id: number; name: string }];
+		},
+	];
+
+	isFavorite?: string;
+	about: string;
+	portfolioLink: string;
+	birthday: number;
+	country: string;
+	city: string;
+	phoneNumber: string;
+	telegramNick: string;
+	email: string;
+	projects: [{ id: number; name: string }];
 };

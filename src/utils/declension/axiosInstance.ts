@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const BASE_URL = 'devcodepet.tw1.ru'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const getDataAxiosInstance = axios.create({
 	baseURL: `https://${BASE_URL}/api/v1`,
@@ -13,7 +12,7 @@ export const getDataAxiosInstance = axios.create({
 
 getDataAxiosInstance.interceptors.request.use((value) => {
 	console.log('check the work of an interceptor');
-	return value
+	return value;
 });
 
 // export const getDataAxiosInstance = axios.create({

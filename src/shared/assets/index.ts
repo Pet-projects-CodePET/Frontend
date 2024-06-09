@@ -6,6 +6,7 @@ import CloseIcon from './icons/close-icon.svg';
 import FilterIcon from './icons/filter-icon.svg';
 import IconPlus from './icons/plus-counter.svg';
 import IconMinus from './icons/minus.svg';
+import ArrowLeftIcon from './icons/arrow-icon.svg';
 import IconPlusDisabled from './icons/plus-counter-disabled.svg';
 import IconMinusDisabled from './icons/minus-disabled.svg';
 import HeartIcon from './icons/heart.svg';
@@ -18,6 +19,7 @@ export {
 	ActivityIcon,
 	ActivityIconRed,
 	ActivityIconGreen,
+	ArrowLeftIcon,
 	CalendarIcon,
 	CloseIcon,
 	FilterIcon,

@@ -4,7 +4,11 @@ import Image from 'next/image';
 import clsx from 'clsx';
 import type { AvatarImageType } from './types';
 
-export const AvatarImage: FC<AvatarImageType> = ({ imageURL, size }) => {
+export const AvatarImage: FC<AvatarImageType> = ({
+	imageURL,
+	size,
+	className,
+}) => {
 	const avatarStyle = clsx(
 		styles.base,
 		size === 'small' && styles.base__small,
@@ -13,7 +17,9 @@ export const AvatarImage: FC<AvatarImageType> = ({ imageURL, size }) => {
 
 	return (
 		<>
-			<div className={`${avatarStyle}`}>
+			{/* for className property if you want to do some modification like gapping, use margin 
+			instead of padding, or it will warp the size */}
+			<div className={`${avatarStyle} ${className}`}>
 				<Image src={imageURL} width={500} height={500} alt="" />
 			</div>
 		</>
