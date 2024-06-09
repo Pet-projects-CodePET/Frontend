@@ -2,31 +2,31 @@ import axios from 'axios';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const getDataAxiosInstance = axios.create({
+export const axiosInstance = axios.create({
 	baseURL: `https://${BASE_URL}/api/v1`,
+	timeout: 5000,
 	headers: {
 		Accept: 'application/json',
 		'Content-Type': 'application/json',
 	},
 });
 
-getDataAxiosInstance.interceptors.request.use((value) => {
-	console.log('check the work of an interceptor');
-	return value;
-});
+axiosInstance.interceptors.request.use(
+	(config) => {
+		console.log('Request was sent');
+		return config;
+	},
+	(error) => {
+		return Promise.reject(error);
+	}
+);
 
-// export const getDataAxiosInstance = axios.create({
-//     baseURL: `https://pokeapi.co/api/v2/`,
-//     headers: {
-//         'Accept': 'application/json',
-//     }
-
-// })
-
-// getDataAxiosInstance.get('')
-//   .then(response => {
-//     console.log(response.data);
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
+axiosInstance.interceptors.response.use(
+	(response) => {
+		console.log('Response received');
+		return response;
+	},
+	(error) => {
+		return Promise.reject(error);
+	}
+);

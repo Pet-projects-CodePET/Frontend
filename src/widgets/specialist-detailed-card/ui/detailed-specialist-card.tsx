@@ -10,11 +10,9 @@ import {
 	MobileIcon,
 	TelegramIcon,
 } from '@/shared/assets';
+import clsx from 'clsx';
 
 export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
-	// So we have to create iur props based on the types types from the query
-	// i should LOOK at the types and create smart, one in multy out properties with those who are objects/arrays
-	// after i can pass to restrocture into the copilot
 	avatar,
 	userName,
 	name,
@@ -43,10 +41,15 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						<div className={styles.info__personDescription}>
 							<h2 className={styles.info__name}>{name}</h2>
 							<p className={styles.info__nickname}>@{userName}</p>
-							<p className={styles.info__role}>
-								{specialists[0].profession.specialty},{' '}
-								{specialists[0].profession.specialization}
-							</p>
+							<div className={styles.info__role}>
+								<p>{specialists[0].profession.specialization},</p>
+								<p>{specialists[0].profession.specialty},</p>
+								<p>{clsx(
+									specialists[0].level === 1 && "Junior",
+									specialists[0].level === 2 && "Middle",
+									specialists[0].level === 3 && "Senior"
+								)}</p>
+							</div>
 							<div className={styles.info__personStatus}>
 								{readyToParticipate ? (
 									<>
@@ -131,7 +134,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						<div className={styles.info__wrapper}>
 							<h3 className={styles.info__title}>Проекты</h3>
 							{projects.map((project) => (
-								<a className={styles.info__sideText} key={project.id}>
+								<a className={styles.info__contacts} key={project.id}>
 									{project.name}
 								</a>
 							))}

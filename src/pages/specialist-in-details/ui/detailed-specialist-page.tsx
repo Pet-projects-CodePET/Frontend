@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
-import { getDataAxiosInstance } from '@/utils/declension/axiosInstance';
+import { axiosInstance } from '@/utils/declension/axiosInstance';
 import { SpecialistInfoQueryType } from './types';
 import styles from './detailed-specialist-page.module.scss';
 import Link from 'next/link';
@@ -8,15 +8,14 @@ import { ArrowLeftIcon } from '@/shared/assets';
 
 export const DetailedSpecialistPage: FC = async () => {
 	const response: SpecialistInfoQueryType = (
-		await getDataAxiosInstance.get('/profiles/171/')
+		await axiosInstance.get('/profiles/171/')
 	).data;
-	console.log(response);
 
 	return (
 		<div>
 			<Link href="/specialists" className={styles.linkContainer}>
 				<ArrowLeftIcon className={styles.arrow} />
-				<p className={styles.link}>Специалисты </p>
+				<p className={styles.link}>Специалисты</p>
 			</Link>
 			<div>
 				<DetailedSpecialistCard
