@@ -81,6 +81,13 @@ export const userApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		changeProfileSettings: builder.mutation<IUser, IUser>({
+			query: (user) => ({
+				url: '/profiles/me/',
+				method: 'PATCH',
+				body: user,
+			}),
+		}),
 	}),
 });
 
@@ -93,4 +100,5 @@ export const {
 	useChangePasswordMutation,
 	useDeleteAccountMutation,
 	useGetProfileInfoQuery,
+	useChangeProfileSettingsMutation,
 } = userApi;

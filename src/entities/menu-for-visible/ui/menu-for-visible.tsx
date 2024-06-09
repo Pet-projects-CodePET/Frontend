@@ -25,10 +25,6 @@ export const MenuForVisible = ({
 					defaultChecked={settings === 1}
 					id={`${nameSettings}_1`}
 					value={1}
-					// {...register(nameSettings, {
-					// 	valueAsNumber: true,
-					// })}
-					// {...register(nameSettings)}
 					labelName={'Видно всем'}
 				/>
 			</li>
@@ -39,10 +35,6 @@ export const MenuForVisible = ({
 					defaultChecked={settings === 2}
 					id={`${nameSettings}_2`}
 					value={2}
-					// {...register(nameSettings, {
-					// 	valueAsNumber: true,
-					// })}
-					// {...register(nameSettings)}
 					labelName={'Видно организаторам'}
 				/>
 			</li>

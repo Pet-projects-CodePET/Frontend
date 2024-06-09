@@ -1,12 +1,11 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { MainButton } from '@/shared/ui';
 import { Form } from '@/shared/ui';
 import IconUp from '@/shared/assets/icons/chevron-up.svg';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
 import styles from './form-profile-settings.module.scss';
-// import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { MenuForVisible } from '@/entities/menu-for-visible';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { FormProfileSettingsProps } from './types';
@@ -17,8 +16,11 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	// handleDeleteAccount,
 	userData,
 }) => {
-	const [isSendNotification, setIsSendNotification] = useState(true);
-	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(true);
+	const [isSendNotification, setIsSendNotification] = useState(false);
+	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(false);
+	const [ visibleStatus, setVisibleStatus] = useState(0);
+	const [ visibleStatusContacts, setVisibleStatusContacts] = useState(0);
+
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
 	const [showVisibleContactsMenu, setShowVisibleContactsMenu] = useState(false);
 
@@ -26,10 +28,16 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	// 	setIsSendNotification(userData?.allow_notifications as boolean);
 	// 	setIsSubscriptionProjects(userData?.subscribe_to_projects as boolean);
 	// // }
-	// useEffect(() => {
-	// 	setIsSendNotification(userData?.allow_notifications as boolean);
-	// 	setIsSubscriptionProjects(userData?.subscribe_to_projects as boolean);
-	// },[userData]);
+	useEffect(() => {
+		if (userData) {
+			setIsSendNotification(userData.allow_notifications as boolean);
+			setIsSubscriptionProjects(userData.subscribe_to_projects as boolean);
+			setVisibleStatus(userData.visible_status as number);
+			setVisibleStatusContacts(userData.visible_status_contacts as number);
+			// console.log(userData.visible_status);
+		}
+	}, [userData]);
+	// console.log(userData);
 
 	return (
 		<section className={styles.profileSettings}>
@@ -55,7 +63,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 						</div>
 						<MenuForVisible
 							isOpen={showVisibleProfileMenu}
-							settings={userData?.visible_status || 3}
+							settings={visibleStatus}
 							nameSettings={'visible_status'}
 						/>
 					</div>
@@ -76,7 +84,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 						</div>
 						<MenuForVisible
 							isOpen={showVisibleContactsMenu}
-							settings={userData?.visible_status_contacts || 3}
+							settings={visibleStatusContacts}
 							nameSettings={'visible_status_contacts'}
 						/>
 					</div>
@@ -86,14 +94,15 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 								Отправка уведомлений
 							</label>
 							<div className={styles.formSettings__checkbox}>
-							<Toggler
+								<Toggler
 									// variant={'default'}
 									checked={isSendNotification}
 									name={'allow_notifications'}
 									id={'allow_notifications'}
 									onChange={(checked: boolean) => {
 										setIsSendNotification(checked);
-									}}/>
+									}}
+								/>
 							</div>
 						</div>
 					</div>
