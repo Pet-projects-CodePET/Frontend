@@ -23,6 +23,7 @@ export const CalendarButton: FC<CalendarButtonProps> = ({
 	name,
 	caption,
 	isSelectsRange,
+	onChange,
 }) => {
 	const [startDate, setStartDate] = useState<Date | null>(new Date());
 	const [endDate, setEndDate] = useState<Date | null>(null);
@@ -33,7 +34,8 @@ export const CalendarButton: FC<CalendarButtonProps> = ({
 		<select
 			className={styles.selectFilter}
 			value={value}
-			onChange={({ target: { value } }) => handleChange(months.indexOf(value))}>
+			onChange={({ target: { value } }) => handleChange(months.indexOf(value))}
+		>
 			{months.map((option) => (
 				<option key={option} value={option}>
 					{option}
@@ -46,7 +48,8 @@ export const CalendarButton: FC<CalendarButtonProps> = ({
 		<select
 			className={styles.selectFilter}
 			value={value}
-			onChange={({ target: { value } }) => handleChange(Number(value))}>
+			onChange={({ target: { value } }) => handleChange(Number(value))}
+		>
 			{years.map((option) => (
 				<option key={option} value={option}>
 					{option}
@@ -68,7 +71,8 @@ export const CalendarButton: FC<CalendarButtonProps> = ({
 			<button
 				className={styles.buttonChevron}
 				onClick={decreaseMonth}
-				disabled={prevMonthButtonDisabled}>
+				disabled={prevMonthButtonDisabled}
+			>
 				<Chevron className={styles.chevronLeft} />
 			</button>
 			<div className={styles.selectContainer}>
@@ -81,7 +85,8 @@ export const CalendarButton: FC<CalendarButtonProps> = ({
 			<button
 				className={styles.buttonChevron}
 				onClick={increaseMonth}
-				disabled={nextMonthButtonDisabled}>
+				disabled={nextMonthButtonDisabled}
+			>
 				<Chevron className={styles.chevronRight} />
 			</button>
 		</div>
@@ -100,15 +105,16 @@ export const CalendarButton: FC<CalendarButtonProps> = ({
 	));
 	CustomInput.displayName = 'CustomInput';
 
-	const handleChange = (dates: Date | [Date, Date | null]) => {
-		if (Array.isArray(dates)) {
-			const [start, end] = dates;
+	const handleChange = (date: Date | [Date, Date | null]) => {
+		if (Array.isArray(date)) {
+			const [start, end] = date;
 			setStartDate(start);
 			setEndDate(end);
 		} else {
-			setStartDate(dates);
+			setStartDate(date);
 			setEndDate(null);
 		}
+		onChange(date);
 	};
 
 	return (
