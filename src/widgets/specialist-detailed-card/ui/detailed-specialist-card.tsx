@@ -44,11 +44,13 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 							<div className={styles.info__role}>
 								<p>{specialists[0].profession.specialization},</p>
 								<p>{specialists[0].profession.specialty},</p>
-								<p>{clsx(
-									specialists[0].level === 1 && "Junior",
-									specialists[0].level === 2 && "Middle",
-									specialists[0].level === 3 && "Senior"
-								)}</p>
+								<p>
+									{clsx(
+										specialists[0].level === 1 && 'Junior',
+										specialists[0].level === 2 && 'Middle',
+										specialists[0].level === 3 && 'Senior'
+									)}
+								</p>
 							</div>
 							<div className={styles.info__personStatus}>
 								{readyToParticipate ? (
