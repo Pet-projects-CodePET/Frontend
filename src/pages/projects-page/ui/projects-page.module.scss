@@ -16,7 +16,6 @@
 	flex-direction: column;
 	gap: 24px;
 	padding-top: 32px;
-	
 
 	@media screen and (max-width: 1199px) {
 		gap: 16px;
@@ -70,7 +69,7 @@
 }
 .linkProject {
 	text-decoration: none;
-	color: $--Foreground-default;	
+	color: $--Foreground-default;
 }
 @media screen and (max-width: 1199px) {
 	.projects {

@@ -16,7 +16,7 @@ export const SingleSelectButton: FC<SingleSelectButtonProps> = ({
 		background-color: #feffff !important;
 		border: 1px solid #e2e8f0 !important;
 		border-radius: 50px !important;
-		min-height: 48px !important;
+		min-height: 40px !important;
 		padding: 0px 16px !important;
 
 		font-family:
@@ -25,10 +25,12 @@ export const SingleSelectButton: FC<SingleSelectButtonProps> = ({
 		font-size: 16px;
 		font-weight: 700;
 
-		:hover,
+		:hover {
+			box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
+		}
 		:focus {
-			border: 1px solid #8caaff !important;
 			box-shadow: none !important;
+			border: 1px solid #8caaff;
 		}
 
 		.react-dropdown-select-dropdown {

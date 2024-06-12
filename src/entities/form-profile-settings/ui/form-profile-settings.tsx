@@ -86,14 +86,15 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 								Отправка уведомлений
 							</label>
 							<div className={styles.formSettings__checkbox}>
-							<Toggler
+								<Toggler
 									// variant={'default'}
 									checked={isSendNotification}
 									name={'allow_notifications'}
 									id={'allow_notifications'}
 									onChange={(checked: boolean) => {
 										setIsSendNotification(checked);
-									}}/>
+									}}
+								/>
 							</div>
 						</div>
 					</div>
