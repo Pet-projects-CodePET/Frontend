@@ -8,7 +8,7 @@ import { ArrowLeftIcon } from '@/shared/assets';
 
 export const DetailedSpecialistPage: FC = async () => {
 	const response: SpecialistInfoQueryType = (
-		await axiosInstance.get('/profiles/171/')
+		await axiosInstance.get(`/profiles/171/`)
 	).data;
 
 	return (

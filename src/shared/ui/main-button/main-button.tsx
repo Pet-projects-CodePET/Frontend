@@ -29,13 +29,11 @@ export const MainButton: FC<MainButtonProps> = ({
 		}
 	};
 
-
 	const getClassNameForWidth = clsx(
 		width === 'min' && styles.buttonDimensionsMin,
 		width === 'regular' && styles.buttonDimensionsRegular,
 		width === 'max' && styles.buttonDimensionsMax
 	);
-
 
 	return (
 		<button

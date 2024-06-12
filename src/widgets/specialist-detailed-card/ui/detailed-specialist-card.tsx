@@ -3,7 +3,6 @@ import { DetailedSpecialistCardTypes } from './types';
 import styles from './detailed-specialist-card.module.scss';
 import React, { FC } from 'react';
 import { LikeButtonFeature } from '@/features';
-import { MainButton } from '@/shared/ui';
 import {
 	ActivityIcon,
 	MailIcon,
@@ -11,6 +10,7 @@ import {
 	TelegramIcon,
 } from '@/shared/assets';
 import clsx from 'clsx';
+import { InviteSpecialist } from '@/widgets/invite-specialist';
 
 export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	avatar,
@@ -35,7 +35,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					<div className={styles.info__person}>
 						<AvatarImage
 							imageURL={avatar}
-							size={'large'}
+							size="large"
 							className={styles.info__avatar}
 						/>
 						<div className={styles.info__personDescription}>
@@ -136,14 +136,15 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						<div className={styles.info__wrapper}>
 							<h3 className={styles.info__title}>Проекты</h3>
 							{projects.map((project) => (
-								<a className={styles.info__contacts} key={project.id}>
+								<a
+									href={project.name}
+									className={styles.info__contacts}
+									key={project.id}>
 									{project.name}
 								</a>
 							))}
 						</div>
-						<MainButton variant="primary" width="regular">
-							Пригласить в проект
-						</MainButton>
+						<InviteSpecialist />
 					</div>
 				</div>
 			</article>

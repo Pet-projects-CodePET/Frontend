@@ -26,7 +26,7 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 		if (isBurgerOpen) setIsBurgerOpen(false);
 	});
 	return (
-		<div className={styles.header}>
+		<header className={styles.header}>
 			<div className={styles.header__container}>
 				<div className={styles.header__wrapper} ref={burgerRef}>
 					<Link href="/" className={styles.header__link}>
@@ -60,6 +60,6 @@ export const Header = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 					</Link>
 				)}
 			</div>
-		</div>
+		</header>
 	);
 };

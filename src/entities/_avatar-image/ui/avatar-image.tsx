@@ -20,7 +20,7 @@ export const AvatarImage: FC<AvatarImageType> = ({
 			{/* for className property if you want to do some modification like gapping, use margin 
 			instead of padding, or it will warp the size */}
 			<div className={`${avatarStyle} ${className}`}>
-				<Image src={imageURL} width={500} height={500} alt="" />
+				<Image src={imageURL} width={148} height={148} alt="" />
 			</div>
 		</>
 	);
