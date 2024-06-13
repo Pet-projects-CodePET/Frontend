@@ -40,6 +40,7 @@
 	&__personDescription {
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
 		gap: 8px;
 		flex-wrap: wrap;
 	}
@@ -86,6 +87,15 @@
 		font-weight: 700;
 		gap: 5px;
 		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__role__small {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 700;
+		gap: 5px;
+		display: none;
 		flex-wrap: wrap;
 	}
 
@@ -167,6 +177,12 @@
 		}
 		&__person {
 			gap: 8px;
+		}
+		&__role {
+			display: none;
+		}
+		&__role__small {
+			display: flex;
 		}
 		&__personImage {
 			width: 48px;

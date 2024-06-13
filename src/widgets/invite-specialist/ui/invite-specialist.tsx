@@ -48,7 +48,7 @@ export const InviteSpecialist = () => {
 			</MainButton>
 			<PopUp
 				visible={isOpen}
-				title="Приглашение в проект"	
+				title="Приглашение в проект"
 				onClose={() => setIsOpen(!isOpen)}>
 				<div className={styles.button__wrapper}>
 					<SingleSelectButton
@@ -68,30 +68,56 @@ export const InviteSpecialist = () => {
 					<h2>Несколько слов о проекте</h2>
 					<>
 						<div className={styles.tool__wrapper}>
-							<MainButton variant={'trivial'} width={'min'}>
-								<Bold />
-							</MainButton>
-							<MainButton variant={'trivial'} width={'min'}>
-								<Italic />
-							</MainButton>
-							<MainButton variant={'trivial'} width={'min'}>
-								<UnderScore />
-							</MainButton>
-							<MainButton variant={'trivial'} width={'min'}>
-								<CenterText />
-							</MainButton>
-							<MainButton variant={'trivial'} width={'min'}>
-								<StrightText />
-							</MainButton>
-							<MainButton variant={'trivial'} width={'min'}>
-								<Booleans />
-							</MainButton>
-							<MainButton variant={'trivial'} width={'min'}>
-								<Fills />
-							</MainButton>
-							<MainButton variant={'trivial'} width={'min'}>
-								<Capitals />
-							</MainButton>
+							<div className={styles.background}>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<Bold />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<Italic />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<UnderScore />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<CenterText />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<StrightText />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<Booleans />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<Fills />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
+									<Capitals />
+								</MainButton>
+							</div>
 						</div>
 
 						<textarea
