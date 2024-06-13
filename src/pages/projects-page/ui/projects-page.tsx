@@ -25,17 +25,18 @@ import { ProjectCardFullType } from '@/widgets/project-card-full/ui/type';
 import styles from './projects-page.module.scss';
 
 export const Projects = () => {
-	
 	const { data: projects } = useGetAllProjectsQuery([]);
 	console.log('projects', projects);
 
 	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
+
 	const currentData = useMemo(() => {
 		const firstPageIndex = (currentPage - 1) * pageSize;
 		const lastPageIndex = firstPageIndex + pageSize;
 		return projects?.results.slice(firstPageIndex, lastPageIndex);
 	}, [currentPage]);
+
 	console.log('currentData', currentData);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -66,7 +67,7 @@ export const Projects = () => {
 
 	return (
 		<>
-		 <div className={styles.pageContainer}>
+			<div className={styles.pageContainer}>
 				<div className={styles.projects__container}>
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
@@ -179,7 +180,7 @@ export const Projects = () => {
 								} = project;
 								return (
 									<>
-										<Link
+										<Link 
 											href={`projects/${id}`}
 											className={styles.linkProject}>
 											<ProjectCardFull
@@ -207,7 +208,6 @@ export const Projects = () => {
 					</>
 				) : null}
 			</div>
-			
 		</>
 	);
 };

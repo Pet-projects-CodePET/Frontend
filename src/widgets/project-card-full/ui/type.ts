@@ -1,8 +1,6 @@
 import { HTMLAttributes } from 'react';
 export type ProjectCardFullType = HTMLAttributes<HTMLElement> & {
 	name: string;
-	// professions?: string[];
-	// skills?: string[];
 	description: string;
 	started: string;
     ended: string;
