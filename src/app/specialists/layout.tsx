@@ -6,11 +6,7 @@ const RootLayout = ({
 }: Readonly<{
 	children: React.ReactNode;
 }>) => {
-	return (
-		<DetailedSpecialistLayout>
-				{children}
-		</DetailedSpecialistLayout>
-	);
+	return <DetailedSpecialistLayout>{children}</DetailedSpecialistLayout>;
 };
 
 export default RootLayout;

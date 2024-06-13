@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
 import { axiosInstance } from '@/utils/declension/axiosInstance';
 import { SpecialistInfoQueryType } from './types';
@@ -6,18 +6,18 @@ import styles from './detailed-specialist-page.module.scss';
 import Link from 'next/link';
 import { ArrowLeftIcon } from '@/shared/assets';
 
-export const DetailedSpecialistPage: FC = async () => {
+export const DetailedSpecialistPage: React.FC = async () => {
 	const response: SpecialistInfoQueryType = (
 		await axiosInstance.get(`/profiles/171/`)
 	).data;
 
 	return (
-		<div>
+		<>
 			<Link href="/specialists" className={styles.linkContainer}>
 				<ArrowLeftIcon className={styles.arrow} />
 				<p className={styles.link}>Специалисты</p>
 			</Link>
-			<div>
+			<>
 				<DetailedSpecialistCard
 					avatar={response.avatar}
 					name={response.name}
@@ -34,7 +34,7 @@ export const DetailedSpecialistPage: FC = async () => {
 					email={response.email}
 					projects={response.projects}
 				/>
-			</div>
-		</div>
+			</>
+		</>
 	);
 };

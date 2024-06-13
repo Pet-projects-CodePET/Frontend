@@ -1,7 +1,6 @@
 'use client';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { SpecialistCard } from '@/widgets/specialist-card';
-import { Header } from '@/widgets/header';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { specialistsArray } from '@/shared/constants/specialists/specialists';
 
@@ -21,19 +20,19 @@ import { SingleSelectButton } from '@/shared/ui/single-select-button/single-sele
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 
 export const Specialists = () => {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	// const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-	useEffect(() => {
-		const { 1: urlToken } = window.location.hash.split('#/login/');
-		if (urlToken) {
-			localStorage.setItem('token', urlToken);
-		}
+	// useEffect(() => {
+	// 	const { 1: urlToken } = window.location.hash.split('#/login/');
+	// 	if (urlToken) {
+	// 		localStorage.setItem('token', urlToken);
+	// 	}
 
-		const token = localStorage.getItem('token');
-		if (token) {
-			setIsLoggedIn(true);
-		}
-	}, []);
+	// 	const token = localStorage.getItem('token');
+	// 	if (token) {
+	// 		setIsLoggedIn(true);
+	// 	}
+	// }, []);
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const handleStatusChange = (selectedOptions: (string | object)[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);

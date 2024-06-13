@@ -5,6 +5,7 @@ export { Input } from './input/input';
 export { NavLinks } from './nav-links/nav-links';
 export { ProjectCard } from './project-card/project-card';
 export { PopUp } from './pop-up/pop-up';
+export { SingleSelectButton } from './single-select-button/single-select-button';
 export { CheckboxAndRadio } from './checkbox/checkbox';
 export { NotificationBanner } from './notification-banner/notification-banner';
 export type { TagsProps, Tag } from './tags/types';

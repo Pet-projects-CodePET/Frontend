@@ -86,6 +86,7 @@
 		font-weight: 700;
 		gap: 5px;
 		display: flex;
+		flex-wrap: wrap;
 	}
 
 	&__title {
@@ -160,6 +161,9 @@
 		&__name {
 			font-size: 20px;
 			font-weight: 700;
+		}
+		&__avatar {
+			margin-right: 8px;
 		}
 		&__person {
 			gap: 8px;

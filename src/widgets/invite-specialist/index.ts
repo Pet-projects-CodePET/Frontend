@@ -1,1 +1,1 @@
-export {InviteSpecialist} from './ui/invite-specialist'
+export { InviteSpecialist } from './ui/invite-specialist';

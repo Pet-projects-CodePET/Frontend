@@ -19,9 +19,13 @@
 	}
 }
 
-// @media screen and (max-width: 779px) {
-// 	.base {
-// 		width: 80px;
-// 		height: 80px;
-// 	}
-// }
+@media screen and (max-width: 779px) {
+	.base {
+		width: 80px;
+		height: 80px;
+		&__large {
+			width: 80px;
+			height: 80px;
+		}
+	}
+}
