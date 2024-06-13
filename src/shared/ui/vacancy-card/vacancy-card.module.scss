@@ -1,0 +1,78 @@
+@import '@/shared/style/variables';
+
+%text {
+	margin: 0;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	font-style: normal;
+}
+%tag {
+	padding: 4px 12px;
+	color: $--Foreground-default;
+	display: inline-block;
+	border-radius: 20px;
+	white-space: nowrap;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	padding: 24px;
+	border-radius: 12px;
+	border: 1px solid $--border-default;
+	gap: 16px;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+}
+.title {
+	margin: 0;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.25px;
+}
+
+.iconWrapper {
+	display: flex;
+	align-items: center;
+}
+.icon {
+	width: 24px;
+	height: 24px;
+}
+.count {
+	display: inline-block;
+	margin: 0;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	color: $--foreground-muted;
+	font-family: $--open-sans-font;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.25px;
+}
+.tagsList {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.tag {
+	@extend %text, %tag;
+	border: 1px solid $--border-default;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}

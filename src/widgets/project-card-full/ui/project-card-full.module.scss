@@ -10,7 +10,6 @@
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
-
 	@media screen and (max-width: 779px) {
 		padding: 16px;
 	}
@@ -78,7 +77,7 @@
 	color: $--foreground-muted;
 }
 
-.likeContainer {
+.like {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -220,9 +219,9 @@
 	border: 1px solid $--border-default;
 }
 
-.link {
+.buttonRespond {
 	display: flex;
 	justify-content: flex-start;
 	padding-top: 21px;
-	text-decoration: none;
+	width: 170px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './notification-banner.module.scss';
 import clsx from 'clsx';
 import CheckIcon from '@/shared/assets/icons/check.svg';
-import Xmark from '@/shared/assets/icons/close-icon.svg';
+import Xmark from '@/shared/assets/icons/xmark-clear.svg';
 
 type NotificationBannerProps = {
 	status: string;

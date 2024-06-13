@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useClickOutside } from '@/shared/hooks';
 import User from '@/shared/assets/icons/user.svg';
@@ -10,21 +9,19 @@ import Xmark from '@/shared/assets/icons/close-icon.svg';
 
 import styles from './menu-profile.module.scss';
 
-export const MenuProfile = () => {
+export const MenuProfile = ({
+	handleLogoutUser,
+}: {
+	handleLogoutUser: () => void;
+}) => {
 	const [isMenuProfileOpen, setIsMenuProfileOpen] = useState(false);
 	const menuProfileRef = useRef(null);
-	const router = useRouter();
 
 	useClickOutside(menuProfileRef, () => {
 		if (isMenuProfileOpen) setIsMenuProfileOpen(false);
 	});
 	const handleToggleOpenMenuProfile = () => {
 		setIsMenuProfileOpen(!isMenuProfileOpen);
-	};
-
-	const handleLogout = () => {
-		localStorage.clear();
-		router.push('/');
 	};
 
 	return (
@@ -61,7 +58,9 @@ export const MenuProfile = () => {
 					</Link>
 				</li>
 				<li className={styles.menuProfile__item}>
-					<button className={styles.menuProfile__link} onClick={handleLogout}>
+					<button
+						className={styles.menuProfile__link}
+						onClick={handleLogoutUser}>
 						<Exit className={styles.menuProfile__item_icon} />
 						Выход
 					</button>

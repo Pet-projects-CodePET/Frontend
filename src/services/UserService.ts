@@ -33,6 +33,12 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
+		logoutUser: builder.mutation({
+			query: () => ({
+				url: '/token/logout/',
+				method: 'POST',
+			}),
+		}),
 		resetPasswordUser: builder.mutation<IUser, IUser>({
 			query: (user) => ({
 				url: '/users/reset_password/',
@@ -40,6 +46,7 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
+		// не нужен
 		getUserMe: builder.query({
 			query: () => ({
 				url: '/users/me/',
@@ -58,13 +65,32 @@ export const userApi = createApi({
 				},
 			}),
 		}),
+		deleteAccount: builder.mutation({
+			query: (password) => ({
+				url: '/users/me/',
+				method: 'DELETE',
+				body: {
+					// eslint-disable-next-line camelcase
+					current_password: password,
+				},
+			}),
+		}),
+		getProfileInfo: builder.query({
+			query: () => ({
+				url: '/profiles/me/',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
 export const {
 	useCreateUserMutation,
 	useAuthUserMutation,
+	useLogoutUserMutation,
 	useResetPasswordUserMutation,
 	useGetUserMeQuery,
 	useChangePasswordMutation,
+	useDeleteAccountMutation,
+	useGetProfileInfoQuery,
 } = userApi;

@@ -392,9 +392,9 @@
 	}
 
 	&--keyboard-selected {
-		border-radius: $datepicker__border-radius;
-		background-color: lighten($datepicker__selected-color, 10%);
-		color: #fff;
+		// border-radius: $datepicker__border-radius;
+		// background-color: lighten($datepicker__selected-color, 10%);
+		// color: #fff;
 
 		&:hover {
 			background-color: darken($datepicker__selected-color, 5%);
@@ -505,9 +505,9 @@
 	}
 
 	&--keyboard-selected {
-		border-radius: $datepicker__border-radius;
-		background-color: lighten($datepicker__selected-color, 45%);
-		color: rgb(0, 0, 0);
+		// border-radius: $datepicker__border-radius;
+		// background-color: lighten($datepicker__selected-color, 45%);
+		// color: rgb(0, 0, 0);
 
 		&:hover {
 			background-color: darken($datepicker__selected-color, 5%);
@@ -515,7 +515,7 @@
 	}
 
 	&--in-selecting-range:not(&--in-range) {
-		background-color: rgba($datepicker__selected-color, 0.5);
+		background-color: rgba($datepicker__selected-color, 1);
 	}
 
 	&--in-range:not(&--in-selecting-range) {

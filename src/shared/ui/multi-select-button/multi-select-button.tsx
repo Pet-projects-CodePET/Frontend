@@ -26,7 +26,7 @@ export const MultiSelectButton: React.FC<MultiSelectButtonProps> = ({
 		background-color: #feffff !important;
 		border: 1px solid #e2e8f0 !important;
 		border-radius: 50px !important;
-		min-height: 48px !important;
+		min-height: 40px !important;
 		padding: 0px 16px !important;
 
 		font-family:
@@ -35,10 +35,12 @@ export const MultiSelectButton: React.FC<MultiSelectButtonProps> = ({
 		font-size: 16px;
 		font-weight: 700;
 
-		:hover,
+		:hover {
+			box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
+		}
 		:focus {
-			border: 1px solid #8caaff !important;
 			box-shadow: none !important;
+			border: 1px solid #8caaff;
 		}
 
 		.react-dropdown-select-clear,
@@ -191,7 +193,11 @@ export const MultiSelectButton: React.FC<MultiSelectButtonProps> = ({
 			<div style={buttonMenuCaptionStyle}>
 				{caption}{' '}
 				{state.values?.length > 0 &&
-					`(${methods.areAllSelected() ? state.values.length - 1 : state.values.length})`}
+					`(${
+						methods.areAllSelected()
+							? state.values.length - 1
+							: state.values.length
+					})`}
 				{tooltip && <IconInformation className={styles.iconInformation} />}
 			</div>
 		);

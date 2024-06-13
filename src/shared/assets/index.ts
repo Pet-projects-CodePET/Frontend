@@ -14,6 +14,9 @@ import HeartIconActive from './icons/heart-active.svg';
 import MobileIcon from './icons/mobile.svg';
 import TelegramIcon from './icons/tg.svg';
 import MailIcon from './icons/mail.svg';
+import IconLeft from './icons/chevron-left.svg';
+import PersonIcon from './icons/person.svg';
+import IconSpecialists from './icons/specialists.svg';
 import Bold from './icons/Vector.svg';
 import Italic from './icons/Vector-1.svg';
 import UnderScore from './icons/Vector-2.svg';
@@ -24,6 +27,7 @@ import Booleans from './icons/Vector-6.svg';
 import Numbers from './icons/Vector-7.svg';
 import Fills from './icons/Vector-8.svg';
 import Capitals from './icons/Vector-9.svg';
+
 
 export {
 	Bold,
@@ -52,4 +56,7 @@ export {
 	MailIcon,
 	TelegramIcon,
 	MobileIcon,
+	IconLeft,
+	PersonIcon,
+	IconSpecialists,
 };
