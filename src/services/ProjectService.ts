@@ -13,7 +13,13 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		getAllProjects: builder.query({
+			query: () => ({
+				url: '/projects/',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
-export const { useGetProjectsPreviewMainQuery } = projectsApi;
+export const { useGetProjectsPreviewMainQuery, useGetAllProjectsQuery } = projectsApi;
