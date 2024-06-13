@@ -11,6 +11,7 @@ import {
 	Booleans,
 	Fills,
 	Capitals,
+	Numbers,
 } from '@/shared/assets';
 
 export const InviteSpecialist = () => {
@@ -109,6 +110,12 @@ export const InviteSpecialist = () => {
 									className={styles.button}
 									variant={'trivial'}
 									width={'min'}>
+									<Numbers />
+								</MainButton>
+								<MainButton
+									className={styles.button}
+									variant={'trivial'}
+									width={'min'}>
 									<Fills />
 								</MainButton>
 								<MainButton
@@ -124,6 +131,7 @@ export const InviteSpecialist = () => {
 							className={styles.textArea}
 							name="some-words"
 							id=""></textarea>
+<MainButton variant={'primary'} width={'regular'}>Пригласить</MainButton>
 					</>
 				</div>
 			</PopUp>

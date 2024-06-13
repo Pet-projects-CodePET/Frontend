@@ -21,7 +21,7 @@ import CenterText from './icons/Vector-3.svg';
 import RightText from './icons/Vector-4.svg';
 import StrightText from './icons/Vector-5.svg';
 import Booleans from './icons/Vector-6.svg';
-import numbers from './icons/Vector-7.svg';
+import Numbers from './icons/Vector-7.svg';
 import Fills from './icons/Vector-8.svg';
 import Capitals from './icons/Vector-9.svg';
 
@@ -33,7 +33,7 @@ export {
 	RightText,
 	StrightText,
 	Booleans,
-	numbers,
+	Numbers,
 	Fills,
 	Capitals,
 	ActivityIcon,

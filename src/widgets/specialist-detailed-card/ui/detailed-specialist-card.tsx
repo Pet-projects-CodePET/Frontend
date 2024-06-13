@@ -77,18 +77,18 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					</div>
 
 					<div className={styles.specialist__info}>
-					<div className={styles.info__role__small}>
-								<div>{specialists[0].profession.specialization},</div>
-								<div>{specialists[0].profession.specialty},</div>
-								<div>
-									{clsx(
-										specialists[0].level === 1 && 'Junior',
-										specialists[0].level === 2 && 'Middle',
-										specialists[0].level === 3 && 'Senior',
-										specialists[0].level === 4 && 'Lead'
-									)}
-								</div>
+						<div className={styles.info__role__small}>
+							<div>{specialists[0].profession.specialization},</div>
+							<div>{specialists[0].profession.specialty},</div>
+							<div>
+								{clsx(
+									specialists[0].level === 1 && 'Junior',
+									specialists[0].level === 2 && 'Middle',
+									specialists[0].level === 3 && 'Senior',
+									specialists[0].level === 4 && 'Lead'
+								)}
 							</div>
+						</div>
 						<h3 className={styles.info__title}>Навыки</h3>
 						<ul className={styles.info__skillsList}>
 							{specialists[0]?.skills.map((skill, index) => {
