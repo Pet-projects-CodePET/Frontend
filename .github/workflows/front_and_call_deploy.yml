@@ -20,12 +20,18 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Extract branch name
+        id: extract_branch
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          BRANCH_NAME=$(echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
       - name: Push to DockerHub
         uses: docker/build-push-action@v5
         with:
           context: ./
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend_${{ github.ref_name }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend_${{ steps.extract_branch.outputs.branch_name }}:latest
           build-args: |
             NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
             NEXT_PUBLIC_BASE_DEV_URL=${{ secrets.NEXT_PUBLIC_BASE_DEV_URL }}
