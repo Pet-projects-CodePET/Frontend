@@ -1,0 +1,83 @@
+@import '@/shared/style/variables';
+%normalText {
+	font-family: $--open-sans-font;
+	font-weight: 700;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+}
+
+.form {
+	position: relative;
+	max-width: 760px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 12px;
+	background: transparent;
+	@media screen and (max-width: 779px) {
+		border: 1px solid $--border-default;
+		padding: 30px 16px;
+	}
+}
+.title {
+	@extend %normalText;
+	color: $--Neutral-Black;
+	font-size: 28px;
+	font-style: normal;
+	line-height: 32px;
+	letter-spacing: -0.28px;
+
+	@media screen and (max-width: 779px) {
+		font-size: 20px;
+		line-height: normal;
+		letter-spacing: 0.25px;
+		margin-top: 25px;
+	}
+}
+
+.fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 16px;
+}
+.groupName {
+	@extend %normalText;
+	margin: 0;
+	color: $--Foreground-default;
+	font-size: 20px;
+	line-height: normal;
+	letter-spacing: 0.25px;
+
+	@media screen and (max-width: 779px) {
+		font-size: 16px;
+	}
+}
+.inputContainer {
+	display: grid;
+	gap: 16px 16px;
+	justify-items: start;
+	grid-template-columns: 1fr 1fr;
+	//grid-template-rows: 1fr 1fr;
+	grid-auto-flow: row;
+	margin-top: 25px;
+	grid-auto-columns: 1fr 1fr;
+
+	@media screen and (max-width: 779px) {
+		margin-top: 16px;
+	}
+}
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+}
+.buttonsContainer {
+	display: flex;
+	justify-content: space-between;
+
+	@media screen and (max-width: 779px) {
+		padding-top: 40px;
+		flex-direction: column;
+		gap: 8px;
+	}
+}

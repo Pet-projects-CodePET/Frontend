@@ -1,0 +1,96 @@
+@import '../../style/variables.scss';
+
+.container {
+	display: flex;
+	width: 360px;
+	min-height: 72px;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
+	padding-left: 5px;
+	&_success {
+		background-color: $--bg-accent-pressed;
+	}
+	&_error {
+		background-color: $--border-error-pressed;
+	}
+	@media screen and (max-width: 779px) {
+		width: 328px;
+	}
+}
+
+.banner {
+	display: flex;
+	padding: 16px;
+	width: 355px;
+	overflow: hidden;
+	&_success {
+		background-color: $--bg-accent-default;
+	}
+	&_error {
+		background-color: $--bg-primary;
+	}
+	@media screen and (max-width: 779px) {
+		width: 323px;
+	}
+}
+
+.icon {
+	display: flex;
+	width: 24px;
+	height: 24px;
+	align-self: flex-start;
+	margin-right: 8px;
+
+	&_success {
+		fill: $--Foreground-inverse;
+	}
+	&_error {
+		fill: $--Foreground-error-default !important;
+	}
+	// &_pending {
+	// }
+}
+.textWrapper {
+	margin: 0;
+	// &_success {
+	// }
+	// &_error {
+	// }
+}
+.title {
+	font-family: $--open-sans-font;
+	margin: 0;
+	margin-bottom: 4px;
+	padding: 0;
+	width: 100%;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 0.25px;
+	&_success {
+		color: $--Foreground-inverse;
+	}
+	&_error {
+		color: $--Foreground-error-default;
+	}
+}
+.subtitle {
+	width: 100%;
+	font-family: $--open-sans-font;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 14px; /* 116.667% */
+	letter-spacing: 0.25px;
+	// color: $--Foreground-inverse;
+	margin: 0;
+	padding: 0;
+	&_success {
+		color: $--Foreground-inverse;
+	}
+	&_error {
+		color: $--Foreground-error-default;
+	}
+}

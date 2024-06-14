@@ -8,6 +8,10 @@ import { useRouter } from 'next/navigation';
 import { FormFieldsLogin } from '@/entities/form-login';
 import { Form } from '@/shared/ui';
 import FormLoginSchema from '@/shared/utils/validation-schemas/form-login-schema';
+import {
+	NotificationToastContainer,
+	toaster,
+} from '@/widgets/notification-toast/';
 
 export const FormLoginFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
@@ -31,14 +35,20 @@ export const FormLoginFeature: FC = () => {
 		authUser(userData)
 			.unwrap()
 			.then((payload) => {
-				console.log('token', payload.auth_token);
+				// console.log('token', payload.auth_token);
 				localStorage.setItem('token', payload.auth_token as string);
 			})
 			.then(() => {
 				router.push('/');
 			})
 			.catch((error) => {
+				console.log('error', error);
 				setServerErrorText(error.data?.non_field_errors || 'Сервис недоступен');
+				toaster({
+					status: 'error',
+					title: 'Ошибка авторизации',
+					subtitle: `${serverErrorText || 'Сервис недоступен'}`,
+				});
 			});
 	};
 
@@ -50,6 +60,7 @@ export const FormLoginFeature: FC = () => {
 				captchaVerified={captchaVerified}
 				serverErrorText={serverErrorText}
 			/>
+			<NotificationToastContainer />
 		</Form>
 	);
 };

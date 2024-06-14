@@ -1,36 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
-
+import React, { useState, useMemo } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
-import { MultiSelect } from '@/shared/ui/multi-select/multi-select';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { projectsArray } from '@/shared/constants/projects/projects';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
 import { months2, professions } from '@/shared/constants';
-import { months } from '@/shared/constants/months/months';
-import { SingleSelect } from '@/shared/ui/single-select/single-select';
 import { ProjectFilter } from '@/entities/project-filter';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { MainButton } from '@/shared/ui';
 import { FilterIcon } from '@/shared/assets';
 import { useMediaQuery } from '@/shared/hooks';
-
-import styles from './projects-page.module.scss';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
+import { InputSearch } from '@/shared/ui/input-search/input-search';
+import Link from 'next/link';
+import styles from './projects-page.module.scss';
+import { Pagination } from '@/entities/pagination/ui/pagination';
+import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
+import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
+import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
 
 export const Projects = () => {
+	const pageSize = 3;
+	const [currentPage, setCurrentPage] = useState(1);
+	const currentData = useMemo(() => {
+		const firstPageIndex = (currentPage - 1) * pageSize;
+		const lastPageIndex = firstPageIndex + pageSize;
+		return projectsArray.slice(firstPageIndex, lastPageIndex);
+	}, [currentPage]);
+
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
 
 	const handleStatusProjectChange = (selectedOptions: (string | object)[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
-	};
-
-	const handleMonthChange = (selectedItems: object) => {
-		console.info('selected options: ', selectedItems);
 	};
 
 	const handleRecruitmentStatusChange = (
@@ -45,109 +50,140 @@ export const Projects = () => {
 
 	const handleSkillsChange = (selectedItems: object) => {
 		console.info('selected options: ', selectedItems);
+		console.log(currentData);
+	};
+
+	const handleDateChange = (date: Date | [Date, Date | null]) => {
+		console.info('selected date: ', date);
 	};
 
 	return (
-		<div className={styles.pageContainer}>
-			<PopUp
-				visible={isPopupOpen}
-				title=""
-				onClose={() => setIsPopupOpen(false)}>
-				<ProjectFilter
-					isMobile={isMobile}
-					months={months2}
-					professions={professions}
-				/>
-			</PopUp>
-			{(isMobile && !isPopupOpen) || !isMobile ? (
-				<>
-					<div className={styles.allFilterContainer}>
-						<div className={styles.filterContainer}>
-							<SingleSelect
-								name="select-status"
-								options={statusOptions}
-								buttonLabel="Статус проекта"
-								value={{ value: 'completed', label: 'Завершенный' }}
-								onChange={handleStatusProjectChange}
-							/>
-							<MultiSelect
-								name="select-months"
-								caption="Дата"
-								options={months}
-								values={[]}
-								onChange={handleMonthChange}
-								selectedAll={true}
-								buttonWidth={114}
-							/>
-							<SingleSelect
-								name="select-recruitment-status"
-								options={recruitmentStatus}
-								buttonLabel="Статус набора"
-								value={undefined}
-								onChange={handleRecruitmentStatusChange}
-							/>
-							<Tooltip text="Не более 2 специальностей">
-								<MultiSelect
-									name="select-specialties"
-									caption="Специальность"
-									options={specialties}
-									values={[
-										{
-											value: 'software-developer',
-											label: 'Десктоп разработчик / Software Developer',
-										},
-										{
-											value: 'performance-engineer',
-											label:
-												'Инженер по нагрузочному тестированию / Performance Engineer',
-										},
-									]}
-									onChange={handleSpecialtiesChange}
-									maxSelections={2}
-									buttonWidth={207}
-									tooltip="Не более 2 специальностей"
+		<>
+			<div className={styles.pageContainer}>
+				<div className={styles.projects__container}>
+					<h1 className={styles.projects__title}>Проекты</h1>
+					<div className={styles.projects__inputSearch}>
+						<InputSearch search={() => {}} onChange={() => {}} />
+
+						<button
+							className={styles.projects__filterButton}
+							onClick={() => setIsPopupOpen(true)}>
+							<FilterIcon />
+						</button>
+					</div>
+				</div>
+				<PopUp
+					visible={isPopupOpen}
+					title=""
+					onClose={() => setIsPopupOpen(false)}>
+					<ProjectFilter
+						isMobile={isMobile}
+						months={months2}
+						professions={professions}
+					/>
+				</PopUp>
+				{(isMobile && !isPopupOpen) || !isMobile ? (
+					<>
+						<div className={styles.allFilterContainer}>
+							<div className={styles.filterContainer}>
+								<SingleSelectButton
+									name="select-status"
+									options={statusOptions}
+									buttonLabel="Статус проекта"
+									value={{ value: 'completed', label: 'Завершенный' }}
+									onChange={handleStatusProjectChange}
 								/>
-							</Tooltip>
-							<Tooltip text="Не более 5 навыков">
-								<MultiSelect
-									name="select-skills"
-									caption="Навыки"
-									options={skills}
-									values={[]}
-									onChange={handleSkillsChange}
-									maxSelections={5}
-									buttonWidth={131}
-									isSearchable
-									tooltip="Не более 5 навыков"
+								<CalendarButton
+									name="select-date"
+									caption="Дата"
+									isSelectsRange={true}
+									onChange={handleDateChange}
 								/>
-							</Tooltip>
+								<SingleSelectButton
+									name="select-recruitment-status"
+									options={recruitmentStatus}
+									buttonLabel="Статус набора"
+									value={undefined}
+									onChange={handleRecruitmentStatusChange}
+								/>
+								<Tooltip text="Не более 2 специальностей">
+									<MultiSelectButton
+										name="select-specialties"
+										caption="Специальность"
+										options={specialties}
+										values={[
+											{
+												value: 'software-developer',
+												label: 'Десктоп разработчик / Software Developer',
+											},
+											{
+												value: 'performance-engineer',
+												label:
+													'Инженер по нагрузочному тестированию / Performance Engineer',
+											},
+										]}
+										onChange={handleSpecialtiesChange}
+										maxSelections={2}
+										buttonWidth={207}
+										tooltip="Не более 2 специальностей"
+									/>
+								</Tooltip>
+								<Tooltip text="Не более 5 навыков">
+									<MultiSelectButton
+										name="select-skills"
+										caption="Навыки"
+										options={skills}
+										values={[]}
+										onChange={handleSkillsChange}
+										maxSelections={5}
+										buttonWidth={131}
+										isSearchable
+										tooltip="Не более 5 навыков"
+									/>
+								</Tooltip>
+							</div>
+							{isMobile ? null : (
+								<MainButton
+									variant="primary"
+									width="regular"
+									onClick={() => setIsPopupOpen(true)}
+									IconLeft={FilterIcon}>
+									Фильтры
+								</MainButton>
+							)}
 						</div>
-						<MainButton
-							variant="primary"
-							width="regular"
-							onClick={() => setIsPopupOpen(true)}
-							IconLeft={FilterIcon}>
-							Фильтры
-						</MainButton>
-					</div>
-					<div className={styles.projectsContainer}>
-						{projectsArray.map((project) => {
-							return (
-								<ProjectCardFull
-									isActiveProject={project.isActiveProject}
-									professions={project.professions}
-									skills={project.skills}
-									description={project.description}
-									duration={project.duration}
-									title={project.title}
-									subtitle={project.subtitle}
-									key={project.id}
-								/>
-							);
-						})}
-					</div>
-				</>
-			) : null}
-		</div>
+
+						<div className={styles.projectsContainer}>
+							{currentData.map((project) => {
+								return (
+									<>
+										<Link
+											href={`projects/${project.id}`}
+											className={styles.linkProject}>
+											<ProjectCardFull
+												isActiveProject={project.isActiveProject}
+												professions={project.professions}
+												skills={project.skills}
+												description={project.description}
+												duration={project.duration}
+												title={project.title}
+												subtitle={project.subtitle}
+												key={project.id}
+											/>
+										</Link>
+									</>
+								);
+							})}
+						</div>
+						<Pagination
+							onPageChange={(page) => setCurrentPage(Number(page))}
+							totalCount={projectsArray.length}
+							currentPage={currentPage}
+							pageSize={pageSize}
+						/>
+					</>
+				) : null}
+			</div>
+		</>
 	);
 };

@@ -7,20 +7,26 @@
 		"noEmit": true,
 		"esModuleInterop": true,
 		"module": "esnext",
-		"moduleResolution": "bundler",
+		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
 		"plugins": [
 			{
-				"name": "next",
-			},
+				"name": "next"
+			}
 		],
 		"paths": {
-			"@/*": ["./src/*"],
-		},
+			"@/*": ["./src/*"]
+		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-	"exclude": ["code_pet/node_modules"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"src/shared/lib/index.js"
+	],
+	"exclude": ["code_pet/node_modules"]
 }

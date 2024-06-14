@@ -1,7 +1,11 @@
-name: Codepet deploy front
+name: Codepet push front and call deploy
 on:
   push:
-    branches: ['develop']
+    branches:
+      - 'develop'
+      - 'QA'
+  workflow_dispatch:
+
 jobs:
   build_and_push_to_docker_hub_frontend:
     name: Push Docker image to DockerHub
@@ -14,26 +18,34 @@ jobs:
       - name: Login to Docker
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME_FRONT }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD_FRONT }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push to DockerHub
         uses: docker/build-push-action@v5
         with:
           context: ./
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME_FRONT }}/${{ secrets.PROJECT_NAME }}_frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend_${{ github.ref_name }}:latest
           build-args: |
             NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
             NEXT_PUBLIC_BASE_DEV_URL=${{ secrets.NEXT_PUBLIC_BASE_DEV_URL }}
             NEXT_PUBLIC_BASE_TEST_URL=${{ secrets.NEXT_PUBLIC_BASE_TEST_URL }}
-            NEXT_PUBLIC_BASE_URL=${{ secrets.DOMAIN_DEV }}
+            NEXT_PUBLIC_BASE_URL=${{ secrets[format('DOMAIN_{0}', github.ref_name)] }}
 
-  deploy_uses_other_file:
-    if:
-      contains('
-        refs/heads/develop
-      ', github.ref)
+  deploy_uses_other_file_from_develop:
+    if: github.ref == 'refs/heads/develop'
     uses: Pet-projects-CodePET/Backend/.github/workflows/deploy.yml@develop
     needs:
       - build_and_push_to_docker_hub_frontend
+    with:
+      environment: dev
     secrets: inherit
+
+  deploy_uses_other_file_from_QA:
+      if: github.ref == 'refs/heads/QA'
+      uses: Pet-projects-CodePET/Backend/.github/workflows/deploy.yml@develop
+      needs:
+        - build_and_push_to_docker_hub_frontend
+      with:
+        environment: prod
+      secrets: inherit

@@ -1,6 +1,17 @@
 import React from 'react';
-import { ProfileSettings } from '@/entities/profile-settings';
+
+import {
+	FormProfileSettingsFeature,
+	FormChangePasswordFeature,
+	DeleteAccountFeature,
+} from '@/features';
 
 export const ProfileSettingsPage = () => {
-	return <ProfileSettings />;
+	return (
+		<>
+			<FormProfileSettingsFeature />
+			<FormChangePasswordFeature />
+			<DeleteAccountFeature />
+		</>
+	);
 };

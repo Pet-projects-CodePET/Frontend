@@ -2,14 +2,19 @@
 
 import React from 'react';
 import Link from 'next/link';
-
 import Logo from '@/shared/assets/images/logo-header.svg';
 import Tg from '@/shared/assets/icons/tg.svg';
 import Vk from '@/shared/assets/icons/vk.svg';
 import styles from './footer.module.scss';
+//import { useMediaQuery } from 'react-responsive';
+//import { FooterDesktop } from './footer-desktop';
+//import { FooterMobile } from './footer-mobile';
 
 export const Footer = () => {
+	//const isMobile = useMediaQuery({ query: '(max-width:779px)' });
+	// console.log(isMobile);
 	return (
+		// {isMobile ? <FooterMobile /> : <FooterDesktop />}
 		<div className={styles.footer}>
 			<div className={styles.footer__container}>
 				<div className={styles.footer__container_logo}>

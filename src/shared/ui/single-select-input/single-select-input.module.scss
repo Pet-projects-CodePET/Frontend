@@ -1,0 +1,45 @@
+@import '../../style/variables.scss';
+
+.wrapper {
+	width: 100%;
+}
+
+.label {
+	color: $--Foreground-default;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+
+	/* Body/B2 */
+	font-family: $--open-sans-font;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+}
+
+.input {
+	margin: 8px 0 0;
+
+	font-family: $--open-sans-font;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+}
+
+.description {
+	color: $--Foreground-subtitle;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+
+	/* Caption/C1 */
+	font-family: $--open-sans-font;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19px; /* 135.714% */
+	letter-spacing: 0.25px;
+}

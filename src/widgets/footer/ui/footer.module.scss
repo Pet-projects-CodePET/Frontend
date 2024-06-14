@@ -5,7 +5,7 @@
 	flex-shrink: 0;
 	width: 100%;
 	background: rgb(2, 6, 23);
-	padding: 56px 0 0 0;
+	padding: 56px 0 56px;
 	&__container {
 		margin: 0 auto;
 		max-width: 1160px;
@@ -84,11 +84,10 @@
 	}
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1199px) {
 	.footer__container {
 		margin: 0 auto;
 		max-width: 780px;
-		height: 279px;
 		&_logo a > svg {
 			width: 143px;
 			height: 40px;
@@ -121,17 +120,38 @@
 	}
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 779px) {
 	.footer {
 		padding: 32px;
+		margin-bottom: 16px;
 		&__container {
-			max-width: 360px;
+			max-width: 328px;
 			height: auto;
+		}
+		&__out {
+			width: 328px;
+		}
+		&__contacts {
+			display: flex;
+			justify-content: space-between;
+			button {
+				display: flex;
+				min-width: 40px;
+				min-height: 40px;
+				padding: 8px;
+				justify-content: center;
+				align-items: center;
+				gap: 8px;
+				border-radius: 50%;
+				border: 1px solid $--border-default;
+				background: $--bg-primary;
+			}
 		}
 		&__content {
 			margin-top: 24px;
 			flex-direction: column;
 			height: auto;
+			gap: 32px;
 			&_title {
 				font-size: 20px;
 				font-weight: 700;
