@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 'use client';
-
-import React, { useState, useMemo } from 'react'; //useMemo
+import React, { useState, useMemo } from 'react'; 
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
@@ -35,7 +34,7 @@ export const Projects = () => {
 		const firstPageIndex = (currentPage - 1) * pageSize;
 		const lastPageIndex = firstPageIndex + pageSize;
 		return projects?.results.slice(firstPageIndex, lastPageIndex);
-	}, [currentPage]);
+	}, [currentPage, projects]);
 
 	console.log('currentData', currentData);
 
@@ -163,7 +162,6 @@ export const Projects = () => {
 								</MainButton>
 							)}
 						</div>
-
 						<div className={styles.projectsContainer}>
 							{projects?.results.map((project: ProjectCardFullType) => {
 								
