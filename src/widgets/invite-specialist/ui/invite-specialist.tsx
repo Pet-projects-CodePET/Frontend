@@ -131,7 +131,9 @@ export const InviteSpecialist = () => {
 							className={styles.textArea}
 							name="some-words"
 							id=""></textarea>
-<MainButton variant={'primary'} width={'regular'}>Пригласить</MainButton>
+						<MainButton variant={'primary'} width={'regular'}>
+							Пригласить
+						</MainButton>
 					</>
 				</div>
 			</PopUp>

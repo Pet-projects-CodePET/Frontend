@@ -2,12 +2,11 @@ import React, { FC } from 'react';
 import PersonIcon from '@/shared/assets/icons/avatar-girl.svg';
 import StatusIcon from '@/shared/assets/icons/activity-icon.svg';
 import { SpecialistCardType } from './type';
-// import { skills } from '@/shared/constants/skills/skills';
-import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { LikeButtonFeature } from '@/features';
 import styles from './specialist-card.module.scss';
 import Link from 'next/link';
+import { InviteSpecialist } from '@/widgets/invite-specialist';
 
 export const SpecialistCard: FC<SpecialistCardType> = ({
 	specialization,
@@ -19,6 +18,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 	return (
 		<article className={styles.specialist}>
 			<div className={styles.specialist__info}>
+			<Link className={styles.info__link} href={'/specialists/details-about-specialist'} >
 				<div className={styles.info__person}>
 					<PersonIcon className={styles.info__personImage} />
 					<div className={styles.info__personDescription}>
@@ -39,7 +39,6 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						<LikeButtonFeature variant="secondary" />
 					</div>
 				</div>
-
 				<div className={styles.specialist__info}>
 					<div className={styles.info__role}>{specialization}</div>
 					<ul className={styles.info__skillsList}>
@@ -51,12 +50,9 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 							);
 						})}
 					</ul>
-					<Link href={'/specialists/details-about-specialist'}>
-						<MainButton variant="primary" width="regular">
-							Пригласить в проект
-						</MainButton>
-					</Link>
 				</div>
+				</Link>
+				<InviteSpecialist />
 			</div>
 		</article>
 	);

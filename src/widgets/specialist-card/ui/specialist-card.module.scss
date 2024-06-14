@@ -18,6 +18,9 @@
 	}
 }
 .info {
+	&__link {
+		text-decoration: none;
+	}
 	&__person {
 		display: flex;
 		gap: 16px;
