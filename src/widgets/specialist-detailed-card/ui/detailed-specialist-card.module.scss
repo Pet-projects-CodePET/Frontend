@@ -49,6 +49,11 @@
 		gap: 8px;
 		align-items: center;
 	}
+	&__personStatus__small {
+		display: none;
+		gap: 8px;
+		align-items: center;
+	}
 	&__statusIcon {
 		width: 16px;
 		height: 16px;
@@ -160,25 +165,40 @@
 
 @media screen and (max-width: 1199px) {
 	.specialists {
-		max-width: 720px;
+		max-width: 780px;
 	}
 }
 
 @media screen and (max-width: 779px) {
 	.specialist {
-		max-width: 100vw;
+		max-width: 90vw;
 	}
 	.info {
+		&__personDescription {
+			justify-content: start;
+			gap: 8px;
+
+		}
 		&__name {
 			font-size: 20px;
 			font-weight: 700;
 		}
+		
 		&__avatar {
 			margin-right: 8px;
 		}
 		&__person {
 			gap: 8px;
 		}
+
+		&__personStatus {
+			display: none;
+		}
+		&__personStatus__small {
+			display: flex;
+			padding-bottom: 18px;
+		}
+
 		&__role {
 			display: none;
 		}

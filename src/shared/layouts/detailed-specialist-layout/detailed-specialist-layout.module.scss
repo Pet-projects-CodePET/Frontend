@@ -1,1 +1,13 @@
 @import '@/shared/style/variables';
+
+@media screen and (max-width: 1199px) {
+	.pageContainer {
+		min-width: 780px;
+	}
+}
+
+@media screen and (max-width: 780px) {
+	.pageContainer {
+		min-width: fit-content;
+	}
+}

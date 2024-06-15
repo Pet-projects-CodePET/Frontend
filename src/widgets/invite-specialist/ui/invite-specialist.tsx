@@ -2,17 +2,7 @@
 import { MainButton, PopUp, SingleSelectButton } from '@/shared/ui';
 import styles from './invite-specialist.module.scss';
 import React, { useState } from 'react';
-import {
-	Bold,
-	Italic,
-	UnderScore,
-	CenterText,
-	StrightText,
-	Booleans,
-	Fills,
-	Capitals,
-	Numbers,
-} from '@/shared/assets';
+import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 
 export const InviteSpecialist = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -68,69 +58,7 @@ export const InviteSpecialist = () => {
 				<div className={styles.letter__wrapper}>
 					<h2>Несколько слов о проекте</h2>
 					<>
-						<div className={styles.tool__wrapper}>
-							<div className={styles.background}>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<Bold />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<Italic />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<UnderScore />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<CenterText />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<StrightText />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<Booleans />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<Numbers />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<Fills />
-								</MainButton>
-								<MainButton
-									className={styles.button}
-									variant={'trivial'}
-									width={'min'}>
-									<Capitals />
-								</MainButton>
-							</div>
-						</div>
-
-						<textarea
-							className={styles.textArea}
-							name="some-words"
-							id=""></textarea>
+						<TextEditor labelName={''} />
 						<MainButton variant={'primary'} width={'regular'}>
 							Пригласить
 						</MainButton>
