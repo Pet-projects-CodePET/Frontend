@@ -70,7 +70,9 @@
 
 .activeStateIcon {
 	padding-right: 14px;
-	color: $--Colors-Pastel-Green;
+	&_type_active {
+		color: $--Colors-Pastel-Green;
+	}
 
 	&_type_inactive {
 		color: $--Neutral-Light-Grey-03;

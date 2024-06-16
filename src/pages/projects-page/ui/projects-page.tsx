@@ -27,13 +27,13 @@ export const Projects = () => {
 	const { data: projects } = useGetAllProjectsQuery([]);
 	console.log('projects', projects);
 
-	const pageSize = 3;
+	const pageSize = 7;
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const currentData = useMemo(() => {
 		const firstPageIndex = (currentPage - 1) * pageSize;
 		const lastPageIndex = firstPageIndex + pageSize;
-		return projects?.results.slice(firstPageIndex, lastPageIndex);
+		return projects && projects.results.slice(firstPageIndex, lastPageIndex);
 	}, [currentPage, projects]);
 
 	console.log('currentData', currentData);
@@ -163,7 +163,7 @@ export const Projects = () => {
 							)}
 						</div>
 						<div className={styles.projectsContainer}>
-							{projects?.results.map((project: ProjectCardFullType) => {
+							{ currentData && currentData.map((project: ProjectCardFullType) => {
 								
 								const {
 									id,
@@ -199,7 +199,7 @@ export const Projects = () => {
 						</div>
 						<Pagination
 							onPageChange={(page) => setCurrentPage(Number(page))}
-							totalCount={currentData?.length}
+							totalCount={projects && projects.count}
 							currentPage={currentPage}
 							pageSize={pageSize}
 						/>

@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 	}));
 }
 
-const Page = () => {
-	return <Project />;
+const Page = ({params} : {params : { id: number}}) => {
+	return <Project id={params.id}/>;
 };
 export default Page;

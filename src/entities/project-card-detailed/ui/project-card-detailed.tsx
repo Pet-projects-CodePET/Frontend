@@ -1,13 +1,32 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { FC } from 'react';
 import Link from 'next/link';
 import { IconLeft, ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { LikeButtonFeature } from '@/features';
 import { Person, VacancyCard } from '@/shared/ui';
 import { getColorTag } from '@/shared/utils';
 import { projectTeamArray } from '@/shared/constants';
+import { NounsDeclension } from '@/utils/declension/declension';
+import { ProjectCardDetailType } from './type';
+import { getStartDate, getEndDate } from '@/shared/utils';
+import clsx from 'clsx';
 import styles from './project-card-detailed.module.scss';
 
-export const ProjectCardDetailed = () => {  
+export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
+	name,
+	description,
+	directions,
+	busyness,
+	phone_number,
+	link,
+	owner,
+	started,
+	ended,
+	status,
+}) => {
+	const startDate = getStartDate(started);
+	const endDate = getEndDate(ended);
+
 	const skills = [
 		{ id: 1, name: 'React' },
 		{ id: 2, name: 'Redux' },
@@ -36,8 +55,16 @@ export const ProjectCardDetailed = () => {
 			<div className={styles.projectContainer}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
-						<ActivityIcon className={styles.activeStateIcon} />
-						<div className={styles.activeStateText}>{'активный'}</div>
+						<ActivityIcon
+							className={clsx(
+								styles.activeStateIcon,
+								status === 'Активен' && styles.activeStateIcon_type_active,
+								status === 'Завершен' && styles.activeStateIcon_type_inactive
+							)}
+						/>
+						<div className={styles.activeStateText}>
+							{status === 'Активен' ? 'активный' : 'завершенный'}
+						</div>
 					</div>
 					<div className={styles.like}>
 						<LikeButtonFeature variant="secondary" />
@@ -45,66 +72,48 @@ export const ProjectCardDetailed = () => {
 				</div>
 				<div className={styles.calendarContainer}>
 					<CalendarIcon className={styles.calendarIcon} />
-					<div className={styles.date}>{'15 сентября-22 августа'}</div>
+					<div className={styles.date}>{`${startDate}-${endDate}`}</div>
 				</div>
 
 				<div className={styles.projectInfo}>
-					<h2 className={styles.title}>{'Название проекта'}</h2>
+					<h2 className={styles.title}>{name}</h2>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Описание проекта</h3>
-						<p className={styles.description}>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-							vulputate libero et velit interdum, ac aliquet odio mattis. Class
-							aptent taciti sociosqu ad litora torquent per conubia nostra, per
-							inceptos himenaeos. Curabitur tempus urna at turpis condimentum
-							lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-							Class aptent taciti sociosqu ad litora torquent per conubia
-							nostra, per inceptos himenaeos. Curabitur tempus urna at turpis
-							condimentum lobortis. Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nunc vulputate libero et velit interdum, ac
-							aliquet odio mattis. Class aptent taciti sociosqu ad litora
-							torquent per conubia nostra, per inceptos himenaeos. Curabitur
-							tempus urna at turpis condimentum lobortis. Lorem ipsum dolor sit
-							amet, consectetur adipiscing elit. Nunc vulputate libero et velit
-							interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad
-							litora torquent per conubia nostra, per inceptos himenaeos.
-							Curabitur tempus urna at turpis condimentum lobortis. Lorem ipsum
-							dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero
-							et velit interdum, ac aliquet odio mattis. Class aptent taciti
-							sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Curabitur tempus urna at turpis condimentum lobortis.
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-							vulputate libero et velit interdum, ac aliquet odio mattis. Class
-							aptent taciti sociosqu ad litora torquent per conubia nostra, per
-							inceptos himenaeos. Curabitur tempus urna at turpis condimentum
-							lobortis.
-						</p>
+						<p className={styles.description}>{description}</p>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Направление разработки</h3>
-						<p className={styles.description}>Мобильная разработка</p>
+						{directions?.map((item) => {
+							return (
+								<p key={item.id} className={styles.description}>
+									{item.name}
+								</p>
+							);
+						})}
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Занятость</h3>
-						<p className={styles.description}>10 часов в неделю</p>
+						<p className={styles.description}>
+							{busyness}
+							{` ${NounsDeclension(busyness, ['час', 'часа', 'часов'])} в неделю`}
+						</p>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Контакты</h3>
 						<Link href="#" target="_blank" className={styles.descriptionLink}>
-							888888888
+							{phone_number}
 						</Link>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Ссылка на проект</h3>
-						<Link href="#" target="_blank" className={styles.descriptionLink}>
-							weblalla
+						<Link href="" target="_blank" className={styles.descriptionLink}>
+							{link}
 						</Link>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Организатор</h3>
 						<div className={styles.personWrapper}>
-							<Person title="Oрганизатор" color="#F6BD60" />
+							<Person title={owner} color="#F6BD60" />
 						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
