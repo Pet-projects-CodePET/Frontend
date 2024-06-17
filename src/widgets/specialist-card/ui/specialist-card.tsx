@@ -18,39 +18,39 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 	return (
 		<article className={styles.specialist}>
 			<div className={styles.specialist__info}>
-			<Link className={styles.info__link} href={'/specialists/details-about-specialist'} >
-				<div className={styles.info__person}>
-					<PersonIcon className={styles.info__personImage} />
-					<div className={styles.info__personDescription}>
-						<div className={styles.info__personStatus}>
-							<StatusIcon className={styles.info__statusIcon} />
-							{isMobile ? (
-								<p className={styles.info__statusTitle}>готов(а) к участию</p>
-							) : (
-								<p className={styles.info__statusTitle}>
-									готов(а) к участию в проектах
-								</p>
-							)}
+				<Link className={styles.info__link} href={'/specialists/171'}>
+					<div className={styles.info__person}>
+						<PersonIcon className={styles.info__personImage} />
+						<div className={styles.info__personDescription}>
+							<div className={styles.info__personStatus}>
+								<StatusIcon className={styles.info__statusIcon} />
+								{isMobile ? (
+									<p className={styles.info__statusTitle}>готов(а) к участию</p>
+								) : (
+									<p className={styles.info__statusTitle}>
+										готов(а) к участию в проектах
+									</p>
+								)}
+							</div>
+							<h2 className={styles.info__name}>{specialty}</h2>
+							<p className={styles.info__nickname}>{telegram}</p>
 						</div>
-						<h2 className={styles.info__name}>{specialty}</h2>
-						<p className={styles.info__nickname}>{telegram}</p>
+						<div className={styles.info__likeContainer}>
+							<LikeButtonFeature variant="secondary" />
+						</div>
 					</div>
-					<div className={styles.info__likeContainer}>
-						<LikeButtonFeature variant="secondary" />
+					<div className={styles.specialist__info}>
+						<div className={styles.info__role}>{specialization}</div>
+						<ul className={styles.info__skillsList}>
+							{skills.map((skill, id) => {
+								return (
+									<li className={styles.info__skill} key={id}>
+										{skill}
+									</li>
+								);
+							})}
+						</ul>
 					</div>
-				</div>
-				<div className={styles.specialist__info}>
-					<div className={styles.info__role}>{specialization}</div>
-					<ul className={styles.info__skillsList}>
-						{skills.map((skill, id) => {
-							return (
-								<li className={styles.info__skill} key={id}>
-									{skill}
-								</li>
-							);
-						})}
-					</ul>
-				</div>
 				</Link>
 				<InviteSpecialist />
 			</div>

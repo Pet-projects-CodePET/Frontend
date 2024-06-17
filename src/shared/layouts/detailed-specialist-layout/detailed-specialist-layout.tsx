@@ -14,7 +14,7 @@ export const DetailedSpecialistLayout = ({
 				<Header isLoggedIn={true} />
 
 				{children}
-			</section>{' '}
+			</section>
 			<Footer />
 		</>
 	);

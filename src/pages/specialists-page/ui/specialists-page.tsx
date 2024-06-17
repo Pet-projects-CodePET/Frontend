@@ -1,11 +1,11 @@
 'use client';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { SpecialistCard } from '@/widgets/specialist-card';
+import { Header } from '@/widgets/header';
+import { Footer } from '@/widgets/footer';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { specialistsArray } from '@/shared/constants/specialists/specialists';
-
 import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
-
 import { qualification } from '@/shared/constants/qualification/qualification';
 import { Tooltip } from '@/widgets/tooltip';
 import { specialties } from '@/shared/constants/specialties/specialties';
@@ -20,19 +20,19 @@ import { SingleSelectButton } from '@/shared/ui/single-select-button/single-sele
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 
 export const Specialists = () => {
-	// const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-	// useEffect(() => {
-	// 	const { 1: urlToken } = window.location.hash.split('#/login/');
-	// 	if (urlToken) {
-	// 		localStorage.setItem('token', urlToken);
-	// 	}
+	useEffect(() => {
+		const { 1: urlToken } = window.location.hash.split('#/login/');
+		if (urlToken) {
+			localStorage.setItem('token', urlToken);
+		}
 
-	// 	const token = localStorage.getItem('token');
-	// 	if (token) {
-	// 		setIsLoggedIn(true);
-	// 	}
-	// }, []);
+		const token = localStorage.getItem('token');
+		if (token) {
+			setIsLoggedIn(true);
+		}
+	}, []);
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const handleStatusChange = (selectedOptions: (string | object)[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
@@ -62,6 +62,7 @@ export const Specialists = () => {
 		<>
 			<section className={styles.specialists}>
 				<div className={styles.specialists__wrapper}>
+					<Header isLoggedIn={isLoggedIn} />
 					<div className={styles.specialists__container}>
 						<h1 className={styles.specialists__title}>Специалисты</h1>
 						<div className={styles.specialists__item}>
@@ -162,6 +163,7 @@ export const Specialists = () => {
 					pageSize={pageSize}
 				/>
 			</section>
+			<Footer />
 		</>
 	);
 };

@@ -16,7 +16,6 @@
 	height: 16px;
 	color: #0075ff;
 	margin-right: 6px;
-
 }
 
 .link {
@@ -25,8 +24,8 @@
 	font-weight: 400;
 	color: #0075ff;
 }
-	@media screen and (max-width: 780px) {
-		.linkContainer {
-			padding-left: 8px;
-		}
+@media screen and (max-width: 780px) {
+	.linkContainer {
+		padding-left: 8px;
 	}
+}

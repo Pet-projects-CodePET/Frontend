@@ -19,11 +19,9 @@
 }
 .info {
 	&__link {
+		@extend %baseText;
+		width: 100%;
 		text-decoration: none;
-		color: black;
-		&:active {
-			color: black;
-		}
 	}
 	&__person {
 		display: flex;
@@ -109,12 +107,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-}
-
-@media screen and (max-width: 1199px) {
-	.specialist {
-		width: 780px;
 	}
 }
 
