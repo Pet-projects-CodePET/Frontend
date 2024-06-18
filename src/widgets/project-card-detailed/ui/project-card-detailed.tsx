@@ -23,11 +23,12 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 	started,
 	ended,
 	status,
+	project_specialists,
 }) => {
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
 
-	const skills = [
+	const skillsTeam = [
 		{ id: 1, name: 'React' },
 		{ id: 2, name: 'Redux' },
 		{ id: 3, name: 'UI/UX Design' },
@@ -63,7 +64,8 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 							)}
 						/>
 						<div className={styles.activeStateText}>
-							{status === 'Активен' ? 'активный' : 'завершенный'}
+							{status === 'Активен' ? 'активный' : ' '}
+							{status === 'Завершен' ? 'завершенный' : ' '}
 						</div>
 					</div>
 					<div className={styles.like}>
@@ -133,7 +135,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Навыки команды</h3>
 						<ul className={styles.tagsList}>
-							{skills.map((item) => {
+							{skillsTeam.map((item) => {
 								return (
 									<li key={item.id} className={styles.tag}>
 										{item.name}
@@ -145,22 +147,16 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 				</div>
 				<div className={styles.cardsContainer}>
 					<h2 className={styles.title}>Требуются в проект</h2>
-					<VacancyCard
-						title="UI/UX дизайнер / UI/UX Designer, Junior"
-						skills={skills}
-					/>
-					<VacancyCard
-						title="Инженер по ручному тестированию / Manual Test Engineer, Инженер по нагрузочному тестированию / Performance Engineer"
-						skills={skills}
-					/>
-					<VacancyCard
-						title="UI/UX дизайнер / UI/UX Designer, Junior"
-						skills={skills}
-					/>
-					<VacancyCard
-						title="UI/UX дизайнер / UI/UX Designer, Junior"
-						skills={skills}
-					/>
+					{project_specialists?.map((item) => {
+						return (
+							<VacancyCard
+								key={item.id}
+								title={`${item.profession.specialization} / ${item.profession.specialty} / ${item.level}`}
+								skills={item.skills}
+								count={item.count}
+							/>
+						);
+					})}
 				</div>
 			</div>
 		</section>

@@ -14,12 +14,12 @@ export const projectsApi = createApi({
 			}),
 		}),
 		getAllProjects: builder.query({
-			query: () => ({
-				url: '/projects/',
+			query: (queryParam) => ({
+				url: `/projects/?page=${queryParam}`,
 				method: 'GET',
 			}),
 		}),
-		getProjectsId: builder.query({
+		getProjectById: builder.query({
 			query: ({id}) => ({
 				url: `/projects/${id}/`,
 				method: 'GET',
@@ -28,4 +28,4 @@ export const projectsApi = createApi({
 	}),
 });
 
-export const { useGetProjectsPreviewMainQuery, useGetAllProjectsQuery, useGetProjectsIdQuery } = projectsApi;
+export const { useGetProjectsPreviewMainQuery, useGetAllProjectsQuery, useGetProjectByIdQuery, } = projectsApi; 

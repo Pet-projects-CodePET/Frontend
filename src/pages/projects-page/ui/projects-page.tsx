@@ -19,22 +19,26 @@ import Link from 'next/link';
 import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
-import { useGetAllProjectsQuery } from '@/services/ProjectService';
+import { useGetAllProjectsQuery, } from '@/services/ProjectService'; 
 import { ProjectCardFullType } from '@/widgets/project-card-full/ui/type';
 import styles from './projects-page.module.scss';
 
 export const Projects = () => {
-	const { data: projects } = useGetAllProjectsQuery([]);
-	console.log('projects', projects);
-
 	const pageSize = 7;
 	const [currentPage, setCurrentPage] = useState(1);
 
+	const { data: projects } = useGetAllProjectsQuery(currentPage);
+
+	console.log('projects', projects);
+	console.log('currentPage', currentPage)
+
 	const currentData = useMemo(() => {
-		const firstPageIndex = (currentPage - 1) * pageSize;
-		const lastPageIndex = firstPageIndex + pageSize;
-		return projects && projects.results.slice(firstPageIndex, lastPageIndex);
-	}, [currentPage, projects]);
+		// const firstPageIndex = (currentPage - 1) * pageSize;
+		// const lastPageIndex = firstPageIndex + pageSize;
+	
+		 return projects && projects.results    //.slice(firstPageIndex, lastPageIndex);
+		
+	}, [projects]);
 
 	console.log('currentData', currentData);
 
@@ -163,8 +167,7 @@ export const Projects = () => {
 							)}
 						</div>
 						<div className={styles.projectsContainer}>
-							{ currentData && currentData.map((project: ProjectCardFullType) => {
-								
+							{ currentData && currentData.map((project: ProjectCardFullType) => {			
 								const {
 									id,
 									started,

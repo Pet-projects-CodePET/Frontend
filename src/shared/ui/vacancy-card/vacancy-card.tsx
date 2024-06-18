@@ -5,9 +5,11 @@ import styles from './vacancy-card.module.scss';
 export const VacancyCard = ({
 	title,
 	skills,
+	count
 }: {
 	title: string;
 	skills: { id: number; name: string }[];
+	count: number;
 }) => {
 	return (
 		<div className={styles.container}>
@@ -15,7 +17,7 @@ export const VacancyCard = ({
 				<h2 className={styles.title}>{title}</h2>
 				<div className={styles.iconWrapper}>
 					<IconSpecialists className={styles.icon} />
-					<p className={styles.count}>2</p>
+					<p className={styles.count}>{count}</p>
 				</div>
 			</div>
 			<ul className={styles.tagsList}>
