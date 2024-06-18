@@ -24,8 +24,18 @@ import { ProjectCardFullType } from '@/widgets/project-card-full/ui/type';
 import styles from './projects-page.module.scss';
 
 export const Projects = () => {
+
 	const pageSize = 7;
 	const [currentPage, setCurrentPage] = useState(1);
+
+	// useEffect(() => {
+	// 	window.scroll({
+	// 		top: 100,
+	// 		left: 100,
+	// 		behavior: "smooth",
+	// 	  });
+		
+	// }, [currentPage]);
 
 	const { data: projects } = useGetAllProjectsQuery(currentPage);
 
