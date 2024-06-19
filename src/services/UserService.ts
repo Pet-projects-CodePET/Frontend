@@ -75,7 +75,7 @@ export const userApi = createApi({
 				},
 			}),
 		}),
-		getProfileInfo: builder.query({
+		getProfileSettings: builder.query({
 			query: () => ({
 				url: '/profiles/me/', 
 				method: 'GET',
@@ -99,6 +99,6 @@ export const {
 	useGetUserMeQuery,
 	useChangePasswordMutation,
 	useDeleteAccountMutation,
-	useGetProfileInfoQuery,
+	useGetProfileSettingsQuery,
 	useChangeProfileSettingsMutation,
 } = userApi;

@@ -8,4 +8,5 @@ export type FormProfileSettingsProps = {
 		allow_notifications?: boolean | undefined;
 		subscribe_to_projects?: boolean | undefined;
 	};
+	isLoadingChangeProfileSettings: boolean;
 };

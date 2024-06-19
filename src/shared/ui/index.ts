@@ -13,3 +13,4 @@ export { LikeButton } from './like-button/like-button';
 export { Person } from './person/person';
 export { VacancyCard } from './vacancy-card/vacancy-card';
 export { Toggler } from './toggler/toggler';
+export { Loader } from './loader/loader';
