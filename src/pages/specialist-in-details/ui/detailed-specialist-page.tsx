@@ -1,6 +1,6 @@
 import React from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
-import { axiosInstance } from '@/utils/declension/axiosInstance';
+import { axiosInstance } from '@/utils/axios-query/axiosInstance';
 import { SpecialistInfoQueryType } from './types';
 import styles from './detailed-specialist-page.module.scss';
 import Link from 'next/link';

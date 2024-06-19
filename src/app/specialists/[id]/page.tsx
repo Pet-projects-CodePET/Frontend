@@ -1,6 +1,6 @@
 import React from 'react';
 import { DetailedSpecialistPage } from '@/pages/specialist-in-details';
-import { axiosInstance } from '@/utils/declension/axiosInstance';
+import { axiosInstance } from '@/utils/axios-query/axiosInstance';
 
 export async function generateStaticParams() {
 	const req = (await axiosInstance.get(`/profiles/`)).data.results;
