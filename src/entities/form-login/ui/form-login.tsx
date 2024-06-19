@@ -21,7 +21,6 @@ export const FormFieldsLogin: FC<FormLoginProps> = ({
 
 	const {
 		formState: { isValid, errors },
-		
 	} = useFormContext();
 
 	return (

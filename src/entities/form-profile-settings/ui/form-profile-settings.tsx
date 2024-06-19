@@ -82,7 +82,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 							nameSettings={'visible_status_contacts'}
 							changeVisibleStatus={(e) => {
 								setVisibleStatusContacts(e.target.value as unknown as number);
-								console.log('visible_status_contacts', e.target.value);
+								// console.log('visible_status_contacts', e.target.value);
 							}}
 						/>
 					</div>
@@ -97,7 +97,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 									checked={isSendNotification as boolean}
 									name={'allow_notifications'}
 									id={'allow_notifications'}
-									onChange={(e) => setIsSendNotification(e.target.checked)}
+									onChange={(evt) => setIsSendNotification(evt.target.checked)}
 								/>
 							</div>
 						</div>
@@ -115,9 +115,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 									checked={isSubscriptionProjects as boolean}
 									name={'subscribe_to_projects'}
 									id={'subscribe_to_projects'}
-									onChange={(evt) => {
-										setIsSubscriptionProjects(evt.target.checked);
-									}}
+									onChange={(evt) => setIsSubscriptionProjects(evt.target.checked)}
 								/>
 							</div>
 						</div>

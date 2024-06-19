@@ -192,12 +192,14 @@ export const DesktopView = () => {
 								Готовность к участию в проектах
 							</span>
 							<div className={styles.fields__checkboxItem}>
-								<Toggler checked={isParticipation}
+								<Toggler
+									checked={isParticipation}
 									name={'participation'}
 									id={'participation'}
 									onChange={(checked: boolean) => {
 										setIsParticipation(checked);
-									}}/>
+									}}
+								/>
 							</div>
 						</div>
 						<div className={styles.fields_buttonsContainer}>
