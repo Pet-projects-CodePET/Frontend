@@ -3,7 +3,7 @@
 import React, { FC } from 'react';
 import { useDeleteAccountMutation } from '@/services/UserService';
 import {
-	NotificationToastContainer,
+	// NotificationToastContainer,
 	toaster,
 } from '@/widgets/notification-toast';
 import { useRouter } from 'next/navigation';
@@ -40,7 +40,7 @@ export const DeleteAccountFeature: FC = () => {
 				isLoading={isLoading}
 				isSuccess={isSuccess}
 			/>
-			<NotificationToastContainer />
+			{/* <NotificationToastContainer /> */}
 		</>
 	);
 };

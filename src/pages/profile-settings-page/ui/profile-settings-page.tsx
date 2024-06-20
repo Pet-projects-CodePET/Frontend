@@ -5,6 +5,7 @@ import {
 	FormChangePasswordFeature,
 	DeleteAccountFeature,
 } from '@/features';
+import { NotificationToastContainer } from '@/widgets/notification-toast';
 
 export const ProfileSettingsPage = () => {
 	return (
@@ -12,6 +13,7 @@ export const ProfileSettingsPage = () => {
 			<FormProfileSettingsFeature />
 			<FormChangePasswordFeature />
 			<DeleteAccountFeature />
+			<NotificationToastContainer />
 		</>
 	);
 };

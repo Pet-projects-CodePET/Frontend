@@ -196,8 +196,8 @@ export const DesktopView = () => {
 									checked={isParticipation}
 									name={'participation'}
 									id={'participation'}
-									onChange={(checked: boolean) => {
-										setIsParticipation(checked);
+									onChange={(evt) => {
+										setIsParticipation(evt.target.checked);
 									}}
 								/>
 							</div>

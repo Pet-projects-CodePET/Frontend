@@ -1,6 +1,6 @@
 export type MenuForVisibleProps = {
 	isOpen: boolean;
-	// onClose?: () => void;
-	settings: number;
+	settings: number | undefined;
 	nameSettings: string;
+	changeVisibleStatus: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };

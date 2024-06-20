@@ -2,43 +2,65 @@
 
 import React, { FC } from 'react';
 import { FormProfileSettings } from '@/entities/form-profile-settings';
-('@/services/UserService');
-import {
-	NotificationToastContainer,
-	// toaster,
-} from '@/widgets/notification-toast/';
+import { toaster } from '@/widgets/notification-toast/';
+import { Loader } from '@/shared/ui';
 import { IUser } from '@/services/models/IUser';
-import { useGetProfileInfoQuery } from '@/services/UserService';
-// import { useRouter } from 'next/navigation';
+import {
+	useChangeProfileSettingsMutation,
+	useGetProfileSettingsQuery,
+} from '@/services/UserService';
 
 export const FormProfileSettingsFeature: FC = () => {
-	// const router = useRouter();
-	const { data } = useGetProfileInfoQuery(null);
+	const {
+		data,
+		isLoading: isLoadingGetProfileSettings,
+		isError: isErrorGetProfileSettings,
+	} = useGetProfileSettingsQuery(null);
+	const [changeProfileSettings, { isLoading: isLoadingChangeProfileSettings }] =
+		useChangeProfileSettingsMutation();
 
-	const handleSubmitForm = (data: IUser) => {
-		// const {visible_status} = data;
-
-		// console.log('handleSubmit visible_status', parseInt(data.visible_status as string));
-		// console.log('handleSubmit visible_status_contacts',parseInt(data.visible_status_contacts as string) );
-		// console.log('handleSubmit allow_notifications', data.allow_notifications as boolean);
-		// console.log('handleSubmit subscribe_to_projects', data.subscribe_to_projects as boolean);
-
-		console.log('handleSubmit data', data);
+	const handleSubmitForm = (newData: IUser) => {
+		changeProfileSettings({
+			// eslint-disable-next-line camelcase
+			visible_status: newData.visible_status as number,
+			// eslint-disable-next-line camelcase
+			visible_status_contacts: newData.visible_status_contacts as number,
+			// eslint-disable-next-line camelcase
+			allow_notifications: newData.allow_notifications,
+			// eslint-disable-next-line camelcase
+			subscribe_to_projects: newData.subscribe_to_projects,
+		})
+			.unwrap()
+			.then(() => {
+				toaster({
+					status: 'success',
+					title: 'Настройки успешно сохранены',
+				});
+			})
+			.catch(() => {
+				toaster({
+					status: 'error',
+					title: 'Ошибка сохранения настроек',
+					subtitle: 'Попробуйте еще раз',
+				});
+			});
+		// console.log('handleSubmit data', newData);
 	};
-	// useEffect(() => {
-	// 	if (data) {
-
-	// 		// console.log(data);
-	// 	}
-	// },[]);
 
 	return (
 		<>
-			<FormProfileSettings
-				handleSubmitForm={handleSubmitForm}
-				userData={data}
-			/>
-			<NotificationToastContainer />
+			{isLoadingGetProfileSettings ? (
+				<div>
+					<Loader />
+				</div>
+			) : (
+				<FormProfileSettings
+					handleSubmitForm={handleSubmitForm}
+					userData={data}
+					isLoadingChangeProfileSettings={isLoadingChangeProfileSettings}
+				/>
+			)}
+			{isErrorGetProfileSettings && <span>Ошибка получения настроек</span>}
 		</>
 	);
 };
