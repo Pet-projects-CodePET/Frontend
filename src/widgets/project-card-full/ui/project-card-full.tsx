@@ -8,9 +8,11 @@ import { useMediaQuery } from '@/shared/hooks';
 import { ProjectCardFullType } from './type';
 import { LikeButtonFeature } from '@/features';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
+import Link from 'next/link';
 import styles from './project-card-full.module.scss';
 
 export const ProjectCardFull: FC<ProjectCardFullType> = ({
+	id,
 	description,
 	started,
 	ended,
@@ -26,6 +28,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 
 	return (
 		<article className={styles.container}>
+			<Link href={`projects/${id}`} className={styles.linkProject}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
 						<ActivityIcon
@@ -95,6 +98,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 						</MainButton>
 					</div>
 				)}
+				</Link>
 		</article>
 	);
 };

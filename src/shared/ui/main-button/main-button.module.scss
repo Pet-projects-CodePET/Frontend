@@ -63,6 +63,7 @@
 
 .buttonTrivial {
 	@extend %baseButtonStyle;
+	font-weight: 400;
 	background-color: transparent;
 	color: rgb(86, 119, 252);
 
