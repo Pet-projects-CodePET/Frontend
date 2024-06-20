@@ -18,6 +18,11 @@
 	}
 }
 .info {
+	&__link {
+		@extend %baseText;
+		width: 100%;
+		text-decoration: none;
+	}
 	&__person {
 		display: flex;
 		gap: 16px;

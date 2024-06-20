@@ -1,0 +1,31 @@
+@import '@/shared/style/variables.scss';
+
+%baseText {
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	margin: 0;
+	font-style: normal;
+}
+.linkContainer {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	margin-bottom: 32px;
+}
+.arrow {
+	height: 16px;
+	color: #0075ff;
+	margin-right: 6px;
+}
+
+.link {
+	@extend %baseText;
+	font-size: 16px;
+	font-weight: 400;
+	color: #0075ff;
+}
+@media screen and (max-width: 780px) {
+	.linkContainer {
+		padding-left: 8px;
+	}
+}

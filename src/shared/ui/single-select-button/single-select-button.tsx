@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import Select, { SelectRenderer } from 'react-dropdown-select';
