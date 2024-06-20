@@ -1,0 +1,222 @@
+@import '@/shared/style/variables.scss';
+
+%baseText {
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	margin: 0;
+	font-style: normal;
+}
+%secondaryText {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: $--open-sans-font;
+	margin: 0;
+	font-style: normal;
+}
+.specialist {
+	display: flex;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	height: auto;
+	min-width: auto;
+	padding: 32px;
+	margin-bottom: 32px;
+	flex-wrap: wrap;
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+}
+.info {
+	&__person {
+		display: flex;
+		position: relative;
+		margin-bottom: 32px;
+	}
+	&__avatar {
+		margin-right: 16px;
+	}
+	&__personDescription {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+	&__personStatus {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
+	&__personStatus__small {
+		display: none;
+		gap: 8px;
+		align-items: center;
+	}
+	&__statusIcon {
+		width: 16px;
+		height: 16px;
+		color: $--Colors-Pastel-Green;
+	}
+	&__statusTitle {
+		@extend %baseText;
+		color: $--foreground-muted;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 19px;
+		letter-spacing: 0.25px;
+	}
+	&__name {
+		@extend %baseText;
+		font-size: 24px;
+		font-weight: 600;
+	}
+	&__nickname {
+		@extend %secondaryText;
+		font-size: 16px;
+		font-weight: 700;
+		letter-spacing: 0.25px;
+	}
+	&__skill {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+		margin: 8px 8px 0 0;
+	}
+	&__role {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 700;
+		gap: 5px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__role__small {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 700;
+		gap: 5px;
+		padding-bottom: 10px;
+		display: none;
+		flex-wrap: wrap;
+	}
+
+	&__title {
+		@extend %baseText;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 19px;
+		letter-spacing: 0.25px;
+		padding-bottom: 8px;
+	}
+
+	&__skillsList {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 9px 0 0;
+		margin: 0 0 24px 0;
+		list-style: none;
+	}
+	&__sideText {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 400;
+		display: flex;
+		flex-direction: column;
+		text-wrap: wrap;
+	}
+	&__wrapper {
+		margin-bottom: 32px;
+	}
+	&__contacts__wrapper {
+		margin-bottom: 16px;
+	}
+	&__contacts {
+		@extend %baseText;
+		font-size: 16px;
+		font-weight: 400;
+		color: #0075ff;
+		display: flex;
+		align-items: center;
+		margin: 0 8px 8px 0;
+	}
+	&__icons {
+		font-size: 24px;
+		margin-right: 8px;
+	}
+
+	&__likeContainer {
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 50%;
+		border: 1px solid $--border-default;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	.specialists {
+		max-width: 780px;
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.specialist {
+		max-width: 90vw;
+		padding: 16px;
+	}
+	.info {
+		&__personDescription {
+			justify-content: start;
+			gap: 8px;
+
+		}
+		&__name {
+			font-size: 20px;
+			font-weight: 700;
+		}
+		
+		&__avatar {
+			margin-right: 8px;
+		}
+		&__person {
+			gap: 8px;
+		}
+
+		&__personStatus {
+			display: none;
+		}
+		&__personStatus__small {
+			display: flex;
+			padding-bottom: 18px;
+		}
+
+		&__role {
+			display: none;
+		}
+		&__role__small {
+			display: flex;
+		}
+		&__personImage {
+			width: 48px;
+			height: 48px;
+		}
+		&__likeContainer {
+			width: 20px;
+			height: 20px;
+		}
+		&__likeIcon {
+			width: 16px;
+			height: 16px;
+		}
+	}
+}

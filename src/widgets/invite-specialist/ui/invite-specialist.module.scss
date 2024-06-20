@@ -1,0 +1,42 @@
+@import '../../../shared/style/variables.scss';
+
+.button__wrapper {
+	display: flex;
+	margin: 32px 0;
+	width: 100%;
+	gap: 16px;
+	align-items: start;
+}
+
+.letter__wrapper {
+	width: 100%;
+	.tool_wrapper {
+		width: 100%;
+		display: flex;
+	}
+
+	.background {
+		background-color: #e8eeff;
+		border-radius: 15px 15px 0 0;
+	}
+
+	.button {
+		background: none; /* Green */
+		border: none;
+		padding: 25px 0px;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.textArea {
+		width: 100%;
+		height: 200px;
+		border-radius: 0 0 15px 15px;
+		padding: 10px 12px;
+		box-sizing: border-box;
+		border: 1px solid #e2e8f0;
+		resize: none;
+		outline: 0;
+		margin-bottom: 32px;
+	}
+}
