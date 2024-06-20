@@ -5,7 +5,7 @@ import { useGetProjectByIdQuery } from '@/services/ProjectService';
 
 export const Project = ({ id }: { id: number }) => {
 	const { data: project } = useGetProjectByIdQuery({ id });
-	console.log('projectDetail', project);
+	//console.log('projectDetail', project);
     
 	return (
 		<div>

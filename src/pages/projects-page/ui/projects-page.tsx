@@ -38,8 +38,8 @@ export const Projects = () => {
 
 	const { data: projects } = useGetAllProjectsQuery(currentPage);
 
-	console.log('projects', projects);
-	console.log('currentPage', currentPage)
+	//console.log('projects', projects);
+	//console.log('currentPage', currentPage)
 
 	const currentData = useMemo(() => {
 		// const firstPageIndex = (currentPage - 1) * pageSize;
@@ -49,7 +49,7 @@ export const Projects = () => {
 		
 	}, [projects]);
 
-	console.log('currentData', currentData);
+	//console.log('currentData', currentData);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
