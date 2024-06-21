@@ -5,9 +5,7 @@ import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { specialistsArray } from '@/shared/constants/specialists/specialists';
-
 import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
-
 import { qualification } from '@/shared/constants/qualification/qualification';
 import { Tooltip } from '@/widgets/tooltip';
 import { specialties } from '@/shared/constants/specialties/specialties';

@@ -46,7 +46,7 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
-		// не нужен 
+		// не нужен
 		getUserMe: builder.query({
 			query: () => ({
 				url: '/users/me/',
@@ -75,10 +75,17 @@ export const userApi = createApi({
 				},
 			}),
 		}),
-		getProfileInfo: builder.query({
+		getProfileSettings: builder.query({
 			query: () => ({
-				url: '/profiles/me/', 
+				url: '/profiles/me/',
 				method: 'GET',
+			}),
+		}),
+		changeProfileSettings: builder.mutation<IUser, IUser>({
+			query: (user) => ({
+				url: '/profiles/me/',
+				method: 'PATCH',
+				body: user,
 			}),
 		}),
 	}),
@@ -92,5 +99,6 @@ export const {
 	useGetUserMeQuery,
 	useChangePasswordMutation,
 	useDeleteAccountMutation,
-	useGetProfileInfoQuery,
+	useGetProfileSettingsQuery,
+	useChangeProfileSettingsMutation,
 } = userApi;
