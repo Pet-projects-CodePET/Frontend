@@ -18,13 +18,15 @@ import { useMediaQuery } from '@/shared/hooks';
 import styles from './specialists-page.module.scss';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
+import { useGetAllSpecialistsDataQuery } from '@/services/SpecialistService';
+import { Specialist } from './types';
 
 export const Specialists = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+	
 	useEffect(() => {
 		const { 1: urlToken } = window.location.hash.split('#/login/');
-		if (urlToken) {
+		if (urlToken) { 
 			localStorage.setItem('token', urlToken);
 		}
 
@@ -57,6 +59,21 @@ export const Specialists = () => {
 	}, [currentPage]);
 
 	const isMobile = useMediaQuery('(max-width:779px)');
+
+	const { data: specialistArray } = useGetAllSpecialistsDataQuery({});
+
+	console.log(specialistArray);
+
+	{specialistArray?.results.map((res: Specialist) => (
+		<SpecialistCard
+			key={res.user_id}
+			specialists={res.specialists}
+			avatar={res.avatar}
+			name={res.name}
+			userName={res.username}
+			readyToParticipate={res.ready_to_participate}
+		/>
+	))}
 
 	return (
 		<>
@@ -143,17 +160,16 @@ export const Specialists = () => {
 					</div>
 				</div>
 				<div className={styles.specialists__cards}>
-					{specialistsArray.map((specialist) => {
-						return (
-							<SpecialistCard
-								specialization={specialist.specialization}
-								specialty={specialist.specialty}
-								key={specialist.id}
-								telegram={specialist.telegram}
-								skills={specialist.skills}
-							/>
-						);
-					})}
+					{specialistArray?.results.map((res: Specialist) => (
+						<SpecialistCard
+							key={res.user_id}
+							specialists={res.specialists}
+							avatar={res.avatar}
+							name={res.name}
+							userName={res.username}
+							readyToParticipate={res.ready_to_participate}
+						/>
+					))}
 				</div>
 
 				<Pagination
