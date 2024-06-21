@@ -108,8 +108,8 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Ссылка на проект</h3>
-						<Link href="" target="_blank" className={styles.descriptionLink}>
-							{link}
+						<Link  href={`${link}`} target="_blank" className={styles.descriptionLink}>
+							 {link} 
 						</Link>
 					</div>
 					<div className={styles.subtitleWrapper}>

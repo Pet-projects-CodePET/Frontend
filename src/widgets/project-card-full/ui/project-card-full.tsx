@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
 import React, { FC } from 'react';
 import clsx from 'clsx';
- import {CalendarIcon, ActivityIcon } from '@/shared/assets'; // , 
-//import { getClassNameforTag } from '@/shared/utils';
+import {CalendarIcon, ActivityIcon } from '@/shared/assets'; // , 
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { ProjectCardFullType } from './type';
