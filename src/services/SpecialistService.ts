@@ -1,5 +1,4 @@
 	import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-	// import type { SpecialistInfoType } from './models/ISpecialistQuery';
 	const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 	export const specilistsApi = createApi({
@@ -9,23 +8,16 @@
 		}),
 		endpoints: (builder) => ({
 			getAllSpecialistsData: builder.query({
-				query: () => ({
-					url: `/profiles/`,
+				query: (params) => ({
+					url: `/profiles/?page=${params}`,
 					method: 'GET',
 					providerTags: 'allSpecialist',
 				}),
 			}),
-			getSpecificSpecialistData: builder.query({
-				query: (specialistId) => ({
-					url: `/profiles/${specialistId}/`,
-					method: 'GET',
-					providerTags: 'specificSpecialist',
-				}),
-			}),
+		
 		}),
 	});
 
 	export const {
 		useGetAllSpecialistsDataQuery,
-		useGetSpecificSpecialistDataQuery,
 	} = specilistsApi;

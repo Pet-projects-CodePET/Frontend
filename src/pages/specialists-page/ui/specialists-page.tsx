@@ -23,10 +23,10 @@ import { Specialist } from './types';
 
 export const Specialists = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	
+
 	useEffect(() => {
 		const { 1: urlToken } = window.location.hash.split('#/login/');
-		if (urlToken) { 
+		if (urlToken) {
 			localStorage.setItem('token', urlToken);
 		}
 
@@ -52,28 +52,15 @@ export const Specialists = () => {
 
 	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
+	
+	const { data: specialistArray } = useGetAllSpecialistsDataQuery(currentPage);
+
+
 	const currentData = useMemo(() => {
-		const firstPageIndex = (currentPage - 1) * pageSize;
-		const lastPageIndex = firstPageIndex + pageSize;
-		return specialistsArray.slice(firstPageIndex, lastPageIndex);
-	}, [currentPage]);
+		return specialistArray && specialistArray.results;
+	}, [specialistArray]);
 
 	const isMobile = useMediaQuery('(max-width:779px)');
-
-	const { data: specialistArray } = useGetAllSpecialistsDataQuery({});
-
-	console.log(specialistArray);
-
-	{specialistArray?.results.map((res: Specialist) => (
-		<SpecialistCard
-			key={res.user_id}
-			specialists={res.specialists}
-			avatar={res.avatar}
-			name={res.name}
-			userName={res.username}
-			readyToParticipate={res.ready_to_participate}
-		/>
-	))}
 
 	return (
 		<>
@@ -160,14 +147,14 @@ export const Specialists = () => {
 					</div>
 				</div>
 				<div className={styles.specialists__cards}>
-					{specialistArray?.results.map((res: Specialist) => (
+					{currentData && currentData.map((res: Specialist) => (
 						<SpecialistCard
-							key={res.user_id}
-							specialists={res.specialists}
-							avatar={res.avatar}
-							name={res.name}
-							userName={res.username}
-							readyToParticipate={res.ready_to_participate}
+							key={res?.user_id}
+							specialists={res?.specialists}
+							avatar={res?.avatar === null ? "" : res?.avatar}
+							name={res?.name}
+							userName={res?.username}
+							readyToParticipate={res?.ready_to_participate}
 						/>
 					))}
 				</div>
