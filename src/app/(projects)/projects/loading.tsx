@@ -1,7 +1,8 @@
 import React from 'react';
+import { Loader } from '@/shared/ui';
 
 export const Loading = () => {
-	return <div style={{minHeight: '780px'}}>Loading...</div>;
+	return <Loader />;
 };
 
 export default Loading;

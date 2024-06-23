@@ -6,6 +6,7 @@ import { usePagination, DOTS } from '../lib/use-pagination';
 import styles from '../ui/pagination.module.scss';
 import Left from '@/shared/assets/icons/chevron-left.svg';
 import Right from '@/shared/assets/icons/chevron-right-icon.svg';
+//import { useRouter } from 'next/navigation';
 
 type PaginationProps = {
 	onPageChange: (pageNumber: string | number) => void;
@@ -28,6 +29,7 @@ export const Pagination = ({
 		siblingCount,
 		pageSize,
 	});
+	//const router = useRouter();
 
 	//Если в диапазоне нумерации страниц меньше 2-х, мы не будем отображать компонент
 	if (!paginationRange) {
@@ -39,10 +41,12 @@ export const Pagination = ({
 
 		const onNext = () => {
 			onPageChange(currentPage + 1);
+			//router.push(`/projects/?page=${currentPage + 1}`)
 		};
 
 		const onPrevious = () => {
 			onPageChange(currentPage - 1);
+			//router.push(`/projects/?page=${currentPage - 1}`)
 		};
 
 		const lastPage = paginationRange[paginationRange.length - 1];
@@ -76,6 +80,9 @@ export const Pagination = ({
 							className={clsx(styles.paginator__item, {
 								[styles.selected]: pageNumber === currentPage,
 							})}
+							// onClick={() => {onPageChange(pageNumber);
+							// 	router.push(`/projects/?page=${pageNumber}`)}
+							// }
 							onClick={() => onPageChange(pageNumber)}>
 							<span>{pageNumber}</span>
 						</li>
