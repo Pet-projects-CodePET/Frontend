@@ -19,11 +19,17 @@
 	margin-top: 16px;
 	margin-bottom: 80px;
 	gap: 32px;
+	@media screen and (max-width: 779px) {
+		gap: 0;
+	}
 }
 .link {
 	display: flex;
 	gap: 8px;
 	align-items: center;
+	@media screen and (max-width: 779px) {
+		padding: 0 16px 0;
+	}
 }
 .icon {
 	width: 20px;
@@ -48,6 +54,7 @@
 	flex-direction: column;
 	@media screen and (max-width: 779px) {
 		border: none;
+		padding: 32px 16px;
 	}
 }
 
