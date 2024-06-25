@@ -40,13 +40,14 @@ export const Pagination = ({
 		}
 
 		const onNext = () => {
-			onPageChange(currentPage + 1);
 			//router.push(`/projects/?page=${currentPage + 1}`)
+			onPageChange(currentPage + 1);
+			
 		};
 
 		const onPrevious = () => {
-			onPageChange(currentPage - 1);
 			//router.push(`/projects/?page=${currentPage - 1}`)
+			onPageChange(currentPage - 1);
 		};
 
 		const lastPage = paginationRange[paginationRange.length - 1];
@@ -83,7 +84,8 @@ export const Pagination = ({
 							// onClick={() => {onPageChange(pageNumber);
 							// 	router.push(`/projects/?page=${pageNumber}`)}
 							// }
-							onClick={() => onPageChange(pageNumber)}>
+							 onClick={() => onPageChange(pageNumber)}
+							>
 							<span>{pageNumber}</span>
 						</li>
 					);

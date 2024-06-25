@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 'use client';
-import React, { useState, useMemo } from 'react'; 
+import React, { useState, useMemo, useEffect } from 'react'; 
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
@@ -25,29 +25,24 @@ import styles from './projects-page.module.scss';
 export const Projects = () => {
 	
 	const pageSize = 7;
-	const [currentPage, setCurrentPage] = useState(1);
+	const [currentSettings, setCurrentSettings] = useState({currentPage: 1});
 	
-
-	// useEffect(() => {
-	// 	window.scroll({
-	// 		top: 100,
-	// 		left: 100,
-	// 		behavior: "smooth",
-	// 	  });
+	useEffect(() => {
+		window.scroll({
+			top: 0,
+			left: 0,
+			//behavior: "smooth",
+		  });
 		
-	// }, [currentPage]);
+	}, [currentSettings]);
 
-	const { data: projects } = useGetAllProjectsQuery(currentPage);
+	const { data: projects } = useGetAllProjectsQuery(currentSettings);
 
 	//console.log('projects', projects);
 	//console.log('currentPage', currentPage)
 
 	const currentData = useMemo(() => {
-		// const firstPageIndex = (currentPage - 1) * pageSize;
-		// const lastPageIndex = firstPageIndex + pageSize;
-	
-		 return projects && projects.results    //.slice(firstPageIndex, lastPageIndex);
-		
+		 return projects && projects.results    	
 	}, [projects]);
 
 	//console.log('currentData', currentData);
@@ -203,9 +198,9 @@ export const Projects = () => {
 							})}
 						</div>
 						<Pagination
-							onPageChange={(page) => setCurrentPage(Number(page))}
+							onPageChange={(page) => setCurrentSettings({currentPage: Number(page)})}
 							totalCount={projects && projects.count}
-							currentPage={currentPage}
+							currentPage={currentSettings.currentPage}
 							pageSize={pageSize}
 						/>
 					</>

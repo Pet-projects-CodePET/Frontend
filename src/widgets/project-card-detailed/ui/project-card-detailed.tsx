@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { FC } from 'react';
 import Link from 'next/link';
-import { IconLeft, ActivityIcon, CalendarIcon } from '@/shared/assets';
+import { /*IconLeft,*/ ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { LikeButtonFeature } from '@/features';
 import { Person, VacancyCard } from '@/shared/ui';
 import { getColorTag } from '@/shared/utils';
@@ -47,12 +47,12 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 	];
 	return (
 		<section className={styles.projectsCard}>
-			<div className={styles.link}>
+			{/* <div className={styles.link}>
 				<IconLeft className={styles.icon} />
 				<Link className={styles.linkProjects} href="/projects">
 					Проекты
 				</Link>
-			</div>
+			</div> */}
 			<div className={styles.projectContainer}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
