@@ -6,9 +6,9 @@ import styles from './detailed-specialist-page.module.scss';
 import Link from 'next/link';
 import { ArrowLeftIcon } from '@/shared/assets';
 
-export const DetailedSpecialistPage: React.FC = async () => {
+export const DetailedSpecialistPage = async ({params}: {params: {params: {id: number}}}) => {
 	const response: SpecialistInfoQueryType = (
-		await axiosInstance.get(`/profiles/171/`)
+		await axiosInstance.get(`/profiles/${params.params.id}/`)
 	).data;
 
 	return (

@@ -1,4 +1,5 @@
 export type SpecialistCardType = {
+	userId: number;
 	avatar: string;
 	userName: string;
 	name: string;

@@ -50,11 +50,11 @@ export const Specialists = () => {
 		console.log(currentData);
 	};
 
-	const pageSize = 3;
-	const [currentPage, setCurrentPage] = useState(1);
-	
-	const { data: specialistArray } = useGetAllSpecialistsDataQuery(currentPage);
+	const pageSize = 1;
 
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const { data: specialistArray } = useGetAllSpecialistsDataQuery(currentPage);
 
 	const currentData = useMemo(() => {
 		return specialistArray && specialistArray.results;
@@ -147,16 +147,18 @@ export const Specialists = () => {
 					</div>
 				</div>
 				<div className={styles.specialists__cards}>
-					{currentData && currentData.map((res: Specialist) => (
-						<SpecialistCard
-							key={res?.user_id}
-							specialists={res?.specialists}
-							avatar={res?.avatar === null ? "" : res?.avatar}
-							name={res?.name}
-							userName={res?.username}
-							readyToParticipate={res?.ready_to_participate}
-						/>
-					))}
+					{currentData &&
+						currentData.map((res: Specialist) => (
+							<SpecialistCard
+								key={res?.user_id}
+								userId={res && res.user_id}
+								specialists={res?.specialists}
+								avatar={res?.avatar && res?.avatar}
+								name={res?.name}
+								userName={res?.username}
+								readyToParticipate={res?.ready_to_participate}
+							/>
+						))}
 				</div>
 
 				<Pagination

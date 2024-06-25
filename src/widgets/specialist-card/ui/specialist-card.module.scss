@@ -5,6 +5,13 @@
 	margin: 0;
 	font-style: normal;
 }
+
+%secondaryText {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: $--open-sans-font;
+	margin: 0;
+	font-style: normal;
+}
 .specialist {
 	display: flex;
 	border-radius: 12px;
@@ -27,6 +34,9 @@
 		display: flex;
 		gap: 16px;
 		border-bottom: 1px solid $--Foreground-subtitle;
+		padding-bottom: 16px;
+		margin-bottom: 16px;
+
 		position: relative;
 	}
 	&__personImage {
@@ -64,19 +74,18 @@
 		line-height: 30px;
 	}
 	&__nickname {
-		@extend %baseText;
+		@extend %secondaryText;
 		font-size: 16px;
 		font-weight: 700;
 		line-height: normal;
 		letter-spacing: 0.25px;
-		margin-bottom: 16px;
 	}
 	&__role {
 		@extend %baseText;
 		font-size: 16px;
 		font-weight: 700;
 		line-height: normal;
-		margin-top: 16px;
+		// margin-top: 16px;
 	}
 	&__skillsList {
 		display: flex;
