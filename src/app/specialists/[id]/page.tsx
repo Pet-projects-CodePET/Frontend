@@ -8,7 +8,7 @@ export async function generateStaticParams() {
 	const allPageIdData = async () => {
 		const arr: string[] = [];
 
-		for (let i = 1; i < 999; i++) {
+		for (let i = 1; i < 299; i++) {
 			try {
 				const req = (await axiosInstance.get(`/profiles/?page=${i}`)).data
 					.results;
@@ -22,21 +22,20 @@ export async function generateStaticParams() {
 				break;
 			}
 		}
+		const req = (await axiosInstance('/profiles/')).data.results;
+
+		const mappedReq = req.map((response: { user_id: string }) => {
+			return response.user_id.toString();
+		});
+
+		arr.push(...mappedReq);
 		return arr; //?
 	};
 
-	const firstPage = (await axiosInstance.get('/profiles/')).data.results;
+	const data = await allPageIdData();
 
-	const idInitialPages = firstPage.map(
-		({ req }: { req: { user_id: string } }) => {
-			return req?.user_id.toString();
-		}
-	);
+	arr.push(...data);
 
-	const id = await allPageIdData();
-	const idInitialPage = idInitialPages;
-
-	arr.push(...id, ...idInitialPage);
 	return arr.map((ids) => ({
 		id: ids,
 	}));

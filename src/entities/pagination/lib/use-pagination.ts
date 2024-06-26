@@ -61,7 +61,7 @@ export const usePagination = ({
         Случай 2: Левые точки не отображаются, но должны отображаться правые точки
         */
 		if (!shouldShowLeftDots && shouldShowRightDots) {
-			const leftItemCount = 1 + 2 * siblingCount;
+			const leftItemCount = 2 + 2 * siblingCount;
 			const leftRange = range(1, leftItemCount);
 
 			return [...leftRange, DOTS, totalPageCount];
@@ -71,7 +71,7 @@ export const usePagination = ({
         Случай 3: Правые точки не отображаются, но должны отображаться левые точки
         */
 		if (shouldShowLeftDots && !shouldShowRightDots) {
-			const rightItemCount = 1 + 2 * siblingCount;
+			const rightItemCount = 2 + 2 * siblingCount;
 			const rightRange = range(
 				totalPageCount - rightItemCount + 1,
 				totalPageCount

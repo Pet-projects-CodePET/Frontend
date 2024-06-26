@@ -42,8 +42,8 @@
 			pointer-events: none;
 		}
 		&.selected span {
-			width: 36px;
-			height: 36px;
+			width: 33px;
+			height: 33px;
 			background-color: $--bg-accent-default;
 			border-radius: 50%;
 			display: flex;
@@ -52,8 +52,8 @@
 			color: $--Foreground-inverse;
 		}
 		&:hover span {
-			width: 36px;
-			height: 36px;
+			width: 33px;
+			height: 33px;
 			background-color: $--bg-accent-default;
 			border-radius: 50%;
 			display: flex;
