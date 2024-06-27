@@ -4,7 +4,7 @@ import { SpecialistCard } from '@/widgets/specialist-card';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
-import { specialistsArray } from '@/shared/constants/specialists/specialists';
+// import { specialistsArray } from '@/shared/constants/specialists/specialists';
 import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
 import { qualification } from '@/shared/constants/qualification/qualification';
 import { Tooltip } from '@/widgets/tooltip';
@@ -19,7 +19,7 @@ import styles from './specialists-page.module.scss';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 import { useGetAllSpecialistsDataQuery } from '@/services/SpecialistService';
-import { Specialist } from './types';
+import { SpecialistType } from './types';
 
 export const Specialists = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,7 +50,7 @@ export const Specialists = () => {
 		console.log(currentData);
 	};
 
-	const pageSize = 1;
+	const pageSize = 7;
 
 	const [currentPage, setCurrentPage] = useState(1);
 
@@ -148,7 +148,7 @@ export const Specialists = () => {
 				</div>
 				<div className={styles.specialists__cards}>
 					{currentData &&
-						currentData.map((res: Specialist) => (
+						currentData.map((res: SpecialistType) => (
 							<SpecialistCard
 								key={res?.user_id}
 								userId={res && res.user_id}
@@ -161,9 +161,9 @@ export const Specialists = () => {
 						))}
 				</div>
 
-				<Pagination
+=				<Pagination
 					onPageChange={(page) => setCurrentPage(Number(page))}
-					totalCount={specialistsArray.length}
+					totalCount={specialistArray?.count}
 					currentPage={currentPage}
 					pageSize={pageSize}
 				/>

@@ -15,5 +15,15 @@ export type SpecialistCardType = {
 			level: number;
 			skills: [{ id: number; name: string }];
 		},
+		{
+			id?: number;
+			profession?: {
+				id?: number;
+				specialty?: string;
+				specialization?: string;
+			};
+			level?: number;
+			skills?: [{ id: number; name: string }];
+		},
 	];
 };
