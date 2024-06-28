@@ -7,7 +7,7 @@
 }
 
 %secondaryText {
-	color: rgba(0, 0, 0, 0.5);
+	color: #475569;
 	font-family: $--open-sans-font;
 	margin: 0;
 	font-style: normal;
@@ -15,7 +15,7 @@
 .specialist {
 	display: flex;
 	border-radius: 12px;
-	border: 1px solid #e2e8f0;
+	border: 2px solid #e2e8f0;
 	padding: 32px;
 
 	&__info {
@@ -57,7 +57,12 @@
 	&__statusIcon {
 		width: 16px;
 		height: 16px;
-		color: $--Colors-Pastel-Green;
+		color: #53fa4d;
+	}
+	&__statusIconRed {
+		width: 16px;
+		height: 16px;
+		color: rgb(255, 30, 30)	;
 	}
 	&__statusTitle {
 		@extend %baseText;
@@ -90,8 +95,8 @@
 	&__skillsList {
 		display: flex;
 		flex-wrap: wrap;
-		padding: 9px 0 0;
-		margin: 0 0 24px 0;
+		padding: 12px 0 0;
+		margin: 0 0 16px 0;
 		list-style: none;
 	}
 	&__skill {
@@ -105,7 +110,7 @@
 		border-radius: 20px;
 		border: 1px solid $--border-default;
 	}
-	&__likeContainer {
+	&__likeContainer {	
 		position: absolute;
 		top: 0;
 		right: 0;

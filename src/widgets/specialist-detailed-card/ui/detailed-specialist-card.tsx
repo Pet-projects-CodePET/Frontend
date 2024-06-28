@@ -110,10 +110,10 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					<ul className={styles.info__skillsList}>
 						{specialists[0]?.skills.map((skill, index) => {
 							return (
-								<p className={styles.info__skill} key={skill.id}>
+								<li className={styles.info__skill} key={skill.id}>
 									{skill.name}
 									{index < specialists[0]?.skills.length - 1 && ', '}
-								</p>
+								</li>
 							);
 						})}
 					</ul>

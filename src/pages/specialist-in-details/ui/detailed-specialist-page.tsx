@@ -19,7 +19,7 @@ export const DetailedSpecialistPage = async ({params}: {params: {params: {id: nu
 			</Link>
 			<>
 				<DetailedSpecialistCard
-					avatar={response.avatar}
+					avatar={response.avatar && response.avatar}
 					name={response.name}
 					userName={response.username}
 					readyToParticipate={response.ready_to_participate}

@@ -151,9 +151,9 @@ export const Specialists = () => {
 						currentData.map((res: SpecialistType) => (
 							<SpecialistCard
 								key={res?.user_id}
-								userId={res && res.user_id}
+								userId={res?.user_id}
 								specialists={res?.specialists}
-								avatar={res?.avatar && res?.avatar}
+								avatar={res?.avatar ? res?.avatar : ''}
 								name={res?.name}
 								userName={res?.username}
 								readyToParticipate={res?.ready_to_participate}
@@ -161,7 +161,7 @@ export const Specialists = () => {
 						))}
 				</div>
 
-=				<Pagination
+				<Pagination
 					onPageChange={(page) => setCurrentPage(Number(page))}
 					totalCount={specialistArray?.count}
 					currentPage={currentPage}
