@@ -7,7 +7,7 @@
 }
 
 %secondaryText {
-	color: #475569;
+	color: $--Foreground-muted;
 	font-family: $--open-sans-font;
 	margin: 0;
 	font-style: normal;
@@ -15,7 +15,7 @@
 .specialist {
 	display: flex;
 	border-radius: 12px;
-	border: 2px solid #e2e8f0;
+	border: 2px solid $--border-default;
 	padding: 32px;
 
 	&__info {
@@ -57,12 +57,12 @@
 	&__statusIcon {
 		width: 16px;
 		height: 16px;
-		color: #53fa4d;
+		color: $--Colors-Green;
 	}
 	&__statusIconRed {
 		width: 16px;
 		height: 16px;
-		color: rgb(255, 30, 30)	;
+		color: $--Colors-Red;
 	}
 	&__statusTitle {
 		@extend %baseText;
@@ -110,7 +110,7 @@
 		border-radius: 20px;
 		border: 1px solid $--border-default;
 	}
-	&__likeContainer {	
+	&__likeContainer {
 		position: absolute;
 		top: 0;
 		right: 0;
