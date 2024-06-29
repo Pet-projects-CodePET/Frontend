@@ -79,11 +79,12 @@
 	padding-right: 14px;
 	color: transparent;
 	&_type_active {
-		color: $--Colors-Pastel-Green;
+		 fill: $--Colors-Pastel-Green;
+		
 	}
 
 	&_type_inactive {
-		color: $--Neutral-Light-Grey-03;
+		fill: $--Neutral-Light-Grey-03;
 	}
 }
 
@@ -93,6 +94,7 @@
 	line-height: 19px;
 	letter-spacing: 0.25px;
 	color: $--foreground-muted;
+	font-family: $--open-sans-font;
 }
 
 .like {

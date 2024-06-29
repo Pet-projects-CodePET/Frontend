@@ -47,7 +47,7 @@
 	&__statusIcon {
 		width: 16px;
 		height: 16px;
-		color: $--Colors-Pastel-Green;
+		fill: $--Colors-Pastel-Green;
 	}
 	&__statusTitle {
 		@extend %baseText;

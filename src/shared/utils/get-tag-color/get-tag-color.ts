@@ -20,8 +20,8 @@ export const getColorTag = (specialty: string) => {
 		case 'Аналитика':
 			return analyticsColor;
 		case 'Администрирование':
-			return;
-		default:
 			return administrationColor;
+		default:
+			return;
 	}
 };
