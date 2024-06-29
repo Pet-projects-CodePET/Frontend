@@ -24,9 +24,11 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 	ended,
 	status,
 	project_specialists,
+	
 }) => {
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
+	
 
 	const skillsTeam = [
 		{ id: 1, name: 'React' },
