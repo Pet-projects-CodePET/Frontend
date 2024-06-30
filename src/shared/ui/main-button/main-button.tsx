@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import type { MainButtonProps } from './types';
 import styles from './main-button.module.scss';
+import clsx from 'clsx';
 
 export const MainButton: FC<MainButtonProps> = ({
 	children,
@@ -28,22 +29,15 @@ export const MainButton: FC<MainButtonProps> = ({
 		}
 	};
 
-	const getClassNameForWidth = (buttonWidth: 'regular' | 'max' | 'min') => {
-		switch (buttonWidth) {
-			case 'regular':
-				return styles.buttonDimensionsRegular;
-			case 'max':
-				return styles.buttonDimensionsMax;
-			case 'min':
-				return styles.buttonDimensionsMin;
-			default:
-				return '';
-		}
-	};
+	const getClassNameForWidth = clsx(
+		width === 'min' && styles.buttonDimensionsMin,
+		width === 'regular' && styles.buttonDimensionsRegular,
+		width === 'max' && styles.buttonDimensionsMax
+	);
 
 	return (
 		<button
-			className={`${getClassnameForType(variant)} ${getClassNameForWidth(width)}`}
+			className={`${getClassnameForType(variant)} ${getClassNameForWidth}`}
 			{...props}>
 			<div className={styles.buttonContainer}>
 				{IconLeft && <IconLeft className={styles.icon} />}

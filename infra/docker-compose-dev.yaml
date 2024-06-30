@@ -4,8 +4,7 @@ volumes:
   pg_data:
   static_volume:
   media_value:
-  certbot:
-  letsencrypt:
+  backend_logs:
 
 services:
   db:
@@ -25,7 +24,7 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_backend:latest
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_backend_${BRANCH_TAG}:latest
     restart: unless-stopped
     env_file: .env
     environment:
@@ -33,12 +32,13 @@ services:
     volumes:
       - static_volume:/backend_static/
       - media_value:/backend_media/
+      - ${BACKEND_LOGS_DIR}:/backend/data/logs
     depends_on:
       db:
         condition: service_healthy
 
   frontend:
-    image: ${DOCKERHUB_USERNAME_FRONT}/${PROJECT_NAME}_frontend:latest
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_frontend_${BRANCH_TAG}:latest
     command: cp -r out/. /frontend_static/
     env_file: .env
     environment:
@@ -50,29 +50,16 @@ services:
         condition: service_healthy
 
   nginx:
-    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_nginx:latest
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_nginx_${BRANCH_TAG}:latest
     ports:
-      - '80:80'
-      - '443:443'
+      - '8000:80'
     env_file: .env
     environment:
       - TZ=Europe/Moscow
     volumes:
       - static_volume:/staticfiles/
       - media_value:/mediafiles/
-      - certbot:/certbot/
-      - letsencrypt:/etc/letsencrypt/
     restart: unless-stopped
     depends_on:
       - backend
       - frontend
-
-  certbot:
-    image: certbot/certbot
-    env_file: .env
-    environment:
-      - TZ=Europe/Moscow
-    volumes:
-      - certbot:/var/www/certbot/
-      - letsencrypt:/etc/letsencrypt/
-    command: certonly --webroot --agree-tos --no-eff-email --non-interactive --expand -w /var/www/certbot/ -d $SERVER_NAME_DEV -d www.$SERVER_NAME_DEV

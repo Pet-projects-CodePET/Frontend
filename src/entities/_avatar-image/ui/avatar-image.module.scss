@@ -1,0 +1,31 @@
+@import '@/shared/style/variables';
+
+.base {
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	background-color: rgb(255, 0, 0);
+	width: 80px;
+	height: 80px;
+	&__small {
+		width: 32px;
+		height: 32px;
+	}
+	&__large {
+		width: 137px;
+		height: 137px;
+	}
+}
+
+@media screen and (max-width: 779px) {
+	.base {
+		width: 80px;
+		height: 80px;
+		&__large {
+			width: 80px;
+			height: 80px;
+		}
+	}
+}

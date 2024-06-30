@@ -1,49 +1,70 @@
 import React from 'react';
-import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
-import styles from './menu-for-visible.module.scss';
 import clsx from 'clsx';
+import { useFormContext } from 'react-hook-form';
+import { MenuForVisibleProps } from './types';
+import styles from './menu-for-visible.module.scss';
 
 export const MenuForVisible = ({
 	isOpen,
-	onClose,
-}: {
-	isOpen: boolean;
-	onClose: () => void;
-}) => {
-	return (
-		<div
-			className={clsx(styles.menuVisible, {
-				[styles.menu]: isOpen,
-			})}>
-			<div
-				className={clsx(styles.menu, {
-					[styles.menuVisible]: onClose,
-				})}>
-				<div className={styles.menu__itemVisible}>
-					<label className={styles.menu__subtitle}>Видно всем</label>
-					<div className={styles.menu__checkbox}>
-						<ToggleCheckbox variant="defaultOf" onChange={() => {}} />
-					</div>
-				</div>
-				<div className={styles.menu__itemVisible}>
-					<label className={styles.menu__subtitle}>Видно организаторам</label>
-					<div className={styles.menu__checkbox}>
-						<ToggleCheckbox variant="defaultOf" onChange={() => {}} />
-					</div>
-				</div>
+	settings,
+	nameSettings,
+	changeVisibleStatus,
+}: MenuForVisibleProps) => {
+	const { register } = useFormContext();
 
-				<div className={styles.menu__itemVisible}>
-					<label className={styles.menu__subtitle}>Не видно никому</label>
-					<div className={styles.menu__checkbox}>
-						<ToggleCheckbox
-							variant="defaultOf"
-							onChange={() => {
-								console.log('не видно');
-							}}
-						/>
-					</div>
-				</div>
-			</div>
-		</div>
+	return (
+		<ul
+			className={clsx(styles.menuList, {
+				[styles.menuList_visible]: isOpen,
+			})}>
+			<li className={styles.menuList__item}>
+				<input
+					{...register(nameSettings, {
+						valueAsNumber: true,
+					})}
+					className={styles.menuList__input}
+					type="radio"
+					checked={Number(settings) === 1}
+					id={`${nameSettings}_1`}
+					onChange={changeVisibleStatus}
+					value={1}
+				/>
+				<label htmlFor={`${nameSettings}_1`} className={styles.menuList__label}>
+					Видно всем
+				</label>
+			</li>
+			<li className={styles.menuList__item}>
+				<input
+					{...register(nameSettings, {
+						valueAsNumber: true,
+					})}
+					className={styles.menuList__input}
+					type="radio"
+					checked={Number(settings) === 2}
+					id={`${nameSettings}_2`}
+					onChange={changeVisibleStatus}
+					value={2}
+				/>
+				<label htmlFor={`${nameSettings}_2`} className={styles.menuList__label}>
+					Видно организаторам
+				</label>
+			</li>
+			<li className={styles.menuList__item}>
+				<input
+					{...register(nameSettings, {
+						valueAsNumber: true,
+					})}
+					className={styles.menuList__input}
+					type="radio"
+					checked={Number(settings) === 3}
+					id={`${nameSettings}_3`}
+					onChange={changeVisibleStatus}
+					value={3}
+				/>
+				<label htmlFor={`${nameSettings}_3`} className={styles.menuList__label}>
+					Не видно никому
+				</label>
+			</li>
+		</ul>
 	);
 };

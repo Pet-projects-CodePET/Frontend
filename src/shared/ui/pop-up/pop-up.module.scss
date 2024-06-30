@@ -22,9 +22,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 760px;
+		width: 640px;
 		box-sizing: border-box;
-		padding: 56px;
+		padding: 32px;
 		gap: 32px;
 		border-radius: 12px;
 		border: 1px solid $--border-default;
@@ -62,8 +62,8 @@
 	}
 	.xmark {
 		position: absolute;
-		right: 56px;
-		top: 56px;
+		right: 24px;
+		top: 24px;
 		cursor: pointer;
 		z-index: 3;
 	}

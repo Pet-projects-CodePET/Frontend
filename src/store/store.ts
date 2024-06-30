@@ -1,13 +1,16 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+// import userReducer from '@/store/reducers/UserSlice';
+// import projectReducer from '@/store/reducers/ProjectSlice';
 import { userApi } from '@/services/UserService';
 import { generalApi } from '@/services/GeneralService';
-import { projectApi } from '@/services/ProjectService';
+import { projectsApi } from '@/services/ProjectService';
 
 const rootReducer = combineReducers({
+	// userReducer,
 	// projectReducer,
 	[userApi.reducerPath]: userApi.reducer,
 	[generalApi.reducerPath]: generalApi.reducer,
-	[projectApi.reducerPath]: projectApi.reducer,
+	[projectsApi.reducerPath]: projectsApi.reducer,
 });
 
 export const store = configureStore({
@@ -16,7 +19,7 @@ export const store = configureStore({
 		getDefaultMiddleware().concat(
 			userApi.middleware,
 			generalApi.middleware,
-			projectApi.middleware
+			projectsApi.middleware
 		),
 });
 

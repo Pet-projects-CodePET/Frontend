@@ -7,7 +7,7 @@ import FormChangePasswordSchema from '@/shared/utils/validation-schemas/form-cha
 import { useChangePasswordMutation } from '@/services/UserService';
 import { IUser } from '@/services/models/IUser';
 import {
-	NotificationToastContainer,
+	// NotificationToastContainer,
 	toaster,
 } from '@/widgets/notification-toast/';
 import styles from './form-change-password.module.scss';
@@ -46,18 +46,20 @@ export const FormChangePasswordFeature: FC = () => {
 
 	const [serverPasswordError, setServerPasswordError] = useState('');
 	return (
-		<Form
-			onSubmit={handleSubmit}
-			className={styles.formSettings}
-			schema={FormChangePasswordSchema}>
-			<FormChangePassword
-				serverPasswordError={serverPasswordError}
-				setServerPasswordError={setServerPasswordError as () => string}
-				isSubmitSuccessfulReset={isSubmitSuccessfulReset}
-				isSubmitDisabled={isSubmitDisabled}
-				setSubmitSuccessfulReset={setSubmitSuccessfulReset}
-			/>
-			<NotificationToastContainer />
-		</Form>
+		<>
+			<Form
+				onSubmit={handleSubmit}
+				className={styles.formSettings}
+				schema={FormChangePasswordSchema}>
+				<FormChangePassword
+					serverPasswordError={serverPasswordError}
+					setServerPasswordError={setServerPasswordError as () => string}
+					isSubmitSuccessfulReset={isSubmitSuccessfulReset}
+					isSubmitDisabled={isSubmitDisabled}
+					setSubmitSuccessfulReset={setSubmitSuccessfulReset}
+				/>
+			</Form>
+			{/* <NotificationToastContainer /> */}
+		</>
 	);
 };

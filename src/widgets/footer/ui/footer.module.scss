@@ -5,9 +5,10 @@
 	flex-shrink: 0;
 	width: 100%;
 	background: rgb(2, 6, 23);
-	padding: 56px 0 0 0;
+	padding: 56px 0 56px;
 	&__container {
 		margin: 0 auto;
+		padding-bottom: 56px;
 		max-width: 1160px;
 		&_logo a > svg {
 			width: 195px;
@@ -88,7 +89,6 @@
 	.footer__container {
 		margin: 0 auto;
 		max-width: 780px;
-		height: 279px;
 		&_logo a > svg {
 			width: 143px;
 			height: 40px;

@@ -1,20 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const projectApi = createApi({
-	reducerPath: 'projectApi',
+export const projectsApi = createApi({
+	reducerPath: 'projectsApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl: `https://${BASE_URL}/api/v1`,
 	}),
 	endpoints: (builder) => ({
-		getDirections: builder.query({
+		getProjectsPreviewMain: builder.query({
 			query: () => ({
-				url: '/projects/directions/',
+				url: '/projects/preview_main/',
 				method: 'GET',
 			}),
 		}),
 	}),
 });
 
-export const { useGetDirectionsQuery } = projectApi;
+export const { useGetProjectsPreviewMainQuery } = projectsApi;

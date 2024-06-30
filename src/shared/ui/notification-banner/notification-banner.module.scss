@@ -46,7 +46,7 @@
 		fill: $--Foreground-inverse;
 	}
 	&_error {
-		fill: $--Foreground-error-default;
+		fill: $--Foreground-error-default !important;
 	}
 	// &_pending {
 	// }
