@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC, useState } from 'react';
 import styles from './form-create-project-card.module.scss';
 import { IFormCreateProjectCard } from './types';
@@ -5,8 +7,7 @@ import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-in
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Delete from '@/shared/assets/icons/delete.svg';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
-import { MainButton, Counter } from '@/shared/ui';
-import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
+import { MainButton, Counter, Toggler } from '@/shared/ui';
 
 export const FormCreateProjectCard: FC<IFormCreateProjectCard> = () => {
 	const [isEdit, setIsEdit] = useState(false);
@@ -14,10 +15,6 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = () => {
 
 	const handleIsEdit = () => {
 		setIsEdit(!isEdit);
-	};
-
-	const handleRecruitmentIsOpen = () => {
-		setRecruitmentIsOpen(!recruitmentIsOpen);
 	};
 
 	const handleDelete = () => {
@@ -84,9 +81,12 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = () => {
 					<Counter disabled={!recruitmentIsOpen} />
 					<div className={styles.config_toggle}>
 						<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
-						<ToggleCheckbox
-							variant="defaultOf"
-							onChange={handleRecruitmentIsOpen}
+						<Toggler
+							// variant={'default'}
+							checked={recruitmentIsOpen as boolean}
+							name={'allow_notifications'}
+							id={'allow_notifications'}
+							onChange={(evt) => setRecruitmentIsOpen(evt.target.checked)}
 						/>
 					</div>
 				</div>

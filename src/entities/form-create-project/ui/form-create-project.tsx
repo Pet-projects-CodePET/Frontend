@@ -1,26 +1,24 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import type { direction } from '@/entities/form-create-project/ui/types';
 import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types'; // import { useGetDirectionsQuery } from '@/services/ProjectService';
-import { Input, MainButton, CheckboxAndRadio, Toggler } from '@/shared/ui';
-
 import styles from './form-create-project.module.scss';
-import { useFormContext } from 'react-hook-form';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import Plus from '@/shared/assets/icons/plus-large.svg';
-import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
-import { FormCreateProjectCard } from '@/entities/form-create-project-card'; //todo когда сделают бекенд добавить это
+import { Input, MainButton, Toggler, CheckboxAndRadio } from '@/shared/ui';
+import { useFormContext } from 'react-hook-form';
+import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
+import { FormCreateProjectCard } from '@/entities/form-create-project-card';
 
 //todo когда сделают бекенд добавить это
 // const { data: directions } = useGetDirectionsQuery([]);
 // import { useGetDirectionsQuery } from '@/services/ProjectService';
 
 export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
-	// todo добавить в запрос токен или подождать когда бекенд его уберет
-	// const { data: directions } = useGetDirectionsQuery([]);
+	////todo добавить в запрос токен или подождать когда бекенд его уберет
+	////// const { data: directions } = useGetDirectionsQuery([]);
 	const directionsStatic = [
 		{
 			id: 1,
@@ -42,15 +40,15 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 			name: '10 часов в неделю',
 		},
 		{
-			id: 1,
+			id: 2,
 			name: '20 часов в неделю',
 		},
 		{
-			id: 1,
+			id: 3,
 			name: '30 часов в неделю',
 		},
 		{
-			id: 1,
+			id: 4,
 			name: '40 часов в неделю',
 		},
 	];
@@ -58,10 +56,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 	const { control } = useFormContext();
 
 	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
-
-	const handleRecruitmentIsOpen = () => {
-		setRecruitmentIsOpen(!recruitmentIsOpen);
-	};
 
 	return (
 		<div className={styles.container}>
@@ -83,13 +77,14 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 				<h3 className={styles.input_list_title}>Направление разработки</h3>
 				<ul className={styles.directions_list}>
 					{/* todo когда сделают бекенд изменить directionsStatic на directions */}
-					{directionsStatic.map((direction: direction, index: number) => (
+					{directionsStatic.map((direction, index: number) => (
 						<li className={styles.directions_item} key={index}>
 							<CheckboxAndRadio
 								labelName={direction.name}
-								name={`directions.${index}.`}
+								label={`directions.${index}.`}
 								type={'checkbox'}
 								id={`${index}`}
+								name={''}
 							/>
 						</li>
 					))}
@@ -100,17 +95,17 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 				<h3 className={styles.input_list_title}>Кто нужен в проект</h3>
 				<div className={styles.specialists_toggle}>
 					<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
-					{/*<ToggleCheckbox*/}
-					{/*	variant="defaultOf"*/}
-					{/*	onChange={handleRecruitmentIsOpen}*/}
-					{/*/>*/}
-
 					<Toggler
-						checked={recruitmentIsOpen}
-						onChange={handleRecruitmentIsOpen}
+						// variant={'default'}
+						checked={recruitmentIsOpen as boolean}
+						name={'allow_notifications'}
+						id={'allow_notifications'}
+						onChange={(evt) => setRecruitmentIsOpen(evt.target.checked)}
 					/>
 				</div>
+
 				<FormCreateProjectCard />
+
 				<SingleSelectInput
 					name={`project_specialists`}
 					label={'Специальность'}
@@ -119,6 +114,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 					description="Выберите одну специальность"
 					isSearchable
 				/>
+
 				<div>
 					<MultiSelectInput
 						name={`project_specialists`}
@@ -128,6 +124,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 						label={'Уровень квалификации'}
 					/>
 				</div>
+
 				<div>
 					<MultiSelectInput
 						name={`project_specialists`}
@@ -138,6 +135,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 						description="Выберите не более 15 навыков"
 					/>
 				</div>
+
 				<div className={styles.specialists_buttons}>
 					<MainButton
 						variant="secondary"
@@ -156,14 +154,16 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 				<h3 className={styles.input_list_title}>Занятость</h3>
 				<ul className={styles.employment_list}>
 					{/* todo когда сделают бекенд изменить directionsStatic на directions */}
-					{busynessStatic.map((busyness: direction, index: number) => (
-						<CheckboxAndRadio
-							key={index}
-							labelName={busyness.name}
-							name={`employment`}
-							type="radio"
-							id={`busyness-${index}`}
-						/>
+					{busynessStatic.map((busyness, index: number) => (
+						<li className={styles.directions_item} key={index}>
+							<CheckboxAndRadio
+								labelName={busyness.name}
+								label={`directions.${index}.`}
+								type={'checkbox'}
+								id={`${index}`}
+								name={''}
+							/>
+						</li>
 					))}
 				</ul>
 			</div>
