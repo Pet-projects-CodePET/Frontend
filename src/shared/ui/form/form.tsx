@@ -18,9 +18,7 @@ export const Form: FC<FormProps> = ({
 		resolver: schema ? yupResolver(schema) : undefined,
 	});
 
-	const {
-		handleSubmit,
-	} = methods;
+	const { handleSubmit } = methods;
 
 	return (
 		<FormProvider {...methods}>

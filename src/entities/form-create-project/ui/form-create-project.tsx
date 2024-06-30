@@ -3,12 +3,11 @@
 import React, { FC, useState } from 'react';
 import type { direction } from '@/entities/form-create-project/ui/types';
 import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types'; // import { useGetDirectionsQuery } from '@/services/ProjectService';
-import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui';
+import { Input, MainButton, CheckboxAndRadio, Toggler } from '@/shared/ui';
 
 import styles from './form-create-project.module.scss';
 import { useFormContext } from 'react-hook-form';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import Plus from '@/shared/assets/icons/plus-large.svg';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
@@ -20,7 +19,7 @@ import { FormCreateProjectCard } from '@/entities/form-create-project-card'; //t
 // import { useGetDirectionsQuery } from '@/services/ProjectService';
 
 export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
-	//todo добавить в запрос токен или подождать когда бекенд его уберет
+	// todo добавить в запрос токен или подождать когда бекенд его уберет
 	// const { data: directions } = useGetDirectionsQuery([]);
 	const directionsStatic = [
 		{
@@ -101,8 +100,13 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 				<h3 className={styles.input_list_title}>Кто нужен в проект</h3>
 				<div className={styles.specialists_toggle}>
 					<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
-					<ToggleCheckbox
-						variant="defaultOf"
+					{/*<ToggleCheckbox*/}
+					{/*	variant="defaultOf"*/}
+					{/*	onChange={handleRecruitmentIsOpen}*/}
+					{/*/>*/}
+
+					<Toggler
+						checked={recruitmentIsOpen}
 						onChange={handleRecruitmentIsOpen}
 					/>
 				</div>

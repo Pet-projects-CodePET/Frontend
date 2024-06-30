@@ -90,22 +90,22 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					</div>
 
 					<div className={styles.info__personStatus__small}>
-							{readyToParticipate ? (
-								<>
-									<ActivityIcon />
-									<p className={styles.info__statusTitle}>
-										не готов(а) к участию в проекте
-									</p>
-								</>
-							) : (
-								<>
-									<ActivityIcon />
-									<p className={styles.info__statusTitle}>
-										готов(а) к участию в проекте
-									</p>
-								</>
-							)}
-						</div>
+						{readyToParticipate ? (
+							<>
+								<ActivityIcon />
+								<p className={styles.info__statusTitle}>
+									не готов(а) к участию в проекте
+								</p>
+							</>
+						) : (
+							<>
+								<ActivityIcon />
+								<p className={styles.info__statusTitle}>
+									готов(а) к участию в проекте
+								</p>
+							</>
+						)}
+					</div>
 					<h3 className={styles.info__title}>Навыки</h3>
 					<ul className={styles.info__skillsList}>
 						{specialists[0]?.skills.map((skill, index) => {
