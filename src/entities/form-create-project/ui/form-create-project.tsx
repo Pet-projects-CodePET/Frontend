@@ -15,86 +15,12 @@ import {
 	useGetProfessionsQuery,
 	useGetSkillsQuery,
 } from '@/services/ProjectService';
+import { LEVEL, BUSYNESS, CONTACTS } from '@/utils/constants';
 
 export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 	const { data: professions } = useGetProfessionsQuery([]);
 	const { data: skills } = useGetSkillsQuery([]);
-
-	const busynessStatic = [
-		{
-			id: 1,
-			name: '10 часов в неделю',
-		},
-		{
-			id: 2,
-			name: '20 часов в неделю',
-		},
-		{
-			id: 3,
-			name: '30 часов в неделю',
-		},
-		{
-			id: 4,
-			name: '40 часов в неделю',
-		},
-	];
-
-	const levelStatic = [
-		{
-			label: 'Junior',
-			value: 'Junior',
-		},
-		{
-			label: 'Middle',
-			value: 'Middle',
-		},
-		{
-			label: 'Senior',
-			value: 'Senior',
-		},
-		{
-			label: 'Lead',
-			value: 'Lead',
-		},
-	];
-
-	const contactsStatic = [
-		{
-			label: 'telegram',
-			value: 'telegram',
-		},
-		{
-			label: 'email',
-			value: 'email',
-		},
-		{
-			label: 'phone',
-			value: 'phone',
-		},
-	];
-
-	console.log(
-		`professions --> `,
-		professions?.map((profession: { id: number; specialization: string }) => {
-			return {
-				label: profession.specialization,
-				value: profession.specialization,
-			};
-		})
-	);
-
-	console.log(
-		`skills --> `,
-		skills?.map((skill: { id: number; name: string }) => {
-			return {
-				label: skill.name,
-				value: skill.name,
-			};
-		})
-	);
-
 	const { control } = useFormContext();
-
 	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
 
 	return (
@@ -121,10 +47,10 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 							<li className={styles.directions_item} key={index}>
 								<CheckboxAndRadio
 									labelName={profession.specialty}
-									label={`directions.${index}.`}
+									label={`professions`}
 									type={'checkbox'}
-									id={`${index}`}
-									name={''}
+									id={`professions_${index}`}
+									name={'professions'}
 								/>
 							</li>
 						)
@@ -137,7 +63,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 				<div className={styles.specialists_toggle}>
 					<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
 					<Toggler
-						// variant={'default'}
 						checked={recruitmentIsOpen as boolean}
 						name={'allow_notifications'}
 						id={'allow_notifications'}
@@ -167,7 +92,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 					<MultiSelectInput
 						name={`project_specialists`}
 						onChange={() => {}}
-						options={levelStatic}
+						options={LEVEL}
 						values={[]}
 						label={'Уровень квалификации'}
 						isSearchable
@@ -195,14 +120,14 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 				<div className={styles.employment}>
 					<h3 className={styles.input_list_title}>Занятость</h3>
 					<ul className={styles.employment_list}>
-						{busynessStatic.map((busyness, index: number) => (
+						{BUSYNESS.map((busyness, index: number) => (
 							<li className={styles.directions_item} key={index}>
 								<CheckboxAndRadio
 									labelName={busyness.name}
-									label={`directions.${index}.`}
+									label={`busyness`}
 									type={'checkbox'}
-									id={`${index}`}
-									name={''}
+									id={`busyness_${index}.`}
+									name={'busyness'}
 								/>
 							</li>
 						))}
@@ -229,7 +154,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 						<SingleSelectInput
 							name={`project_specialists`}
 							onChange={() => {}}
-							options={contactsStatic}
+							options={CONTACTS}
 							description={'Выберите ресурс'}
 						/>
 						<Input name="name" className={styles.input_extra} />
