@@ -1,6 +1,5 @@
 import ActivityIcon from './icons/activity-icon.svg';
 import ActivityIconRed from './icons/activity-icon-red.svg';
-import ActivityIconGreen from './icons/activity-icon-green.svg';
 import CalendarIcon from './icons/calendar-icon.svg';
 import CloseIcon from './icons/close-icon.svg';
 import FilterIcon from './icons/filter-icon.svg';
@@ -42,7 +41,6 @@ export {
 	Capitals,
 	ActivityIcon,
 	ActivityIconRed,
-	ActivityIconGreen,
 	ArrowLeftIcon,
 	CalendarIcon,
 	CloseIcon,

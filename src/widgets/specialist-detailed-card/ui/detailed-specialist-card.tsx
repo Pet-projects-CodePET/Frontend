@@ -5,6 +5,7 @@ import React, { FC } from 'react';
 import { LikeButtonFeature } from '@/features';
 import {
 	ActivityIcon,
+	ActivityIconRed,
 	MailIcon,
 	MobileIcon,
 	TelegramIcon,
@@ -41,14 +42,19 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						<h2 className={styles.info__name}>{name}</h2>
 						<p className={styles.info__nickname}>@{userName}</p>
 						<div className={styles.info__role}>
-							<div>{specialists[0].profession.specialization},</div>
-							<div>{specialists[0].profession.specialty},</div>
+							<div>
+								{specialists[0] &&
+									`${specialists[0].profession.specialization},`}
+							</div>
+							<div>
+								{specialists[0] && `${specialists[0].profession.specialty},`}
+							</div>
 							<div>
 								{clsx(
-									specialists[0].level === 1 && 'Junior',
-									specialists[0].level === 2 && 'Middle',
-									specialists[0].level === 3 && 'Senior',
-									specialists[0].level === 4 && 'Lead'
+									specialists[0] && specialists[0].level === 1 && 'Junior',
+									specialists[0] && specialists[0].level === 2 && 'Middle',
+									specialists[0] && specialists[0].level === 3 && 'Senior',
+									specialists[0] && specialists[0].level === 4 && 'Lead'
 								)}
 							</div>
 						</div>
@@ -57,14 +63,14 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<>
 									<ActivityIcon />
 									<p className={styles.info__statusTitle}>
-										не готов(а) к участию в проекте
+										готов(а) к участию в проекте
 									</p>
 								</>
 							) : (
 								<>
-									<ActivityIcon />
+									<ActivityIconRed />
 									<p className={styles.info__statusTitle}>
-										готов(а) к участию в проекте
+										не готов(а) к участию в проекте
 									</p>
 								</>
 							)}
@@ -77,45 +83,48 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 
 				<div className={styles.specialist__info}>
 					<div className={styles.info__role__small}>
-						<div>{specialists[0].profession.specialization},</div>
-						<div>{specialists[0].profession.specialty},</div>
+						<div>
+							{specialists[0] && specialists[0].profession.specialization},
+						</div>
+						<div>{specialists[0] && specialists[0].profession.specialty},</div>
 						<div>
 							{clsx(
-								specialists[0].level === 1 && 'Junior',
-								specialists[0].level === 2 && 'Middle',
-								specialists[0].level === 3 && 'Senior',
-								specialists[0].level === 4 && 'Lead'
+								specialists[0] && specialists[0].level === 1 && 'Junior',
+								specialists[0] && specialists[0].level === 2 && 'Middle',
+								specialists[0] && specialists[0].level === 3 && 'Senior',
+								specialists[0] && specialists[0].level === 4 && 'Lead'
 							)}
 						</div>
 					</div>
 
 					<div className={styles.info__personStatus__small}>
-							{readyToParticipate ? (
-								<>
-									<ActivityIcon />
-									<p className={styles.info__statusTitle}>
-										не готов(а) к участию в проекте
-									</p>
-								</>
-							) : (
-								<>
-									<ActivityIcon />
-									<p className={styles.info__statusTitle}>
-										готов(а) к участию в проекте
-									</p>
-								</>
-							)}
-						</div>
+						{readyToParticipate ? (
+							<>
+								<ActivityIcon />
+								<p className={styles.info__statusTitle}>
+									готов(а) к участию в проекте
+								</p>
+							</>
+						) : (
+							<>
+								<ActivityIconRed />
+								<p className={styles.info__statusTitle}>
+									не готов(а) к участию в проекте
+								</p>
+							</>
+						)}
+					</div>
 					<h3 className={styles.info__title}>Навыки</h3>
 					<ul className={styles.info__skillsList}>
-						{specialists[0]?.skills.map((skill, index) => {
-							return (
-								<li className={styles.info__skill} key={skill.id}>
-									{skill.name}
-									{index < specialists[0]?.skills.length - 1 && ', '}
-								</li>
-							);
-						})}
+						{specialists[0] &&
+							specialists[0]?.skills.map((skill, index) => {
+								return (
+									<li className={styles.info__skill} key={skill.id}>
+										{skill.name}
+										{index < specialists[0]?.skills.length - 1 && ', '}
+									</li>
+								);
+							})}
 					</ul>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>О себе</h3>
@@ -124,18 +133,21 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Ссылка на портфолио</h3>
 						<a className={styles.info__contacts} href={portfolioLink}>
-							behance
+							{portfolioLink}
 						</a>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Контакты для связи</h3>
 						<div className={styles.info__sideText}>
-							<a
-								className={styles.info__contacts}
-								href={`https://mailto:${email}`}>
+							<div className={styles.info__contacs__wrapper}>
 								<MailIcon className={styles.info__icons} />
-								{email}
-							</a>
+
+								<a
+									className={styles.info__contacts}
+									href={`https://mailto:${email}`}>
+									{email}
+								</a>
+							</div>
 							<a className={styles.info__contacts} href={phoneNumber}>
 								<MobileIcon className={styles.info__icons} />
 								{phoneNumber}
@@ -165,7 +177,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Проекты</h3>
-						{projects.map((project) => (
+						{projects.slice(0, 5).map((project) => (
 							<a
 								href={project.name}
 								className={styles.info__contacts}

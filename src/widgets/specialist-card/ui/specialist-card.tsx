@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import StatusIcon from '@/shared/assets/icons/activity-icon.svg';
 import { SpecialistCardType } from './type';
 import { LikeButtonFeature } from '@/features';
 import styles from './specialist-card.module.scss';
@@ -7,6 +6,7 @@ import Link from 'next/link';
 import { InviteSpecialist } from '@/widgets/invite-specialist';
 import { AvatarImage } from '@/entities/_avatar-image';
 import clsx from 'clsx';
+import { ActivityIcon, ActivityIconRed } from '@/shared/assets';
 
 export const SpecialistCard: FC<SpecialistCardType> = ({
 	userId,
@@ -29,14 +29,14 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 							<div className={styles.info__personStatus}>
 								{readyToParticipate ? (
 									<>
-										<StatusIcon className={styles.info__statusIcon} />
+										<ActivityIcon />
 										<p className={styles.info__statusTitle}>
 											готов(а) к участию в проекте
 										</p>
 									</>
 								) : (
 									<>
-										<StatusIcon className={styles.info__statusIconRed} />
+										<ActivityIconRed />
 										<p className={styles.info__statusTitle}>
 											не готов(а) к участию в проекте
 										</p>
@@ -97,7 +97,6 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 									})}
 								</ul>
 							</div>
-
 						</>
 					) : (
 						<>
