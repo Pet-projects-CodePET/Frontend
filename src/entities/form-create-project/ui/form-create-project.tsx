@@ -11,28 +11,14 @@ import { Input, MainButton, Toggler, CheckboxAndRadio } from '@/shared/ui';
 import { useFormContext } from 'react-hook-form';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { FormCreateProjectCard } from '@/entities/form-create-project-card';
-
-//todo когда сделают бекенд добавить это
-// const { data: directions } = useGetDirectionsQuery([]);
-// import { useGetDirectionsQuery } from '@/services/ProjectService';
+import {
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
+} from '@/services/ProjectService';
 
 export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
-	////todo добавить в запрос токен или подождать когда бекенд его уберет
-	////// const { data: directions } = useGetDirectionsQuery([]);
-	const directionsStatic = [
-		{
-			id: 1,
-			name: 'Десктоп',
-		},
-		{
-			id: 2,
-			name: 'Мобильная',
-		},
-		{
-			id: 3,
-			name: 'Веб',
-		},
-	];
+	const { data: professions } = useGetProfessionsQuery([]);
+	const { data: skills } = useGetSkillsQuery([]);
 
 	const busynessStatic = [
 		{
@@ -52,6 +38,60 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 			name: '40 часов в неделю',
 		},
 	];
+
+	const levelStatic = [
+		{
+			label: 'Junior',
+			value: 'Junior',
+		},
+		{
+			label: 'Middle',
+			value: 'Middle',
+		},
+		{
+			label: 'Senior',
+			value: 'Senior',
+		},
+		{
+			label: 'Lead',
+			value: 'Lead',
+		},
+	];
+
+	const contactsStatic = [
+		{
+			label: 'telegram',
+			value: 'telegram',
+		},
+		{
+			label: 'email',
+			value: 'email',
+		},
+		{
+			label: 'phone',
+			value: 'phone',
+		},
+	];
+
+	console.log(
+		`professions --> `,
+		professions?.map((profession: { id: number; specialization: string }) => {
+			return {
+				label: profession.specialization,
+				value: profession.specialization,
+			};
+		})
+	);
+
+	console.log(
+		`skills --> `,
+		skills?.map((skill: { id: number; name: string }) => {
+			return {
+				label: skill.name,
+				value: skill.name,
+			};
+		})
+	);
 
 	const { control } = useFormContext();
 
@@ -76,18 +116,19 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 			<div className={styles.directions}>
 				<h3 className={styles.input_list_title}>Направление разработки</h3>
 				<ul className={styles.directions_list}>
-					{/* todo когда сделают бекенд изменить directionsStatic на directions */}
-					{directionsStatic.map((direction, index: number) => (
-						<li className={styles.directions_item} key={index}>
-							<CheckboxAndRadio
-								labelName={direction.name}
-								label={`directions.${index}.`}
-								type={'checkbox'}
-								id={`${index}`}
-								name={''}
-							/>
-						</li>
-					))}
+					{professions?.map(
+						(profession: { id: number; specialty: string }, index: number) => (
+							<li className={styles.directions_item} key={index}>
+								<CheckboxAndRadio
+									labelName={profession.specialty}
+									label={`directions.${index}.`}
+									type={'checkbox'}
+									id={`${index}`}
+									name={''}
+								/>
+							</li>
+						)
+					)}
 				</ul>
 			</div>
 
@@ -110,7 +151,14 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 					name={`project_specialists`}
 					label={'Специальность'}
 					onChange={() => {}}
-					options={[]}
+					options={professions?.map(
+						(profession: { id: number; specialization: string }) => {
+							return {
+								label: profession.specialization,
+								value: profession.specialization,
+							};
+						}
+					)}
 					description="Выберите одну специальность"
 					isSearchable
 				/>
@@ -119,21 +167,73 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 					<MultiSelectInput
 						name={`project_specialists`}
 						onChange={() => {}}
-						options={[]}
+						options={levelStatic}
 						values={[]}
 						label={'Уровень квалификации'}
+						isSearchable
 					/>
 				</div>
 
 				<div>
 					<MultiSelectInput
+						isSearchable
 						name={`project_specialists`}
 						onChange={() => {}}
-						options={[]}
+						options={skills?.map((skill: { id: number; name: string }) => {
+							return {
+								label: skill.name,
+								value: skill.name,
+							};
+						})}
 						values={[]}
 						label={'Навыки'}
 						description="Выберите не более 15 навыков"
+						maxSelections={15}
 					/>
+				</div>
+
+				<div className={styles.employment}>
+					<h3 className={styles.input_list_title}>Занятость</h3>
+					<ul className={styles.employment_list}>
+						{busynessStatic.map((busyness, index: number) => (
+							<li className={styles.directions_item} key={index}>
+								<CheckboxAndRadio
+									labelName={busyness.name}
+									label={`directions.${index}.`}
+									type={'checkbox'}
+									id={`${index}`}
+									name={''}
+								/>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<div className={styles.dates}>
+					<h3 className={styles.input_list_title}>Сроки проекты</h3>
+					<div className={styles.dates_inputs}>
+						<div className={styles.dates_input}>
+							<p className={styles.dates_text}>Начало</p>
+							<DatePickerRHF control={control} name="start" />
+						</div>
+						<div className={styles.dates_input}>
+							<p className={styles.dates_text}>Окончание</p>
+							<DatePickerRHF control={control} name="end" />
+						</div>
+					</div>
+				</div>
+
+				<div className={styles.contacts}>
+					<h3 className={styles.input_list_title}>Контакты для связи</h3>
+					<div className={styles.contacts_selects}>
+						<SingleSelectInput
+							name={`project_specialists`}
+							onChange={() => {}}
+							options={contactsStatic}
+							description={'Выберите ресурс'}
+						/>
+						<Input name="name" className={styles.input_extra} />
+					</div>
 				</div>
 
 				<div className={styles.specialists_buttons}>
@@ -147,51 +247,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 					<MainButton variant="trivial" width="regular" onClick={() => ({})}>
 						Сбросить
 					</MainButton>
-				</div>
-			</div>
-
-			<div className={styles.employment}>
-				<h3 className={styles.input_list_title}>Занятость</h3>
-				<ul className={styles.employment_list}>
-					{/* todo когда сделают бекенд изменить directionsStatic на directions */}
-					{busynessStatic.map((busyness, index: number) => (
-						<li className={styles.directions_item} key={index}>
-							<CheckboxAndRadio
-								labelName={busyness.name}
-								label={`directions.${index}.`}
-								type={'checkbox'}
-								id={`${index}`}
-								name={''}
-							/>
-						</li>
-					))}
-				</ul>
-			</div>
-
-			<div className={styles.dates}>
-				<h3 className={styles.input_list_title}>Сроки проекты</h3>
-				<div className={styles.dates_inputs}>
-					<div className={styles.dates_input}>
-						<p className={styles.dates_text}>Начало</p>
-						<DatePickerRHF control={control} name="start" />
-					</div>
-					<div className={styles.dates_input}>
-						<p className={styles.dates_text}>Окончание</p>
-						<DatePickerRHF control={control} name="end" />
-					</div>
-				</div>
-			</div>
-
-			<div className={styles.contacts}>
-				<h3 className={styles.input_list_title}>Контакты для связи</h3>
-				<div className={styles.contacts_selects}>
-					<SingleSelectInput
-						name={`project_specialists`}
-						onChange={() => {}}
-						options={[]}
-						description={'Выберите ресурс'}
-					/>
-					<Input name="name" className={styles.input_extra} />
 				</div>
 			</div>
 
