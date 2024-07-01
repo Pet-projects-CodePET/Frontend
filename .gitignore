@@ -17,6 +17,10 @@
 # production
 /build
 
+# currently working and debagging
+
+src/features/custom-pagination
+
 # misc
 .DS_Store
 *.pem
