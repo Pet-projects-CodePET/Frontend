@@ -184,7 +184,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						<h3 className={styles.info__title}>Проекты</h3>
 						{projects.slice(0, 5).map((project) => (
 							<a
-								href={project.name}
+								href={`/projects/${project.id}`}
 								className={styles.info__contacts}
 								key={project.id}>
 								{project.name}
