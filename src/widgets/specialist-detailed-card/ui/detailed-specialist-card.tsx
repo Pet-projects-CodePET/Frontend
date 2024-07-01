@@ -141,24 +141,29 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						<div className={styles.info__sideText}>
 							<div className={styles.info__contacs__wrapper}>
 								<MailIcon className={styles.info__icons} />
-
 								<a
 									className={styles.info__contacts}
 									href={`https://mailto:${email}`}>
 									{email}
 								</a>
 							</div>
-							<a className={styles.info__contacts} href={phoneNumber}>
+							<div className={styles.info__contacs__wrapper}>
 								<MobileIcon className={styles.info__icons} />
-								{phoneNumber}
-							</a>
-							<a
-								className={styles.info__contacts}
-								href={`https://t.me/${telegramNick}`}>
+
+								<a className={styles.info__contacts} href={phoneNumber}>
+									{phoneNumber}
+								</a>
+							</div>
+
+							<div className={styles.info__contacs__wrapper}>
 								<TelegramIcon className={styles.info__icons} />
 
-								{telegramNick}
-							</a>
+								<a
+									className={styles.info__contacts}
+									href={`https://t.me/${telegramNick}`}>
+									{telegramNick}
+								</a>
+							</div>
 						</div>
 					</div>
 					<div className={styles.info__wrapper}>
