@@ -15,7 +15,6 @@ export type SpecialistInfoQueryType = {
 			skills: [{ id: number; name: string }];
 		},
 	];
-	is_favorite?: string;
 	about: string;
 	portfolio_link: string;
 	birthday: number;

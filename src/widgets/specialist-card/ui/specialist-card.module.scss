@@ -5,10 +5,17 @@
 	margin: 0;
 	font-style: normal;
 }
+
+%secondaryText {
+	color: $--Foreground-muted;
+	font-family: $--open-sans-font;
+	margin: 0;
+	font-style: normal;
+}
 .specialist {
 	display: flex;
 	border-radius: 12px;
-	border: 1px solid #e2e8f0;
+	border: 2px solid $--border-default;
 	padding: 32px;
 
 	&__info {
@@ -27,6 +34,9 @@
 		display: flex;
 		gap: 16px;
 		border-bottom: 1px solid $--Foreground-subtitle;
+		padding-bottom: 16px;
+		margin-bottom: 16px;
+
 		position: relative;
 	}
 	&__personImage {
@@ -44,11 +54,6 @@
 		gap: 8px;
 		align-items: center;
 	}
-	&__statusIcon {
-		width: 16px;
-		height: 16px;
-		color: $--Colors-Pastel-Green;
-	}
 	&__statusTitle {
 		@extend %baseText;
 		color: $--foreground-muted;
@@ -64,25 +69,24 @@
 		line-height: 30px;
 	}
 	&__nickname {
-		@extend %baseText;
+		@extend %secondaryText;
 		font-size: 16px;
 		font-weight: 700;
 		line-height: normal;
 		letter-spacing: 0.25px;
-		margin-bottom: 16px;
 	}
 	&__role {
 		@extend %baseText;
 		font-size: 16px;
 		font-weight: 700;
 		line-height: normal;
-		margin-top: 16px;
+		// margin-top: 16px;
 	}
 	&__skillsList {
 		display: flex;
 		flex-wrap: wrap;
-		padding: 9px 0 0;
-		margin: 0 0 24px 0;
+		padding: 12px 0 0;
+		margin: 0 0 16px 0;
 		list-style: none;
 	}
 	&__skill {

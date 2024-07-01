@@ -6,8 +6,9 @@
 	margin: 0;
 	font-style: normal;
 }
+
 %secondaryText {
-	color: rgba(0, 0, 0, 0.5);
+	color: $--Foreground-muted;
 	font-family: $--open-sans-font;
 	margin: 0;
 	font-style: normal;
@@ -15,9 +16,8 @@
 .specialist {
 	display: flex;
 	border-radius: 12px;
-	border: 1px solid #e2e8f0;
+	border: 2px solid $--border-default;
 	height: auto;
-	min-width: auto;
 	padding: 32px;
 	margin-bottom: 32px;
 	flex-wrap: wrap;
@@ -123,6 +123,7 @@
 	}
 	&__sideText {
 		@extend %baseText;
+		max-width: 1096px;
 		font-size: 16px;
 		font-weight: 400;
 		display: flex;
@@ -131,17 +132,26 @@
 	}
 	&__wrapper {
 		margin-bottom: 32px;
+		max-width: 100%;
 	}
-	&__contacts__wrapper {
-		margin-bottom: 16px;
+
+	&__contacs__wrapper {
+		display: flex;
+
 	}
+
 	&__contacts {
 		@extend %baseText;
 		font-size: 16px;
+		width: 280px;
+
+		overflow: hidden;
+		white-space: nowrap;
 		font-weight: 400;
 		color: #0075ff;
 		display: flex;
 		align-items: center;
+		justify-content: start;
 		margin: 0 8px 8px 0;
 	}
 	&__icons {
@@ -178,13 +188,12 @@
 		&__personDescription {
 			justify-content: start;
 			gap: 8px;
-
 		}
 		&__name {
 			font-size: 20px;
 			font-weight: 700;
 		}
-		
+
 		&__avatar {
 			margin-right: 8px;
 		}

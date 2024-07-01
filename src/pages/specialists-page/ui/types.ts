@@ -1,9 +1,8 @@
-export type SpecialistCardType = {
-	userId: number;
+export type SpecialistType = {
+	user_id: number;
 	avatar: string;
-	userName: string;
 	name: string;
-	readyToParticipate: boolean;
+	username: string;
 	specialists: [
 		{
 			id: number;
@@ -26,4 +25,5 @@ export type SpecialistCardType = {
 			skills?: [{ id: number; name: string }];
 		},
 	];
+	ready_to_participate: boolean;
 };
