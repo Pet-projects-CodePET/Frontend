@@ -15,3 +15,4 @@ export { Person } from './person/person';
 export { VacancyCard } from './vacancy-card/vacancy-card';
 export { Toggler } from './toggler/toggler';
 export { Loader } from './loader/loader';
+export { ContactCard } from './contact-card/contact-card';
