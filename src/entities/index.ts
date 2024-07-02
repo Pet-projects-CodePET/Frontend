@@ -1,5 +1,4 @@
 export { BurgerNavBar } from './burger-nav-bar';
-export { ContactCard } from './contact-card';
 export { DeleteAccount } from './delete-account';
 export { FormChangePassword } from './form-change-password';
 export { FormFieldsLogin } from './form-login';
