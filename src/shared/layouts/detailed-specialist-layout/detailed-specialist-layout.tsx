@@ -11,7 +11,7 @@ export const DetailedSpecialistLayout = ({
 	return (
 		<>
 			<section className={styles.pageContainer}>
-				<Header isLoggedIn={true} />
+				<Header isLoggedIn={false} />
 
 				{children}
 			</section>
