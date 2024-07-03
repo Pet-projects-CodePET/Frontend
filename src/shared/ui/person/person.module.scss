@@ -30,4 +30,8 @@
 	white-space: nowrap;
 	border-radius: 20px;
 	letter-spacing: 0.25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 116px;
+	box-sizing: border-box;
 }
