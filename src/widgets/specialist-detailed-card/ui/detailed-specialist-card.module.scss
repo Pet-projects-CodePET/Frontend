@@ -13,21 +13,13 @@
 	margin: 0;
 	font-style: normal;
 }
-.specialist {
-	display: flex;
-	border-radius: 12px;
-	border: 2px solid $--border-default;
-	height: auto;
-	padding: 32px;
-	margin-bottom: 32px;
-	flex-wrap: wrap;
-
-	&__info {
+	
+.specialist__info {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-	}
 }
+
 .info {
 	&__person {
 		display: flex;

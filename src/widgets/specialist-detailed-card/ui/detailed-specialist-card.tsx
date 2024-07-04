@@ -12,6 +12,7 @@ import {
 } from '@/shared/assets';
 import clsx from 'clsx';
 import { InviteSpecialist } from '@/widgets/invite-specialist';
+import { BlankCard } from '@/shared/ui';
 
 export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	avatar,
@@ -30,7 +31,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	projects,
 }) => {
 	return (
-		<article className={styles.specialist}>
+		<BlankCard>
 			<div className={styles.specialist__info}>
 				<div className={styles.info__person}>
 					<AvatarImage
@@ -194,6 +195,6 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					<InviteSpecialist />
 				</div>
 			</div>
-		</article>
+		</BlankCard>
 	);
 };
