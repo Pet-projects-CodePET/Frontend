@@ -121,3 +121,7 @@
 	@extend %text, %tag;
 	border: 1px solid #e2e8f0;
 }
+.linkProject {
+	text-decoration: none;
+	color: $--Foreground-default;	
+}

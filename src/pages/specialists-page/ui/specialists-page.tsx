@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { SpecialistCard } from '@/widgets/specialist-card';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
@@ -19,19 +19,17 @@ import { useGetAllSpecialistsDataQuery } from '@/services/SpecialistService';
 import { SpecialistType } from './types';
 
 export const Specialists = () => {
-	// const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const pageSize = 7;
 
-	// useEffect(() => {
-	// 	const { 1: urlToken } = window.location.hash.split('#/login/');
-	// 	if (urlToken) {
-	// 		localStorage.setItem('token', urlToken);
-	// 	}
+	const [currentPage, setCurrentPage] = useState(1);
 
-	// 	const token = localStorage.getItem('token');
-	// 	if (token) {
-	// 		setIsLoggedIn(true);
-	// 	}
-	// }, []);
+	useEffect(() => {
+		window.scroll({
+			top: 0,
+			left: 0,
+		  });
+	}, [currentPage]);
+
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const handleStatusChange = (selectedOptions: (string | object)[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
@@ -46,10 +44,6 @@ export const Specialists = () => {
 		console.info('selected options: ', selectedItems);
 		console.log(currentData);
 	};
-
-	const pageSize = 7;
-
-	const [currentPage, setCurrentPage] = useState(1);
 
 	const { data: specialistArray } = useGetAllSpecialistsDataQuery(currentPage);
 

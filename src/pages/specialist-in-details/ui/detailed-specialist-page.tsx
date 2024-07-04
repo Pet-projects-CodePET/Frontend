@@ -2,9 +2,9 @@ import React from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
 import { axiosInstance } from '@/utils/axios-query/axiosInstance';
 import { SpecialistInfoQueryType } from './types';
-import styles from './detailed-specialist-page.module.scss';
-import Link from 'next/link';
-import { ArrowLeftIcon } from '@/shared/assets';
+// import styles from './detailed-specialist-page.module.scss';
+// import Link from 'next/link';
+// import { ArrowLeftIcon } from '@/shared/assets';
 
 export const DetailedSpecialistPage = async ({
 	params,
@@ -17,10 +17,10 @@ export const DetailedSpecialistPage = async ({
 
 	return (
 		<>
-			<Link href="/specialists" className={styles.linkContainer}>
+			{/* <Link href="/specialists" className={styles.linkContainer}>
 				<ArrowLeftIcon className={styles.arrow} />
 				<p className={styles.link}>Специалисты</p>
-			</Link>
+			</Link> */}
 			<>
 				<DetailedSpecialistCard
 					avatar={response?.avatar || ""}
