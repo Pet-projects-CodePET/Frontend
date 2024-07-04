@@ -104,7 +104,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Контакты</h3>
-						<Link href="#" target="_blank" className={styles.descriptionLink}>
+						<Link href="#" className={styles.descriptionLink}>
 							{phone_number}
 						</Link>
 					</div>
