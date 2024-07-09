@@ -1,6 +1,7 @@
 @import '@/shared/style/variables.scss';
 
 .card {
+	width: auto;
     display: flex;
 	border-radius: 12px;
 	border: 2px solid $--border-default;

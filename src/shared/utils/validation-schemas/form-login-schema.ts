@@ -1,32 +1,30 @@
-import * as yup from 'yup';
+import { z } from 'zod';
+import {
+	emailRegex1,
+	emailRegex2,
+	emailRegex3,
+	passwordRegex,
+} from '@/utils/regex-consts';
 
-const schema = yup.object().shape({
-	email: yup
+const schema = z.object({
+	email: z
 		.string()
-		.required('Поле обязательно для заполнения')
-		.email('Проверьте правильность ввода')
+		.min(1, { message: 'Поле обязательно для заполнения' })
+		.email({ message: 'Проверьте правильность ввода' })
+		.min(6, { message: 'Проверьте правильность ввода' })
+		.max(256, { message: 'Проверьте правильность ввода' })
 		.trim()
-		.min(6, 'Проверьте правильность ввода')
-		.max(256, 'Проверьте правильность ввода')
-		.matches(
-			/^[a-zA-Z0-9][a-zA-Z0-9_.-]*[a-zA-Z0-9]@[a-zA-Z0-9-]+(?:\.[a-zA-Zа-яА-Я0-9-]+)*\.[a-zA-Zа-яА-Я-]{2,}$/,
-			'Проверьте правильность ввода'
-		)
-		.matches(
-			/^[^/[!"#$%&'()*+,/:;<=>?[\\\]^`{|}~\u2116\u0024\u20AC\u00A3\u00A5\u20BD\u00A9\u2122\u00AE]*$/,
-			'Проверьте правильность ввода'
-		)
-		.matches(/^[a-zA-Zа-яА-Я0-9-._@]*$/, 'Только буквы (A-z, А-я), цифры (0-9)')
-		.max(256, 'Проверьте правильность ввода'),
-	password: yup
+		.regex(emailRegex1, { message: 'Проверьте правильность ввода' })
+		.regex(emailRegex2, { message: 'Проверьте правильность ввода' })
+		.regex(emailRegex3, { message: 'Только буквы (A-z, А-я), цифры (0-9)' }),
+
+	password: z
 		.string()
 		.trim()
-		.required('Поле обязательно для заполнения')
-		.min(8, 'Проверьте правильность ввода')
-		.max(20, 'Проверьте правильность ввода')
-		.matches(
-			/[a-zA-Zа-яА-Я0-9!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~\u2116\u0024\u20AC\u00A3\u00A5\u20BD\u00A9\u2122\u00AE]$/,
-			'Проверьте правильность ввода'
-		),
+		.min(1, { message: 'Поле обязательно для заполнения' })
+		.min(8, { message: 'Длина поля от 8 до 20 символов' })
+		.max(20, { message: 'Длина поля от 8 до 20 символов' })
+		.regex(passwordRegex, { message: 'Проверьте правильность ввода' }),
 });
+
 export default schema;
