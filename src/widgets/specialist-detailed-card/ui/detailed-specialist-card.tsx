@@ -42,23 +42,6 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					<div className={styles.info__personDescription}>
 						<h2 className={styles.info__name}>{name}</h2>
 						<p className={styles.info__nickname}>@{userName}</p>
-						<div className={styles.info__role}>
-							<div>
-								{specialists[0] &&
-									`${specialists[0].profession.specialization},`}
-							</div>
-							<div>
-								{specialists[0] && `${specialists[0].profession.specialty},`}
-							</div>
-							<div>
-								{clsx(
-									specialists[0] && specialists[0].level === 1 && 'Junior',
-									specialists[0] && specialists[0].level === 2 && 'Middle',
-									specialists[0] && specialists[0].level === 3 && 'Senior',
-									specialists[0] && specialists[0].level === 4 && 'Lead'
-								)}
-							</div>
-						</div>
 						<div className={styles.info__personStatus}>
 							{readyToParticipate ? (
 								<>
@@ -83,11 +66,14 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 				</div>
 
 				<div className={styles.specialist__info}>
-					<div className={styles.info__role__small}>
+					<h3 className={styles.info__title}>Навыки</h3>
+					<div className={styles.info__role}>
 						<div>
-							{specialists[0] && specialists[0].profession.specialization},
+							{specialists[0] && `${specialists[0].profession.specialization},`}
 						</div>
-						<div>{specialists[0] && specialists[0].profession.specialty},</div>
+						<div>
+							{specialists[0] && `${specialists[0].profession.specialty},`}
+						</div>
 						<div>
 							{clsx(
 								specialists[0] && specialists[0].level === 1 && 'Junior',
@@ -97,25 +83,6 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 							)}
 						</div>
 					</div>
-
-					<div className={styles.info__personStatus__small}>
-						{readyToParticipate ? (
-							<>
-								<ActivityIcon />
-								<p className={styles.info__statusTitle}>
-									готов(а) к участию в проекте
-								</p>
-							</>
-						) : (
-							<>
-								<ActivityIconRed />
-								<p className={styles.info__statusTitle}>
-									не готов(а) к участию в проекте
-								</p>
-							</>
-						)}
-					</div>
-					<h3 className={styles.info__title}>Навыки</h3>
 					<ul className={styles.info__skillsList}>
 						{specialists[0] &&
 							specialists[0]?.skills.map((skill, index) => {

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { passwordRegex } from '../../../utils/regex-consts';
+import { passwordRegex } from '@/utils/regex-consts';
 
 const FormChangePasswordSchema = z
 	.object({

@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './project.module.scss';
-import { BlankCard, Form, MainButton } from '@/shared/ui';
+import { BlankCard, MainButton } from '@/shared/ui';
 
 export const ProjectEditForm = () => {
 	return (
 		<BlankCard>
-			<Form onSubmit={''} className={styles.formSettings}>
+			{/* <Form onSubmit={} className={styles.formSettings}> */}
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
 
 				<div className={styles.formSettings__list}>
@@ -23,7 +23,7 @@ export const ProjectEditForm = () => {
 				>
 					Сохранить настройки
 				</MainButton>
-			</Form>
+			{/* </Form> */}
 		</BlankCard>
 	);
 };
