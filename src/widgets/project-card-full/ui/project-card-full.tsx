@@ -1,13 +1,16 @@
 /* eslint-disable camelcase */
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import clsx from 'clsx';
-import {CalendarIcon, ActivityIcon } from '@/shared/assets'; // , 
+import { CalendarIcon, ActivityIcon } from '@/shared/assets'; // ,
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { ProjectCardFullType } from './type';
 import { LikeButtonFeature } from '@/features';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import Link from 'next/link';
+import { InviteToProject } from '@/widgets/invite-to-project';
+import { PopUp } from '@/shared/ui';
+import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import styles from './project-card-full.module.scss';
 
 export const ProjectCardFull: FC<ProjectCardFullType> = ({
@@ -21,13 +24,17 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	recruitment_status,
 	project_specialists,
 }) => {
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
 
 	return (
 		<article className={styles.container}>
-			<Link href={`projects/${id}`} target="_blank" className={styles.linkProject}>
+			<Link
+				href={`projects/${id}`}
+				target="_blank"
+				className={styles.linkProject}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
 						<ActivityIcon
@@ -48,16 +55,18 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 				<div>
 					<div className={styles.calendarContainer}>
 						<CalendarIcon className={styles.calendarIcon} />
-						<div className={styles.calendarText}>{`${startDate}-${endDate}`}</div>
+						<div
+							className={styles.calendarText}>{`${startDate}-${endDate}`}</div>
 					</div>
 					<h2 className={styles.title}>{name}</h2>
 					{directions?.map((item) => {
 						return (
-							<h3  key={item.id} className={styles.subtitle}>{item.name}</h3>
-
+							<h3 key={item.id} className={styles.subtitle}>
+								{item.name}
+							</h3>
 						);
 					})}
-					
+
 					{!isMobile && <p className={styles.mainText}>{description}</p>}
 					<p className={styles.groupName}>Специальности</p>
 					<ul className={styles.professionsList}>
@@ -65,7 +74,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 							<li
 								className={styles.profession}
 								style={{
-									backgroundColor: `${getColorTag(item.profession.specialty)}`
+									backgroundColor: `${getColorTag(item.profession.specialty)}`,
 								}}
 								key={item.id}>
 								{item.profession?.specialization}
@@ -74,30 +83,41 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</ul>
 					<p className={styles.groupName}>Навыки</p>
 					<ul className={styles.skillsList}>
-						{project_specialists.map((item) => (
+						{project_specialists.map((item) =>
 							item.skills.map((skill) => (
 								<li className={styles.skill} key={item.id}>
-								{skill.name}
-							</li>
-
+									{skill.name}
+								</li>
 							))
-							
-						))}
+						)}
 					</ul>
 				</div>
-				
-				{recruitment_status === "Набор открыт" && (
-					<div className={styles.buttonRespond}>
-						<MainButton
-							variant="primary"
-							width="regular"
-							type="button"
-							onClick={(evt) => evt.preventDefault()}>
-							Откликнуться
-						</MainButton>
-					</div>
-				)}
-				</Link>
+			</Link>
+			{recruitment_status === 'Набор открыт' && (
+				<div className={styles.buttonRespond}>
+					<MainButton
+						variant="primary"
+						width="regular"
+						type="button"
+						onClick={() => setIsPopupOpen(true)}>
+						Откликнуться
+					</MainButton>
+				</div>
+			)}
+			<PopUp
+				visible={isPopupOpen}
+				title={name}
+				onClose={() => setIsPopupOpen(false)}>
+				<InviteToProject>
+					<SingleSelectButton
+						name="select-recruitment-status"
+						options={[]}
+						buttonLabel="Специальность"
+						value={undefined}
+						onChange={() => {}}
+					/>
+				</InviteToProject>
+			</PopUp>
 		</article>
 	);
 };

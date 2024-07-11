@@ -73,4 +73,11 @@
 	font-weight: 400;
 	line-height: 19px;
 	letter-spacing: 0.25px;
+
+	&__specialty {
+		@extend %text, %tag;
+		border: 1px solid $--border-default;
+		font-size: 16px;
+		font-weight: 700;
+	}
 }

@@ -152,10 +152,12 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					{project_specialists?.map((item) => {
 						return (
 							<VacancyCard
+							    name={name}
 								key={item.id}
 								title={`${item.profession.specialization} / ${item.profession.specialty} / ${item.level}`}
 								skills={item.skills}
 								count={item.count}
+								specialty={`${item.profession.specialization} / ${item.profession.specialty} / ${item.level}`}
 							/>
 						);
 					})}
