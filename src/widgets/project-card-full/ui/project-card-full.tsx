@@ -29,6 +29,13 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
 
+	const specializationArray = project_specialists.map((item) => {
+		return {
+			value: item.profession.specialization,
+			label: item.profession.specialization,
+		};
+	});
+
 	return (
 		<article className={styles.container}>
 			<Link
@@ -111,7 +118,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 				<InviteToProject>
 					<SingleSelectButton
 						name="select-recruitment-status"
-						options={[]}
+						options={specializationArray}
 						buttonLabel="Специальность"
 						value={undefined}
 						onChange={() => {}}
