@@ -66,38 +66,54 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 				</div>
 
 				<div className={styles.specialist__info}>
-					<h3 className={styles.info__title}>Навыки</h3>
-					<div className={styles.info__role}>
-						<div>
-							{specialists[0] && `${specialists[0].profession.specialization},`}
-						</div>
-						<div>
-							{specialists[0] && `${specialists[0].profession.specialty},`}
-						</div>
-						<div>
-							{clsx(
-								specialists[0] && specialists[0].level === 1 && 'Junior',
-								specialists[0] && specialists[0].level === 2 && 'Middle',
-								specialists[0] && specialists[0].level === 3 && 'Senior',
-								specialists[0] && specialists[0].level === 4 && 'Lead'
-							)}
-						</div>
-					</div>
-					<ul className={styles.info__skillsList}>
-						{specialists[0] &&
-							specialists[0]?.skills.map((skill, index) => {
-								return (
-									<li className={styles.info__skill} key={skill.id}>
-										{skill.name}
-										{index < specialists[0]?.skills.length - 1 && ', '}
-									</li>
-								);
-							})}
-					</ul>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>О себе</h3>
 						<p className={styles.info__sideText}>{about}</p>
 					</div>
+					<div className={styles.info__title}>
+						<div>
+							{specialists[0] &&
+								`${specialists[0].profession.specialization} \t`}
+							{specialists[0] && `${specialists[0].profession.specialty},`}
+							{clsx(
+								specialists[0] && specialists[0].level === 1 && '\t Junior',
+								specialists[0] && specialists[0].level === 2 && '\t Middle',
+								specialists[0] && specialists[0].level === 3 && '\t Senior',
+								specialists[0] && specialists[0].level === 4 && '\t Lead'
+							)}
+						</div>
+					</div>
+						<ul className={styles.info__skillsList}>
+							{specialists[0]?.skills.map((skill) => {
+								return (
+									<li className={styles.info__skill} key={skill.id}>
+										{skill.name}
+									</li>
+								);
+							})}
+						</ul>
+					<div className={styles.info__title}>
+						<div>
+							{specialists[1] &&
+								`${specialists[1].profession.specialization} \t`}
+							{specialists[1] && `${specialists[1].profession.specialty},`}
+							{clsx(
+								specialists[1] && specialists[1].level === 1 && '\t Junior',
+								specialists[1] && specialists[1].level === 2 && '\t Middle',
+								specialists[1] && specialists[1].level === 3 && '\t Senior',
+								specialists[1] && specialists[1].level === 4 && '\t Lead'
+							)}
+						</div>
+					</div>
+					<ul className={styles.info__skillsList}>
+									{specialists[1]?.skills.map((skill) => {
+										return (
+											<li className={styles.info__skill} key={skill.id}>
+												{skill.name}
+											</li>
+										);
+									})}
+								</ul>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Ссылка на портфолио</h3>
 						<a className={styles.info__contacts} href={portfolioLink}>

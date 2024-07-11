@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, useEffect, useState } from 'react';
 import { TextEditorProps } from './types';
 import 'react-quill/dist/quill.snow.css';

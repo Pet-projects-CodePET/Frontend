@@ -1,0 +1,30 @@
+@import '@/shared/style/variables';
+
+%normalText {
+	font-family: $--open-sans-font;
+	font-weight: 700;
+	font-feature-settings:
+		'clig' off,
+		'liga' off;
+}
+
+.fieldset {
+	border: none;
+	// padding-bottom: 32px;
+	margin: 0;
+	width: 100%;
+}
+
+.inputContainer {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.checkboxContainer {
+	width: 336px;	
+}
+
+.checkbox {
+	padding-bottom: 16px;
+}
+
