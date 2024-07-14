@@ -16,3 +16,5 @@ export { VacancyCard } from './vacancy-card/vacancy-card';
 export { Toggler } from './toggler/toggler';
 export { Loader } from './loader/loader';
 export { ContactCard } from './contact-card/contact-card';
+export { PreviewProfile } from './preview-profile/preview-profile';
+export { ProfileLink } from './profile-link/profile-link';
