@@ -1,0 +1,15 @@
+@import '../../shared/style/variables.scss';
+.list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 8px;
+	padding: 0;
+	&__item {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		gap: 8px;
+	}
+}

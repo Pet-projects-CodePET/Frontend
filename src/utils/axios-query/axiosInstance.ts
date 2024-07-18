@@ -13,7 +13,7 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
 	(config) => {
-		console.log('Request was sent', config.headers);
+		//console.log('Request was sent', config);
 		return config;
 	},
 	(error) => {
@@ -23,11 +23,11 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
 	(response) => {
-		console.log('Response received', response.data);
+		//console.log('Response received', response);
 		return response;
 	},
 	(error) => {
-		console.log('Error message:', error);
+		//console.log('Error message:', error);
 		return Promise.reject(error);
 	}
 );

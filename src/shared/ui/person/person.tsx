@@ -22,7 +22,13 @@ export const Person = ({
 				<PersonIcon className={styles.icon} />
 			)}
 
-			<p className={styles.tag} style={{ backgroundColor: `${color}` }}>
+			<p
+				className={styles.tag}
+				style={
+					color
+						? { backgroundColor: `${color}` }
+						: { border: '1px solid #e2e8f0' }
+				}>
 				{title}
 			</p>
 		</div>

@@ -16,8 +16,7 @@
 	border-radius: $datepicker__border-radius;
 	display: inline-block;
 	position: relative;
-	box-shadow:
-		0px 0px 2px 0px rgba(0, 0, 0, 0.2),
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2),
 		0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -372,10 +371,7 @@
 	&.react-datepicker__week-number--clickable {
 		cursor: pointer;
 
-		&:not(
-				.react-datepicker__week-number--selected,
-				.react-datepicker__week-number--keyboard-selected
-			):hover {
+		&:not(.react-datepicker__week-number--selected, .react-datepicker__week-number--keyboard-selected):hover {
 			border-radius: $datepicker__border-radius;
 			background-color: $datepicker__background-color;
 		}
@@ -473,9 +469,7 @@
 			white-space: nowrap;
 			visibility: hidden;
 			opacity: 0;
-			transition:
-				visibility 0s,
-				opacity 0.3s ease-in-out;
+			transition: visibility 0s, opacity 0.3s ease-in-out;
 		}
 
 		&:hover {
@@ -505,13 +499,13 @@
 	}
 
 	&--keyboard-selected {
-		// border-radius: $datepicker__border-radius;
+		border-radius: $datepicker__item-border-radius;
 		// background-color: lighten($datepicker__selected-color, 45%);
 		// color: rgb(0, 0, 0);
 
-		&:hover {
-			background-color: darken($datepicker__selected-color, 5%);
-		}
+		// &:hover {
+		// 	background-color: darken($datepicker__selected-color, 5%);
+		// }
 	}
 
 	&--in-selecting-range:not(&--in-range) {

@@ -1,4 +1,4 @@
-export const BUSYNESS = [
+export const EMPLOYMENT = [
 	{
 		id: 1,
 		name: '10 часов в неделю',

@@ -11,6 +11,7 @@ import {
 	titleCurrentProjects,
 	descriptionCurrentProjects,
 } from '@/shared/constants';
+//import Link from 'next/link';
 import styles from './current-projects.module.scss';
 import { CardProps } from '@/shared/ui/project-card/types';
 
@@ -34,6 +35,7 @@ export const CurrentProjects = () => {
 						item;
 					return (
 						<ProjectCard
+						    id={id}
 							key={id}
 							started={started}
 							ended={ended}
