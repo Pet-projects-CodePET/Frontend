@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { MainButton, Input, Form } from '@/shared/ui';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
-import { BackLink } from '@/entities/back-link';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { useForm } from 'react-hook-form';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
@@ -39,11 +39,7 @@ export const TabletView = () => {
 				<PreviewProfile />
 			) : (
 				<>
-					<BackLink
-						title="Профиль"
-						href={'/profile-navigation'}
-						bigTitle={'Профиль'}
-					/>{' '}
+					<ProfileLink title="Профиль" />
 					<Form onSubmit={handleSubmit} className={styles.fields}>
 						<div className={styles.fields_photo}>
 							<div className={styles.fields_avatar}>

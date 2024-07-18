@@ -16,7 +16,7 @@ export const DatePickerRHF = (props: DatePickerRHFProps) => {
 			control={control}
 			name={props.name}
 			rules={{
-				required: 'Пожалуйста, заполните дату',
+				required: 'Пожалуйста, заполните дату рождения',
 			}}
 			render={({ field, fieldState }) => {
 				return (

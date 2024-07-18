@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { MainButton, Input, Form } from '@/shared/ui';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { ToggleCheckbox } from '@/shared/ui/toggle-checkbox/toggle-checkbox';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { useForm } from 'react-hook-form';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
@@ -11,7 +12,6 @@ import styles from './profile-edit-form.module.scss';
 import Photo from '@/shared/assets/icons/icon-photo.svg';
 import { PopUp } from '@/shared/ui';
 import Plus from '@/shared/assets/icons/plus-large.svg';
-import { BackLink } from '@/entities/back-link';
 
 export const MobileView = () => {
 	const [isPopup, setIsPopup] = useState(false);
@@ -39,11 +39,7 @@ export const MobileView = () => {
 				<PreviewProfile />
 			) : (
 				<>
-					<BackLink
-						title="Профиль"
-						href={'/profile-navigation'}
-						bigTitle={'Профиль'}
-					/>{' '}
+					<ProfileLink title="Профиль" />
 					<Form onSubmit={handleSubmit} className={styles.fields}>
 						<div className={styles.fields_photo}>
 							<button

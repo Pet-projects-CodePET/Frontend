@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ProfileEditForm } from '@/entities/profile-edit-form';
-import { BackLink } from '@/entities/back-link';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import ActiveIcon from '@/shared/assets/icons/activity-icon.svg';
 import Link from 'next/link';
 import { MailIcon, TelegramIcon, MobileIcon } from '@/shared/assets';
@@ -37,11 +37,7 @@ export const PreviewProfile = () => {
 		<>
 			{!visible ? (
 				<>
-					<BackLink
-						title="Профиль"
-						href={'/profile-navigation'}
-						bigTitle={'Профиль'}
-					/>
+					<ProfileLink title="Профиль" />
 					<div className={styles.previewWrapper}>
 						<div className={styles.previewFoto}>
 							<div className={styles.previewFoto__avatar} />

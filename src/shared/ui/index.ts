@@ -15,7 +15,4 @@ export { Person } from './person/person';
 export { VacancyCard } from './vacancy-card/vacancy-card';
 export { Toggler } from './toggler/toggler';
 export { Loader } from './loader/loader';
-export { BlankCard } from './blank-card/blank-card';
-export { TextEditor } from './text-editor/text-editor';
 export { ContactCard } from './contact-card/contact-card';
-
