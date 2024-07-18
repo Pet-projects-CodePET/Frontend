@@ -9,21 +9,15 @@
 .linkContainer {
 	display: flex;
 	align-items: center;
-	text-decoration: none;
-	margin-bottom: 32px;
-}
-.arrow {
-	height: 16px;
+	text-decoration: none;	height: 16px;
 	color: #0075ff;
 	margin-right: 6px;
-}
-
-.link {
-	@extend %baseText;
+	margin-bottom: 32px;	@extend %baseText;
 	font-size: 16px;
 	font-weight: 400;
 	color: #0075ff;
 }
+
 @media screen and (max-width: 780px) {
 	.linkContainer {
 		padding-left: 8px;

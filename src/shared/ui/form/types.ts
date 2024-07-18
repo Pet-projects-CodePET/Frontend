@@ -1,10 +1,10 @@
 import { HTMLAttributes, ReactNode, FormEventHandler } from 'react';
-import * as yup from 'yup';
+import * as z from 'zod';
 import { IUser } from '@/services/models/IUser';
 
 export type FormProps = HTMLAttributes<HTMLFormElement> & {
 	children: ReactNode;
 	extraClass?: string;
-	schema?: yup.AnyObjectSchema;
+	schema?: z.ZodEffects<z.AnyZodObject> | z.AnyZodObject;
 	onSubmit: FormEventHandler<HTMLFormElement> & ((data: IUser) => void);
 };

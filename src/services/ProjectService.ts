@@ -14,7 +14,7 @@ export const projectsApi = createApi({
 			}),
 		}),
 		getAllProjects: builder.query({
-			query: ({currentPage}) => ({
+			query: ({ currentPage }) => ({
 				url: `/projects/?page=${currentPage}`,
 				method: 'GET',
 			}),
@@ -25,10 +25,24 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		getProfessions: builder.query({
+			query: () => ({
+				url: '/professions/',
+				method: 'GET',
+			}),
+		}),
+		getSkills: builder.query({
+			query: () => ({
+				url: '/skills/',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
 export const {
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
 	useGetProjectsPreviewMainQuery,
 	useGetAllProjectsQuery,
 	useGetProjectByIdQuery,
