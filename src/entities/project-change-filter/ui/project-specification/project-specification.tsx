@@ -1,4 +1,3 @@
-'use client';
 
 import React, { FC } from 'react';
 
@@ -15,16 +14,16 @@ export const ProjectSpecification: FC = () => {
 						<div className={styles.checkbox}>
 							<CheckboxAndRadio
 								labelName="Desktop"
-								label="option10hours"
-								id="option10hours"
+								label="desktop"
+								id="desktop"
 								type="checkbox"
 							/>
 						</div>
 						<div className={styles.checkbox}>
 							<CheckboxAndRadio
 								labelName="Mobile Apps"
-								label="option20hours"
-								id="option20hours"
+								label="mobile"
+								id="mobile-apps"
 								type="checkbox"
 							/>
 						</div>
@@ -32,8 +31,8 @@ export const ProjectSpecification: FC = () => {
 					<div>
 						<CheckboxAndRadio
 							labelName="Web"
-							label="option30hours"
-							id="option30hours"
+							label="web"
+							id="web-dev"
 							type="checkbox"
 						/>
 					</div>

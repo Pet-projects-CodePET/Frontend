@@ -1,4 +1,3 @@
-'use client';
 
 import React, { FC } from 'react';
 
@@ -15,7 +14,7 @@ export const Availability: FC = () => {
 						<div className={styles.checkbox}>
 							<CheckboxAndRadio
 								labelName="10 часов в неделю"
-								label="option10hours"
+								label="option"
 								id="option10hours"
 								type="radio"
 							/>
@@ -23,7 +22,7 @@ export const Availability: FC = () => {
 						<div className={styles.checkbox}>
 							<CheckboxAndRadio
 								labelName="20 часов в неделю"
-								label="option20hours"
+								label="option"
 								id="option20hours"
 								type="radio"
 							/>
@@ -33,14 +32,14 @@ export const Availability: FC = () => {
 						<div className={styles.checkbox}>
 							<CheckboxAndRadio
 								labelName="30 часов в неделю"
-								label="option30hours"
+								label="option"
 								id="option30hours"
 								type="radio"
 							/>
 						</div>
 						<CheckboxAndRadio
 							labelName="40 часов в неделю"
-							label="option40hours"
+							label="option"
 							id="option40hours"
 							type="radio"
 						/>
