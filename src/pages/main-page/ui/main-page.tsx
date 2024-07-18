@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { CurrentProjects } from '@/widgets/current-projects';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
@@ -7,7 +8,6 @@ import { JoinUs } from '@/widgets/join-us';
 import { Promo } from '@/widgets/promo';
 import React, { useEffect, useState } from 'react';
 import styles from './main-page.module.scss';
-import { useRouter } from 'next/navigation';
 
 export const MainPage = () => {
 	// const { isSuccess: isLoggedIn } = useGetUserMeQuery(null);
@@ -30,15 +30,17 @@ export const MainPage = () => {
 
 	return (
 		<>
-			<div className={styles.mainContainer}>
+			<div className={styles['main-container']}>
 				<Header isLoggedIn={isLoggedIn} />
-				<div className={styles.promoSection}>
+				<div className={styles['promo-section']}>
 					<Promo />
 				</div>
-				<section className={styles.currentProjectsContainer}>
+				<section className={styles['current-projects-container']}>
 					<CurrentProjects />
 				</section>
-				<div className={styles.joinUsSection}>{!isLoggedIn && <JoinUs />}</div>
+				<div className={styles['join-us-section']}>
+					{!isLoggedIn && <JoinUs />}
+				</div>
 			</div>
 			<Footer />
 		</>

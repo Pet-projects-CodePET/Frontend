@@ -27,7 +27,7 @@ export const Specialists = () => {
 		window.scroll({
 			top: 0,
 			left: 0,
-		  });
+		});
 	}, [currentPage]);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);

@@ -1,6 +1,6 @@
 @import '../../../shared//style//variables.scss';
 
-.mainContainer {
+.main-container {
 	max-width: 1160px;
 	width: 100%;
 	flex: 1;
@@ -15,36 +15,41 @@
 	}
 }
 
-.promoSection {
-	padding-top: 48px;
+.promo-section {
+	margin-top: 48px;
 
 	@media screen and (max-width: 1199px) {
-		padding-top: 56px;
+		margin-top: 56px;
 	}
 
 	@media screen and (max-width: 779px) {
-		padding-top: 0;
+		margin: 32px 16px;
 	}
 }
 
-.currentProjectsContainer {
+.current-projects-container {
 	margin: 120px auto;
 
 	@media screen and (max-width: 1199px) {
 		margin: 80px auto;
+		margin-bottom: 0;
 		max-width: 756px;
 	}
 
 	@media screen and (max-width: 779px) {
-		margin: 32px auto;
+		margin-bottom: 0;
 		padding: 0 16px;
 	}
 }
 
-.joinUsSection {
-	margin: 10px auto;
-}
+.join-us-section {
+	margin-bottom: 120px;
 
-.currentProjectsContainer {
-	margin: 120px auto;
+	@media screen and (max-width: 1199px) {
+		margin: 48px 0;
+	}
+
+	@media screen and (max-width: 779px) {
+		margin: 24px 16px 32px 16px;
+	}
 }

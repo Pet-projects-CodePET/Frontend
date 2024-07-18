@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { MainButton } from '@/shared/ui';
-import backgroundImage from '@/shared/assets/images/background-login-layout.png';
 import { NounsDeclension } from '@/utils/declension/declension';
 import {
 	useGetCountQuery,
@@ -34,50 +32,20 @@ export const Promo = () => {
 	}, [router]);
 
 	return (
-		<section className={styles.promo__container}>
-			<div className={styles.promo__imageContainer}>
-				<Image
-					src={backgroundImage}
-					className={styles.promo__image}
-					alt="abstract image"
-					priority={true}
-					fill></Image>
+		<div className={styles['promo']}>
+			<div className={styles['promo-header']}>
+				<h3 className={styles['promo-header-title']}>
+					{section ? section[0].title : titleMainPage}
+				</h3>
+				<p className={styles['promo-header-description']}>
+					{section ? section[0].description : descriptionMainPage}
+				</p>
 			</div>
-			<div className={styles.promo__absoluteContainer}>
-				<div className={styles.promo__textContainer}>
-					<p className={styles.promo__title}>
-						{section ? section[0].title : titleMainPage}
-					</p>
-					<p className={styles.promo__subtitle}>
-						{section ? section[0].description : descriptionMainPage}
-					</p>
-				</div>
-				<div className={styles.promo__itemsContainer}>
-					<div className={styles.promo__items}>
-						<p className={styles.promo__itemOne}>{counters?.projects}</p>
-						<p className={styles.promo__itemTwo}>
-							{NounsDeclension(counters?.projects, [
-								'проект',
-								'проекта',
-								'проектов',
-							])}
-						</p>
-					</div>
-					<div className={styles.promo__items}>
-						<p className={styles.promo__itemOne}>{counters?.users}</p>
-						<p className={styles.promo__itemTwo}>
-							{NounsDeclension(counters?.users, [
-								'участник',
-								'участника',
-								'участников',
-							])}
-						</p>
-					</div>
-				</div>
-				<div className={styles.promo__button}>
+			<div className={styles['promo-bottom']}>
+				<div className={styles['promo-bottom-content']}>
 					<MainButton
 						variant="primary"
-						width="max"
+						width="regular"
 						onClick={
 							isLoggedIn
 								? () => router.push('create-project')
@@ -87,6 +55,35 @@ export const Promo = () => {
 					</MainButton>
 				</div>
 			</div>
-		</section>
+			<div className={styles['promo-info']}>
+				<div className={styles['promo-info-list']}>
+					<div className={styles['promo-info-list-card']}>
+						<p className={styles['promo-info-projects-count']}>
+							{counters?.projects}
+						</p>
+						<p className={styles['promo-info-projects-description']}>
+							{NounsDeclension(counters?.projects, [
+								'проект',
+								'проекта',
+								'проектов',
+							])}
+						</p>
+					</div>
+
+					<div className={styles['promo-info-list-card']}>
+						<p className={styles['promo-info-members-count']}>
+							{counters?.users}
+						</p>
+						<p className={styles['promo-info-members-description']}>
+							{NounsDeclension(counters?.users, [
+								'участник',
+								'участника',
+								'участников',
+							])}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	);
 };
