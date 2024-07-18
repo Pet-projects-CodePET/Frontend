@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { CardProps } from './types';
 import CalendarIcon from '@/shared/assets/icons/calender.svg';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
+import { MainButton } from '../main-button/main-button';
 import styles from './project-card.module.scss';
 
 export const ProjectCard: FC<CardProps> = ({
@@ -15,11 +16,13 @@ export const ProjectCard: FC<CardProps> = ({
 	name,
 	directions,
 	project_specialists,
+	id
 }) => {
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
 	return (
 		<div className={styles.container}>
+			<Link href={`projects/${id}`} target="_blank" className={styles.linkProject}>
 			<div className={styles.date}>
 				<CalendarIcon width="24" height="24" />
 				<p className={styles.datetext}>{`${startDate}-${endDate}`}</p>
@@ -46,8 +49,14 @@ export const ProjectCard: FC<CardProps> = ({
 					);
 				})}
 			</ul>
+{/* 
 			<Link href="#" className={styles.link}>
 				Откликнуться
+			</Link> */}
+			<MainButton variant='trivial' width='min'
+			onClick={(evt) => evt.preventDefault()}>
+				Откликнуться
+			</MainButton>
 			</Link>
 		</div>
 	);

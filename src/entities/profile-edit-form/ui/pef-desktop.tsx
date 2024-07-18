@@ -18,6 +18,9 @@ import clsx from 'clsx';
 import { Calendar } from '@/shared/ui/calendar/calendar';
 import { BackLink } from '@/entities/back-link';
 
+import { TContact } from '@/shared/ui/contact-card/types';
+import { ContactsList } from '@/widgets/contact-list/contact-list';
+
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
 	const [preview, setPreview] = useState(false);
@@ -37,6 +40,16 @@ export const DesktopView = () => {
 	useEffect(() => {
 		window.scroll(0, 0);
 	}, []);
+
+	//=============для примера списка контактов:
+	const [contacts, setContacts] = useState<TContact[]>([
+		{ email: 'test1@mail.ru' },
+		{ telegram: 'test1' },
+		{ phone: '+111111111' },
+		{ email: 'test2@mail.ru' },
+		{ telegram: 'test2' },
+		{ phone: '+2222222' },
+	]);
 
 	return (
 		<>
@@ -117,6 +130,7 @@ export const DesktopView = () => {
 							</MainButton>
 							<button>Сбросить все</button>
 						</div>
+						<ContactsList contacts={contacts} setContacts={setContacts} />
 						<div className={styles.datePickerContainer}>
 							<label className={styles.datePickerTitle}>Дата рождения</label>
 							<Calendar name="birthdate" />

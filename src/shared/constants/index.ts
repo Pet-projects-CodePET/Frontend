@@ -8,3 +8,4 @@ export {
 	descriptionCurrentProjects,
 } from './title-main-page/title-main-page';
 export { projectTeamArray } from './project-team/project-team';
+export { qaColor, developmentColor, designColor, pmColor, analyticsColor, administrationColor } from './colors-for-tags/colors-for-tags';

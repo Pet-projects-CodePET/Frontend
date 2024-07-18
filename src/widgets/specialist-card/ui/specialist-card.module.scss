@@ -15,7 +15,7 @@
 .specialist {
 	display: flex;
 	border-radius: 12px;
-	border: 2px solid $--border-default;
+	border: 1px solid $--border-default;
 	padding: 32px;
 
 	&__info {
@@ -129,10 +129,6 @@
 		&__personImage {
 			width: 48px;
 			height: 48px;
-		}
-		&__likeContainer {
-			width: 20px;
-			height: 20px;
 		}
 		&__likeIcon {
 			width: 16px;

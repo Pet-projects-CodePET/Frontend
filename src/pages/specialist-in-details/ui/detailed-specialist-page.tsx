@@ -2,8 +2,9 @@ import React from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
 import { axiosInstance } from '@/utils/axios-query/axiosInstance';
 import { SpecialistInfoQueryType } from './types';
-import styles from './detailed-specialist-page.module.scss';
-import { BackLink } from '@/entities/back-link/ui/back-link';
+// import styles from './detailed-specialist-page.module.scss';
+// import Link from 'next/link';
+// import { ArrowLeftIcon } from '@/shared/assets';
 
 export const DetailedSpecialistPage = async ({
 	params,
@@ -16,7 +17,11 @@ export const DetailedSpecialistPage = async ({
 
 	return (
 		<>
-			<BackLink title={'Специалисты'} href={'/specialists'} props={styles.linkContainer}/>
+
+			{/* <Link href="/specialists" className={styles.linkContainer}>
+				<ArrowLeftIcon className={styles.arrow} />
+				<p className={styles.link}>Специалисты</p>
+			</Link> */}
 			<>
 				<DetailedSpecialistCard
 					avatar={response?.avatar || ''}

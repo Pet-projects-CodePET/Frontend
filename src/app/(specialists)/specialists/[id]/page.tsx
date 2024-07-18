@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 				});
 				arr.push(...id);
 			} catch (_) {
-				console.log(`Error fetching data for page ${i}:`);
+				//console.log(`Error fetching data for page ${i}:`);
 				break;
 			}
 		}

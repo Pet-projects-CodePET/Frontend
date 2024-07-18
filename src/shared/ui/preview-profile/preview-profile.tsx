@@ -10,7 +10,11 @@ import styles from './preview-profile.module.scss';
 
 export const PreviewProfile = () => {
 	useEffect(() => {
-		window.scroll(0, 0);
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth',
+		});
 	}, []);
 
 	const [visible, setVisible] = useState(false);
@@ -18,6 +22,16 @@ export const PreviewProfile = () => {
 	const handleClick = () => {
 		setVisible(true);
 	};
+
+	const skills = [
+		{ id: 1, name: 'React' },
+		{ id: 2, name: 'Redux' },
+		{ id: 3, name: 'UI/UX Design' },
+		{ id: 4, name: 'React' },
+		{ id: 5, name: 'Redux' },
+		{ id: 6, name: 'UI/UX Design' },
+		{ id: 7, name: 'React' },
+	];
 
 	return (
 		<>
@@ -41,9 +55,6 @@ export const PreviewProfile = () => {
 								</div>
 
 								<div className={styles.previewFoto__infoActive}>
-									<p className={styles.previewFoto__infoRole}>
-										UX/UI designer / UX/UI дизайнер, Middle
-									</p>
 									<p className={styles.previewFoto__infoStatus}>
 										<ActiveIcon
 											className={styles.previewFoto__infoStatusActive}
@@ -53,14 +64,6 @@ export const PreviewProfile = () => {
 								</div>
 							</div>
 						</div>
-
-						<div className={styles.previewItem}>
-							<h2 className={styles.previewItem__title}>Навыки</h2>
-							<p className={styles.previewItem__subtitle}>
-								Python, JavaScript, C#, C++{' '}
-							</p>
-						</div>
-
 						<div className={styles.previewItem}>
 							<h2 className={styles.previewItem__title}>О себе</h2>
 							<p className={styles.previewItem__subtitle}>
@@ -73,6 +76,36 @@ export const PreviewProfile = () => {
 								Excepteur sint occaecat cupidatat non proident, sunt in culpa
 								qui officia deserunt mollit anim id est laborum, но приходится.
 							</p>
+						</div>
+
+						<div className={styles.previewItem}>
+							<h2 className={styles.previewItem__title}>
+								UX/UI designer / UX/UI дизайнер, Middle
+							</h2>
+							<ul className={styles.tagsList}>
+								{skills.map((item) => {
+									return (
+										<li key={item.id} className={styles.tag}>
+											{item.name}
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+
+						<div className={styles.previewItem}>
+							<h2 className={styles.previewItem__title}>
+								UX/UI designer / UX/UI дизайнер, Middle
+							</h2>
+							<ul className={styles.tagsList}>
+								{skills.map((item) => {
+									return (
+										<li key={item.id} className={styles.tag}>
+											{item.name}
+										</li>
+									);
+								})}
+							</ul>
 						</div>
 
 						<div className={styles.previewItem}>

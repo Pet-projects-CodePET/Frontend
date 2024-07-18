@@ -1,5 +1,19 @@
 @import '@/shared/style/variables';
 
+%tag {
+	padding: 4px 12px;
+	color: $--Foreground-default;
+	display: inline-block;
+	border-radius: 20px;
+	white-space: nowrap;
+}
+%text {
+	margin: 0;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	font-style: normal;
+}
+
 .previewWrapper {
 	display: flex;
 	flex-direction: column;
@@ -150,6 +164,25 @@
 	width: 24px;
 	height: 24px;
 }
+
+.tagsList {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.tag {
+	@extend %text, %tag;
+	border: 1px solid $--border-default;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+}
+
 
 @media screen and (max-width: 779px) {
 	.previewWrapper {
