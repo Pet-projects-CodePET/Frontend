@@ -5,6 +5,7 @@ import { MainButton, Input, Form, PopUp } from '@/shared/ui';
 import { Toggler } from '@/shared/ui/toggler/toggler';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { PreviewProfile } from '@/shared/ui/preview-profile/preview-profile';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
@@ -16,7 +17,6 @@ import { skills } from '@/shared/constants/skills/skills';
 import styles from './profile-edit-form.module.scss';
 import clsx from 'clsx';
 import { Calendar } from '@/shared/ui/calendar/calendar';
-import { BackLink } from '@/entities/back-link';
 
 import { TContact } from '@/shared/ui/contact-card/types';
 import { ContactsList } from '@/widgets/contact-list/contact-list';
@@ -57,11 +57,7 @@ export const DesktopView = () => {
 				<PreviewProfile />
 			) : (
 				<>
-					<BackLink
-						title="Профиль"
-						href={'/profile-navigation'}
-						bigTitle={'Профиль'}
-					/>{' '}
+					<ProfileLink title="Профиль" />
 					<Form onSubmit={handleSubmit} className={styles.fields}>
 						<div className={styles.fields_photo}>
 							<div className={styles.fields_avatar}>

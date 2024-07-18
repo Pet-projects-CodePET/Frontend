@@ -7,9 +7,9 @@ import IconUp from '@/shared/assets/icons/chevron-up.svg';
 import IconDown from '@/shared/assets/icons/chevron-down.svg';
 import styles from './form-profile-settings.module.scss';
 import { MenuForVisible } from '@/entities/menu-for-visible';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { FormProfileSettingsProps } from './types';
 import { Toggler } from '@/shared/ui/toggler/toggler';
-import { BackLink } from '@/entities/back-link/ui/back-link';
 
 export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	handleSubmitForm,
@@ -17,14 +17,14 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	isLoadingChangeProfileSettings,
 }) => {
 	const [isSendNotification, setIsSendNotification] = useState(
-		userData?.allow_notifications
+		userData.allow_notifications
 	);
 	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(
-		userData?.subscribe_to_projects
+		userData.subscribe_to_projects
 	);
-	const [visibleStatus, setVisibleStatus] = useState(userData?.visible_status);
+	const [visibleStatus, setVisibleStatus] = useState(userData.visible_status);
 	const [visibleStatusContacts, setVisibleStatusContacts] = useState(
-		userData?.visible_status_contacts
+		userData.visible_status_contacts
 	);
 
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);
@@ -33,7 +33,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	return (
 		<section className={styles.profileSettings}>
 			<div className={styles.profileSettings__profileLink}>
-				<BackLink title="Управление аккаунтом" bigTitle="Управление аккаунтом"  href={'/profile-navigation'} />
+				<ProfileLink title="Управление аккаунтом" />
 			</div>
 			<Form onSubmit={handleSubmitForm} className={styles.formSettings}>
 				<h2 className={styles.formSettings__title}>Настройка аккаунта</h2>
@@ -115,9 +115,7 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 									checked={isSubscriptionProjects as boolean}
 									name={'subscribe_to_projects'}
 									id={'subscribe_to_projects'}
-									onChange={(evt) =>
-										setIsSubscriptionProjects(evt.target.checked)
-									}
+									onChange={(evt) => setIsSubscriptionProjects(evt.target.checked)}
 								/>
 							</div>
 						</div>

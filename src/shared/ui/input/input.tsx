@@ -11,7 +11,7 @@ import { useFormContext } from 'react-hook-form';
 
 export const Input: FC<InputProps> = ({
 	name,
-	labelName,
+	labelName = 'labelName',
 	error = null,
 	link = null,
 	className,
