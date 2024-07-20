@@ -24,11 +24,9 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 	ended,
 	status,
 	project_specialists,
-	
 }) => {
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
-	
 
 	const skillsTeam = [
 		{ id: 1, name: 'React' },
@@ -110,14 +108,21 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Ссылка на проект</h3>
-						<Link  href={`${link}`} target="_blank" className={styles.descriptionLink}>
-							 {link} 
+						<Link
+							href={`${link}`}
+							target="_blank"
+							className={styles.descriptionLink}>
+							{link}
 						</Link>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Организатор</h3>
 						<div className={styles.personWrapper}>
-							<Person title={owner?.name || owner?.username} avatar={owner?.avatar} id={owner?.id}/>
+							<Person
+								title={owner?.name || owner?.username}
+								avatar={owner?.avatar}
+								id={owner?.id}
+							/>
 						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
