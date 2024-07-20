@@ -117,7 +117,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Организатор</h3>
 						<div className={styles.personWrapper}>
-							<Person title={owner} color="#F6BD60" />
+							<Person title={owner?.name || owner?.username} avatar={owner?.avatar} id={owner?.id}/>
 						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
