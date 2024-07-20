@@ -23,20 +23,20 @@ export const DetailedSpecialistPage = async ({
 			</Link> */}
 			<>
 				<DetailedSpecialistCard
-					avatar={response?.avatar || ""}
-					name={response?.name || "Unknown"}
-					userName={response?.username || "Unknown"}
+					avatar={response?.avatar || ''}
+					name={response?.name || 'Unknown'}
+					userName={response?.username || 'Unknown'}
 					readyToParticipate={response?.ready_to_participate || false}
-					specialists={response?.specialists || "Unknown"}
-					about={response?.about || "Unknown"}
-					portfolioLink={response?.portfolio_link || "Unknown"}
+					specialists={response?.specialists || 'Unknown'}
+					about={response?.about || 'Unknown'}
+					portfolioLink={response?.portfolio_link || 'Unknown'}
 					birthday={response?.birthday || 0}
 					country={response?.country}
 					city={response?.city}
-					phoneNumber={response?.phone_number || "Unknown"}
-					telegramNick={response?.telegram_nick || "Unknown"}
-					email={response?.email || "Unknown"}
-					projects={response?.projects || "Unknown"}
+					phoneNumber={response?.phone_number || 'Unknown'}
+					telegramNick={response?.telegram_nick || 'Unknown'}
+					email={response?.email || 'Unknown'}
+					projects={response?.projects || 'Unknown'}
 				/>
 			</>
 		</>

@@ -5,7 +5,7 @@ import styles from './vacancy-card.module.scss';
 export const VacancyCard = ({
 	title,
 	skills,
-	count
+	count,
 }: {
 	title: string;
 	skills: { id: number; name: string }[];

@@ -1,6 +1,6 @@
 @import '@/shared/style/variables.scss';
 
-.join-us {
+.joinUs {
 	width: 100%;
 	padding: 32px 0 40px 32px;
 	font-family: $--open-sans-font;
@@ -19,36 +19,36 @@
 		background-image: none;
 		padding: 24px;
 	}
+}
 
-	&-title {
-		margin: 0;
-		font-size: 28px;
-		font-weight: 700;
+.joinUsTitle {
+	margin: 0;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 32px;
+	letter-spacing: -0.28px;
+
+	@media screen and (max-width: 1199px) {
 		line-height: 32px;
-		letter-spacing: -0.28px;
-
-		@media screen and (max-width: 1199px) {
-			line-height: 32px;
-		}
-
-		@media screen and (max-width: 779px) {
-			font-size: 21px;
-			line-height: 27px;
-			letter-spacing: -0.21px;
-		}
 	}
 
-	&-description {
-		margin: 16px 0 32px 0;
-		max-width: 60%;
-		word-wrap: break-word;
-		line-height: 24px;
-		letter-spacing: 0.25px;
+	@media screen and (max-width: 779px) {
+		font-size: 21px;
+		line-height: 27px;
+		letter-spacing: -0.21px;
+	}
+}
 
-		@media screen and (max-width: 779px) {
-			max-width: 100%;
-			line-height: 22px;
-			margin: 16px 0 24px 0;
-		}
+.joinUsDescription {
+	margin: 16px 0 32px 0;
+	max-width: 60%;
+	word-wrap: break-word;
+	line-height: 24px;
+	letter-spacing: 0.25px;
+
+	@media screen and (max-width: 779px) {
+		max-width: 100%;
+		line-height: 22px;
+		margin: 16px 0 24px 0;
 	}
 }

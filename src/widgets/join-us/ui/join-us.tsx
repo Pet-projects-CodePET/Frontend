@@ -8,9 +8,9 @@ import styles from './join-us.module.scss';
 export const JoinUs = () => {
 	const router = useRouter();
 	return (
-		<div className={styles['join-us']}>
-			<h4 className={styles['join-us-title']}>Присоединяйся к нам!</h4>
-			<p className={styles['join-us-description']}>
+		<div className={styles['joinUs']}>
+			<h4 className={styles['joinUsTitle']}>Присоединяйся к нам!</h4>
+			<p className={styles['joinUsDescription']}>
 				Создай свой проект, собери команду и&nbsp;стань на&nbsp;шаг ближе
 				к&nbsp;мечте
 			</p>

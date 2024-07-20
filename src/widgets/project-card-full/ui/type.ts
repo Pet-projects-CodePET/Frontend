@@ -4,7 +4,7 @@ export type ProjectCardFullType = HTMLAttributes<HTMLElement> & {
 	name: string;
 	description: string;
 	started: string;
-    ended: string;
+	ended: string;
 	directions: [
 		{
 			id: number;
@@ -21,13 +21,10 @@ export type ProjectCardFullType = HTMLAttributes<HTMLElement> & {
 				specialization: string;
 				specialty: string;
 			};
-			skills: 
-				{
-					id: number;
-					name: string;
-				}[]
-			
+			skills: {
+				id: number;
+				name: string;
+			}[];
 		},
 	];
-
 };

@@ -14,7 +14,7 @@ export const projectsApi = createApi({
 			}),
 		}),
 		getAllProjects: builder.query({
-			query: ({currentPage}) => ({
+			query: ({ currentPage }) => ({
 				url: `/projects/?page=${currentPage}`,
 				method: 'GET',
 			}),

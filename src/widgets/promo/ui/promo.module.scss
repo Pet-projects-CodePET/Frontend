@@ -32,10 +32,10 @@
 		padding: 0;
 	}
 
-	&-header {
+	.promoHeader {
 		grid-area: header;
 
-		&-title {
+		.promoHeaderTitle {
 			margin: 0;
 			width: 60%;
 			font-family: $--montserrat-font;
@@ -57,7 +57,7 @@
 			}
 		}
 
-		&-description {
+		.promoHeaderDescription {
 			margin: 16px 0 0 0;
 			width: 70%;
 			font-family: $--open-sans-font;
@@ -75,7 +75,7 @@
 		}
 	}
 
-	&-bottom {
+	.promoBottom {
 		display: flex;
 		flex-direction: column;
 		justify-content: end;
@@ -85,12 +85,12 @@
 			display: none;
 		}
 
-		&-content {
+		.promoBottomContent {
 			padding: 32px;
 		}
 	}
 
-	&-info {
+	.promoInfo {
 		grid-area: info;
 		box-sizing: border-box;
 		padding: 24px 0 0 24px;
@@ -100,7 +100,7 @@
 			padding: 0;
 		}
 
-		&-list {
+		.promoInfoList {
 			height: 100%;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -117,7 +117,7 @@
 				gap: 8px;
 			}
 
-			&-card {
+			.promoInfoCard {
 				background: $--bg-accent-inverse;
 				text-align: center;
 				align-content: center;
@@ -139,19 +139,19 @@
 						margin-bottom: 8px;
 					}
 				}
-			}
-		}
 
-		&-members-count,
-		&-projects-count,
-		&-members-description,
-		&-projects-description {
-			margin: 0;
-			flex-direction: row;
-			font-family: $--open-sans-font;
-			font-size: 20px;
-			font-weight: 700;
-			letter-spacing: 0.25px;
+				.membersCount,
+				.projectsCount,
+				.membersDescription,
+				.projectsDescription {
+					margin: 0;
+					flex-direction: row;
+					font-family: $--open-sans-font;
+					font-size: 20px;
+					font-weight: 700;
+					letter-spacing: 0.25px;
+				}
+			}
 		}
 	}
 }

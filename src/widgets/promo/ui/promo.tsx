@@ -33,16 +33,16 @@ export const Promo = () => {
 
 	return (
 		<div className={styles['promo']}>
-			<div className={styles['promo-header']}>
-				<h3 className={styles['promo-header-title']}>
+			<div className={styles['promoHeader']}>
+				<h3 className={styles['promoHeaderTitle']}>
 					{section ? section[0].title : titleMainPage}
 				</h3>
-				<p className={styles['promo-header-description']}>
+				<p className={styles['promoHeaderDescription']}>
 					{section ? section[0].description : descriptionMainPage}
 				</p>
 			</div>
-			<div className={styles['promo-bottom']}>
-				<div className={styles['promo-bottom-content']}>
+			<div className={styles['promoBottom']}>
+				<div className={styles['promoBottomContent']}>
 					<MainButton
 						variant="primary"
 						width="regular"
@@ -55,13 +55,11 @@ export const Promo = () => {
 					</MainButton>
 				</div>
 			</div>
-			<div className={styles['promo-info']}>
-				<div className={styles['promo-info-list']}>
-					<div className={styles['promo-info-list-card']}>
-						<p className={styles['promo-info-projects-count']}>
-							{counters?.projects}
-						</p>
-						<p className={styles['promo-info-projects-description']}>
+			<div className={styles['promoInfo']}>
+				<div className={styles['promoInfoList']}>
+					<div className={styles['promoInfoCard']}>
+						<p className={styles['projectsCount']}>{counters?.projects}</p>
+						<p className={styles['projectsDescription']}>
 							{NounsDeclension(counters?.projects, [
 								'проект',
 								'проекта',
@@ -70,11 +68,9 @@ export const Promo = () => {
 						</p>
 					</div>
 
-					<div className={styles['promo-info-list-card']}>
-						<p className={styles['promo-info-members-count']}>
-							{counters?.users}
-						</p>
-						<p className={styles['promo-info-members-description']}>
+					<div className={styles['promoInfoCard']}>
+						<p className={styles['membersCount']}>{counters?.users}</p>
+						<p className={styles['membersDescription']}>
 							{NounsDeclension(counters?.users, [
 								'участник',
 								'участника',

@@ -21,7 +21,7 @@ export const CurrentProjects = () => {
 	const { data: projects } = useGetProjectsPreviewMainQuery([]);
 
 	return (
-		<>
+		<div className={styles.currentProjects}>
 			<h2 className={styles.header}>
 				{section ? section[1].title : titleCurrentProjects}
 			</h2>
@@ -35,7 +35,7 @@ export const CurrentProjects = () => {
 						item;
 					return (
 						<ProjectCard
-						    id={id}
+							id={id}
 							key={id}
 							started={started}
 							ended={ended}
@@ -54,6 +54,6 @@ export const CurrentProjects = () => {
 					Все проекты
 				</MainButton>
 			</div>
-		</>
+		</div>
 	);
 };

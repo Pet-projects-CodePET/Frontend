@@ -30,7 +30,6 @@ export type ProjectCardDetailType = HTMLAttributes<HTMLElement> & {
 			}[];
 			count: number;
 			level: string;
-
 		},
 	];
 };

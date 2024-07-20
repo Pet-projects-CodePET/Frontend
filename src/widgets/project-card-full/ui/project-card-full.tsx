@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { FC } from 'react';
 import clsx from 'clsx';
-import {CalendarIcon, ActivityIcon } from '@/shared/assets'; // , 
+import { CalendarIcon, ActivityIcon } from '@/shared/assets'; // ,
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { ProjectCardFullType } from './type';
@@ -27,7 +27,10 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 
 	return (
 		<article className={styles.container}>
-			<Link href={`projects/${id}`} target="_blank" className={styles.linkProject}>
+			<Link
+				href={`projects/${id}`}
+				target="_blank"
+				className={styles.linkProject}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
 						<ActivityIcon
@@ -48,16 +51,18 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 				<div>
 					<div className={styles.calendarContainer}>
 						<CalendarIcon className={styles.calendarIcon} />
-						<div className={styles.calendarText}>{`${startDate}-${endDate}`}</div>
+						<div
+							className={styles.calendarText}>{`${startDate}-${endDate}`}</div>
 					</div>
 					<h2 className={styles.title}>{name}</h2>
 					{directions?.map((item) => {
 						return (
-							<h3  key={item.id} className={styles.subtitle}>{item.name}</h3>
-
+							<h3 key={item.id} className={styles.subtitle}>
+								{item.name}
+							</h3>
 						);
 					})}
-					
+
 					{!isMobile && <p className={styles.mainText}>{description}</p>}
 					<p className={styles.groupName}>Специальности</p>
 					<ul className={styles.professionsList}>
@@ -65,7 +70,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 							<li
 								className={styles.profession}
 								style={{
-									backgroundColor: `${getColorTag(item.profession.specialty)}`
+									backgroundColor: `${getColorTag(item.profession.specialty)}`,
 								}}
 								key={item.id}>
 								{item.profession?.specialization}
@@ -74,19 +79,17 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</ul>
 					<p className={styles.groupName}>Навыки</p>
 					<ul className={styles.skillsList}>
-						{project_specialists.map((item) => (
+						{project_specialists.map((item) =>
 							item.skills.map((skill) => (
 								<li className={styles.skill} key={item.id}>
-								{skill.name}
-							</li>
-
+									{skill.name}
+								</li>
 							))
-							
-						))}
+						)}
 					</ul>
 				</div>
-				
-				{recruitment_status === "Набор открыт" && (
+
+				{recruitment_status === 'Набор открыт' && (
 					<div className={styles.buttonRespond}>
 						<MainButton
 							variant="primary"
@@ -97,7 +100,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 						</MainButton>
 					</div>
 				)}
-				</Link>
+			</Link>
 		</article>
 	);
 };

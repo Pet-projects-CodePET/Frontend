@@ -30,15 +30,15 @@ export const MainPage = () => {
 
 	return (
 		<>
-			<div className={styles['main-container']}>
+			<div className={styles['mainContainer']}>
 				<Header isLoggedIn={isLoggedIn} />
-				<div className={styles['promo-section']}>
+				<div className={styles['promoSection']}>
 					<Promo />
 				</div>
-				<section className={styles['current-projects-container']}>
+				<section className={styles['currentProjectsContainer']}>
 					<CurrentProjects />
 				</section>
-				<div className={styles['join-us-section']}>
+				<div className={styles['joinUsSection']}>
 					{!isLoggedIn && <JoinUs />}
 				</div>
 			</div>
