@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { IconSpecialists } from '@/shared/assets';
 import { MainButton } from '@/shared/ui/main-button/main-button';
-import { InviteToProject } from '@/widgets/invite-to-project';
+//import { InviteToProject } from '@/widgets/invite-to-project';
 import { PopUp } from '@/shared/ui';
 import styles from './vacancy-card.module.scss';
 export const VacancyCard = ({
@@ -10,7 +10,7 @@ export const VacancyCard = ({
 	title,
 	skills,
 	count,
-	specialty,
+	//specialty,
 }: {
 	name: string;
 	title: string;
@@ -47,9 +47,10 @@ export const VacancyCard = ({
 				visible={isPopupOpen}
 				title={name}
 				onClose={() => setIsPopupOpen(false)}>
-				<InviteToProject>
+					{' '}
+				{/* <InviteToProject>
 					<div className={styles.tag__specialty}>{specialty}</div>
-				</InviteToProject>
+				</InviteToProject> */}
 			</PopUp>
 		</div>
 	);

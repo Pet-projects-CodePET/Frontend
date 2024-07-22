@@ -1,16 +1,24 @@
 import React from 'react';
 import { MainButton } from '@/shared/ui';
-export const InviteToProjectFeature = () => {
+import { IProjectsRequests } from '@/services/models/IProjectsRequests';
+import { useRequestParticipationInProjectsMutation } from '@/services/ProjectService';
 
-    const handleClick = () => {
-        console.log('заявка')
-    }
+export const InviteToProjectFeature = (projects: IProjectsRequests) => {
+	const [requestInProject] = useRequestParticipationInProjectsMutation();
+    const { project, position } = projects;
+
+
+	const handleRequestInProject = () => {
+		console.log('requestInProject', requestInProject, project, position);
+	};
 
 	return (
-		<>
-			<MainButton variant="primary" width="regular" type="button" onClick={handleClick}>
-				Откликнуться
-			</MainButton>
-		</>
+		<MainButton
+			variant="primary"
+			width="regular"
+			type="button"
+			onClick={handleRequestInProject}>
+			Откликнуться
+		</MainButton>
 	);
 };

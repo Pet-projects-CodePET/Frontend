@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IProjectsRequests } from './models/IProjectsRequests';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const projectsApi = createApi({
@@ -14,7 +15,7 @@ export const projectsApi = createApi({
 			}),
 		}),
 		getAllProjects: builder.query({
-			query: ({currentPage}) => ({
+			query: ({ currentPage }) => ({
 				url: `/projects/?page=${currentPage}`,
 				method: 'GET',
 			}),
@@ -25,6 +26,13 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		requestParticipationInProjects: builder.mutation<IProjectsRequests,IProjectsRequests>({
+			query: (projects) => ({
+				url: `/projects/requests/`,
+				method: 'POST',
+				body: projects,
+			}),
+		}),
 	}),
 });
 
@@ -32,4 +40,5 @@ export const {
 	useGetProjectsPreviewMainQuery,
 	useGetAllProjectsQuery,
 	useGetProjectByIdQuery,
+	useRequestParticipationInProjectsMutation,
 } = projectsApi;

@@ -10,7 +10,7 @@ import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import Link from 'next/link';
 import { InviteToProject } from '@/widgets/invite-to-project';
 import { PopUp } from '@/shared/ui';
-import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
+
 import styles from './project-card-full.module.scss';
 
 export const ProjectCardFull: FC<ProjectCardFullType> = ({
@@ -28,13 +28,6 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	const isMobile = useMediaQuery('(max-width:779px)');
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
-
-	const specializationArray = project_specialists.map((item) => {
-		return {
-			value: item.profession.specialization,
-			label: item.profession.specialization,
-		};
-	});
 
 	return (
 		<article className={styles.container}>
@@ -92,7 +85,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					<ul className={styles.skillsList}>
 						{project_specialists.map((item) =>
 							item.skills.map((skill) => (
-								<li className={styles.skill} key={item.id}>
+								<li className={styles.skill} key={skill.id}>
 									{skill.name}
 								</li>
 							))
@@ -115,15 +108,10 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 				visible={isPopupOpen}
 				title={name}
 				onClose={() => setIsPopupOpen(false)}>
-				<InviteToProject>
-					<SingleSelectButton
-						name="select-recruitment-status"
-						options={specializationArray}
-						buttonLabel="Специальность"
-						value={undefined}
-						onChange={() => {}}
-					/>
-				</InviteToProject>
+				<InviteToProject
+					project={id}
+					project_specialists={project_specialists}
+				/>
 			</PopUp>
 		</article>
 	);
