@@ -32,17 +32,17 @@ export const Promo = () => {
 	}, [router]);
 
 	return (
-		<div className={styles['promo']}>
-			<div className={styles['promoHeader']}>
-				<h3 className={styles['promoHeaderTitle']}>
+		<div className={styles.promo__container}>
+			<div className={styles.promo__textContainer}>
+				<h3 className={styles.promo__title}>
 					{section ? section[0].title : titleMainPage}
 				</h3>
-				<p className={styles['promoHeaderDescription']}>
+				<p className={styles.promo__subtitle}>
 					{section ? section[0].description : descriptionMainPage}
 				</p>
 			</div>
-			<div className={styles['promoBottom']}>
-				<div className={styles['promoBottomContent']}>
+			<div className={styles.promo__bottom}>
+				<div className={styles.promo__bottomContent}>
 					<MainButton
 						variant="primary"
 						width="regular"
@@ -55,11 +55,11 @@ export const Promo = () => {
 					</MainButton>
 				</div>
 			</div>
-			<div className={styles['promoInfo']}>
-				<div className={styles['promoInfoList']}>
-					<div className={styles['promoInfoCard']}>
-						<p className={styles['projectsCount']}>{counters?.projects}</p>
-						<p className={styles['projectsDescription']}>
+			<div className={styles.promo__info}>
+				<div className={styles.promo__cardsList}>
+					<div className={styles.promo__card}>
+						<p className={styles.promo__cardTitle}>{counters?.projects}</p>
+						<p className={styles.promo__cardSubtitle}>
 							{NounsDeclension(counters?.projects, [
 								'проект',
 								'проекта',
@@ -68,9 +68,9 @@ export const Promo = () => {
 						</p>
 					</div>
 
-					<div className={styles['promoInfoCard']}>
-						<p className={styles['membersCount']}>{counters?.users}</p>
-						<p className={styles['membersDescription']}>
+					<div className={styles.promo__card}>
+						<p className={styles.promo__cardTitle}>{counters?.users}</p>
+						<p className={styles.promo__cardSubtitle}>
 							{NounsDeclension(counters?.users, [
 								'участник',
 								'участника',

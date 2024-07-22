@@ -1,6 +1,6 @@
 @import '@/shared/style/variables.scss';
 
-.promo {
+.promo__container {
 	display: grid;
 	grid-template-areas:
 		'header header'
@@ -32,10 +32,10 @@
 		padding: 0;
 	}
 
-	.promoHeader {
+	.promo__textContainer {
 		grid-area: header;
 
-		.promoHeaderTitle {
+		.promo__title {
 			margin: 0;
 			width: 60%;
 			font-family: $--montserrat-font;
@@ -57,7 +57,7 @@
 			}
 		}
 
-		.promoHeaderDescription {
+		.promo__subtitle {
 			margin: 16px 0 0 0;
 			width: 70%;
 			font-family: $--open-sans-font;
@@ -75,22 +75,22 @@
 		}
 	}
 
-	.promoBottom {
+	.promo__bottom {
 		display: flex;
 		flex-direction: column;
-		justify-content: end;
+		justify-content: flex-end;
 		grid-area: bottom;
 
 		@media screen and (max-width: 779px) {
 			display: none;
 		}
 
-		.promoBottomContent {
+		.promo__bottomContent {
 			padding: 32px;
 		}
 	}
 
-	.promoInfo {
+	.promo__info {
 		grid-area: info;
 		box-sizing: border-box;
 		padding: 24px 0 0 24px;
@@ -100,7 +100,7 @@
 			padding: 0;
 		}
 
-		.promoInfoList {
+		.promo__cardsList {
 			height: 100%;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -117,7 +117,7 @@
 				gap: 8px;
 			}
 
-			.promoInfoCard {
+			.promo__card {
 				background: $--bg-accent-inverse;
 				text-align: center;
 				align-content: center;
@@ -140,10 +140,8 @@
 					}
 				}
 
-				.membersCount,
-				.projectsCount,
-				.membersDescription,
-				.projectsDescription {
+				.promo__cardTitle,
+				.promo__cardSubtitle {
 					margin: 0;
 					flex-direction: row;
 					font-family: $--open-sans-font;
