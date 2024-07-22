@@ -13,7 +13,12 @@ export type ProjectCardDetailType = HTMLAttributes<HTMLElement> & {
 	busyness: number;
 	phone_number: string;
 	link: string;
-	owner: string;
+	owner: {
+		avatar: string;
+		id: number;
+		name: string;
+		username: string;
+	};
 	status: string;
 	recruitment_status?: string;
 	project_specialists: [
