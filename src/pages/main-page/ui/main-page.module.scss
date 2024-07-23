@@ -1,4 +1,4 @@
-@import '../../../shared//style//variables.scss';
+@import '@/shared//style//variables.scss';
 
 .mainContainer {
 	max-width: 1160px;
@@ -16,14 +16,15 @@
 }
 
 .promoSection {
-	padding-top: 48px;
+	margin-top: 48px;
 
 	@media screen and (max-width: 1199px) {
-		padding-top: 56px;
+		margin-top: 16px;
 	}
 
 	@media screen and (max-width: 779px) {
-		padding-top: 0;
+		margin-top: 0;
+		padding: 0 16px;
 	}
 }
 
@@ -31,20 +32,25 @@
 	margin: 120px auto;
 
 	@media screen and (max-width: 1199px) {
-		margin: 80px auto;
+		margin: 48px auto;
 		max-width: 756px;
 	}
 
 	@media screen and (max-width: 779px) {
-		margin: 32px auto;
+		margin: 24px auto;
 		padding: 0 16px;
 	}
 }
 
 .joinUsSection {
-	margin: 10px auto;
-}
+	margin-bottom: 120px;
 
-.currentProjectsContainer {
-	margin: 120px auto;
+	@media screen and (max-width: 1199px) {
+		margin-bottom: 48px;
+	}
+
+	@media screen and (max-width: 779px) {
+		margin-bottom: 32px;
+		padding: 0 16px;
+	}
 }
