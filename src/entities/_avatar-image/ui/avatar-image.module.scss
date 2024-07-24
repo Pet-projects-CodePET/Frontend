@@ -6,7 +6,7 @@
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	background-color: rgb(255, 0, 0);
+	background-color: $--bg-secondary;
 	width: 80px;
 	height: 80px;
 	&__small {
@@ -17,6 +17,10 @@
 		width: 137px;
 		height: 137px;
 	}
+}
+
+.loader {
+	padding-top: 24px;
 }
 
 @media screen and (max-width: 779px) {
