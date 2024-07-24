@@ -106,7 +106,7 @@ export const Projects = () => {
 									name="select-status"
 									options={statusOptions}
 									buttonLabel="Статус проекта"
-									value={{ value: 'completed', label: 'Завершенный' }}
+									value={{ value: 1, label: 'Завершенный' }}
 									onChange={handleStatusProjectChange}
 								/>
 								<CalendarButton
@@ -129,11 +129,11 @@ export const Projects = () => {
 										options={specialties}
 										values={[
 											{
-												value: 'software-developer',
+												value: 1,
 												label: 'Десктоп разработчик / Software Developer',
 											},
 											{
-												value: 'performance-engineer',
+												value: 2,
 												label:
 													'Инженер по нагрузочному тестированию / Performance Engineer',
 											},

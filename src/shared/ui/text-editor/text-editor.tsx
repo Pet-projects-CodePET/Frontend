@@ -10,10 +10,12 @@ export const TextEditor: FC<TextEditorProps> = ({
 	labelName,
 	placeholder,
 	desc,
+	//setCurrentText,
 	...props
 }) => {
 	const [value, setValue] = useState<string>('');
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
+	//console.log(value)
 
 	useEffect(() => {
 		setIsWindowLoaded(true);
@@ -28,6 +30,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 	) => {
 		if (typeof window === 'object') {
 			if (editor.getLength() <= 751) {
+				//setCurrentText(value) 
 				setValue(content);
 			} else {
 				alert('Превышено количество символов.');

@@ -5,5 +5,5 @@ export type SingleSelectButtonProps = {
 	buttonLabel: string;
 	options: Option[];
 	value?: Option;
-	onChange: (option: (string | object)[]) => void;
+	onChange: (options: Option[]) => void;
 };

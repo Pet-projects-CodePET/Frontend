@@ -10,7 +10,6 @@ import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import Link from 'next/link';
 import { InviteToProject } from '@/widgets/invite-to-project';
 import { PopUp } from '@/shared/ui';
-
 import styles from './project-card-full.module.scss';
 
 export const ProjectCardFull: FC<ProjectCardFullType> = ({
@@ -108,10 +107,10 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 				visible={isPopupOpen}
 				title={name}
 				onClose={() => setIsPopupOpen(false)}>
-				<InviteToProject
-					project={id}
+				 <InviteToProject
+					projectId={id}
 					project_specialists={project_specialists}
-				/>
+				/> 
 			</PopUp>
 		</article>
 	);

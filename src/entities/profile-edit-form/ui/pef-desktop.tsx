@@ -112,9 +112,9 @@ export const DesktopView = () => {
 								label="Контакты для связи"
 								description="Выберите ресурс"
 								options={[
-									{ value: 'email', label: 'E-mail' },
-									{ value: 'tg', label: 'Telegram' },
-									{ value: 'phone', label: 'Phone' },
+									{ value: 1, label: 'E-mail' },
+									{ value: 2, label: 'Telegram' },
+									{ value: 3, label: 'Phone' },
 								]}
 								onChange={(item) => {
 									console.log(item);
@@ -137,9 +137,9 @@ export const DesktopView = () => {
 								label="Страна"
 								isSearchable
 								options={[
-									{ value: '1', label: 'Россия' },
-									{ value: '2', label: 'Беларусь' },
-									{ value: '3', label: 'Казахстан' },
+									{ value: 1, label: 'Россия' },
+									{ value: 2, label: 'Беларусь' },
+									{ value: 3, label: 'Казахстан' },
 								]}
 								onChange={(item) => {
 									console.log(item);
@@ -150,9 +150,9 @@ export const DesktopView = () => {
 								label="Город"
 								isSearchable
 								options={[
-									{ value: '1', label: 'Москва' },
-									{ value: '2', label: 'Екатеринбург' },
-									{ value: '3', label: 'Пермь' },
+									{ value: 1, label: 'Москва' },
+									{ value: 2, label: 'Екатеринбург' },
+									{ value: 3, label: 'Пермь' },
 								]}
 								onChange={(item) => {
 									console.log(item);
@@ -192,9 +192,9 @@ export const DesktopView = () => {
 								name="select-qualifications"
 								label="Уровень квалификации"
 								options={[
-									{ value: 'junior', label: 'Junior' },
-									{ value: 'middle', label: 'Middle' },
-									{ value: 'senior', label: 'Senior' },
+									{ value: 1, label: 'Junior' },
+									{ value: 2, label: 'Middle' },
+									{ value: 3, label: 'Senior' },
 								]}
 								onChange={(item) => {
 									console.log(item);

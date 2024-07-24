@@ -6,6 +6,13 @@ export const projectsApi = createApi({
 	reducerPath: 'projectsApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl: `https://${BASE_URL}/api/v1`,
+		prepareHeaders: async (headers) => {
+			const accessToken = localStorage.getItem('token');
+			if (accessToken) {
+				headers.set('Authorization', `Token ${accessToken}`);
+			}
+			return headers;
+		},
 	}),
 	endpoints: (builder) => ({
 		getProjectsPreviewMain: builder.query({
