@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import React, { FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 import { CalendarIcon, ActivityIcon } from '@/shared/assets'; // ,
 import { MainButton } from '@/shared/ui';
@@ -27,6 +28,8 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 	const isMobile = useMediaQuery('(max-width:779px)');
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
+	const token = localStorage.getItem('token');
+	const router = useRouter();
 
 	return (
 		<article className={styles.container}>
@@ -103,15 +106,34 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</MainButton>
 				</div>
 			)}
-			<PopUp
-				visible={isPopupOpen}
-				title={name}
-				onClose={() => setIsPopupOpen(false)}>
-				 <InviteToProject
-					projectId={id}
-					project_specialists={project_specialists}
-				/> 
-			</PopUp>
+			{token ? (
+				<PopUp
+					visible={isPopupOpen}
+					title={name}
+					onClose={() => setIsPopupOpen(false)}>
+					<InviteToProject
+						projectId={id}
+						project_specialists={project_specialists}
+					/>
+				</PopUp>
+			) : (
+				<PopUp
+					visible={isPopupOpen}
+					title={'Вход в систему'}
+					onClose={() => setIsPopupOpen(false)}>
+					<span className={styles.popupSubtitle}>Чтобы совершить действие, необходимо войти в систему</span>
+					<div className={styles.popupButton}>
+					<MainButton
+						variant="primary"
+						width="regular"
+						type="button"
+						onClick={() => router.push('/login')}>
+						Авторизоваться
+					</MainButton>
+					</div>
+				
+				</PopUp>
+			)}
 		</article>
 	);
 };

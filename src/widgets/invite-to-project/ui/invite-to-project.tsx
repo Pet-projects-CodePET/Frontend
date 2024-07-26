@@ -68,10 +68,9 @@ export const InviteToProject = ({
 			.then(() => {
 				console.log('успех');
 			})
-			.catch((error) => {
+			.catch(() => {
 				console.log('error', error);
 			});
-		console.log('ошибка', error);
 		//	}
 	};
 	return (
