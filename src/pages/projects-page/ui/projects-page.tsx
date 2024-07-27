@@ -20,6 +20,7 @@ import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-
 import { useGetAllProjectsQuery, } from '@/services/ProjectService'; 
 import { ProjectCardFullType } from '@/widgets/project-card-full/ui/type';
 import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
+import { Option } from '@/shared/types/option';
 import styles from './projects-page.module.scss';
 
 export const Projects = () => {
@@ -50,7 +51,7 @@ export const Projects = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
 
-	const handleStatusProjectChange = (selectedOptions: (string | object)[]) => {
+	const handleStatusProjectChange = (selectedOptions: Option[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
 	};
 

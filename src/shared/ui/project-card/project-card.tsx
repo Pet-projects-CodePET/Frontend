@@ -2,12 +2,15 @@
 'use client';
 
 import React from 'react';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { CardProps } from './types';
 import CalendarIcon from '@/shared/assets/icons/calender.svg';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import { MainButton } from '../main-button/main-button';
+import { InviteToProject } from '@/widgets/invite-to-project';
+import { PopUp } from '@/shared/ui';
 import styles from './project-card.module.scss';
 
 export const ProjectCard: FC<CardProps> = ({
@@ -18,8 +21,11 @@ export const ProjectCard: FC<CardProps> = ({
 	project_specialists,
 	id
 }) => {
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
+	const token = localStorage.getItem('token');
+	const router = useRouter();
 	return (
 		<div className={styles.container}>
 			<Link href={`projects/${id}`} target="_blank" className={styles.linkProject}>
@@ -49,15 +55,46 @@ export const ProjectCard: FC<CardProps> = ({
 					);
 				})}
 			</ul>
+			</Link>
 {/* 
 			<Link href="#" className={styles.link}>
 				Откликнуться
 			</Link> */}
 			<MainButton variant='trivial' width='min'
-			onClick={(evt) => evt.preventDefault()}>
+			onClick={
+				() => setIsPopupOpen(true)
+			}>
 				Откликнуться
 			</MainButton>
-			</Link>
+			{token ? (
+				<PopUp
+					visible={isPopupOpen}
+					title={name}
+					onClose={() => setIsPopupOpen(false)}>
+					<InviteToProject
+						projectId={id}
+						project_specialists={project_specialists}
+					/>
+				</PopUp>
+			) : (
+				<PopUp
+					visible={isPopupOpen}
+					title={'Вход в систему'}
+					onClose={() => setIsPopupOpen(false)}>
+					<span className={styles.popupSubtitle}>Чтобы совершить действие, необходимо войти в систему</span>
+					<div className={styles.popupButton}>
+					<MainButton
+						variant="primary"
+						width="regular"
+						type="button"
+						onClick={() => router.push('/login')}>
+						Авторизоваться
+					</MainButton>
+					</div>
+				
+				</PopUp>
+			)}
+			
 		</div>
 	);
 };

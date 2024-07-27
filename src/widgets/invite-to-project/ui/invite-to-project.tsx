@@ -34,13 +34,13 @@ export const InviteToProject = ({
 	const [selectedPosition, setSelectedPosition] = useState({
 		value: 0,
 		label: ' ',
-	});
+	} as SelectOption);
 
 	//const [currentText, setCurrentText] = useState('');
 
 	const handleSpecializationChange = (selectedOptions: SelectOption[]) => {
-		console.info('specialization: ', selectedOptions?.[0]);
-		if (selectedOptions?.[0] !== undefined && selectedOptions.length !== 0) {
+		console.info('specialization: ', selectedOptions[0]);
+		if (selectedOptions !== undefined && selectedOptions.length !== 0) {
 			setSelectedPosition(selectedOptions[0]);
 		} else setSelectedPosition({ value: 0, label: ' ' });
 	};
@@ -80,6 +80,7 @@ export const InviteToProject = ({
 					name="select-recruitment-status"
 					options={specializationArray}
 					buttonLabel="Специальность"
+					value={selectedPosition}
 					onChange={handleSpecializationChange}
 				/>
 			</div>
