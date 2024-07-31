@@ -13,22 +13,13 @@
 	margin: 0;
 	font-style: normal;
 }
-.specialist {
-	display: flex;
-	border-radius: 12px;
-	border: 1px solid $--border-default;
-	height: auto;
-	padding: 32px;
-	margin-bottom: 32px;
-	margin-top: 16px;
-	flex-wrap: wrap;
-
-	&__info {
+	
+.specialist__info {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-	}
 }
+
 .info {
 	&__person {
 		display: flex;
@@ -41,17 +32,11 @@
 	&__personDescription {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
 		gap: 8px;
 		flex-wrap: wrap;
 	}
 	&__personStatus {
 		display: flex;
-		gap: 8px;
-		align-items: center;
-	}
-	&__personStatus__small {
-		display: none;
 		gap: 8px;
 		align-items: center;
 	}
@@ -77,6 +62,7 @@
 		@extend %secondaryText;
 		font-size: 16px;
 		font-weight: 700;
+		padding: 10px 0px;
 		letter-spacing: 0.25px;
 	}
 	&__skill {
@@ -96,16 +82,6 @@
 		flex-wrap: wrap;
 	}
 
-	&__role__small {
-		@extend %baseText;
-		font-size: 16px;
-		font-weight: 700;
-		gap: 5px;
-		padding-bottom: 10px;
-		display: none;
-		flex-wrap: wrap;
-	}
-
 	&__title {
 		@extend %baseText;
 		font-size: 20px;
@@ -113,6 +89,7 @@
 		line-height: 19px;
 		letter-spacing: 0.25px;
 		padding-bottom: 8px;
+		display: flex;
 	}
 
 	&__skillsList {
@@ -121,6 +98,17 @@
 		padding: 9px 0 0;
 		margin: 0 0 24px 0;
 		list-style: none;
+	}
+	&__skill {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 19px;
+		letter-spacing: 0.25px;
+		margin: 8px 8px 0 0;
+		padding: 4px 13px;
+		white-space: nowrap;
+		border-radius: 20px;
+		border: 1px solid $--border-default;
 	}
 	&__sideText {
 		@extend %baseText;
@@ -165,6 +153,7 @@
 		top: 0;
 		right: 0;
 		border-radius: 50%;
+		border: 1px solid $--border-default;
 		width: 40px;
 		height: 40px;
 		display: flex;
@@ -183,7 +172,6 @@
 	.specialist {
 		max-width: 90vw;
 		padding: 16px;
-		border: none;
 	}
 	.info {
 		&__personDescription {
@@ -194,31 +182,19 @@
 			font-size: 20px;
 			font-weight: 700;
 		}
-
 		&__avatar {
 			margin-right: 8px;
 		}
 		&__person {
 			gap: 8px;
 		}
-
-		&__personStatus {
-			display: none;
-		}
-		&__personStatus__small {
-			display: flex;
-			padding-bottom: 18px;
-		}
-
-		&__role {
-			display: none;
-		}
-		&__role__small {
-			display: flex;
-		}
 		&__personImage {
 			width: 48px;
 			height: 48px;
+		}
+		&__likeContainer {
+			width: 20px;
+			height: 20px;
 		}
 		&__likeIcon {
 			width: 16px;

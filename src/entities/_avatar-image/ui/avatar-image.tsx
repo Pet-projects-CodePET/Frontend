@@ -37,9 +37,9 @@ export const AvatarImage: FC<AvatarImageType> = ({
 			instead of padding, or it will warp the size */}
 			<div className={`${avatarStyle} ${className}`}>
 				{imageURL ? (
-<PersonIcon/>
-				) : (
 					<Image src={imageURL} width={num()} height={num()} alt="" />
+				) : (
+					<PersonIcon />
 				)}
 			</div>
 		</>
