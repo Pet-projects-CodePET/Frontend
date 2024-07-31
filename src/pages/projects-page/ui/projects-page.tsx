@@ -18,7 +18,7 @@ import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 import { useGetAllProjectsQuery, } from '@/services/ProjectService'; 
-import { ProjectCardFullType } from '@/widgets/project-card-full/ui/type';
+import { ProjectCardFullType } from '@/widgets/project-card-full/ui/types';
 import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
 import { Option } from '@/shared/types/option';
 import styles from './projects-page.module.scss';

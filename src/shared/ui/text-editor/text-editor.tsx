@@ -10,13 +10,12 @@ export const TextEditor: FC<TextEditorProps> = ({
 	labelName,
 	placeholder,
 	desc,
-	//setCurrentText,
+	setCurrentText,
+	currentText,
 	...props
 }) => {
-	const [value, setValue] = useState<string>('');
+	//const [value, setValue] = useState<string>('');
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
-	//console.log(value)
-
 	useEffect(() => {
 		setIsWindowLoaded(true);
 	}, []);
@@ -30,8 +29,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 	) => {
 		if (typeof window === 'object') {
 			if (editor.getLength() <= 751) {
-				//setCurrentText(value) 
-				setValue(content);
+				setCurrentText(content);
 			} else {
 				alert('Превышено количество символов.');
 			}
@@ -60,7 +58,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 							placeholder={placeholder}
 							modules={myModule}
 							theme="snow"
-							value={value}
+							value={currentText}
 							onChange={handleChange}
 							className={styles.inputMain}
 							{...props}

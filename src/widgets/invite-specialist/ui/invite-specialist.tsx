@@ -51,7 +51,9 @@ export const InviteSpecialist = () => {
 				<div className={styles.letter__wrapper}>
 					<h2>Несколько слов о проекте</h2>
 					<>
-						<TextEditor labelName={''} />
+						<TextEditor labelName={''} 
+						currentText=' '
+						setCurrentText={() => {}}/>
 						<MainButton variant={'primary'} width={'regular'}>
 							Пригласить
 						</MainButton>

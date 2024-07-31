@@ -5,11 +5,12 @@ import clsx from 'clsx';
 import { CalendarIcon, ActivityIcon } from '@/shared/assets'; // ,
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
-import { ProjectCardFullType } from './type';
+import { ProjectCardFullType } from './types';
 import { LikeButtonFeature } from '@/features';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import Link from 'next/link';
-import { InviteToProject } from '@/widgets/invite-to-project';
+//import { InviteToProject } from '@/widgets/invite-to-project';
+import { InviteToProjectFeature } from '@/features';
 import { PopUp } from '@/shared/ui';
 import styles from './project-card-full.module.scss';
 
@@ -111,10 +112,13 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					visible={isPopupOpen}
 					title={name}
 					onClose={() => setIsPopupOpen(false)}>
-					<InviteToProject
+					{/* <InviteToProject
 						projectId={id}
 						project_specialists={project_specialists}
-					/>
+						//fixedSpecialty={false}
+					/> */}
+					<InviteToProjectFeature projectId={id}
+						project_specialists={project_specialists}/>
 				</PopUp>
 			) : (
 				<PopUp

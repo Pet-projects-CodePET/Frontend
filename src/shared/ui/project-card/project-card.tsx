@@ -9,7 +9,7 @@ import { CardProps } from './types';
 import CalendarIcon from '@/shared/assets/icons/calender.svg';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import { MainButton } from '../main-button/main-button';
-import { InviteToProject } from '@/widgets/invite-to-project';
+import { InviteToProjectFeature } from '@/features';
 import { PopUp } from '@/shared/ui';
 import styles from './project-card.module.scss';
 
@@ -71,7 +71,7 @@ export const ProjectCard: FC<CardProps> = ({
 					visible={isPopupOpen}
 					title={name}
 					onClose={() => setIsPopupOpen(false)}>
-					<InviteToProject
+					<InviteToProjectFeature
 						projectId={id}
 						project_specialists={project_specialists}
 					/>

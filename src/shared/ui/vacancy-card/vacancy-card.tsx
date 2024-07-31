@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 'use client';
 import React, { useState } from 'react';
 import { IconSpecialists } from '@/shared/assets';
@@ -10,13 +11,25 @@ export const VacancyCard = ({
 	title,
 	skills,
 	count,
-	//specialty,
+	//projectId,
+	//specialists,
 }: {
 	name: string;
 	title: string;
 	skills: { id: number; name: string }[];
 	count: number;
-	specialty: string;
+	projectId: number;
+	// specialists: 
+	// [{
+	// 	id: number;
+	// 	profession: {
+	// 		id: number;
+	// 		specialization: string;
+	// 		specialty: string;
+	// 	} ;
+	// }] 
+	
+	//project_specialists: { value: number; label: string; }[]
 }) => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	return (
@@ -47,10 +60,12 @@ export const VacancyCard = ({
 				visible={isPopupOpen}
 				title={name}
 				onClose={() => setIsPopupOpen(false)}>
-					{' '}
-				{/* <InviteToProject>
-					<div className={styles.tag__specialty}>{specialty}</div>
-				</InviteToProject> */}
+				{' '}
+				{/* <InviteToProject
+					//projectId={projectId}
+					//project_specialists={specialists}
+					//fixedSpecialty
+				/> */}
 			</PopUp>
 		</div>
 	);

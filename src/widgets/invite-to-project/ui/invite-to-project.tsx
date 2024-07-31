@@ -1,78 +1,20 @@
 /* eslint-disable camelcase */
-import React, { useState } from 'react';
-//import parse from 'html-react-parser';
+import React from 'react';
+import { InviteToProjectType } from './types';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
-import { Option as SelectOption } from '@/shared/types/option';
 import { MainButton } from '@/shared/ui';
-import { IProjectsRequests } from '@/services/models/IProjectsRequests';
-import { useRequestParticipationInProjectsMutation } from '@/services/ProjectService';
+import { NotificationToastContainer } from '@/widgets/notification-toast';
 import styles from './invite-to-project.module.scss';
 
 export const InviteToProject = ({
-	project_specialists,
-	projectId,
-}: {
-	projectId: number;
-	project_specialists: [
-		{
-			id: number;
-			profession: {
-				id: number;
-				specialization: string;
-				specialty: string;
-			};
-		},
-	];
-}) => {
-	const specializationArray = project_specialists.map((item) => {
-		return {
-			value: item.profession.id,
-			label: item.profession.specialization,
-		};
-	});
-	const [selectedPosition, setSelectedPosition] = useState({
-		value: 0,
-		label: ' ',
-	} as SelectOption);
-
-	//const [currentText, setCurrentText] = useState('');
-
-	const handleSpecializationChange = (selectedOptions: SelectOption[]) => {
-		console.info('specialization: ', selectedOptions[0]);
-		if (selectedOptions !== undefined && selectedOptions.length !== 0) {
-			setSelectedPosition(selectedOptions[0]);
-		} else setSelectedPosition({ value: 0, label: ' ' });
-	};
-
-	const [requestInProject, { error }] =
-		useRequestParticipationInProjectsMutation();
-	//const token = localStorage.getItem('token');
-
-	const handleRequestInProject = (projects: IProjectsRequests) => {
-		const {
-			project = projectId,
-			position = selectedPosition.value as number /*cover_letter = currentText*/,
-		} = projects;
-
-		console.log(
-			'requestInProject',
-			requestInProject,
-			project,
-			position /*cover_letter*/
-		);
-
-		//console.log(token);
-		//if (token) {
-		requestInProject({ project, position /*cover_letter*/ })
-			.then(() => {
-				console.log('успех');
-			})
-			.catch(() => {
-				console.log('error', error);
-			});
-		//	}
-	};
+	handleRequestInProject,
+	specializationArray,
+	handleSpecializationChange,
+	setCurrentText,
+	currentText,
+	selectedPosition,
+}: InviteToProjectType) => {
 	return (
 		<>
 			<div className={styles.specialty}>
@@ -85,7 +27,11 @@ export const InviteToProject = ({
 				/>
 			</div>
 			<p className={styles.title}>Сопроводительное письмо</p>
-			<TextEditor labelName={''} /*setCurrentText={setCurrentText}*/ />
+			<TextEditor
+				labelName={''}
+				setCurrentText={setCurrentText}
+				currentText={currentText}
+			/>
 			<div className={styles.button}>
 				<MainButton
 					variant="primary"
@@ -95,6 +41,7 @@ export const InviteToProject = ({
 					Откликнуться
 				</MainButton>
 			</div>
+			<NotificationToastContainer />
 		</>
 	);
 };
