@@ -1,0 +1,37 @@
+@import '@/shared/style/variables.scss';
+.specialty {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	padding: 32px 0 32px;
+	&__tag {
+		margin: 0;
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		padding: 4px 16px;
+		display: inline-block;
+		border-radius: 1000px;
+		white-space: nowrap;
+		border: 1px solid $--border-default;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.25px;
+	}
+}
+.title {
+	width: 100%;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 30px;
+	margin: 0;
+}
+.button {
+	padding-top: 32px;
+	display: flex;
+	width: 100%;
+}

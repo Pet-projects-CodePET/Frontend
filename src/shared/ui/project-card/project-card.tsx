@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 'use client';
-
 import React from 'react';
 import { FC, useState } from 'react';
 import Link from 'next/link';
@@ -19,7 +18,7 @@ export const ProjectCard: FC<CardProps> = ({
 	name,
 	directions,
 	project_specialists,
-	id
+	id,
 }) => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const startDate = getStartDate(started);
@@ -28,44 +27,46 @@ export const ProjectCard: FC<CardProps> = ({
 	const router = useRouter();
 	return (
 		<div className={styles.container}>
-			<Link href={`projects/${id}`} target="_blank" className={styles.linkProject}>
-			<div className={styles.date}>
-				<CalendarIcon width="24" height="24" />
-				<p className={styles.datetext}>{`${startDate}-${endDate}`}</p>
-			</div>
-			<p className={styles.title}>{name}</p>
-			{directions?.map((item) => {
-				return (
-					<p key={item.id} className={styles.direction}>
-						{item.name}
-					</p>
-				);
-			})}
-			<ul className={styles.tags}>
-				{project_specialists?.map((item) => {
+			<Link
+				href={`projects/${id}`}
+				target="_blank"
+				className={styles.linkProject}>
+				<div className={styles.date}>
+					<CalendarIcon width="24" height="24" />
+					<p className={styles.datetext}>{`${startDate}-${endDate}`}</p>
+				</div>
+				<p className={styles.title}>{name}</p>
+				{directions?.map((item) => {
 					return (
-						<li
-							key={item.id}
-							className={styles.tag}
-							style={{
-								backgroundColor: `${getColorTag(item.profession.specialty)}`,
-							}}>
-							{item.profession?.specialization}
-						</li>
+						<p key={item.id} className={styles.direction}>
+							{item.name}
+						</p>
 					);
 				})}
-			</ul>
+				<ul className={styles.tags}>
+					{project_specialists?.map((item) => {
+						return (
+							<li
+								key={item.id}
+								className={styles.tag}
+								style={{
+									backgroundColor: `${getColorTag(item.profession.specialty)}`,
+								}}>
+								{item.profession?.specialization}
+							</li>
+						);
+					})}
+				</ul>
 			</Link>
-{/* 
-			<Link href="#" className={styles.link}>
-				Откликнуться
-			</Link> */}
-			<MainButton variant='trivial' width='min'
-			onClick={
-				() => setIsPopupOpen(true)
-			}>
-				Откликнуться
-			</MainButton>
+			{project_specialists.length ? (
+				<MainButton
+					variant="trivial"
+					width="min"
+					onClick={() => setIsPopupOpen(true)}>
+					Откликнуться
+				</MainButton>
+			) : null}
+
 			{token ? (
 				<PopUp
 					visible={isPopupOpen}
@@ -81,20 +82,20 @@ export const ProjectCard: FC<CardProps> = ({
 					visible={isPopupOpen}
 					title={'Вход в систему'}
 					onClose={() => setIsPopupOpen(false)}>
-					<span className={styles.popupSubtitle}>Чтобы совершить действие, необходимо войти в систему</span>
+					<span className={styles.popupSubtitle}>
+						Чтобы совершить действие, необходимо войти в систему
+					</span>
 					<div className={styles.popupButton}>
-					<MainButton
-						variant="primary"
-						width="regular"
-						type="button"
-						onClick={() => router.push('/login')}>
-						Авторизоваться
-					</MainButton>
+						<MainButton
+							variant="primary"
+							width="regular"
+							type="button"
+							onClick={() => router.push('/login')}>
+							Авторизоваться
+						</MainButton>
 					</div>
-				
 				</PopUp>
 			)}
-			
 		</div>
 	);
 };

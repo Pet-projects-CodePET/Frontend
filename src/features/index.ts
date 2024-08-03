@@ -7,3 +7,4 @@ export { FormChangePasswordFeature } from '@/features/form-change-password/form-
 export { FormProfileSettingsFeature } from '@/features/form-profile-settings/form-profile-settings';
 export { DeleteAccountFeature } from '@/features/delete-account/delete-account';
 export { InviteToProjectFeature } from '@/features/invite-to-project/invite-to-project';
+export { InviteToProjectVacancyFeature } from '@/features/invite-to-project-vacancy/invite-to-project-vacancy';

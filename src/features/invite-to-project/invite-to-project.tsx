@@ -19,8 +19,8 @@ export const InviteToProjectFeature = ({
 				specialization: string;
 				specialty: string;
 			};
-		},
-	];
+		}
+	] 
 }) => {
 	const specializationArray = project_specialists.map((item) => {
 		return {
@@ -29,14 +29,13 @@ export const InviteToProjectFeature = ({
 		};
 	});
 	const [selectedPosition, setSelectedPosition] = useState({
-		// value: 0,
-		// label: ' ',
+		 //value: 0,
+		 //label: ' ',
 		value: project_specialists[0].profession.id,
 		label: project_specialists[0].profession.specialization,
 	} as SelectOption);
 
 	const [currentText, setCurrentText] = useState<string>('');
-	//const [currentText, setCurrentText] = useState('');
 
 	const handleSpecializationChange = (selectedOptions: SelectOption[]) => {
 		console.info('specialization: ', selectedOptions[0]);

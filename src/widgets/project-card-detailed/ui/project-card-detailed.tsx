@@ -13,6 +13,7 @@ import clsx from 'clsx';
 import styles from './project-card-detailed.module.scss';
 
 export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
+	idProject,
 	name,
 	description,
 	directions,
@@ -162,9 +163,8 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								title={`${item.profession.specialization} / ${item.profession.specialty} / ${item.level}`}
 								skills={item.skills}
 								count={item.count}
-								projectId={item.id}
-								//specialists={}
-								// specialty={`${item.profession.specialization} / ${item.profession.specialty} / ${item.level}`}
+								projectId={idProject}
+								specialists={item.profession}
 							/>
 						);
 					})}

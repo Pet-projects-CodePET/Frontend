@@ -9,7 +9,6 @@ import { ProjectCardFullType } from './types';
 import { LikeButtonFeature } from '@/features';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import Link from 'next/link';
-//import { InviteToProject } from '@/widgets/invite-to-project';
 import { InviteToProjectFeature } from '@/features';
 import { PopUp } from '@/shared/ui';
 import styles from './project-card-full.module.scss';

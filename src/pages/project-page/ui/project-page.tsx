@@ -10,6 +10,7 @@ export const Project = ({ id }: { id: number }) => {
 	return (
 		<div>
 			<ProjectCardDetailed
+			    idProject={id}
 				name={project?.name}
 				description={project?.description}
 				directions={project?.directions}
