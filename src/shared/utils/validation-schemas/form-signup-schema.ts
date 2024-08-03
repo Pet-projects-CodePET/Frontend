@@ -1,70 +1,69 @@
-import * as yup from 'yup';
+import {
+	generalEmailRegex,
+	noSpecialCharEmailRegex,
+	limitedCharEmailRegex,
+	passwordRegex,
+} from '@/utils/regex-consts';
+import { z } from 'zod';
 
-const schema = yup.object().shape({
-	email: yup
-		.string()
-		.required('Поле обязательно для заполнения')
-		.min(6, 'Длина поля от 6 до 256 символов')
-		.max(256, 'Длина поля от 6 до 256 символов')
-		.trim()
-		.matches(
-			/^[^/[!"#$%&'()*+,/:;<=>?[\\\]^`{|}~\u2116\u0024\u20AC\u00A3\u00A5\u20BD\u00A9\u2122\u00AE]*$/,
-			'Только дефис, точка, нижнее подчеркивание'
-		)
-		.matches(/^[a-zA-Zа-яА-Я0-9-._@]*$/, 'Только буквы (A-z, А-я), цифры (0-9)')
-		.email('Введите корректный E-mail')
-		.matches(
-			/^[a-zA-Z0-9][a-zA-Z0-9_.-]*[a-zA-Z0-9]@[a-zA-Z0-9_-]+(?:\.[a-zA-Zа-яА-Я0-9_-]+)*\.[a-zA-Zа-яА-Я_-]{2,}$/,
-			'Введите корректный E-mail'
-		),
-	username: yup
-		.string()
-		.required('Поле обязательно для заполнения')
-		.trim()
-		.min(2, 'Длина поля от 2 до 30 символов')
-		.max(30, 'Длина поля от 2 до 30 символов')
-		.matches(/^[a-zA-Zа-яА-Я0-9-._@]*$/, 'Только буквы (A-z, А-я), цифры (0-9)')
-		.matches(
-			/^[^/[!"#$%&'()*+,/:;<=>?[\\\]^`{|}~\u2116\u0024\u20AC\u00A3\u00A5\u20BD\u00A9\u2122\u00AE]*$/,
-			'Только дефис, точка, нижнее подчеркивание'
-		)
-		.test('no-consecutive-dashes', 'Введите корректную фамилию', (value) => {
-			if (typeof value !== 'string') {
-				return true;
-			}
-			return !/--/.test(value.replace(/\s/g, ''));
-		})
-		.test(
-			'no-spaces-between-dashes',
-			'Введите никнейм без пробелов',
-			(value) => {
-				if (typeof value !== 'string') {
-					return true;
-				}
-				if (/\s/.test(value)) {
-					value.replace(/\s/g, '');
-				}
-				return !/\s/.test(value);
-			}
-		),
-	password: yup
-		.string()
-		.trim()
-		.required('Поле обязательно для заполнения')
-		.min(8, 'Длина поля от 8 до 20 символов')
-		.max(20, 'Длина поля от 8 до 20 символов')
-		.matches(
-			/[a-zA-Zа-яА-Я0-9!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~\u2116\u0024\u20AC\u00A3\u00A5\u20BD\u00A9\u2122\u00AE]$/,
-			'Только буквы (A-z, А-я), цифры (0-9), спецсимволы'
-		),
-	/* eslint-disable */
-	re_password: yup
-		/* eslint-enable */
-		.string()
-		.trim()
-		.required('Поле обязательно для заполнения')
-		.min(8, 'Длина поля от 8 до 20 символов')
-		.max(20, 'Длина поля от 8 до 20 символов')
-		.oneOf([yup.ref('password')], 'Пароли не совпадают'),
-});
-export default schema;
+const noConsecutiveDashes = (value: string) =>
+	!/--/.test(value.replace(/\s/g, ''));
+const noSpacesBetweenDashes = (value: string) =>
+	!/\s/.test(value.replace(/\s/g, ''));
+
+const FormSchema = z
+	.object({
+		email: z
+			.string()
+			.min(1, { message: 'Поле обязательно для заполнения' })
+			.email({ message: 'Проверьте правильность ввода' })
+			.min(6, { message: 'Длина поля от 6 до 256 символов' })
+			.max(256, { message: 'Длина поля от 6 до 256 символов' })
+			.trim()
+			.regex(generalEmailRegex, { message: 'Проверьте правильность ввода' })
+			.regex(noSpecialCharEmailRegex, {
+				message: 'Проверьте правильность ввода',
+			})
+			.regex(limitedCharEmailRegex, {
+				message: 'Только буквы (A-z, А-я), цифры (0-9)',
+			}),
+
+		username: z
+			.string()
+			.min(1, { message: 'Поле обязательно для заполнения' })
+			.min(2, { message: 'Длина поля от 2 до 30 символов' })
+			.max(30, { message: 'Длина поля от 2 до 30 символов' })
+			.trim()
+			.regex(limitedCharEmailRegex, {
+				message: 'Только буквы (A-z, А-я), цифры (0-9)',
+			})
+			.regex(noSpecialCharEmailRegex, {
+				message: 'Только дефис, точка, нижнее подчеркивание',
+			})
+			.refine(noConsecutiveDashes, { message: 'Введите корректную фамилию' })
+			.refine(noSpacesBetweenDashes, {
+				message: 'Введите никнейм без пробелов',
+			}),
+		password: z
+			.string()
+			.min(1, { message: 'Поле обязательно для заполнения' })
+			.min(8, { message: 'Длина поля от 8 до 20 символов' })
+			.max(20, { message: 'Длина поля от 8 до 20 символов' })
+			.regex(passwordRegex, {
+				message: 'Только буквы (A-z, А-я), цифры (0-9), спецсимволы',
+			}),
+
+		// eslint-disable-next-line camelcase
+		re_password: z
+			.string()
+			.min(1, { message: 'Поле обязательно для заполнения' })
+
+			.min(8, { message: 'Длина поля от 8 до 20 символов' })
+			.max(20, { message: 'Длина поля от 8 до 20 символов' }),
+	})
+	.refine((val) => val.password === val.re_password, {
+		message: 'Пароли не совпадают',
+		path: ['re_password'],
+	});
+
+export default FormSchema;
