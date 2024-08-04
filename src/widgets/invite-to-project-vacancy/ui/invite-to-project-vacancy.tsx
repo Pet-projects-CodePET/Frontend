@@ -12,7 +12,7 @@ export const InviteToProjectVacancy = ({
 	project_specialists,
 }: InviteToProjectVacancyType) => {
 	return (
-		<>
+		<div className={styles.container}>
 			<div className={styles.specialty}>
 				<p className={styles.specialty__tag}>
 					{project_specialists.specialization}
@@ -22,7 +22,7 @@ export const InviteToProjectVacancy = ({
 			<TextEditor
 				labelName={''}
 				setCurrentText={setCurrentText}
-				currentText={currentText}
+				currentText={currentText as string}
 			/>
 			<div className={styles.button}>
 				<MainButton
@@ -34,6 +34,6 @@ export const InviteToProjectVacancy = ({
 				</MainButton>
 			</div>
 			<NotificationToastContainer />
-		</>
+		</div>
 	);
 };

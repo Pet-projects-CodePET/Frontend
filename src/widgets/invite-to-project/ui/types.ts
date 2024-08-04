@@ -7,8 +7,8 @@ export type InviteToProjectType = {
 		label: string;
 	}[];
 	handleSpecializationChange: (selectedOptions: SelectOption[]) => void;
-	setCurrentText: (arg: string) => void;
-	currentText: string;
+	setCurrentText: (arg: string | undefined) => void;
+	currentText: string | undefined;
 	selectedPosition: {
 		value: number;
 		label: string;

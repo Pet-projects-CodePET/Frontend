@@ -16,7 +16,7 @@ export const InviteToProjectVacancyFeature = ({
 		specialty: string;
 	};
 }) => {
-	const [currentText, setCurrentText] = useState<string>('');
+	const [currentText, setCurrentText] = useState(undefined);
 	const [requestInProject] = useRequestParticipationInProjectsMutation();
 	const handleRequestInProject = (projects: IProjectsRequests) => {
 		const {
@@ -47,7 +47,7 @@ export const InviteToProjectVacancyFeature = ({
 	return (
 		<InviteToProjectVacancy
 			handleRequestInProject={handleRequestInProject}
-			setCurrentText={setCurrentText}
+			setCurrentText={setCurrentText as () => void}
 			currentText={currentText}
 			project_specialists={project_specialists}
 		/>

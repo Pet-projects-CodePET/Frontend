@@ -1,4 +1,9 @@
 @import '@/shared/style/variables.scss';
+.container {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
 .specialty {
 	width: 100%;
 	display: flex;
@@ -21,4 +26,9 @@
     padding-top: 32px;
     display: flex;
     width: 100%;
+}
+@media screen and (max-width: 779px) {
+	.container {
+		padding: 30px 0;
+	}
 }

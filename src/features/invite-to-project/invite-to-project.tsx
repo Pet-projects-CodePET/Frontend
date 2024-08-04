@@ -35,7 +35,7 @@ export const InviteToProjectFeature = ({
 		label: project_specialists[0].profession.specialization,
 	} as SelectOption);
 
-	const [currentText, setCurrentText] = useState<string>('');
+	const [currentText, setCurrentText] = useState(undefined);
 
 	const handleSpecializationChange = (selectedOptions: SelectOption[]) => {
 		console.info('specialization: ', selectedOptions[0]);
@@ -82,7 +82,7 @@ export const InviteToProjectFeature = ({
 			handleRequestInProject={handleRequestInProject}
 			specializationArray={specializationArray}
 			handleSpecializationChange={handleSpecializationChange}
-			setCurrentText={setCurrentText}
+			setCurrentText={setCurrentText as () => void}
 			currentText={currentText}
 			selectedPosition={selectedPosition}
 		/>

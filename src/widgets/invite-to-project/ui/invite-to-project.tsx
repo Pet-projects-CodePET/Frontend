@@ -16,7 +16,7 @@ export const InviteToProject = ({
 	selectedPosition,
 }: InviteToProjectType) => {
 	return (
-		<>
+		<div className={styles.container}>
 			<div className={styles.specialty}>
 				<SingleSelectButton
 					name="select-recruitment-status"
@@ -27,11 +27,13 @@ export const InviteToProject = ({
 				/>
 			</div>
 			<p className={styles.title}>Сопроводительное письмо</p>
+
 			<TextEditor
 				labelName={''}
 				setCurrentText={setCurrentText}
-				currentText={currentText}
+				currentText={currentText as string}
 			/>
+
 			<div className={styles.button}>
 				<MainButton
 					variant="primary"
@@ -42,6 +44,6 @@ export const InviteToProject = ({
 				</MainButton>
 			</div>
 			<NotificationToastContainer />
-		</>
+		</div>
 	);
 };
