@@ -28,8 +28,22 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	phoneNumber,
 	telegramNick,
 	email,
-	projects,
 }) => {
+	function properyCheck<T extends keyof DetailedSpecialistCardTypes>(
+		input: DetailedSpecialistCardTypes[T],
+		sideText?: string
+	): DetailedSpecialistCardTypes[T] | string | undefined {
+		if (input) {
+			if (input && sideText) {
+				return input + sideText;
+			} else {
+				return input;
+			}
+		} else {
+			return 'Пусто';
+		}
+	}
+
 	return (
 		<BlankCard>
 			<div className={styles.specialist__info}>
@@ -40,8 +54,10 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						className={styles.info__avatar}
 					/>
 					<div className={styles.info__personDescription}>
-						<h2 className={styles.info__name}>{name}</h2>
-						<p className={styles.info__nickname}>@{userName}</p>
+						<h2 className={styles.info__name}>{`${properyCheck(name)}`}</h2>
+						<p className={styles.info__nickname}>
+							@{`${properyCheck(userName)}`}
+						</p>
 						<div className={styles.info__personStatus}>
 							{readyToParticipate ? (
 								<>
@@ -68,7 +84,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 				<div className={styles.specialist__info}>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>О себе</h3>
-						<p className={styles.info__sideText}>{about}</p>
+						<p className={styles.info__sideText}>{`${properyCheck(about)}`}</p>
 					</div>
 					<div className={styles.info__title}>
 						<div>
@@ -117,7 +133,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Ссылка на портфолио</h3>
 						<a className={styles.info__contacts} href={portfolioLink}>
-							{portfolioLink}
+							{`${properyCheck(portfolioLink)}`}
 						</a>
 					</div>
 					<div className={styles.info__wrapper}>
@@ -128,14 +144,13 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://mailto:${email}`}>
-									{email}
-								</a>
+							{`${properyCheck(email)}`}
+							</a>
 							</div>
 							<div className={styles.info__contacs__wrapper}>
 								<MobileIcon className={styles.info__icons} />
-
 								<a className={styles.info__contacts} href={phoneNumber}>
-									{phoneNumber}
+								{`${properyCheck(phoneNumber)}`}
 								</a>
 							</div>
 
@@ -145,28 +160,24 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://t.me/${telegramNick}`}>
-									{telegramNick}
-								</a>
+							{`${properyCheck(telegramNick)}`}
+							</a>
 							</div>
 						</div>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Дата рождения</h3>
-						<p className={styles.info__sideText}>{birthday}</p>
+						<p className={styles.info__sideText}>{`${properyCheck(birthday)}`}</p>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Регион</h3>
-						{country && city ? (
-							<p className={styles.info__sideText}>
-								{city} {country}
-							</p>
-						) : (
-							<p className={styles.info__sideText}>Неизвестно</p>
-						)}
+						<p className={styles.info__sideText}>
+							{`${properyCheck(city, `, \t${country}`)}`}
+						</p>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Проекты</h3>
-						{projects ? (
+						{/* {projects ? (
 							projects.slice(0, 5).map((project) => (
 								<a
 									href={`/projects/${project.id}`}
@@ -175,9 +186,8 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 									{project.name}
 								</a>
 							))
-						) : (
-							<div>Empty</div>
-						)}
+						) : ( */}
+						<p className={styles.info__sideText}>Пусто</p>
 					</div>
 					<InviteSpecialist />
 				</div>

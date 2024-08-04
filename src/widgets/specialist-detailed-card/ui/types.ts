@@ -35,5 +35,5 @@ export type DetailedSpecialistCardTypes = {
 	phoneNumber: string;
 	telegramNick: string;
 	email: string;
-	projects: [{ id: number; name: string }];
+	projects?: [{ id: number; name: string }];
 };
