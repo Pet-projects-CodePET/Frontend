@@ -1,6 +1,7 @@
 import React from 'react';
 import { DetailedSpecialistPage } from '@/pages/specialist-in-details';
 import { axiosInstance } from '@/utils/axios-query/axiosInstance';
+import { config } from './route.config'
 
 export async function generateStaticParams() {
 	const arr: string[] = [];
@@ -44,5 +45,8 @@ export async function generateStaticParams() {
 const Page = (param: { params: { id: number } }) => {
 	return <DetailedSpecialistPage params={param} />;
 };
+
+export const dynamic = 'force-dynamic';  // Optional, to ensure dynamic behavior
+export const {revalidate} = config.metadata;
 
 export default Page;
