@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 'use client';
-import React, { useState, useMemo, useEffect } from 'react'; 
+import React, { useState, /*useMemo*/ useEffect } from 'react'; 
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
@@ -41,9 +41,9 @@ export const Projects = () => {
 	//console.log('projects', projects);
 	//console.log('currentPage', currentPage)
 
-	const currentData = useMemo(() => {
-		 return projects && projects.results    	
-	}, [projects]);
+	// const currentData = useMemo(() => {
+	// 	 return projects && projects.results    	
+	// }, [projects]);
 
 	//console.log('currentData', currentData);
 
@@ -169,7 +169,7 @@ export const Projects = () => {
 							)}
 						</div>
 						<div className={styles.projectsContainer}>
-							{ currentData && currentData.map((project: ProjectCardFullType) => {			
+							{ projects?.results.map((project: ProjectCardFullType) => {			
 								const {
 									id,
 									started,
