@@ -1,12 +1,6 @@
-FROM node:18-alpine
+FROM node:21-alpine
 
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm ci
-
-COPY . .
+WORKDIR /app
 
 ARG NEXT_PUBLIC_CAPTCHA_SITE_KEY
 ARG NEXT_PUBLIC_BASE_DEV_URL
@@ -18,13 +12,11 @@ ENV NEXT_PUBLIC_BASE_DEV_URL=$NEXT_PUBLIC_BASE_DEV_URL
 ENV NEXT_PUBLIC_BASE_TEST_URL=$NEXT_PUBLIC_BASE_TEST_URL
 ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
 
-ENV NODE_ENV production
+COPY . .
 
-# ENV NEXT_SHARP_PATH=/node_modules/sharp
 ENV NEXT_SHARP_PATH=/tmp/node_modules/sharp
 
+RUN npm install --force
 RUN npm run build
 
-EXPOSE  3000
-
-# CMD ["npm", "start"]
+CMD ["npm", "start"]
