@@ -27,7 +27,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 
 	return (
 		<article className={styles.container}>
-			<Link href={`projects/${id}`} target="_blank" className={styles.linkProject}>
+			<Link href={`projects/${id}`} /*target="_blank"*/ className={styles.linkProject}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
 						<ActivityIcon
