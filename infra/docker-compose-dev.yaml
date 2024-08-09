@@ -39,14 +39,14 @@ services:
 
   frontend:
     image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_frontend_${BRANCH_TAG}:latest
-    command: cp -r /app/.next/. /frontend_static/
     env_file: .env
     environment:
       - TZ=Europe/Moscow
     volumes:
-      - static_volume:/frontend_static
+      - static_volume:/app/.next/static
     depends_on:
-      db:
+      - backend
+      - db:
         condition: service_healthy
 
   nginx:
