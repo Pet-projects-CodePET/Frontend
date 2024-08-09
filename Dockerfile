@@ -12,11 +12,13 @@ ENV NEXT_PUBLIC_BASE_DEV_URL=$NEXT_PUBLIC_BASE_DEV_URL
 ENV NEXT_PUBLIC_BASE_TEST_URL=$NEXT_PUBLIC_BASE_TEST_URL
 ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
 
+COPY package*.json ./
+RUN npm ci
+
 COPY . .
 
 ENV NEXT_SHARP_PATH=/tmp/node_modules/sharp
 
-RUN npm install --force
 RUN npm run build
 
 CMD ["npm", "start"]
