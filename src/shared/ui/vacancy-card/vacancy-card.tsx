@@ -8,6 +8,7 @@ import { VacancyCardType } from './types';
 import { PopUp } from '@/shared/ui';
 import styles from './vacancy-card.module.scss';
 export const VacancyCard = ({
+	idSpecialty,
 	name,
 	title,
 	skills,
@@ -47,6 +48,7 @@ export const VacancyCard = ({
 				<InviteToProjectVacancyFeature
 					projectId={projectId}
 					project_specialists={specialists}
+					idSpecialty={idSpecialty}
 				/>
 			</PopUp>
 		</div>

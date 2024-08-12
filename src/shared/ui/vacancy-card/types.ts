@@ -1,4 +1,5 @@
 export type VacancyCardType = {
+	idSpecialty: number;
     name: string;
 	title: string;
 	skills: { id: number; name: string }[];

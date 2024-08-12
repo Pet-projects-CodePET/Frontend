@@ -165,6 +165,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								count={item.count}
 								projectId={idProject}
 								specialists={item.profession}
+								idSpecialty={item.id}
 							/>
 						);
 					})}

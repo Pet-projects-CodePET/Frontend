@@ -24,14 +24,14 @@ export const InviteToProjectFeature = ({
 }) => {
 	const specializationArray = project_specialists.map((item) => {
 		return {
-			value: item.profession.id,
+			value: item.id,
 			label: item.profession.specialization,
 		};
 	});
 	const [selectedPosition, setSelectedPosition] = useState({
 		 //value: 0,
 		 //label: ' ',
-		value: project_specialists[0].profession.id,
+		value: project_specialists[0].id,
 		label: project_specialists[0].profession.specialization,
 	} as SelectOption);
 

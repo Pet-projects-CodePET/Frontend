@@ -8,6 +8,7 @@ import { toaster } from '@/widgets/notification-toast';
 export const InviteToProjectVacancyFeature = ({
 	project_specialists,
 	projectId,
+	idSpecialty,
 }: {
 	projectId: number;
 	project_specialists: {
@@ -15,13 +16,14 @@ export const InviteToProjectVacancyFeature = ({
 		specialization: string;
 		specialty: string;
 	};
+	idSpecialty: number
 }) => {
 	const [currentText, setCurrentText] = useState(undefined);
 	const [requestInProject] = useRequestParticipationInProjectsMutation();
 	const handleRequestInProject = (projects: IProjectsRequests) => {
 		const {
 			project = projectId,
-			position = project_specialists.id,
+			position = idSpecialty,
 			cover_letter = currentText,
 		} = projects;
 
