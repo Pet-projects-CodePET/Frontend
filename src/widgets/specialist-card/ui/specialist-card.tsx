@@ -51,43 +51,42 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						</div>
 					</div>
 
-					{specialists[1] ? (
-						<>
-							<div className={styles.specialist__info}>
-								<div className={styles.info__role}>
-									{specialists[0]?.profession.specialization}
-									{'\t'}/{'\t'}
-									{specialists[0]?.profession.specialty},
-									{clsx(
-										specialists[0]?.level === 1 && '\t Junior',
-										specialists[0]?.level === 2 && '\t Middle',
-										specialists[0]?.level === 3 && '\t Senior',
-										specialists[0]?.level === 4 && '\t Lead'
-									)}
-								</div>
-								<ul className={styles.info__skillsList}>
-									{specialists[0]?.skills.map((skill) => {
-										return (
-											<li className={styles.info__skill} key={skill.id}>
-												{skill.name}
-											</li>
-										);
-									})}
-								</ul>
-							</div>
-							<div className={styles.specialist__info}>
-								<div className={styles.info__role}>
-									{specialists[1]?.profession?.specialization}
-									{'\t'}/{'\t'}
-									{specialists[1]?.profession?.specialty},
-									{clsx(
-										specialists[1]?.level === 1 && '\t Junior',
-										specialists[1]?.level === 2 && '\t Middle',
-										specialists[1]?.level === 3 && '\t Senior',
-										specialists[1]?.level === 4 && '\t Lead'
-									)}
-								</div>
-								<ul className={styles.info__skillsList}>
+					<div className={styles.info__role}>
+						<div>
+							{specialists[0] &&
+								`${specialists[0].profession.specialization} \t/\t`}
+							{specialists[0] && `${specialists[0].profession.specialty},`}
+							{clsx(
+								specialists[0] && specialists[0].level === 1 && '\t Junior',
+								specialists[0] && specialists[0].level === 2 && '\t Middle',
+								specialists[0] && specialists[0].level === 3 && '\t Senior',
+								specialists[0] && specialists[0].level === 4 && '\t Lead'
+							)}
+						</div>
+					</div>
+						<ul className={styles.info__skillsList}>
+							{specialists[0]?.skills.map((skill) => {
+								return (
+									<li className={styles.info__skill} key={skill.id}>
+										{skill.name}
+									</li>
+								);
+							})}
+						</ul>
+					<div className={styles.info__role}>
+						<div>
+							{specialists[1] &&
+								`${specialists[1]?.profession?.specialization} \t/\t`}
+							{specialists[1] && `${specialists[1]?.profession?.specialty},`}
+							{clsx(
+								specialists[1] && specialists[1].level === 1 && '\t Junior',
+								specialists[1] && specialists[1].level === 2 && '\t Middle',
+								specialists[1] && specialists[1].level === 3 && '\t Senior',
+								specialists[1] && specialists[1].level === 4 && '\t Lead'
+							)}
+						</div>
+					</div>
+					<ul className={styles.info__skillsList}>
 									{specialists[1]?.skills?.map((skill) => {
 										return (
 											<li className={styles.info__skill} key={skill.id}>
@@ -96,34 +95,6 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 										);
 									})}
 								</ul>
-							</div>
-						</>
-					) : (
-						<>
-							<div className={styles.specialist__info}>
-								<div className={styles.info__role}>
-									{specialists[0]?.profession.specialization}
-									{'\t'}/{'\t'}
-									{specialists[0]?.profession.specialty},
-									{clsx(
-										specialists[0]?.level === 1 && '\t Junior',
-										specialists[0]?.level === 2 && '\t Middle',
-										specialists[0]?.level === 3 && '\t Senior',
-										specialists[0]?.level === 4 && '\t Lead'
-									)}
-								</div>
-								<ul className={styles.info__skillsList}>
-									{specialists[0]?.skills.map((skill) => {
-										return (
-											<li className={styles.info__skill} key={skill.id}>
-												{skill.name}
-											</li>
-										);
-									})}
-								</ul>
-							</div>
-						</>
-					)}
 				</Link>
 				<InviteSpecialist />
 			</div>
