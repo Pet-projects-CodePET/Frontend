@@ -7,3 +7,11 @@ node_modules
 .gitignore
 
 *.log
+
+/infra
+/.github
+/workflows
+README.md
+Dockerfile
+/pages
+/husky
