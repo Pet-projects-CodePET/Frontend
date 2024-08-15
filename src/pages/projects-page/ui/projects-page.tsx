@@ -38,7 +38,7 @@ export const Projects = () => {
 	const getAllProjectsData = async (pageNumber: number) => {
 		const res = await getAllProjects({ currentPage: pageNumber });
 		const projectsData = await res.json();
-		console.log(projectsData);
+		// console.log(projectsData);
 		setProjectsData(projectsData);
 	};
 

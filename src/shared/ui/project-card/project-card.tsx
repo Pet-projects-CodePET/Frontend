@@ -22,7 +22,7 @@ export const ProjectCard: FC<CardProps> = ({
 	const endDate = getEndDate(ended);
 	return (
 		<div className={styles.container}>
-			<Link href={`projects/${id}`} /*target="_blank"*/ className={styles.linkProject}>
+			<Link href={`projects/${id}`} target="_blank" className={styles.linkProject}>
 			<div className={styles.date}>
 				<CalendarIcon width="24" height="24" />
 				<p className={styles.datetext}>{`${startDate}-${endDate}`}</p>
