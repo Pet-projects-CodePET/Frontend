@@ -8,9 +8,6 @@ node_modules
 
 *.log
 
-/infra
-/.github
+
 /workflows
 README.md
-/pages
-/husky
