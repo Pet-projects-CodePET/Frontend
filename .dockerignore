@@ -12,6 +12,5 @@ node_modules
 /.github
 /workflows
 README.md
-Dockerfile
 /pages
 /husky
