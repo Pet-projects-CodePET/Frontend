@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { MainButton } from '@/shared/ui';
-import backgroundImage from '@/shared/assets/images/background-login-layout.png';
 import { NounsDeclension } from '@/utils/declension/declension';
 import {
 	useGetCountQuery,
@@ -35,24 +33,16 @@ export const Promo = () => {
 
 	return (
 		<section className={styles.promo__container}>
-			<div className={styles.promo__imageContainer}>
-				<Image
-					src={backgroundImage}
-					className={styles.promo__image}
-					alt="abstract image"
-					priority={true}
-					fill></Image>
+			<div className={styles.promo__textContainer}>
+				<p className={styles.promo__title}>
+					{section ? section[0].title : titleMainPage}
+				</p>
+				<p className={styles.promo__subtitle}>
+					{section ? section[0].description : descriptionMainPage}
+				</p>
 			</div>
-			<div className={styles.promo__absoluteContainer}>
-				<div className={styles.promo__textContainer}>
-					<p className={styles.promo__title}>
-						{section ? section[0].title : titleMainPage}
-					</p>
-					<p className={styles.promo__subtitle}>
-						{section ? section[0].description : descriptionMainPage}
-					</p>
-				</div>
-				<div className={styles.promo__itemsContainer}>
+			<div className={styles.promo__itemsContainer}>
+				<div className={styles.promo__itemsList}>
 					<div className={styles.promo__items}>
 						<p className={styles.promo__itemOne}>{counters?.projects}</p>
 						<p className={styles.promo__itemTwo}>
@@ -74,10 +64,12 @@ export const Promo = () => {
 						</p>
 					</div>
 				</div>
-				<div className={styles.promo__button}>
+			</div>
+			<div className={styles.promo__bottom}>
+				<div className={styles.promo__bottomContent}>
 					<MainButton
 						variant="primary"
-						width="max"
+						width="regular"
 						onClick={
 							isLoggedIn
 								? () => router.push('create-project')

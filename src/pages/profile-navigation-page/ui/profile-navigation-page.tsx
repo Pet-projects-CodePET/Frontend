@@ -2,7 +2,7 @@ import React from 'react';
 import { SideNav } from '@/entities/side-nav';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
-import styles from './profile-navigation.module.scss';
+import styles from './profile-navigation-page.module.scss';
 export const ProfileNavigation = () => {
 	return (
 		<>

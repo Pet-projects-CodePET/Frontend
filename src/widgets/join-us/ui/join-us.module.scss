@@ -1,85 +1,54 @@
-@import '../../../shared/style/variables.scss';
+@import '@/shared/style/variables.scss';
 
 .joinus {
+	width: 100%;
+	padding: 32px 0 40px 32px;
+	font-family: $--open-sans-font;
 	box-sizing: border-box;
-	width: 1160px;
-	min-height: 446px;
-	padding: 80px;
+	background: $--Colors-Malibu;
 	border-radius: 20px;
-	background: #8caaff;
-	background-image: url(../../../shared/assets/images/joinus_background.png);
-	background-size: 489px 366px;
+	background-image: url('../../../shared/assets/images/join-us-background.png');
 	background-repeat: no-repeat;
 	background-position: right bottom;
 
 	@media screen and (max-width: 1199px) {
-		width: 780px;
-		min-height: 310px;
-		padding: 56px;
-		background-size: 272px auto;
+		padding: 32px 0 16px 32px;
 	}
 
 	@media screen and (max-width: 779px) {
-		margin: 0 auto;
 		background-image: none;
+		padding: 24px;
+	}
+}
 
-		padding: 24px;
-		width: calc(100% - 32px);
-		min-height: 229px;
-		padding: 24px;
-		background-size: 272px auto;
+.joinus__title {
+	margin: 0;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 32px;
+	letter-spacing: -0.28px;
+
+	@media screen and (max-width: 1199px) {
+		line-height: 32px;
 	}
 
-	&__title {
-		margin-bottom: 16px;
-		color: #1c1c1e;
-		font-family: $--montserrat-font;
-		// font-family: 'Montserrat';
-		// font-family: var(--font-feature-settings);
-		font-size: 40px;
-		font-style: normal;
-		font-weight: 700;
-		line-height: 48px;
-		letter-spacing: -0.4px;
-
-		@media screen and (max-width: 1199px) {
-			font-size: 32px;
-			line-height: 40px;
-		}
-
-		@media screen and (max-width: 779px) {
-			font-family: $--open-sans-font;
-			font-size: 21px;
-			line-height: 27px;
-			letter-spacing: -0.21px;
-		}
+	@media screen and (max-width: 779px) {
+		font-size: 21px;
+		line-height: 27px;
+		letter-spacing: -0.21px;
 	}
+}
 
-	&__text {
-		margin-bottom: 32px;
-		color: #020617;
-		font-feature-settings:
-			'clig' off,
-			'liga' off;
-		width: 591px;
-		font-family: $--open-sans-font;
-		font-size: 20px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 30px;
-		letter-spacing: 0.25px;
+.joinus__text {
+	margin: 16px 0 32px 0;
+	max-width: 60%;
+	word-wrap: break-word;
+	line-height: 24px;
+	letter-spacing: 0.25px;
 
-		@media screen and (max-width: 1199px) {
-			width: 425px;
-			font-size: 16px;
-			line-height: 24px;
-		}
-
-		@media screen and (max-width: 779px) {
-			width: calc(100% - 48px);
-			font-size: 16px;
-			line-height: 22px;
-			margin-bottom: 24px;
-		}
+	@media screen and (max-width: 779px) {
+		max-width: 100%;
+		line-height: 22px;
+		margin: 16px 0 24px 0;
 	}
 }

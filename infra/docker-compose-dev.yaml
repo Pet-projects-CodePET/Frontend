@@ -30,8 +30,8 @@ services:
     environment:
       - TZ=Europe/Moscow
     volumes:
-      - static_volume:/backend_static/
-      - media_value:/backend_media/
+      - static_volume:/backend_static/static
+      - media_value:/backend/media/
       - ${BACKEND_LOGS_DIR}:/backend/data/logs
     depends_on:
       db:
@@ -39,15 +39,13 @@ services:
 
   frontend:
     image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_frontend_${BRANCH_TAG}:latest
-    command: cp -r out/. /frontend_static/
     env_file: .env
     environment:
       - TZ=Europe/Moscow
     volumes:
       - static_volume:/frontend_static
     depends_on:
-      db:
-        condition: service_healthy
+      - backend
 
   nginx:
     image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}_nginx_${BRANCH_TAG}:latest

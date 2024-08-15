@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
 import { TextEditorProps } from './types';
-import 'react-quill/dist/quill.snow.css';
+import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
 import dynamic from 'next/dynamic';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import Quill from 'react-quill';
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
+import Quill from 'react-quill-new';
 
 export const TextEditor: FC<TextEditorProps> = ({
 	labelName,

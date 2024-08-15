@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 'use client';
-import React, { useState, useMemo, useEffect } from 'react'; 
+import React, { useState, /*useMemo*/ useEffect } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
@@ -17,34 +17,51 @@ import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
-import { useGetAllProjectsQuery, } from '@/services/ProjectService'; 
+//import { useGetAllProjectsQuery, } from '@/services/ProjectService';
 import { ProjectCardFullType } from '@/widgets/project-card-full/ui/types';
 import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
+import { getAllProjects } from '@/shared/api';
 import { Option } from '@/shared/types/option';
 import styles from './projects-page.module.scss';
 
+type TProjectsData = {
+	count: number;
+	next: string;
+	previous: null | string;
+	results: ProjectCardFullType[];
+};
+
 export const Projects = () => {
-	
 	const pageSize = 7;
-	const [currentSettings, setCurrentSettings] = useState({currentPage: 1});
-	
+	const [currentSettings, setCurrentSettings] = useState({ currentPage: 1 });
+	const [projectsData, setProjectsData] = useState({} as TProjectsData);
+
+	const getAllProjectsData = async (pageNumber: number) => {
+		const res = await getAllProjects({ currentPage: pageNumber });
+		const projectsData = await res.json();
+		// console.log(projectsData);
+		setProjectsData(projectsData);
+	};
+
+	useEffect(() => {
+		getAllProjectsData(currentSettings.currentPage);
+	}, [currentSettings]);
+
 	useEffect(() => {
 		window.scroll({
 			top: 0,
 			left: 0,
 			//behavior: "smooth",
-		  });
-		
+		});
 	}, [currentSettings]);
 
-	const { data: projects } = useGetAllProjectsQuery(currentSettings);
-
+	//const { data: projects } = useGetAllProjectsQuery(currentSettings);
 	//console.log('projects', projects);
 	//console.log('currentPage', currentPage)
 
-	const currentData = useMemo(() => {
-		 return projects && projects.results    	
-	}, [projects]);
+	// const currentData = useMemo(() => {
+	// 	 return projects && projects.results
+	// }, [projects]);
 
 	//console.log('currentData', currentData);
 
@@ -67,7 +84,6 @@ export const Projects = () => {
 
 	const handleSkillsChange = (selectedItems: object) => {
 		console.info('selected options: ', selectedItems);
-		//console.log(currentData);
 	};
 
 	const handleDateChange = (date: Date | [Date, Date | null]) => {
@@ -170,37 +186,40 @@ export const Projects = () => {
 							)}
 						</div>
 						<div className={styles.projectsContainer}>
-							{ currentData && currentData.map((project: ProjectCardFullType) => {			
-								const {
-									id,
-									started,
-									ended,
-									name,
-									directions,
-									description,
-									status,
-									recruitment_status,
-									project_specialists,
-								} = project;
-								return (
-											<ProjectCardFull
-											    id={id}
-												description={description}
-												ended={ended}
-												started={started as string}
-												name={name}
-												directions={directions}
-												status={status}
-												key={id}
-												recruitment_status={recruitment_status}
-												project_specialists={project_specialists}
-											/>
-								);
-							})}
+							{projectsData.results &&
+								projectsData.results.map((project: ProjectCardFullType) => {
+									const {
+										id,
+										started,
+										ended,
+										name,
+										directions,
+										description,
+										status,
+										recruitment_status,
+										project_specialists,
+									} = project;
+									return (
+										<ProjectCardFull
+											id={id}
+											description={description}
+											ended={ended}
+											started={started as string}
+											name={name}
+											directions={directions}
+											status={status}
+											key={id}
+											recruitment_status={recruitment_status}
+											project_specialists={project_specialists}
+										/>
+									);
+								})}
 						</div>
 						<Pagination
-							onPageChange={(page) => setCurrentSettings({currentPage: Number(page)})}
-							totalCount={projects && projects.count}
+							onPageChange={(page) =>
+								setCurrentSettings({ currentPage: Number(page) })
+							}
+							totalCount={projectsData && projectsData.count}
 							currentPage={currentSettings.currentPage}
 							pageSize={pageSize}
 						/>
