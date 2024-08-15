@@ -21,6 +21,7 @@
 		"@types/react-redux": "^7.1.33",
 		"antd": "^5.14.2",
 		"axios": "^1.7.4",
+		"braces": "^3.0.3",
 		"dayjs": "^1.11.10",
 		"lodash": "^4.17.21",
 		"lucide-react": "^0.323.0",
