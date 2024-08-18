@@ -11,22 +11,15 @@ export const InviteSpecialist = () => {
 	};
 
 	const statusOptions = [
-		{ value: 'active', label: 'Активный' },
-		{ value: 'completed', label: 'Завершенный' },
+		{ value: 1, label: 'Активный' },
+		{ value: 2, label: 'Завершенный' },
 	];
 	const speciality = [
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
-		{ value: 'active', label: 'Some Text' },
+		{ value: 1, label: 'Some Text' },
+		{ value: 2, label: 'Some Text' },
+		{ value: 3, label: 'Some Text' },
+		{ value: 4, label: 'Some Text' },
+		{ value: 5, label: 'Some Text' },
 	];
 
 	return (
@@ -58,7 +51,9 @@ export const InviteSpecialist = () => {
 				<div className={styles.letter__wrapper}>
 					<h2>Несколько слов о проекте</h2>
 					<>
-						<TextEditor labelName={''} />
+						<TextEditor labelName={''} 
+						currentText=' '
+						setCurrentText={() => {}}/>
 						<MainButton variant={'primary'} width={'regular'}>
 							Пригласить
 						</MainButton>

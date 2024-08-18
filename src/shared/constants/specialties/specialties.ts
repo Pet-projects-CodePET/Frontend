@@ -1,30 +1,30 @@
 export const specialties = [
 	{
-		value: 'manual-test-engineer',
+		value: 0,
 		label: 'Инженер по ручному тестированию / Manual Test Engineer',
 	},
 	{
-		value: 'software-developer',
+		value: 1,
 		label: 'Десктоп разработчик / Software Developer',
 	},
 	{
-		value: 'performance-engineer',
+		value: 2,
 		label: 'Инженер по нагрузочному тестированию / Performance Engineer',
 	},
 	{
-		value: 'devops-engineer',
+		value: 3,
 		label: 'DevOps-инженер / DevOps',
 	},
 	{
-		value: 'project-manager',
+		value: 4,
 		label: 'Менеджер проекта / Project Manager',
 	},
 	{
-		value: 'ux-ui-designer',
+		value: 5,
 		label: 'UI/UX дизайнер / UI/UX Designer',
 	},
 	{
-		value: 'systems-analyst',
+		value: 6,
 		label: 'Системный аналитик / Systems Analyst',
 	},
 ];

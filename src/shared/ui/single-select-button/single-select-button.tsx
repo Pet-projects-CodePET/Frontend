@@ -151,7 +151,7 @@ export const SingleSelectButton: FC<SingleSelectButtonProps> = ({
 			name={name}
 			options={options}
 			values={value ? [value] : []}
-			onChange={onChange}
+			onChange={onChange as () => void}
 			contentRenderer={contentRenderer}
 			dropdownRenderer={({ props, state, methods }) =>
 				dropdownRenderer({ props, state, methods })

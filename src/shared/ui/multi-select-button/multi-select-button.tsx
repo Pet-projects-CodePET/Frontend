@@ -8,6 +8,7 @@ import Select, {
 import styles from './multi-select-button.module.scss';
 import { InputSearch } from '../input-search/input-search';
 import IconInformation from '../../assets/icons/information.svg';
+import { Option } from '@/shared/types/option';
 
 export const MultiSelectButton: React.FC<MultiSelectButtonProps> = ({
 	name,
@@ -340,7 +341,7 @@ export const MultiSelectButton: React.FC<MultiSelectButtonProps> = ({
 						contentRenderer({ props, state, methods })
 					}
 					dropdownHandle={false}
-					onChange={(options) => onChange(options)}
+					onChange={(options) => onChange(options as Option[])}
 					options={options}
 					values={values}
 					style={buttonMenuStyle}
@@ -357,7 +358,7 @@ export const MultiSelectButton: React.FC<MultiSelectButtonProps> = ({
 						contentRenderer({ props, state, methods })
 					}
 					dropdownHandle={false}
-					onChange={(options) => onChange(options)}
+					onChange={(options) => onChange(options as Option[])}
 					options={options}
 					values={values}
 					style={buttonMenuStyle}

@@ -18,9 +18,10 @@ import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 //import { useGetAllProjectsQuery, } from '@/services/ProjectService';
-import { ProjectCardFullType } from '@/widgets/project-card-full/ui/type';
+import { ProjectCardFullType } from '@/widgets/project-card-full/ui/types';
 import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
 import { getAllProjects } from '@/shared/api';
+import { Option } from '@/shared/types/option';
 import styles from './projects-page.module.scss';
 
 type TProjectsData = {
@@ -67,7 +68,7 @@ export const Projects = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:779px)');
 
-	const handleStatusProjectChange = (selectedOptions: (string | object)[]) => {
+	const handleStatusProjectChange = (selectedOptions: Option[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
 	};
 
@@ -122,7 +123,7 @@ export const Projects = () => {
 									name="select-status"
 									options={statusOptions}
 									buttonLabel="Статус проекта"
-									value={{ value: 'completed', label: 'Завершенный' }}
+									value={{ value: 1, label: 'Завершенный' }}
 									onChange={handleStatusProjectChange}
 								/>
 								<CalendarButton
@@ -145,11 +146,11 @@ export const Projects = () => {
 										options={specialties}
 										values={[
 											{
-												value: 'software-developer',
+												value: 1,
 												label: 'Десктоп разработчик / Software Developer',
 											},
 											{
-												value: 'performance-engineer',
+												value: 2,
 												label:
 													'Инженер по нагрузочному тестированию / Performance Engineer',
 											},

@@ -7,12 +7,13 @@ import { Person, VacancyCard } from '@/shared/ui';
 import { getColorTag } from '@/shared/utils';
 import { projectTeamArray } from '@/shared/constants';
 import { NounsDeclension } from '@/utils/declension/declension';
-import { ProjectCardDetailType } from './type';
+import { ProjectCardDetailType } from './types';
 import { getStartDate, getEndDate } from '@/shared/utils';
 import clsx from 'clsx';
 import styles from './project-card-detailed.module.scss';
 
 export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
+	idProject,
 	name,
 	description,
 	directions,
@@ -157,10 +158,14 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					{project_specialists?.map((item) => {
 						return (
 							<VacancyCard
+							    name={name}
 								key={item.id}
 								title={`${item.profession.specialization} / ${item.profession.specialty} / ${item.level}`}
 								skills={item.skills}
 								count={item.count}
+								projectId={idProject}
+								specialists={item.profession}
+								idSpecialty={item.id}
 							/>
 						);
 					})}

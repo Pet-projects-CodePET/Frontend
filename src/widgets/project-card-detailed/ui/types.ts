@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
 export type ProjectCardDetailType = HTMLAttributes<HTMLElement> & {
+	idProject: number;
 	name: string;
 	description: string;
 	started: string;

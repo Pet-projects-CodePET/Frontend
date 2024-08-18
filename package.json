@@ -23,6 +23,7 @@
 		"axios": "^1.7.4",
 		"braces": "^3.0.3",
 		"dayjs": "^1.11.10",
+		"html-react-parser": "^5.1.12",
 		"lodash": "^4.17.21",
 		"lucide-react": "^0.323.0",
 		"moment": "^2.30.1",

@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { ProjectCardDetailed } from '@/widgets/project-card-detailed';
-import { ProjectCardDetailType } from '@/widgets/project-card-detailed/ui/type';
+import { ProjectCardDetailType } from '@/widgets/project-card-detailed/ui/types';
 //import { useGetProjectByIdQuery } from '@/services/ProjectService';
 
 export const Project = ({ id }: { id: number }) => {
@@ -25,6 +25,7 @@ export const Project = ({ id }: { id: number }) => {
 	return (
 		<div>
 			<ProjectCardDetailed
+			    idProject={id}
 				name={project?.name}
 				description={project?.description}
 				directions={project?.directions}
