@@ -36,7 +36,19 @@ export type ProjectCardDetailType = HTMLAttributes<HTMLElement> & {
 			}[];
 			count: number;
 			level: string;
-
+		},
+	];
+	unique_project_participants_skills: string[];
+	project_participants: [
+		{
+			id: number;
+			user_id: number;
+			avatar: string;
+			profession: {
+				id: number;
+				specialty: string;
+				specialization: string;
+			};
 		},
 	];
 };
