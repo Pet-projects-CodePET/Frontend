@@ -70,7 +70,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					})}
 
 					{!isMobile && <p className={styles.mainText}>{description}</p>}
-					<p className={styles.groupName}>Специальности</p>
+					{project_specialists.length > 0 ? <p className={styles.groupName}>Специальности</p> : null}
 					<ul className={styles.professionsList}>
 						{project_specialists?.map((item) => (
 							<li
@@ -83,7 +83,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 							</li>
 						))}
 					</ul>
-					<p className={styles.groupName}>Навыки</p>
+					{project_specialists.length > 0 ? <p className={styles.groupName}>Навыки</p> : null}		
 					<ul className={styles.skillsList}>
 						{project_specialists.map((item) =>
 							item.skills.map((skill) => (
@@ -111,11 +111,6 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					visible={isPopupOpen}
 					title={name}
 					onClose={() => setIsPopupOpen(false)}>
-					{/* <InviteToProject
-						projectId={id}
-						project_specialists={project_specialists}
-						//fixedSpecialty={false}
-					/> */}
 					<InviteToProjectFeature projectId={id}
 						project_specialists={project_specialists}/>
 				</PopUp>
