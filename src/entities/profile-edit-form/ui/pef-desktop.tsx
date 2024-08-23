@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MainButton, Input, Form, PopUp } from '@/shared/ui';
 import { Toggler } from '@/shared/ui/toggler/toggler';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
@@ -20,11 +20,31 @@ import { Calendar } from '@/shared/ui/calendar/calendar';
 
 import { TContact } from '@/shared/ui/contact-card/types';
 import { ContactsList } from '@/widgets/contact-list/contact-list';
+import { ProfileAvatarEditor } from '@/shared/ui/profile-avatar-editor/profile-avatar-editor';
+
+import AvatarEditor from 'react-avatar-editor';
+import Image from 'next/image';
 
 export const DesktopView = () => {
 	const [isPopup, setIsPopup] = useState(false);
 	const [preview, setPreview] = useState(false);
 	const [isParticipation, setIsParticipation] = useState(false);
+
+	const [image, setImage] = useState(
+		'https://i.pinimg.com/originals/ea/23/b1/ea23b1a5bcd866299ac79fbfb7b8841c.jpg'
+	);
+	const editorRef = useRef<AvatarEditor>(null);
+
+	const getImageUrl = async () => {
+		if (editorRef !== null && editorRef.current !== null) {
+			const dataUrl = editorRef.current.getImage().toDataURL();
+			const res = await fetch(dataUrl);
+			const blob = await res.blob();
+
+			return window.URL.createObjectURL(blob);
+		}
+		return '';
+	};
 
 	const handleSubmit = () => {
 		console.log('Submit');
@@ -33,8 +53,22 @@ export const DesktopView = () => {
 		setPreview(true);
 	};
 
-	const saveAvatar = () => {
+	const saveAvatar = async () => {
 		setIsPopup(false);
+
+		if (editorRef) {
+			// This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
+			// drawn on another canvas, or added to the DOM.
+			// const canvas = editorRef.current.getImage();
+
+			// If you want the image resized to the canvas size (also a HTMLCanvasElement)
+			// const canvasScaled = editorRef.current.getImageScaledToCanvas();
+
+			// Usage
+			const imageURL = await getImageUrl();
+
+			setImage(imageURL);
+		}
 	};
 
 	useEffect(() => {
@@ -61,7 +95,7 @@ export const DesktopView = () => {
 					<Form onSubmit={handleSubmit} className={styles.fields}>
 						<div className={styles.fields_photo}>
 							<div className={styles.fields_avatar}>
-								<div className={styles.fields_text}>A</div>
+								<Image src={image} alt="avatar" width={136} height={136} />
 							</div>
 							<button
 								type="button"
@@ -73,10 +107,13 @@ export const DesktopView = () => {
 								visible={isPopup}
 								title="Изменить фото"
 								onClose={() => setIsPopup(false)}>
-								<Input
-									name="Foto"
-									type="file"
-									labelName="Изменить фото"></Input>
+								<ProfileAvatarEditor
+									image={image}
+									width={250}
+									height={250}
+									borderRadius={50}
+									editor={editorRef}
+								/>
 								<MainButton
 									variant="primary"
 									width="regular"
@@ -96,8 +133,8 @@ export const DesktopView = () => {
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
 						<TextEditor
-						    currentText=' '
-						    setCurrentText={() => {}}
+							currentText=" "
+							setCurrentText={() => {}}
 							labelName="О себе"
 							placeholder=""
 							desc="Не более 750 символов"

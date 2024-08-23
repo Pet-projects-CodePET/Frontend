@@ -1,0 +1,20 @@
+@import '@/shared/style/variables';
+
+.container {
+	text-align: center;
+}
+
+.canvas {
+	margin: 20px 0;
+}
+
+.scaleLabel {
+	display: flex;
+	justify-content: center;
+	column-gap: 10px;
+}
+
+.selectImageInput {
+	width: 300px;
+	margin: 20px 0;
+}
