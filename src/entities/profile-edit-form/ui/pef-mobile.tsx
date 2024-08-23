@@ -75,8 +75,8 @@ export const MobileView = () => {
 							descrText="Укажите свое настоящее имя и фамилию"
 						/>
 						<TextEditor
-						    currentText=' '
-						    setCurrentText={() => {}}
+							currentText=" "
+							setCurrentText={() => {}}
 							labelName="О себе"
 							placeholder=""
 							desc="Не более 750 символов"

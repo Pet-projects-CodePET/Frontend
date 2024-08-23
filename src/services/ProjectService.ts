@@ -33,7 +33,10 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
-		requestParticipationInProjects: builder.mutation<IProjectsRequests,IProjectsRequests>({
+		requestParticipationInProjects: builder.mutation<
+			IProjectsRequests,
+			IProjectsRequests
+		>({
 			query: (projects) => ({
 				url: `/projects/requests/`,
 				method: 'POST',

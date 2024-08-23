@@ -144,13 +144,13 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://mailto:${email}`}>
-							{`${properyCheck(email)}`}
-							</a>
+									{`${properyCheck(email)}`}
+								</a>
 							</div>
 							<div className={styles.info__contacs__wrapper}>
 								<MobileIcon className={styles.info__icons} />
 								<a className={styles.info__contacts} href={phoneNumber}>
-								{`${properyCheck(phoneNumber)}`}
+									{`${properyCheck(phoneNumber)}`}
 								</a>
 							</div>
 
@@ -160,14 +160,17 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://t.me/${telegramNick}`}>
-							{`${properyCheck(telegramNick)}`}
-							</a>
+									{`${properyCheck(telegramNick)}`}
+								</a>
 							</div>
 						</div>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Дата рождения</h3>
-						<p className={styles.info__sideText}>{`${properyCheck(birthday)}`}</p>
+						<p
+							className={
+								styles.info__sideText
+							}>{`${properyCheck(birthday)}`}</p>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Регион</h3>

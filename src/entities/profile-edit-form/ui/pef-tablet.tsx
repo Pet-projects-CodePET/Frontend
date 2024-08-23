@@ -80,8 +80,8 @@ export const TabletView = () => {
 							/>
 						</div>
 						<TextEditor
-						    currentText=' '
-						    setCurrentText={() => {}}
+							currentText=" "
+							setCurrentText={() => {}}
 							labelName="О себе"
 							placeholder=""
 							desc="Не более 750 символов"

@@ -64,15 +64,15 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 							)}
 						</div>
 					</div>
-						<ul className={styles.info__skillsList}>
-							{specialists[0]?.skills.map((skill) => {
-								return (
-									<li className={styles.info__skill} key={skill.id}>
-										{skill.name}
-									</li>
-								);
-							})}
-						</ul>
+					<ul className={styles.info__skillsList}>
+						{specialists[0]?.skills.map((skill) => {
+							return (
+								<li className={styles.info__skill} key={skill.id}>
+									{skill.name}
+								</li>
+							);
+						})}
+					</ul>
 					<div className={styles.info__role}>
 						<div>
 							{specialists[1] &&
@@ -87,14 +87,14 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						</div>
 					</div>
 					<ul className={styles.info__skillsList}>
-									{specialists[1]?.skills?.map((skill) => {
-										return (
-											<li className={styles.info__skill} key={skill.id}>
-												{skill.name}
-											</li>
-										);
-									})}
-								</ul>
+						{specialists[1]?.skills?.map((skill) => {
+							return (
+								<li className={styles.info__skill} key={skill.id}>
+									{skill.name}
+								</li>
+							);
+						})}
+					</ul>
 				</Link>
 				<InviteSpecialist />
 			</div>

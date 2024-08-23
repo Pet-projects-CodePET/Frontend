@@ -1,6 +1,6 @@
 export type PersonType = {
-    title: string;
+	title: string;
 	avatar?: string;
 	color?: string;
 	id?: number;
-}
+};

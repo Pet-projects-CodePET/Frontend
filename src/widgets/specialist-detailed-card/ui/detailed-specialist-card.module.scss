@@ -13,11 +13,11 @@
 	margin: 0;
 	font-style: normal;
 }
-	
+
 .specialist__info {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .info {
@@ -73,7 +73,7 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
-	
+
 	&__title {
 		@extend %baseText;
 		font-size: 20px;
@@ -83,11 +83,11 @@
 		padding-bottom: 8px;
 		display: flex;
 	}
-	
+
 	&__skillsList {
 		display: flex;
 		flex-wrap: wrap;
-		padding: 9px 0 ;
+		padding: 9px 0;
 		margin: 0 0 24px 0;
 		list-style: none;
 	}
@@ -119,7 +119,6 @@
 
 	&__contacs__wrapper {
 		display: flex;
-
 	}
 
 	&__contacts {

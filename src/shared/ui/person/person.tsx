@@ -13,8 +13,7 @@ export const Person: FC<PersonType> = ({ title, avatar, color, id }) => {
 					<div
 						className={styles.iconLink}
 						style={{
-							 backgroundImage: `url('${avatar}')`,
-							
+							backgroundImage: `url('${avatar}')`,
 						}}></div>
 				) : (
 					<PersonIcon className={styles.icon} />

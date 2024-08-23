@@ -16,7 +16,7 @@ export const InviteToProjectVacancyFeature = ({
 		specialization: string;
 		specialty: string;
 	};
-	idSpecialty: number
+	idSpecialty: number;
 }) => {
 	const [currentText, setCurrentText] = useState(undefined);
 	const [requestInProject] = useRequestParticipationInProjectsMutation();

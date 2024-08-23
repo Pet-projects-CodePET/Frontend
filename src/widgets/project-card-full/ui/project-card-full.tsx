@@ -70,7 +70,9 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					})}
 
 					{!isMobile && <p className={styles.mainText}>{description}</p>}
-					{project_specialists.length > 0 ? <p className={styles.groupName}>Специальности</p> : null}
+					{project_specialists.length > 0 ? (
+						<p className={styles.groupName}>Специальности</p>
+					) : null}
 					<ul className={styles.professionsList}>
 						{project_specialists?.map((item) => (
 							<li
@@ -83,7 +85,9 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 							</li>
 						))}
 					</ul>
-					{project_specialists.length > 0 ? <p className={styles.groupName}>Навыки</p> : null}		
+					{project_specialists.length > 0 ? (
+						<p className={styles.groupName}>Навыки</p>
+					) : null}
 					<ul className={styles.skillsList}>
 						{project_specialists.map((item) =>
 							item.skills.map((skill) => (
@@ -111,25 +115,28 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					visible={isPopupOpen}
 					title={name}
 					onClose={() => setIsPopupOpen(false)}>
-					<InviteToProjectFeature projectId={id}
-						project_specialists={project_specialists}/>
+					<InviteToProjectFeature
+						projectId={id}
+						project_specialists={project_specialists}
+					/>
 				</PopUp>
 			) : (
 				<PopUp
 					visible={isPopupOpen}
 					title={'Вход в систему'}
 					onClose={() => setIsPopupOpen(false)}>
-					<span className={styles.popupSubtitle}>Чтобы совершить действие, необходимо войти в систему</span>
+					<span className={styles.popupSubtitle}>
+						Чтобы совершить действие, необходимо войти в систему
+					</span>
 					<div className={styles.popupButton}>
-					<MainButton
-						variant="primary"
-						width="regular"
-						type="button"
-						onClick={() => router.push('/login')}>
-						Авторизоваться
-					</MainButton>
+						<MainButton
+							variant="primary"
+							width="regular"
+							type="button"
+							onClick={() => router.push('/login')}>
+							Авторизоваться
+						</MainButton>
 					</div>
-				
 				</PopUp>
 			)}
 		</article>

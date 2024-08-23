@@ -27,7 +27,6 @@ import Numbers from './icons/Vector-7.svg';
 import Fills from './icons/Vector-8.svg';
 import Capitals from './icons/Vector-9.svg';
 
-
 export {
 	Bold,
 	Italic,

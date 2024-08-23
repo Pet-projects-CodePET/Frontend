@@ -28,7 +28,7 @@ export const Specialists = () => {
 		window.scroll({
 			top: 0,
 			left: 0,
-		  });
+		});
 	}, [currentPage]);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -137,7 +137,7 @@ export const Specialists = () => {
 				</div>
 			</div>
 			<div className={styles.specialists__cards}>
-				{currentData ?
+				{currentData ? (
 					currentData.map((res: SpecialistType) => (
 						<SpecialistCard
 							key={res?.user_id}
@@ -148,7 +148,10 @@ export const Specialists = () => {
 							userName={res?.username}
 							readyToParticipate={res?.ready_to_participate}
 						/>
-					)) : <Loader />}
+					))
+				) : (
+					<Loader />
+				)}
 			</div>
 
 			<Pagination
