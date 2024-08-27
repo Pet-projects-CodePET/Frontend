@@ -1,0 +1,19 @@
+@import '@/shared/style/variables';
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	row-gap: 20px;
+	width: 816px;
+	padding: 32px;
+	background-color: $--bg-primary;
+	border: 1px solid $--border-default;
+	border-radius: 12px;
+
+	@media screen and (max-width: 779px) {
+		gap: 13px;
+		max-width: 779px;
+	}
+}
+
