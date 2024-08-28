@@ -34,8 +34,6 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_frontend_${{ steps.extract_branch.outputs.branch_name }}:latest
           build-args: |
             NEXT_PUBLIC_CAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_CAPTCHA_SITE_KEY }}
-            NEXT_PUBLIC_BASE_DEV_URL=${{ secrets.NEXT_PUBLIC_BASE_DEV_URL }}
-            NEXT_PUBLIC_BASE_TEST_URL=${{ secrets.NEXT_PUBLIC_BASE_TEST_URL }}
             NEXT_PUBLIC_BASE_URL=${{ secrets[format('DOMAIN_{0}', github.ref_name)] }}
 
   deploy_uses_other_file_from_develop:

@@ -5,14 +5,15 @@ import { /*IconLeft,*/ ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { LikeButtonFeature } from '@/features';
 import { Person, VacancyCard } from '@/shared/ui';
 import { getColorTag } from '@/shared/utils';
-import { projectTeamArray } from '@/shared/constants';
 import { NounsDeclension } from '@/utils/declension/declension';
-import { ProjectCardDetailType } from './type';
+import { ProjectCardDetailType } from './types';
 import { getStartDate, getEndDate } from '@/shared/utils';
 import clsx from 'clsx';
+
 import styles from './project-card-detailed.module.scss';
 
 export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
+	idProject,
 	name,
 	description,
 	directions,
@@ -24,37 +25,14 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 	ended,
 	status,
 	project_specialists,
-	
+	unique_project_participants_skills,
+	project_participants,
 }) => {
 	const startDate = getStartDate(started);
 	const endDate = getEndDate(ended);
-	
 
-	const skillsTeam = [
-		{ id: 1, name: 'React' },
-		{ id: 2, name: 'Redux' },
-		{ id: 3, name: 'UI/UX Design' },
-		{ id: 4, name: 'React' },
-		{ id: 5, name: 'Redux' },
-		{ id: 6, name: 'UI/UX Design' },
-		{ id: 7, name: 'React' },
-		{ id: 8, name: 'Redux' },
-		{ id: 9, name: 'UI/UX Design' },
-		{ id: 10, name: 'React' },
-		{ id: 11, name: 'Redux' },
-		{ id: 12, name: 'UI/UX Design' },
-		{ id: 13, name: 'Redux' },
-		{ id: 14, name: 'UI/UX Design' },
-		{ id: 15, name: 'React' },
-	];
 	return (
 		<section className={styles.projectsCard}>
-			{/* <div className={styles.link}>
-				<IconLeft className={styles.icon} />
-				<Link className={styles.linkProjects} href="/projects">
-					Проекты
-				</Link>
-			</div> */}
 			<div className={styles.projectContainer}>
 				<div className={styles.topInfo}>
 					<div className={styles.activeStateContainer}>
@@ -110,37 +88,50 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Ссылка на проект</h3>
-						<Link  href={`${link}`} target="_blank" className={styles.descriptionLink}>
-							 {link} 
+						<Link
+							href={`${link}`}
+							target="_blank"
+							className={styles.descriptionLink}>
+							{link}
 						</Link>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Организатор</h3>
 						<div className={styles.personWrapper}>
-							<Person title={owner} color="#F6BD60" />
+							<Person
+								title={owner?.name || owner?.username}
+								avatar={owner?.avatar}
+								id={owner?.id}
+							/>
 						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
-						<h3 className={styles.subtitle}>Команда проекта</h3>
+						{ project_participants?.length > 0 ? <h3 className={styles.subtitle}>Команда проекта</h3> : null}
+						
 						<ul className={styles.personList}>
-							{projectTeamArray.map((person) => {
+							{project_participants?.map((person) => {
 								return (
 									<Person
 										title={person.profession.specialization}
 										color={getColorTag(person.profession.specialty)}
 										key={person.id}
+										id={person.user_id}
+										avatar={person.avatar}
 									/>
 								);
 							})}
 						</ul>
 					</div>
 					<div className={styles.subtitleWrapper}>
-						<h3 className={styles.subtitle}>Навыки команды</h3>
+						{unique_project_participants_skills?.length > 0 ? (
+							<h3 className={styles.subtitle}>Навыки команды</h3>
+						) : null}
+
 						<ul className={styles.tagsList}>
-							{skillsTeam.map((item) => {
+							{unique_project_participants_skills?.map((skill, index) => {
 								return (
-									<li key={item.id} className={styles.tag}>
-										{item.name}
+									<li key={index} className={styles.tag}>
+										{skill}
 									</li>
 								);
 							})}
@@ -148,14 +139,21 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					</div>
 				</div>
 				<div className={styles.cardsContainer}>
-					<h2 className={styles.title}>Требуются в проект</h2>
+					{project_specialists?.length ? (
+						<h2 className={styles.title}>Требуются в проект</h2>
+					) : null}
+
 					{project_specialists?.map((item) => {
 						return (
 							<VacancyCard
+								name={name}
 								key={item.id}
 								title={`${item.profession.specialization} / ${item.profession.specialty} / ${item.level}`}
 								skills={item.skills}
 								count={item.count}
+								projectId={idProject}
+								specialists={item.profession}
+								idSpecialty={item.id}
 							/>
 						);
 					})}

@@ -12,6 +12,7 @@ import {
 } from '@/shared/assets';
 import clsx from 'clsx';
 import { InviteSpecialist } from '@/widgets/invite-specialist';
+import { BlankCard } from '@/shared/ui/blank-card/blank-card';
 
 export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	avatar,
@@ -27,10 +28,24 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	phoneNumber,
 	telegramNick,
 	email,
-	projects,
 }) => {
+	function properyCheck<T extends keyof DetailedSpecialistCardTypes>(
+		input: DetailedSpecialistCardTypes[T],
+		sideText?: string
+	): DetailedSpecialistCardTypes[T] | string | undefined {
+		if (input) {
+			if (input && sideText) {
+				return input + sideText;
+			} else {
+				return input;
+			}
+		} else {
+			return 'Пусто';
+		}
+	}
+
 	return (
-		<article className={styles.specialist}>
+		<BlankCard>
 			<div className={styles.specialist__info}>
 				<div className={styles.info__person}>
 					<AvatarImage
@@ -39,25 +54,10 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						className={styles.info__avatar}
 					/>
 					<div className={styles.info__personDescription}>
-						<h2 className={styles.info__name}>{name}</h2>
-						<p className={styles.info__nickname}>@{userName}</p>
-						<div className={styles.info__role}>
-							<div>
-								{specialists[0] &&
-									`${specialists[0].profession.specialization},`}
-							</div>
-							<div>
-								{specialists[0] && `${specialists[0].profession.specialty},`}
-							</div>
-							<div>
-								{clsx(
-									specialists[0] && specialists[0].level === 1 && 'Junior',
-									specialists[0] && specialists[0].level === 2 && 'Middle',
-									specialists[0] && specialists[0].level === 3 && 'Senior',
-									specialists[0] && specialists[0].level === 4 && 'Lead'
-								)}
-							</div>
-						</div>
+						<h2 className={styles.info__name}>{`${properyCheck(name)}`}</h2>
+						<p className={styles.info__nickname}>
+							@{`${properyCheck(userName)}`}
+						</p>
 						<div className={styles.info__personStatus}>
 							{readyToParticipate ? (
 								<>
@@ -82,58 +82,58 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 				</div>
 
 				<div className={styles.specialist__info}>
-					<div className={styles.info__role__small}>
+					<div className={styles.info__wrapper}>
+						<h3 className={styles.info__title}>О себе</h3>
+						<p className={styles.info__sideText}>{`${properyCheck(about)}`}</p>
+					</div>
+					<div className={styles.info__title}>
 						<div>
-							{specialists[0] && specialists[0].profession.specialization},
-						</div>
-						<div>{specialists[0] && specialists[0].profession.specialty},</div>
-						<div>
+							{specialists[0] &&
+								`${specialists[0].profession.specialization} \t`}
+							{specialists[0] && `${specialists[0].profession.specialty},`}
 							{clsx(
-								specialists[0] && specialists[0].level === 1 && 'Junior',
-								specialists[0] && specialists[0].level === 2 && 'Middle',
-								specialists[0] && specialists[0].level === 3 && 'Senior',
-								specialists[0] && specialists[0].level === 4 && 'Lead'
+								specialists[0] && specialists[0].level === 1 && '\t Junior',
+								specialists[0] && specialists[0].level === 2 && '\t Middle',
+								specialists[0] && specialists[0].level === 3 && '\t Senior',
+								specialists[0] && specialists[0].level === 4 && '\t Lead'
 							)}
 						</div>
 					</div>
-
-					<div className={styles.info__personStatus__small}>
-						{readyToParticipate ? (
-							<>
-								<ActivityIcon />
-								<p className={styles.info__statusTitle}>
-									готов(а) к участию в проекте
-								</p>
-							</>
-						) : (
-							<>
-								<ActivityIconRed />
-								<p className={styles.info__statusTitle}>
-									не готов(а) к участию в проекте
-								</p>
-							</>
-						)}
-					</div>
-					<h3 className={styles.info__title}>Навыки</h3>
 					<ul className={styles.info__skillsList}>
-						{specialists[0] &&
-							specialists[0]?.skills.map((skill, index) => {
-								return (
-									<li className={styles.info__skill} key={skill.id}>
-										{skill.name}
-										{index < specialists[0]?.skills.length - 1 && ', '}
-									</li>
-								);
-							})}
+						{specialists[0]?.skills.map((skill) => {
+							return (
+								<li className={styles.info__skill} key={skill.id}>
+									{skill.name}
+								</li>
+							);
+						})}
 					</ul>
-					<div className={styles.info__wrapper}>
-						<h3 className={styles.info__title}>О себе</h3>
-						<p className={styles.info__sideText}>{about}</p>
+					<div className={styles.info__title}>
+						<div>
+							{specialists[1] &&
+								`${specialists[1].profession.specialization} \t`}
+							{specialists[1] && `${specialists[1].profession.specialty},`}
+							{clsx(
+								specialists[1] && specialists[1].level === 1 && '\t Junior',
+								specialists[1] && specialists[1].level === 2 && '\t Middle',
+								specialists[1] && specialists[1].level === 3 && '\t Senior',
+								specialists[1] && specialists[1].level === 4 && '\t Lead'
+							)}
+						</div>
 					</div>
+					<ul className={styles.info__skillsList}>
+						{specialists[1]?.skills.map((skill) => {
+							return (
+								<li className={styles.info__skill} key={skill.id}>
+									{skill.name}
+								</li>
+							);
+						})}
+					</ul>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Ссылка на портфолио</h3>
 						<a className={styles.info__contacts} href={portfolioLink}>
-							{portfolioLink}
+							{`${properyCheck(portfolioLink)}`}
 						</a>
 					</div>
 					<div className={styles.info__wrapper}>
@@ -144,14 +144,13 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://mailto:${email}`}>
-									{email}
-								</a>
+							{`${properyCheck(email)}`}
+							</a>
 							</div>
 							<div className={styles.info__contacs__wrapper}>
 								<MobileIcon className={styles.info__icons} />
-
 								<a className={styles.info__contacts} href={phoneNumber}>
-									{phoneNumber}
+								{`${properyCheck(phoneNumber)}`}
 								</a>
 							</div>
 
@@ -161,39 +160,38 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://t.me/${telegramNick}`}>
-									{telegramNick}
-								</a>
+							{`${properyCheck(telegramNick)}`}
+							</a>
 							</div>
 						</div>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Дата рождения</h3>
-						<p className={styles.info__sideText}>{birthday}</p>
+						<p className={styles.info__sideText}>{`${properyCheck(birthday)}`}</p>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Регион</h3>
-						{country && city ? (
-							<p className={styles.info__sideText}>
-								{city} {country}
-							</p>
-						) : (
-							<p className={styles.info__sideText}>Неизвестно</p>
-						)}
+						<p className={styles.info__sideText}>
+							{`${properyCheck(city, `, \t${country}`)}`}
+						</p>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Проекты</h3>
-						{projects.slice(0, 5).map((project) => (
-							<a
-								href={`/projects/${project.id}`}
-								className={styles.info__contacts}
-								key={project.id}>
-								{project.name}
-							</a>
-						))}
+						{/* {projects ? (
+							projects.slice(0, 5).map((project) => (
+								<a
+									href={`/projects/${project.id}`}
+									className={styles.info__contacts}
+									key={project.id}>
+									{project.name}
+								</a>
+							))
+						) : ( */}
+						<p className={styles.info__sideText}>Пусто</p>
 					</div>
 					<InviteSpecialist />
 				</div>
 			</div>
-		</article>
+		</BlankCard>
 	);
 };

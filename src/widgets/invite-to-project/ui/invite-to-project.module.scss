@@ -1,0 +1,34 @@
+@import '@/shared/style/variables.scss';
+.container {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+.specialty {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	padding: 32px 0 32px;
+}
+
+.title {
+	width: 100%;
+	color: $--Foreground-default;
+	font-family: $--open-sans-font;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 30px;
+    margin: 0;
+}
+
+.button {
+    padding-top: 32px;
+    display: flex;
+    width: 100%;
+}
+@media screen and (max-width: 779px) {
+	.container {
+		padding: 30px 0;
+	}
+}

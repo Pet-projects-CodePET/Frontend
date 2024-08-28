@@ -7,3 +7,8 @@ node_modules
 .gitignore
 
 *.log
+
+
+/workflows
+README.md
+

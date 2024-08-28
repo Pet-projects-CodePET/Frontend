@@ -1,6 +1,6 @@
 import { Option } from '@/shared/types/option';
 
 export const recruitmentStatus: Option[] = [
-	{ value: 'recruitment-active', label: 'Набор открыт' },
-	{ value: 'recruitment-completed', label: 'Набор закрыт' },
+	{ value: 1, label: 'Набор открыт' },
+	{ value: 2, label: 'Набор закрыт' },
 ];

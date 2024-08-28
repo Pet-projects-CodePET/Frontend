@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import styles from './form.module.scss';
 import type { FormProps } from './types';
@@ -15,7 +15,7 @@ export const Form: FC<FormProps> = ({
 }) => {
 	const methods = useForm({
 		shouldUnregister: true,
-		resolver: schema ? yupResolver(schema) : undefined,
+		resolver: schema ? zodResolver(schema) : undefined,
 	});
 
 	const {

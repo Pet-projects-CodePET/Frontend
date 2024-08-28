@@ -1,20 +1,21 @@
 import React, { FC, useEffect, useState } from 'react';
 import { TextEditorProps } from './types';
-import 'react-quill/dist/quill.snow.css';
+import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
 import dynamic from 'next/dynamic';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import Quill from 'react-quill';
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
+import Quill from 'react-quill-new';
 
 export const TextEditor: FC<TextEditorProps> = ({
 	labelName,
 	placeholder,
 	desc,
+	setCurrentText,
+	currentText,
 	...props
 }) => {
-	const [value, setValue] = useState<string>('');
+	//const [value, setValue] = useState<string>('');
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
-
 	useEffect(() => {
 		setIsWindowLoaded(true);
 	}, []);
@@ -28,7 +29,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 	) => {
 		if (typeof window === 'object') {
 			if (editor.getLength() <= 751) {
-				setValue(content);
+				setCurrentText(content);
 			} else {
 				alert('Превышено количество символов.');
 			}
@@ -57,7 +58,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 							placeholder={placeholder}
 							modules={myModule}
 							theme="snow"
-							value={value}
+							value={currentText}
 							onChange={handleChange}
 							className={styles.inputMain}
 							{...props}

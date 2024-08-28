@@ -2,10 +2,11 @@
 
 .projectCards {
 	width: 100%;
-	padding: 56px 0;
+	padding: 32px 0;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 32px;
+	color: $--Foreground-default;
 
 	@media screen and (max-width: 1199px) {
 		padding: 48px 0;
@@ -20,29 +21,25 @@
 }
 
 .header {
-	color: $--Foreground-default;
-	font-family: $--montserrat-font;
-	font-size: 40px;
-	font-style: normal;
+	margin: 0 0 24px 0;
+	font-family: $--open-sans-font;
+	font-size: 28px;
 	font-weight: 700;
-	line-height: 48px; /* 120% */
-	letter-spacing: -0.4px;
+	line-height: 32px;
+	letter-spacing: -0.28px;
 
 	@media screen and (max-width: 779px) {
-		font-size: 21px;
-		line-height: 27px; /* 128.571% */
-		letter-spacing: -0.21px;
+		margin: 0 0 16px 0;
+		font-size: 20px;
+		letter-spacing: 0.25px;
 	}
 }
 
 %text {
 	margin: 0;
-	color: $--Foreground-default;
 	font-family: $--open-sans-font;
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 30px; /* 150% */
+	font-size: 16px;
+	line-height: 24px;
 	letter-spacing: 0.25px;
 }
 
@@ -73,4 +70,3 @@
 		display: none;
 	}
 }
-

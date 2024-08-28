@@ -3,11 +3,13 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { MainButton } from '@/shared/ui';
-// import { Montserrat } from '@next/font/google';
+import { useMediaQuery } from '@/shared/hooks';
 import styles from './join-us.module.scss';
 
 export const JoinUs = () => {
 	const router = useRouter();
+	const isMobile = useMediaQuery('(max-width: 779px)');
+
 	return (
 		<div className={styles.joinus}>
 			<h2 className={styles.joinus__title}>Присоединяйся к нам!</h2>
@@ -17,7 +19,7 @@ export const JoinUs = () => {
 			</p>
 			<MainButton
 				variant="primary"
-				width="regular"
+				width={isMobile ? 'max' : 'regular'}
 				onClick={() => router.push('registration')}>
 				Зарегистрироваться
 			</MainButton>

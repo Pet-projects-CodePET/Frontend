@@ -17,6 +17,7 @@ import { SingleSelectButton } from '@/shared/ui/single-select-button/single-sele
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 import { useGetAllSpecialistsDataQuery } from '@/services/SpecialistService';
 import { SpecialistType } from './types';
+import { Loader } from '@/shared/ui';
 
 export const Specialists = () => {
 	const pageSize = 7;
@@ -83,7 +84,7 @@ export const Specialists = () => {
 						name="select-status"
 						options={statusSpecialist}
 						buttonLabel="Статус специалиста"
-						value={{ value: 'ready', label: 'Готов(а) к участию в проектах' }}
+						//value={{ value: 'ready', label: 'Готов(а) к участию в проектах' }}
 						onChange={handleStatusChange}
 					/>
 
@@ -104,11 +105,11 @@ export const Specialists = () => {
 							options={specialties}
 							values={[
 								{
-									value: 'software-developer',
+									value: 1,
 									label: 'Десктоп разработчик / Software Developer',
 								},
 								{
-									value: 'performance-engineer',
+									value: 2,
 									label:
 										'Инженер по нагрузочному тестированию / Performance Engineer',
 								},
@@ -136,7 +137,7 @@ export const Specialists = () => {
 				</div>
 			</div>
 			<div className={styles.specialists__cards}>
-				{currentData &&
+				{currentData ?
 					currentData.map((res: SpecialistType) => (
 						<SpecialistCard
 							key={res?.user_id}
@@ -147,7 +148,7 @@ export const Specialists = () => {
 							userName={res?.username}
 							readyToParticipate={res?.ready_to_participate}
 						/>
-					))}
+					)) : <Loader />}
 			</div>
 
 			<Pagination
