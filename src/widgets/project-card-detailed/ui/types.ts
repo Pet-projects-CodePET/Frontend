@@ -19,6 +19,7 @@ export type ProjectCardDetailType = HTMLAttributes<HTMLElement> & {
 		id: number;
 		name: string;
 		username: string;
+		visible_status: number;
 	};
 	status: string;
 	recruitment_status?: string;
@@ -48,6 +49,7 @@ export type ProjectCardDetailType = HTMLAttributes<HTMLElement> & {
 				id: number;
 				specialty: string;
 				specialization: string;
+				visible_status: number;
 			};
 		},
 	];

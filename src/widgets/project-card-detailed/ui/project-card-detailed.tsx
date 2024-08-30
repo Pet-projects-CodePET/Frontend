@@ -102,6 +102,8 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								title={owner?.name || owner?.username}
 								avatar={owner?.avatar}
 								id={owner?.id}
+								visible_status={owner?.visible_status}
+	
 							/>
 						</div>
 					</div>
@@ -117,6 +119,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 										key={person.id}
 										id={person.user_id}
 										avatar={person.avatar}
+										visible_status={person.profession.visible_status}
 									/>
 								);
 							})}
