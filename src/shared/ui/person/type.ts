@@ -3,4 +3,5 @@ export type PersonType = {
 	avatar?: string;
 	color?: string;
 	id?: number;
+	visible_status: number;
 }

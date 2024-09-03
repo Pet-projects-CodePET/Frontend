@@ -26,6 +26,9 @@ import Booleans from './icons/Vector-6.svg';
 import Numbers from './icons/Vector-7.svg';
 import Fills from './icons/Vector-8.svg';
 import Capitals from './icons/Vector-9.svg';
+import PetIcon from './images/pet.png';
+import  Tooltip from './icons/tooltip-polygon.svg';
+
 
 
 export {
@@ -57,4 +60,6 @@ export {
 	IconLeft,
 	PersonIcon,
 	IconSpecialists,
+	PetIcon,
+	Tooltip
 };
