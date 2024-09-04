@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 import React, { FC } from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
+import parse from 'html-react-parser';
 import { /*IconLeft,*/ ActivityIcon, CalendarIcon } from '@/shared/assets';
 import { LikeButtonFeature } from '@/features';
 import { Person, VacancyCard } from '@/shared/ui';
@@ -8,8 +10,6 @@ import { getColorTag } from '@/shared/utils';
 import { NounsDeclension } from '@/utils/declension/declension';
 import { ProjectCardDetailType } from './types';
 import { getStartDate, getEndDate } from '@/shared/utils';
-import clsx from 'clsx';
-
 import styles from './project-card-detailed.module.scss';
 
 export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
@@ -61,7 +61,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					<h2 className={styles.title}>{name}</h2>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Описание проекта</h3>
-						<p className={styles.description}>{description}</p>
+						<p className={styles.description}>{parse(description)}</p>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Направление разработки</h3>
