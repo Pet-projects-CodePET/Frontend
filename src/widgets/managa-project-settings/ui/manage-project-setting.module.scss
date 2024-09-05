@@ -1,3 +1,4 @@
+@import '@/shared/assets/fonts/fonts.css';
 @import '@/shared/style/variables';
 
 .container {
@@ -32,6 +33,17 @@
 		line-height: 150%;
 	}
 }
+
+.input_extra {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-family: $--open-sans-font;
+	font-weight: 700;
+	margin-top: 8px;
+}
+
 .directions,
 .employment {
 	width: 100%;
@@ -48,4 +60,73 @@
 		list-style: none;
 		padding: 0;
 	}
+}
+
+.specialists {
+	width: 100%;
+	font-family: $--open-sans-font;
+	font-weight: 400;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	&_toggle {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+	}
+
+	&_buttons {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		margin-bottom: 32px;
+	}
+}
+
+.dates {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	&_inputs {
+		//		margin: 0 0 16px 0;
+		display: flex;
+		gap: 8px;
+	}
+
+	&_input {
+		width: 100%;
+	}
+
+	&_text {
+		margin: 0 0 8px 0;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+	}
+}
+
+.contacts {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	&_selects {
+		display: grid;
+		gap: 8px;
+		grid-template-columns: 228px auto;
+		height: 70px;
+	}
+}
+
+.buttons {
+	display: flex;
+	gap: 16px;
 }
