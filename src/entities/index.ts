@@ -11,7 +11,6 @@ export { MenuForVisible } from './menu-for-visible';
 export { MenuProfile } from './menu-profile';
 export { NavBar } from './nav-bar';
 export { Pagination } from './pagination';
-export { ProfileEditForm } from './profile-edit-form';
 export { ProjectFilter } from './project-filter/ui/project-filter';
 export { SideNav } from './side-nav';
 export { SpecialistsFilter } from './specialists-filter/ui/specialists-filter';

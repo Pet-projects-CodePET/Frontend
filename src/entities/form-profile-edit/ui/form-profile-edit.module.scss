@@ -1,0 +1,284 @@
+@import '../../../shared//style/variables.scss';
+// .profileSettings {
+// 	&__profileLink {
+// 		width: 100%;
+// 	}
+// }
+
+.profileEdit {
+	// width: 100%;
+	&__profileLink {
+		width: 100%;
+	}
+}
+.fields {
+	display: flex;
+	flex-direction: column;
+	padding: 32px;
+	gap: 32px;
+	box-sizing: border-box;
+	min-width: 816px;
+	border-radius: 12px;
+	border: 1px solid $--border-default;
+	margin-bottom: 24px;
+	// width: 100%;
+	// min-width: 816px;
+	// display: flex;
+	// padding: 32px;
+	// flex-direction: column;
+	// align-items: flex-start;
+	// gap: 16px;
+	// border-radius: 12px;
+	// border: 1px solid $--border-default;
+	// background: $--bg-primary;
+	&_photo {
+		position: relative;
+		display: flex;
+		justify-content: space-around;
+		align-self: stretch;
+		margin-bottom: 16px;
+		width: 100%;
+		height: 171px;
+		&_descr {
+			color: $--Foreground-subtitle;
+			font-family: $--open-sans-font;
+			font-size: 14px;
+			font-weight: 400;
+			margin-left: 150px;
+			margin-top: 63px;
+		}
+	}
+	&_overlapGroup {
+		position: relative;
+	}
+	&_avatar {
+		background-color: $--bg-accent-inverse;
+		border-radius: 100px;
+		border: none;
+		height: 136px;
+		width: 136px;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	&_text {
+		color: $--Foreground-inverse;
+		font-family: $--inter-font;
+		font-size: 64px;
+		font-weight: 500;
+		//left: 31px;
+		letter-spacing: 0;
+		line-height: 98px;
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 135px;
+	}
+	&_edit {
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		left: 96px;
+		top: 88px;
+		width: 40px;
+		height: 40px;
+		padding: 8px;
+		background: $--bg-primary;
+		border-radius: 100%;
+		border: 1px solid $--border-default;
+		cursor: pointer;
+		svg {
+			width: 20px;
+			height: 20px;
+		}}
+
+	&__nameWrapper {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+		width: 100%;
+	}
+	&__nameInput {
+		width: 100%;
+	}
+
+	&__portfolioLinkTextValue {
+		width: 100%;
+	}
+
+	&__contactsTitle {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+	}
+	&__addContactWrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+	}
+	&__addContactType {
+		width: 228px;
+		height: 40px;
+		border-radius: 8px;
+		border: 1px solid $--border-default;
+		background: $--bg-primary;
+		padding: 8px 12px;
+		color: $--Foreground-default;
+		font-feature-settings:
+			'liga' off,
+			'clig' off;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+	}
+
+	&__addContactTypeWrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__addContactTextValue {
+		min-height: 40px;
+		width: 100%;
+		// color: $--Foreground-default;
+		// font-feature-settings:
+		// 	'liga' off,
+		// 	'clig' off;
+		// font-family: $--open-sans-font;
+		// font-size: 16px;
+		// font-style: normal;
+		// font-weight: 400;
+		// line-height: 24px; /* 150% */
+		// letter-spacing: 0.25px;
+	}
+
+	&__addContactTypeLabel {
+		color: $--Foreground-subtitle;
+		font-feature-settings:
+			'liga' off,
+			'clig' off;
+		font-family: $--open-sans-font;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 19px; /* 135.714% */
+		letter-spacing: 0.25px;
+	}
+	&__datePickerWrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__datePickerTitle {
+		display: inline-block;
+		// margin-bottom: 8px;
+		color: $--Foreground-default;
+		font-feature-settings:
+			'clig' off,
+			'liga' off;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+	}
+
+	&__datePickerInput {
+		width: calc(100% - 24px);
+		display: flex;
+		min-height: 24px;
+		padding: 8px 12px;
+		align-items: center;
+		gap: 8px;
+		align-self: stretch;
+		border-radius: 8px;
+		border: 1px solid $--border-default;
+		background: $--bg-primary;
+		outline: none;
+		color: $--Foreground-default;
+		font-feature-settings:
+			'clig' off,
+			'liga' off;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+	}
+	&__locationWrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		gap: 8px;
+		outline: none;
+	}
+	&__locationCity {
+		width: 100%;
+		outline: none;
+	}
+	&__countryName {
+		width: 100%;
+		border-radius: 8px;
+		border: 1px solid $--border-default;
+		background: $--bg-primary;
+		display: flex;
+		min-height: 40px;
+		padding: 8px 12px;
+		color: $--Foreground-default;
+		font-feature-settings:
+			'clig' off,
+			'liga' off;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+	}
+	&__participate {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-between;
+
+	}
+	&__participateTitle {
+		color: $--Foreground-default;
+		font-feature-settings:
+			'clig' off,
+			'liga' off;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0.25px;
+	}
+}
+.linkProfile {
+	display: block;
+	padding: 0 8px;
+	font-family: $--open-sans-font;
+	color: $--Foreground-link-default;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 150% */
+	letter-spacing: 0.25px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	min-width: 250px;
+	text-decoration: none;
+}

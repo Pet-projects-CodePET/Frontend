@@ -39,7 +39,7 @@ export const LEVEL = [
 export const CONTACTS = [
 	{
 		label: 'telegram',
-		value: 'telegram',
+		value: 'telegram_nick',
 	},
 	{
 		label: 'email',
@@ -47,6 +47,6 @@ export const CONTACTS = [
 	},
 	{
 		label: 'phone',
-		value: 'phone',
+		value: 'phone_number',
 	},
 ];

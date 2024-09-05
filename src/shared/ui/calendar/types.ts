@@ -1,5 +1,7 @@
 export type CalendarProps = {
 	name?: string;
+	selectedDate: Date | null;
+	setSelectedDate: (date: Date | null) => void;
 };
 
 export type MonthProps = {
