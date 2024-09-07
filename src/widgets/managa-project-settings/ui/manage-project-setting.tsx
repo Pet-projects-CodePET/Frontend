@@ -14,6 +14,7 @@ export const ManageProjectsSetting = () => {
 	return (
 		<Form className={styles.container} onSubmit={undefined}>
 			<div className={styles.specialists}>
+				<h1 className={styles.specialists_master_title}>Название проекта</h1>
 				<div className={styles.input_list}>
 					<Input
 						name="name"
