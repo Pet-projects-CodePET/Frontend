@@ -1,5 +1,5 @@
 .form {
-	width: 560px;
+	width: 520px;
 	min-width: 360px;
 	box-sizing: border-box;
 	padding: 48px;
@@ -21,11 +21,12 @@
 @media screen and (max-width: 779px) {
 	.form {
 		max-width: 777px;
-		min-width: 360px;
+		//min-width: 360px;
+		min-width: 320px;
 		min-height: 100vh;
 		width: 100vw;
-		//padding: 24px 16px;
-		padding: 64px 16px;
+		padding: 24px 16px;
+		//padding: 64px 16px;
 		border-radius: 0;
 		gap: 32px;
 		border: none;

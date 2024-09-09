@@ -2,7 +2,7 @@
 @import '@/shared/style/variables';
 
 .container {
-	max-width: 560px;
+	max-width: 520px;
 	width: 100%;
 	display: flex;
 	position: relative;
@@ -134,7 +134,7 @@
 	padding: 0;
 	margin: 0;
 	position: absolute;
-	bottom: -25px;
+	bottom: -45px;
 	font-family: $--open-sans-font;
 	color: $--Foreground-error;
 	font-size: 14px;

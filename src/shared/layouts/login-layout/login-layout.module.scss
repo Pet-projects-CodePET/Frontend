@@ -19,18 +19,23 @@
 	position: relative;
 }
 .logo {
-	//padding: 54px 0 0 18vw;
 	max-height: 110px;
 	box-sizing: border-box;
 	position: absolute;
-	 top: 50px;
+	 top: 0;
 	 left: -220px;
 
 	&__icon {
 		width: 144px;
 		height: 40px;
 	}
+	&__link {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
 }
+
 @media screen and (max-width: 1199px) {
 	.login {
 		gap: 26px;
@@ -44,11 +49,6 @@
 		align-self: center;
 		top: -50px;
 		left: 0;
-
-		// &__icon {
-		// 	width: 195px;
-		// 	height: 50px;
-		// }
 	}
 }
 
@@ -59,12 +59,8 @@
 		gap: 5px;
 		align-items: center;
 		background-image: none;
+		overflow: hidden;
 	}
-	.children {
-		display: flex;
-		flex-direction: column;
-	}
-
 	.logo {
 		max-width: 779px;
 		width: 100%;
@@ -76,9 +72,15 @@
 		left: 0;
 
 		&__icon {
-			// width: 150px;
-			// height: 50px;
-			margin: 21px 0 0 12px;
+			display: none;
+		}
+		&__link {
+			margin: 12px 0 12px 12px;
+			width: 145px;
+			height: 40px;
+			background-image: url('../../../shared/assets/images/logo-mobile.png');
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 	}
 }
