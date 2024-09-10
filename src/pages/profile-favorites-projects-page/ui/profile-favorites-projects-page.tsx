@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SelectedProjects = () => {
+export const FavoritesProjects = () => {
 	return (
 		<div>
 			<div>Избранные проекты</div>
