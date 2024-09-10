@@ -72,9 +72,11 @@ export const FormChangePassword: FC<FormChangePasswordProps> = ({
 
 			<div className={styles.formSettings__button}>
 				<MainButton
+				type='submit'
 					variant={'primary'}
 					width={'regular'}
-					disabled={!isValid || isSubmitDisabled}>
+					disabled={!isValid || isSubmitDisabled}
+					>
 					Сохранить
 				</MainButton>
 			</div>

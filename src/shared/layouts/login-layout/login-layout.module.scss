@@ -1,6 +1,6 @@
 @import '@/shared/style/variables';
 
-.container {
+.login {
 	background-image: url('../../assets/images/background-login-layout.png');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -9,24 +9,35 @@
 	min-height: 100vh;
 	width: 100%;
 	display: flex;
+	justify-content: center;
 	padding: 72px 32px;
 	gap: 105px;
 	box-sizing: border-box;
 }
 
+.children {
+	position: relative;
+}
 .logo {
-	padding: 54px 0 0 18vw;
 	max-height: 110px;
 	box-sizing: border-box;
+	position: absolute;
+	 top: 0;
+	 left: -220px;
 
 	&__icon {
-		width: 195px;
-		height: 50px;
+		width: 144px;
+		height: 40px;
+	}
+	&__link {
+		display: block;
+		width: 100%;
+		height: 100%;
 	}
 }
 
 @media screen and (max-width: 1199px) {
-	.container {
+	.login {
 		gap: 26px;
 		flex-direction: column;
 		align-items: center;
@@ -36,35 +47,40 @@
 		width: 560px;
 		padding: 0;
 		align-self: center;
-
-		&__icon {
-			width: 195px;
-			height: 50px;
-		}
+		top: -50px;
+		left: 0;
 	}
 }
 
 @media screen and (max-width: 779px) {
-	.container {
+	.login {
 		margin: 0;
 		padding: 0;
 		gap: 5px;
 		align-items: center;
 		background-image: none;
+		overflow: hidden;
 	}
-
 	.logo {
 		max-width: 779px;
 		width: 100%;
 		padding: 0;
 		align-self: center;
-		//		max-height: 110px;
+		max-height: 110px;
 		box-sizing: border-box;
+		top: 0;
+		left: 0;
 
 		&__icon {
-			width: 150px;
-			height: 50px;
-			margin: 21px 0 0 12px;
+			display: none;
+		}
+		&__link {
+			margin: 12px 0 12px 12px;
+			width: 145px;
+			height: 40px;
+			background-image: url('../../../shared/assets/images/logo-mobile.png');
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 	}
 }
