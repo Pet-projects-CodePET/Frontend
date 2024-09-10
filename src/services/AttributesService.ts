@@ -19,6 +19,7 @@ export const attributesApi = createApi({
 		getProfessions: builder.query({
 			query: () => ({
 				url: '/api/v1/professions/',
+				method: 'GET',
 			}),
 		}),
 	}),

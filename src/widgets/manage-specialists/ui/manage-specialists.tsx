@@ -13,7 +13,7 @@ export const ManageSpecialists = () => {
 	return (
 		<Form className={styles.container} onSubmit={undefined}>
 			<div className={styles.specialists}>
-				<h3 className={styles.input_list_title}>Кто нужен в проект</h3>
+				<h3 className={styles.specialists_master_title}>Кто нужен в проект</h3>
 				<div className={styles.specialists_toggle}>
 					<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
 					<Toggler

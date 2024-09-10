@@ -115,15 +115,6 @@ export const ManageProjectsSetting = () => {
 				<MainButton variant={'trivial'} width={'min'} disabled={false}>
 					{'Очистить'}
 				</MainButton>
-
-				<div className={styles.buttons}>
-					<MainButton variant={'primary'} width={'regular'} disabled={false}>
-						{'Опубликовать'}
-					</MainButton>
-					<MainButton variant={'secondary'} width={'regular'} disabled={false}>
-						{'Сохранить как черновик'}
-					</MainButton>
-				</div>
 			</div>
 		</Form>
 	);

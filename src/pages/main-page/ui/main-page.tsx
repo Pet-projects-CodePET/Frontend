@@ -8,6 +8,7 @@ import { Promo } from '@/widgets/promo';
 import React, { useEffect, useState } from 'react';
 import styles from './main-page.module.scss';
 import { useRouter } from 'next/navigation';
+import { useGetSkillsQuery } from '@/services/AttributesService';
 
 export const MainPage = () => {
 	// const { isSuccess: isLoggedIn } = useGetUserMeQuery(null);
@@ -27,6 +28,12 @@ export const MainPage = () => {
 
 		router.push('/');
 	}, [router]);
+
+	const {data: skills} = useGetSkillsQuery([]) 
+
+	if (!skills) {
+		console.table(skills)
+	}
 
 	return (
 		<>
