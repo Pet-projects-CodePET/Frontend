@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IProjectsRequests } from './models/IProjectsRequests';
+import { FavoriteProjectType } from './models/IFavoriteProject';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const projectsApi = createApi({
@@ -38,6 +39,20 @@ export const projectsApi = createApi({
 				url: `/projects/requests/`,
 				method: 'POST',
 				body: projects,
+			}),
+		}),
+		addFavoriteProject: builder.mutation<FavoriteProjectType, FavoriteProjectType>({
+			query: (project) => ({
+				url: `/projects/${project.id}/favorite/`,
+				method: 'POST',
+				body: project,
+			}),
+		}),
+		deleteFavoriteProject: builder.mutation<FavoriteProjectType, FavoriteProjectType>({
+			query: (project) => ({
+				url: `/projects/${project.id}/favorite/`,
+				method: 'DELETE',
+				body: project,
 			}),
 		}),
 	}),
