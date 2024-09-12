@@ -21,18 +21,23 @@ export const LEVEL = [
 	{
 		label: 'Junior',
 		value: 'Junior',
+		level: 1,
 	},
 	{
 		label: 'Middle',
 		value: 'Middle',
+		level: 2,
 	},
 	{
 		label: 'Senior',
 		value: 'Senior',
+		level: 3,
+
 	},
 	{
 		label: 'Lead',
 		value: 'Lead',
+		level: 4,
 	},
 ];
 

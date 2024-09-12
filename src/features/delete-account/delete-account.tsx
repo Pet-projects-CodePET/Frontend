@@ -14,7 +14,7 @@ export const DeleteAccountFeature: FC = () => {
 	const router = useRouter();
 
 	const handleDeleteAccount = (password: string) => {
-		console.log('handleDeleteAccount ', password);
+		// console.log('handleDeleteAccount ', password);
 		deleteAccount(password)
 			.unwrap()
 			.then(() => {

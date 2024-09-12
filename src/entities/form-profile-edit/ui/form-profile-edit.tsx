@@ -4,29 +4,28 @@ import React, { FC, useEffect, useState } from 'react';
 import { MainButton, Input, Form, PopUp } from '@/shared/ui';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { Toggler } from '@/shared/ui/toggler/toggler';
-// import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
-// import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
 import Plus from '@/shared/assets/icons/plus-large.svg';
-// import { specialties } from '@/shared/constants/specialties/specialties';
-// import { skills } from '@/shared/constants/skills/skills';
-
 import styles from './form-profile-edit.module.scss';
 import {
 	FormProfileEditProps,
 	TDataErrorChangeProfile,
 	TOption,
 } from './types';
-import { ContactsList } from '@/widgets';
 import { TContact } from '@/shared/ui/contact-card/types';
 import { CONTACTS } from '@/utils/constants';
-import { generalEmailRegex, phoneRegex } from '@/utils/regex-consts';
+import {
+	generalEmailRegex,
+	nickNameRegex,
+	phoneRegex,
+	urlRegex,
+} from '@/utils/regex-consts';
 import { COUNTRIES } from '@/shared/constants/countries/countries';
 import SelectWithSearch from '@/shared/ui/select-search/select-search';
 import { Calendar } from '@/shared/ui/calendar/calendar';
 import { IUser } from '@/services/models/IUser';
-import Link from 'next/link';
+import { ContactsList } from '@/entities/contact-list/contact-list';
 
 export const FormProfileEdit: FC<FormProfileEditProps> = ({
 	handleSubmitForm,
@@ -184,6 +183,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 		const day = String(dateObj.getDate()).padStart(2, '0');
 		return `${year}-${month}-${day}`;
 	};
+
 	const validateFields = () => {
 		if (typeof name !== 'string' || name.length < 2 || name.length > 30) {
 			setNameErrorText('Длина поля должна быть от 2 до 30 символов');
@@ -203,7 +203,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 			setNickNameErrorText('Длина поля от 2 до 30 символов');
 			setIsNickNameValid(false);
 		}
-		if (!/^[a-zA-Z0-9_\-.]+$/.test(nickName as string)) {
+		if (!nickNameRegex.test(nickName as string)) {
 			setNickNameErrorText(
 				'Поле может содержать только кириллические буквы, латинские буквы, цифры, дефис, нижнее подчёркивание и точку'
 			);
@@ -222,10 +222,8 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 			setPortfolioLinkErrorText('Длина поля  от 5 до 256 символов');
 			setIsPortfolioLinkValid(false);
 		}
-		if (!/^[a-zA-Z0-9]+$/.test(portfolioLink as string)) {
-			setPortfolioLinkErrorText(
-				'Введите правильный URL'
-			);
+		if (!urlRegex.test(portfolioLink as string)) {
+			setPortfolioLinkErrorText('Введите правильный URL');
 			setIsPortfolioLinkValid(false);
 		}
 	};
@@ -377,7 +375,6 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 						onChange={(event) => handleInputChange(event, 'name')}
 						error={nameErrorText}
 					/>
-					{isNameValid.toString()}
 				</div>
 				<TextEditor
 					currentText={aboutText as string}
@@ -390,6 +387,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					className={styles.fields__portfolioLinkTextValue}
 					name="portfolioLink"
 					labelName="Ссылка на портфолио"
+					placeholder="http..."
 					description={true}
 					descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
 					value={portfolioLink}
@@ -513,11 +511,13 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					</MainButton>
 				</div>
 			</Form>
-			<Link
-				href={`/specialists/${userData.user_id}`}
-				className={styles.linkProfile}>
-				Как видят мой профиль другие
-			</Link>
+			{/* <Specialties
+				professions={professions}
+				allSkills={allSkills}
+				specialists={userData.specialists as TSpeciality[]}
+			/> */}
+
+
 		</section>
 	);
 };

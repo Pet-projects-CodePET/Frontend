@@ -1,11 +1,14 @@
 import { IUser } from '@/services/models/IUser';
+import { TSpeciality } from '@/shared/types/specialty';
 
 export type TDataErrorChangeProfile = {
-	username?: string[]; 
-	name?: string[]; 
-	about?: string[]; 
-	portfolio_link?: string[]; 
-}
+	username?: string[];
+	name?: string[];
+	about?: string[];
+	portfolio_link?: string[];
+};
+
+
 
 export type FormProfileEditProps = {
 	handleSubmitForm: (data: IUser) => void;
@@ -22,12 +25,13 @@ export type FormProfileEditProps = {
 		country?: string;
 		city?: string;
 		ready_to_participate?: boolean;
+		specialists?: TSpeciality[];
 	};
 	isLoadingChangeProfileSettings: boolean;
 	dataErrorChangeProfile: TDataErrorChangeProfile;
-
 };
 export type TOption = {
-  label: string;
-  value: string;
+	label: string;
+	value: string;
+	id?:number;
 };

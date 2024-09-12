@@ -2,33 +2,52 @@
 
 import React, { FC, useState } from 'react';
 import { FormProfileEdit } from '@/entities/form-profile-edit';
-// import { FormProfileSettings } from '@/entities/form-profile-settings';
-// import { ProfileEditForm } from '@/entities/profile-edit-form';
-
 import { toaster } from '@/widgets/notification-toast/';
 import { IUser } from '@/services/models/IUser';
 import {
 	useChangeProfileSettingsMutation,
+	useChangeSpecialtyMutation,
+	useDeleteSpecialtyMutation,
 	useGetProfileSettingsQuery,
 } from '@/services/UserService';
+import {
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
+} from '@/services/GeneralService';
 import { Loader } from '@/shared/ui';
+import { DoesLookProfile } from '@/entities/does-look-profile/ui/does-look-profile';
+import { Specialties } from '@/entities/specialties';
+import { Speciality } from '@/shared/types/specialty';
 
 export const FormProfileEditFeature: FC = () => {
 	const {
-		data,
+		data: userData,
 		isLoading: isLoadingGetProfileSettings,
 		isError: isErrorGetProfileSettings,
 	} = useGetProfileSettingsQuery(null);
 
+	const { data: professions } = useGetProfessionsQuery([]);
+	const { data: allSkills } = useGetSkillsQuery([]);
+
 	const [changeProfileSettings, { isLoading: isLoadingChangeProfileSettings }] =
 		useChangeProfileSettingsMutation();
+	const [
+		changeSpecialty,
+		{
+			isLoading: isLoadingChangeSpecialty,
+			isSuccess: isSuccessСhangeSpecialty,
+		},
+	] = useChangeSpecialtyMutation();
+	
+	const [deleteSpecialty, { isSuccess: isSuccessDeleteSpecialty }] = useDeleteSpecialtyMutation();
 
 	const [dataErrorChangeProfile, setDataErrorChangeProfile] = useState({});
 
-	const handleSubmitForm = (newData: IUser) => {
+	const handleSubmitFormProfileEdit = (newData: IUser) => {
 		changeProfileSettings(newData)
 			.unwrap()
-			.then(() => {
+			.then((res) => {
+				console.log(res);
 				toaster({
 					status: 'success',
 					title: 'Настройки успешно сохранены',
@@ -45,24 +64,71 @@ export const FormProfileEditFeature: FC = () => {
 					subtitle: 'Попробуйте еще раз',
 				});
 			});
-		// console.log('handleSubmit data', newData);
+	};
+
+	const handleSubmitChangeSpecialty = (data: Speciality) => {
+		changeSpecialty(data)
+			.unwrap()
+			.then((resChangeSpecialty) => {
+				console.log('resChangeSpecialty',resChangeSpecialty);
+				toaster({
+					status: 'success',
+					title: 'Настройки специальности успешно сохранены',
+				});
+			})
+			.catch((error) => {
+				console.log(error);
+				toaster({
+					status: 'error',
+					title: 'Ошибка сохранения',
+					subtitle: 'Попробуйте еще раз',
+				});
+			});
+	};
+	const handleDeleteSpecialty = (id: number) => {
+		deleteSpecialty(id)
+			.unwrap()
+			.then(() => {
+				toaster({
+					status: 'success',
+					title: 'Спецаильность успешно удалена',
+				});
+			})
+			.catch(() => {
+				toaster({
+					status: 'error',
+					title: 'Ошибка удаления',
+					subtitle: 'Попробуйте еще раз',
+				});
+			});
 	};
 
 	return (
 		<>
 			{isLoadingGetProfileSettings ? (
-				<div>
-					<Loader />
-				</div>
+				<Loader />
 			) : (
-				<FormProfileEdit
-					dataErrorChangeProfile={dataErrorChangeProfile}
-					userData={data}
-					handleSubmitForm={handleSubmitForm}
-					isLoadingChangeProfileSettings={isLoadingChangeProfileSettings}
-				/>
+				<>
+					<FormProfileEdit
+						dataErrorChangeProfile={dataErrorChangeProfile}
+						userData={userData}
+						handleSubmitForm={handleSubmitFormProfileEdit}
+						isLoadingChangeProfileSettings={isLoadingChangeProfileSettings}
+					/>
+					<Specialties
+						professions={professions}
+						allSkills={allSkills}
+						specialists={userData.specialists}
+						// specialists={specialties}
+						handleSubmitChangeSpecialty={handleSubmitChangeSpecialty}
+						isLoadingChangeSpecialty={isLoadingChangeSpecialty}
+						isSuccessСhangeSpecialty={isSuccessСhangeSpecialty}
+						handleDeleteSpecialty={handleDeleteSpecialty}
+						isSuccessDeleteSpecialty={isSuccessDeleteSpecialty}
+					/>
+					<DoesLookProfile id={userData.user_id} />
+				</>
 			)}
-
 			{isErrorGetProfileSettings && <span>Ошибка получения настроек</span>}
 		</>
 	);

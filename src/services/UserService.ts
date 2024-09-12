@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IUser } from '@/services/models/IUser'; // const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
+import { Speciality } from '@/shared/types/specialty';
 
 // const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
 // const BASE_TEST_URL = process.env.NEXT_PUBLIC_BASE_TEST_URL;
@@ -88,6 +89,25 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
+		// addSpecialty:builder.mutation<>
+
+		changeSpecialty: builder.mutation<Speciality, Speciality>({
+			query: ({ id, profession, level, skills }) => ({
+				url: `/profiles/me/specialists/${id}/`,
+				method: 'PATCH',
+				body: {
+					profession,
+					level,
+					skills,
+				},
+			}),
+		}),
+		deleteSpecialty: builder.mutation({
+			query: (id:number) => ({
+				url: `/profiles/me/specialists/${id}/`,
+				method: 'DELETE',
+			}),
+		}),
 	}),
 });
 
@@ -101,4 +121,6 @@ export const {
 	useDeleteAccountMutation,
 	useGetProfileSettingsQuery,
 	useChangeProfileSettingsMutation,
+	useChangeSpecialtyMutation,
+	useDeleteSpecialtyMutation,
 } = userApi;
