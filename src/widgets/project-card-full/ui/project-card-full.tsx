@@ -2,6 +2,7 @@
 import React, { FC, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
+import parse from 'html-react-parser';
 import { CalendarIcon, ActivityIcon } from '@/shared/assets'; // ,
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
@@ -69,7 +70,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 						);
 					})}
 
-					{!isMobile && <p className={styles.mainText}>{description}</p>}
+					{!isMobile && <p className={styles.mainText}>{parse(description)}</p>}
 					{project_specialists.length > 0 ? <p className={styles.groupName}>Специальности</p> : null}
 					<ul className={styles.professionsList}>
 						{project_specialists?.map((item) => (

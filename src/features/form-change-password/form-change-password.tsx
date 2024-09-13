@@ -13,7 +13,7 @@ import {
 import styles from './form-change-password.module.scss';
 
 export const FormChangePasswordFeature: FC = () => {
-	const [changePassword, { error }] = useChangePasswordMutation();
+	const [changePassword] = useChangePasswordMutation();
 	const [isSubmitSuccessfulReset, setSubmitSuccessfulReset] = useState(false);
 	const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
@@ -40,8 +40,6 @@ export const FormChangePasswordFeature: FC = () => {
 			.finally(() => {
 				setIsSubmitDisabled(false);
 			});
-
-		console.log('change password', error);
 	};
 
 	const [serverPasswordError, setServerPasswordError] = useState('');

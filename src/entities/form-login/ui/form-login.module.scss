@@ -2,7 +2,7 @@
 @import '@/shared/style/variables';
 
 .container {
-	max-width: 560px;
+	max-width: 520px;
 	width: 100%;
 	display: flex;
 	position: relative;
@@ -20,27 +20,28 @@
 	margin: 0;
 	color: $--Foreground-default;
 	text-align: center;
-	font-family: Montserrat, serif;
-	font-size: 32px;
+	font-family: $--open-sans-font;
+	font-size: 20px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 40px;
+	line-height: normal;
+	letter-spacing: 0.25px;
 
 	&:after {
 		content: 'Платформа для ваших проектов';
 		display: block;
 		position: relative;
 		top: 8px;
-		font-family: 'Open Sans', serif;
-		font-size: 20px;
+		font-family: $--open-sans-font;
+		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
-		line-height: 30px; /* 150% */
+		line-height: 24px; /* 150% */
 		letter-spacing: 0.25px;
 	}
 
 	@media screen and (max-width: 779px) {
-		font-family: 'Open Sans', serif;
+		font-family: $--open-sans-font;
 		font-size: 20px;
 		line-height: normal;
 		letter-spacing: 0.25px;
@@ -133,7 +134,7 @@
 	padding: 0;
 	margin: 0;
 	position: absolute;
-	bottom: -25px;
+	bottom: -45px;
 	font-family: $--open-sans-font;
 	color: $--Foreground-error;
 	font-size: 14px;

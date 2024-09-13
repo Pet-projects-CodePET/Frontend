@@ -2,7 +2,7 @@
 @import '@/shared/style/variables';
 
 .container {
-	max-width: 560px;
+	max-width: 520px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -19,11 +19,12 @@
 	margin: 0;
 	color: $--Foreground-default;
 	text-align: center;
-	font-family: Montserrat, serif;
-	font-size: 32px;
+	font-family: $--open-sans-font;
+	font-size: 20px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 40px;
+	line-height: normal;
+	letter-spacing: 0.25px;
 
 	//	&:after {
 	//		content: 'Платформа для ваших проектов';
