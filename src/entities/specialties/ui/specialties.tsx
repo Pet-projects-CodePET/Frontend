@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import styles from './specialties.module.scss';
 import { SpecialityCard } from '@/shared/ui/speciality-card/speciality-card';
 import { TSpecialties } from './types';
-// import { Form } from '@/shared/ui';
-// import SelectWithSearch from '@/shared/ui/select-search/select-search';
+import { AddSpecialty } from '@/shared/ui/add-specialty/add-specialty';
 
 export const Specialties: FC<TSpecialties> = ({
 	professions,
@@ -13,7 +12,10 @@ export const Specialties: FC<TSpecialties> = ({
 	isLoadingChangeSpecialty,
 	isSuccessСhangeSpecialty,
 	handleDeleteSpecialty,
-	// isSuccessDeleteSpecialty
+	handleAddSpecialty,
+	isLoadingAddSpecialty,
+	isSuccessAddSpecialty,
+
 }) => {
 	return (
 		<section className={styles.specialityList}>
@@ -33,14 +35,13 @@ export const Specialties: FC<TSpecialties> = ({
 					</li>
 				))}
 			</ul>
-			{/* <Form onSubmit={() => console.log('test')}>
-				<SelectWithSearch
-					label="Специальность"
-					options={transformProfessions(professions)}
-					selectedValue={profession.specialization as string}
-					onValueChange={handleProfessionChange}
-				/>
-			</Form> */}
+			<AddSpecialty
+				allSkills={allSkills}
+				professions={professions}
+				isLoadingAddSpecialty={isLoadingAddSpecialty}
+				handleAddSpecialty={handleAddSpecialty}
+				isSuccessAddSpecialty={isSuccessAddSpecialty}
+			/>
 		</section>
 	);
 };

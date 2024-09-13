@@ -89,7 +89,6 @@ export const userApi = createApi({
 				body: user,
 			}),
 		}),
-		// addSpecialty:builder.mutation<>
 
 		changeSpecialty: builder.mutation<Speciality, Speciality>({
 			query: ({ id, profession, level, skills }) => ({
@@ -108,6 +107,14 @@ export const userApi = createApi({
 				method: 'DELETE',
 			}),
 		}),
+		addSpecialty: builder.mutation({
+			query: (specialty) => ({
+				url: '/profiles/me/specialists/',
+				method: 'POST',
+				body: specialty,
+			}),
+		}),
+
 	}),
 });
 
@@ -123,4 +130,5 @@ export const {
 	useChangeProfileSettingsMutation,
 	useChangeSpecialtyMutation,
 	useDeleteSpecialtyMutation,
+	useAddSpecialtyMutation,
 } = userApi;

@@ -33,8 +33,6 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 	isLoadingChangeProfileSettings,
 	dataErrorChangeProfile,
 }) => {
-	// const [isShowPreviewProfile, setIsShowPreviewProfile] =
-	// 	useState<boolean>(false);
 	const [isShowEditAvatarPopup, setIsShowEditAvatarPopup] =
 		useState<boolean>(false);
 	const [isParticipation, setIsParticipation] = useState<boolean>(
@@ -50,13 +48,9 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 	const [portfolioLink, setPortfolioLink] = useState<string | undefined>(
 		userData.portfolio_link
 	);
-	// const [birthday, setBirthday] = useState<string | undefined>(
-	// 	userData.birthday
-	// );
 	const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
 	const [country, setCountry] = useState<string | undefined>(userData.country);
-	// const [country, setCountry] = useState(userData.country);
 	const [city, setCity] = useState<string | undefined>(userData.city);
 	const [contacts, setContacts] = useState<TContact[]>([]);
 	const [selectedOptionContactType, setSelectedOptionContactType] =
@@ -120,7 +114,6 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 				isPortfolioLinkValid &&
 				!isLoadingChangeProfileSettings
 		);
-		// }, [isNameValid, isLoadingChangeProfileSettings]);
 	}, [
 		isNameValid,
 		isNickNameValid,
@@ -401,7 +394,6 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					<label className={styles.fields__addContactTypeWrapper}>
 						<select
 							className={styles.fields__addContactType}
-							// value={selectedOptionContactType?.value}
 							value={selectedOptionContactType?.value || ''}
 							onChange={(event) =>
 								handleOptionSelect(
@@ -470,7 +462,6 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 						setSelectedDate={setSelectedDate}
 					/>
 				</div>
-				{selectedDate?.toLocaleDateString()}
 				<div className={styles.fields__locationWrapper}>
 					<SelectWithSearch
 						label="Страна"
@@ -511,13 +502,6 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					</MainButton>
 				</div>
 			</Form>
-			{/* <Specialties
-				professions={professions}
-				allSkills={allSkills}
-				specialists={userData.specialists as TSpeciality[]}
-			/> */}
-
-
 		</section>
 	);
 };

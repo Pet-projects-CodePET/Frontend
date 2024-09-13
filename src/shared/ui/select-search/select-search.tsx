@@ -13,8 +13,6 @@ const SelectWithSearch: React.FC<SelectWithSearchProps> = ({
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const countryListRef = useRef(null);
-	// const componentRef = useRef<HTMLDivElement>(null);
-
 
 	useClickOutside(countryListRef, () => {
 		if (isOpen) setIsOpen(false);

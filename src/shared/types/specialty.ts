@@ -20,7 +20,7 @@ export type TSkills = {
 
 // тип данных пол-ля "Специальности" при запросе инф из api
 export type TSpeciality = {
-	id: number;
+	id?: number;
 	profession: TProfession;
 	level: number;
 	skills: TSkills[];

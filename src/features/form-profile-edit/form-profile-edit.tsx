@@ -1,10 +1,11 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { FormProfileEdit } from '@/entities/form-profile-edit';
 import { toaster } from '@/widgets/notification-toast/';
 import { IUser } from '@/services/models/IUser';
 import {
+	useAddSpecialtyMutation,
 	useChangeProfileSettingsMutation,
 	useChangeSpecialtyMutation,
 	useDeleteSpecialtyMutation,
@@ -17,17 +18,19 @@ import {
 import { Loader } from '@/shared/ui';
 import { DoesLookProfile } from '@/entities/does-look-profile/ui/does-look-profile';
 import { Specialties } from '@/entities/specialties';
-import { Speciality } from '@/shared/types/specialty';
+import { Speciality, TSpeciality } from '@/shared/types/specialty';
 
 export const FormProfileEditFeature: FC = () => {
+	const { data: professions, isLoading: isLoadingProfessions } =
+		useGetProfessionsQuery([]);
+
+	const { data: allSkills, isLoading: isLoadingSkills } = useGetSkillsQuery([]);
+
 	const {
 		data: userData,
 		isLoading: isLoadingGetProfileSettings,
 		isError: isErrorGetProfileSettings,
 	} = useGetProfileSettingsQuery(null);
-
-	const { data: professions } = useGetProfessionsQuery([]);
-	const { data: allSkills } = useGetSkillsQuery([]);
 
 	const [changeProfileSettings, { isLoading: isLoadingChangeProfileSettings }] =
 		useChangeProfileSettingsMutation();
@@ -38,23 +41,34 @@ export const FormProfileEditFeature: FC = () => {
 			isSuccess: isSuccessСhangeSpecialty,
 		},
 	] = useChangeSpecialtyMutation();
-	
-	const [deleteSpecialty, { isSuccess: isSuccessDeleteSpecialty }] = useDeleteSpecialtyMutation();
+
+	const [deleteSpecialty, { isSuccess: isSuccessDeleteSpecialty }] =
+		useDeleteSpecialtyMutation();
+
+	const [
+		addSpecialty,
+		{ isLoading: isLoadingAddSpecialty, isSuccess: isSuccessAddSpecialty },
+	] = useAddSpecialtyMutation();
 
 	const [dataErrorChangeProfile, setDataErrorChangeProfile] = useState({});
+
+	const [specialties, setSpecialties] = useState<TSpeciality[]>([]);
+	useEffect(() => {
+		if (userData?.specialists) {
+			setSpecialties(userData.specialists);
+		}
+	}, [userData]);
 
 	const handleSubmitFormProfileEdit = (newData: IUser) => {
 		changeProfileSettings(newData)
 			.unwrap()
-			.then((res) => {
-				console.log(res);
+			.then(() => {
 				toaster({
 					status: 'success',
 					title: 'Настройки успешно сохранены',
 				});
 			})
 			.catch((error) => {
-				console.log(error);
 				if (error.data) {
 					setDataErrorChangeProfile(error.data);
 				}
@@ -69,15 +83,13 @@ export const FormProfileEditFeature: FC = () => {
 	const handleSubmitChangeSpecialty = (data: Speciality) => {
 		changeSpecialty(data)
 			.unwrap()
-			.then((resChangeSpecialty) => {
-				console.log('resChangeSpecialty',resChangeSpecialty);
+			.then(() => {
 				toaster({
 					status: 'success',
 					title: 'Настройки специальности успешно сохранены',
 				});
 			})
 			.catch((error) => {
-				console.log(error);
 				toaster({
 					status: 'error',
 					title: 'Ошибка сохранения',
@@ -89,6 +101,7 @@ export const FormProfileEditFeature: FC = () => {
 		deleteSpecialty(id)
 			.unwrap()
 			.then(() => {
+				setSpecialties(specialties.filter((item) => item.id !== id));
 				toaster({
 					status: 'success',
 					title: 'Спецаильность успешно удалена',
@@ -103,10 +116,46 @@ export const FormProfileEditFeature: FC = () => {
 			});
 	};
 
+	const handleAddSpecialty = ({ level, profession, skills }: TSpeciality) => {
+		addSpecialty({
+			level,
+			profession: profession.id,
+			skills: skills.map((item) => item.id),
+		})
+			.unwrap()
+			.then(({ id }) => {
+				setSpecialties([
+					{
+						id,
+						level,
+						profession,
+						skills,
+					},
+					...specialties,
+				]);
+
+				toaster({
+					status: 'success',
+					title: 'Спецаильность успешно добавлена',
+				});
+			})
+			.catch(() => {
+				toaster({
+					status: 'error',
+					title: 'Ошибка добавления',
+					subtitle: 'Попробуйте еще раз',
+				});
+			});
+	};
+
 	return (
 		<>
-			{isLoadingGetProfileSettings ? (
-				<Loader />
+			{isLoadingGetProfileSettings ||
+			isLoadingProfessions ||
+			isLoadingSkills ? (
+				<div style={{minWidth:'816px'}}>
+					<Loader />
+				</div>
 			) : (
 				<>
 					<FormProfileEdit
@@ -118,13 +167,15 @@ export const FormProfileEditFeature: FC = () => {
 					<Specialties
 						professions={professions}
 						allSkills={allSkills}
-						specialists={userData.specialists}
-						// specialists={specialties}
+						specialists={specialties}
 						handleSubmitChangeSpecialty={handleSubmitChangeSpecialty}
 						isLoadingChangeSpecialty={isLoadingChangeSpecialty}
 						isSuccessСhangeSpecialty={isSuccessСhangeSpecialty}
 						handleDeleteSpecialty={handleDeleteSpecialty}
 						isSuccessDeleteSpecialty={isSuccessDeleteSpecialty}
+						handleAddSpecialty={handleAddSpecialty}
+						isLoadingAddSpecialty={isLoadingAddSpecialty}
+						isSuccessAddSpecialty={isSuccessAddSpecialty}
 					/>
 					<DoesLookProfile id={userData.user_id} />
 				</>
