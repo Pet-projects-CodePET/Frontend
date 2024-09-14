@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// const BASE_DEV_URL = process.env.NEXT_PUBLIC_BASE_DEV_URL;
-// const BASE_TEST_URL = process.env.NEXT_PUBLIC_BASE_TEST_URL;
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const attributesApi = createApi({
@@ -12,17 +10,23 @@ export const attributesApi = createApi({
 	endpoints: (builder) => ({
 		getSkills: builder.query({
 			query: () => ({
-				url: '/api/v1/skills/',
+				url: '/skills/',
 				method: 'GET',
 			}),
 		}),
 		getProfessions: builder.query({
 			query: () => ({
-				url: '/api/v1/professions/',
+				url: '/professions/',
+				method: 'GET',
+			}),
+		}),
+		getDirections: builder.query({
+			query: () => ({
+				url: '/projects/directions/',
 				method: 'GET',
 			}),
 		}),
 	}),
 });
 
-export const { useGetSkillsQuery, useGetProfessionsQuery } = attributesApi;
+export const { useGetSkillsQuery, useGetProfessionsQuery, useGetDirectionsQuery } = attributesApi;

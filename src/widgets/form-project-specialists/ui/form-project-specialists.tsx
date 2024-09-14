@@ -1,9 +1,8 @@
 'use client';
-import React, {  useState } from 'react';
-import styles from './manage-specialist.specialist.module.scss';
+import React, { useState } from 'react';
+import styles from './form-project-specialists.module.scss';
 import { Form, Toggler } from '@/shared/ui';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
-import { FormCreateProjectCard } from '@/entities/form-create-project-card';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { LEVEL } from '@/utils/constants';
 import {
@@ -11,7 +10,7 @@ import {
 	useGetSkillsQuery,
 } from '@/services/AttributesService';
 
-export const ManageSpecialists = () => {
+export const FormProjectSpecialists = () => {
 	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
 
 	const { data: skills } = useGetSkillsQuery([]) 
@@ -32,7 +31,7 @@ export const ManageSpecialists = () => {
 					/>
 				</div>
 
-				<FormCreateProjectCard />
+				{/* <FormCreateProjectCard /> */}
 				<SingleSelectInput
 					name={`project_specialists`}
 					label={'Специальность'}

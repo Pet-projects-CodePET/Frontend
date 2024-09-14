@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import styles from './manage-project-setting.module.scss';
+import styles from './form-project.module.scss';
 import { CheckboxAndRadio, Form, Input, MainButton } from '@/shared/ui';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { CONTACTS, DEVELOPING, EMPLOYMENT } from '@/utils/constants';
@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import { Plus } from 'lucide-react';
 
-export const ManageProjectsSetting = () => {
+export const FormProject = () => {
 	const { control } = useForm();
 	return (
 		<Form className={styles.container} onSubmit={undefined}>

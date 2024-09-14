@@ -82,7 +82,6 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = () => {
 					<div className={styles.config_toggle}>
 						<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
 						<Toggler
-							// variant={'default'}
 							checked={recruitmentIsOpen as boolean}
 							name={'allow_notifications'}
 							id={'allow_notifications'}
