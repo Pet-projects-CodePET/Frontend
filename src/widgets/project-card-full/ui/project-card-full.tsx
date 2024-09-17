@@ -40,44 +40,49 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 
 	return (
 		<article className={styles.container}>
-			<Link
+			{/* <Link
 				href={`projects/${id}`}
 				target="_blank"
-				className={styles.linkProject}>
-				<div className={styles.topInfo}>
-					<div className={styles.activeStateContainer}>
-						<ActivityIcon
-							className={clsx(
-								styles.activeStateIcon,
-								status === 'Активен' && styles.activeStateIcon_type_active,
-								status === 'Завершен' && styles.activeStateIcon_type_inactive
-							)}
-						/>
-						<div className={styles.activeStateText}>
-							{status === 'Активен' ? 'активный' : 'завершенный'}
-						</div>
-					</div>
-					<div className={styles.like}>
-						<LikeButtonFeature
-							variant="secondary"
-							id={id}
-							name={name}
-							description={description}
-							started={started}
-							ended={ended}
-							busyness={busyness as number}
-							directions={directions}
-							link={link}
-							phone_number={phone_number}
-							telegram_nick={telegram_nick}
-							email={email}
-							project_specialists={project_specialists}
-							status={status}
-							favorite={is_favorite}
-						/>
+				className={styles.linkProject}> */}
+				
+			<div className={styles.topInfo}>
+				<div className={styles.activeStateContainer}>
+					<ActivityIcon
+						className={clsx(
+							styles.activeStateIcon,
+							status === 'Активен' && styles.activeStateIcon_type_active,
+							status === 'Завершен' && styles.activeStateIcon_type_inactive
+						)}
+					/>
+					<div className={styles.activeStateText}>
+						{status === 'Активен' ? 'активный' : 'завершенный'}
 					</div>
 				</div>
-				<div>
+				<div className={styles.like}>
+					<LikeButtonFeature
+						variant="secondary"
+						id={id}
+						name={name}
+						description={description}
+						started={started}
+						ended={ended}
+						busyness={busyness as number}
+						directions={directions}
+						link={link}
+						phone_number={phone_number}
+						telegram_nick={telegram_nick}
+						email={email}
+						project_specialists={project_specialists}
+						status={status}
+						favorite={is_favorite}
+					/>
+				</div>
+			</div>
+			<div>
+				<Link
+					href={`projects/${id}`}
+					target="_blank"
+					className={styles.linkProject}>
 					<div className={styles.calendarContainer}>
 						<CalendarIcon className={styles.calendarIcon} />
 						<div
@@ -92,7 +97,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 						);
 					})}
 
-					{!isMobile && <p className={styles.mainText}>{parse(description)}</p>}
+					{!isMobile && <span className={styles.mainText}>{parse(description)}</span>}
 					{project_specialists.length > 0 ? (
 						<p className={styles.groupName}>Специальности</p>
 					) : null}
@@ -120,8 +125,9 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 							))
 						)}
 					</ul>
-				</div>
-			</Link>
+				</Link>
+			</div>
+			{/* </Link>  */}
 			{recruitment_status === 'Набор открыт' && (
 				<div className={styles.buttonRespond}>
 					<MainButton

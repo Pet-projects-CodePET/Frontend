@@ -11,8 +11,8 @@ import styles from './like-button.module.scss';
 export const LikeButton: FC<LikeButtonProps> = ({
 	variant,
 	disabled,
-	isActive,
-	handleActiveLikeButton,
+	isActiveLike,
+	handleLikeButton,
 	isPopupOpen,
 	setIsPopupOpen,
 }) => {
@@ -23,11 +23,11 @@ export const LikeButton: FC<LikeButtonProps> = ({
 		switch (buttonType) {
 			case 'primary':
 				return clsx(styles.buttonLikePrimary, {
-					[styles.buttonLikeActive]: isActive,
+					[styles.buttonLikeActive]: isActiveLike,
 				});
 			case 'secondary':
 				return clsx(styles.buttonLikeSecondary, {
-					[styles.buttonLikeActive]: isActive,
+					[styles.buttonLikeActive]: isActiveLike,
 				});
 			case 'trivial':
 				return styles.buttonLikeTrivial;
@@ -61,8 +61,8 @@ export const LikeButton: FC<LikeButtonProps> = ({
 				type="button"
 				disabled={disabled}
 				className={getClassnameForTypeLikeButton(variant)}
-				onClick={handleActiveLikeButton as () => void}>
-				{isActive ? (
+				onClick={handleLikeButton as () => void}>
+				{isActiveLike ? (
 					<HeartIconActive className={styles.iconActive} />
 				) : (
 					<HeartIcon className={getClassnameForTypeHeartIcon(variant)} />

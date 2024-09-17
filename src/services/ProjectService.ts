@@ -48,11 +48,10 @@ export const projectsApi = createApi({
 				body: project,
 			}),
 		}),
-		deleteFavoriteProject: builder.mutation<FavoriteProjectType, FavoriteProjectType>({
-			query: (project) => ({
-				url: `/projects/${project.id}/favorite/`,
+		deleteFavoriteProject: builder.mutation({
+			query: (id) => ({
+				url: `/projects/${id}/favorite/`,
 				method: 'DELETE',
-				body: project,
 			}),
 		}),
 	}),

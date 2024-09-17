@@ -1,11 +1,12 @@
 /* eslint-disable camelcase */
 'use client';
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { LikeButton } from '@/shared/ui';
 import { useAddFavoriteProjectMutation } from '@/services/ProjectService';
-//import { FavoriteProjectType } from '@/services/models/IFavoriteProject';
+import { useDeleteFavoriteProjectMutation } from '@/services/ProjectService';
+import { LikeButtonType } from '@/shared/types/like-button';
 
-export const LikeButtonFeature = ({
+export const LikeButtonFeature: FC<LikeButtonType> = ({
 	id,
 	name,
 	description,
@@ -22,95 +23,73 @@ export const LikeButtonFeature = ({
 	variant,
 	disabled,
 	favorite,
-}: {
-	id: never;
-	name: string;
-	description: string;
-	started: string;
-	ended: string;
-	busyness: number;
-	directions: [
-		{
-			id: number;
-			name: string;
-		},
-	];
-	link?: string;
-	phone_number?: string;
-	telegram_nick?: string;
-	email?: string;
-	project_specialists: [
-		{
-			id: number;
-			profession: {
-				id: number;
-				specialization: string;
-				specialty: string;
-			};
-
-			skills: {
-				id: number;
-				name: string;
-			}[];
-
-			count?: number;
-			level?: number;
-			is_required?: boolean;
-		},
-	];
-	status: string;
-	variant: 'primary' | 'secondary' | 'trivial';
-	disabled?: boolean;
-	favorite: boolean;
 }) => {
-	//const [isActive, setIsActive] = useState(false);
-	const [isActive, setIsActive] = useState(favorite);
+	const [isActiveLike, setIsActiveLike] = useState(favorite);
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [addFavoriteProject] = useAddFavoriteProjectMutation();
-	//const[isFavorite, setIsFavorite] = useState(favorite)
+	const [deleteFavoriteProject] = useDeleteFavoriteProjectMutation();
 	const token = localStorage.getItem('token');
 	const handleOpenPopup = () => {
 		setIsPopupOpen(true);
 	};
 
-	const handleActiveLikeButton = (evt: React.MouseEvent | React.TouchEvent) => {
-		evt.preventDefault();
-		if (token) {
-			addFavoriteProject({
-				id,
-				name,
-				description,
-				started,
-				ended,
-				busyness,
-				directions,
-				link,
-				phone_number,
-				telegram_nick,
-				email,
-				project_specialists,
-				status,
-			})
-				.unwrap()
-				.then(() => {
-					//setIsFavorite(!isFavorite)
-					setIsActive(true);
-					console.log('like');
+	const handleActiveLikeButton =
+		(/*evt: React.MouseEvent | React.TouchEvent*/) => {
+			//evt.preventDefault();
+			if (token) {
+				addFavoriteProject({
+					id,
+					name,
+					description,
+					started,
+					ended,
+					busyness,
+					directions,
+					link,
+					phone_number,
+					telegram_nick,
+					email,
+					project_specialists,
+					status,
 				})
-				.catch((error) => {
-					console.log('errorCatch', error);
-				});
+					.unwrap()
+					.then(() => {
+						setIsActiveLike(true);
+						//console.log('like');
+					})
+					.catch((error) => {
+						console.log('errorCatch', error);
+					});
+			} else {
+				handleOpenPopup();
+			}
+		};
+
+	const handleRemoveProject = (id: number) => {
+		deleteFavoriteProject(id)
+			.unwrap()
+			.then(() => {
+				setIsActiveLike(false);
+			})
+			.catch((error) => {
+				console.log('errorCatch', error);
+			});
+	};
+
+	const toggleButtonLike = () => {
+		if (isActiveLike) {
+			handleRemoveProject(id);
 		} else {
-			handleOpenPopup();
+			handleActiveLikeButton();
 		}
 	};
 	return (
 		<LikeButton
 			variant={variant}
 			disabled={disabled}
-			handleActiveLikeButton={handleActiveLikeButton}
-			isActive={isActive}
-			setIsActive={setIsActive}
+			handleLikeButton={toggleButtonLike}
+			isActiveLike={isActiveLike}
+			setIsActiveLike={setIsActiveLike}
 			isPopupOpen={isPopupOpen}
 			setIsPopupOpen={setIsPopupOpen}
 		/>
