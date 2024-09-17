@@ -5,14 +5,20 @@ export type ProjectCardFullType = HTMLAttributes<HTMLElement> & {
 	description: string;
 	started: string;
     ended: string;
+	busyness?: number;
 	directions: [
 		{
 			id: number;
 			name: string;
 		},
 	];
+	link?: string;
+	phone_number?: string;
+	telegram_nick?: string;
+	email?: string;
 	status: string;
 	recruitment_status: string;
+	is_favorite: boolean;
 	project_specialists: [
 		{
 			id: number;
@@ -25,8 +31,10 @@ export type ProjectCardFullType = HTMLAttributes<HTMLElement> & {
 				{
 					id: number;
 					name: string;
-				}[]
-			
+				}[];
+				count?: number;
+				level?: number;
+				is_required?: boolean;	
 		},
 	];
 

@@ -1,7 +1,10 @@
 'use client';
 import React, { FC } from 'react';
+import { useRouter } from 'next/navigation';
 import type { LikeButtonProps } from './types';
 import { HeartIcon, HeartIconActive } from '@/shared/assets';
+import { PopUp } from '../pop-up/pop-up';
+import { MainButton } from '../main-button/main-button';
 import clsx from 'clsx';
 import styles from './like-button.module.scss';
 
@@ -10,7 +13,10 @@ export const LikeButton: FC<LikeButtonProps> = ({
 	disabled,
 	isActive,
 	handleActiveLikeButton,
+	isPopupOpen,
+	setIsPopupOpen,
 }) => {
+	const router = useRouter();
 	const getClassnameForTypeLikeButton = (
 		buttonType: 'primary' | 'secondary' | 'trivial'
 	) => {
@@ -50,16 +56,40 @@ export const LikeButton: FC<LikeButtonProps> = ({
 	};
 
 	return (
-		<button
-			type="button"
-			disabled={disabled}
-			className={getClassnameForTypeLikeButton(variant)}
-			onClick={handleActiveLikeButton}>
-			{isActive ? (
-				<HeartIconActive className={styles.iconActive} />
-			) : (
-				<HeartIcon className={getClassnameForTypeHeartIcon(variant)} />
-			)}
-		</button>
+		<>
+			<button
+				type="button"
+				disabled={disabled}
+				className={getClassnameForTypeLikeButton(variant)}
+				onClick={handleActiveLikeButton as () => void}>
+				{isActive ? (
+					<HeartIconActive className={styles.iconActive} />
+				) : (
+					<HeartIcon className={getClassnameForTypeHeartIcon(variant)} />
+				)}
+			</button>
+			<PopUp
+				visible={isPopupOpen}
+				title={'Вход в систему'}
+				onClose={() => {
+					setIsPopupOpen(false);
+					}}>
+				<span className={styles.popupSubtitle}>
+					Чтобы совершить действие, необходимо войти в систему
+				</span>
+				<div className={styles.popupButton}>
+					<MainButton
+						variant="primary"
+						width="regular"
+						type="button"
+						onClick={(evt: React.MouseEvent | React.TouchEvent) => {
+							evt.preventDefault();
+							router.push('/login');
+						}}>
+						Авторизоваться
+					</MainButton>
+				</div>
+			</PopUp>
+		</>
 	);
 };

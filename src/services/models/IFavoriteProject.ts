@@ -4,15 +4,18 @@ export type FavoriteProjectType = HTMLAttributes<HTMLElement> & {
 	name: string;
 	description: string;
 	started: string;
-    ended: string;
+	ended: string;
+	busyness: number;
 	directions: [
 		{
 			id: number;
 			name: string;
 		},
 	];
-	status: string;
-	recruitment_status: string;
+	link?: string;
+	phone_number?: string;
+	telegram_nick?: string;
+	email?: string;
 	project_specialists: [
 		{
 			id: number;
@@ -21,13 +24,14 @@ export type FavoriteProjectType = HTMLAttributes<HTMLElement> & {
 				specialization: string;
 				specialty: string;
 			};
-			skills: 
-				{
-					id: number;
-					name: string;
-				}[]
-			
+			skills: {
+				id: number;
+				name: string;
+			}[];
+			count?: number;
+			level?: number;
+			is_required?: boolean;
 		},
 	];
-
+	status: string;
 };

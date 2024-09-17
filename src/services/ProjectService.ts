@@ -63,4 +63,6 @@ export const {
 	useGetAllProjectsQuery,
 	useGetProjectByIdQuery,
 	useRequestParticipationInProjectsMutation,
+	useAddFavoriteProjectMutation,
+	useDeleteFavoriteProjectMutation
 } = projectsApi;
