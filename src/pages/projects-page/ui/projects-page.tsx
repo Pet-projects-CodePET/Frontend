@@ -14,7 +14,7 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
-import { Pagination } from '@/entities/pagination/ui/pagination';
+import { Pagination } from '@/entities';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 //import { useGetAllProjectsQuery, } from '@/services/ProjectService';

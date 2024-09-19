@@ -28,6 +28,12 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		getFavoriteProjects: builder.query({
+			query: ({ currentPage }) => ({
+				url: `/projects/?is_favorite=1&page=${currentPage}`,
+				method: 'GET',
+			}),
+		}),
 		getProjectById: builder.query({
 			query: ({ id }) => ({
 				url: `/projects/${id}/`,
@@ -63,5 +69,6 @@ export const {
 	useGetProjectByIdQuery,
 	useRequestParticipationInProjectsMutation,
 	useAddFavoriteProjectMutation,
-	useDeleteFavoriteProjectMutation
+	useDeleteFavoriteProjectMutation,
+	useGetFavoriteProjectsQuery,
 } = projectsApi;

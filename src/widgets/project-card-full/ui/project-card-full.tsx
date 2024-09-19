@@ -80,7 +80,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 			</div>
 			<div>
 				<Link
-					href={`projects/${id}`}
+					href={`../projects/${id}`}
 					target="_blank"
 					className={styles.linkProject}>
 					<div className={styles.calendarContainer}>
