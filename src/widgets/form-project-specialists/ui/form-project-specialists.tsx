@@ -9,6 +9,7 @@ import {
 	useGetProfessionsQuery,
 	useGetSkillsQuery,
 } from '@/services/AttributesService';
+import { FormCreateProjectCard } from '@/entities/form-create-project-card';
 
 export const FormProjectSpecialists = () => {
 	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
@@ -16,9 +17,11 @@ export const FormProjectSpecialists = () => {
 	const { data: skills } = useGetSkillsQuery([]) 
 	const { data: profession } = useGetProfessionsQuery([]) 
 
-	console.log(skills);
+	const onSubmit = (data) => {
+		console.table(data)
+	}
 	return (
-		<Form className={styles.container} onSubmit={undefined}>
+		<Form className={styles.container} onSubmit={onSubmit}>
 			<div className={styles.specialists}>
 				<h3 className={styles.specialists_master_title}>Кто нужен в проект</h3>
 				<div className={styles.specialists_toggle}>
@@ -31,16 +34,17 @@ export const FormProjectSpecialists = () => {
 					/>
 				</div>
 
-				{/* <FormCreateProjectCard /> */}
+				<FormCreateProjectCard />
+			
 				<SingleSelectInput
 					name={`project_specialists`}
 					label={'Специальность'}
 					onChange={() => {}}
 					options={profession?.map(
-						(specialization: { id: number; name: string }) => {
+						(specialization: { id: number; specialization: string }) => {
 							return {
-								label: specialization.id,
-								value: specialization.name,
+								label: specialization.specialization,
+								value: specialization.id,
 							};
 						}
 					)}
@@ -66,8 +70,8 @@ export const FormProjectSpecialists = () => {
 						onChange={() => {}}
 						options={skills?.map((skill: { id: number; name: string }) => {
 							return {
-								label: skill.id,
-								value: skill.name,
+								label: skill.name,
+								value: skill.id,
 							};
 						})}
 						values={[]}

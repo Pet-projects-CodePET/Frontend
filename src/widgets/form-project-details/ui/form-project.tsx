@@ -3,29 +3,36 @@ import React from 'react';
 import styles from './form-project.module.scss';
 import { CheckboxAndRadio, Form, Input, MainButton } from '@/shared/ui';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import { CONTACTS, DEVELOPING, EMPLOYMENT } from '@/utils/constants';
+import { DEVELOPING, EMPLOYMENT } from '@/utils/constants';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { useForm } from 'react-hook-form';
-import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
-import { Plus } from 'lucide-react';
+import { Contacts } from '@/entities/contacts/contacts';
 
 export const FormProject = () => {
 	const { control } = useForm();
+
+	const handleSubmit = (data) => {
+		console.table(data);
+	};
+
 	return (
-		<Form className={styles.container} onSubmit={undefined}>
+		<Form className={styles.container} onSubmit={handleSubmit}>
 			<div className={styles.specialists}>
 				<h1 className={styles.specialists_master_title}>Название проекта</h1>
 				<div className={styles.input_list}>
 					<Input
 						name="name"
+						required
 						labelName="Название проекта"
 						className={styles.input_extra}
 					/>
 					<TextEditor
 						labelName={'Описание проекта'}
+						name={'description'}
 						desc={
 							'Расскажите о проекте и его цели используя не более 750 символов'
 						}
+						control={control}
 					/>
 				</div>
 
@@ -38,6 +45,7 @@ export const FormProject = () => {
 									labelName={profession.field}
 									label={`professions`}
 									type={'checkbox'}
+									required
 									id={`professions_${profession.id}`}
 									name={'professions'}
 								/>
@@ -54,7 +62,8 @@ export const FormProject = () => {
 								<CheckboxAndRadio
 									labelName={busyness.name}
 									label={`busyness`}
-									type={'checkbox'}
+									type={'radio'}
+									required
 									id={`busyness_${busyness.id}.`}
 									name={'busyness'}
 								/>
@@ -77,31 +86,7 @@ export const FormProject = () => {
 				</div>
 
 				<div className={styles.contacts}>
-					<h3 className={styles.input_list_title}>Контакты для связи</h3>
-					<div className={styles.contacts_selects}>
-						<SingleSelectInput
-							name={`project_specialists`}
-							onChange={() => {}}
-							options={CONTACTS}
-							description={'Выберите ресурс'}
-						/>
-						<Input labelName="" name="name" className={styles.input_extra} />
-					</div>
-				</div>
-
-				<div className={styles.specialists_buttons}>
-					<MainButton
-						variant="secondary"
-						width="regular"
-						IconLeft={
-							Plus as React.ComponentType<React.HTMLAttributes<HTMLElement>>
-						}
-						onClick={() => ({})}>
-						Добавить
-					</MainButton>
-					<MainButton variant="trivial" width="regular" onClick={() => ({})}>
-						Сбросить
-					</MainButton>
+						<Contacts control={control} />
 				</div>
 
 				<Input
@@ -113,10 +98,18 @@ export const FormProject = () => {
 						'Добавьте ссылку на ваш проект, например: GitHub, приложение, веб страница и др.'
 					}
 				/>
-
-				<MainButton variant={'trivial'} width={'min'} disabled={false}>
-					{'Очистить'}
-				</MainButton>
+				<div className={styles.specialists_buttons}>
+					<MainButton
+						variant={'primary'}
+						width={'min'}
+						type="submit"
+						disabled={false}>
+						{'Submit'}
+					</MainButton>
+					<MainButton variant={'trivial'} width={'min'} disabled={false}>
+						{'Очистить'}
+					</MainButton>
+				</div>
 			</div>
 		</Form>
 	);

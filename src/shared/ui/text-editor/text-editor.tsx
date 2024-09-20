@@ -4,36 +4,21 @@ import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
-import Quill from 'react-quill-new';
+import { Controller } from 'react-hook-form';
 
 export const TextEditor: FC<TextEditorProps> = ({
 	labelName,
 	placeholder,
 	desc,
+	name,
+	control,
 	...props
 }) => {
-	const [value, setValue] = useState<string>('');
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
 
 	useEffect(() => {
 		setIsWindowLoaded(true);
 	}, []);
-	const handleChange = (
-		content: string,
-		// eslint-disable-next-line
-		delta: any,
-		// eslint-disable-next-line
-		source: any,
-		editor: Quill.UnprivilegedEditor
-	) => {
-		if (typeof window === 'object') {
-			if (editor.getLength() <= 751) {
-				setValue(content);
-			} else {
-				alert('Превышено количество символов.');
-			}
-		}
-	};
 
 	const myModule = {
 		toolbar: {
@@ -53,13 +38,19 @@ export const TextEditor: FC<TextEditorProps> = ({
 				<p className={styles.title}>{labelName}</p>
 				<div className={styles.editor}>
 					{isWindowLoaded && (
-						<ReactQuill
-							placeholder={placeholder}
-							modules={myModule}
-							theme="snow"
-							value={value}
-							onChange={handleChange}
-							className={styles.inputMain}
+						<Controller
+							name={name}
+							control={control}
+							render={({ field }) => (
+								<ReactQuill
+									placeholder={placeholder}
+									modules={myModule}
+									theme="snow"
+									value={field.value || ''}
+									onChange={field.onChange}
+									className={styles.inputMain}
+								/>
+							)}
 							{...props}
 						/>
 					)}

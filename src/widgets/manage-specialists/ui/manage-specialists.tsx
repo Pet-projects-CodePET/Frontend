@@ -18,8 +18,13 @@ export const ManageSpecialists = () => {
 	const { data: profession } = useGetProfessionsQuery([]) 
 
 	console.log(skills);
+
+	
+	const onSubmit = (data) => {
+		console.table(data)
+	}
 	return (
-		<Form className={styles.container} onSubmit={undefined}>
+		<Form className={styles.container} onSubmit={onSubmit}>
 			<div className={styles.specialists}>
 				<h3 className={styles.specialists_master_title}>Кто нужен в проект</h3>
 				<div className={styles.specialists_toggle}>

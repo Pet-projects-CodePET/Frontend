@@ -14,7 +14,7 @@ export const projectsApi = createApi({
 			}),
 		}),
 		getAllProjects: builder.query({
-			query: ({currentPage}) => ({
+			query: ({ currentPage }) => ({
 				url: `/projects/?page=${currentPage}`,
 				method: 'GET',
 			}),
@@ -25,6 +25,13 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		postProject: builder.mutation({
+			query: ({ body }) => ({
+				url: `/projects/`,
+				method: 'POST',
+				body: body,
+			}),
+		}),
 	}),
 });
 
@@ -32,4 +39,5 @@ export const {
 	useGetProjectsPreviewMainQuery,
 	useGetAllProjectsQuery,
 	useGetProjectByIdQuery,
+	usePostProjectMutation,
 } = projectsApi;
