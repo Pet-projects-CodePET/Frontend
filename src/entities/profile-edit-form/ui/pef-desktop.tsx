@@ -30,18 +30,14 @@ export const DesktopView = () => {
 	const [preview, setPreview] = useState(false);
 	const [isParticipation, setIsParticipation] = useState(false);
 
-	const [image, setImage] = useState(
-		'https://i.pinimg.com/originals/ea/23/b1/ea23b1a5bcd866299ac79fbfb7b8841c.jpg'
-	);
+	const username = 'aleksandr';
 	const editorRef = useRef<AvatarEditor>(null);
+	const [image, setImage] = useState<string | null>(null);
 
 	const getImageUrl = async () => {
 		if (editorRef !== null && editorRef.current !== null) {
-			const dataUrl = editorRef.current.getImage().toDataURL();
-			const res = await fetch(dataUrl);
-			const blob = await res.blob();
-
-			return window.URL.createObjectURL(blob);
+			const dataUrl = editorRef.current.getImage().toDataURL(); // convert to base64 string
+			return dataUrl;
 		}
 		return '';
 	};
@@ -57,16 +53,7 @@ export const DesktopView = () => {
 		setIsPopup(false);
 
 		if (editorRef) {
-			// This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
-			// drawn on another canvas, or added to the DOM.
-			// const canvas = editorRef.current.getImage();
-
-			// If you want the image resized to the canvas size (also a HTMLCanvasElement)
-			// const canvasScaled = editorRef.current.getImageScaledToCanvas();
-
-			// Usage
 			const imageURL = await getImageUrl();
-
 			setImage(imageURL);
 		}
 	};
@@ -95,7 +82,13 @@ export const DesktopView = () => {
 					<Form onSubmit={handleSubmit} className={styles.fields}>
 						<div className={styles.fields_photo}>
 							<div className={styles.fields_avatar}>
-								<Image src={image} alt="avatar" width={136} height={136} />
+								{image !== null ? (
+									<Image src={image} alt="avatar" width={136} height={136} />
+								) : (
+									<div className={styles.fields_text}>
+										{username[0].toUpperCase()}
+									</div>
+								)}
 							</div>
 							<button
 								type="button"
@@ -108,10 +101,9 @@ export const DesktopView = () => {
 								title="Изменить фото"
 								onClose={() => setIsPopup(false)}>
 								<ProfileAvatarEditor
-									image={image}
+									image={image || ''}
 									width={250}
 									height={250}
-									borderRadius={50}
 									editor={editorRef}
 								/>
 								<MainButton

@@ -7,7 +7,6 @@ export const ProfileAvatarEditor: FC<ProfileAvatarEditorProps> = ({
 	image,
 	width,
 	height,
-	borderRadius,
 	editor,
 }) => {
 	const [state, setState] = useState<ProfileAvatarEditorState>({
@@ -16,7 +15,7 @@ export const ProfileAvatarEditor: FC<ProfileAvatarEditorProps> = ({
 		position: { x: 0.5, y: 0.5 },
 		scale: 1,
 		rotate: 0,
-		borderRadius: borderRadius,
+		borderRadius: 50,
 		preview: undefined,
 		width: width,
 		height: height,
@@ -37,47 +36,42 @@ export const ProfileAvatarEditor: FC<ProfileAvatarEditorProps> = ({
 		setState({ ...state, scale });
 	};
 
-	const logCallback = (e: () => void) => {
-		console.log('callback', e);
-	};
-
 	const handlePositionChange = (position: Position) => {
 		setState({ ...state, position });
 	};
 
 	return (
 		<div className={styles.container}>
-			<AvatarEditor
-				ref={editor}
-				className={styles.canvas}
-				scale={state.scale}
-				width={state.width}
-				height={state.height}
-				position={state.position}
-				// showGrid={state.showGrid}
-				onPositionChange={handlePositionChange}
-				rotate={state.rotate}
-				borderRadius={state.width / (100 / state.borderRadius)}
-				backgroundColor={state.backgroundColor}
-				onLoadFailure={logCallback.bind(this, () => 'onLoadFailed')}
-				onLoadSuccess={logCallback.bind(this, () => 'onLoadSuccess')}
-				onImageReady={logCallback.bind(this, () => 'onImageReady')}
-				image={state.image}
-				disableCanvasRotation={state.disableCanvasRotation}
-				color={[255, 255, 255, 0.6]} // RGBA
-			/>
-			<label htmlFor="volume" className={styles.scaleLabel}>
-				Масштаб:{' '}
-				<input
-					name="scale"
-					type="range"
-					onChange={handleScale}
-					min={state.allowZoomOut ? '0.1' : '1'}
-					max="2"
-					step="0.01"
-					defaultValue="1"
-				/>
-			</label>
+			{state.image !== '' && (
+				<>
+					<AvatarEditor
+						ref={editor}
+						scale={state.scale}
+						width={state.width}
+						height={state.height}
+						position={state.position}
+						onPositionChange={handlePositionChange}
+						rotate={state.rotate}
+						borderRadius={state.width / (100 / state.borderRadius)}
+						backgroundColor={state.backgroundColor}
+						image={state.image}
+						disableCanvasRotation={state.disableCanvasRotation}
+						color={[255, 255, 255, 0.6]} // RGBA
+					/>
+					<label htmlFor="scale" className={styles.scaleLabel}>
+						Масштаб:{' '}
+						<input
+							name="scale"
+							type="range"
+							onChange={handleScale}
+							min={state.allowZoomOut ? '0.1' : '1'}
+							max="2"
+							step="0.01"
+							defaultValue="1"
+						/>
+					</label>
+				</>
+			)}
 			<input
 				name="newImage"
 				className={styles.selectImageInput}

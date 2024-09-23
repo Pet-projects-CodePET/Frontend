@@ -4,7 +4,6 @@ export type ProfileAvatarEditorProps = {
 	image: string | File;
 	width: number;
 	height: number;
-	borderRadius: number;
 	editor: React.RefObject<AvatarEditor>;
 };
 

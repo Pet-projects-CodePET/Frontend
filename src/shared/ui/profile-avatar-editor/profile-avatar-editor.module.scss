@@ -2,13 +2,11 @@
 
 .container {
 	text-align: center;
-}
-
-.canvas {
-	margin: 20px 0;
+	margin: 24px 0;
 }
 
 .scaleLabel {
+	margin: 12px 0;
 	display: flex;
 	justify-content: center;
 	column-gap: 10px;
@@ -16,5 +14,4 @@
 
 .selectImageInput {
 	width: 300px;
-	margin: 20px 0;
 }
