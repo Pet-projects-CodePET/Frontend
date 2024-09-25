@@ -5,24 +5,40 @@ import { CheckboxAndRadio, Form, Input, MainButton } from '@/shared/ui';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { DEVELOPING, EMPLOYMENT } from '@/utils/constants';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Contacts } from '@/entities/contacts/contacts';
+type FormValues = {
+	name: string;
+	contacts: { [key: string]: string }[]; // Dynamic contact keys
+};
 
 export const FormProject = () => {
 	const { control } = useForm();
 
-	const handleSubmit = (data) => {
-		console.table(data);
+	const onSubmit: SubmitHandler<FormValues> = (data) => {
+		// Process the contacts array to map type to value
+		const formattedContacts = data.contacts?.reduce((acc, contact) => {
+			if (contact.type && contact.value) {
+				acc[contact.type] = contact.value; // Make contact type the key
+			}
+			return acc;
+		}, {} as { [key: string]: string });
+
+		console.log('Formatted Contacts:', formattedContacts);
+		console.log('Full Form Data:', { ...data, contacts: formattedContacts });
 	};
 
+
+
 	return (
-		<Form className={styles.container} onSubmit={handleSubmit}>
+
+		<Form className={styles.container} onSubmit={onSubmit}>
 			<div className={styles.specialists}>
 				<h1 className={styles.specialists_master_title}>Название проекта</h1>
 				<div className={styles.input_list}>
 					<Input
 						name="name"
-						required
+						
 						labelName="Название проекта"
 						className={styles.input_extra}
 					/>
@@ -45,7 +61,7 @@ export const FormProject = () => {
 									labelName={profession.field}
 									label={`professions`}
 									type={'checkbox'}
-									required
+									
 									id={`professions_${profession.id}`}
 									name={'professions'}
 								/>
@@ -63,7 +79,7 @@ export const FormProject = () => {
 									labelName={busyness.name}
 									label={`busyness`}
 									type={'radio'}
-									required
+									
 									id={`busyness_${busyness.id}.`}
 									name={'busyness'}
 								/>
@@ -86,7 +102,7 @@ export const FormProject = () => {
 				</div>
 
 				<div className={styles.contacts}>
-						<Contacts control={control} />
+					<Contacts control={control} />
 				</div>
 
 				<Input
