@@ -1,4 +1,4 @@
-import { MainButton } from '@/shared/ui';
+import { Input, MainButton } from '@/shared/ui';
 import { Plus, Trash2 } from 'lucide-react';
 import React from 'react';
 import styles from './contacts.module.scss';
@@ -12,8 +12,13 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 		name: 'contacts',
 	});
 
-	// Watching the contacts array to dynamically handle the selected type
+	// Watching the contacts array to dynamically handle the selected types
 	const contacts = useWatch({ control, name: 'contacts', defaultValue: [] });
+
+	// Function to check if a contact type is already selected to disable that option
+	const isTypeDisabled = (type: string) => {
+		return contacts.some((contact: { type: string }) => contact.type === type);
+	};
 
 	return (
 		<>
@@ -21,6 +26,7 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 			<div className={styles.contacts}>
 				{fields.map((field, index) => (
 					<div key={field.id} className={styles.container}>
+						{/* Contact Type Select */}
 						<Controller
 							name={`contacts.${index}.type`} // Type like phone, email, telegram
 							control={control}
@@ -39,28 +45,29 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 										field.onChange(e);
 									}}>
 									<option value="">Выберите ресурс</option>
-									<option value="phone">Телефон</option>
-									<option value="email">Email</option>
-									<option value="telegram">Telegram</option>
+									<option value="phone" disabled={isTypeDisabled('phone')}>
+										Телефон
+									</option>
+									<option value="email" disabled={isTypeDisabled('email')}>
+										Email
+									</option>
+									<option
+										value="telegram"
+										disabled={isTypeDisabled('telegram')}>
+										Telegram
+									</option>
 								</select>
 							)}
 						/>
-
 						{/* Contact Value Input */}
-						{contacts[index]?.type && (
-							<Controller
+						{contacts[index] && (
+							<Input
 								name={`contacts.${index}.value`} // Use 'value' to capture the input
-								control={control}
-								defaultValue={field.value || ''}
-								render={({ field }) => (
-									<input
-										{...field}
-										className={styles.input_extra}
-										placeholder={`Введите ${contacts[index].type}`}
-									/>
-								)}
+								className={styles.input_extra}
+								placeholder={`Введите ${contacts[index].type}`}
 							/>
 						)}
+						{/* Remove Button */}
 						<MainButton
 							variant={'trivial'}
 							width={'min'}
@@ -71,6 +78,8 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 					</div>
 				))}
 			</div>
+
+			{/* Add Contact Button */}
 			<div className={styles.buttons}>
 				<MainButton
 					variant="secondary"
@@ -80,11 +89,14 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 					}
 					type="button"
 					onClick={() => append({ id: uuidv4(), type: '', value: '' })} // Append new contact
+					disabled={contacts.length >= 3} // Disable if all types are selected
 				>
 					Добавить
 				</MainButton>
+
+				{/* Reset Button */}
 				<MainButton
-					onClick={() => remove()} // Optional: remove all contacts
+					onClick={() => remove()} // Remove all contacts
 					variant={'trivial'}
 					width={'min'}
 					disabled={false}>

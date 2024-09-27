@@ -16,16 +16,7 @@ export const FormProject = () => {
 	const { control } = useForm();
 
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
-		// Process the contacts array to map type to value
-		const formattedContacts = data.contacts?.reduce((acc, contact) => {
-			if (contact.type && contact.value) {
-				acc[contact.type] = contact.value; // Make contact type the key
-			}
-			return acc;
-		}, {} as { [key: string]: string });
-
-		console.log('Formatted Contacts:', formattedContacts);
-		console.log('Full Form Data:', { ...data, contacts: formattedContacts });
+		console.table(data);
 	};
 
 
