@@ -81,6 +81,10 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 		return dataSkills.map((dataSkill) => dataSkill.id);
 	};
 
+	const isSkillsNotAdded = () => {
+		return (skills.length === 0)
+	}
+
 	const handleSubmit = () => {
 		handleSubmitChangeSpecialty({
 			level: selectedLevel,
@@ -91,7 +95,7 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 	};
 
 	const handleDelete = () => {
-		handleDeleteSpecialty(data.id)
+		handleDeleteSpecialty(data.id as number)
 	};
 
 	return (
@@ -157,7 +161,7 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 						width="regular"
 						type="button"
 						onClick={handleSubmit}
-						disabled={isLoadingChangeSpecialty}>
+						disabled={isSkillsNotAdded() || isLoadingChangeSpecialty}>
 						Сохранить
 					</MainButton>
 				</div>
