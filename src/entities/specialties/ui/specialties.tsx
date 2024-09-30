@@ -15,6 +15,7 @@ export const Specialties: FC<TSpecialties> = ({
 	handleAddSpecialty,
 	isLoadingAddSpecialty,
 	isSuccessAddSpecialty,
+	isLoadingDeleteSpecialty,
 
 }) => {
 	return (
@@ -31,6 +32,7 @@ export const Specialties: FC<TSpecialties> = ({
 							isLoadingChangeSpecialty={isLoadingChangeSpecialty}
 							isSuccessСhangeSpecialty={isSuccessСhangeSpecialty}
 							handleDeleteSpecialty={handleDeleteSpecialty}
+							isLoadingDeleteSpecialty={isLoadingDeleteSpecialty}
 						/>
 					</li>
 				))}

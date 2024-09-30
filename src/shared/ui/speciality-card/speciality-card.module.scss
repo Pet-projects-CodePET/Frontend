@@ -31,6 +31,10 @@
 		}
 		&_delete {
 			background: url('../../assets/icons/delete-red.svg') center;
+			&:disabled {
+				cursor: wait;
+				opacity: 0.2;
+			}
 		}
 	}
 	&__title {

@@ -17,7 +17,8 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 	handleSubmitChangeSpecialty,
 	isLoadingChangeSpecialty,
 	isSuccessСhangeSpecialty,
-	handleDeleteSpecialty
+	handleDeleteSpecialty,
+	isLoadingDeleteSpecialty,
 }) => {
 	const [isShowViewEdit, setIsShowViewEdit] = useState<boolean>(false);
 	const [profession, setProfession] = useState<TProfession>(data.profession);
@@ -119,6 +120,7 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 				<div className={styles.specialityCard}>
 					<button
 						type="button"
+						disabled={isLoadingDeleteSpecialty}
 						className={clsx(
 							styles.specialityCard__button,
 							styles.specialityCard__button_delete

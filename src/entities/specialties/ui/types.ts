@@ -14,6 +14,7 @@ export type TSpecialties = {
 	isSuccessСhangeSpecialty: boolean;
 	handleDeleteSpecialty: (id: number) => void;
 	isSuccessDeleteSpecialty: boolean;
+	isLoadingDeleteSpecialty: boolean;
 	handleAddSpecialty: (data: TSpeciality) => void;
 	isLoadingAddSpecialty: boolean;
 	isSuccessAddSpecialty: boolean;

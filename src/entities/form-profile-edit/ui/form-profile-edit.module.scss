@@ -17,20 +17,15 @@
 	padding: 32px;
 	gap: 16px;
 	box-sizing: border-box;
-	min-width: 752px;
+	// min-width: 752px;
 	border-radius: 12px;
 	border: 1px solid $--border-default;
 	margin-bottom: 24px;
-	// width: 100%;
-	// min-width: 816px;
-	// display: flex;
-	// padding: 32px;
-	// flex-direction: column;
-	// align-items: flex-start;
-	// gap: 16px;
-	// border-radius: 12px;
-	// border: 1px solid $--border-default;
-	// background: $--bg-primary;
+
+	@media screen and (max-width: 779px) {
+		border: none;
+	}
+
 	&_photo {
 		position: relative;
 		display: flex;
@@ -100,8 +95,12 @@
 	&__nameWrapper {
 		display: flex;
 		flex-direction: row;
-		gap: 8px;
+		column-gap: 8px;
 		width: 100%;
+		@media screen and (max-width: 779px) {
+			flex-direction: column;
+			row-gap: 16px;
+		}
 	}
 	&__nameInput {
 		width: 100%;
@@ -125,6 +124,9 @@
 		display: flex;
 		flex-direction: row;
 		gap: 8px;
+		@media screen and (max-width: 779px) {
+			flex-direction: column;
+		}
 	}
 	&__addContactType {
 		width: 228px;
@@ -143,6 +145,9 @@
 		font-weight: 400;
 		line-height: 24px; /* 150% */
 		letter-spacing: 0.25px;
+		@media screen and (max-width: 779px) {
+			width: 100%;
+		}
 	}
 
 	&__addContactTypeWrapper {
@@ -153,16 +158,6 @@
 	&__addContactTextValue {
 		min-height: 40px;
 		width: 100%;
-		// color: $--Foreground-default;
-		// font-feature-settings:
-		// 	'liga' off,
-		// 	'clig' off;
-		// font-family: $--open-sans-font;
-		// font-size: 16px;
-		// font-style: normal;
-		// font-weight: 400;
-		// line-height: 24px; /* 150% */
-		// letter-spacing: 0.25px;
 	}
 
 	&__addContactTypeLabel {

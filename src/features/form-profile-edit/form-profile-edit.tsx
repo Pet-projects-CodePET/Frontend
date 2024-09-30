@@ -16,7 +16,7 @@ import {
 	useGetSkillsQuery,
 } from '@/services/GeneralService';
 import { Loader } from '@/shared/ui';
-import { DoesLookProfile } from '@/entities/does-look-profile/ui/does-look-profile';
+// import { DoesLookProfile } from '@/entities/does-look-profile/ui/does-look-profile';	
 import { Specialties } from '@/entities/specialties';
 import { Speciality, TSpeciality } from '@/shared/types/specialty';
 
@@ -42,7 +42,7 @@ export const FormProfileEditFeature: FC = () => {
 		},
 	] = useChangeSpecialtyMutation();
 
-	const [deleteSpecialty, { isSuccess: isSuccessDeleteSpecialty }] =
+	const [deleteSpecialty, { isSuccess: isSuccessDeleteSpecialty, isLoading:  isLoadingDeleteSpecialty}] =
 		useDeleteSpecialtyMutation();
 
 	const [
@@ -174,11 +174,12 @@ export const FormProfileEditFeature: FC = () => {
 						isSuccessСhangeSpecialty={isSuccessСhangeSpecialty}
 						handleDeleteSpecialty={handleDeleteSpecialty}
 						isSuccessDeleteSpecialty={isSuccessDeleteSpecialty}
+						isLoadingDeleteSpecialty={isLoadingDeleteSpecialty}
 						handleAddSpecialty={handleAddSpecialty}
 						isLoadingAddSpecialty={isLoadingAddSpecialty}
 						isSuccessAddSpecialty={isSuccessAddSpecialty}
 					/>
-					<DoesLookProfile id={userData.user_id} />
+					{/* <DoesLookProfile id={userData.user_id} /> */}
 				</>
 			)}
 			{isErrorGetProfileSettings && <span>Ошибка получения настроек</span>}

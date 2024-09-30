@@ -8,4 +8,5 @@ export type SpecialityCardProps = {
   isLoadingChangeSpecialty: boolean;
   isSuccessСhangeSpecialty: boolean;
   handleDeleteSpecialty: (id: number) => void;
+  isLoadingDeleteSpecialty: boolean;
 };
