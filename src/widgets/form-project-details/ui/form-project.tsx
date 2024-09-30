@@ -1,35 +1,23 @@
 'use client';
 import React from 'react';
 import styles from './form-project.module.scss';
-import { CheckboxAndRadio, Form, Input, MainButton } from '@/shared/ui';
+import { CheckboxAndRadio,  Input, MainButton } from '@/shared/ui';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { DEVELOPING, EMPLOYMENT } from '@/utils/constants';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Control } from 'react-hook-form';
 import { Contacts } from '@/entities/contacts/contacts';
-type FormValues = {
-	name: string;
-	contacts: { [key: string]: string }[]; // Dynamic contact keys
-};
 
-export const FormProject = () => {
-	const { control } = useForm();
-
-	const onSubmit: SubmitHandler<FormValues> = (data) => {
-		console.table(data);
-	};
-
-
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const FormProject = ({ control }: { control: Control<any> }) => {
+	
 	return (
-
-		<Form className={styles.container} onSubmit={onSubmit}>
+		<div className={styles.container}>
 			<div className={styles.specialists}>
 				<h1 className={styles.specialists_master_title}>Название проекта</h1>
 				<div className={styles.input_list}>
 					<Input
 						name="name"
-						
 						labelName="Название проекта"
 						className={styles.input_extra}
 					/>
@@ -52,7 +40,6 @@ export const FormProject = () => {
 									labelName={profession.field}
 									label={`professions`}
 									type={'checkbox'}
-									
 									id={`professions_${profession.id}`}
 									name={'professions'}
 								/>
@@ -70,7 +57,6 @@ export const FormProject = () => {
 									labelName={busyness.name}
 									label={`busyness`}
 									type={'radio'}
-									
 									id={`busyness_${busyness.id}.`}
 									name={'busyness'}
 								/>
@@ -106,18 +92,11 @@ export const FormProject = () => {
 					}
 				/>
 				<div className={styles.specialists_buttons}>
-					<MainButton
-						variant={'primary'}
-						width={'min'}
-						type="submit"
-						disabled={false}>
-						{'Submit'}
-					</MainButton>
 					<MainButton variant={'trivial'} width={'min'} disabled={false}>
 						{'Очистить'}
 					</MainButton>
 				</div>
 			</div>
-		</Form>
+		</div>
 	);
 };

@@ -62,9 +62,10 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 						{/* Contact Value Input */}
 						{contacts[index] && (
 							<Input
+								labelName=""
 								name={`contacts.${index}.value`} // Use 'value' to capture the input
 								className={styles.input_extra}
-								placeholder={`Введите ${contacts[index].type}`}
+								// placeholder={`Введите ${contacts[index].type}`}
 							/>
 						)}
 						{/* Remove Button */}

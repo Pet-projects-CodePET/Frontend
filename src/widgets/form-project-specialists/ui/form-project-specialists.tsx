@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import styles from './form-project-specialists.module.scss';
-import { Form, Toggler } from '@/shared/ui';
+import { Toggler } from '@/shared/ui';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import { LEVEL } from '@/utils/constants';
@@ -17,11 +17,9 @@ export const FormProjectSpecialists = () => {
 	const { data: skills } = useGetSkillsQuery([]) 
 	const { data: profession } = useGetProfessionsQuery([]) 
 
-	const onSubmit = (data) => {
-		console.table(data)
-	}
+
 	return (
-		<Form className={styles.container} onSubmit={onSubmit}>
+		<div className={styles.container}>
 			<div className={styles.specialists}>
 				<h3 className={styles.specialists_master_title}>Кто нужен в проект</h3>
 				<div className={styles.specialists_toggle}>
@@ -81,6 +79,6 @@ export const FormProjectSpecialists = () => {
 					/>
 				</div>
 			</div>
-		</Form>
+		</div>
 	);
 };
