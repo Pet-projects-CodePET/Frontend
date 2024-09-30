@@ -92,7 +92,7 @@
 	background-color: $datepicker__background-color;
 	border-bottom: 1px solid $datepicker__border-color;
 	border-top-left-radius: $datepicker__border-radius;
-	padding: 8px 0;
+	padding: 0;
 	position: relative;
 
 	&--time {
@@ -740,6 +740,7 @@
 .react-datepicker__input-container {
 	input {
 		margin: 8px 0 0;
+		width: calc(100% - 32px);
 
 		font-family: 'Open Sans', sans-serif;
 		font-size: 16px;
@@ -749,7 +750,7 @@
 
 		color: #020617;
 		background-color: #feffff;
-		min-height: 50px;
+		min-height: 40px;
 		padding: 0px 16px;
 		border: 1px solid #e2e8f0;
 		border-radius: 12px;

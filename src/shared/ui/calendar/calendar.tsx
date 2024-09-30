@@ -1,8 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { CalendarProps, MonthProps, YearProps } from './types';
-import ReactDatePicker, {
-	ReactDatePickerCustomHeaderProps,
-} from 'react-datepicker';
+import DatePicker, { ReactDatePickerCustomHeaderProps } from 'react-datepicker';
 import './react-datepicker.scss';
 import styles from './calendar.module.scss';
 import { ru } from 'date-fns/locale';
@@ -12,8 +10,12 @@ import {
 	months,
 } from '@/shared/constants/calendar-filter/calendar-filter';
 
-export const Calendar: FC<CalendarProps> = ({ name }) => {
-	const [startDate, setStartDate] = useState(new Date());
+export const Calendar: FC<CalendarProps> = ({
+	name,
+	selectedDate,
+	setSelectedDate,
+}) => {
+	// const [startDate, setStartDate] = useState(new Date());
 	const years = getLastOneHundredYearsArray();
 
 	const MonthFilter = ({ handleChange, value }: MonthProps) => (
@@ -53,6 +55,7 @@ export const Calendar: FC<CalendarProps> = ({ name }) => {
 	}: ReactDatePickerCustomHeaderProps) => (
 		<div className={styles.filterContainer}>
 			<button
+				type="button"
 				className={styles.buttonChevron}
 				onClick={decreaseMonth}
 				disabled={prevMonthButtonDisabled}>
@@ -66,6 +69,7 @@ export const Calendar: FC<CalendarProps> = ({ name }) => {
 				<YearFilter handleChange={changeYear} value={date.getFullYear()} />
 			</div>
 			<button
+				type="button"
 				className={styles.buttonChevron}
 				onClick={increaseMonth}
 				disabled={nextMonthButtonDisabled}>
@@ -75,14 +79,14 @@ export const Calendar: FC<CalendarProps> = ({ name }) => {
 	);
 
 	return (
-		<ReactDatePicker
+		<DatePicker
 			locale={ru}
 			name={name}
 			renderCustomHeader={header}
-			selected={startDate}
-			dateFormat="dd.MM.yyyy"
+			selected={selectedDate}
+			dateFormat="dd/MM/yyyy"
 			strictParsing
-			onChange={(date: Date) => setStartDate(date)}
+			onChange={(date) => setSelectedDate(date)}
 		/>
 	);
 };
