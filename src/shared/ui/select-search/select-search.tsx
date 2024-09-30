@@ -3,7 +3,6 @@ import styles from './select-search.module.scss';
 import { SelectWithSearchProps } from './types';
 import { useClickOutside } from '@/shared/hooks';
 
-
 const SelectWithSearch: React.FC<SelectWithSearchProps> = ({
 	options,
 	selectedValue,
@@ -47,8 +46,13 @@ const SelectWithSearch: React.FC<SelectWithSearchProps> = ({
 				{selectedValue || ''}
 			</div>
 			{isOpen && (
-				<div className={styles.container__dropdown}  ref={countryListRef}>
-					<input type="text" value={searchTerm} onChange={handleSearchChange} />
+				<div className={styles.container__dropdown} ref={countryListRef}>
+					<input
+						type="text"
+						value={searchTerm}
+						onChange={handleSearchChange}
+						className={styles.container__inputSearch}
+					/>
 					<ul className={styles.container__optionsList}>
 						{filteredOptions.length > 0 ? (
 							filteredOptions.map((option, index) => (

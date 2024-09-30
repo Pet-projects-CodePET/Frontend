@@ -75,12 +75,14 @@ export const AddSpecialty: React.FC<AddSpecialtyProps> = ({
 		setSkills([]);
 		setSelectedLevel(null);
 	};
-
+	const isFieldsNotFill = () => {
+		return (profession === null || selectedLevel === null || skills.length === 0);
+	};
 	useEffect(() => {
 		if (isSuccessAddSpecialty) handleResetForm();
 	}, [isSuccessAddSpecialty]);
 
-		return (
+	return (
 		<form
 			className={styles.addSpecialty}
 			onSubmit={handleSubmit}
@@ -116,7 +118,7 @@ export const AddSpecialty: React.FC<AddSpecialtyProps> = ({
 					variant="secondary"
 					width="regular"
 					type="submit"
-					disabled={isLoadingAddSpecialty}>
+					disabled={isFieldsNotFill() || isLoadingAddSpecialty}>
 					Добавить
 				</MainButton>
 				<MainButton

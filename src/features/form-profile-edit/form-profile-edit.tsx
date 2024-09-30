@@ -95,6 +95,7 @@ export const FormProfileEditFeature: FC = () => {
 					title: 'Ошибка сохранения',
 					subtitle: 'Попробуйте еще раз',
 				});
+				console.log(error);
 			});
 	};
 	const handleDeleteSpecialty = (id: number) => {

@@ -8,21 +8,22 @@
 	flex-direction: column;
 	margin-bottom: 8px;
 	// height: 40px;
-&__title {
-	margin: 0;
-	padding: 0;
-	color: $--Foreground-default;
-	font-family: $--open-sans-font;
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 24px; /* 150% */
-	letter-spacing: 0.25px;
-}
+	&__title {
+		margin: 0;
+		padding: 0;
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
+	}
 	&__input {
 		display: flex;
 		align-items: center;
-		height: 1em;
+		min-height: 24px;
+		// height: 1em;
 		border: 1px solid $--border-default;
 		background: $--bg-primary;
 		padding: 8px 12px;
@@ -61,6 +62,15 @@
 				outline: navy;
 			}
 		}
+	}
+	&__inputSearch {
+		color: $--Foreground-default;
+		font-family: $--open-sans-font;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px; /* 150% */
+		letter-spacing: 0.25px;
 	}
 
 	&__optionsList {
