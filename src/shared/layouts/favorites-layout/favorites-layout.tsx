@@ -4,6 +4,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
+import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import styles from './favorites-layout.module.scss';
 
 export const FavoritesLayout = ({
@@ -18,6 +19,7 @@ export const FavoritesLayout = ({
 	const pathname = usePathname();
 	return (
 		<>
+		<ProfileLink title='Избранные'/>
 			<div className={styles.favorites}>
 				<div className={styles.linksContainer}>
 					{links.map((link) => {
