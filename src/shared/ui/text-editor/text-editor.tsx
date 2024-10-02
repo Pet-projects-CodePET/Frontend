@@ -42,7 +42,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 				['bold', 'italic', 'underline'], // toggled buttons
 				[{ list: 'ordered' }, { list: 'bullet' }],
 				[{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
-				[{ background: [] }], // dropdown with defaults from theme
+				[{ color: [] }], // dropdown with defaults from theme
 				[{ align: [] }],
 			],
 		},

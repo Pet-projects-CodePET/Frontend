@@ -5,6 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const projectsApi = createApi({
 	reducerPath: 'projectsApi',
+	tagTypes: ['Projects'],
 	baseQuery: fetchBaseQuery({
 		baseUrl: `https://${BASE_URL}/api/v1`,
 		prepareHeaders: async (headers) => {
@@ -33,6 +34,7 @@ export const projectsApi = createApi({
 				url: `/projects/?is_favorite=1&page=${currentPage}`,
 				method: 'GET',
 			}),
+			providesTags: ['Projects'],
 		}),
 		getProjectById: builder.query({
 			query: ({ id }) => ({
@@ -53,12 +55,14 @@ export const projectsApi = createApi({
 				method: 'POST',
 				body: project,
 			}),
+			invalidatesTags: ['Projects'],
 		}),
 		deleteFavoriteProject: builder.mutation({
 			query: (id) => ({
 				url: `/projects/${id}/favorite/`,
 				method: 'DELETE',
 			}),
+			invalidatesTags: ['Projects'],
 		}),
 	}),
 });

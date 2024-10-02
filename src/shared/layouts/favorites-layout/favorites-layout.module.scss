@@ -2,9 +2,11 @@
 .favorites {
     display: flex;
     flex-direction: column;
-    max-width: 816px;
+    //max-width: 816px;
+    width: 816px;
     gap: 24px;
 }
+
 .linksContainer {
     display: flex;
 }
@@ -26,4 +28,15 @@
 }
 .inputSearch {
     width: 396px;
+}
+
+@media screen and (max-width: 1199px) {
+    .favorites {
+        width: 780px;
+    }
+}
+@media screen and (max-width: 779px) {
+    .favorites {
+        max-width: 100%;
+    }
 }
