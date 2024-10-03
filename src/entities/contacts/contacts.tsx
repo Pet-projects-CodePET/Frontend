@@ -9,10 +9,10 @@ import { v4 as uuidv4 } from 'uuid';
 export const Contacts = ({ control }: { control: Control<any> }) => {
 	const { fields, append, remove, update } = useFieldArray({
 		control,
-		name: 'telegram',
+		name: 'contacts', // Internal name for field array management
 	});
 
-	// Watching the contacts array to dynamically handle the selected types
+	// Watch contacts array to dynamically handle selected types
 	const contacts = useWatch({ control, name: 'contacts', defaultValue: [] });
 
 	// Function to check if a contact type is already selected to disable that option
@@ -28,13 +28,13 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 					<div key={field.id} className={styles.container}>
 						{/* Contact Type Select */}
 						<Controller
-							name={`contacts.${index}.type`} // Type like phone, email, telegram
+							name={`contacts.${index}.type`} // Internal name for tracking the contact type
 							control={control}
 							defaultValue={field.type || ''}
-							render={({ field }) => (
+							render={({ field: selectField }) => (
 								<select
 									className={styles.select}
-									{...field}
+									{...selectField}
 									onChange={(e) => {
 										// Update the contact type and reset the value field
 										update(index, {
@@ -42,7 +42,7 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 											type: e.target.value,
 											value: '',
 										});
-										field.onChange(e);
+										selectField.onChange(e);
 									}}>
 									<option value="">Выберите ресурс</option>
 									<option value="phone" disabled={isTypeDisabled('phone')}>
@@ -59,15 +59,26 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 								</select>
 							)}
 						/>
+
 						{/* Contact Value Input */}
-						{contacts[index] && (
-							<Input
-								labelName=""
-								name={`contacts.${index}.value`} // Use 'value' to capture the input
-								className={styles.input_extra}
-								// placeholder={`Введите ${contacts[index].type}`}
+						{contacts[index]?.type && (
+							<Controller
+								// Dynamically use the selected contact type as the field name
+								name={contacts[index].type}
+								control={control}
+								defaultValue={field.value || ''}
+								render={({ field: inputField }) => (
+									<Input
+										labelName=""
+										name={inputField.name} // Will dynamically be "phone", "email", or "telegram"
+										value={inputField.value}
+										onChange={inputField.onChange}
+										className={styles.input_extra}
+									/>
+								)}
 							/>
 						)}
+
 						{/* Remove Button */}
 						<MainButton
 							variant={'trivial'}
