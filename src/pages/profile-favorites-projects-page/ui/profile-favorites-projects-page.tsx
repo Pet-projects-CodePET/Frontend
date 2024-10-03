@@ -1,10 +1,12 @@
 'use client';
+
 import React, { useState } from 'react';
 import { useGetFavoriteProjectsQuery } from '@/services/ProjectService';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { ProjectCardFullType } from '@/widgets/project-card-full/ui/types';
 import { Loader } from '@/shared/ui';
 import { Pagination } from '@/entities';
+import { InputSearch } from '@/shared/ui';
 import styles from './profile-favorites-projects-page.module.scss';
 
 export const FavoritesProjects = () => {
@@ -14,11 +16,17 @@ export const FavoritesProjects = () => {
 		useGetFavoriteProjectsQuery(currentSettings);
 	//console.log(favoriteProjects);
 	return (
-		<div>
+		<>
 			{isLoading ? (
 				<Loader />
 			) : (
-				<div className={styles.container}>
+				<section className={styles.favoritesProjects}>
+					{favoriteProjects.results.length > 0 ? (
+						<div className={styles.inputSearch}>
+							<InputSearch search={() => {}} onChange={() => {}} />
+						</div>
+					) : null}
+
 					{favoriteProjects.results.length > 0 ? (
 						favoriteProjects.results.map((project: ProjectCardFullType) => {
 							return (
@@ -59,8 +67,8 @@ export const FavoritesProjects = () => {
 						currentPage={currentSettings.currentPage}
 						pageSize={pageSize}
 					/>
-				</div>
+				</section>
 			)}
-		</div>
+		</>
 	);
 };

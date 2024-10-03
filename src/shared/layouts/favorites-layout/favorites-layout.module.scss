@@ -27,9 +27,7 @@
     border-bottom: 3px solid $--Foreground-default;
     color: $--Foreground-default;
 }
-.inputSearch {
-    width: 396px;
-}
+
 
 @media screen and (max-width: 1199px) {
     .favorites {
@@ -42,11 +40,4 @@
         padding: 0 16px 32px;
     }
    
-}
-@media screen and (max-width: 490px) {
-    .inputSearch {
-        width: 300px;
-     }
-
-
 }

@@ -6,7 +6,7 @@ import { useAddFavoriteProjectMutation } from '@/services/ProjectService';
 import { useDeleteFavoriteProjectMutation } from '@/services/ProjectService';
 import { LikeButtonType } from '@/shared/types/like-button';
 
-export const LikeButtonFeature: FC<LikeButtonType> = ({
+export const ProjectsToFavoritesFeature: FC<LikeButtonType> = ({
 	id,
 	name,
 	description,

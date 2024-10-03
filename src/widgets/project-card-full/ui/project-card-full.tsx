@@ -7,7 +7,7 @@ import { CalendarIcon, ActivityIcon } from '@/shared/assets'; // ,
 import { MainButton } from '@/shared/ui';
 import { useMediaQuery } from '@/shared/hooks';
 import { ProjectCardFullType } from './types';
-import { LikeButtonFeature } from '@/features';
+import { ProjectsToFavoritesFeature } from '@/features';
 import { getColorTag, getStartDate, getEndDate } from '@/shared/utils';
 import Link from 'next/link';
 import { InviteToProjectFeature } from '@/features';
@@ -59,7 +59,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					</div>
 				</div>
 				<div className={styles.like}>
-					<LikeButtonFeature
+					<ProjectsToFavoritesFeature
 						variant="secondary"
 						id={id}
 						name={name}

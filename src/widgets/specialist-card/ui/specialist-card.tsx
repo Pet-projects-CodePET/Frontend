@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
+import clsx from 'clsx';
 import { SpecialistCardType } from './type';
-import { LikeButtonFeature } from '@/features';
-import styles from './specialist-card.module.scss';
 import Link from 'next/link';
 import { InviteSpecialist } from '@/widgets/invite-specialist';
 import { AvatarImage } from '@/entities/_avatar-image';
-import clsx from 'clsx';
 import { ActivityIcon, ActivityIconRed } from '@/shared/assets';
+import { SpecialistsToFavoritesFeature } from '@/features';
+import styles from './specialist-card.module.scss';
 
 export const SpecialistCard: FC<SpecialistCardType> = ({
 	userId,
@@ -47,7 +47,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 							<p className={styles.info__nickname}>@{userName}</p>
 						</div>
 						<div className={styles.info__likeContainer}>
-							<LikeButtonFeature variant="secondary" />
+						<SpecialistsToFavoritesFeature />
 						</div>
 					</div>
 
@@ -64,15 +64,15 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 							)}
 						</div>
 					</div>
-						<ul className={styles.info__skillsList}>
-							{specialists[0]?.skills.map((skill) => {
-								return (
-									<li className={styles.info__skill} key={skill.id}>
-										{skill.name}
-									</li>
-								);
-							})}
-						</ul>
+					<ul className={styles.info__skillsList}>
+						{specialists[0]?.skills.map((skill) => {
+							return (
+								<li className={styles.info__skill} key={skill.id}>
+									{skill.name}
+								</li>
+							);
+						})}
+					</ul>
 					<div className={styles.info__role}>
 						<div>
 							{specialists[1] &&
@@ -87,14 +87,14 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						</div>
 					</div>
 					<ul className={styles.info__skillsList}>
-									{specialists[1]?.skills?.map((skill) => {
-										return (
-											<li className={styles.info__skill} key={skill.id}>
-												{skill.name}
-											</li>
-										);
-									})}
-								</ul>
+						{specialists[1]?.skills?.map((skill) => {
+							return (
+								<li className={styles.info__skill} key={skill.id}>
+									{skill.name}
+								</li>
+							);
+						})}
+					</ul>
 				</Link>
 				<InviteSpecialist />
 			</div>

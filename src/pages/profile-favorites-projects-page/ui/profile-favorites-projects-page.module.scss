@@ -1,14 +1,14 @@
 @import '@/shared/style/variables';
 
-.container {
+.favoritesProjects {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
 }
 .textContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 .text {
 	color: $--Foreground-default;
@@ -29,4 +29,12 @@
 	font-weight: 400;
 	line-height: normal;
 	letter-spacing: 0.25px;
+}
+.inputSearch {
+	width: 396px;
+}
+@media screen and (max-width: 490px) {
+	.inputSearch {
+		width: 300px;
+	}
 }

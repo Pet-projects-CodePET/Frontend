@@ -3,7 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
-import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import styles from './favorites-layout.module.scss';
 
@@ -35,9 +34,7 @@ export const FavoritesLayout = ({
 						);
 					})}
 				</div>
-                <div className={styles.inputSearch}>
-				<InputSearch search={() => {}} onChange={() => {}} />
-				</div>
+         
 				
 				{children}
 			</div>
