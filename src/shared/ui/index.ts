@@ -17,3 +17,4 @@ export { Toggler } from './toggler/toggler';
 export { Loader } from './loader/loader';
 export { ContactCard } from './contact-card/contact-card';
 export { InputSearch } from './input-search/input-search';
+export { NavigationMenu } from './navigation-menu/navigation-menu';

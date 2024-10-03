@@ -9,7 +9,7 @@ export const SpecialistsToFavoritesFeature = () => {
 				variant="secondary"
 				isActiveLike={false}
 				isPopupOpen={false}
-				handleLikeButton={() => {}}
+				handleLikeButton={(evt) => {evt.preventDefault()}}
 				setIsActiveLike={() => {}}
 				setIsPopupOpen={() => {}}
 			/>
