@@ -1,8 +1,10 @@
-"use client"
-import { MainButton } from '@/shared/ui';
+'use client';
+import { Form, MainButton } from '@/shared/ui';
 import { FormProject, FormProjectSpecialists } from '@/widgets';
 import React from 'react';
-import { Form, SubmitHandler, useForm } from 'react-hook-form';
+import styles from './profile-create-project-page.module.scss';
+
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 type FormValues = {
 	name: string;
@@ -12,20 +14,21 @@ export const ProfileCreateProject = () => {
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
 		console.table(data);
 	};
-    const { control } = useForm();
+	const { control } = useForm();
 
 	return (
-		<Form onSubmit={onSubmit}>
+		<Form onSubmit={onSubmit} extraClass={styles.form}>
 			<FormProject control={control} />
 			<FormProjectSpecialists />
-
-			<MainButton
-				variant={'primary'}
-				width={'min'}
-				type="submit"
-				disabled={false}>
-				{'Submit'}
-			</MainButton>
+			<div className={styles.btn}>
+				<MainButton
+					variant={'primary'}
+					width={'min'}
+					type="submit"
+					disabled={false}>
+					{'Submit'}
+				</MainButton>
+			</div>
 		</Form>
 	);
 };

@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const Contacts = ({ control }: { control: Control<any> }) => {
 	const { fields, append, remove, update } = useFieldArray({
 		control,
-		name: 'contacts',
+		name: 'telegram',
 	});
 
 	// Watching the contacts array to dynamically handle the selected types
