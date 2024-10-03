@@ -1,7 +1,7 @@
 export type TContact = {
 	email?: string;
-	telegram?: string;
-	phone?: string;
+	telegram_nick?: string;
+	phone_number?: string;
 };
 
 export type TContactCardProps = {

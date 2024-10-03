@@ -23,7 +23,24 @@ export const generalApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		getProfessions: builder.query({
+			query: () => ({
+				url: '/professions/',
+				method: 'GET',
+			}),
+		}),
+		getSkills: builder.query({
+			query: () => ({
+				url: '/skills/',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
-export const { useGetCountQuery, useGetSectionQuery } = generalApi;
+export const {
+	useGetCountQuery,
+	useGetSectionQuery,
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
+} = generalApi;

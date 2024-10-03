@@ -14,24 +14,22 @@ export const DetailedSpecialistPage = async ({
 
 	return (
 		<>
-			<>
 			<DetailedSpecialistCard
-					avatar={response?.avatar}
-					name={response?.name}
-					userName={response?.username}
-					readyToParticipate={response?.ready_to_participate || false}
-					specialists={response?.specialists}
-					about={response?.about}
-					portfolioLink={response?.portfolio_link}
-					birthday={response?.birthday || 0}
-					country={response?.country}
-					city={response?.city}
-					phoneNumber={response?.phone_number}
-					telegramNick={response?.telegram_nick}
-					email={response?.email}
-					projects={response?.projects}
-				/>
-			</>
+				avatar={response?.avatar}
+				name={response?.name}
+				userName={response?.username}
+				readyToParticipate={response?.ready_to_participate || false}
+				specialists={response?.specialists}
+				about={response?.about}
+				portfolioLink={response?.portfolio_link}
+				birthday={response?.birthday || 0}
+				country={response?.country}
+				city={response?.city}
+				phoneNumber={response?.phone_number}
+				telegramNick={response?.telegram_nick}
+				email={response?.email}
+				projects={response?.projects}
+			/>
 		</>
 	);
 };

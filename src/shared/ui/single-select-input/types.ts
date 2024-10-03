@@ -1,10 +1,11 @@
-import { Option } from '@/shared/types/option';
+import { TOption } from '@/entities/form-profile-edit/ui/types';
+// import { Option } from '@/shared/types/option';
 
 export type SingleSelectInputProps = {
 	name: string;
 	label?: string;
-	options: Option[];
-	value?: Option;
+	options: TOption[];
+	value?: TOption;
 	onChange: (option: (string | object)[]) => void;
 	description?: string;
 	isSearchable?: boolean;

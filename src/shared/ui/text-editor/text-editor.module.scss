@@ -25,6 +25,7 @@
 	letter-spacing: 0.25px;
 	color: $--Foreground-default;
 	font-family: $--open-sans-font;
+	margin: 0;
 }
 
 .desc {
@@ -33,6 +34,7 @@
 	letter-spacing: 0.25px;
 	color: #94a3b8;
 	font-family: $--open-sans-font;
+	margin: 0;
 }
 
 @media all and (max-width: 1199px) {

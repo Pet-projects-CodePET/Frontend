@@ -1,10 +1,13 @@
 export type IUser = {
+	user_id?: number;
 	email?: string;
 	username?: string;
 	password?: string;
 	re_password?: string;
 	auth_token?: string;
 	newPassword?: string;
+	name?: string;
+	ready_to_participate?: boolean;
 	about?: string;
 	portfolio_link?: string;
 	phone_number?: string;
