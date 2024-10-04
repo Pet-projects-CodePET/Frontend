@@ -112,7 +112,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 			isNameValid &&
 				isNickNameValid &&
 				isPortfolioLinkValid &&
-				!isLoadingChangeProfileSettings
+				isLoadingChangeProfileSettings
 		);
 	}, [
 		isNameValid,

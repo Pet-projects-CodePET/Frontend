@@ -4,7 +4,6 @@ import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
-import Quill from 'react-quill-new';
 
 export const TextEditor: FC<TextEditorProps> = ({
 	labelName,
