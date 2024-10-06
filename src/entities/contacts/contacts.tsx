@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './contacts.module.scss';
 import { useFieldArray, Controller, Control, useWatch } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
+import { CONTACTS } from '@/utils/constants';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Contacts = ({ control }: { control: Control<any> }) => {
@@ -12,10 +13,9 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 		name: 'contacts', // Internal name for field array management
 	});
 
-	// Watch contacts array to dynamically handle selected types
 	const contacts = useWatch({ control, name: 'contacts', defaultValue: [] });
 
-	// Function to check if a contact type is already selected to disable that option
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const isTypeDisabled = (type: string) => {
 		return contacts.some((contact: { type: string }) => contact.type === type);
 	};
@@ -44,18 +44,14 @@ export const Contacts = ({ control }: { control: Control<any> }) => {
 										});
 										selectField.onChange(e);
 									}}>
-									<option value="">Выберите ресурс</option>
-									<option value="phone" disabled={isTypeDisabled('phone')}>
-										Телефон
-									</option>
-									<option value="email" disabled={isTypeDisabled('email')}>
-										Email
-									</option>
-									<option
-										value="telegram"
-										disabled={isTypeDisabled('telegram')}>
-										Telegram
-									</option>
+									{CONTACTS.map((option) => (
+										<option
+											className={styles.fields__addContactTypeListItem}
+											key={option.value}
+											value={option.value}>
+											{option.label}
+										</option>
+									))}
 								</select>
 							)}
 						/>
