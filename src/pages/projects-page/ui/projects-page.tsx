@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 'use client';
-import React, { useState, /*useMemo*/ useEffect } from 'react';
+import React, { useState, /*useMemo,*/ useEffect } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
@@ -14,7 +14,7 @@ import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
-import { Pagination } from '@/entities/pagination/ui/pagination';
+import { Pagination } from '@/entities';
 import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
 import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 //import { useGetAllProjectsQuery, } from '@/services/ProjectService';
@@ -186,31 +186,26 @@ export const Projects = () => {
 							)}
 						</div>
 						<div className={styles.projectsContainer}>
-							{projectsData.results &&
+							{ /*projects?.results.map*/ projectsData.results &&
 								projectsData.results.map((project: ProjectCardFullType) => {
-									const {
-										id,
-										started,
-										ended,
-										name,
-										directions,
-										description,
-										status,
-										recruitment_status,
-										project_specialists,
-									} = project;
 									return (
 										<ProjectCardFull
-											id={id}
-											description={description}
-											ended={ended}
-											started={started as string}
-											name={name}
-											directions={directions}
-											status={status}
-											key={id}
-											recruitment_status={recruitment_status}
-											project_specialists={project_specialists}
+											id={project.id}
+											description={project.description}
+											ended={project.ended}
+											started={project.started as string}
+											name={project.name}
+											directions={project.directions}
+											status={project.status}
+											key={project.id}
+											recruitment_status={project.recruitment_status}
+											project_specialists={project.project_specialists}
+											busyness={project.busyness}
+											link={project.link}
+											phone_number={project.phone_number}
+											telegram_nick={project.telegram_nick}
+											email={project.email}
+											is_favorite={project.is_favorite}
 										/>
 									);
 								})}
@@ -220,6 +215,7 @@ export const Projects = () => {
 								setCurrentSettings({ currentPage: Number(page) })
 							}
 							totalCount={projectsData && projectsData.count}
+							//totalCount={projects && projects.count}
 							currentPage={currentSettings.currentPage}
 							pageSize={pageSize}
 						/>
