@@ -79,7 +79,7 @@ export const FormProject = ({ control }: { control: Control<any> }) => {
 				</div>
 
 				<div className={styles.contacts}>
-					<Contacts control={control} />
+					<Contacts />
 				</div>
 
 				<Input

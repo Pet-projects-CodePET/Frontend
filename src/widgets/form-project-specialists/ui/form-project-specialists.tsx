@@ -1,11 +1,17 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Specialties } from '@/entities/specialties';
 import {
 	useGetProfessionsQuery,
 	useGetSkillsQuery,
 } from '@/services/GeneralService';
-import { TSpeciality } from '@/shared/types/specialty';
+import { Speciality, TSpeciality } from '@/shared/types/specialty';
+import {
+	useAddSpecialtyMutation,
+	useChangeSpecialtyMutation,
+	useDeleteSpecialtyMutation,
+} from '@/services/UserService';
+import { toaster } from '@/widgets/notification-toast';
 
 export const FormProjectSpecialists = () => {
 	const { data: professions } = useGetProfessionsQuery([]);
@@ -14,28 +20,111 @@ export const FormProjectSpecialists = () => {
 
 	const [specialties, setSpecialties] = useState<TSpeciality[]>([]);
 
-	useEffect(() => {setSpecialties([])}, []);
+	const [
+		changeSpecialty,
+		{
+			isLoading: isLoadingChangeSpecialty,
+			isSuccess: isSuccessСhangeSpecialty,
+		},
+	] = useChangeSpecialtyMutation();
+
+	const [
+		deleteSpecialty,
+		{
+			isSuccess: isSuccessDeleteSpecialty,
+			isLoading: isLoadingDeleteSpecialty,
+		},
+	] = useDeleteSpecialtyMutation();
+
+	const [
+		addSpecialty,
+		{ isLoading: isLoadingAddSpecialty, isSuccess: isSuccessAddSpecialty },
+	] = useAddSpecialtyMutation();
+
+	const handleSubmitChangeSpecialty = (data: Speciality) => {
+		changeSpecialty(data)
+			.unwrap()
+			.then(() => {
+				toaster({
+					status: 'success',
+					title: 'Настройки специальности успешно сохранены',
+				});
+			})
+			.catch((error) => {
+				toaster({
+					status: 'error',
+					title: 'Ошибка сохранения',
+					subtitle: 'Попробуйте еще раз',
+				});
+				console.log(error);
+			});
+	};
+	const handleDeleteSpecialty = (id: number) => {
+		deleteSpecialty(id)
+			.unwrap()
+			.then(() => {
+				setSpecialties(specialties.filter((item) => item.id !== id));
+				toaster({
+					status: 'success',
+					title: 'Спецаильность успешно удалена',
+				});
+			})
+			.catch(() => {
+				toaster({
+					status: 'error',
+					title: 'Ошибка удаления',
+					subtitle: 'Попробуйте еще раз',
+				});
+			});
+	};
+
+	const handleAddSpecialty = ({ level, profession, skills }: TSpeciality) => {
+		addSpecialty({
+			level,
+			profession: profession.id,
+			skills: skills.map((item) => item.id),
+		})
+			.unwrap()
+			.then(({ id }) => {
+				setSpecialties([
+					{
+						id,
+						level,
+						profession,
+						skills,
+					},
+					...specialties,
+				]);
+
+				toaster({
+					status: 'success',
+					title: 'Спецаильность успешно добавлена',
+				});
+			})
+			.catch(() => {
+				toaster({
+					status: 'error',
+					title: 'Ошибка добавления',
+					subtitle: 'Попробуйте еще раз',
+				});
+			});
+	};
+
 
 	return (
 		<Specialties
 			professions={professions}
-			allSkills={allSkills}
+			allSkills={allSkills && allSkills}
 			specialists={specialties}
-			handleSubmitChangeSpecialty={function (): void {
-				throw new Error('Function not implemented.');
-			}}
-			isLoadingChangeSpecialty={false}
-			isSuccessСhangeSpecialty={false}
-			handleDeleteSpecialty={function (): void {
-				throw new Error('Function not implemented.');
-			}}
-			isSuccessDeleteSpecialty={false}
-			isLoadingDeleteSpecialty={false}
-			handleAddSpecialty={function (): void {
-				throw new Error('Function not implemented.');
-			}}
-			isLoadingAddSpecialty={false}
-			isSuccessAddSpecialty={false}
+			handleSubmitChangeSpecialty={handleSubmitChangeSpecialty}
+			isLoadingChangeSpecialty={isLoadingChangeSpecialty}
+			isSuccessСhangeSpecialty={isSuccessСhangeSpecialty}
+			handleDeleteSpecialty={handleDeleteSpecialty}
+			isSuccessDeleteSpecialty={isSuccessDeleteSpecialty}
+			isLoadingDeleteSpecialty={isLoadingDeleteSpecialty}
+			handleAddSpecialty={handleAddSpecialty}
+			isLoadingAddSpecialty={isLoadingAddSpecialty}
+			isSuccessAddSpecialty={isSuccessAddSpecialty}
 		/>
 	);
 };

@@ -9,7 +9,7 @@ import { LEVEL } from '@/utils/constants';
 import {
 	useGetProfessionsQuery,
 	useGetSkillsQuery,
-} from '@/services/AttributesService';
+} from '@/services/GeneralService';
 
 export const ManageSpecialists = () => {
 	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
