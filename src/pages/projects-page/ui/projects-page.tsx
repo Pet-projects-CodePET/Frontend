@@ -23,6 +23,7 @@ import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
 import { getAllProjects } from '@/shared/api';
 import { Option } from '@/shared/types/option';
 import styles from './projects-page.module.scss';
+import { debounce } from 'lodash';
 
 type TProjectsData = {
 	count: number;
@@ -33,19 +34,23 @@ type TProjectsData = {
 
 export const Projects = () => {
 	const pageSize = 7;
-	const [currentSettings, setCurrentSettings] = useState({ currentPage: 1 });
+	const [currentSettings, setCurrentSettings] = useState({ currentPage: 1});
 	const [projectsData, setProjectsData] = useState({} as TProjectsData);
+	const [query, setQuery] = useState('');
 
-	const getAllProjectsData = async (pageNumber: number) => {
-		const res = await getAllProjects({ currentPage: pageNumber });
+	const getAllProjectsData = async (pageNumber: number, inputQuery: string) => {
+		const res = await getAllProjects({
+			currentPage: pageNumber,
+			query: inputQuery,
+		});
 		const projectsData = await res.json();
 		// console.log(projectsData);
 		setProjectsData(projectsData);
 	};
 
 	useEffect(() => {
-		getAllProjectsData(currentSettings.currentPage);
-	}, [currentSettings]);
+		getAllProjectsData(currentSettings.currentPage, query);
+	}, [currentSettings, query]);
 
 	useEffect(() => {
 		window.scroll({
@@ -90,14 +95,22 @@ export const Projects = () => {
 		console.info('selected date: ', date);
 	};
 
+	const handleSearchChange = debounce(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			// if (event.target.value.length < 3) return;
+			setQuery(event.target.value.toLowerCase());
+		},
+
+		600
+	);
+
 	return (
 		<>
 			<div className={styles.pageContainer}>
 				<div className={styles.projects__container}>
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
-						<InputSearch search={() => {}} onChange={() => {}} />
-
+						<InputSearch search={(query) => setQuery(query)} onChange={handleSearchChange} />
 						<button
 							className={styles.projects__filterButton}
 							onClick={() => setIsPopupOpen(true)}>
@@ -186,29 +199,31 @@ export const Projects = () => {
 							)}
 						</div>
 						<div className={styles.projectsContainer}>
-							{ /*projects?.results.map*/ projectsData.results &&
-								projectsData.results.map((project: ProjectCardFullType) => {
-									return (
-										<ProjectCardFull
-											id={project.id}
-											description={project.description}
-											ended={project.ended}
-											started={project.started as string}
-											name={project.name}
-											directions={project.directions}
-											status={project.status}
-											key={project.id}
-											recruitment_status={project.recruitment_status}
-											project_specialists={project.project_specialists}
-											busyness={project.busyness}
-											link={project.link}
-											phone_number={project.phone_number}
-											telegram_nick={project.telegram_nick}
-											email={project.email}
-											is_favorite={project.is_favorite}
-										/>
-									);
-								})}
+							{
+								/*projects?.results.map*/ projectsData.results &&
+									projectsData.results.map((project: ProjectCardFullType) => {
+										return (
+											<ProjectCardFull
+												id={project.id}
+												description={project.description}
+												ended={project.ended}
+												started={project.started as string}
+												name={project.name}
+												directions={project.directions}
+												status={project.status}
+												key={project.id}
+												recruitment_status={project.recruitment_status}
+												project_specialists={project.project_specialists}
+												busyness={project.busyness}
+												link={project.link}
+												phone_number={project.phone_number}
+												telegram_nick={project.telegram_nick}
+												email={project.email}
+												is_favorite={project.is_favorite}
+											/>
+										);
+									})
+							}
 						</div>
 						<Pagination
 							onPageChange={(page) =>

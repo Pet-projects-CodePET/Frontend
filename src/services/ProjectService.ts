@@ -24,13 +24,13 @@ export const projectsApi = createApi({
 			}),
 		}),
 		getAllProjects: builder.query({
-			query: ({ currentPage }) => ({
-				url: `/projects/?page=${currentPage}`,
+			query: ({ currentPage, query }) => ({
+				url: `/projects/?page=${currentPage}&search=${query}`,
 				method: 'GET',
 			}),
 		}),
 		getFavoriteProjects: builder.query({
-			query: ({ currentPage }) => ({
+			query: ({currentPage}) => ({
 				url: `/projects/?is_favorite=1&page=${currentPage}`,
 				method: 'GET',
 			}),

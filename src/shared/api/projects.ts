@@ -1,4 +1,4 @@
-export const getAllProjects = ({ currentPage }: { currentPage: number }) => {
+export const getAllProjects = ({ currentPage, query }: { currentPage: number, query: string }) => {
 	function setHeaders(headers: { 'Content-Type': string }) {
 		if (accessToken) {
 			return {
@@ -11,7 +11,7 @@ export const getAllProjects = ({ currentPage }: { currentPage: number }) => {
 	}
 	const accessToken = localStorage.getItem('token');
 	const res = fetch(
-		`https://devcodepet.tw1.ru/api/v1/projects/?page=${currentPage}`,
+		`https://devcodepet.tw1.ru/api/v1/projects/?page=${currentPage}&search=${query}`,
 		{
 			cache: 'no-cache',
 			next: { revalidate: 0 },
