@@ -1,1 +1,1 @@
-export { getAllProjects } from './projects';
+export { getAllProjects, getFavoriteProjects } from './projects';

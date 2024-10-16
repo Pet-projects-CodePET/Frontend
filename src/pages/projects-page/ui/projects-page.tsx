@@ -34,14 +34,22 @@ type TProjectsData = {
 
 export const Projects = () => {
 	const pageSize = 7;
-	const [currentSettings, setCurrentSettings] = useState({ currentPage: 1});
+	const [currentSettings, setCurrentSettings] = useState({
+		currentPage: 1,
+		query: ' ',
+	});
 	const [projectsData, setProjectsData] = useState({} as TProjectsData);
-	const [query, setQuery] = useState('');
 
-	const getAllProjectsData = async (pageNumber: number, inputQuery: string) => {
+	const getAllProjectsData = async ({
+		currentPage,
+		query,
+	}: {
+		currentPage: number;
+		query: string;
+	}) => {
 		const res = await getAllProjects({
-			currentPage: pageNumber,
-			query: inputQuery,
+			currentPage,
+			query,
 		});
 		const projectsData = await res.json();
 		// console.log(projectsData);
@@ -49,8 +57,9 @@ export const Projects = () => {
 	};
 
 	useEffect(() => {
-		getAllProjectsData(currentSettings.currentPage, query);
-	}, [currentSettings, query]);
+		const { currentPage, query } = currentSettings;
+		getAllProjectsData({ currentPage, query });
+	}, [currentSettings]);
 
 	useEffect(() => {
 		window.scroll({
@@ -98,9 +107,11 @@ export const Projects = () => {
 	const handleSearchChange = debounce(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
 			// if (event.target.value.length < 3) return;
-			setQuery(event.target.value.toLowerCase());
+			setCurrentSettings({
+				currentPage: 1,
+				query: event.target.value.toLowerCase(),
+			});
 		},
-
 		600
 	);
 
@@ -110,7 +121,15 @@ export const Projects = () => {
 				<div className={styles.projects__container}>
 					<h1 className={styles.projects__title}>Проекты</h1>
 					<div className={styles.projects__inputSearch}>
-						<InputSearch search={(query) => setQuery(query)} onChange={handleSearchChange} />
+						<InputSearch
+							search={(query) =>
+								setCurrentSettings({
+									currentPage: currentSettings.currentPage,
+									query,
+								})
+							}
+							onChange={handleSearchChange}
+						/>
 						<button
 							className={styles.projects__filterButton}
 							onClick={() => setIsPopupOpen(true)}>
@@ -200,8 +219,8 @@ export const Projects = () => {
 						</div>
 						<div className={styles.projectsContainer}>
 							{
-								/*projects?.results.map*/ projectsData.results &&
-									projectsData.results.map((project: ProjectCardFullType) => {
+								/*projects?.results.map*/ projectsData?.results?.length > 0 ? (
+									projectsData?.results.map((project: ProjectCardFullType) => {
 										return (
 											<ProjectCardFull
 												id={project.id}
@@ -223,11 +242,17 @@ export const Projects = () => {
 											/>
 										);
 									})
+								) : (
+									<p className={styles.projects__subtitle}>Ничего не найдено</p>
+								)
 							}
 						</div>
 						<Pagination
 							onPageChange={(page) =>
-								setCurrentSettings({ currentPage: Number(page) })
+								setCurrentSettings({
+									currentPage: Number(page),
+									query: currentSettings.query,
+								})
 							}
 							totalCount={projectsData && projectsData.count}
 							//totalCount={projects && projects.count}
