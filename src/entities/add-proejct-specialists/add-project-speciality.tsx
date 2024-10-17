@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './add-specialty.module.scss';
 import { LEVEL } from '@/utils/constants';
-import { TProfession, TSkills } from '@/shared/types/specialty';
+import { TSpeciality } from '@/shared/types/specialty';
 import IconPlus from '@/shared/assets/icons/plus-large.svg';
 import { AddSpecialtyProps } from './types';
 import SelectWithSearch from '@/shared/ui/select-search/select-search';
@@ -20,13 +20,7 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 	allSkills,
 	handleAddSpecialty,
 }) => {
-	const {
-		control,
-		handleSubmit,
-		reset,
-		watch,
-	} = useForm({
-		mode: 'onChange',
+	const { control, reset, handleSubmit, watch } = useForm({
 		defaultValues: {
 			profession: null,
 			level: null,
@@ -34,24 +28,24 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 		},
 	});
 
-	// Watching form fields for real-time values
-	const selectedProfession = watch('profession');
-	const selectedLevel = watch('level');
-	const selectedSkills = watch('skills');
-	const onSubmit = (data: {
-		profession: TProfession;
-		level: number;
-		skills: TSkills[];
-	}) => {
-		const { profession, level, skills } = data;
-		handleAddSpecialty({
-			profession,
-			level,
-			skills,
-		});
+	const skillField = watch('skills');
+	const levelField = watch('level');
+	const professionField = watch('profession');
+
+	const fieldsNotEmpty = () => {
+		if (skillField && levelField && professionField) {
+			return false;
+		} else {
+			return true;
+		}
+	};
+
+	const onSubmit = (data: TSpeciality) => {
+		handleAddSpecialty(data);
 	};
 
 	const handleResetForm = () => {
+		handleAddSpecialty([] as never);
 		reset({
 			profession: null,
 			level: null,
@@ -59,100 +53,97 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 		});
 	};
 
-	// Utilizing the watched values for field validation
-	const isFieldsNotFill = () => {
-		return (
-			selectedProfession === null ||
-			selectedLevel === null ||
-			selectedSkills.length === 0
-		);
-	};
-
 	return (
-		<form
-			className={styles.addSpecialty}
-			onSubmit={handleSubmit(onSubmit)}
-			onReset={handleResetForm}>
-			<Controller
-				name="profession"
-				control={control}
-				rules={{ required: true }}
-				render={({ field }) => (
-					<SelectWithSearch
-						label="Специальность"
-						options={transformProfessions(professions)}
-						selectedValue={field.value?.specialization as unknown as string}
-						onValueChange={(value) =>
-							field.onChange(
-								professions.find((p) => p.specialization === value)
-							)
-						}
-					/>
-				)}
-			/>
+		<>
+			<div className={styles.addSpecialty}>
+				<Controller
+					name="profession"
+					control={control}
+					rules={{ required: true }}
+					render={({ field }) => (
+						<SelectWithSearch
+							label="Специальность"
+							options={transformProfessions(professions)}
+							selectedValue={field.value?.specialization }
+							onValueChange={(value) =>
+								field.onChange(
+									professions.find((p) => p.specialization === value)
+								)
+							}
+						/>
+					)}
+				/>
 
-			<Controller
-				name="level"
-				control={control}
-				rules={{ required: true }}
-				render={({ field }) => (
-					<SelectWithSearch
-						label="Уровень квалификации"
-						options={LEVEL}
-						selectedValue={getLevelName(field.value)}
-						onValueChange={(value) =>
-							field.onChange(
-								LEVEL.find((lvl) => lvl.value === value)?.level as number
-							)
-						}
-					/>
-				)}
-			/>
+				{/* Level Field */}
+				<Controller
+					name="level"
+					control={control}
+					rules={{ required: true }}
+					render={({ field }) => (
+						<SelectWithSearch
+							label="Уровень квалификации"
+							options={LEVEL}
+							selectedValue={getLevelName(field.value as unknown as number)}
+							onValueChange={(value) =>
+								field.onChange(
+									LEVEL.find((lvl) => lvl.value === value)?.level as number
+								)
+							}
+						/>
+					)}
+				/>
 
-			<Controller
-				name="skills"
-				control={control}
-				rules={{ validate: (value) => value.length > 0 }}
-				render={({ field }) => (
-					<MultiSelectInput
-						width="100%"
-						name="select-skills"
-						label="Навыки"
-						description="Выберите не более 15 навыков"
-						maxSelections={15}
-						isSearchable
-						options={getSkills(allSkills)}
-						values={getSkills(field.value)}
-						onChange={(item) =>
-							field.onChange(
-								item.map(({ label, value }) => ({
-									name: label,
-									id: value,
-								}))
-							)
-						}
-					/>
-				)}
-			/>
+				{/* Skills Field */}
+				<Controller
+					name="skills"
+					control={control}
+					rules={{ validate: (value) => value.length > 0 }}
+					render={({ field }) => (
+						<MultiSelectInput
+							width="100%"
+							name="select-skills"
+							label="Навыки"
+							description="Выберите не более 15 навыков"
+							maxSelections={15}
+							isSearchable
+							options={getSkills(allSkills)}
+							values={getSkills(field.value)}
+							onChange={(item) =>
+								field.onChange(
+									item.map(({ label, value }) => ({
+										name: label,
+										id: value,
+									}))
+								)
+							}
+						/>
+					)}
+				/>
 
-			<div className={styles.addSpecialty__buttons}>
-				<MainButton
-					IconLeft={IconPlus}
-					variant="secondary"
-					width="regular"
-					type="submit"
-					disabled={isFieldsNotFill()}>
-					Добавить
-				</MainButton>
+				{/* Buttons */}
+				<div className={styles.addSpecialty__buttons}>
+					{/* Add Specialty Button */}
+					<MainButton
+						IconLeft={IconPlus}
+						variant="secondary"
+						onClick={handleSubmit(() => onSubmit)} // Handle form submission on button click
+						width="regular"
+						disabled={fieldsNotEmpty()}
+						type="button">
+						Добавить
+					</MainButton>
 
-				<MainButton
-					className={styles.addSpecialty__resetButton}
-					type="reset"
-					variant="trivial"
-					width="min">
-					Сбросить
-				</MainButton>
+					{/* Reset Button */}
+					<MainButton
+						className={styles.addSpecialty__resetButton}
+						type="button"
+						variant="trivial"
+						width="min"
+						onClick={handleResetForm}>
+						Сбросить
+					</MainButton>
+				</div>
 			</div>
-		</form>
+		</>
 	);
 };

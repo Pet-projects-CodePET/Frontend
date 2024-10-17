@@ -17,7 +17,7 @@ export const ProfileCreateProject = () => {
 	const { control } = useForm();
 
 	return (
-		<Form onSubmit={onSubmit} extraClass={styles.form}>
+		<Form onSubmit={(data) => onSubmit(data as never)} extraClass={styles.form}>
 			<FormProject control={control} />
 			<FormProjectSpecialists />
 			<div className={styles.btn}>
