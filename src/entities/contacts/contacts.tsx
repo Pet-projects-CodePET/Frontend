@@ -96,9 +96,7 @@ export const Contacts = () => {
 							</option>
 						))}
 					</select>
-					<span className={styles.addContactTypeLabel}>
-						Выберите ресурс
-					</span>
+					<span className={styles.addContactTypeLabel}>Выберите ресурс</span>
 				</label>
 				{selectedOptionContactType?.value === 'phone_number' ? (
 					<Input

@@ -6,7 +6,11 @@ import { LEVEL } from '@/utils/constants';
 import { TProfession, TSkills } from '@/shared/types/specialty';
 import { Option } from '@/shared/types/option';
 import IconPlus from '@/shared/assets/icons/plus-large.svg';
-import { getLevelName, getSkills, transformProfessions } from '../../utils/specialists-functions';
+import {
+	getLevelName,
+	getSkills,
+	transformProfessions,
+} from '../../utils/specialists-functions';
 import { AddSpecialtyProps } from './types';
 import { MainButton } from '@/shared/ui';
 

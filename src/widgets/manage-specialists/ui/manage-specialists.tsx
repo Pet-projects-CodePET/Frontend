@@ -1,5 +1,5 @@
 'use client';
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import styles from './manage-specialist.specialist.module.scss';
 import { Form, Toggler } from '@/shared/ui';
 import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
@@ -14,15 +14,14 @@ import {
 export const ManageSpecialists = () => {
 	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
 
-	const { data: skills } = useGetSkillsQuery([]) 
-	const { data: profession } = useGetProfessionsQuery([]) 
+	const { data: skills } = useGetSkillsQuery([]);
+	const { data: profession } = useGetProfessionsQuery([]);
 
 	console.log(skills);
 
-	
 	const onSubmit = (data) => {
-		console.table(data)
-	}
+		console.table(data);
+	};
 	return (
 		<Form className={styles.container} onSubmit={onSubmit}>
 			<div className={styles.specialists}>

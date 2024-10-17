@@ -121,16 +121,18 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 							)}
 						</div>
 					</div>
-					{specialists[1] && <ul className={styles.info__skillsList}>
-						{specialists[1]?.skills.map((skill) => {
-							return (
-								<li className={styles.info__skill} key={skill.id}>
-									{skill.name}
-								</li>
-							);
-						})}
-					</ul>
-					}<div className={styles.info__wrapper}>
+					{specialists[1] && (
+						<ul className={styles.info__skillsList}>
+							{specialists[1]?.skills.map((skill) => {
+								return (
+									<li className={styles.info__skill} key={skill.id}>
+										{skill.name}
+									</li>
+								);
+							})}
+						</ul>
+					)}
+					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Ссылка на портфолио</h3>
 						<a className={styles.info__contacts} href={portfolioLink}>
 							{`${properyCheck(portfolioLink)}`}
@@ -144,13 +146,13 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://mailto:${email}`}>
-							{`${properyCheck(email)}`}
-							</a>
+									{`${properyCheck(email)}`}
+								</a>
 							</div>
 							<div className={styles.info__contacs__wrapper}>
 								<MobileIcon className={styles.info__icons} />
 								<a className={styles.info__contacts} href={phoneNumber}>
-								{`${properyCheck(phoneNumber)}`}
+									{`${properyCheck(phoneNumber)}`}
 								</a>
 							</div>
 
@@ -160,14 +162,17 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 								<a
 									className={styles.info__contacts}
 									href={`https://t.me/${telegramNick}`}>
-							{`${properyCheck(telegramNick)}`}
-							</a>
+									{`${properyCheck(telegramNick)}`}
+								</a>
 							</div>
 						</div>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Дата рождения</h3>
-						<p className={styles.info__sideText}>{`${properyCheck(birthday)}`}</p>
+						<p
+							className={
+								styles.info__sideText
+							}>{`${properyCheck(birthday)}`}</p>
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Регион</h3>

@@ -64,7 +64,7 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 						<SelectWithSearch
 							label="Специальность"
 							options={transformProfessions(professions)}
-							selectedValue={field.value?.specialization }
+							selectedValue={field.value?.specialization}
 							onValueChange={(value) =>
 								field.onChange(
 									professions.find((p) => p.specialization === value)

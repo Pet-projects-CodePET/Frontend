@@ -1,16 +1,18 @@
 import React, { FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
-import styles from './speciality-card.module.scss';
+import styles from './project-speciality-card.module.scss';
 import { LEVEL } from '@/utils/constants';
-import SelectWithSearch from '../select-search/select-search';
-import { SkillsList } from '../skills-list/skills-list';
-import { MainButton } from '../main-button/main-button';
-import { MultiSelectInput } from '../multi-select-input/multi-select-input';
+
 import { Option } from '@/shared/types/option';
 import { SpecialityCardProps } from './types';
 import { TProfession, TSkills } from '@/shared/types/specialty';
+import { SkillsList } from '@/shared/ui/skills-list/skills-list';
+import { Counter, MainButton, Toggler } from '@/shared/ui';
+import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
+import SelectWithSearch from '@/shared/ui/select-search/select-search';
+import { EditIcon, Trash2 } from 'lucide-react';
 
-export const SpecialityCard: FC<SpecialityCardProps> = ({
+export const ProjectSpecilistCard: FC<SpecialityCardProps> = ({
 	data,
 	professions,
 	allSkills,
@@ -24,6 +26,7 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 	const [profession, setProfession] = useState<TProfession>(data.profession);
 	const [selectedLevel, setSelectedLevel] = useState<number>(data.level);
 	const [skills, setSkills] = useState<TSkills[]>(data.skills);
+	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
 
 	useEffect(() => {
 		if (isSuccessСhangeSpecialty) {
@@ -53,7 +56,7 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 	};
 
 	const changeViewforEdit = () => {
-		setIsShowViewEdit(true);
+		setIsShowViewEdit(!isShowViewEdit);
 	};
 
 	const getLevelName = (level: number) => {
@@ -109,12 +112,26 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 							styles.specialityCard__button,
 							styles.specialityCard__button_edit
 						)}
-						onClick={changeViewforEdit}
-					/>
+						onClick={changeViewforEdit}>
+						<EditIcon />{' '}
+					</button>
 					<h3 className={styles.specialityCard__title}>
 						{profession.specialization}, {getLevelName(selectedLevel)}
 					</h3>
 					<SkillsList skills={skills} />
+
+					<div className={styles.config}>
+						<Counter disabled={!recruitmentIsOpen} />
+						<div className={styles.config_toggle}>
+							<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
+							<Toggler
+								checked={recruitmentIsOpen as boolean}
+								name={'allow_notifications'}
+								id={'allow_notifications'}
+								onChange={(evt) => setRecruitmentIsOpen(evt.target.checked)}
+							/>
+						</div>
+					</div>
 				</div>
 			) : (
 				<div className={styles.specialityCard}>
@@ -125,8 +142,9 @@ export const SpecialityCard: FC<SpecialityCardProps> = ({
 							styles.specialityCard__button,
 							styles.specialityCard__button_delete
 						)}
-						onClick={handleDelete}
-					/>
+						onClick={handleDelete}>
+						<Trash2 color="red" />{' '}
+					</button>
 					<h3 className={styles.specialityCard__title}>
 						{data.profession.specialization}, {getLevelName(selectedLevel)}
 					</h3>

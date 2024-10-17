@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import styles from './form-project.module.scss';
-import { CheckboxAndRadio,  Input, MainButton } from '@/shared/ui';
+import { CheckboxAndRadio, Input, MainButton } from '@/shared/ui';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
 import { DEVELOPING, EMPLOYMENT } from '@/utils/constants';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
@@ -10,7 +10,6 @@ import { Contacts } from '@/entities/contacts/contacts';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const FormProject = ({ control }: { control: Control<any> }) => {
-	
 	return (
 		<div className={styles.container}>
 			<div className={styles.specialists}>

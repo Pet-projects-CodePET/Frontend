@@ -103,13 +103,14 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								avatar={owner?.avatar}
 								id={owner?.id}
 								visible_status={owner?.visible_status}
-	
 							/>
 						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
-						{ project_participants?.length > 0 ? <h3 className={styles.subtitle}>Команда проекта</h3> : null}
-						
+						{project_participants?.length > 0 ? (
+							<h3 className={styles.subtitle}>Команда проекта</h3>
+						) : null}
+
 						<ul className={styles.personList}>
 							{project_participants?.map((person) => {
 								return (

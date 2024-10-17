@@ -5,9 +5,8 @@ export interface IProject {
 	isLiked: boolean;
 }
 
-
 export type ProjectService = {
-	id: number,
+	id: number;
 	started: string;
 	ended: string;
 	name: string;
@@ -27,5 +26,4 @@ export type ProjectService = {
 			};
 		},
 	];
-
-}
+};

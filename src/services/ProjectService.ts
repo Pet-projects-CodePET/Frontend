@@ -35,13 +35,16 @@ export const projectsApi = createApi({
 			}),
 		}),
 		postProject: builder.mutation({
-			query: (body : ProjectService) => ({
+			query: (body: ProjectService) => ({
 				url: `/projects/`,
 				method: 'POST',
 				body: body,
 			}),
 		}),
-		requestParticipationInProjects: builder.mutation<IProjectsRequests,IProjectsRequests>({
+		requestParticipationInProjects: builder.mutation<
+			IProjectsRequests,
+			IProjectsRequests
+		>({
 			query: (projects) => ({
 				url: `/projects/requests/`,
 				method: 'POST',

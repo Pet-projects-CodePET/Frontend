@@ -29,6 +29,7 @@ export const Counter = ({ disabled }: { disabled: boolean }) => {
 				<button
 					className={styles.button}
 					onClick={decrement}
+					type="button"
 					disabled={disabled}>
 					{disabled ? (
 						<IconMinusDisabled className={styles.icon} />
@@ -38,13 +39,14 @@ export const Counter = ({ disabled }: { disabled: boolean }) => {
 				</button>
 			</div>
 			<div className={styles.buttonWrapper}>
-				<button className={styles.count} disabled={disabled}>
+				<button className={styles.count} disabled={disabled} type="button">
 					{isNumber}
 				</button>
 			</div>
 			<div className={styles.buttonWrapper}>
 				<button
 					className={styles.button}
+					type="button"
 					onClick={increment}
 					disabled={disabled}>
 					{disabled ? (
