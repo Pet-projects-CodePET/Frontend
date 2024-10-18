@@ -12,8 +12,9 @@ export const ProfileAvatarEditor: FC<ProfileAvatarEditorProps> = ({
 	height,
 	onSubmit,
 }) => {
+	const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 	const [state, setState] = useState<ProfileAvatarEditorState>({
-		image: image !== '' ? `https://devcodepet.tw1.ru${image}` : '',
+		image: image !== '' ? `https://${BASE_URL}${image}` : '',
 		allowZoomOut: false,
 		position: { x: 0.5, y: 0.5 },
 		scale: 1,
@@ -50,9 +51,8 @@ export const ProfileAvatarEditor: FC<ProfileAvatarEditorProps> = ({
 		setIsShowEditAvatarPopup(false);
 
 		if (editorRef !== null && editorRef.current !== null) {
-			const dataUrl = editorRef.current.getImage().toDataURL(); // convert to base64 string
+			const dataUrl = editorRef.current.getImageScaledToCanvas().toDataURL(); // convert to base64 string
 
-			console.log(dataUrl);
 			setState({ ...state, image: dataUrl });
 			onSubmit({
 				avatar: dataUrl,
