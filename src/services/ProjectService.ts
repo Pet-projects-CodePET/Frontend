@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IProjectsRequests } from './models/IProjectsRequests';
+import { FavoriteProjectType } from './models/IFavoriteProject';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const projectsApi = createApi({
 	reducerPath: 'projectsApi',
+	tagTypes: ['Projects'],
 	baseQuery: fetchBaseQuery({
 		baseUrl: `https://${BASE_URL}/api/v1`,
 		prepareHeaders: async (headers) => {
@@ -27,6 +29,13 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		getFavoriteProjects: builder.query({
+			query: ({ currentPage }) => ({
+				url: `/projects/?is_favorite=1&page=${currentPage}`,
+				method: 'GET',
+			}),
+			providesTags: ['Projects'],
+		}),
 		getProjectById: builder.query({
 			query: ({ id }) => ({
 				url: `/projects/${id}/`,
@@ -40,6 +49,21 @@ export const projectsApi = createApi({
 				body: projects,
 			}),
 		}),
+		addFavoriteProject: builder.mutation<FavoriteProjectType, FavoriteProjectType>({
+			query: (project) => ({
+				url: `/projects/${project.id}/favorite/`,
+				method: 'POST',
+				body: project,
+			}),
+			invalidatesTags: ['Projects'],
+		}),
+		deleteFavoriteProject: builder.mutation({
+			query: (id) => ({
+				url: `/projects/${id}/favorite/`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: ['Projects'],
+		}),
 	}),
 });
 
@@ -48,4 +72,7 @@ export const {
 	useGetAllProjectsQuery,
 	useGetProjectByIdQuery,
 	useRequestParticipationInProjectsMutation,
+	useAddFavoriteProjectMutation,
+	useDeleteFavoriteProjectMutation,
+	useGetFavoriteProjectsQuery,
 } = projectsApi;
