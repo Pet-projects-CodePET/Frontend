@@ -34,9 +34,9 @@ export const InputSearch: FC<InputSearchProps> = ({
 				className={clsx(styles.input)}
 				type={type}
 				onChange={handleChange}
-				required
 				{...props}
 			/>
+
 			<div className={styles.icon}>
 				<Search color="#94A3B8" />
 			</div>

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 'use client';
-import React, { useState, /*useMemo,*/ useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
@@ -21,6 +21,7 @@ import { ProjectCardFullType } from '@/widgets/project-card-full/ui/types';
 import { CalendarButton } from '@/shared/ui/calendar-button/calendar-button';
 import { getAllProjects } from '@/shared/api';
 import { Option } from '@/shared/types/option';
+import { Loader } from '@/shared/ui';
 import styles from './projects-page.module.scss';
 
 type TProjectsData = {
@@ -37,6 +38,7 @@ export const Projects = () => {
 		query: '',
 	});
 	const [projectsData, setProjectsData] = useState({} as TProjectsData);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const getAllProjectsData = async ({
 		currentPage,
@@ -45,13 +47,16 @@ export const Projects = () => {
 		currentPage: number;
 		query: string;
 	}) => {
+		setIsLoading(true);
 		const res = await getAllProjects({
 			currentPage,
 			query,
 		});
+
 		const projectsData = await res.json();
 		// console.log(projectsData);
 		setProjectsData(projectsData);
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
@@ -96,21 +101,23 @@ export const Projects = () => {
 		<div className={styles.pageContainer}>
 			<div className={styles.projects__container}>
 				<h1 className={styles.projects__title}>Проекты</h1>
-				<div className={styles.projects__inputSearch}>
-					<InputSearch
-						search={(query) =>
-							setCurrentSettings({
-								currentPage: currentSettings.currentPage,
-								query,
-							})
-						}
-					/>
-					<button
-						className={styles.projects__filterButton}
-						onClick={() => setIsPopupOpen(true)}>
-						<FilterIcon />
-					</button>
-				</div>
+				<Tooltip text="Введите не менее 3х символов">
+					<div className={styles.projects__inputSearch}>
+						<InputSearch
+							search={(query) =>
+								setCurrentSettings({
+									currentPage: currentSettings.currentPage,
+									query,
+								})
+							}
+						/>
+						<button
+							className={styles.projects__filterButton}
+							onClick={() => setIsPopupOpen(true)}>
+							<FilterIcon />
+						</button>
+					</div>
+				</Tooltip>
 			</div>
 			<PopUp
 				visible={isPopupOpen}
@@ -193,8 +200,10 @@ export const Projects = () => {
 						)}
 					</div>
 					<div className={styles.projectsContainer}>
-						{projectsData?.results?.length > 0 ? (
-							projectsData?.results.map((project: ProjectCardFullType) => {
+						{isLoading ? (
+							<Loader />
+						) : projectsData?.results?.length > 0 ? (
+							projectsData?.results?.map((project: ProjectCardFullType) => {
 								return (
 									<ProjectCardFull
 										id={project.id}
@@ -217,7 +226,9 @@ export const Projects = () => {
 								);
 							})
 						) : (
-							<p className={styles.projects__subtitle}>Ничего не найдено</p>
+							currentSettings.query.length > 0 && (
+								<p className={styles.projects__subtitle}>Ничего не найдено</p>
+							)
 						)}
 					</div>
 					<Pagination
