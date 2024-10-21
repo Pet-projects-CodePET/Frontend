@@ -20,12 +20,7 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 	allSkills,
 	handleAddSpecialty,
 }) => {
-	const {
-		control,
-		handleSubmit,
-		reset,
-		watch,
-	} = useForm({
+	const { control, handleSubmit, reset, watch } = useForm({
 		mode: 'onChange',
 		defaultValues: {
 			profession: null,
@@ -69,10 +64,7 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 	};
 
 	return (
-		<form
-			className={styles.addSpecialty}
-			onSubmit={handleSubmit(onSubmit)}
-			onReset={handleResetForm}>
+		<div className={styles.addSpecialty}>
 			<Controller
 				name="profession"
 				control={control}
@@ -140,7 +132,8 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 					IconLeft={IconPlus}
 					variant="secondary"
 					width="regular"
-					type="submit"
+					onClick={handleSubmit(onSubmit)}
+					type="button"
 					disabled={isFieldsNotFill()}>
 					Добавить
 				</MainButton>
@@ -149,10 +142,11 @@ export const AddProjectSpeciality: React.FC<AddSpecialtyProps> = ({
 					className={styles.addSpecialty__resetButton}
 					type="reset"
 					variant="trivial"
+					onClick={handleResetForm}
 					width="min">
 					Сбросить
 				</MainButton>
 			</div>
-		</form>
+		</div>
 	);
 };
