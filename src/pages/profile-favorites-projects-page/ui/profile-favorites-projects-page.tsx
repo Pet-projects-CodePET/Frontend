@@ -18,21 +18,28 @@ export const FavoritesProjects = () => {
 	});
 
 	const { currentPage, query } = currentSettings;
-	const { data: allFavoriteProjects, isLoading } = useGetFavoriteProjectsQuery({
+
+	const {
+		data: allFavoriteProjects,
+		isLoading,
+		refetch,
+	} = useGetFavoriteProjectsQuery({
 		currentPage,
 		query,
 	});
-	
+
 	const [isVisibleSearch, setIsVisibleSearch] = useState(false);
 	const [favoriteProjectsArray, setFavoriteProjectsArray] = useState<ProjectCardFullType[]>([]);
 
 	const handleDeleteCard = (id: number) => {
-		setFavoriteProjectsArray(favoriteProjectsArray.filter((item) => item.id !== id))
-	}
+		setFavoriteProjectsArray(
+			favoriteProjectsArray.filter((item) => item.id !== id)
+		);
+	};
 
 	useEffect(() => {
 		if (allFavoriteProjects?.results) {
-			setFavoriteProjectsArray(allFavoriteProjects?.results)
+			setFavoriteProjectsArray(allFavoriteProjects?.results);
 		}
 		if (allFavoriteProjects?.results.length > 0) {
 			setIsVisibleSearch(true);
@@ -46,6 +53,20 @@ export const FavoritesProjects = () => {
 		}
 	}, [query, allFavoriteProjects, isVisibleSearch]);
 
+	useEffect(() => {
+		if (favoriteProjectsArray?.length === 0) {
+			if (currentPage > 1) {
+				setCurrentSettings((prevSettings) => ({
+					...prevSettings,
+					currentPage: currentPage - 1,
+				}));
+			}
+			if (currentPage === 1) {
+				refetch();
+			}
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [favoriteProjectsArray, refetch]);
 
 	return (
 		<section className={styles.favoritesProjects}>
@@ -68,7 +89,7 @@ export const FavoritesProjects = () => {
 
 			{isLoading ? (
 				<Loader />
-			) : favoriteProjectsArray.length > 0 ? (
+			) : favoriteProjectsArray?.length > 0 ? (
 				favoriteProjectsArray.map((project: ProjectCardFullType) => {
 					return (
 						<ProjectCardFull

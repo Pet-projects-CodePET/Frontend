@@ -23,8 +23,11 @@ export const ProfileRequestsOrganizers = () => {
 			statusNumber: null,
 		});
 
-	const { data: allRequestsOwner, isLoading } =
-		useGetAllRequestsParticipationQuery(currentSettingsAllRequests);
+	const {
+		data: allRequestsOwner,
+		isLoading,
+		refetch,
+	} = useGetAllRequestsParticipationQuery(currentSettingsAllRequests);
 
 	const [requests, setRequests] = useState<RequestOrganizerCardType[]>([]);
 
@@ -33,6 +36,21 @@ export const ProfileRequestsOrganizers = () => {
 			setRequests(allRequestsOwner?.results);
 		}
 	}, [allRequestsOwner?.results]);
+
+	useEffect(() => {
+		if (requests?.length === 0) {
+			if (currentSettingsAllRequests.currentPage > 1) {
+				setCurrentSettingsAllRequests((prevSettings) => ({
+					...prevSettings,
+					currentPage: currentSettingsAllRequests.currentPage - 1,
+				}));
+			}
+			if (currentSettingsAllRequests.currentPage === 1) {
+				refetch();
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [requests, refetch]);
 
 	const handleDeleteCard = (id: number) => {
 		setRequests(
