@@ -18,25 +18,55 @@ export const FavoritesProjects = () => {
 	});
 
 	const { currentPage, query } = currentSettings;
-	const { data: favoriteProjects, isLoading } = useGetFavoriteProjectsQuery({
+
+	const {
+		data: allFavoriteProjects,
+		isLoading,
+		refetch,
+	} = useGetFavoriteProjectsQuery({
 		currentPage,
 		query,
 	});
-	//console.log(favoriteProjects);
+
 	const [isVisibleSearch, setIsVisibleSearch] = useState(false);
+	const [favoriteProjectsArray, setFavoriteProjectsArray] = useState<ProjectCardFullType[]>([]);
+
+	const handleDeleteCard = (id: number) => {
+		setFavoriteProjectsArray(
+			favoriteProjectsArray.filter((item) => item.id !== id)
+		);
+	};
 
 	useEffect(() => {
-		if (favoriteProjects?.results.length > 0) {
+		if (allFavoriteProjects?.results) {
+			setFavoriteProjectsArray(allFavoriteProjects?.results);
+		}
+		if (allFavoriteProjects?.results.length > 0) {
 			setIsVisibleSearch(true);
 		}
 		if (
 			isVisibleSearch &&
-			favoriteProjects?.results.length === 0 &&
+			allFavoriteProjects?.results.length === 0 &&
 			query.length === 0
 		) {
 			setIsVisibleSearch(false);
 		}
-	}, [query, favoriteProjects, isVisibleSearch]);
+	}, [query, allFavoriteProjects, isVisibleSearch]);
+
+	useEffect(() => {
+		if (favoriteProjectsArray?.length === 0) {
+			if (currentPage > 1) {
+				setCurrentSettings((prevSettings) => ({
+					...prevSettings,
+					currentPage: currentPage - 1,
+				}));
+			}
+			if (currentPage === 1) {
+				refetch();
+			}
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [favoriteProjectsArray, refetch]);
 
 	return (
 		<section className={styles.favoritesProjects}>
@@ -59,8 +89,8 @@ export const FavoritesProjects = () => {
 
 			{isLoading ? (
 				<Loader />
-			) : favoriteProjects.results.length > 0 ? (
-				favoriteProjects.results.map((project: ProjectCardFullType) => {
+			) : favoriteProjectsArray?.length > 0 ? (
+				favoriteProjectsArray.map((project: ProjectCardFullType) => {
 					return (
 						<ProjectCardFull
 							id={project.id}
@@ -79,6 +109,7 @@ export const FavoritesProjects = () => {
 							telegram_nick={project.telegram_nick}
 							email={project.email}
 							is_favorite={project.is_favorite}
+							handleDeleteCard={handleDeleteCard}
 						/>
 					);
 				})
@@ -102,7 +133,7 @@ export const FavoritesProjects = () => {
 						query: currentSettings.query,
 					})
 				}
-				totalCount={favoriteProjects && favoriteProjects.count}
+				totalCount={allFavoriteProjects && allFavoriteProjects.count}
 				currentPage={currentSettings.currentPage}
 				pageSize={pageSize}
 			/>
