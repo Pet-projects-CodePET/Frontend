@@ -24,8 +24,11 @@ export const ProfileRequestsParticipants = () => {
 			statusNumber: null,
 		});
 
-	const { data: allRequestsParticipation, isLoading } =
-		useGetAllRequestsParticipationQuery(currentSettingsAllRequests);
+	const {
+		data: allRequestsParticipation,
+		isLoading,
+		refetch,
+	} = useGetAllRequestsParticipationQuery(currentSettingsAllRequests);
 
 	const isButtonActive = (n: number) => {
 		return currentSettingsAllRequests.statusNumber === n;
@@ -81,6 +84,9 @@ export const ProfileRequestsParticipants = () => {
 				) : (
 					<ListRequestsParticipants
 						arrayRequests={allRequestsParticipation?.results}
+						currentSettings={currentSettingsAllRequests}
+						setCurrentSettings={setCurrentSettingsAllRequests}
+						refetch={refetch}
 					/>
 				)}
 			</div>
