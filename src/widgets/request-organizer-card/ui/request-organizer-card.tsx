@@ -23,6 +23,7 @@ export const RequestOrganizerCard: FC<RequestOrganizerCardType> = ({
 	participation_request_id,
 	request_status,
 	handleDeleteCard,
+	is_favorite_profile,
 }) => {
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
 
@@ -45,7 +46,7 @@ export const RequestOrganizerCard: FC<RequestOrganizerCardType> = ({
 							<Link
 								className={styles.info__personLink}
 								href={`/specialists/${request_participants.user_id}`}
-								target='_blank'
+								target="_blank"
 							/>
 						) : (
 							<div className={styles.hint}>
@@ -58,7 +59,10 @@ export const RequestOrganizerCard: FC<RequestOrganizerCardType> = ({
 					</div>
 
 					<div className={styles.info__likeContainer}>
-						<SpecialistsToFavoritesFeature />
+						<SpecialistsToFavoritesFeature
+							favorite={is_favorite_profile}
+							id={participation_request_id}
+						/>
 					</div>
 				</div>
 

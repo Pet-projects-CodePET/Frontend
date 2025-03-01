@@ -1,6 +1,7 @@
 import { HTMLAttributes } from 'react';
 export type RequestOrganizerCardType = HTMLAttributes<HTMLElement> & {
 	cover_letter: string;
+	is_favorite_profile: boolean;
 	is_viewed?: boolean;
 	position: {
 		is_required: boolean;
@@ -27,7 +28,7 @@ export type RequestOrganizerCardType = HTMLAttributes<HTMLElement> & {
 		user_id: number;
 	};
 	request_status?: string | number;
-    visible_status: number;
-    participation_request_id: number;
+	visible_status: number;
+	participation_request_id: number;
 	handleDeleteCard: (arg: number) => void;
 };
