@@ -1,9 +1,18 @@
 'use client';
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { LikeButton } from '@/shared/ui';
-import { useAddFavoriteSpecialistMutation, useDeleteFavoriteSpecialistMutation } from '@/services/SpecialistService';
-export const SpecialistsToFavoritesFeature = ({favorite, id}: {favorite: boolean, id: number}) => {
+import {
+	useAddFavoriteSpecialistMutation,
+	useDeleteFavoriteSpecialistMutation,
+} from '@/services/SpecialistService';
+export const SpecialistsToFavoritesFeature = ({
+	favorite,
+	id,
+}: {
+	favorite: boolean;
+	id: number;
+}) => {
 	const [isActiveLike, setIsActiveLike] = useState(favorite);
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [addFavoriteSpecialist] = useAddFavoriteSpecialistMutation();
@@ -12,37 +21,22 @@ export const SpecialistsToFavoritesFeature = ({favorite, id}: {favorite: boolean
 	const handleOpenPopup = () => {
 		setIsPopupOpen(true);
 	};
-	const handleActiveLikeButton =
-		(/*evt: React.MouseEvent | React.TouchEvent*/) => {
-			//evt.preventDefault();
-			if (token) {
-				addFavoriteSpecialist({
-					id,
-					// name,
-					// description,
-					// started,
-					// ended,
-					// busyness,
-					// directions,
-					// link,
-					// phone_number,
-					// telegram_nick,
-					// email,
-					// project_specialists,
-					// project_status,
+	const handleActiveLikeButton = () => {
+		if (token) {
+			addFavoriteSpecialist({
+				id,
+			})
+				.unwrap()
+				.then(() => {
+					setIsActiveLike(true);
 				})
-					.unwrap()
-					.then(() => {
-						setIsActiveLike(true);
-						//console.log('like');
-					})
-					.catch((error) => {
-						console.log('errorCatch', error);
-					});
-			} else {
-				handleOpenPopup();
-			}
-		};
+				.catch((error) => {
+					console.log('errorCatch', error);
+				});
+		} else {
+			handleOpenPopup();
+		}
+	};
 
 	const handleRemoveSpecialist = (id: number) => {
 		deleteFavoriteSpecialist(id)
