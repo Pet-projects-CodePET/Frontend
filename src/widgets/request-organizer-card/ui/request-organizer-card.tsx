@@ -20,10 +20,10 @@ export const RequestOrganizerCard: FC<RequestOrganizerCardType> = ({
 	project,
 	request_participants,
 	visible_status,
-	participation_request_id,
 	request_status,
 	handleDeleteCard,
 	is_favorite_profile,
+	participation_request_id,
 }) => {
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
 
@@ -61,7 +61,7 @@ export const RequestOrganizerCard: FC<RequestOrganizerCardType> = ({
 					<div className={styles.info__likeContainer}>
 						<SpecialistsToFavoritesFeature
 							favorite={is_favorite_profile}
-							id={participation_request_id}
+							id={request_participants.user_id}
 						/>
 					</div>
 				</div>

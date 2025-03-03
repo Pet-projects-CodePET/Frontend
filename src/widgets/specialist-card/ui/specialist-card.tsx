@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { FC } from 'react';
 import clsx from 'clsx';
 import { SpecialistCardType } from './type';
@@ -15,42 +16,42 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 	name,
 	readyToParticipate,
 	specialists,
+	is_favorite,
 }) => {
 	return (
 		<article className={styles.specialist}>
 			<div className={styles.specialist__info}>
+				<div className={styles.info__person}>
+					<AvatarImage imageURL={avatar} />
+					<div className={styles.info__personDescription}>
+						<div className={styles.info__personStatus}>
+							{readyToParticipate ? (
+								<>
+									<ActivityIcon className={styles.info__icon} />
+									<p className={styles.info__statusTitle}>
+										готов(а) к участию в проекте
+									</p>
+								</>
+							) : (
+								<>
+									<ActivityIconRed />
+									<p className={styles.info__statusTitle}>
+										не готов(а) к участию в проекте
+									</p>
+								</>
+							)}
+						</div>
+						<h2 className={styles.info__name}>{name}</h2>
+						<p className={styles.info__nickname}>@{userName}</p>
+					</div>
+					<div className={styles.info__likeContainer}>
+						<SpecialistsToFavoritesFeature id={userId} favorite={is_favorite} />
+					</div>
+				</div>
 				<Link
 					className={styles.info__link}
 					target="_blank"
 					href={`/specialists/${userId}`}>
-					<div className={styles.info__person}>
-						<AvatarImage imageURL={avatar} />
-						<div className={styles.info__personDescription}>
-							<div className={styles.info__personStatus}>
-								{readyToParticipate ? (
-									<>
-										<ActivityIcon className={styles.info__icon}/>
-										<p className={styles.info__statusTitle}>
-											готов(а) к участию в проекте
-										</p>
-									</>
-								) : (
-									<>
-										<ActivityIconRed />
-										<p className={styles.info__statusTitle}>
-											не готов(а) к участию в проекте
-										</p>
-									</>
-								)}
-							</div>
-							<h2 className={styles.info__name}>{name}</h2>
-							<p className={styles.info__nickname}>@{userName}</p>
-						</div>
-						<div className={styles.info__likeContainer}>
-						<SpecialistsToFavoritesFeature />
-						</div>
-					</div>
-
 					<div className={styles.info__role}>
 						<div>
 							{specialists[0] &&

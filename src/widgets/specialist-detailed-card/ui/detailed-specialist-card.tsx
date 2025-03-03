@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 'use client';
 import React, { FC } from 'react';
 import clsx from 'clsx';
@@ -30,6 +31,8 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	phoneNumber,
 	telegramNick,
 	email,
+	user_id,
+	is_favorite,
 }) => {
 	function properyCheck<T extends keyof DetailedSpecialistCardTypes>(
 		input: DetailedSpecialistCardTypes[T],
@@ -79,7 +82,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						</div>
 					</div>
 					<div className={styles.info__likeContainer}>
-						<SpecialistsToFavoritesFeature />
+						<SpecialistsToFavoritesFeature id={user_id} favorite={is_favorite}/>
 					</div>
 				</div>
 

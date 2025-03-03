@@ -29,10 +29,10 @@ export const specilistsApi = createApi({
 			keepUnusedDataFor: 1,
 		}),
 		addFavoriteSpecialist: builder.mutation({
-			query: (specialist) => ({
-				url: `/profiles/${specialist.id}/favorite/`,
+			query: (user) => ({
+				url: `/profiles/${user.id}/favorite/`,
 				method: 'POST',
-				body: specialist,
+				body: user,
 			}),
 		}),
 		deleteFavoriteSpecialist: builder.mutation({
