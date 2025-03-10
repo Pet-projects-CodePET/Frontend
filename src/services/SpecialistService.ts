@@ -20,6 +20,7 @@ export const specilistsApi = createApi({
 				method: 'GET',
 				providerTags: 'allSpecialist',
 			}),
+			keepUnusedDataFor: 1,
 		}),
 		getFavoriteSpecialists: builder.query({
 			query: ({ currentPage, query }) => ({
