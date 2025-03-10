@@ -4,6 +4,7 @@ export type SpecialistCardType = {
 	userName: string;
 	name: string;
 	readyToParticipate: boolean;
+	is_favorite: boolean;
 	specialists: [
 		{
 			id: number;

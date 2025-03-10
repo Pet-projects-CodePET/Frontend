@@ -71,8 +71,9 @@ export const ProfileRequestsOrganizers = () => {
 						position={card.position}
 						project={card.project}
 						visible_status={card.visible_status}
-						participation_request_id={card.participation_request_id}
 						handleDeleteCard={handleDeleteCard}
+						is_favorite_profile={card.is_favorite_profile}
+						participation_request_id={card.participation_request_id}
 					/>
 				))
 			) : (

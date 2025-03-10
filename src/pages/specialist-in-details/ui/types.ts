@@ -1,8 +1,10 @@
 export type SpecialistInfoQueryType = {
+	user_id: number;
 	avatar: string;
 	username: string;
 	name: string;
 	ready_to_participate: boolean;
+	is_favorite: boolean;
 	specialists: [
 		{
 			id: number;
