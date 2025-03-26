@@ -4,39 +4,27 @@ import { SpecialistCard } from '@/widgets/specialist-card';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
 import { qualification } from '@/shared/constants/qualification/qualification';
-// import { Tooltip } from '@/widgets/tooltip';
-// import { specialties } from '@/shared/constants/specialties/specialties';
-// import { skills } from '@/shared/constants/skills/skills';
 import FilterIcon from '@/shared/assets/icons/filter-icon.svg';
 import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { Pagination } from '@/entities/pagination/ui/pagination';
 import { SpecialistsFilter } from '@/entities/specialists-filter';
 import { useMediaQuery } from '@/shared/hooks';
 import styles from './specialists-page.module.scss';
-// import { SingleSelectButton } from '@/shared/ui/single-select-button/single-select-button';
-// import { MultiSelectButton } from '@/shared/ui/multi-select-button/multi-select-button';
 import { useGetAllSpecialistsDataQuery } from '@/services/SpecialistService';
-import { SpecialistType } from './types';
+import { Filters, SpecialistType } from './types';
 import { Loader } from '@/shared/ui';
 import { FilterSelectButton } from '@/shared/ui/filter-select-button/filter-select-button';
 import { Option } from '@/shared/ui/filter-select-button/type';
 import { FilterMultiSelectButton } from '@/shared/ui/filter-multi-select-button/filter-multi-select-button';
+import {
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
+} from '@/services/GeneralService';
+import { TProfession, TSkills } from '@/shared/types/specialty';
 
 export const Specialists = () => {
-	type Filters = {
-		status?: boolean; // Статус специалиста
-		specialists?: number[]; // Уровень квалификации
-		specialty?: number[]; // Специальность
-		skills?: number[]; // Навыки
-		searchQuery?: string; // Поиск по фразе
-	};
-
-	const pageSize = 7;
-
 	const [currentPage, setCurrentPage] = useState(1);
-
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
-
 	const [filters, setFilters] = useState<Filters>({
 		status: undefined,
 		specialists: undefined,
@@ -44,11 +32,19 @@ export const Specialists = () => {
 		skills: undefined,
 		searchQuery: undefined,
 	});
+	const pageSize = 7;
+	const isMobile = useMediaQuery('(max-width:779px)');
 
 	const { data: specialistArray } = useGetAllSpecialistsDataQuery({
 		currentPage,
 		filters,
 	});
+	const { data: professions } = useGetProfessionsQuery([]);
+	const { data: skills } = useGetSkillsQuery([]);
+
+	const currentData = useMemo(() => {
+		return specialistArray && specialistArray.results;
+	}, [specialistArray]);
 
 	const handleSearchChange = (query: string) => {
 		setFilters((prev) => ({ ...prev, searchQuery: query }));
@@ -66,42 +62,32 @@ export const Specialists = () => {
 			status: selectedOptionValue,
 		}));
 		setCurrentPage(1);
-		console.info('selected status: ', selectedOption);
+		console.info('selected status options: ', selectedOption);
 	};
 
 	const handleQualificationChange = (selectedOptions: Option[] | undefined) => {
-		console.info('selected options: ', selectedOptions);
 		if (selectedOptions) {
 			const values = selectedOptions.map((option) => option.value);
 			setFilters({ ...filters, specialists: values });
-			console.info('selected levels: ', values);
-			// selectedOptions.forEach((element) => {
-			// 	console.log('label: ', element.label, 'value: ', element.value);
-			// });
+			console.info('selected qualification options: ', values);
 		}
 	};
 
-	// const handleSpecialtiesChange = (selectedOptions: (string | Option)[]) => {
-	// 	if (selectedOptions) {
-	// 		const values = selectedOptions.map((option) => option.value);
-	// 		setFilters({ ...filters, specialty: values });
-	// 		console.info('selected specializations: ', values);
-	// 	}
-	// };
+	const handleSpecialtiesChange = (selectedOptions: Option[] | undefined) => {
+		if (selectedOptions) {
+			const values = selectedOptions.map((option) => option.value);
+			setFilters({ ...filters, specialty: values });
+			console.info('selected specialty options: ', values);
+		}
+	};
 
-	// const handleSkillsChange = (selectedOptions: (string | Option)[]) => {
-	// 	if (selectedOptions) {
-	// 		const values = selectedOptions.map((option) => option.value);
-	// 		setFilters({ ...filters, skills: values });
-	// 		console.info('selected skills: ', values);
-	// 	}
-	// };
-
-	const currentData = useMemo(() => {
-		return specialistArray && specialistArray.results;
-	}, [specialistArray]);
-
-	const isMobile = useMediaQuery('(max-width:779px)');
+	const handleSkillsChange = (selectedOptions: Option[] | undefined) => {
+		if (selectedOptions) {
+			const values = selectedOptions.map((option) => option.value);
+			setFilters({ ...filters, skills: values });
+			console.info('selected skill options: ', values);
+		}
+	};
 
 	useEffect(() => {
 		window.scroll({
@@ -151,46 +137,42 @@ export const Specialists = () => {
 							label: '',
 						}))}
 						label="Уровень квалификации"
-						onChange={handleQualificationChange}
-					/>
-					{/* 
-
-					<MultiSelectButton
-						name="select-months"
-						caption="Уровень квалификации"
-						options={qualification}
-						values={[]}
-						onChange={handleQualificationChange}
 						selectedAll={true}
-						buttonWidth={114}
+						onChange={handleQualificationChange}
 					/>
-
-					<Tooltip text="Не более 2 специальностей">
-						<MultiSelectButton
-							name="select-specialties"
-							caption="Специальность"
-							options={specialties}
-							values={[]}
-							onChange={handleSpecialtiesChange}
-							maxSelections={2}
-							buttonWidth={207}
-							tooltip="Не более 2 специальностей"
-						/>
-					</Tooltip>
-
-					<Tooltip text="Не более 5 навыков">
-						<MultiSelectButton
-							name="select-skills"
-							caption="Навыки"
-							options={skills}
-							values={[]}
-							onChange={handleSkillsChange}
-							maxSelections={5}
-							buttonWidth={131}
-							isSearchable
-							tooltip="Не более 5 навыков"
-						/>
-					</Tooltip> */}
+					<FilterMultiSelectButton
+						options={
+							professions?.map((item: TProfession) => ({
+								value: item.id,
+								label: `${item.speciality} \\ ${item.specialization}`,
+							})) || []
+						}
+						value={filters.specialty?.map((item) => ({
+							value: item,
+							label: '',
+						}))}
+						label="Специальность"
+						onChange={handleSpecialtiesChange}
+						maxSelections={2}
+						tooltip="Не более 2-х специальностей"
+					/>
+					<FilterMultiSelectButton
+						options={
+							skills?.map((item: TSkills) => ({
+								value: item.id,
+								label: item.name,
+							})) || []
+						}
+						value={filters.skills?.map((item) => ({
+							value: item,
+							label: '',
+						}))}
+						label="Навыки"
+						onChange={handleSkillsChange}
+						maxSelections={5}
+						isSearchable={true}
+						tooltip="Не более 5-ти навыков"
+					/>
 				</div>
 			</div>
 			<div className={styles.specialists__cards}>

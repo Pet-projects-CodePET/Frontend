@@ -1,21 +1,51 @@
 'use client';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { FilterMultiSelectButtonProps, Option } from './type';
+import { FilterMultiSelectButtonProps } from './type';
 import styles from './filter-multi-select-button.module.scss';
 import clsx from 'clsx';
+import { InputSearch } from '../input-search/input-search';
+import { Option } from '../option-item/type';
+import { OptionItem } from '../option-item/option-item';
 
 export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 	options,
 	value = [],
 	label,
 	onChange,
+	tooltip = '',
+	selectedAll = false,
+	maxSelections = 0,
+	isSearchable = false,
 }) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
-	const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+	const [selectedOptions, setSelectedOptions] = useState<Option[]>(value);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
+	const [searchQuery, setSearchQuery] = useState<string>('');
+	const filteredOptions = options.filter((option) =>
+		option.label.toLowerCase().includes(searchQuery.toLowerCase())
+	);
+	const [buttonIsHovered, setButtonIsHovered] = useState<boolean>(false);
+	const [showTooltip, setShowTooltip] = useState(false);
+	let timeoutId: NodeJS.Timeout | null = null;
 
-	const handleClickButton = () => {
+	const handleButtonMouseEnter = () => {
+		setButtonIsHovered(true);
+		timeoutId = setTimeout(() => {
+			setShowTooltip(true);
+		}, 1000);
+	};
+
+	const handleButtonMouseLeave = () => {
+		setButtonIsHovered(false);
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+		setShowTooltip(false);
+	};
+
+	const handleClickFilterButton = () => {
 		setIsOpen((prev) => !prev);
 	};
 
@@ -25,122 +55,144 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 			!containerRef.current.contains(event.target as Node)
 		) {
 			setIsOpen(false);
+			setSearchQuery('');
 		}
 	};
 
 	const handleOptionChange = (option: Option) => {
-		// if (option.value === 0) {
-		// 	// Если выбрана опция "Все", добавляем все остальные опции
-		// 	if (selectedOptions.length === options.length) {
-		// 		setSelectedOptions([]);
-		// 	} else {
-		// 		setSelectedOptions(options);
-		// 	}
-		// } else {
-		// 	// Отменяем или добавляем опцию
-		// 	if (selectedOptions.find((o) => o.value === option.value)) {
-		// 		if (selectedOptions.length === 1) {
-		// 			// Если снимаем последнюю опцию, то снимаем выделение с "Все"
-		// 			setSelectedOptions([]);
-		// 		} else {
-		// 			setSelectedOptions((prev) =>
-		// 				prev.filter((o) => o.value !== option.value)
-		// 			);
-		// 		}
-		// 	} else {
-		// 		setSelectedOptions((prev) => [...prev, option]);
-		// 		if (
-		// 			selectedOptions.length === 0 &&
-		// 			selectedOptions.some((o) => o.value === 0)
-		// 		) {
-		// 			// Если выбран "Все", то снимаем выделение с "Все"
-		// 			setSelectedOptions((prev) => prev.filter((o) => o.value !== 0));
-		// 		}
-		// 	}
-		// }
+		const isSelected = selectedOptions.some((o) => o.value === option.value);
 
-		if (selectedOptions.find((o) => o.value === option.value)) {
-			if (isAllChecked && selectedOptions.length === options.length) {
-				setIsAllChecked(false);
-			}
-			setSelectedOptions((prev) =>
-				prev.filter((o) => o.value !== option.value)
+		if (isSelected) {
+			// Удаляем опцию
+			const newSelected = selectedOptions.filter(
+				(o) => o.value !== option.value
 			);
+			setSelectedOptions(newSelected);
+			setIsAllChecked(false);
 		} else {
-			setSelectedOptions((prev) => [...prev, option]);
-			if (!isAllChecked && selectedOptions.length === options.length) {
-				setIsAllChecked(true);
+			// Добавляем опцию, если не превышен лимит
+			if (maxSelections <= 0 || selectedOptions.length < maxSelections) {
+				setSelectedOptions([...selectedOptions, option]);
+				// Проверяем, выбраны ли все опции
+				if (selectedAll && selectedOptions.length + 1 === options.length) {
+					setIsAllChecked(true);
+				}
 			}
 		}
-		setIsOpen(false);
 	};
 
 	const handleAllOptionChange = () => {
 		if (isAllChecked) {
 			setSelectedOptions([]);
+			setIsAllChecked(false);
 		} else {
-			setSelectedOptions(options);
+			if (maxSelections > 0 && options.length > maxSelections) {
+				setSelectedOptions(options.slice(0, maxSelections));
+			} else {
+				setSelectedOptions([...options]);
+			}
+			setIsAllChecked(!isAllChecked);
 		}
-		setIsAllChecked((prev) => !prev);
-		setIsOpen(false);
 	};
+
+	const isOptionDisabled = (option: Option) => {
+		return (
+			maxSelections > 0 &&
+			selectedOptions.length >= maxSelections &&
+			!selectedOptions.some((o) => o.value === option.value)
+		);
+	};
+
+	const isAllOptionDisabled = () => {
+		return maxSelections > 0 && options.length > maxSelections && !isAllChecked;
+	};
+
+	const handleSearchChange = (query: string) => {
+		setSearchQuery(query);
+	};
+
+	// Проверяем, все ли опции выбраны при монтировании
+	useEffect(() => {
+		if (selectedAll && options.length > 0) {
+			const allSelected = options.length === selectedOptions.length;
+			setIsAllChecked(allSelected);
+		}
+	}, [options, selectedAll, selectedOptions.length]);
+
+	useEffect(() => {
+		onChange(selectedOptions);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectedOptions]);
 
 	useEffect(() => {
 		document.addEventListener('mousedown', handleClickOutside);
-		setSelectedOptions(value);
 
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
 	}, []);
 
-	useEffect(() => {
-		onChange(selectedOptions);
-	}, [selectedOptions]);
-
 	return (
 		<div className={styles.filterContainer} ref={containerRef}>
+			{/* FilterButton */}
 			<div
 				className={clsx(
 					styles.filterButton,
 					isOpen && styles.filterButtonIsActive,
 					selectedOptions.length > 0 && styles.filterButtonSelectedItem
 				)}
-				onClick={handleClickButton}>
+				onClick={handleClickFilterButton}
+				onMouseEnter={handleButtonMouseEnter}
+				onMouseLeave={handleButtonMouseLeave}>
 				{label}
 			</div>
+			{tooltip.length > 0 && buttonIsHovered && showTooltip && !isOpen && (
+				<span className={styles.filterTooltip}>{tooltip}</span>
+			)}
 			{isOpen && (
-				<ul className={styles.filterList}>
-					<li
-						className={styles.filterItem}
-						onClick={() => handleAllOptionChange()}>
-						<input
-							className={styles.customCheckbox}
-							type="checkbox"
-							checked={isAllChecked}
-							onChange={(option) => {
-								console.log(`selected option all checked: ${option}`);
+				<div className={styles.filterListContainer}>
+					{/* Filter */}
+					{isSearchable && (
+						<InputSearch
+							className={styles.filterInput}
+							search={handleSearchChange}
+							onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+								handleSearchChange(e.target.value);
 							}}
 						/>
-						<label>Все</label>
-					</li>
-					{options.map((option) => (
-						<li
-							key={option.value}
-							className={styles.filterItem}
-							onClick={() => handleOptionChange(option)}>
-							<input
-								className={styles.customCheckbox}
-								type="checkbox"
-								checked={selectedOptions.some((o) => o.value === option.value)}
-								onChange={(option) => {
-									console.log(`selected option: ${option}`);
-								}}
+					)}
+					<ul className={styles.filterList}>
+						{selectedAll && (
+							<li
+								className={clsx(
+									styles.filterItem,
+									isAllOptionDisabled() && styles.filterItemDisabled
+								)}
+								onClick={() => handleAllOptionChange()}>
+								<input
+									className={styles.customCheckbox}
+									type="checkbox"
+									checked={isAllChecked}
+									disabled={isAllOptionDisabled()}
+									readOnly
+								/>
+								<label>Все</label>
+							</li>
+						)}
+						{filteredOptions.map((option) => (
+							<OptionItem
+								key={option.value}
+								option={option}
+								selected={selectedOptions.some((o) => o.value === option.value)}
+								disabled={isOptionDisabled(option)}
+								onChange={handleOptionChange}
 							/>
-							<label>{option.label}</label>
-						</li>
-					))}
-				</ul>
+						))}
+						{filteredOptions.length === 0 && (
+							<li className={styles.noResults}>Ничего не найдено</li>
+						)}
+					</ul>
+				</div>
 			)}
 		</div>
 	);

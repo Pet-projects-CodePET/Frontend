@@ -27,3 +27,11 @@ export type SpecialistType = {
 	];
 	ready_to_participate: boolean;
 };
+
+export type Filters = {
+	status?: boolean; // Статус специалиста
+	specialists?: number[]; // Уровень квалификации
+	specialty?: number[]; // Специальность
+	skills?: number[]; // Навыки
+	searchQuery?: string; // Поиск по фразе
+};
