@@ -1,30 +1,66 @@
 export const specialties = [
 	{
-		value: 0,
-		label: 'Инженер по ручному тестированию / Manual Test Engineer',
-	},
-	{
 		value: 1,
-		label: 'Десктоп разработчик / Software Developer',
+		label: 'Разработка / Software',
 	},
 	{
 		value: 2,
-		label: 'Инженер по нагрузочному тестированию / Performance Engineer',
+		label: 'Разработка / Backend',
 	},
 	{
 		value: 3,
-		label: 'DevOps-инженер / DevOps',
+		label: 'Разработка / Frontend',
 	},
 	{
 		value: 4,
-		label: 'Менеджер проекта / Project Manager',
+		label: 'Разработка / Fullstack',
 	},
 	{
 		value: 5,
-		label: 'UI/UX дизайнер / UI/UX Designer',
+		label: 'Разработка / Mobile',
 	},
 	{
 		value: 6,
-		label: 'Системный аналитик / Systems Analyst',
+		label: 'Тестирование / Automation QA',
+	},
+	{
+		value: 7,
+		label: 'Тестирование / Manual QA',
+	},
+	{
+		value: 8,
+		label: 'Тестирование / Performance QA',
+	},
+	{
+		value: 9,
+		label: 'Администрирование / System Administration',
+	},
+	{
+		value: 10,
+		label: 'Администрирование / DevOps',
+	},
+	{
+		value: 11,
+		label: 'Дизайнер / UI/UX Designer',
+	},
+	{
+		value: 12,
+		label: 'Дизайнер / Graphic Designer',
+	},
+	{
+		value: 13,
+		label: 'Менеджмент / Project Manager',
+	},
+	{
+		value: 14,
+		label: 'Аналитика / Systems Analyst',
+	},
+	{
+		value: 15,
+		label: 'Аналитика / Business Analyst',
+	},
+	{
+		value: 16,
+		label: 'Аналитика / Data Analyst',
 	},
 ];

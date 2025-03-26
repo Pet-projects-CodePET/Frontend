@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const specialistsApi = createApi({
-	reducerPath: 'specilistsApi',
+	reducerPath: 'specialistsApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl: `https://${BASE_URL}/api/v1`,
 	}),
