@@ -15,6 +15,7 @@ export const DetailedSpecialistPage = async ({
 	return (
 		<>
 			<DetailedSpecialistCard
+			    user_id={response?.user_id}
 				avatar={response?.avatar}
 				name={response?.name}
 				userName={response?.username}
@@ -29,6 +30,7 @@ export const DetailedSpecialistPage = async ({
 				telegramNick={response?.telegram_nick}
 				email={response?.email}
 				projects={response?.projects}
+				is_favorite={response?.is_favorite}
 			/>
 		</>
 	);

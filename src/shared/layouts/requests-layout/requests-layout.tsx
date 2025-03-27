@@ -7,7 +7,7 @@ import styles from './requests-layout.module.scss';
 export const RequestsLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
-			<ProfileLink title="Избранные" />
+			<ProfileLink title="Заявки" />
 			<div className={styles.requests}>
 				<NavigationMenu
 					linksArray={[

@@ -3,10 +3,21 @@ import { RequestParticipantCard } from '@/widgets/request-participant-card';
 import { RequestParticipantCardType } from '@/widgets/request-participant-card/ui/types';
 import styles from './list-requests-participants.module.scss';
 
+type CurrentSettingsType = {
+	currentPage: number;
+	role: string;
+	statusNumber: null | number;
+};
 export const ListRequestsParticipants = ({
 	arrayRequests,
+	currentSettings,
+	setCurrentSettings,
+	refetch,
 }: {
 	arrayRequests: RequestParticipantCardType[];
+	currentSettings: CurrentSettingsType;
+	setCurrentSettings: (arg: CurrentSettingsType) => void;
+	refetch: () => void;
 }) => {
 	const [requests, setRequests] = useState<RequestParticipantCardType[]>([]);
 	useEffect(() => {
@@ -18,6 +29,22 @@ export const ListRequestsParticipants = ({
 	const handleDeleteCard = (id: number) => {
 		setRequests(requests.filter((item) => Number(item.id) !== id));
 	};
+
+	useEffect(() => {
+		if (requests.length === 0) {
+			if (currentSettings.currentPage > 1) {
+				setCurrentSettings({
+					currentPage: currentSettings.currentPage - 1,
+					role: currentSettings.role,
+					statusNumber: currentSettings.statusNumber,
+				});
+			}
+			if (currentSettings.currentPage === 1) {
+				refetch();
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [requests, refetch]);
 
 	return (
 		<>

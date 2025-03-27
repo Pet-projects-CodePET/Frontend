@@ -186,6 +186,7 @@ export const Specialists = () => {
 							name={res?.name}
 							userName={res?.username}
 							readyToParticipate={res?.ready_to_participate}
+							is_favorite={res?.is_favorite}
 						/>
 					))
 				) : (

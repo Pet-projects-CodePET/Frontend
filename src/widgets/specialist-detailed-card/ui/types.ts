@@ -1,8 +1,10 @@
 export type DetailedSpecialistCardTypes = {
+	user_id: number;
 	avatar: string;
 	userName: string;
 	name: string;
 	readyToParticipate: boolean;
+	is_favorite: boolean;
 	specialists: [
 		{
 			id: number;
