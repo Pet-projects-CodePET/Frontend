@@ -8,10 +8,10 @@ export const OptionItem: FC<OptionItemProps> = ({
 	option,
 	selected,
 	disabled,
-	onChange,
+	onChange
 }) => (
 	<li
-		className={clsx(styles.filterItem, disabled && styles.filterItemDisabled)}
+		className={clsx(styles.optionItem, disabled && styles.optionItem_disabled)}
 		onClick={() => !disabled && onChange(option)}>
 		<input
 			className={styles.customCheckbox}

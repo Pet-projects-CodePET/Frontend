@@ -2,46 +2,92 @@
 
 %normalText {
 	font-family: $--open-sans-font;
-	font-size: 16px;
-	font-weight: 700;
+	/* Caption/C1 */
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 19px;
+	/* 135.714% */
+	letter-spacing: 0.25px;
+	color: $--Foreground-default;
 	font-feature-settings:
 		'clig' off,
 		'liga' off;
 }
 
-.filterButton {
+%buttonLabelText {
 	@extend %normalText;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+%tooltipText {
+	@extend %normalText;
+}
+
+.filterWrapper {
+	max-width: 320px;
+	position: relative;
+}
+
+.filterButton {
+	@extend %buttonLabelText;
 	width: fit-content;
 	max-height: 40px;
 	padding: 10px 16px;
 	display: flex;
+	align-items: center;
+	gap: 8px;
 	background-color: #feffff;
 	cursor: pointer;
 	border: 1px solid #c9cbce;
 	border-radius: 50px;
 
-	&SelectedItem {
+	&_selected {
 		background-color: #8caaff;
 	}
-	&IsActive {
+
+	&_isActive {
 		box-shadow: none;
 		border: 1px solid #8caaff;
 	}
+
 	&:hover {
 		box-shadow: 0px 0px 6px 0px rgba(132, 129, 255, 0.5);
 	}
+
 	&:focus {
 		box-shadow: none;
 		border: 1px solid #8caaff;
 	}
+
+	&__tooltip {
+		@extend %tooltipText;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-top: 25px;
+		padding: 16px;
+		background-color: $--bg-card-hover;
+		border-radius: 12px;
+		z-index: 1;
+		white-space: nowrap;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: -17px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 40px;
+			height: 20px;
+			background-image: url(../../../shared/assets/icons/tooltip-polygon.svg);
+			background-size: cover;
+		}
+	}
 }
 
 .filterContainer {
-	max-width: 320px;
-	position: relative;
-}
-
-.filterListContainer {
 	margin-block-start: 1em;
 	padding: 8px 0;
 	position: absolute;
@@ -55,113 +101,23 @@
 	border: 1px solid #e2e8f0;
 	border-radius: 12px;
 	box-shadow: 0px 0px 10px 0px rgba(21, 22, 23, 0.1);
-
 	scrollbar-color: #e2e8f0 transparent;
-}
-
-.filterList {
-	padding: 0;
-	margin: 0;
-	overflow-y: auto;
 }
 
 .filterInput {
 	margin: 8px 16px;
 }
 
-.filterItem {
-	@extend %normalText;
-	font-weight: 400;
-	display: flex;
-	gap: 10px;
-	// justify-content: space-between;
-	align-items: center;
-	padding: 10px 16px;
-	color: #020617;
-	line-height: 24px; /* 150% */
-	letter-spacing: 0.25px;
-	cursor: pointer;
-	border: none;
+.filterList {
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;
 
-	&:hover {
-		background-color: #e8eeff;
+	&__noResults {
+		@extend %normalText;
+		padding: 8px 12px;
+		text-align: center;
 	}
-
-	label {
-		display: flex;
-		align-items: center;
-		font-size: 16px;
-		position: relative;
-		cursor: pointer;
-
-		.item {
-			display: none;
-		}
-	}
-}
-
-.customCheckbox {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-}
-
-.customCheckbox + label {
-	display: inline-flex;
-	align-items: center;
-	user-select: none;
-}
-
-.customCheckbox + label::before {
-	content: '';
-	display: inline-block;
-	width: 1em;
-	height: 1em;
-	flex-shrink: 0;
-	flex-grow: 0;
-	border: 2px solid #e2e8f0;
-	border-radius: 0.25em;
-	margin-right: 0.5em;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-color: white;
-}
-
-.customCheckbox:checked + label::before {
-	border-color: #5677fc;
-	background-color: #5677fc;
-	background-image: url(../../assets/icons/checkmark-icon.svg);
-}
-
-/* стили при наведении курсора на checkbox */
-.customCheckbox:not(:disabled):not(:checked) + label:hover::before {
-	border-color: #afbffe;
-}
-
-/* стили для активного состояния чекбокса (при нажатии на него) */
-.customCheckbox:not(:disabled):active + label::before {
-	background-color: #afbffe;
-	border-color: #afbffe;
-}
-
-/* стили для чекбокса, находящегося в фокусе */
-.customCheckbox:focus + label::before {
-	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
-.customCheckbox:focus:not(:checked) + label::before {
-	border-color: #afbffe;
-}
-
-/* стили для чекбокса, находящегося в состоянии disabled */
-.customCheckbox:disabled + label::before {
-	background-color: #e9ecef;
-}
-
-.disabledOption {
-	color: #ccc;
-	cursor: not-allowed;
 }
 
 .iconInformation {
@@ -170,58 +126,4 @@
 	@media screen and (max-width: 1199px) {
 		display: flex;
 	}
-}
-
-.filterTooltip {
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	transform: translateX(-50%);
-	margin-top: 25px;
-	padding: 16px;
-	background-color: $--bg-card-hover;
-	border-radius: 12px;
-	z-index: 1;
-	white-space: nowrap;
-
-	color: $--Foreground-default;
-	font-feature-settings:
-		'clig' off,
-		'liga' off;
-	/* Caption/C1 */
-	font-family: $--open-sans-font;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 19px; /* 135.714% */
-	letter-spacing: 0.25px;
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: -17px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 40px;
-		height: 20px;
-		background-image: url(../../../shared/assets/icons/tooltip-polygon.svg);
-		background-size: cover;
-	}
-}
-
-.selectionCounter {
-	margin-left: 8px;
-	font-size: 0.8em;
-	opacity: 0.7;
-}
-
-.filterItemDisabled {
-	opacity: 0.5;
-}
-
-.noResults {
-	@extend %normalText;
-	font-weight: 400;
-	padding: 8px 12px;
-	text-align: center;
 }

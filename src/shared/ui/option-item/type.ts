@@ -9,5 +9,5 @@ export type OptionItemProps = {
 	option: Option;
 	selected: boolean;
 	disabled: boolean;
-	onChange: (option: Option) => void;
+	onChange: (option: Option | undefined) => void;
 };

@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { InputSearch } from '../input-search/input-search';
 import { Option } from '../option-item/type';
 import { OptionItem } from '../option-item/option-item';
+import IconInformation from '../../assets/icons/information.svg';
 
 export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 	options,
@@ -59,10 +60,8 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 		}
 	};
 
-	const handleOptionChange = (option: Option) => {
-		const isSelected = selectedOptions.some((o) => o.value === option.value);
-
-		if (isSelected) {
+	const handleOptionChange = (option?: Option) => {
+		if (option && isSelected(option)) {
 			// Удаляем опцию
 			const newSelected = selectedOptions.filter(
 				(o) => o.value !== option.value
@@ -72,7 +71,9 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 		} else {
 			// Добавляем опцию, если не превышен лимит
 			if (maxSelections <= 0 || selectedOptions.length < maxSelections) {
-				setSelectedOptions([...selectedOptions, option]);
+				if (option) {
+					setSelectedOptions([...selectedOptions, option]);
+				}
 				// Проверяем, выбраны ли все опции
 				if (selectedAll && selectedOptions.length + 1 === options.length) {
 					setIsAllChecked(true);
@@ -95,20 +96,20 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 		}
 	};
 
+	const handleSearchChange = (query: string) => {
+		setSearchQuery(query);
+	};
+
+	const isSelected = (option: Option) => {
+		return selectedOptions.some((o) => o.value === option.value);
+	}
+
 	const isOptionDisabled = (option: Option) => {
-		return (
-			maxSelections > 0 &&
-			selectedOptions.length >= maxSelections &&
-			!selectedOptions.some((o) => o.value === option.value)
-		);
+		return (maxSelections > 0 && selectedOptions.length >= maxSelections && !isSelected(option));
 	};
 
 	const isAllOptionDisabled = () => {
 		return maxSelections > 0 && options.length > maxSelections && !isAllChecked;
-	};
-
-	const handleSearchChange = (query: string) => {
-		setSearchQuery(query);
 	};
 
 	// Проверяем, все ли опции выбраны при монтировании
@@ -133,24 +134,25 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 	}, []);
 
 	return (
-		<div className={styles.filterContainer} ref={containerRef}>
+		<div className={styles.filterWrapper} ref={containerRef}>
 			{/* FilterButton */}
 			<div
 				className={clsx(
 					styles.filterButton,
-					isOpen && styles.filterButtonIsActive,
-					selectedOptions.length > 0 && styles.filterButtonSelectedItem
+					isOpen && styles.filterButton_isActive,
+					selectedOptions.length > 0 && styles.filterButton_selected
 				)}
 				onClick={handleClickFilterButton}
 				onMouseEnter={handleButtonMouseEnter}
 				onMouseLeave={handleButtonMouseLeave}>
 				{label}
+				{tooltip && <IconInformation className={styles.iconInformation} />}
 			</div>
 			{tooltip.length > 0 && buttonIsHovered && showTooltip && !isOpen && (
-				<span className={styles.filterTooltip}>{tooltip}</span>
+				<span className={styles.filterButton__tooltip}>{tooltip}</span>
 			)}
 			{isOpen && (
-				<div className={styles.filterListContainer}>
+				<div className={styles.filterContainer}>
 					{/* Filter */}
 					{isSearchable && (
 						<InputSearch
@@ -163,33 +165,24 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 					)}
 					<ul className={styles.filterList}>
 						{selectedAll && (
-							<li
-								className={clsx(
-									styles.filterItem,
-									isAllOptionDisabled() && styles.filterItemDisabled
-								)}
-								onClick={() => handleAllOptionChange()}>
-								<input
-									className={styles.customCheckbox}
-									type="checkbox"
-									checked={isAllChecked}
-									disabled={isAllOptionDisabled()}
-									readOnly
-								/>
-								<label>Все</label>
-							</li>
+							<OptionItem
+								option={{ value: -1, label: 'Все' }}
+								selected={isAllChecked}
+								disabled={isAllOptionDisabled()}
+								onChange={handleAllOptionChange}
+							/>
 						)}
 						{filteredOptions.map((option) => (
 							<OptionItem
 								key={option.value}
 								option={option}
-								selected={selectedOptions.some((o) => o.value === option.value)}
+								selected={isSelected(option)}
 								disabled={isOptionDisabled(option)}
 								onChange={handleOptionChange}
 							/>
 						))}
 						{filteredOptions.length === 0 && (
-							<li className={styles.noResults}>Ничего не найдено</li>
+							<li className={styles.filterList__noResults}>Ничего не найдено</li>
 						)}
 					</ul>
 				</div>
