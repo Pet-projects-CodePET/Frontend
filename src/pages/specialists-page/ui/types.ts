@@ -3,7 +3,7 @@ export type SpecialistType = {
 	avatar: string;
 	name: string;
 	username: string;
-    is_favorite: boolean;
+	is_favorite: boolean;
 	specialists: [
 		{
 			id: number;

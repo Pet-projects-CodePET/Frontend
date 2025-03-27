@@ -82,7 +82,10 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						</div>
 					</div>
 					<div className={styles.info__likeContainer}>
-						<SpecialistsToFavoritesFeature id={user_id} favorite={is_favorite}/>
+						<SpecialistsToFavoritesFeature
+							id={user_id}
+							favorite={is_favorite}
+						/>
 					</div>
 				</div>
 

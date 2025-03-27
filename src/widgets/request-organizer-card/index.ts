@@ -1,1 +1,1 @@
-export {RequestOrganizerCard} from './ui/request-organizer-card';
+export { RequestOrganizerCard } from './ui/request-organizer-card';

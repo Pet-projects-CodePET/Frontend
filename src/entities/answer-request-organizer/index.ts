@@ -1,1 +1,1 @@
-export {AnswerRequestOrganizer} from './ui/answer-request-organizer';
+export { AnswerRequestOrganizer } from './ui/answer-request-organizer';

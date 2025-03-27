@@ -20,7 +20,6 @@ type HandleAnswerOnRequestType = {
 export const AnswerRequestOrganizerFeature: FC<
 	AnswerRequestOrganizerFeatureType
 > = ({ id, participant_user_id, request_status, handleDeleteCard }) => {
-	
 	const [answerOnRequest] = useAnswerOrganizerOnRequestMutation();
 
 	const handleAnswerOnRequestAccept = ({

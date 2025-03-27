@@ -15,7 +15,7 @@ export const DetailedSpecialistPage = async ({
 	return (
 		<>
 			<DetailedSpecialistCard
-			    user_id={response?.user_id}
+				user_id={response?.user_id}
 				avatar={response?.avatar}
 				name={response?.name}
 				userName={response?.username}
