@@ -8,7 +8,7 @@ export const OptionItem: FC<OptionItemProps> = ({
 	option,
 	selected,
 	disabled,
-	onChange
+	onChange,
 }) => (
 	<li
 		className={clsx(styles.optionItem, disabled && styles.optionItem_disabled)}

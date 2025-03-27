@@ -102,10 +102,14 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 
 	const isSelected = (option: Option) => {
 		return selectedOptions.some((o) => o.value === option.value);
-	}
+	};
 
 	const isOptionDisabled = (option: Option) => {
-		return (maxSelections > 0 && selectedOptions.length >= maxSelections && !isSelected(option));
+		return (
+			maxSelections > 0 &&
+			selectedOptions.length >= maxSelections &&
+			!isSelected(option)
+		);
 	};
 
 	const isAllOptionDisabled = () => {
@@ -182,7 +186,9 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 							/>
 						))}
 						{filteredOptions.length === 0 && (
-							<li className={styles.filterList__noResults}>Ничего не найдено</li>
+							<li className={styles.filterList__noResults}>
+								Ничего не найдено
+							</li>
 						)}
 					</ul>
 				</div>
