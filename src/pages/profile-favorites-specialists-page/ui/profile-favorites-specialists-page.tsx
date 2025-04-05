@@ -6,7 +6,7 @@ import { useGetFavoriteSpecialistsQuery } from '@/services/SpecialistService';
 import styles from './profile-favorites-specialists-page.module.scss';
 
 export const FavoritesSpecialists = () => {
-	const [currentSettings, /*setCurrentSettings*/] = useState({
+	const [currentSettings /*setCurrentSettings*/] = useState({
 		currentPage: 1,
 		query: '',
 	});

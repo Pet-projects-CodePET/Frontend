@@ -8,7 +8,7 @@ export type Speciality = {
 
 export type TProfession = {
 	id: number;
-	specialty: string;
+	speciality: string;
 	specialization: string;
 };
 

@@ -1,5 +1,5 @@
 export type LikeButtonType = {
-    id: never;
+	id: never;
 	name: string;
 	description: string;
 	started: string;
@@ -39,4 +39,4 @@ export type LikeButtonType = {
 	disabled?: boolean;
 	favorite: boolean;
 	handleDeleteCard?: (arg: number) => void;
-}
+};

@@ -29,7 +29,9 @@ export const FavoritesProjects = () => {
 	});
 
 	const [isVisibleSearch, setIsVisibleSearch] = useState(false);
-	const [favoriteProjectsArray, setFavoriteProjectsArray] = useState<ProjectCardFullType[]>([]);
+	const [favoriteProjectsArray, setFavoriteProjectsArray] = useState<
+		ProjectCardFullType[]
+	>([]);
 
 	const handleDeleteCard = (id: number) => {
 		setFavoriteProjectsArray(
@@ -65,7 +67,7 @@ export const FavoritesProjects = () => {
 				refetch();
 			}
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [favoriteProjectsArray, refetch]);
 
 	return (

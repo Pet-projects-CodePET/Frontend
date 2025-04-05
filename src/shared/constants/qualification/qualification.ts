@@ -1,15 +1,11 @@
 export const qualification = [
 	{
-		value: 0,
-		label: 'Все',
-	},
-	{
 		value: 1,
-		label: 'Middle',
+		label: 'Junior',
 	},
 	{
 		value: 2,
-		label: 'Junior',
+		label: 'Middle',
 	},
 	{
 		value: 3,

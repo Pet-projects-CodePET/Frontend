@@ -4,7 +4,7 @@ export type ProjectCardFullType = HTMLAttributes<HTMLElement> & {
 	name: string;
 	description: string;
 	started: string;
-    ended: string;
+	ended: string;
 	busyness?: number;
 	directions: [
 		{
@@ -27,14 +27,13 @@ export type ProjectCardFullType = HTMLAttributes<HTMLElement> & {
 				specialization: string;
 				speciality: string;
 			};
-			skills: 
-				{
-					id: number;
-					name: string;
-				}[];
-				count?: number;
-				level?: number;
-				is_required?: boolean;	
+			skills: {
+				id: number;
+				name: string;
+			}[];
+			count?: number;
+			level?: number;
+			is_required?: boolean;
 		},
 	];
 	handleDeleteCard?: (arg: number) => void;

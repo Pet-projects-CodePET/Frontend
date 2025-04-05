@@ -3,7 +3,7 @@ export type SpecialistType = {
 	avatar: string;
 	name: string;
 	username: string;
-    is_favorite: boolean;
+	is_favorite: boolean;
 	specialists: [
 		{
 			id: number;
@@ -27,4 +27,12 @@ export type SpecialistType = {
 		},
 	];
 	ready_to_participate: boolean;
+};
+
+export type Filters = {
+	status?: boolean; // Статус специалиста
+	specialists?: number[]; // Уровень квалификации
+	specialty?: number[]; // Специальность
+	skills?: number[]; // Навыки
+	searchQuery?: string; // Поиск по фразе
 };
