@@ -65,27 +65,31 @@ export const RequestOrganizerCard: FC<RequestOrganizerCardType> = ({
 						/>
 					</div>
 				</div>
+				{cover_letter === '' ? (
+					null
+				) : (
+					<div className={styles.menu}>
+						<div
+							className={styles.menuTitle}
+							onClick={() => {
+								setIsOpenMenu(!isOpenMenu);
+							}}>
+							<h3 className={styles.titleCover}>Сопроводительное письмо</h3>
+							{isOpenMenu ? (
+								<IconUp className={styles.menuIcon} />
+							) : (
+								<IconDown className={styles.menuIcon} />
+							)}
+						</div>
+						<div
+							className={clsx(styles.menuCover, {
+								[styles.menuCover_visible]: isOpenMenu,
+							})}>
+							<h4 className={styles.menuCover__text}>{parse(cover_letter)}</h4>
+						</div>
+					</div>
+				)}
 
-				<div className={styles.menu}>
-					<div
-						className={styles.menuTitle}
-						onClick={() => {
-							setIsOpenMenu(!isOpenMenu);
-						}}>
-						<h3 className={styles.titleCover}>Сопроводительное письмо</h3>
-						{isOpenMenu ? (
-							<IconUp className={styles.menuIcon} />
-						) : (
-							<IconDown className={styles.menuIcon} />
-						)}
-					</div>
-					<div
-						className={clsx(styles.menuCover, {
-							[styles.menuCover_visible]: isOpenMenu,
-						})}>
-						<h4 className={styles.menuCover__text}>{parse(cover_letter)}</h4>
-					</div>
-				</div>
 				<AnswerRequestOrganizerFeature
 					id={participation_request_id}
 					participant_user_id={request_participants.user_id}

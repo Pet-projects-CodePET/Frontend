@@ -27,4 +27,5 @@ export type SpecialistCardType = {
 			skills?: [{ id: number; name: string }];
 		},
 	];
+	handleDeleteCard: (arg: number) => void;
 };

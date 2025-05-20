@@ -39,9 +39,9 @@ export const ListRequestsParticipants = ({
 					statusNumber: currentSettings.statusNumber,
 				});
 			}
-			if (currentSettings.currentPage === 1) {
-				refetch();
-			}
+			// if (currentSettings.currentPage === 1) {
+			// 	refetch();
+			// }
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [requests, refetch]);

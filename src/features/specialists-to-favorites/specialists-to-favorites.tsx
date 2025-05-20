@@ -9,9 +9,11 @@ import {
 export const SpecialistsToFavoritesFeature = ({
 	favorite,
 	id,
+	handleDeleteCard,
 }: {
 	favorite: boolean;
 	id: number;
+	handleDeleteCard: (arg: number) => void;
 }) => {
 	const [isActiveLike, setIsActiveLike] = useState(favorite);
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -43,6 +45,9 @@ export const SpecialistsToFavoritesFeature = ({
 			.unwrap()
 			.then(() => {
 				setIsActiveLike(false);
+				if (handleDeleteCard) {
+					handleDeleteCard(id);
+				}
 			})
 			.catch((error) => {
 				console.log('errorCatch', error);

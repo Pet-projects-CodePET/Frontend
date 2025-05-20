@@ -56,28 +56,32 @@ export const RequestParticipantCard: FC<RequestParticipantCardType> = ({
 			<h2 className={styles.title}>{project.name}</h2>
 			<p className={styles.subtitle}>{project.directions[0].name}</p>
 			<p className={styles.subtitlePosition}>{position}</p>
-			<div className={styles.menu}>
-				<div
-					className={styles.menuTitle}
-					onClick={() => {
-						setIsOpenMenu(!isOpenMenu);
-					}}>
-					<h3 className={styles.titleCover}>Сопроводительное письмо</h3>
-					{isOpenMenu ? (
-						<IconUp className={styles.menuIcon} />
-					) : (
-						<IconDown className={styles.menuIcon} />
-					)}
+			{cover_letter === '' ? (
+				null
+			) : (
+				<div className={styles.menu}>
+					<div
+						className={styles.menuTitle}
+						onClick={() => {
+							setIsOpenMenu(!isOpenMenu);
+						}}>
+						<h3 className={styles.titleCover}>Сопроводительное письмо</h3>
+						{isOpenMenu ? (
+							<IconUp className={styles.menuIcon} />
+						) : (
+							<IconDown className={styles.menuIcon} />
+						)}
+					</div>
+					<div
+						className={clsx(styles.menuCover, {
+							[styles.menuCover_visible]: isOpenMenu,
+						})}>
+						<h4 className={styles.menuCover__text}>
+							{cover_letter === '' ? '' : parse(cover_letter)}
+						</h4>
+					</div>
 				</div>
-				<div
-					className={clsx(styles.menuCover, {
-						[styles.menuCover_visible]: isOpenMenu,
-					})}>
-					<h4 className={styles.menuCover__text}>
-						{cover_letter === null ? ' ' : parse(cover_letter)}
-					</h4>
-				</div>
-			</div>
+			)}
 		</article>
 	);
 };

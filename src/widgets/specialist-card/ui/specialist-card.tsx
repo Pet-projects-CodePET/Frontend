@@ -17,12 +17,15 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 	readyToParticipate,
 	specialists,
 	is_favorite,
+	handleDeleteCard,
 }) => {
 	return (
 		<article className={styles.specialist}>
 			<div className={styles.specialist__info}>
 				<div className={styles.info__person}>
-					<AvatarImage imageURL={avatar} />
+					<Link target="_blank" href={`/specialists/${userId}`}>
+						<AvatarImage imageURL={avatar} />
+					</Link>
 					<div className={styles.info__personDescription}>
 						<div className={styles.info__personStatus}>
 							{readyToParticipate ? (
@@ -45,7 +48,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						<p className={styles.info__nickname}>@{userName}</p>
 					</div>
 					<div className={styles.info__likeContainer}>
-						<SpecialistsToFavoritesFeature id={userId} favorite={is_favorite} />
+						<SpecialistsToFavoritesFeature id={userId} favorite={is_favorite} handleDeleteCard={handleDeleteCard as () => void}/>
 					</div>
 				</div>
 				<Link
