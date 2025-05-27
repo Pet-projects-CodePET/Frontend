@@ -5,11 +5,12 @@
 	flex-direction: column;
 	gap: 24px;
 }
-
 .inputSearch {
 	width: 396px;
 }
-
+.input {
+	width: 396px;
+}
 .textContainer {
 	display: flex;
 	flex-direction: column;
@@ -23,7 +24,7 @@
 	font-weight: 700;
 	line-height: normal;
 	letter-spacing: 0.25px;
-	margin: 0;
+	margin: 60px 0 0 0;
 }
 .subtitle {
 	margin: 0;
@@ -38,6 +39,9 @@
 
 @media screen and (max-width: 490px) {
 	.inputSearch {
+		width: 300px;
+	}
+	.input {
 		width: 300px;
 	}
 }

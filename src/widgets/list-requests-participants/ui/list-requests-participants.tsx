@@ -31,7 +31,7 @@ export const ListRequestsParticipants = ({
 	};
 
 	useEffect(() => {
-		if (requests.length === 0) {
+		if (requests?.length === 0) {
 			if (currentSettings.currentPage > 1) {
 				setCurrentSettings({
 					currentPage: currentSettings.currentPage - 1,
