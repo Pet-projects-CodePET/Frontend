@@ -3,14 +3,14 @@ import React, { FC } from 'react';
 import clsx from 'clsx';
 import { SpecialistCardType } from './type';
 import Link from 'next/link';
-import { InviteSpecialist } from '@/widgets/invite-specialist';
+//import { InviteSpecialist } from '@/widgets/invite-specialist';
 import { AvatarImage } from '@/entities/_avatar-image';
 import { ActivityIcon, ActivityIconRed } from '@/shared/assets';
 import { SpecialistsToFavoritesFeature } from '@/features';
 import styles from './specialist-card.module.scss';
 
 export const SpecialistCard: FC<SpecialistCardType> = ({
-	userId,
+	user_id,
 	avatar,
 	userName,
 	name,
@@ -23,7 +23,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 		<article className={styles.specialist}>
 			<div className={styles.specialist__info}>
 				<div className={styles.info__person}>
-					<Link target="_blank" href={`/specialists/${userId}`}>
+					<Link target="_blank" href={`/specialists/${user_id}`}>
 						<AvatarImage imageURL={avatar} />
 					</Link>
 					<div className={styles.info__personDescription}>
@@ -48,13 +48,13 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						<p className={styles.info__nickname}>@{userName}</p>
 					</div>
 					<div className={styles.info__likeContainer}>
-						<SpecialistsToFavoritesFeature id={userId} favorite={is_favorite} handleDeleteCard={handleDeleteCard as () => void}/>
+						<SpecialistsToFavoritesFeature id={user_id} favorite={is_favorite} handleDeleteCard={handleDeleteCard as () => void}/>
 					</div>
 				</div>
 				<Link
 					className={styles.info__link}
 					target="_blank"
-					href={`/specialists/${userId}`}>
+					href={`/specialists/${user_id}`}>
 					<div className={styles.info__role}>
 						<div>
 							{specialists[0] &&
@@ -98,7 +98,7 @@ export const SpecialistCard: FC<SpecialistCardType> = ({
 						})}
 					</ul>
 				</Link>
-				<InviteSpecialist />
+				{/* <InviteSpecialist /> */}
 			</div>
 		</article>
 	);

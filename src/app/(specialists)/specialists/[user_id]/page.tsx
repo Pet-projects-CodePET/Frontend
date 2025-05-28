@@ -3,8 +3,8 @@ import { DetailedSpecialistPage } from '@/pages/specialist-in-details';
 
 export const revalidate = 0;
 
-const Page = (param: { params: { id: number } }) => {
-	return <DetailedSpecialistPage params={param} />;
+const Page = ({ params }: { params: { user_id: number } }) => {
+	return <DetailedSpecialistPage user_id={params.user_id} />;
 };
 
 export default Page;

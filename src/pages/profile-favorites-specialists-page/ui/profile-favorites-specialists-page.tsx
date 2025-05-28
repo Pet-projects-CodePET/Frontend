@@ -92,7 +92,7 @@ export const FavoritesSpecialists = () => {
 					favoriteSpecialistsArray.map((item: SpecialistType) => (
 						<SpecialistCard
 							key={item.user_id}
-							userId={item.user_id}
+							user_id={item.user_id}
 							specialists={item.specialists}
 							avatar={item.avatar ? item.avatar : ''}
 							name={item.name}

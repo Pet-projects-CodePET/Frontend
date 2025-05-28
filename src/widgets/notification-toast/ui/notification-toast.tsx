@@ -15,18 +15,23 @@ type NotificationPropsType = {
 	status: keyof typeof NotificationStatusKeys;
 	title: string;
 	subtitle?: string;
+	onClose?: () => void;
 };
 
 type HandleResizeType = () => void;
 
-export const toaster = ({ status, title, subtitle }: NotificationPropsType) =>
-	toast(
-		NotificationBanner({
-			status,
-			title,
-			subtitle,
-		})
+export const toaster = ({
+	status,
+	title,
+	subtitle,
+	onClose,
+}: NotificationPropsType) => {
+	const toastId = toast(
+		NotificationBanner({ status, title, subtitle }),
+		{ onClose: () => onClose?.() } // Передаём callback в toast
 	);
+	return toastId;
+};
 export const NotificationToastContainer = () => {
 	const [width, setWidth] = useState(0);
 

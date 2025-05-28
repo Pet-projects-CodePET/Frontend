@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RequestParticipantCard } from '@/widgets/request-participant-card';
 import { RequestParticipantCardType } from '@/widgets/request-participant-card/ui/types';
+import { useGetAllRequestsParticipationQuery } from '@/services/ProjectService';
 import styles from './list-requests-participants.module.scss';
 
 type CurrentSettingsType = {
@@ -12,14 +13,13 @@ export const ListRequestsParticipants = ({
 	arrayRequests,
 	currentSettings,
 	setCurrentSettings,
-	refetch,
 }: {
 	arrayRequests: RequestParticipantCardType[];
 	currentSettings: CurrentSettingsType;
 	setCurrentSettings: (arg: CurrentSettingsType) => void;
-	refetch: () => void;
 }) => {
 	const [requests, setRequests] = useState<RequestParticipantCardType[]>([]);
+	 const { refetch } = useGetAllRequestsParticipationQuery(currentSettings);
 	useEffect(() => {
 		if (arrayRequests) {
 			setRequests(arrayRequests);
@@ -30,21 +30,18 @@ export const ListRequestsParticipants = ({
 		setRequests(requests.filter((item) => Number(item.id) !== id));
 	};
 
-	useEffect(() => {
-		if (requests?.length === 0) {
-			if (currentSettings.currentPage > 1) {
-				setCurrentSettings({
-					currentPage: currentSettings.currentPage - 1,
-					role: currentSettings.role,
-					statusNumber: currentSettings.statusNumber,
-				});
-			}
-			// if (currentSettings.currentPage === 1) {
-			// 	refetch();
-			// }
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [requests, refetch]);
+	 useEffect(() => {
+    if (requests?.length === 0) {
+      if (currentSettings.currentPage > 1) {
+        setCurrentSettings({
+          ...currentSettings,
+          currentPage: currentSettings.currentPage - 1,
+        });
+      } else {
+        refetch(); 
+      }
+    }
+  }, [requests, currentSettings, setCurrentSettings, refetch]);
 
 	return (
 		<>

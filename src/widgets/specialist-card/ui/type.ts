@@ -1,5 +1,5 @@
 export type SpecialistCardType = {
-	userId: number;
+	user_id: number;
 	avatar: string;
 	userName: string;
 	name: string;
@@ -27,5 +27,5 @@ export type SpecialistCardType = {
 			skills?: [{ id: number; name: string }];
 		},
 	];
-	handleDeleteCard: (arg: number) => void;
+	handleDeleteCard?: (arg: number) => void;
 };

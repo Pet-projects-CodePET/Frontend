@@ -180,7 +180,7 @@ export const Specialists = () => {
 					currentData.map((res: SpecialistType) => (
 						<SpecialistCard
 							key={res?.user_id}
-							userId={res?.user_id}
+							user_id={res?.user_id}
 							specialists={res?.specialists}
 							avatar={res?.avatar ? res?.avatar : ''}
 							name={res?.name}

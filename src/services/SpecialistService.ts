@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -56,7 +57,7 @@ export const specialistsApi = createApi({
 		}),
 		getFavoriteSpecialists: builder.query({
 			query: ({ currentPage, query }) => ({
-				url: `/profiles/?is_favorite=1&page=${currentPage}&search=${query}`,
+				url: `/profiles/?is_favorite=1&page=${currentPage}&user_search=${query}`,
 				method: 'GET',
 			}),
 			keepUnusedDataFor: 1,
@@ -74,6 +75,12 @@ export const specialistsApi = createApi({
 				method: 'DELETE',
 			}),
 		}),
+		getSpecialistById: builder.query({
+			query: ({ user_id }) => ({
+				url: `/profiles/${user_id}/`,
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -82,4 +89,5 @@ export const {
 	useGetFavoriteSpecialistsQuery,
 	useAddFavoriteSpecialistMutation,
 	useDeleteFavoriteSpecialistMutation,
+	useGetSpecialistByIdQuery,
 } = specialistsApi;
