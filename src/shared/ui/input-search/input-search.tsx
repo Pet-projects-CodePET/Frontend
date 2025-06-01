@@ -31,7 +31,7 @@ export const InputSearch: FC<InputSearchProps> = ({
 	return (
 		<div className={clsx(className, styles.inputContainer)}>
 			<input
-				className={clsx(styles.input)}
+				className={styles.input}
 				type={type}
 				onChange={handleChange}
 				{...props}
