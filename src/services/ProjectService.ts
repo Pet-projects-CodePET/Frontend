@@ -99,6 +99,18 @@ export const projectsApi = createApi({
 				method: 'DELETE',
 			}),
 		}),
+		getProfessions: builder.query({
+			query: () => ({
+				url: '/professions/',
+				method: 'GET',
+			}),
+		}),
+		getSkills: builder.query({
+			query: () => ({
+				url: '/skills/',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -113,4 +125,6 @@ export const {
 	useDeleteFavoriteProjectMutation,
 	useGetFavoriteProjectsQuery,
 	useAnswerOrganizerOnRequestMutation,
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
 } = projectsApi;

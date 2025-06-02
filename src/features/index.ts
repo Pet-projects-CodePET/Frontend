@@ -11,3 +11,4 @@ export { InviteToProjectVacancyFeature } from '@/features/invite-to-project-vaca
 export { SpecialistsToFavoritesFeature } from '@/features/specialists-to-favorites/specialists-to-favorites';
 export { DeleteRequestParticipantFeature } from '@/features/delete-request-participant/delete-request-participant';
 export { AnswerRequestOrganizerFeature } from '@/features/answer-request-organizer/answer-request-organizer';
+export { FormCreateProjectFeature } from '@/features/form-create-project/form-create-project';
