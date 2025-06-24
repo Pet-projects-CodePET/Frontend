@@ -10,11 +10,23 @@ import FormSignupSchema from '@/shared/utils/validation-schemas/form-signup-sche
 import { useRouter } from 'next/navigation';
 import { FormFieldsCreateProject } from '@/entities/form-create-project';
 import { ProfileLink } from '@/shared/ui';
+import {
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
+} from '@/services/ProjectService';
+import { Loader } from '@/shared/ui';
+
 export const FormCreateProjectFeature: FC = () => {
 	const captchaRef = useRef<HCaptcha>(null);
 	const router = useRouter();
 
 	const [createUser, { error }] = useCreateUserMutation();
+
+	const { data: professions, isLoading: isLoadingProfessions } =
+		useGetProfessionsQuery([]);
+	const { data: allSkills, isLoading: isLoadingSkills } = useGetSkillsQuery([]);
+	console.log('skills', allSkills);
+	console.log('profession', professions);
 
 	const [captchaVerified, setCaptchaVerified] = useState(false);
 	const [serverErrorText, setServerErrorText] = useState('');
@@ -49,21 +61,27 @@ export const FormCreateProjectFeature: FC = () => {
 
 	return (
 		<>
-		<ProfileLink title='Создать проект'/>
-		<Form onSubmit={handleSubmit} schema={FormSignupSchema}>
-			<FormFieldsCreateProject
-				onLoad={onLoad}
-				setToken={hCaptchaToken}
-				captchaVerified={captchaVerified}
-				serverErrorText={serverErrorText}
-				serverEmailError={serverEmailError}
-				serverUsernameError={serverUsernameError}
-				serverPasswordError={serverPasswordError}
-				setServerEmailError={setServerEmailError as () => string}
-				setServerUsernameError={setServerUsernameError as () => string}
-				setServerPasswordError={setServerPasswordError as () => string}
-			/>
-		</Form>
+			<ProfileLink title="Создать проект" />
+			{isLoadingProfessions || isLoadingSkills ? (
+				<Loader />
+			) : (
+				<Form onSubmit={handleSubmit} schema={FormSignupSchema}>
+					<FormFieldsCreateProject
+						onLoad={onLoad}
+						setToken={hCaptchaToken}
+						captchaVerified={captchaVerified}
+						serverErrorText={serverErrorText}
+						serverEmailError={serverEmailError}
+						serverUsernameError={serverUsernameError}
+						serverPasswordError={serverPasswordError}
+						setServerEmailError={setServerEmailError as () => string}
+						setServerUsernameError={setServerUsernameError as () => string}
+						setServerPasswordError={setServerPasswordError as () => string}
+						allSkills={allSkills}
+						professions={professions}
+					/>
+				</Form>
+			)}
 		</>
 	);
 };

@@ -1,3 +1,4 @@
+import { TProfession, TSkills } from "@/shared/types/specialty";
 export type FormCreateProjectProps = {
 	onLoad: () => void;
 	setToken: (token: string) => void;
@@ -9,6 +10,8 @@ export type FormCreateProjectProps = {
 	setServerUsernameError: (arg0: string) => string;
 	setServerEmailError: (arg0: string) => string;
 	setServerPasswordError: (arg0: string) => string;
+	professions: TProfession[];
+	allSkills: TSkills[];
 };
 
 export type direction = {

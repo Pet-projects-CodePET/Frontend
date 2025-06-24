@@ -1,22 +1,102 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types'; // import { useGetDirectionsQuery } from '@/services/ProjectService';
 import styles from './form-create-project.module.scss';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
+//import { SingleSelectInput } from '@/shared/ui/single-select-input/single-select-input';
 import Plus from '@/shared/assets/icons/plus-large.svg';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui';
 import { useFormContext } from 'react-hook-form';
 import { FormCreateProjectCard } from '@/entities/form-create-project-card';
-import {  BUSYNESS, CONTACTS, DIRECTION } from '@/utils/constants';
+import { BUSYNESS, CONTACTS, DIRECTION } from '@/utils/constants';
+import { ContactsList } from '@/entities/contact-list/contact-list';
+import { TContact } from '@/shared/ui/contact-card/types';
+import { generalEmailRegex, phoneRegex } from '@/utils/regex-consts';
 
-export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
+type TOption = {
+	label: string;
+	value: string;
+	id?: number;
+};
+export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
+	allSkills,
+	professions,
+}) => {
 	const { control } = useFormContext();
+	const [contacts, setContacts] = useState<TContact[]>([]);
+	const [selectedOptionContactType, setSelectedOptionContactType] =
+		useState<TOption | null>(null);
+	const [addContactErrorText, setAddContactErrorText] = useState<string>('');
+	const [inputValueContact, setInputValueContact] = useState<string>('');
+	useEffect(() => {
+		setAddContactErrorText('');
+	}, [contacts]);
+	const handleInputChange = (
+		event: React.ChangeEvent<HTMLInputElement>,
+		fieldName: string
+	) => {
+		switch (fieldName) {
+			case 'inputValueContact':
+				if (addContactErrorText !== '') setAddContactErrorText('');
+				setInputValueContact(event.target.value);
+				break;
+			default:
+		}
+	};
+	const handleOptionSelect = (option: TOption) => {
+		setSelectedOptionContactType(option);
+	};
+	const handleAddContact = () => {
+		if (selectedOptionContactType && inputValueContact) {
+			let isValid = true;
+			const newContact: TContact = {
+				[selectedOptionContactType.value]: inputValueContact,
+			};
+
+			// Проверка формата email
+			if (selectedOptionContactType.value === 'email') {
+				if (!generalEmailRegex.test(inputValueContact)) {
+					setAddContactErrorText('Пожалуйста, введите корректный email адрес.');
+					isValid = false;
+				}
+			}
+			// Проверка формата телефона
+			if (selectedOptionContactType.value === 'phone') {
+				if (!phoneRegex.test(inputValueContact)) {
+					setAddContactErrorText(
+						'Допустимый формат +7XXXXXXXXXX, где X - цифры.'
+					);
+					isValid = false;
+				}
+			}
+			// Проверяем, что контакт такого же типа не существует уже
+			if (
+				isValid &&
+				!contacts.some((contact) =>
+					Object.prototype.hasOwnProperty.call(
+						contact,
+						selectedOptionContactType.value
+					)
+				)
+			) {
+				setContacts([...contacts, newContact]);
+				// setSelectedOptionContactType(null);
+				setInputValueContact('');
+			} else if (!isValid) {
+				// Если данные не валидны, выходим из функции
+				return;
+			} else {
+				setAddContactErrorText(
+					`Контакт типа "${selectedOptionContactType.label}" уже существует.`
+				);
+			}
+		}
+	};
 	return (
 		<div className={styles.container}>
-			<h2>Детали проекта</h2>
+			<h2 className={styles.title}>Детали проекта</h2>
 			<div className={styles.input_list}>
 				<Input
 					name="name"
@@ -53,71 +133,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 			</div>
 
 			<div className={styles.specialists}>
-				{/* <h3 className={styles.input_list_title}>Кто нужен в проект</h3>
-				<div className={styles.specialists_toggle}>
-					<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
-					<Toggler
-						checked={recruitmentIsOpen as boolean}
-						name={'allow_notifications'}
-						id={'allow_notifications'}
-						onChange={(evt) => setRecruitmentIsOpen(evt.target.checked)}
-					/>
-				</div>
-
-				<FormCreateProjectCard /> */}
-
-				{/* <SingleSelectInput
-					name={`project_specialists`}
-					label={'Специальность'}
-					onChange={() => {}}
-					options={professions?.map(
-						(profession: { id: number; specialization: string }) => {
-							return {
-								label: profession.specialization,
-								value: profession.specialization,
-							};
-						}
-					)}
-					description="Выберите одну специальность"
-					isSearchable
-				/> */}
-
-				{/* <div>
-					<MultiSelectInput
-						name={`project_specialists`}
-						onChange={() => {}}
-						options={LEVEL.map(
-							(item: {label: string; value: string; level: number}) => {
-								return {
-									label: item.label,
-									value: item.level
-								}
-							}
-						)}
-						values={[]}
-						label={'Уровень квалификации'}
-						isSearchable
-					/>
-				</div> */}
-
-				{/* <div>
-					<MultiSelectInput
-						isSearchable
-						name={`project_specialists`}
-						onChange={() => {}}
-						options={skills?.map((skill: { id: number; name: string }) => {
-							return {
-								label: skill.name,
-								value: skill.name,
-							};
-						})}
-						values={[]}
-						label={'Навыки'}
-						description="Выберите не более 15 навыков"
-						maxSelections={15}
-					/>
-				</div> */}
-
 				<div className={styles.employment}>
 					<h3 className={styles.input_list_title}>Занятость</h3>
 					<ul className={styles.employment_list}>
@@ -151,29 +166,78 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 
 				<div className={styles.contacts}>
 					<h3 className={styles.input_list_title}>Контакты для связи</h3>
-					<div className={styles.contacts_selects}>
-						<SingleSelectInput
-							name={`project_specialists`}
-							onChange={() => {}}
-							options={CONTACTS}
-							description={'Выберите ресурс'}
-						/>
-						<Input name="name" className={styles.input_extra} labelName=''/>
+					<ContactsList contacts={contacts} setContacts={setContacts} />
+					<div className={styles.fields__addContactWrapper}>
+						<label className={styles.fields__addContactTypeWrapper}>
+							<select
+								className={styles.fields__addContactType}
+								value={selectedOptionContactType?.value || ''}
+								onChange={(event) =>
+									handleOptionSelect(
+										CONTACTS.find(
+											(contact) => contact.value === event.target.value
+										)!
+									)
+								}>
+								{CONTACTS.map((option) => (
+									<option
+										className={styles.fields__addContactTypeListItem}
+										key={option.value}
+										value={option.value}>
+										{option.label}
+									</option>
+								))}
+							</select>
+							<span className={styles.fields__addContactTypeLabel}>
+								Выберите ресурс
+							</span>
+						</label>
+						{selectedOptionContactType?.value === 'phone_number' ? (
+							<Input
+								placeholder="+7XXXXXXXXXX"
+								className={styles.fields__addContactTextValue}
+								name="inputValueContact"
+								labelName=""
+								// type="text"
+								description={false}
+								value={inputValueContact}
+								error={addContactErrorText}
+								onChange={(event) =>
+									handleInputChange(event, 'inputValueContact')
+								}
+							/>
+						) : (
+							<Input
+								className={styles.fields__addContactTextValue}
+								name="inputValueContact"
+								labelName=""
+								// type="text"
+								description={false}
+								value={inputValueContact}
+								error={addContactErrorText}
+								onChange={(event) =>
+									handleInputChange(event, 'inputValueContact')
+								}
+							/>
+						)}
 					</div>
 				</div>
-
-				<div className={styles.specialists_buttons}>
-					<MainButton
-						variant="secondary"
-						width="regular"
-						IconLeft={Plus}
-						onClick={() => ({})}>
-						Добавить
-					</MainButton>
-					<MainButton variant="trivial" width="regular" onClick={() => ({})}>
-						Сбросить
-					</MainButton>
-				</div>
+			</div>
+			<div className={styles.specialists_buttons}>
+				<MainButton
+					type="button"
+					onClick={handleAddContact}
+					variant="secondary"
+					width="regular"
+					IconLeft={Plus}>
+					Добавить
+				</MainButton>
+				<MainButton
+					variant="trivial"
+					width="regular"
+					onClick={() => setContacts([])}>
+					Сбросить
+				</MainButton>
 			</div>
 
 			<Input
@@ -190,7 +254,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = () => {
 				{'Очистить'}
 			</MainButton>
 
-			<FormCreateProjectCard/>
+			<FormCreateProjectCard allSkills={allSkills} professions={professions} />
 
 			<div className={styles.buttons}>
 				<MainButton variant={'primary'} width={'regular'} disabled={false}>
