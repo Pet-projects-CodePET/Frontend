@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IProjectsRequests } from './models/IProjectsRequests';
 import { FavoriteProjectType } from './models/IFavoriteProject';
 import { AnswerOnRequestType } from './models/IAnswerOnRequest';
+import { IUser } from './models/IUser';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -111,6 +112,16 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
+		addNewProject: builder.mutation<
+		IUser,
+		IUser
+	>({
+		query: (project) => ({
+			url: `/projects/`,
+			method: 'POST',
+			body: project,
+		}),
+	}),
 	}),
 });
 
@@ -127,4 +138,5 @@ export const {
 	useAnswerOrganizerOnRequestMutation,
 	useGetProfessionsQuery,
 	useGetSkillsQuery,
+	useAddNewProjectMutation
 } = projectsApi;

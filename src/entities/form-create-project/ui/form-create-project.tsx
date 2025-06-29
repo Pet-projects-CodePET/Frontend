@@ -23,6 +23,9 @@ type TOption = {
 export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	allSkills,
 	professions,
+	currentText,
+	setCurrentText,
+
 }) => {
 	const { control } = useFormContext();
 	const [contacts, setContacts] = useState<TContact[]>([]);
@@ -108,8 +111,8 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					desc={
 						'Расскажите о проекте и его цели используя не более 750 символов'
 					}
-					setCurrentText={() => {}}
-					currentText={''}
+					setCurrentText={setCurrentText}
+					currentText={currentText as string}
 				/>
 			</div>
 
@@ -117,14 +120,15 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 				<h3 className={styles.input_list_title}>Направление разработки</h3>
 				<ul className={styles.directions_list}>
 					{DIRECTION.map(
-						(direction: { id: number; name: string }, index: number) => (
-							<li className={styles.directions_item} key={index}>
+						(directions: { id: number; name: string }) => (
+							<li className={styles.directions_item} key={directions.id}>
 								<CheckboxAndRadio
-									labelName={direction.name}
-									label={`direction`}
+									labelName={directions.name}
+									label={`directions`}
 									type={'checkbox'}
-									id={`direction_${index}`}
-									name={'direction'}
+									id={`direction_${directions.id}`}
+									name={'directions'}
+									value={directions.id}
 								/>
 							</li>
 						)
@@ -136,14 +140,15 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 				<div className={styles.employment}>
 					<h3 className={styles.input_list_title}>Занятость</h3>
 					<ul className={styles.employment_list}>
-						{BUSYNESS.map((busyness, index: number) => (
-							<li className={styles.directions_item} key={index}>
+						{BUSYNESS.map((busyness) => (
+							<li className={styles.directions_item} key={busyness.id}>
 								<CheckboxAndRadio
 									labelName={busyness.name}
 									label={`busyness`}
 									type={'radio'}
-									id={`busyness_${index}.`}
+									id={`busyness_${busyness.id}.`}
 									name={'busyness'}
+									value={busyness.id}
 								/>
 							</li>
 						))}
@@ -155,11 +160,11 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					<div className={styles.dates_inputs}>
 						<div className={styles.dates_input}>
 							<p className={styles.dates_text}>Начало</p>
-							<DatePickerRHF control={control} name="start" />
+							<DatePickerRHF control={control} name="started" />
 						</div>
 						<div className={styles.dates_input}>
 							<p className={styles.dates_text}>Окончание</p>
-							<DatePickerRHF control={control} name="end" />
+							<DatePickerRHF control={control} name="ended" />
 						</div>
 					</div>
 				</div>
@@ -254,10 +259,10 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 				{'Очистить'}
 			</MainButton>
 
-			<FormCreateProjectCard allSkills={allSkills} professions={professions} />
+			<FormCreateProjectCard allSkills={allSkills} professions={professions} control={control} name="project_specialists"/>
 
 			<div className={styles.buttons}>
-				<MainButton variant={'primary'} width={'regular'} disabled={false}>
+				<MainButton type='submit' variant={'primary'} width={'regular'} disabled={false}>
 					{'Опубликовать'}
 				</MainButton>
 				<MainButton variant={'secondary'} width={'regular'} disabled={false}>

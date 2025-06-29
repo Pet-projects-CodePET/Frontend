@@ -16,9 +16,14 @@ export const DatePickerRHF = (props: DatePickerRHFProps) => {
 			control={control}
 			name={props.name}
 			rules={{
-				required: 'Пожалуйста, заполните дату рождения',
+				required: 'Пожалуйста, заполните дату',
 			}}
 			render={({ field, fieldState }) => {
+				const getDayjsValue = () => {
+					if (!field.value) return null;
+					if (dayjs.isDayjs(field.value)) return field.value;
+					return dayjs(field.value, 'YYYY-MM-DD');
+				  };
 				return (
 					<>
 						<DatePicker
@@ -34,10 +39,10 @@ export const DatePickerRHF = (props: DatePickerRHFProps) => {
 							name={field.name}
 							onBlur={field.onBlur}
 							format="DD/MM/YYYY"
-							value={field.value ? dayjs(field.value) : ''}
+							value={getDayjsValue()}
 							locale={locale}
 							onChange={(date) => {
-								field.onChange(date ? date.valueOf() : null);
+								field.onChange(date ? date.format('YYYY-MM-DD') : null);
 							}}
 						/>
 						<br />

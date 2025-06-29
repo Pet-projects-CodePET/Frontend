@@ -1,62 +1,44 @@
 'use client';
 
-import React, { FC, useRef, useState } from 'react';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
-// import { userApi } from '@/services/UserService';
-import { useCreateUserMutation } from '@/services/UserService';
-import { IUser } from '@/services/models/IUser';
+import React, { FC, /*useRef,*/ useState } from 'react';
 import { Form } from '@/shared/ui';
-import FormSignupSchema from '@/shared/utils/validation-schemas/form-signup-schema';
-import { useRouter } from 'next/navigation';
 import { FormFieldsCreateProject } from '@/entities/form-create-project';
 import { ProfileLink } from '@/shared/ui';
 import {
 	useGetProfessionsQuery,
 	useGetSkillsQuery,
+	useAddNewProjectMutation
 } from '@/services/ProjectService';
 import { Loader } from '@/shared/ui';
+import { IUser } from '@/services/models/IUser';
 
 export const FormCreateProjectFeature: FC = () => {
-	const captchaRef = useRef<HCaptcha>(null);
-	const router = useRouter();
 
-	const [createUser, { error }] = useCreateUserMutation();
+	const [ createNewProject, {error} ] = useAddNewProjectMutation();
 
 	const { data: professions, isLoading: isLoadingProfessions } =
 		useGetProfessionsQuery([]);
 	const { data: allSkills, isLoading: isLoadingSkills } = useGetSkillsQuery([]);
-	console.log('skills', allSkills);
-	console.log('profession', professions);
+	const [currentText, setCurrentText] = useState(undefined);
 
-	const [captchaVerified, setCaptchaVerified] = useState(false);
-	const [serverErrorText, setServerErrorText] = useState('');
-	const [serverEmailError, setServerEmailError] = useState('');
-	const [serverUsernameError, setServerUsernameError] = useState('');
-	const [serverPasswordError, setServerPasswordError] = useState('');
-
-	const onLoad = () => {
-		const executePayload = { async: true };
-		captchaRef.current?.execute(executePayload);
-	};
-
-	const hCaptchaToken = (token: string) => {
-		token && setCaptchaVerified(true);
-	};
-
-	const handleSubmit = (userData: IUser) => {
-		localStorage.setItem('userData', JSON.stringify(userData));
-		createUser(userData)
+		const handleSubmit = (project: IUser) => {
+			const projectData = {
+				...project,
+				description: currentText || '' 
+			};
+	
+		createNewProject(projectData)
 			.unwrap()
-			.then(() => router.push('registration/confirm'))
+			.then(() => console.log('новый проект'))
 			.catch((error) => {
 				console.log(error.data);
-				setServerErrorText(error.data?.non_field_errors || '');
-				setServerEmailError(error.data?.email);
-				setServerUsernameError(error.data?.username);
-				setServerPasswordError(error.data?.password);
+				// setServerErrorText(error.data?.non_field_errors || '');
+				// setServerEmailError(error.data?.email);
+				// setServerUsernameError(error.data?.username);
+				// setServerPasswordError(error.data?.password);
 			});
 
-		console.log('createUser error', error);
+		console.log('createProject error', error);
 	};
 
 	return (
@@ -65,20 +47,12 @@ export const FormCreateProjectFeature: FC = () => {
 			{isLoadingProfessions || isLoadingSkills ? (
 				<Loader />
 			) : (
-				<Form onSubmit={handleSubmit} schema={FormSignupSchema}>
+				<Form onSubmit={handleSubmit}>
 					<FormFieldsCreateProject
-						onLoad={onLoad}
-						setToken={hCaptchaToken}
-						captchaVerified={captchaVerified}
-						serverErrorText={serverErrorText}
-						serverEmailError={serverEmailError}
-						serverUsernameError={serverUsernameError}
-						serverPasswordError={serverPasswordError}
-						setServerEmailError={setServerEmailError as () => string}
-						setServerUsernameError={setServerUsernameError as () => string}
-						setServerPasswordError={setServerPasswordError as () => string}
 						allSkills={allSkills}
 						professions={professions}
+						currentText={currentText}
+						setCurrentText={setCurrentText as () => void}
 					/>
 				</Form>
 			)}

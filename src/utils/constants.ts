@@ -76,26 +76,14 @@ export const BUSYNESS = [
 export const DIRECTION = [
 	{
 		id: 1,
-		name: 'Разработка',
+		name: 'Десктоп',
 	},
 	{
 		id: 2,
-		name: 'Тестирование',
+		name: 'Веб',
 	},
 	{
 		id: 3,
-		name: 'Администрирование',
-	},
-	{
-		id: 4,
-		name: 'Дизайнер',
-	},
-	{
-		id: 5,
-		name: 'Менеджмент',
-	},
-	{
-		id: 6,
-		name: 'Аналитика',
+		name: 'Мобильная',
 	},
 ];
