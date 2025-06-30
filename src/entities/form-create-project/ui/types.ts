@@ -14,6 +14,9 @@ export type FormCreateProjectProps = {
 	allSkills: TSkills[];
 	currentText: string | undefined;
 	setCurrentText: () => void;
+	setActionType: (arg: 'publish' | 'draft') => void;
+	setSubmitSuccessfulReset: (arg: boolean) => void;
+	isSubmitSuccessfulReset: boolean;
 };
 
 export type direction = {

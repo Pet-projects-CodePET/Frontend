@@ -26,17 +26,30 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	professions,
 	currentText,
 	setCurrentText,
-
+	setActionType,
+	isSubmitSuccessfulReset,
+	setSubmitSuccessfulReset,
 }) => {
-	const { control } = useFormContext();
+	const { reset, control } = useFormContext();
 	const [contacts, setContacts] = useState<TContact[]>([]);
 	const [selectedOptionContactType, setSelectedOptionContactType] =
 		useState<TOption | null>(null);
 	const [addContactErrorText, setAddContactErrorText] = useState<string>('');
 	const [inputValueContact, setInputValueContact] = useState<string>('');
+	
 	useEffect(() => {
 		setAddContactErrorText('');
 	}, [contacts]);
+
+	useEffect(() => {
+		if (isSubmitSuccessfulReset) {
+			reset();
+			setCurrentText();
+			setSubmitSuccessfulReset(false);
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isSubmitSuccessfulReset]); 
+
 	const handleInputChange = (
 		event: React.ChangeEvent<HTMLInputElement>,
 		fieldName: string
@@ -261,13 +274,13 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 				{'Очистить'}
 			</MainButton>
 
-			<FormCreateProjectCard allSkills={allSkills} professions={professions} control={control} name="project_specialists"/>
+			<FormCreateProjectCard allSkills={allSkills} professions={professions} control={control} name='project_specialists'/>
 
 			<div className={styles.buttons}>
-				<MainButton type='submit' variant={'primary'} width={'regular'} disabled={false}>
+				<MainButton type='submit' variant={'primary'} width={'regular'} disabled={false} onClick={() => setActionType('publish')}>
 					{'Опубликовать'}
 				</MainButton>
-				<MainButton variant={'secondary'} width={'regular'} disabled={false}>
+				<MainButton type='submit' variant={'secondary'} width={'regular'} disabled={false} onClick={() => setActionType('draft')}>
 					{'Сохранить как черновик'}
 				</MainButton>
 			</div>

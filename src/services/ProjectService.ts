@@ -122,6 +122,13 @@ export const projectsApi = createApi({
 			body: project,
 		}),
 	}),
+	addProjectDraft: builder.mutation<IUser, IUser>({
+		query: (project) => ({
+			url: `/projects/drafts/`,
+			method: 'POST',
+			body: project,
+		})
+	})
 	}),
 });
 
@@ -138,5 +145,6 @@ export const {
 	useAnswerOrganizerOnRequestMutation,
 	useGetProfessionsQuery,
 	useGetSkillsQuery,
-	useAddNewProjectMutation
+	useAddNewProjectMutation,
+	useAddProjectDraftMutation,
 } = projectsApi;
