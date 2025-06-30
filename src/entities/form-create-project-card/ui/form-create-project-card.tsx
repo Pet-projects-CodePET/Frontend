@@ -1,18 +1,19 @@
 'use client';
 
 import React, { FC, useEffect, useState } from 'react';
-import styles from './form-create-project-card.module.scss';
+import { useFormContext } from 'react-hook-form';
 import { IFormCreateProjectCard } from './types';
 import SelectWithSearch from '@/shared/ui/select-search/select-search';
 import { MultiSelectInput } from '@/shared/ui/multi-select-input/multi-select-input';
 import Edit from '@/shared/assets/icons/edit-icon.svg';
-import Delete from '@/shared/assets/icons/delete.svg';
+import IconDelete from '@/shared/assets/icons/delete-red.svg';
 import { MainButton, Counter, Toggler } from '@/shared/ui';
 import { TProfession, TSkills /*TSpeciality*/ } from '@/shared/types/specialty';
 import IconPlus from '@/shared/assets/icons/plus-large.svg';
 import { Option } from '@/shared/types/option';
 import { LEVEL } from '@/utils/constants';
-import { useFormContext } from 'react-hook-form';
+import styles from './form-create-project-card.module.scss';
+
 
 type ProjectSpecialist = {
 	id: number;
@@ -37,9 +38,10 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 		getValues(name) || []
 	);
 	const [editingId, setEditingId] = useState<number | null>(null);
-	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(false);
+	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(true);
+	const [cardToggles, setCardToggles] = useState<Record<number, boolean>>({});
+	const [forceUpdate, setForceUpdate] = useState(false); 
 	const [counts, setCounts] = useState<Record<number, number>>({});
-
 	const [profession, setProfession] = useState<TProfession | null>(null);
 	const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
 	const [skills, setSkills] = useState<TSkills[]>([]);
@@ -47,6 +49,18 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	useEffect(() => {
 		setValue(name, specialties);
 	}, [specialties, name, setValue]);
+
+	useEffect(() => {
+		if (specialties.length > 0 && Object.keys(cardToggles).length === 0) {
+		  const initialToggles: Record<number, boolean> = {};
+		  specialties.forEach(item => {
+			initialToggles[item.id] = recruitmentIsOpen;
+		  });
+		  setCardToggles(initialToggles);
+		}
+	  // eslint-disable-next-line react-hooks/exhaustive-deps
+	  }, [specialties]);
+	
 
 	const handleEditClick = (id: number) => {
 		const itemToEdit = specialties.find((item) => item.id === id);
@@ -88,13 +102,14 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	const handleDelete = (id: number) => (event: React.MouseEvent) => {
 		event.stopPropagation();
 		setSpecialties((prev) => prev.filter((item) => item.id !== id));
+		handleResetSpecialty();
 	};
 
 	const addSpecialty = () => {
 		if (!profession || !selectedLevel || skills.length === 0) return;
-
+        const newId = Date.now();
 		const newSpecialty: ProjectSpecialist = {
-			id: Date.now(),
+			id: newId,
 			profession: profession.id,
 			skills: skills.map((skill) => skill.id),
 			level: selectedLevel,
@@ -104,8 +119,25 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 		};
 
 		setSpecialties((prev) => [...prev, newSpecialty]);
+		setCardToggles(prev => ({...prev, [newId]: recruitmentIsOpen}));
 		handleResetSpecialty();
 	};
+
+	const handleGlobalToggleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+		const isChecked = evt.target.checked;
+		setRecruitmentIsOpen(isChecked);
+		// Обновляем все индивидуальные тогглеры
+		const newToggles: Record<number, boolean> = {};
+		specialties.forEach(item => {
+		  newToggles[item.id] = isChecked;
+		});
+		setCardToggles(newToggles);
+		setForceUpdate(!forceUpdate); // Принудительное обновление
+	  };
+
+	const handleCardToggleChange = (id: number, checked: boolean) => {
+		setCardToggles(prev => ({...prev, [id]: checked}));
+	  };
 
 	const transformProfessions = (profList: TProfession[]) => {
 		return profList?.map(({ id, specialization }) => ({
@@ -172,14 +204,14 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 	return (
 		<>
-			<h2>Специалисты для проекта</h2>
+			<h2 className={styles.titleForm}>Специалисты для проекта</h2>
 			<div className={styles.specialists_toggle}>
-				<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
+				<span className={styles.titleToggler}>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
 				<Toggler
 					checked={recruitmentIsOpen}
 					name={'allow_notifications'}
 					id={'allow_notifications'}
-					onChange={(evt) => setRecruitmentIsOpen(evt.target.checked)}
+					onChange={handleGlobalToggleChange}
 				/>
 			</div>
 
@@ -199,7 +231,7 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 								type="button"
 								className={styles.card_button}
 								onClick={handleDelete(item.id)}>
-								<Delete className={styles.icon} />
+								<IconDelete className={styles.icon} />
 							</button>
 						)}
 
@@ -235,17 +267,17 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 						<div className={styles.config}>
 							<Counter
-								disabled={!recruitmentIsOpen}
+								disabled={!cardToggles[item.id]}
 								value={counts[item.id] || item.count || 1}
 								onChange={(value) => handleCountChange(item.id, value)}
 							/>
 							<div className={styles.config_toggle}>
-								<span>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
+								<span className={styles.titleToggler}>Набор {cardToggles[item.id] ? 'открыт' : 'закрыт'}</span>
 								<Toggler
-									checked={recruitmentIsOpen}
-									name={'allow_notifications'}
-									id={'allow_notifications'}
-									onChange={(evt) => setRecruitmentIsOpen(evt.target.checked)}
+									checked={cardToggles[item.id] || false}
+									name={`card_toggle_${item.id}`}
+									id={`card_toggle_${item.id}`}
+									onChange={(evt) => handleCardToggleChange(item.id, evt.target.checked)}
 								/>
 							</div>
 						</div>

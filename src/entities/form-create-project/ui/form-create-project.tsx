@@ -15,6 +15,7 @@ import { ContactsList } from '@/entities/contact-list/contact-list';
 import { TContact } from '@/shared/ui/contact-card/types';
 import { generalEmailRegex, phoneRegex } from '@/utils/regex-consts';
 
+
 type TOption = {
 	label: string;
 	value: string;
@@ -106,8 +107,9 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					labelName="Название проекта"
 					className={styles.input_extra}
 				/>
+				<h3 className={styles.input_list_title}>Описание проекта</h3>
 				<TextEditor
-					labelName={'Описание проекта'}
+					labelName={''}
 					desc={
 						'Расскажите о проекте и его цели используя не более 750 символов'
 					}
