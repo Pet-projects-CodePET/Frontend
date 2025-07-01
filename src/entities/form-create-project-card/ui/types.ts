@@ -5,4 +5,6 @@ export interface IFormCreateProjectCard {
     professions: TProfession[];
     control: Control<FieldValues>;
     name?: string;
+    setSubmitSuccessfulReset: (arg: boolean) => void;
+	isSubmitSuccessfulReset: boolean;
 }

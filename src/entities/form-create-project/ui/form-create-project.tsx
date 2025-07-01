@@ -15,7 +15,6 @@ import { ContactsList } from '@/entities/contact-list/contact-list';
 import { TContact } from '@/shared/ui/contact-card/types';
 import { generalEmailRegex, phoneRegex } from '@/utils/regex-consts';
 
-
 type TOption = {
 	label: string;
 	value: string;
@@ -36,7 +35,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 		useState<TOption | null>(null);
 	const [addContactErrorText, setAddContactErrorText] = useState<string>('');
 	const [inputValueContact, setInputValueContact] = useState<string>('');
-	
+
 	useEffect(() => {
 		setAddContactErrorText('');
 	}, [contacts]);
@@ -47,8 +46,8 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 			setCurrentText();
 			setSubmitSuccessfulReset(false);
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isSubmitSuccessfulReset]); 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isSubmitSuccessfulReset]);
 
 	const handleInputChange = (
 		event: React.ChangeEvent<HTMLInputElement>,
@@ -111,6 +110,11 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 			}
 		}
 	};
+	const handleClear = () => {
+		reset();
+		setCurrentText();
+	};
+
 	return (
 		<div className={styles.container}>
 			<h2 className={styles.title}>Детали проекта</h2>
@@ -134,20 +138,18 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 			<div className={styles.directions}>
 				<h3 className={styles.input_list_title}>Направление разработки</h3>
 				<ul className={styles.directions_list}>
-					{DIRECTION.map(
-						(directions: { id: number; name: string }) => (
-							<li className={styles.directions_item} key={directions.id}>
-								<CheckboxAndRadio
-									labelName={directions.name}
-									label={`directions`}
-									type={'checkbox'}
-									id={`direction_${directions.id}`}
-									name={'directions'}
-									value={directions.id}
-								/>
-							</li>
-						)
-					)}
+					{DIRECTION.map((directions: { id: number; name: string }) => (
+						<li className={styles.directions_item} key={directions.id}>
+							<CheckboxAndRadio
+								labelName={directions.name}
+								label={`directions`}
+								type={'checkbox'}
+								id={`direction_${directions.id}`}
+								name={'directions'}
+								value={directions.id}
+							/>
+						</li>
+					))}
 				</ul>
 			</div>
 
@@ -269,18 +271,39 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					'Добавьте ссылку на ваш проект, например: GitHub, приложение, веб страница и др.'
 				}
 			/>
-
-			<MainButton variant={'trivial'} width={'min'} disabled={false}>
+			<MainButton
+				type="button"
+				variant={'trivial'}
+				width={'min'}
+				disabled={false}
+				onClick={handleClear}>
 				{'Очистить'}
 			</MainButton>
 
-			<FormCreateProjectCard allSkills={allSkills} professions={professions} control={control} name='project_specialists'/>
+			<FormCreateProjectCard
+				allSkills={allSkills}
+				professions={professions}
+				control={control}
+				name="project_specialists"
+				isSubmitSuccessfulReset={isSubmitSuccessfulReset}
+	            setSubmitSuccessfulReset={setSubmitSuccessfulReset}
+			/>
 
 			<div className={styles.buttons}>
-				<MainButton type='submit' variant={'primary'} width={'regular'} disabled={false} onClick={() => setActionType('publish')}>
+				<MainButton
+					type="submit"
+					variant={'primary'}
+					width={'regular'}
+					disabled={false}
+					onClick={() => setActionType('publish')}>
 					{'Опубликовать'}
 				</MainButton>
-				<MainButton type='submit' variant={'secondary'} width={'regular'} disabled={false} onClick={() => setActionType('draft')}>
+				<MainButton
+					type="submit"
+					variant={'secondary'}
+					width={'regular'}
+					disabled={false}
+					onClick={() => setActionType('draft')}>
 					{'Сохранить как черновик'}
 				</MainButton>
 			</div>

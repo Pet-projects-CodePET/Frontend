@@ -32,8 +32,10 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	allSkills,
 	professions,
 	name = 'project_specialists',
+	setSubmitSuccessfulReset,
+	isSubmitSuccessfulReset,
 }) => {
-	const { setValue, getValues } = useFormContext();
+	const { setValue, getValues, reset } = useFormContext();
 	const [specialties, setSpecialties] = useState<ProjectSpecialist[]>(
 		getValues(name) || []
 	);
@@ -60,6 +62,14 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 		}
 	  // eslint-disable-next-line react-hooks/exhaustive-deps
 	  }, [specialties]);
+
+	  useEffect(() => {
+		if (isSubmitSuccessfulReset) {
+			reset();
+			setSpecialties([]);
+			setSubmitSuccessfulReset(false);
+		}
+	  }, [isSubmitSuccessfulReset, reset, setSubmitSuccessfulReset])
 	
 
 	const handleEditClick = (id: number) => {
