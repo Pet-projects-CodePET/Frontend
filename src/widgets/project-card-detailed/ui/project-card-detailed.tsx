@@ -30,6 +30,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 	telegram_nick,
 	email,
 	is_favorite,
+	recruitment_status,
 }) => {
 	const startDate = getDate(started);
 	const endDate = getDate(ended);
@@ -164,12 +165,11 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					</div>
 				</div>
 				<div className={styles.cardsContainer}>
-					{project_specialists?.length ? (
+					{recruitment_status === 'Набор открыт' ? (
 						<h2 className={styles.title}>Требуются в проект</h2>
 					) : null}
-
-					{project_specialists?.map((item) => {
-						return (
+					{project_specialists?.map((item) =>
+						item.is_required ? (
 							<VacancyCard
 								name={name}
 								key={item.id}
@@ -180,8 +180,8 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								specialists={item.profession}
 								idSpecialty={item.id}
 							/>
-						);
-					})}
+						) : null
+					)}
 				</div>
 			</div>
 		</section>

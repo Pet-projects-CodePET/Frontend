@@ -70,6 +70,17 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 			setSubmitSuccessfulReset(false);
 		}
 	  }, [isSubmitSuccessfulReset, reset, setSubmitSuccessfulReset])
+
+	  useEffect(() => {
+		// При изменении глобального toggle обновляем все карточки
+		setSpecialties(prev => 
+		  prev.map(item => ({
+			...item,
+			// eslint-disable-next-line camelcase
+			is_required: cardToggles[item.id] ?? recruitmentIsOpen
+		  }))
+		);
+	  }, [cardToggles, recruitmentIsOpen]);
 	
 
 	const handleEditClick = (id: number) => {
@@ -123,9 +134,9 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 			profession: profession.id,
 			skills: skills.map((skill) => skill.id),
 			level: selectedLevel,
-			count: counts[Date.now()] || 1,
+			count: counts[newId] || 1,
 			// eslint-disable-next-line camelcase
-			is_required: true,
+			is_required: recruitmentIsOpen,
 		};
 
 		setSpecialties((prev) => [...prev, newSpecialty]);
@@ -146,7 +157,16 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	  };
 
 	const handleCardToggleChange = (id: number, checked: boolean) => {
+		if (!recruitmentIsOpen && checked) return;
 		setCardToggles(prev => ({...prev, [id]: checked}));
+		setSpecialties(prev => 
+			// eslint-disable-next-line camelcase
+			prev.map(item => 
+				
+				// eslint-disable-next-line camelcase
+				item.id === id ? {...item, is_required: checked} : item)
+			
+		)
 	  };
 
 	const transformProfessions = (profList: TProfession[]) => {
@@ -288,6 +308,7 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 									name={`card_toggle_${item.id}`}
 									id={`card_toggle_${item.id}`}
 									onChange={(evt) => handleCardToggleChange(item.id, evt.target.checked)}
+									disabled={!recruitmentIsOpen}
 								/>
 							</div>
 						</div>

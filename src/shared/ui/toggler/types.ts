@@ -4,5 +4,5 @@ export type TogglerProps = {
 	id?: string;
 	name?: string;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	// disabled?: boolean;
+	disabled?: boolean;
 };

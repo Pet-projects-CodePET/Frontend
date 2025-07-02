@@ -68,6 +68,9 @@
 	&_type_inactive {
 		fill: $--Neutral-Light-Grey-03;
 	}
+	&_type_draft {
+		fill: $--Colors-Rajah;
+	}
 }
 
 .activeStateText {
