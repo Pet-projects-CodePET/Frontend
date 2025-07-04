@@ -28,9 +28,10 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	setActionType,
 	isSubmitSuccessfulReset,
 	setSubmitSuccessfulReset,
+	contacts,
+	setContacts,
 }) => {
 	const { reset, control } = useFormContext();
-	const [contacts, setContacts] = useState<TContact[]>([]);
 	const [selectedOptionContactType, setSelectedOptionContactType] =
 		useState<TOption | null>(null);
 	const [addContactErrorText, setAddContactErrorText] = useState<string>('');
@@ -44,6 +45,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 		if (isSubmitSuccessfulReset) {
 			reset();
 			setCurrentText();
+			setContacts([]);
 			setSubmitSuccessfulReset(false);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,6 +63,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 			default:
 		}
 	};
+
 	const handleOptionSelect = (option: TOption) => {
 		setSelectedOptionContactType(option);
 	};
@@ -264,6 +267,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 
 			<Input
 				name="link"
+				placeholder="http..."
 				labelName="Ссылка на проект"
 				className={styles.input_extra}
 				description={true}
@@ -286,7 +290,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 				control={control}
 				name="project_specialists"
 				isSubmitSuccessfulReset={isSubmitSuccessfulReset}
-	            setSubmitSuccessfulReset={setSubmitSuccessfulReset}
+				setSubmitSuccessfulReset={setSubmitSuccessfulReset}
 			/>
 
 			<div className={styles.buttons}>

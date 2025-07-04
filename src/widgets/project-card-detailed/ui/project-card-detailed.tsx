@@ -46,12 +46,15 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								project_status === 'Активен' &&
 									styles.activeStateIcon_type_active,
 								project_status === 'Завершен' &&
-									styles.activeStateIcon_type_inactive
+									styles.activeStateIcon_type_inactive,
+								project_status === 'Черновик' &&
+									styles.activeStateIcon_type_draft
 							)}
 						/>
 						<div className={styles.activeStateText}>
 							{project_status === 'Активен' ? 'активный' : ' '}
 							{project_status === 'Завершен' ? 'завершенный' : ' '}
+							{project_status === 'Черновик' ? 'черновик' : ' '}
 						</div>
 					</div>
 					<div className={styles.like}>

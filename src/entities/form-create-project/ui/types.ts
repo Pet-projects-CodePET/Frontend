@@ -1,4 +1,5 @@
 import { TProfession, TSkills } from "@/shared/types/specialty";
+import { TContact } from "@/shared/ui/contact-card/types";
 export type FormCreateProjectProps = {
 	// onLoad: () => void;
 	// setToken: (token: string) => void;
@@ -17,6 +18,8 @@ export type FormCreateProjectProps = {
 	setActionType: (arg: 'publish' | 'draft') => void;
 	setSubmitSuccessfulReset: (arg: boolean) => void;
 	isSubmitSuccessfulReset: boolean;
+	contacts: TContact[];
+    setContacts: React.Dispatch<React.SetStateAction<TContact[]>>;
 };
 
 export type direction = {

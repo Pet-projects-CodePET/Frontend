@@ -14,14 +14,15 @@ import { Option } from '@/shared/types/option';
 import { LEVEL } from '@/utils/constants';
 import styles from './form-create-project-card.module.scss';
 
-
 type ProjectSpecialist = {
 	id: number;
-	profession:  {
-		id: number;
-		specialization: string;
-		speciality: string;
-	} | number;
+	profession:
+		 {
+			id: number;
+			specialization: string;
+			speciality: string;
+		  }
+		| number;
 	skills: number[];
 	count: number;
 	level: number;
@@ -42,7 +43,7 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	const [editingId, setEditingId] = useState<number | null>(null);
 	const [recruitmentIsOpen, setRecruitmentIsOpen] = useState(true);
 	const [cardToggles, setCardToggles] = useState<Record<number, boolean>>({});
-	const [forceUpdate, setForceUpdate] = useState(false); 
+	const [forceUpdate, setForceUpdate] = useState(false);
 	const [counts, setCounts] = useState<Record<number, number>>({});
 	const [profession, setProfession] = useState<TProfession | null>(null);
 	const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
@@ -54,34 +55,33 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 	useEffect(() => {
 		if (specialties.length > 0 && Object.keys(cardToggles).length === 0) {
-		  const initialToggles: Record<number, boolean> = {};
-		  specialties.forEach(item => {
-			initialToggles[item.id] = recruitmentIsOpen;
-		  });
-		  setCardToggles(initialToggles);
+			const initialToggles: Record<number, boolean> = {};
+			specialties.forEach((item) => {
+				initialToggles[item.id] = recruitmentIsOpen;
+			});
+			setCardToggles(initialToggles);
 		}
-	  // eslint-disable-next-line react-hooks/exhaustive-deps
-	  }, [specialties]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [specialties]);
 
-	  useEffect(() => {
+	useEffect(() => {
 		if (isSubmitSuccessfulReset) {
 			reset();
 			setSpecialties([]);
 			setSubmitSuccessfulReset(false);
 		}
-	  }, [isSubmitSuccessfulReset, reset, setSubmitSuccessfulReset])
+	}, [isSubmitSuccessfulReset, reset, setSubmitSuccessfulReset]);
 
-	  useEffect(() => {
+	useEffect(() => {
 		// При изменении глобального toggle обновляем все карточки
-		setSpecialties(prev => 
-		  prev.map(item => ({
-			...item,
-			// eslint-disable-next-line camelcase
-			is_required: cardToggles[item.id] ?? recruitmentIsOpen
-		  }))
+		setSpecialties((prev) =>
+			prev.map((item) => ({
+				...item,
+				// eslint-disable-next-line camelcase
+				is_required: cardToggles[item.id] ?? recruitmentIsOpen,
+			}))
 		);
-	  }, [cardToggles, recruitmentIsOpen]);
-	
+	}, [cardToggles, recruitmentIsOpen]);
 
 	const handleEditClick = (id: number) => {
 		const itemToEdit = specialties.find((item) => item.id === id);
@@ -128,7 +128,7 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 	const addSpecialty = () => {
 		if (!profession || !selectedLevel || skills.length === 0) return;
-        const newId = Date.now();
+		const newId = Date.now();
 		const newSpecialty: ProjectSpecialist = {
 			id: newId,
 			profession: profession.id,
@@ -140,34 +140,35 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 		};
 
 		setSpecialties((prev) => [...prev, newSpecialty]);
-		setCardToggles(prev => ({...prev, [newId]: recruitmentIsOpen}));
+		setCardToggles((prev) => ({ ...prev, [newId]: recruitmentIsOpen }));
 		handleResetSpecialty();
 	};
 
-	const handleGlobalToggleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+	const handleGlobalToggleChange = (
+		evt: React.ChangeEvent<HTMLInputElement>
+	) => {
 		const isChecked = evt.target.checked;
 		setRecruitmentIsOpen(isChecked);
 		// Обновляем все индивидуальные тогглеры
 		const newToggles: Record<number, boolean> = {};
-		specialties.forEach(item => {
-		  newToggles[item.id] = isChecked;
+		specialties.forEach((item) => {
+			newToggles[item.id] = isChecked;
 		});
 		setCardToggles(newToggles);
 		setForceUpdate(!forceUpdate); // Принудительное обновление
-	  };
+	};
 
 	const handleCardToggleChange = (id: number, checked: boolean) => {
 		if (!recruitmentIsOpen && checked) return;
-		setCardToggles(prev => ({...prev, [id]: checked}));
-		setSpecialties(prev => 
+		setCardToggles((prev) => ({ ...prev, [id]: checked }));
+		setSpecialties((prev) =>
 			// eslint-disable-next-line camelcase
-			prev.map(item => 
-				
+			prev.map((item) =>
 				// eslint-disable-next-line camelcase
-				item.id === id ? {...item, is_required: checked} : item)
-			
-		)
-	  };
+				item.id === id ? { ...item, is_required: checked } : item
+			)
+		);
+	};
 
 	const transformProfessions = (profList: TProfession[]) => {
 		return profList?.map(({ id, specialization }) => ({
@@ -187,6 +188,9 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 	const handleCountChange = (id: number, value: number) => {
 		setCounts((prev) => ({ ...prev, [id]: value }));
+		setSpecialties((prev) =>
+			prev.map((item) => (item.id === id ? { ...item, count: value } : item))
+		);
 	};
 
 	const handleLevelChange = (value: string) => {
@@ -215,12 +219,14 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 		return LEVEL.find((l) => l.level === level)?.value || '';
 	};
 
-	const getProfessionForDisplay = (prof: number | { id: number; specialization: string; speciality: string }) => {
+	const getProfessionForDisplay = (
+		prof: number | { id: number; specialization: string; speciality: string }
+	) => {
 		if (typeof prof === 'number') {
-		  return professions.find(p => p.id === prof);
+			return professions.find((p) => p.id === prof);
 		}
 		return prof;
-	  };
+	};
 
 	const isFieldsNotFill = () => {
 		return !profession || !selectedLevel || skills.length === 0;
@@ -236,7 +242,9 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 		<>
 			<h2 className={styles.titleForm}>Специалисты для проекта</h2>
 			<div className={styles.specialists_toggle}>
-				<span className={styles.titleToggler}>Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}</span>
+				<span className={styles.titleToggler}>
+					Набор {recruitmentIsOpen ? 'открыт' : 'закрыт'}
+				</span>
 				<Toggler
 					checked={recruitmentIsOpen}
 					name={'allow_notifications'}
@@ -248,7 +256,9 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 			{specialties.map((item) => (
 				<li key={item.id} className={styles.card}>
 					<div className={styles.container}>
-						<h3 className={styles.title}>{getProfessionForDisplay(item.profession)?.specialization}</h3>
+						<h3 className={styles.title}>
+							{getProfessionForDisplay(item.profession)?.specialization}
+						</h3>
 						{editingId !== item.id ? (
 							<button
 								type="button"
@@ -302,12 +312,16 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 								onChange={(value) => handleCountChange(item.id, value)}
 							/>
 							<div className={styles.config_toggle}>
-								<span className={styles.titleToggler}>Набор {cardToggles[item.id] ? 'открыт' : 'закрыт'}</span>
+								<span className={styles.titleToggler}>
+									Набор {cardToggles[item.id] ? 'открыт' : 'закрыт'}
+								</span>
 								<Toggler
 									checked={cardToggles[item.id] || false}
 									name={`card_toggle_${item.id}`}
 									id={`card_toggle_${item.id}`}
-									onChange={(evt) => handleCardToggleChange(item.id, evt.target.checked)}
+									onChange={(evt) =>
+										handleCardToggleChange(item.id, evt.target.checked)
+									}
 									disabled={!recruitmentIsOpen}
 								/>
 							</div>

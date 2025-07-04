@@ -132,6 +132,9 @@
 	margin-top: 20px;
 	display: flex;
 	gap: 16px;
+	@media screen and (max-width: 500px) {
+			flex-direction: column;
+		}
 }
 
 .fields {

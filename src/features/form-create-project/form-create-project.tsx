@@ -13,6 +13,7 @@ import {
 import { Loader } from '@/shared/ui';
 import { IUser } from '@/services/models/IUser';
 import { toaster } from '@/widgets/notification-toast';
+import { TContact } from '@/shared/ui/contact-card/types';
 
 export const FormCreateProjectFeature: FC = () => {
 	const [createNewProject, { error: createNewProjectError }] =
@@ -27,6 +28,22 @@ export const FormCreateProjectFeature: FC = () => {
 	const [currentText, setCurrentText] = useState(undefined);
 	const [actionType, setActionType] = useState<'publish' | 'draft'>('draft');
 	const [isSubmitSuccessfulReset, setSubmitSuccessfulReset] = useState(false);
+	const [contacts, setContacts] = useState<TContact[]>([]);
+
+	const mergeContacts = (
+		contacts: Record<string, string>[]
+	): Record<string, string> => {
+		const result: Record<string, string> = {};
+
+		for (const contact of contacts) {
+			for (const [key, value] of Object.entries(contact)) {
+				if (!(key in result)) {
+					result[key] = value;
+				}
+			}
+		}
+		return result;
+	};
 
 	const handleSubmit = (project: IUser) => {
 		if (actionType === 'publish') {
@@ -40,6 +57,7 @@ export const FormCreateProjectFeature: FC = () => {
 		const projectData = {
 			...project,
 			description: currentText || '',
+			...mergeContacts(contacts),
 		};
 		createNewProject(projectData)
 			.unwrap()
@@ -71,6 +89,7 @@ export const FormCreateProjectFeature: FC = () => {
 		const projectData = {
 			...project,
 			description: currentText || '',
+			...mergeContacts(contacts),
 		};
 		addProjectDraft(projectData)
 			.unwrap()
@@ -113,6 +132,8 @@ export const FormCreateProjectFeature: FC = () => {
 						setActionType={setActionType}
 						isSubmitSuccessfulReset={isSubmitSuccessfulReset}
 						setSubmitSuccessfulReset={setSubmitSuccessfulReset}
+						contacts={contacts}
+						setContacts={setContacts}
 					/>
 				</Form>
 			)}
