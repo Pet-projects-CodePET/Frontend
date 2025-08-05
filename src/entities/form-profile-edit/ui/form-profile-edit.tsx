@@ -349,7 +349,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					currentText={aboutText as string}
 					setCurrentText={setAboutText}
 					labelName="О себе"
-					desc="Не более 750 символов"
+					desc="Не более 1500 символов"
 				/>
 				<Input
 					onBlurCapture={validateFields}

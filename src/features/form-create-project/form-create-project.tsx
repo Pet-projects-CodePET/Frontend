@@ -14,6 +14,7 @@ import { Loader } from '@/shared/ui';
 import { IUser } from '@/services/models/IUser';
 import { toaster } from '@/widgets/notification-toast';
 import { TContact } from '@/shared/ui/contact-card/types';
+import FormCreateProjectSchema from '@/shared/utils/validation-schemas/form-create-project-schems';
 
 export const FormCreateProjectFeature: FC = () => {
 	const [createNewProject, { error: createNewProjectError }] =
@@ -29,6 +30,8 @@ export const FormCreateProjectFeature: FC = () => {
 	const [actionType, setActionType] = useState<'publish' | 'draft'>('draft');
 	const [isSubmitSuccessfulReset, setSubmitSuccessfulReset] = useState(false);
 	const [contacts, setContacts] = useState<TContact[]>([]);
+	const [serverNameError, setServerNameError] = useState('');
+	const [serverLinkError, setServerLinkError] = useState('');
 
 	const mergeContacts = (
 		contacts: Record<string, string>[]
@@ -75,11 +78,12 @@ export const FormCreateProjectFeature: FC = () => {
 					status: 'error',
 					title: 'Ошибка',
 					subtitle:
-						/*`${error.data?.current_password || error.data?.new_password || 'Попробуйте еще раз'}`*/ 'Ошибка',
+						`${error.data?.description /*|| error.data?.new_password ||*/ || 'Попробуйте еще раз'}`,
 				});
 				// setServerErrorText(error.data?.non_field_errors || '');
 				// setServerEmailError(error.data?.email);
-				// setServerUsernameError(error.data?.username);
+				 setServerNameError(error.data?.name);
+				 setServerLinkError(error.data?.link || '');
 				// setServerPasswordError(error.data?.password);
 			});
 		console.log('addDraftProject error', createNewProjectError);
@@ -107,11 +111,12 @@ export const FormCreateProjectFeature: FC = () => {
 					status: 'error',
 					title: 'Ошибка',
 					subtitle:
-						/*`${error.data?.current_password || error.data?.new_password || 'Попробуйте еще раз'}`*/ 'Ошибка',
+						`${error.data?.description || 'Попробуйте еще раз'}`,
 				});
 				// setServerErrorText(error.data?.non_field_errors || '');
 				// setServerEmailError(error.data?.email);
-				// setServerUsernameError(error.data?.username);
+				 setServerNameError(error.data?.name);
+				 setServerLinkError(error.data?.link || '');
 				// setServerPasswordError(error.data?.password);
 			});
 		console.log('addDraftProject error', addProjectDraftError);
@@ -123,7 +128,7 @@ export const FormCreateProjectFeature: FC = () => {
 			{isLoadingProfessions || isLoadingSkills ? (
 				<Loader />
 			) : (
-				<Form onSubmit={handleSubmit}>
+				<Form onSubmit={handleSubmit} schema={FormCreateProjectSchema}>
 					<FormFieldsCreateProject
 						allSkills={allSkills}
 						professions={professions}
@@ -134,6 +139,10 @@ export const FormCreateProjectFeature: FC = () => {
 						setSubmitSuccessfulReset={setSubmitSuccessfulReset}
 						contacts={contacts}
 						setContacts={setContacts}
+						serverNameError={serverNameError}
+						setServerNameError={setServerNameError}
+						setServerLinkError={setServerLinkError}
+						serverLinkError={serverLinkError}
 					/>
 				</Form>
 			)}

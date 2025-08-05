@@ -9,21 +9,19 @@ import type { DatePickerRHFProps } from './types';
 import styles from './date-picker-rhf.module.scss';
 
 export const DatePickerRHF = (props: DatePickerRHFProps) => {
-	const { control } = useFormContext();
+	const { control, trigger } = useFormContext();
 
 	return (
 		<Controller
 			control={control}
 			name={props.name}
-			rules={{
-				required: 'Пожалуйста, заполните дату',
-			}}
 			render={({ field, fieldState }) => {
 				const getDayjsValue = () => {
 					if (!field.value) return null;
 					if (dayjs.isDayjs(field.value)) return field.value;
 					return dayjs(field.value, 'YYYY-MM-DD');
-				  };
+				};
+
 				return (
 					<>
 						<DatePicker
@@ -35,20 +33,23 @@ export const DatePickerRHF = (props: DatePickerRHFProps) => {
 							}}
 							placeholder=""
 							status={fieldState.error ? 'error' : undefined}
-							ref={field.ref}
-							name={field.name}
-							onBlur={field.onBlur}
 							format="DD/MM/YYYY"
 							value={getDayjsValue()}
 							locale={locale}
 							onChange={(date) => {
-								field.onChange(date ? date.format('YYYY-MM-DD') : null);
+								const dateStr = date ? date.format('YYYY-MM-DD') : '';
+								field.onChange(dateStr);
+								if (props.name === 'started') trigger('ended');
+								if (props.name === 'ended') trigger('started');
+							}}
+							onBlur={() => {
+								field.onBlur();
+								trigger(props.name);
 							}}
 						/>
-						<br />
-						{fieldState.error ? (
-							<span className={styles.error}>{fieldState.error?.message}</span>
-						) : null}
+						{fieldState.error && (
+							<span className={styles.error}>{fieldState.error.message}</span>
+						)}
 					</>
 				);
 			}}

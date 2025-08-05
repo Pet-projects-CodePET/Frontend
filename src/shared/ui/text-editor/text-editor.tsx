@@ -4,7 +4,6 @@ import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
-import Quill from 'react-quill-new';
 
 export const TextEditor: FC<TextEditorProps> = ({
 	labelName,
@@ -14,25 +13,28 @@ export const TextEditor: FC<TextEditorProps> = ({
 	currentText,
 	...props
 }) => {
-	//const [value, setValue] = useState<string>('');
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
+	const [error, setError] = useState<string | null>(null);
+
 	useEffect(() => {
 		setIsWindowLoaded(true);
 	}, []);
-	const handleChange = (
-		content: string,
-		// eslint-disable-next-line
-		delta: any,
-		// eslint-disable-next-line
-		source: any,
-		editor: Quill.UnprivilegedEditor
-	) => {
-		if (typeof window === 'object') {
-			if (editor.getLength() <= 751) {
-				setCurrentText(content);
-			} else {
-				alert('Превышено количество символов.');
-			}
+
+	const handleChange = (content: string) => {
+		if (typeof window !== 'object') return;
+
+		const htmlLength = content.length;
+
+		if (htmlLength < 20) {
+			setError('Текст должен содержать минимум 20 символов');
+		} else if (htmlLength > 1500) {
+			setError('Текст не должен превышать 1500 символов');
+		} else {
+			setError(null);
+		}
+		
+		if (htmlLength >= 20 && htmlLength <= 1500) {
+			setCurrentText(content);
 		}
 	};
 
@@ -65,7 +67,15 @@ export const TextEditor: FC<TextEditorProps> = ({
 						/>
 					)}
 				</div>
-				<p className={styles.desc}>{desc}</p>
+				<div className={styles.footer}>
+					<p className={styles.desc}>{desc}</p>
+					{error && <p className={styles.error}>{error}</p>}
+					{!error && currentText && (
+						<p className={styles.charCount}>
+							{currentText?.length || 0} / 1500 символов (с учётом разметки)
+						</p>
+					)}
+				</div>
 			</div>
 		</div>
 	);

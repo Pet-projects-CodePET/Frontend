@@ -5,11 +5,11 @@ export type FormCreateProjectProps = {
 	// setToken: (token: string) => void;
 	// captchaVerified?: boolean;
 	// serverErrorText?: string;
-	// serverEmailError?: string;
-	// serverUsernameError?: string;
+	serverLinkError?: string;
+	 serverNameError?: string;
 	// serverPasswordError?: string;
-	// setServerUsernameError: (arg0: string) => string;
-	// setServerEmailError: (arg0: string) => string;
+	setServerNameError: (arg: string) => void;
+	setServerLinkError: (arg: string) => void;
 	// setServerPasswordError: (arg0: string) => string;
 	professions: TProfession[];
 	allSkills: TSkills[];
