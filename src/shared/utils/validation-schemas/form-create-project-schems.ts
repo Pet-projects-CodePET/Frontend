@@ -13,10 +13,15 @@ const FormCreateProjectSchema = z
 			}),
 
 		directions: z
-			.array(z.string(), {
-				required_error: 'Выберите хотя бы одно направление',
-			})
+			.array(z.string())
 			.min(1, { message: 'Выберите от 1 до 3 направлений' }),
+
+		busyness: z
+			.string()
+			.or(z.literal(''))
+			.or(z.null())
+			.default(''),
+			//.transform((val) => (val === null ? '' : val)),
 
 		link: z
 			.string()
@@ -45,12 +50,6 @@ const FormCreateProjectSchema = z
 			}),
 
 		// project_specialists: z
-		// .array(z.string(), {
-		// 	required_error: '',
-		// })
-		// .min(1, { message: '' }),
-
-		// buzyness: z
 		// .array(z.string(), {
 		// 	required_error: '',
 		// })

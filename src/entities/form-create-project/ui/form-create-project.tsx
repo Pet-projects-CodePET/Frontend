@@ -38,6 +38,8 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 		reset,
 		control,
 		formState: { errors },
+		setValue,
+		getValues,
 	} = useFormContext();
 	const [selectedOptionContactType, setSelectedOptionContactType] =
 		useState<TOption | null>(null);
@@ -65,6 +67,20 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	useEffect(() => {
 		errors.link?.message && setServerLinkError('');
 	}, [errors.link?.message, setServerLinkError]);
+
+	const handleDirectionsChange = (
+		e: React.ChangeEvent<HTMLInputElement>,
+		directionsId: string
+	) => {
+		const { checked } = e.target;
+		const currentDirections = getValues('directions') || [];
+
+		const newDirections = checked
+			? [...currentDirections, directionsId]
+			: currentDirections.filter((id: string) => id !== directionsId);
+
+		setValue('directions', newDirections, { shouldValidate: true });
+	};
 
 	const handleInputChange = (
 		event: React.ChangeEvent<HTMLInputElement>,
@@ -161,19 +177,24 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 						<li className={styles.directions_item} key={directions.id}>
 							<CheckboxAndRadio
 								labelName={directions.name}
-								label={`directions`}
-								type={'checkbox'}
+								label={`direction_${directions.id}`}
+								type="checkbox"
 								id={`direction_${directions.id}`}
-								name={'directions'}
-								value={directions.id}
+								name="directions" 
+								value={String(directions.id)}
+								checked={
+									getValues('directions')?.includes(String(directions.id)) ||
+									false
+								}
+								onChange={(e) =>
+									handleDirectionsChange(e, String(directions.id))
+								}
 							/>
 						</li>
 					))}
 				</ul>
 				<p className={styles.checkboxError}>
-					{errors.directions
-						? `${errors.directions?.message}`
-						: serverNameError}
+					{errors.directions ? `${errors.directions?.message || ''}` : ''}
 				</p>
 			</div>
 

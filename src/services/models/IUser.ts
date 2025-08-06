@@ -32,7 +32,7 @@ export type IUser = {
 			name: string;
 		},
 	  
-	],
+	] | never[],
 	link?: string,
 	
 	project_specialists?: [

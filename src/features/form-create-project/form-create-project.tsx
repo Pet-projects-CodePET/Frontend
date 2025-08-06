@@ -59,6 +59,7 @@ export const FormCreateProjectFeature: FC = () => {
 	const handleCreateProject = (project: IUser) => {
 		const projectData = {
 			...project,
+			directions: Array.isArray(project.directions) ? project.directions : [],
 			description: currentText || '',
 			...mergeContacts(contacts),
 		};
@@ -77,14 +78,10 @@ export const FormCreateProjectFeature: FC = () => {
 				toaster({
 					status: 'error',
 					title: 'Ошибка',
-					subtitle:
-						`${error.data?.description /*|| error.data?.new_password ||*/ || 'Попробуйте еще раз'}`,
+					subtitle: `${error.data?.description /*|| error.data?.new_password ||*/ || 'Попробуйте еще раз'}`,
 				});
-				// setServerErrorText(error.data?.non_field_errors || '');
-				// setServerEmailError(error.data?.email);
-				 setServerNameError(error.data?.name);
-				 setServerLinkError(error.data?.link || '');
-				// setServerPasswordError(error.data?.password);
+				setServerNameError(error.data?.name);
+				setServerLinkError(error.data?.link || '');
 			});
 		console.log('addDraftProject error', createNewProjectError);
 	};
@@ -92,6 +89,7 @@ export const FormCreateProjectFeature: FC = () => {
 	const handleAddProjectDraft = (project: IUser) => {
 		const projectData = {
 			...project,
+			directions: Array.isArray(project.directions) ? project.directions : [],
 			description: currentText || '',
 			...mergeContacts(contacts),
 		};
@@ -110,14 +108,10 @@ export const FormCreateProjectFeature: FC = () => {
 				toaster({
 					status: 'error',
 					title: 'Ошибка',
-					subtitle:
-						`${error.data?.description || 'Попробуйте еще раз'}`,
+					subtitle: `${error.data?.description || 'Попробуйте еще раз'}`,
 				});
-				// setServerErrorText(error.data?.non_field_errors || '');
-				// setServerEmailError(error.data?.email);
-				 setServerNameError(error.data?.name);
-				 setServerLinkError(error.data?.link || '');
-				// setServerPasswordError(error.data?.password);
+				setServerNameError(error.data?.name);
+				setServerLinkError(error.data?.link || '');
 			});
 		console.log('addDraftProject error', addProjectDraftError);
 	};

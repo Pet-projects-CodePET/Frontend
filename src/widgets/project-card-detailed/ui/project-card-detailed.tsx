@@ -98,13 +98,16 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 							);
 						})}
 					</div>
-					<div className={styles.subtitleWrapper}>
-						<h3 className={styles.subtitle}>Занятость</h3>
-						<p className={styles.description}>
-							{busyness}
-							{` ${NounsDeclension(busyness, ['час', 'часа', 'часов'])} в неделю`}
-						</p>
-					</div>
+					{busyness !== null && (
+						<div className={styles.subtitleWrapper}>
+							<h3 className={styles.subtitle}>Занятость</h3>
+							<p className={styles.description}>
+								{busyness}
+								{` ${NounsDeclension(busyness, ['час', 'часа', 'часов'])} в неделю`}
+							</p>
+						</div>
+					)}
+
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Контакты</h3>
 						<Link href="#" className={styles.descriptionLink}>
