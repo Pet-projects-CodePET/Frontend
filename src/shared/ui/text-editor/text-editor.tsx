@@ -11,6 +11,8 @@ export const TextEditor: FC<TextEditorProps> = ({
 	desc,
 	setCurrentText,
 	currentText,
+	error: errorChart, // Добавляем проп для внешней ошибки
+	onFocus, 
 	...props
 }) => {
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
@@ -38,6 +40,13 @@ export const TextEditor: FC<TextEditorProps> = ({
 		}
 	};
 
+	const handleFocus = () => {
+		if (onFocus) onFocus();
+		setError(null);
+	  };
+
+	  const errorToShow = error || errorChart;
+
 	const myModule = {
 		toolbar: {
 			container: [
@@ -62,6 +71,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 							theme="snow"
 							value={currentText}
 							onChange={handleChange}
+							onFocus={handleFocus}
 							className={styles.inputMain}
 							{...props}
 						/>
@@ -69,8 +79,8 @@ export const TextEditor: FC<TextEditorProps> = ({
 				</div>
 				<div className={styles.footer}>
 					<p className={styles.desc}>{desc}</p>
-					{error && <p className={styles.error}>{error}</p>}
-					{!error && currentText && (
+					{errorToShow && <p className={styles.error}>{errorToShow}</p>}
+					{!errorToShow && currentText && (
 						<p className={styles.charCount}>
 							{currentText?.length || 0} / 1500 символов (с учётом разметки)
 						</p>

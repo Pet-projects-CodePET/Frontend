@@ -40,6 +40,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 		formState: { errors },
 		setValue,
 		getValues,
+		clearErrors,
 	} = useFormContext();
 	const [selectedOptionContactType, setSelectedOptionContactType] =
 		useState<TOption | null>(null);
@@ -166,8 +167,18 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 						'Расскажите о проекте и его цели используя не более 1500 символов'
 					}
 					setCurrentText={setCurrentText}
-					currentText={currentText as string}
+					currentText={currentText as string}	
+					error={errors.description?.message as string}
+					onFocus={() => {
+						// Очищаем ошибку Zod при фокусе
+						if (errors.description) {
+						  clearErrors('description');
+						}
+					  }}
 				/>
+				{/* <p className={styles.checkboxError}>
+					{errors.description ? `${errors.description?.message || ''}` : ''}
+				</p> */}
 			</div>
 
 			<div className={styles.directions}>
@@ -177,9 +188,9 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 						<li className={styles.directions_item} key={directions.id}>
 							<CheckboxAndRadio
 								labelName={directions.name}
-								label={`direction_${directions.id}`}
+								label={`directions_${directions.id}`}
 								type="checkbox"
-								id={`direction_${directions.id}`}
+								id={`directions_${directions.id}`}
 								name="directions" 
 								value={String(directions.id)}
 								checked={
@@ -265,7 +276,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 								className={styles.fields__addContactTextValue}
 								name="inputValueContact"
 								labelName=""
-								// type="text"
 								description={false}
 								value={inputValueContact}
 								error={addContactErrorText}
@@ -278,7 +288,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 								className={styles.fields__addContactTextValue}
 								name="inputValueContact"
 								labelName=""
-								// type="text"
 								description={false}
 								value={inputValueContact}
 								error={addContactErrorText}
@@ -317,7 +326,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					'Добавьте ссылку на ваш проект, например: GitHub, приложение, веб страница и др.'
 				}
 				error={errors.link ? `${errors.link?.message}` : serverLinkError}
-				//error={errors.link?.message ? String(errors.link.message) : String(serverLinkError || '')}
 			/>
 			<MainButton
 				type="button"
