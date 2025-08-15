@@ -159,13 +159,14 @@ export const FilterMultiSelectButton: FC<FilterMultiSelectButtonProps> = ({
 				<div className={styles.filterContainer}>
 					{/* Filter */}
 					{isSearchable && (
-						<InputSearch
-							className={styles.filterInput}
-							search={handleSearchChange}
-							onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-								handleSearchChange(e.target.value);
-							}}
-						/>
+						<div className={styles.filterInput}>
+							<InputSearch
+								search={handleSearchChange}
+								onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+									handleSearchChange(e.target.value);
+								}}
+							/>
+						</div>
 					)}
 					<ul className={styles.filterList}>
 						{selectedAll && (

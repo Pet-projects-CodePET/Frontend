@@ -27,6 +27,7 @@ export type SpecialistType = {
 		},
 	];
 	ready_to_participate: boolean;
+	handleDeleteCard?: (arg: number) => void;
 };
 
 export type Filters = {

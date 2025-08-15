@@ -27,7 +27,6 @@ export const ProfileRequestsParticipants = () => {
 	const {
 		data: allRequestsParticipation,
 		isLoading,
-		refetch,
 	} = useGetAllRequestsParticipationQuery(currentSettingsAllRequests);
 
 	const isButtonActive = (n: number) => {
@@ -86,7 +85,6 @@ export const ProfileRequestsParticipants = () => {
 						arrayRequests={allRequestsParticipation?.results}
 						currentSettings={currentSettingsAllRequests}
 						setCurrentSettings={setCurrentSettingsAllRequests}
-						refetch={refetch}
 					/>
 				)}
 			</div>

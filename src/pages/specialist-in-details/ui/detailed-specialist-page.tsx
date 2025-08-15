@@ -1,37 +1,40 @@
+/* eslint-disable camelcase */
+'use client';
 import React from 'react';
 import { DetailedSpecialistCard } from '@/widgets/specialist-detailed-card';
-import { axiosInstance } from '@/utils/axios-query/axiosInstance';
-import { SpecialistInfoQueryType } from './types';
+import { useGetSpecialistByIdQuery } from '@/services/SpecialistService';
+import { Loader } from '@/shared/ui';
 
-export const DetailedSpecialistPage = async ({
-	params,
-}: {
-	params: { params: { id: number } };
-}) => {
-	const response: SpecialistInfoQueryType = (
-		await axiosInstance.get(`/profiles/${params.params.id}/`)
-	).data;
+export const DetailedSpecialistPage = ({ user_id }: { user_id: number }) => {
+
+	const { data: specialist, isLoading } = useGetSpecialistByIdQuery({
+		user_id,
+	});
 
 	return (
 		<>
-			<DetailedSpecialistCard
-				user_id={response?.user_id}
-				avatar={response?.avatar}
-				name={response?.name}
-				userName={response?.username}
-				readyToParticipate={response?.ready_to_participate || false}
-				specialists={response?.specialists}
-				about={response?.about}
-				portfolioLink={response?.portfolio_link}
-				birthday={response?.birthday || 0}
-				country={response?.country}
-				city={response?.city}
-				phoneNumber={response?.phone_number}
-				telegramNick={response?.telegram_nick}
-				email={response?.email}
-				projects={response?.projects}
-				is_favorite={response?.is_favorite}
-			/>
+			{isLoading ? (
+				<Loader />
+			) : (
+				<DetailedSpecialistCard
+					user_id={user_id}
+					avatar={specialist?.avatar}
+					name={specialist?.name}
+					userName={specialist?.username}
+					readyToParticipate={specialist?.ready_to_participate || false}
+					specialists={specialist?.specialists}
+					about={specialist?.about}
+					portfolioLink={specialist?.portfolio_link}
+					birthday={specialist?.birthday || 0}
+					country={specialist?.country}
+					city={specialist?.city}
+					phoneNumber={specialist?.phone_number}
+					telegramNick={specialist?.telegram_nick}
+					email={specialist?.email}
+					projects={specialist?.projects}
+					is_favorite={specialist?.is_favorite}
+				/>
+			)}
 		</>
 	);
 };

@@ -11,7 +11,7 @@ import {
 	MobileIcon,
 	TelegramIcon,
 } from '@/shared/assets';
-import { InviteSpecialist } from '@/widgets/invite-specialist';
+// import { InviteSpecialist } from '@/widgets/invite-specialist';
 import { BlankCard } from '@/shared/ui/blank-card/blank-card';
 import { SpecialistsToFavoritesFeature } from '@/features';
 import parse from 'html-react-parser';
@@ -94,7 +94,6 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						<h3 className={styles.info__title}>О себе</h3>
 						<h4 className={styles.info__sideText}>
 							{
-								// about.includes('&lt') ? parse((parse(about) as string)) : parse(about)}
 								parse(about)
 							}
 						</h4>
@@ -203,7 +202,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 						) : ( */}
 						<p className={styles.info__sideText}>Пусто</p>
 					</div>
-					<InviteSpecialist />
+					{/* <InviteSpecialist /> */}
 				</div>
 			</div>
 		</BlankCard>

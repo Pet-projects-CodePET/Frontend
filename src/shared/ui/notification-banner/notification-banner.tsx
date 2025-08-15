@@ -8,6 +8,7 @@ type NotificationBannerProps = {
 	status: string;
 	title: string;
 	subtitle?: string;
+	onClose?: ()=> void;
 };
 
 export const NotificationBanner = ({
