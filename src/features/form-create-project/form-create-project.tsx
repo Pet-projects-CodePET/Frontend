@@ -19,6 +19,7 @@ import FormCreateProjectSchema from '@/shared/utils/validation-schemas/form-crea
 export const FormCreateProjectFeature: FC = () => {
 	const [createNewProject, { error: createNewProjectError }] =
 		useAddNewProjectMutation();
+		
 	const [addProjectDraft, { error: addProjectDraftError }] =
 		useAddProjectDraftMutation();
 
