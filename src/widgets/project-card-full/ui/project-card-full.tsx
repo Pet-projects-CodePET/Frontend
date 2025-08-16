@@ -160,6 +160,7 @@ export const ProjectCardFull: FC<ProjectCardFullType> = ({
 					<InviteToProjectFeature
 						projectId={id}
 						project_specialists={project_specialists}
+						onClose={() => setIsPopupOpen(false)}
 					/>
 				</PopUp>
 			) : (

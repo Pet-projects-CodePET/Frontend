@@ -9,6 +9,7 @@ import { toaster } from '@/widgets/notification-toast';
 export const InviteToProjectFeature = ({
 	project_specialists,
 	projectId,
+	onClose,
 }: {
 	projectId: number;
 	project_specialists: [
@@ -21,6 +22,7 @@ export const InviteToProjectFeature = ({
 			};
 		},
 	];
+	onClose: () => void;
 }) => {
 	const specializationArray = project_specialists.map((item) => {
 		return {
@@ -61,6 +63,7 @@ export const InviteToProjectFeature = ({
 							status: 'success',
 							title: 'Заявка отправлена',
 							subtitle: 'Отслеживать статус можно в разделе проекты',
+							onClose: () => onClose(),
 						});
 					})
 					.catch((error) => {
@@ -68,6 +71,7 @@ export const InviteToProjectFeature = ({
 							status: 'error',
 							title: 'Ошибка отправки',
 							subtitle: `${error.data?.unique_in_progress?.[0] || error.data?.cover_letter?.[0] || error.data?.project?.[0] || 'Попробуйте отправить ещё раз'}`,
+							onClose: () => onClose(),
 						});
 						console.log('errorCatch', error);
 					})
