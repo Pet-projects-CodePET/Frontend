@@ -54,7 +54,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	useEffect(() => {
 		if (isSubmitSuccessfulReset) {
 			reset();
-			setCurrentText();
+			setCurrentText('');
 			setContacts([]);
 			setSubmitSuccessfulReset(false);
 		}
@@ -68,6 +68,21 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	useEffect(() => {
 		errors.link?.message && setServerLinkError('');
 	}, [errors.link?.message, setServerLinkError]);
+
+	useEffect(() => {
+		// Синхронизируем локальное состояние текстового редактора с формой
+		if (currentText) {
+			setValue('description', currentText, { shouldValidate: true });
+		}
+	}, [currentText, setValue]);
+
+	useEffect(() => {
+		// Синхронизируем форму с локальным состоянием текстового редактора при загрузке
+		const formDescription = getValues('description');
+		if (formDescription && formDescription !== currentText) {
+			setCurrentText(formDescription);
+		}
+	}, [getValues, setCurrentText, currentText]);
 
 	const handleDirectionsChange = (
 		e: React.ChangeEvent<HTMLInputElement>,
@@ -147,7 +162,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	};
 	const handleClear = () => {
 		reset();
-		setCurrentText();
+		setCurrentText('');
 	};
 
 	return (
@@ -167,18 +182,15 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 						'Расскажите о проекте и его цели используя не более 1500 символов'
 					}
 					setCurrentText={setCurrentText}
-					currentText={currentText as string}	
+					currentText={currentText as string}
 					error={errors.description?.message as string}
 					onFocus={() => {
 						// Очищаем ошибку Zod при фокусе
 						if (errors.description) {
-						  clearErrors('description');
+							clearErrors('description');
 						}
-					  }}
+					}}
 				/>
-				{/* <p className={styles.checkboxError}>
-					{errors.description ? `${errors.description?.message || ''}` : ''}
-				</p> */}
 			</div>
 
 			<div className={styles.directions}>
@@ -191,7 +203,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 								label={`directions_${directions.id}`}
 								type="checkbox"
 								id={`directions_${directions.id}`}
-								name="directions" 
+								name="directions"
 								value={String(directions.id)}
 								checked={
 									getValues('directions')?.includes(String(directions.id)) ||

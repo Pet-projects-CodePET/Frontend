@@ -27,7 +27,7 @@ export const FormCreateProjectFeature: FC = () => {
 		useGetProfessionsQuery([]);
 
 	const { data: allSkills, isLoading: isLoadingSkills } = useGetSkillsQuery([]);
-	const [currentText, setCurrentText] = useState(undefined);
+	const [currentText, setCurrentText] = useState<string | undefined>(undefined);
 	const [actionType, setActionType] = useState<'publish' | 'draft'>('draft');
 	const [isSubmitSuccessfulReset, setSubmitSuccessfulReset] = useState(false);
 	const [contacts, setContacts] = useState<TContact[]>([]);

@@ -17,10 +17,10 @@ import styles from './form-create-project-card.module.scss';
 type ProjectSpecialist = {
 	id: number;
 	profession:
-		 {
-			id: number;
-			specialization: string;
-			speciality: string;
+		| {
+				id: number;
+				specialization: string;
+				speciality: string;
 		  }
 		| number;
 	skills: number[];
@@ -36,7 +36,12 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	setSubmitSuccessfulReset,
 	isSubmitSuccessfulReset,
 }) => {
-	const { setValue, getValues, reset } = useFormContext();
+	const {
+		setValue,
+		getValues,
+		reset,
+		formState: { errors, touchedFields, isSubmitted },
+	} = useFormContext();
 	const [specialties, setSpecialties] = useState<ProjectSpecialist[]>(
 		getValues(name) || []
 	);
@@ -49,8 +54,13 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
 	const [skills, setSkills] = useState<TSkills[]>([]);
 
+	// Определяем, нужно ли показывать ошибку
+	const shouldShowError =
+		(touchedFields.project_specialists || isSubmitted) &&
+		errors.project_specialists;
+
 	useEffect(() => {
-		setValue(name, specialties);
+		setValue(name, specialties, { shouldValidate: true });
 	}, [specialties, name, setValue]);
 
 	useEffect(() => {
@@ -122,8 +132,15 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 	const handleDelete = (id: number) => (event: React.MouseEvent) => {
 		event.stopPropagation();
-		setSpecialties((prev) => prev.filter((item) => item.id !== id));
+		const newSpecialties = specialties.filter((item) => item.id !== id);
+		setSpecialties(newSpecialties);
 		handleResetSpecialty();
+
+		// Помечаем поле как touched при взаимодействии
+		setValue(name, newSpecialties, {
+			shouldValidate: true,
+			shouldTouch: true,
+		});
 	};
 
 	const addSpecialty = () => {
@@ -142,6 +159,11 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 		setSpecialties((prev) => [...prev, newSpecialty]);
 		setCardToggles((prev) => ({ ...prev, [newId]: recruitmentIsOpen }));
 		handleResetSpecialty();
+		// Помечаем поле как touched при взаимодействии
+		setValue(name, [...specialties, newSpecialty], {
+			shouldValidate: true,
+			shouldTouch: true,
+		});
 	};
 
 	const handleGlobalToggleChange = (
@@ -384,6 +406,16 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 						Сбросить
 					</MainButton>
 				</div>
+				{/* {errors.project_specialists && (
+					<p className={styles.errorText}>
+						{errors.project_specialists.message as string}
+					</p>
+				)} */}
+				{shouldShowError && (
+					<p className={styles.errorText}>
+						{errors.project_specialists?.message as string}
+					</p>
+				)}
 			</section>
 		</>
 	);

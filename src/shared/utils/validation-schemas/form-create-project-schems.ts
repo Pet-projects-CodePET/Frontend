@@ -1,6 +1,26 @@
 /* eslint-disable camelcase */
 import { z } from 'zod';
 
+const ProfessionSchema = z.object({
+	id: z.number(),
+	specialization: z.string(),
+	speciality: z.string(),
+});
+
+const SkillSchema = z.object({
+	id: z.number(),
+	name: z.string(),
+});
+
+const ProjectSpecialistSchema = z.object({
+	id: z.number(),
+	profession: z.union([z.number(), ProfessionSchema]),
+	skills: z.array(z.union([z.number(), SkillSchema])),
+	count: z.number().optional(),
+	level: z.number().optional(),
+	is_required: z.boolean().optional(),
+});
+
 const FormCreateProjectSchema = z
 	.object({
 		name: z
@@ -52,12 +72,14 @@ const FormCreateProjectSchema = z
 			.refine((val) => !isNaN(Date.parse(val)), {
 				message: 'Некорректный формат даты окончания',
 			}),
+
+		project_specialists: z
+			.array(ProjectSpecialistSchema)
+			.optional()
+			.refine((specialists) => specialists && specialists.length > 0, {
+				message: 'Добавьте хотя бы одного специалиста',
+			}),
 	})
-	// project_specialists: z
-	// .array(z.string(), {
-	// 	required_error: '',
-	// })
-	// .min(1, { message: '' }),
 
 	.refine((data) => new Date(data.ended) >= new Date(data.started), {
 		message: 'Дата окончания должна быть после даты начала',

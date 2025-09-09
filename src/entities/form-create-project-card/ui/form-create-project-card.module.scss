@@ -112,3 +112,12 @@
 		border: none;
 	}
 }
+.errorText {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	color: $--Foreground-error;
+	font-size: 14px;
+	line-height: 111%;
+	font-family: $--open-sans-font;
+  }

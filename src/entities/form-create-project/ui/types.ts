@@ -1,10 +1,6 @@
 import { TProfession, TSkills } from "@/shared/types/specialty";
 import { TContact } from "@/shared/ui/contact-card/types";
 export type FormCreateProjectProps = {
-	// onLoad: () => void;
-	// setToken: (token: string) => void;
-	// captchaVerified?: boolean;
-	// serverErrorText?: string;
 	serverLinkError?: string;
 	serverNameError?: string;
 	setServerNameError: (arg: string) => void;
@@ -12,7 +8,7 @@ export type FormCreateProjectProps = {
 	professions: TProfession[];
 	allSkills: TSkills[];
 	currentText: string | undefined;
-	setCurrentText: () => void;
+	setCurrentText: (value: string) => void;
 	setActionType: (arg: 'publish' | 'draft') => void;
 	setSubmitSuccessfulReset: (arg: boolean) => void;
 	isSubmitSuccessfulReset: boolean;
