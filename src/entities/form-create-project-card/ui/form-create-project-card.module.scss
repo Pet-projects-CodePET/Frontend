@@ -62,6 +62,12 @@
 		gap: 16px;
 		align-items: center;
 	}
+	@media screen and (max-width: 460px) {
+		align-self: start;
+		flex-direction: column;
+
+		gap: 16px;
+	}
 }
 
 .specialists {
@@ -120,4 +126,10 @@
 	font-size: 14px;
 	line-height: 111%;
 	font-family: $--open-sans-font;
-  }
+}
+.counter {
+	@media screen and (max-width: 460px) {
+		display: flex;
+		align-self: start;
+	}
+}

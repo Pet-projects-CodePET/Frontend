@@ -328,11 +328,12 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 						)}
 
 						<div className={styles.config}>
-							<Counter
+							<div className={styles.counter}><Counter
 								disabled={!cardToggles[item.id]}
 								value={counts[item.id] || item.count || 1}
 								onChange={(value) => handleCountChange(item.id, value)}
-							/>
+							/></div>
+							
 							<div className={styles.config_toggle}>
 								<span className={styles.titleToggler}>
 									Набор {cardToggles[item.id] ? 'открыт' : 'закрыт'}
@@ -406,11 +407,6 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 						Сбросить
 					</MainButton>
 				</div>
-				{/* {errors.project_specialists && (
-					<p className={styles.errorText}>
-						{errors.project_specialists.message as string}
-					</p>
-				)} */}
 				{shouldShowError && (
 					<p className={styles.errorText}>
 						{errors.project_specialists?.message as string}

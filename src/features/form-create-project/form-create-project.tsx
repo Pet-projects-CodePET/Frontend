@@ -15,11 +15,12 @@ import { IUser } from '@/services/models/IUser';
 import { toaster } from '@/widgets/notification-toast';
 import { TContact } from '@/shared/ui/contact-card/types';
 import FormCreateProjectSchema from '@/shared/utils/validation-schemas/form-create-project-schems';
+import FormCreateProjectDraftSchema from '@/shared/utils/validation-schemas/form-create-project-draft-schema';
 
 export const FormCreateProjectFeature: FC = () => {
 	const [createNewProject, { error: createNewProjectError }] =
 		useAddNewProjectMutation();
-		
+
 	const [addProjectDraft, { error: addProjectDraftError }] =
 		useAddProjectDraftMutation();
 
@@ -123,7 +124,13 @@ export const FormCreateProjectFeature: FC = () => {
 			{isLoadingProfessions || isLoadingSkills ? (
 				<Loader />
 			) : (
-				<Form onSubmit={handleSubmit} schema={FormCreateProjectSchema}>
+				<Form
+					onSubmit={handleSubmit}
+					schema={
+						actionType === 'publish'
+							? FormCreateProjectSchema
+							: FormCreateProjectDraftSchema
+					}>
 					<FormFieldsCreateProject
 						allSkills={allSkills}
 						professions={professions}

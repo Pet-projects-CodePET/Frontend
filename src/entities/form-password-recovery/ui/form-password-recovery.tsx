@@ -3,7 +3,7 @@
 import React, { FC, useRef } from 'react';
 import Link from 'next/link';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { IconButtonList } from '@/entities/icon-button-list';
+//import { IconButtonList } from '@/entities/icon-button-list';
 import { Input, MainButton } from '@/shared/ui';
 
 import styles from './form-password-recovery.module.scss';
@@ -69,10 +69,10 @@ export const FormFieldsPasswordRecovery: FC<FormPasswordRecoveryProps> = ({
 			</div>
 			{!isPasswordSend ? (
 				<>
-					<div className={styles.container}>
+					{/* <div className={styles.container}>
 						<span className={styles.iconsButtons_line}>или</span>
 						<IconButtonList />
-					</div>
+					</div> */}
 					<div className={styles.container}>
 						<p className={styles.text_registration}>
 							Нет аккаунта?&#160;

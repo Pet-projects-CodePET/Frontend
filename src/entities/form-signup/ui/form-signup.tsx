@@ -4,7 +4,7 @@ import React, { FC, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import type { FormSignupProps } from '@/entities/form-signup/ui/types';
-import { IconButtonList } from '@/entities/icon-button-list';
+//import { IconButtonList } from '@/entities/icon-button-list';
 import { Input, MainButton } from '@/shared/ui';
 
 import styles from './form-signup.module.scss';
@@ -99,10 +99,10 @@ export const FormFieldsSignup: FC<FormSignupProps> = ({
 				</MainButton>
 				<span className={styles.server_error}>{serverErrorText}</span>
 			</div>
-			<div className={styles.container}>
+			{/* <div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>
 				<IconButtonList />
-			</div>
+			</div> */}
 			<div className={styles.container}>
 				<p className={styles.text_login}>
 					Уже есть аккаунт?&#160;

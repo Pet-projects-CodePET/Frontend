@@ -15,9 +15,9 @@ export const navBarLinksArray: Array<NavLink> = [
 		label: 'Специалисты',
 		path: '/specialists',
 	},
-	{
-		id: 2,
-		label: 'О нас',
-		path: '/about-us',
-	},
+	// {
+	// 	id: 2,
+	// 	label: 'О нас',
+	// 	path: '/about-us',
+	// },
 ];

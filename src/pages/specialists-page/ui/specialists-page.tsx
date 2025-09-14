@@ -4,11 +4,11 @@ import { SpecialistCard } from '@/widgets/specialist-card';
 import { InputSearch } from '@/shared/ui/input-search/input-search';
 import { statusSpecialist } from '@/shared/constants/status-specialist/status-specialist';
 import { qualification } from '@/shared/constants/qualification/qualification';
-import FilterIcon from '@/shared/assets/icons/filter-icon.svg';
-import { PopUp } from '@/shared/ui/pop-up/pop-up';
+//import FilterIcon from '@/shared/assets/icons/filter-icon.svg';
+//import { PopUp } from '@/shared/ui/pop-up/pop-up';
 import { Pagination } from '@/entities/pagination/ui/pagination';
-import { SpecialistsFilter } from '@/entities/specialists-filter';
-import { useMediaQuery } from '@/shared/hooks';
+//import { SpecialistsFilter } from '@/entities/specialists-filter';
+//import { useMediaQuery } from '@/shared/hooks';
 import styles from './specialists-page.module.scss';
 import { useGetAllSpecialistsDataQuery } from '@/services/SpecialistService';
 import { Filters, SpecialistType } from './types';
@@ -24,7 +24,7 @@ import { TProfession, TSkills } from '@/shared/types/specialty';
 
 export const Specialists = () => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const [isPopupOpen, setIsPopupOpen] = useState(false);
+	//const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [filters, setFilters] = useState<Filters>({
 		status: undefined,
 		specialists: undefined,
@@ -33,7 +33,7 @@ export const Specialists = () => {
 		searchQuery: undefined,
 	});
 	const pageSize = 7;
-	const isMobile = useMediaQuery('(max-width:779px)');
+	//const isMobile = useMediaQuery('(max-width:779px)');
 
 	const { data: specialistArray } = useGetAllSpecialistsDataQuery({
 		currentPage,
@@ -105,20 +105,20 @@ export const Specialists = () => {
 						<div className={styles.specialists__inputSearch}>
 							<InputSearch search={handleSearchChange} />
 						</div>
-						<button
+						{/* <button
 							className={styles.specialists__filterButton}
 							type="button"
 							onClick={() => setIsPopupOpen(true)}>
 							<FilterIcon />
-						</button>
-						{isMobile ? (
+						</button> */}
+						{/* {isMobile ? (
 							<PopUp
 								visible={isPopupOpen}
 								title=""
 								onClose={() => setIsPopupOpen(false)}>
 								<SpecialistsFilter />
 							</PopUp>
-						) : null}
+						) : null} */}
 					</div>
 				</div>
 				<div className={styles.specialists__filterContainer}>

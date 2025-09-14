@@ -3,7 +3,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import Projects from '@/shared/assets/icons/projects.svg';
 import Specialists from '@/shared/assets/icons/specialists.svg';
-import AboutUs from '@/shared/assets/icons/information.svg';
+//import AboutUs from '@/shared/assets/icons/information.svg';
 import styles from './burger-nav-bar.module.scss';
 
 export const BurgerNavBar = ({ isBurgerOpen }: { isBurgerOpen: boolean }) => {
@@ -26,11 +26,11 @@ export const BurgerNavBar = ({ isBurgerOpen }: { isBurgerOpen: boolean }) => {
 							Специалисты
 						</Link>
 					</li>
-					<li className={styles.burgerNavBar__item}>
+					{/* <li className={styles.burgerNavBar__item}>
 						<Link href="/about-us" className={styles.burgerNavBar__link}>
 							<AboutUs className={styles.burgerNavBar__item_icon} />О нас
 						</Link>
-					</li>
+					</li> */}
 				</ul>
 			</div>
 		</>
