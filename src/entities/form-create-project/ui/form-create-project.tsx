@@ -33,6 +33,12 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	setServerNameError,
 	serverLinkError,
 	setServerLinkError,
+	nameProject,
+	onNameProjectChange,
+	onClearProjectData,
+	linkProject,
+	onLinkProjectChange,
+	onDescriptionProjectChange,
 }) => {
 	const {
 		reset,
@@ -57,6 +63,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 			setCurrentText('');
 			setContacts([]);
 			setSubmitSuccessfulReset(false);
+			onClearProjectData();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isSubmitSuccessfulReset]);
@@ -71,10 +78,10 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 
 	useEffect(() => {
 		// Синхронизируем локальное состояние текстового редактора с формой
-		if (currentText) {
+		if (currentText && currentText !== getValues('description')) {
 			setValue('description', currentText, { shouldValidate: true });
 		}
-	}, [currentText, setValue]);
+	}, [currentText, setValue, getValues]);
 
 	useEffect(() => {
 		// Синхронизируем форму с локальным состоянием текстового редактора при загрузке
@@ -163,6 +170,26 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	const handleClear = () => {
 		reset();
 		setCurrentText('');
+		onClearProjectData();
+	};
+
+	const handleInputNameProjectChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		onNameProjectChange(e.target.value);
+		setValue('name', e.target.value, { shouldValidate: true });
+	};
+
+	const handleInputLinkProjectChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		onLinkProjectChange(e.target.value);
+		setValue('link', e.target.value, { shouldValidate: true });
+	};
+
+	const handleDescriptionInputChange = (text: string) => {
+		onDescriptionProjectChange(text);
+		setValue('description', text, { shouldValidate: true });
 	};
 
 	return (
@@ -174,6 +201,8 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					labelName="Название проекта"
 					className={styles.input_extra}
 					error={errors.name ? `${errors.name?.message}` : serverNameError}
+					value={nameProject}
+					onChange={handleInputNameProjectChange}
 				/>
 				<h3 className={styles.input_list_title}>Описание проекта</h3>
 				<TextEditor
@@ -181,7 +210,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					desc={
 						'Расскажите о проекте и его цели используя не более 1500 символов'
 					}
-					setCurrentText={setCurrentText}
+					setCurrentText={handleDescriptionInputChange}
 					currentText={currentText as string}
 					error={errors.description?.message as string}
 					onFocus={() => {
@@ -338,6 +367,8 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 					'Добавьте ссылку на ваш проект, например: GitHub, приложение, веб страница и др.'
 				}
 				error={errors.link ? `${errors.link?.message}` : serverLinkError}
+				value={linkProject}
+				onChange={handleInputLinkProjectChange}
 			/>
 			<MainButton
 				type="button"

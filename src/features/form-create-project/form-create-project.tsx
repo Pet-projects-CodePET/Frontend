@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, /*useRef,*/ useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Form } from '@/shared/ui';
 import { FormFieldsCreateProject } from '@/entities/form-create-project';
 import { ProfileLink } from '@/shared/ui';
@@ -34,6 +34,59 @@ export const FormCreateProjectFeature: FC = () => {
 	const [contacts, setContacts] = useState<TContact[]>([]);
 	const [serverNameError, setServerNameError] = useState('');
 	const [serverLinkError, setServerLinkError] = useState('');
+	const [nameProject, setNameProject] = useState<string>('');
+	const [linkProject, setLinkProject] = useState<string>('');
+
+	useEffect(() => {
+		const savedNameProject = localStorage.getItem('nameProject');
+		const savedLinkProject = localStorage.getItem('linkProject');
+		const savedDescriptionProject = localStorage.getItem('descriptionProject');
+		if (savedNameProject) {
+			setNameProject(savedNameProject);
+		}
+		if (savedLinkProject) {
+			setLinkProject(savedLinkProject);
+		}
+		if (savedDescriptionProject) {
+			setCurrentText(savedDescriptionProject);
+		}
+	}, []);
+
+	const handleNameProjectChange = (name: string) => {
+		setNameProject(name);
+		if (name.trim()) {
+			localStorage.setItem('nameProject', name);
+		} else {
+			localStorage.removeItem('nameProject');
+		}
+	};
+
+	const handleLinkProjectChange = (link: string) => {
+		setLinkProject(link);
+		if (link.trim()) {
+			localStorage.setItem('linkProject', link);
+		} else {
+			localStorage.removeItem('linkProject');
+		}
+	};
+
+	const handleDescriptionProjectChange = (description: string) => {
+		setCurrentText(description);
+		if (description.trim()) {
+			localStorage.setItem('descriptionProject', description);
+		} else {
+			localStorage.removeItem('descriptionProject');
+		}
+	};
+
+	const clearProjectData = () => {
+		setNameProject('');
+		setLinkProject('');
+		setCurrentText('');
+		localStorage.removeItem('nameProject');
+		localStorage.removeItem('linkProject');
+		localStorage.removeItem('descriptionProject');
+	};
 
 	const mergeContacts = (
 		contacts: Record<string, string>[]
@@ -68,6 +121,7 @@ export const FormCreateProjectFeature: FC = () => {
 		createNewProject(projectData)
 			.unwrap()
 			.then(() => {
+				clearProjectData();
 				toaster({
 					status: 'success',
 					title: 'Ваш проект опубликован',
@@ -98,6 +152,7 @@ export const FormCreateProjectFeature: FC = () => {
 		addProjectDraft(projectData)
 			.unwrap()
 			.then(() => {
+				clearProjectData();
 				toaster({
 					status: 'success',
 					title: 'Ваш черновик сохранен',
@@ -145,6 +200,12 @@ export const FormCreateProjectFeature: FC = () => {
 						setServerNameError={setServerNameError}
 						setServerLinkError={setServerLinkError}
 						serverLinkError={serverLinkError}
+						nameProject={nameProject}
+						onNameProjectChange={handleNameProjectChange}
+						onClearProjectData={clearProjectData}
+						linkProject={linkProject}
+						onLinkProjectChange={handleLinkProjectChange}
+						onDescriptionProjectChange={handleDescriptionProjectChange}
 					/>
 				</Form>
 			)}
