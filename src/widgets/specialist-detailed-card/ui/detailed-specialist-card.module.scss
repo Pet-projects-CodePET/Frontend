@@ -128,7 +128,6 @@
 		@extend %baseText;
 		font-size: 16px;
 		width: 280px;
-
 		overflow: hidden;
 		white-space: nowrap;
 		font-weight: 400;
@@ -136,7 +135,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		margin: 0 8px 8px 0;
+		margin: 0;
 	}
 	&__icons {
 		font-size: 24px;

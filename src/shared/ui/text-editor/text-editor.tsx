@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import { TextEditorProps } from './types';
 import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
@@ -17,10 +17,23 @@ export const TextEditor: FC<TextEditorProps> = ({
 }) => {
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
+	//const quillRef = useRef(null);
+	const previousTextRef = useRef<string>(currentText || '');
 
 	useEffect(() => {
 		setIsWindowLoaded(true);
 	}, []);
+	
+	// Эффект для синхронизации при внешнем изменении currentText
+	useEffect(() => {
+		if (currentText !== previousTextRef.current) {
+			previousTextRef.current = currentText || '';
+			// Сбрасываем ошибку при внешнем изменении текста
+			if (!currentText || currentText.length === 0) {
+				setError(null);
+			}
+		}
+	}, [currentText]);
 
 	const handleChange = (content: string) => {
 		if (typeof window !== 'object') return;
@@ -34,15 +47,14 @@ export const TextEditor: FC<TextEditorProps> = ({
 		} else {
 			setError(null);
 		}
-		
-		if (htmlLength >= 20 && htmlLength <= 1500) {
-			setCurrentText(content);
-		}
+		setCurrentText(content);
 	};
 
 	const handleFocus = () => {
 		if (onFocus) onFocus();
-		setError(null);
+		if (error) {
+			setError(null);
+		}
 	  };
 
 	  const errorToShow = error || errorChart;

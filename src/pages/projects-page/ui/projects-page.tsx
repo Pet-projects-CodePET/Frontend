@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { ProjectCardFull } from '@/widgets/project-card-full';
 import { statusOptions } from '@/shared/constants/status-options/status-options';
 import { recruitmentStatus } from '@/shared/constants/recruitment-status/recruitment-status';
-import { months2, professions } from '@/shared/constants';
-import { ProjectFilter } from '@/entities/project-filter';
-import { PopUp } from '@/shared/ui/pop-up/pop-up';
-import { MainButton } from '@/shared/ui';
-import { FilterIcon } from '@/shared/assets';
-import { useMediaQuery } from '@/shared/hooks';
+//import { months2, professions } from '@/shared/constants';
+//import { ProjectFilter } from '@/entities/project-filter';
+//import { PopUp } from '@/shared/ui/pop-up/pop-up';
+//import { MainButton } from '@/shared/ui';
+//import { FilterIcon } from '@/shared/assets';
+//import { useMediaQuery } from '@/shared/hooks';
 import { specialties } from '@/shared/constants/specialties/specialties';
 import { skills } from '@/shared/constants/skills/skills';
 import { Tooltip } from '@/widgets/tooltip';
@@ -72,8 +72,8 @@ export const Projects = () => {
 		});
 	}, [currentSettings]);
 
-	const [isPopupOpen, setIsPopupOpen] = useState(false);
-	const isMobile = useMediaQuery('(max-width:779px)');
+	//const [isPopupOpen, setIsPopupOpen] = useState(false);
+	//const isMobile = useMediaQuery('(max-width:779px)');
 
 	const handleStatusProjectChange = (selectedOptions: Option[]) => {
 		console.info('selected option: ', selectedOptions?.[0]);
@@ -111,15 +111,15 @@ export const Projects = () => {
 								})
 							}
 						/>
-						<button
+						{/* <button
 							className={styles.projects__filterButton}
 							onClick={() => setIsPopupOpen(true)}>
 							<FilterIcon />
-						</button>
+						</button> */}
 					</div>
 				</Tooltip>
 			</div>
-			<PopUp
+			{/* <PopUp
 				visible={isPopupOpen}
 				title=""
 				onClose={() => setIsPopupOpen(false)}>
@@ -128,9 +128,9 @@ export const Projects = () => {
 					months={months2}
 					professions={professions}
 				/>
-			</PopUp>
-			{(isMobile && !isPopupOpen) || !isMobile ? (
-				<>
+			</PopUp> */}
+			{/* {(isMobile && !isPopupOpen) || !isMobile ? (
+				<> */}
 					<div className={styles.allFilterContainer}>
 						<div className={styles.filterContainer}>
 							<SingleSelectButton
@@ -189,7 +189,7 @@ export const Projects = () => {
 								/>
 							</Tooltip>
 						</div>
-						{isMobile ? null : (
+						{/* {isMobile ? null : (
 							<MainButton
 								variant="primary"
 								width="regular"
@@ -197,7 +197,7 @@ export const Projects = () => {
 								IconLeft={FilterIcon}>
 								Фильтры
 							</MainButton>
-						)}
+						)} */}
 					</div>
 					<div className={styles.projectsContainer}>
 						{isLoading ? (
@@ -242,8 +242,8 @@ export const Projects = () => {
 						currentPage={currentSettings.currentPage}
 						pageSize={pageSize}
 					/>
-				</>
-			) : null}
+				{/* </>
+			) : null} */}
 		</div>
 	);
 };

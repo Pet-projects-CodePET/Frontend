@@ -3,7 +3,13 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import parse from 'html-react-parser';
-import { /*IconLeft,*/ ActivityIcon, CalendarIcon } from '@/shared/assets';
+import {
+	/*IconLeft,*/ ActivityIcon,
+	CalendarIcon,
+	MailIcon,
+	MobileIcon,
+	TelegramIcon,
+} from '@/shared/assets';
 import { ProjectsToFavoritesFeature } from '@/features';
 import { Person, VacancyCard } from '@/shared/ui';
 import { getColorTag } from '@/shared/utils';
@@ -107,12 +113,37 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 							</p>
 						</div>
 					)}
-
 					<div className={styles.subtitleWrapper}>
-						<h3 className={styles.subtitle}>Контакты</h3>
-						<Link href="#" className={styles.descriptionLink}>
-							{phone_number}
-						</Link>
+						<h3 className={styles.subtitle}>Контакты для связи</h3>
+						<div className={styles.info__sideText}>
+							{email !== null && (
+								<div className={styles.info__contacs__wrapper}>
+									<MailIcon className={styles.info__icons} />
+									<a
+										className={styles.info__contacts}
+										href={`https://mailto:${email}`}>
+										{email}
+									</a>
+								</div>
+							)}
+							{phone_number !== null && (
+								<div className={styles.info__contacs__wrapper}>
+									<MobileIcon className={styles.info__icons} />
+									<p className={styles.info__contacts}>{phone_number}</p>
+								</div>
+							)}
+							{telegram_nick !== null && (
+								<div className={styles.info__contacs__wrapper}>
+									<TelegramIcon className={styles.info__icons} />
+
+									<a
+										className={styles.info__contacts}
+										href={`https://t.me/${telegram_nick}`}>
+										{telegram_nick}
+									</a>
+								</div>
+							)}
+						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Ссылка на проект</h3>

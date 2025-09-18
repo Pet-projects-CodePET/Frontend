@@ -80,8 +80,9 @@
 		&__cards {
 			gap: 16px;
 		}
-		// &__filterContainer {
-		// 	display: none;
-		// }
+		&__filterContainer {
+			//display: none;
+			flex-direction: column;
+		}
 	}
 }

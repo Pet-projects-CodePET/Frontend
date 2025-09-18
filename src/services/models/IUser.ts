@@ -23,8 +23,8 @@ export type IUser = {
 
 	
 	description?: string | undefined,
-	started?: string,
-	ended?: string,
+	started?: string | null,
+	ended?: string | null,
 	busyness?: number,
 	directions?: [
 		{

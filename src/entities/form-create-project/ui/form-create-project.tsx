@@ -23,7 +23,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	allSkills,
 	professions,
 	currentText,
-	setCurrentText,
 	setActionType,
 	isSubmitSuccessfulReset,
 	setSubmitSuccessfulReset,
@@ -60,13 +59,12 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	useEffect(() => {
 		if (isSubmitSuccessfulReset) {
 			reset();
-			setCurrentText('');
 			setContacts([]);
 			setSubmitSuccessfulReset(false);
 			onClearProjectData();
+			clearErrors();
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isSubmitSuccessfulReset]);
+	}, [isSubmitSuccessfulReset, reset, onClearProjectData, clearErrors, setSubmitSuccessfulReset, setContacts]);
 
 	useEffect(() => {
 		errors.name?.message && setServerNameError('');
@@ -77,19 +75,17 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	}, [errors.link?.message, setServerLinkError]);
 
 	useEffect(() => {
-		// Синхронизируем локальное состояние текстового редактора с формой
-		if (currentText && currentText !== getValues('description')) {
+		//Синхронизируем локальное состояние текстового редактора с формой
+		if (currentText !== undefined && currentText !== getValues('description')) {
 			setValue('description', currentText, { shouldValidate: true });
 		}
-	}, [currentText, setValue, getValues]);
-
-	useEffect(() => {
-		// Синхронизируем форму с локальным состоянием текстового редактора при загрузке
-		const formDescription = getValues('description');
-		if (formDescription && formDescription !== currentText) {
-			setCurrentText(formDescription);
-		}
-	}, [getValues, setCurrentText, currentText]);
+		    if (nameProject && nameProject !== getValues('name')) {
+            setValue('name', nameProject, { shouldValidate: true });
+        }
+        if (linkProject && linkProject !== getValues('link')) {
+            setValue('link', linkProject, { shouldValidate: true });
+        }
+	}, [currentText, linkProject, nameProject, setValue, getValues]);
 
 	const handleDirectionsChange = (
 		e: React.ChangeEvent<HTMLInputElement>,
@@ -169,8 +165,8 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	};
 	const handleClear = () => {
 		reset();
-		setCurrentText('');
 		onClearProjectData();
+		clearErrors();
 	};
 
 	const handleInputNameProjectChange = (
@@ -211,7 +207,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 						'Расскажите о проекте и его цели используя не более 1500 символов'
 					}
 					setCurrentText={handleDescriptionInputChange}
-					currentText={currentText as string}
+					currentText={currentText as string || ''}
 					error={errors.description?.message as string}
 					onFocus={() => {
 						// Очищаем ошибку Zod при фокусе

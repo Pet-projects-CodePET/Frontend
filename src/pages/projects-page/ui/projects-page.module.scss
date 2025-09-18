@@ -36,7 +36,7 @@
 
 .allFilterContainer {
 	display: flex;
-	justify-content: center;
+	//justify-content: center;
 	align-items: flex-start;
 	width: 100%;
 	margin-top: 32px;
@@ -108,9 +108,9 @@
 			align-items: center;
 		}
 	}
-	.filterContainer {
-		display: none;
-	}
+	// .filterContainer {
+	// 	display: none;
+	// }
 }
 .inputContainer {
 	padding: 0;

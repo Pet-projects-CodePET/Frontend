@@ -33,6 +33,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 	email,
 	user_id,
 	is_favorite,
+	projects,
 }) => {
 	function properyCheck<T extends keyof DetailedSpecialistCardTypes>(
 		input: DetailedSpecialistCardTypes[T],
@@ -92,11 +93,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 				<div className={styles.specialist__info}>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>О себе</h3>
-						<h4 className={styles.info__sideText}>
-							{
-								parse(about)
-							}
-						</h4>
+						<h4 className={styles.info__sideText}>{parse(about)}</h4>
 					</div>
 					<div className={styles.info__title}>
 						<div>
@@ -159,7 +156,7 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 							</div>
 							<div className={styles.info__contacs__wrapper}>
 								<MobileIcon className={styles.info__icons} />
-								<a className={styles.info__contacts} href={phoneNumber}>
+								<a className={styles.info__contacts} href="#">
 									{`${properyCheck(phoneNumber)}`}
 								</a>
 							</div>
@@ -190,8 +187,8 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 					</div>
 					<div className={styles.info__wrapper}>
 						<h3 className={styles.info__title}>Проекты</h3>
-						{/* {projects ? (
-							projects.slice(0, 5).map((project) => (
+						{projects.length > 0 ? (
+							projects.map((project) => (
 								<a
 									href={`/projects/${project.id}`}
 									className={styles.info__contacts}
@@ -199,8 +196,9 @@ export const DetailedSpecialistCard: FC<DetailedSpecialistCardTypes> = ({
 									{project.name}
 								</a>
 							))
-						) : ( */}
-						<p className={styles.info__sideText}>Пусто</p>
+						) : (
+							<p className={styles.info__sideText}>Пусто</p>
+						)}
 					</div>
 					{/* <InviteSpecialist /> */}
 				</div>
