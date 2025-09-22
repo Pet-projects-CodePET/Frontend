@@ -374,7 +374,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 				onClick={handleClear}>
 				{'Очистить'}
 			</MainButton>
-
+		
 			<FormCreateProjectCard
 				allSkills={allSkills}
 				professions={professions}

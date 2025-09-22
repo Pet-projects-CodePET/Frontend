@@ -145,10 +145,8 @@ export const FormCreateProjectFeature: FC = () => {
 	const handleAddProjectDraft = (project: IUser) => {
 		const projectData = {
 			...project,
-			// started: project.started === '' ? null : project.started,
-            // ended: project.ended === '' ? null : project.ended,
 			directions: Array.isArray(project.directions) ? project.directions : [],
-			description: currentText || '',
+			description:  currentText === '<p><br></p>' ? '' : currentText || '',
 			...mergeContacts(contacts),
 		};
 		addProjectDraft(projectData)

@@ -40,7 +40,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 
 		const htmlLength = content.length;
 
-		if (htmlLength < 20) {
+		if (htmlLength < 20 && content !== '<p><br></p>') {
 			setError('Текст должен содержать минимум 20 символов');
 		} else if (htmlLength > 1500) {
 			setError('Текст не должен превышать 1500 символов');
@@ -92,7 +92,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 				<div className={styles.footer}>
 					<p className={styles.desc}>{desc}</p>
 					{errorToShow && <p className={styles.error}>{errorToShow}</p>}
-					{!errorToShow && currentText && (
+					{!errorToShow && currentText && currentText !== '<p><br></p>' && (
 						<p className={styles.charCount}>
 							{currentText?.length || 0} / 1500 символов (с учётом разметки)
 						</p>
