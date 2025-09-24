@@ -16,6 +16,8 @@ import { toaster } from '@/widgets/notification-toast';
 import { TContact } from '@/shared/ui/contact-card/types';
 import FormCreateProjectSchema from '@/shared/utils/validation-schemas/form-create-project-schems';
 import FormCreateProjectDraftSchema from '@/shared/utils/validation-schemas/form-create-project-draft-schema';
+import { EMPTY_LINE } from '@/utils/constants';
+import { mergeContacts } from '@/shared/utils';
 
 export const FormCreateProjectFeature: FC = () => {
 	const [createNewProject, { error: createNewProjectError }] =
@@ -88,20 +90,20 @@ export const FormCreateProjectFeature: FC = () => {
 		localStorage.removeItem('descriptionProject');
 	};
 
-	const mergeContacts = (
-		contacts: Record<string, string>[]
-	): Record<string, string> => {
-		const result: Record<string, string> = {};
+	// const mergeContacts = (
+	// 	contacts: Record<string, string>[]
+	// ): Record<string, string> => {
+	// 	const result: Record<string, string> = {};
 
-		for (const contact of contacts) {
-			for (const [key, value] of Object.entries(contact)) {
-				if (!(key in result)) {
-					result[key] = value;
-				}
-			}
-		}
-		return result;
-	};
+	// 	for (const contact of contacts) {
+	// 		for (const [key, value] of Object.entries(contact)) {
+	// 			if (!(key in result)) {
+	// 				result[key] = value;
+	// 			}
+	// 		}
+	// 	}
+	// 	return result;
+	// };
 
 	const handleSubmit = (project: IUser) => {
 		if (actionType === 'publish') {
@@ -134,7 +136,7 @@ export const FormCreateProjectFeature: FC = () => {
 				toaster({
 					status: 'error',
 					title: 'Ошибка',
-					subtitle: `${error.data?.description /*|| error.data?.new_password ||*/ || 'Попробуйте еще раз'}`,
+					subtitle: `${error.data?.description || error.data?.unique || 'Попробуйте еще раз'}`,
 				});
 				setServerNameError(error.data?.name);
 				setServerLinkError(error.data?.link || '');
@@ -146,7 +148,7 @@ export const FormCreateProjectFeature: FC = () => {
 		const projectData = {
 			...project,
 			directions: Array.isArray(project.directions) ? project.directions : [],
-			description:  currentText === '<p><br></p>' ? '' : currentText || '',
+			description:  currentText === EMPTY_LINE ? '' : currentText || '',
 			...mergeContacts(contacts),
 		};
 		addProjectDraft(projectData)
@@ -165,7 +167,7 @@ export const FormCreateProjectFeature: FC = () => {
 				toaster({
 					status: 'error',
 					title: 'Ошибка',
-					subtitle: `${error.data?.description || 'Попробуйте еще раз'}`,
+					subtitle: `${error.data?.description || error.data?.unique || 'Попробуйте еще раз'}`,
 				});
 				setServerNameError(error.data?.name);
 				setServerLinkError(error.data?.link || '');

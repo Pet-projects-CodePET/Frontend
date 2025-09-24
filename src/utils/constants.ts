@@ -87,3 +87,5 @@ export const DIRECTION = [
 		name: 'Мобильная',
 	},
 ];
+
+export const EMPTY_LINE = '<p><br></p>';

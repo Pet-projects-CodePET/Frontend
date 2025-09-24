@@ -3,6 +3,8 @@ import { TextEditorProps } from './types';
 import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
 import dynamic from 'next/dynamic';
+import { EMPTY_LINE } from '@/utils/constants';
+
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 export const TextEditor: FC<TextEditorProps> = ({
@@ -40,7 +42,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 
 		const htmlLength = content.length;
 
-		if (htmlLength < 20 && content !== '<p><br></p>') {
+		if (htmlLength < 20 && content !== EMPTY_LINE) {
 			setError('Текст должен содержать минимум 20 символов');
 		} else if (htmlLength > 1500) {
 			setError('Текст не должен превышать 1500 символов');
@@ -92,7 +94,7 @@ export const TextEditor: FC<TextEditorProps> = ({
 				<div className={styles.footer}>
 					<p className={styles.desc}>{desc}</p>
 					{errorToShow && <p className={styles.error}>{errorToShow}</p>}
-					{!errorToShow && currentText && currentText !== '<p><br></p>' && (
+					{!errorToShow && currentText && currentText !== EMPTY_LINE && (
 						<p className={styles.charCount}>
 							{currentText?.length || 0} / 1500 символов (с учётом разметки)
 						</p>

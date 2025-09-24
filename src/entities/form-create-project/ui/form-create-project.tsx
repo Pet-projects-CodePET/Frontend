@@ -1,24 +1,16 @@
 'use client';
 
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { FormCreateProjectProps } from '@/entities/form-create-project/ui/types';
 import styles from './form-create-project.module.scss';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import Plus from '@/shared/assets/icons/plus-large.svg';
 import { DatePickerRHF } from '@/shared/ui/date-picker-rhf/date-picker-rhf';
 import { Input, MainButton, CheckboxAndRadio } from '@/shared/ui';
 import { useFormContext } from 'react-hook-form';
 import { FormCreateProjectCard } from '@/entities/form-create-project-card';
-import { BUSYNESS, CONTACTS, DIRECTION } from '@/utils/constants';
-import { ContactsList } from '@/entities/contact-list/contact-list';
-import { TContact } from '@/shared/ui/contact-card/types';
-import { generalEmailRegex, phoneRegex } from '@/utils/regex-consts';
+import { BUSYNESS, DIRECTION } from '@/utils/constants';
+import { ContactsSelector } from '@/widgets/contacts-selector';
 
-type TOption = {
-	label: string;
-	value: string;
-	id?: number;
-};
 export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 	allSkills,
 	professions,
@@ -47,14 +39,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 		getValues,
 		clearErrors,
 	} = useFormContext();
-	const [selectedOptionContactType, setSelectedOptionContactType] =
-		useState<TOption | null>(null);
-	const [addContactErrorText, setAddContactErrorText] = useState<string>('');
-	const [inputValueContact, setInputValueContact] = useState<string>('');
-
-	useEffect(() => {
-		setAddContactErrorText('');
-	}, [contacts]);
 
 	useEffect(() => {
 		if (isSubmitSuccessfulReset) {
@@ -64,7 +48,14 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 			onClearProjectData();
 			clearErrors();
 		}
-	}, [isSubmitSuccessfulReset, reset, onClearProjectData, clearErrors, setSubmitSuccessfulReset, setContacts]);
+	}, [
+		isSubmitSuccessfulReset,
+		reset,
+		onClearProjectData,
+		clearErrors,
+		setSubmitSuccessfulReset,
+		setContacts,
+	]);
 
 	useEffect(() => {
 		errors.name?.message && setServerNameError('');
@@ -79,12 +70,12 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 		if (currentText !== undefined && currentText !== getValues('description')) {
 			setValue('description', currentText, { shouldValidate: true });
 		}
-		    if (nameProject && nameProject !== getValues('name')) {
-            setValue('name', nameProject, { shouldValidate: true });
-        }
-        if (linkProject && linkProject !== getValues('link')) {
-            setValue('link', linkProject, { shouldValidate: true });
-        }
+		if (nameProject && nameProject !== getValues('name')) {
+			setValue('name', nameProject, { shouldValidate: true });
+		}
+		if (linkProject && linkProject !== getValues('link')) {
+			setValue('link', linkProject, { shouldValidate: true });
+		}
 	}, [currentText, linkProject, nameProject, setValue, getValues]);
 
 	const handleDirectionsChange = (
@@ -101,68 +92,6 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 		setValue('directions', newDirections, { shouldValidate: true });
 	};
 
-	const handleInputChange = (
-		event: React.ChangeEvent<HTMLInputElement>,
-		fieldName: string
-	) => {
-		switch (fieldName) {
-			case 'inputValueContact':
-				if (addContactErrorText !== '') setAddContactErrorText('');
-				setInputValueContact(event.target.value);
-				break;
-			default:
-		}
-	};
-
-	const handleOptionSelect = (option: TOption) => {
-		setSelectedOptionContactType(option);
-	};
-	const handleAddContact = () => {
-		if (selectedOptionContactType && inputValueContact) {
-			let isValid = true;
-			const newContact: TContact = {
-				[selectedOptionContactType.value]: inputValueContact,
-			};
-
-			// Проверка формата email
-			if (selectedOptionContactType.value === 'email') {
-				if (!generalEmailRegex.test(inputValueContact)) {
-					setAddContactErrorText('Пожалуйста, введите корректный email адрес.');
-					isValid = false;
-				}
-			}
-			// Проверка формата телефона
-			if (selectedOptionContactType.value === 'phone') {
-				if (!phoneRegex.test(inputValueContact)) {
-					setAddContactErrorText(
-						'Допустимый формат +7XXXXXXXXXX, где X - цифры.'
-					);
-					isValid = false;
-				}
-			}
-			// Проверяем, что контакт такого же типа не существует уже
-			if (
-				isValid &&
-				!contacts.some((contact) =>
-					Object.prototype.hasOwnProperty.call(
-						contact,
-						selectedOptionContactType.value
-					)
-				)
-			) {
-				setContacts([...contacts, newContact]);
-				// setSelectedOptionContactType(null);
-				setInputValueContact('');
-			} else if (!isValid) {
-				// Если данные не валидны, выходим из функции
-				return;
-			} else {
-				setAddContactErrorText(
-					`Контакт типа "${selectedOptionContactType.label}" уже существует.`
-				);
-			}
-		}
-	};
 	const handleClear = () => {
 		reset();
 		onClearProjectData();
@@ -207,7 +136,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 						'Расскажите о проекте и его цели используя не более 1500 символов'
 					}
 					setCurrentText={handleDescriptionInputChange}
-					currentText={currentText as string || ''}
+					currentText={(currentText as string) || ''}
 					error={errors.description?.message as string}
 					onFocus={() => {
 						// Очищаем ошибку Zod при фокусе
@@ -278,81 +207,8 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 						</div>
 					</div>
 				</div>
-
-				<div className={styles.contacts}>
-					<h3 className={styles.input_list_title}>Контакты для связи</h3>
-					<ContactsList contacts={contacts} setContacts={setContacts} />
-					<div className={styles.fields__addContactWrapper}>
-						<label className={styles.fields__addContactTypeWrapper}>
-							<select
-								className={styles.fields__addContactType}
-								value={selectedOptionContactType?.value || ''}
-								onChange={(event) =>
-									handleOptionSelect(
-										CONTACTS.find(
-											(contact) => contact.value === event.target.value
-										)!
-									)
-								}>
-								{CONTACTS.map((option) => (
-									<option
-										className={styles.fields__addContactTypeListItem}
-										key={option.value}
-										value={option.value}>
-										{option.label}
-									</option>
-								))}
-							</select>
-							<span className={styles.fields__addContactTypeLabel}>
-								Выберите ресурс
-							</span>
-						</label>
-						{selectedOptionContactType?.value === 'phone_number' ? (
-							<Input
-								placeholder="+7XXXXXXXXXX"
-								className={styles.fields__addContactTextValue}
-								name="inputValueContact"
-								labelName=""
-								description={false}
-								value={inputValueContact}
-								error={addContactErrorText}
-								onChange={(event) =>
-									handleInputChange(event, 'inputValueContact')
-								}
-							/>
-						) : (
-							<Input
-								className={styles.fields__addContactTextValue}
-								name="inputValueContact"
-								labelName=""
-								description={false}
-								value={inputValueContact}
-								error={addContactErrorText}
-								onChange={(event) =>
-									handleInputChange(event, 'inputValueContact')
-								}
-							/>
-						)}
-					</div>
-				</div>
+				<ContactsSelector contacts={contacts} setContacts={setContacts} />
 			</div>
-			<div className={styles.specialists_buttons}>
-				<MainButton
-					type="button"
-					onClick={handleAddContact}
-					variant="secondary"
-					width="regular"
-					IconLeft={Plus}>
-					Добавить
-				</MainButton>
-				<MainButton
-					variant="trivial"
-					width="regular"
-					onClick={() => setContacts([])}>
-					Сбросить
-				</MainButton>
-			</div>
-
 			<Input
 				name="link"
 				placeholder="https..."
@@ -374,7 +230,7 @@ export const FormFieldsCreateProject: FC<FormCreateProjectProps> = ({
 				onClick={handleClear}>
 				{'Очистить'}
 			</MainButton>
-		
+
 			<FormCreateProjectCard
 				allSkills={allSkills}
 				professions={professions}
