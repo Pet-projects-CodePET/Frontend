@@ -29,7 +29,7 @@ export const AddSpecialty: React.FC<AddSpecialtyProps> = ({
 	};
 	const handleProfessionChange = (value: string) => {
 		setProfession(
-			professions.find(
+			professions?.find(
 				(element) => element.specialization === value
 			) as TProfession
 		); // обновляем состояние выбранного значения
@@ -41,7 +41,7 @@ export const AddSpecialty: React.FC<AddSpecialtyProps> = ({
 	};
 
 	const getSkills = (skills: TSkills[]) => {
-		return skills.map(({ id, name }) => ({
+		return skills?.map(({ id, name }) => ({
 			label: name,
 			value: id,
 		}));
@@ -49,7 +49,7 @@ export const AddSpecialty: React.FC<AddSpecialtyProps> = ({
 
 	const editSkills = (skills: Option[]) => {
 		setSkills(
-			skills.map(({ label, value }) => ({
+			skills?.map(({ label, value }) => ({
 				name: label,
 				id: value,
 			}))

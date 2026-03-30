@@ -24,22 +24,22 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 	dataErrorChangeProfile,
 }) => {
 	const [isParticipation, setIsParticipation] = useState<boolean>(
-		userData.ready_to_participate as boolean
+		userData?.ready_to_participate as boolean
 	);
 	const [nickName, setNickName] = useState<string | undefined>(
-		userData.username
+		userData?.username
 	);
-	const [name, setName] = useState<string | undefined>(userData.name);
+	const [name, setName] = useState<string | undefined>(userData?.name);
 	const [aboutText, setAboutText] = useState<string | undefined>(
-		userData.about
+		userData?.about
 	);
 	const [portfolioLink, setPortfolioLink] = useState<string | undefined>(
-		userData.portfolio_link
+		userData?.portfolio_link
 	);
 	const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-	const [country, setCountry] = useState<string | undefined>(userData.country);
-	const [city, setCity] = useState<string | undefined>(userData.city);
+	const [country, setCountry] = useState<string | undefined>(userData?.country);
+	const [city, setCity] = useState<string | undefined>(userData?.city);
 	const [contacts, setContacts] = useState<TContact[]>([]);
 
 	const [nickNameErrorText, setNickNameErrorText] = useState<string>();
@@ -54,16 +54,16 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 
 	useEffect(() => {
 		const newContacts: TContact[] = [];
-		if (userData.phone_number) {
+		if (userData?.phone_number) {
 			// eslint-disable-next-line camelcase
-			newContacts.push({ phone_number: userData.phone_number });
+			newContacts.push({ phone_number: userData?.phone_number });
 		}
-		if (userData.telegram_nick) {
+		if (userData?.telegram_nick) {
 			// eslint-disable-next-line camelcase
-			newContacts.push({ telegram_nick: userData.telegram_nick });
+			newContacts.push({ telegram_nick: userData?.telegram_nick });
 		}
-		if (userData.email) {
-			newContacts.push({ email: userData.email });
+		if (userData?.email) {
+			newContacts.push({ email: userData?.email });
 		}
 		setContacts(newContacts);
 	}, [userData]);
@@ -214,8 +214,8 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 		handleSubmitForm(userDataNew);
 	};
 
-	const initialDate = userData.birthday
-		? new Date(userData.birthday.split('/').reverse().join('/'))
+	const initialDate = userData?.birthday
+		? new Date(userData?.birthday.split('/').reverse().join('/'))
 		: null;
 
 	const handleValueChange = (value: string) => {
@@ -229,7 +229,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 			</div>
 			<Form onSubmit={handleSubmit} className={styles.fields}>
 				<ProfileAvatarEditor
-					image={userData.avatar || ''}
+					image={userData?.avatar || ''}
 					width={250}
 					height={250}
 					onSubmit={handleSubmitForm}
@@ -252,7 +252,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 						labelName="Имя"
 						description={true}
 						descrText="Укажите свое настоящее имя и фамилию"
-						value={name}
+						value={name || ''}
 						onChange={(event) => handleInputChange(event, 'name')}
 						error={nameErrorText}
 					/>
@@ -271,7 +271,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					placeholder="http..."
 					description={true}
 					descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
-					value={portfolioLink}
+					value={portfolioLink || ''}
 					onChange={(event) => handleInputChange(event, 'portfolioLink')}
 					error={portfolioLinkErrorText}
 				/>
@@ -297,7 +297,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 						className={styles.fields__locationCity}
 						name="city"
 						labelName="Город"
-						value={city}
+						value={city || ''}
 						onChange={(event) => handleInputChange(event, 'city')}
 					/>
 				</div>

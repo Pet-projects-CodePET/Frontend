@@ -94,12 +94,12 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	}, [cardToggles, recruitmentIsOpen]);
 
 	const handleEditClick = (id: number) => {
-		const itemToEdit = specialties.find((item) => item.id === id);
+		const itemToEdit = specialties?.find((item) => item.id === id);
 		if (itemToEdit) {
-			const professionObj = professions.find(
+			const professionObj = professions?.find(
 				(p) => p.id === itemToEdit.profession
 			);
-			const skillsObjs = allSkills.filter((s) =>
+			const skillsObjs = allSkills?.filter((s) =>
 				itemToEdit.skills.includes(s.id)
 			);
 			if (professionObj) {
@@ -132,7 +132,7 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 	const handleDelete = (id: number) => (event: React.MouseEvent) => {
 		event.stopPropagation();
-		const newSpecialties = specialties.filter((item) => item.id !== id);
+		const newSpecialties = specialties?.filter((item) => item.id !== id);
 		setSpecialties(newSpecialties);
 		handleResetSpecialty();
 
@@ -202,7 +202,7 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 
 	const handleProfessionChange = (value: string) => {
 		setProfession(
-			professions.find(
+			professions?.find(
 				(element) => element.specialization === value
 			) as TProfession
 		);
@@ -222,7 +222,7 @@ export const FormCreateProjectCard: FC<IFormCreateProjectCard> = ({
 	};
 
 	const getSkills = (skills: TSkills[]) => {
-		return skills.map(({ id, name }) => ({
+		return skills?.map(({ id, name }) => ({
 			label: name,
 			value: id,
 		}));
