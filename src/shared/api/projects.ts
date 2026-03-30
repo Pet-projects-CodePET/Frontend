@@ -19,7 +19,7 @@ export const getAllProjects = ({
 	}
 	const accessToken = localStorage.getItem('token');
 	const res = fetch(
-		`https://${BASE_URL}/api/v1/projects/?page=${currentPage}&search=${query}`,
+		`${BASE_URL}/projects/?page=${currentPage}&search=${query}`,
 		{
 			cache: 'no-cache',
 			next: { revalidate: 0 },

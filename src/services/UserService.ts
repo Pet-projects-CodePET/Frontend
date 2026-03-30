@@ -9,7 +9,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const userApi = createApi({
 	reducerPath: 'userApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: `https://${BASE_URL}/api/v1`,
+		baseUrl: BASE_URL,
 		// process.env.NODE_ENV === 'production' ? BASE_TEST_URL : BASE_DEV_URL,
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');

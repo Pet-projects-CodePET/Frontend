@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const specialistsApi = createApi({
 	reducerPath: 'specialistsApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: `https://${BASE_URL}/api/v1`,
+		baseUrl: BASE_URL,
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');
 			if (accessToken) {

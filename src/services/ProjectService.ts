@@ -10,7 +10,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const projectsApi = createApi({
 	reducerPath: 'projectsApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: `https://${BASE_URL}/api/v1`,
+		baseUrl: BASE_URL,
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');
 			if (accessToken) {
@@ -112,23 +112,20 @@ export const projectsApi = createApi({
 				method: 'GET',
 			}),
 		}),
-		addNewProject: builder.mutation<
-		IUser,
-		IUser
-	>({
-		query: (project) => ({
-			url: `/projects/`,
-			method: 'POST',
-			body: project,
+		addNewProject: builder.mutation<IUser, IUser>({
+			query: (project) => ({
+				url: `/projects/`,
+				method: 'POST',
+				body: project,
+			}),
 		}),
-	}),
-	addProjectDraft: builder.mutation<IUser, IUser>({
-		query: (project) => ({
-			url: `/projects/drafts/`,
-			method: 'POST',
-			body: project,
-		})
-	})
+		addProjectDraft: builder.mutation<IUser, IUser>({
+			query: (project) => ({
+				url: `/projects/drafts/`,
+				method: 'POST',
+				body: project,
+			}),
+		}),
 	}),
 });
 
