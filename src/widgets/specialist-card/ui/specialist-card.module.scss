@@ -128,6 +128,7 @@
 		}
 		&__person {
 			gap: 8px;
+			flex-direction: column;
 		}
 		&__personImage {
 			width: 48px;

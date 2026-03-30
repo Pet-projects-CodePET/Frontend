@@ -5,7 +5,7 @@ import { TogglerProps } from './types';
 import styles from './toggler.module.scss';
 import { useFormContext } from 'react-hook-form';
 
-export const Toggler = ({ checked, name, id, onChange }: TogglerProps) => {
+export const Toggler = ({ checked, name, id, onChange, disabled = false}: TogglerProps) => {
 	const { register } = useFormContext();
 
 	return (
@@ -18,6 +18,7 @@ export const Toggler = ({ checked, name, id, onChange }: TogglerProps) => {
 				name={name}
 				id={id}
 				onChange={onChange}
+				disabled={disabled}
 			/>
 			<span className={styles.toggleCheckbox__default} />
 		</label>

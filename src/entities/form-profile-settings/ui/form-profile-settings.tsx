@@ -17,14 +17,14 @@ export const FormProfileSettings: FC<FormProfileSettingsProps> = ({
 	isLoadingChangeProfileSettings,
 }) => {
 	const [isSendNotification, setIsSendNotification] = useState(
-		userData.allow_notifications
+		userData?.allow_notifications
 	);
 	const [isSubscriptionProjects, setIsSubscriptionProjects] = useState(
-		userData.subscribe_to_projects
+		userData?.subscribe_to_projects
 	);
-	const [visibleStatus, setVisibleStatus] = useState(userData.visible_status);
+	const [visibleStatus, setVisibleStatus] = useState(userData?.visible_status);
 	const [visibleStatusContacts, setVisibleStatusContacts] = useState(
-		userData.visible_status_contacts
+		userData?.visible_status_contacts
 	);
 
 	const [showVisibleProfileMenu, setShowVisibleProfileMenu] = useState(false);

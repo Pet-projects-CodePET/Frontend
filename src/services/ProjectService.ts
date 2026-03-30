@@ -3,13 +3,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IProjectsRequests } from './models/IProjectsRequests';
 import { FavoriteProjectType } from './models/IFavoriteProject';
 import { AnswerOnRequestType } from './models/IAnswerOnRequest';
+import { IUser } from './models/IUser';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const projectsApi = createApi({
 	reducerPath: 'projectsApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: `https://${BASE_URL}/api/v1`,
+		baseUrl: BASE_URL,
 		prepareHeaders: async (headers) => {
 			const accessToken = localStorage.getItem('token');
 			if (accessToken) {
@@ -99,6 +100,32 @@ export const projectsApi = createApi({
 				method: 'DELETE',
 			}),
 		}),
+		getProfessions: builder.query({
+			query: () => ({
+				url: '/professions/',
+				method: 'GET',
+			}),
+		}),
+		getSkills: builder.query({
+			query: () => ({
+				url: '/skills/',
+				method: 'GET',
+			}),
+		}),
+		addNewProject: builder.mutation<IUser, IUser>({
+			query: (project) => ({
+				url: `/projects/`,
+				method: 'POST',
+				body: project,
+			}),
+		}),
+		addProjectDraft: builder.mutation<IUser, IUser>({
+			query: (project) => ({
+				url: `/projects/drafts/`,
+				method: 'POST',
+				body: project,
+			}),
+		}),
 	}),
 });
 
@@ -113,4 +140,8 @@ export const {
 	useDeleteFavoriteProjectMutation,
 	useGetFavoriteProjectsQuery,
 	useAnswerOrganizerOnRequestMutation,
+	useGetProfessionsQuery,
+	useGetSkillsQuery,
+	useAddNewProjectMutation,
+	useAddProjectDraftMutation,
 } = projectsApi;

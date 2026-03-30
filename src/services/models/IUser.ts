@@ -20,4 +20,37 @@ export type IUser = {
 	allow_notifications?: boolean;
 	subscribe_to_projects?: boolean;
 	avatar?: string;
+
+	
+	description?: string | undefined,
+	started?: string | null,
+	ended?: string | null,
+	busyness?: number,
+	directions?: [
+		{
+			id: number;
+			name: string;
+		},
+	  
+	] | never[],
+	link?: string,
+	
+	project_specialists?: [
+		{
+			id: number;
+			profession: {
+				id: number;
+				specialization: string;
+				speciality: string;
+			};
+			skills: {
+				id: number;
+				name: string;
+			}[];
+			count?: number;
+			level?: number;
+			is_required?: boolean;
+		},
+	],
+	project_status?: string;
 };

@@ -13,7 +13,7 @@ export const FormSignupConfirmFeature: FC = () => {
 	const handleSubmit = () => {
 		if (typeof window !== 'undefined') {
 			const userData = localStorage.getItem('userData');
-			createUser(userData as IUser)
+			createUser(userData as unknown as IUser)
 				.unwrap()
 				.then((payload) => console.log('fulfilled', payload))
 				.catch((error) => {

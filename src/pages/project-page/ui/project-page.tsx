@@ -33,6 +33,8 @@ export const Project = ({ id }: { id: number }) => {
 					telegram_nick={project.telegram_nick}
 					email={project.email}
 					is_favorite={project.is_favorite}
+                    recruitment_status={project.recruitment_status}
+
 				/>
 			)}
 		</>

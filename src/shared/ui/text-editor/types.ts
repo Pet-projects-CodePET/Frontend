@@ -4,4 +4,7 @@ export type TextEditorProps = {
 	desc?: string;
 	setCurrentText: (value: string) => void;
 	currentText: string;
+	error?: string;
+	onFocus?: () => void
+	
 };

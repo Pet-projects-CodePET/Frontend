@@ -3,7 +3,13 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import parse from 'html-react-parser';
-import { /*IconLeft,*/ ActivityIcon, CalendarIcon } from '@/shared/assets';
+import {
+	/*IconLeft,*/ ActivityIcon,
+	CalendarIcon,
+	MailIcon,
+	MobileIcon,
+	TelegramIcon,
+} from '@/shared/assets';
 import { ProjectsToFavoritesFeature } from '@/features';
 import { Person, VacancyCard } from '@/shared/ui';
 import { getColorTag } from '@/shared/utils';
@@ -30,6 +36,7 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 	telegram_nick,
 	email,
 	is_favorite,
+	recruitment_status,
 }) => {
 	const startDate = getDate(started);
 	const endDate = getDate(ended);
@@ -45,12 +52,15 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								project_status === 'Активен' &&
 									styles.activeStateIcon_type_active,
 								project_status === 'Завершен' &&
-									styles.activeStateIcon_type_inactive
+									styles.activeStateIcon_type_inactive,
+								project_status === 'Черновик' &&
+									styles.activeStateIcon_type_draft
 							)}
 						/>
 						<div className={styles.activeStateText}>
 							{project_status === 'Активен' ? 'активный' : ' '}
 							{project_status === 'Завершен' ? 'завершенный' : ' '}
+							{project_status === 'Черновик' ? 'черновик' : ' '}
 						</div>
 					</div>
 					<div className={styles.like}>
@@ -94,18 +104,46 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 							);
 						})}
 					</div>
+					{busyness !== null && (
+						<div className={styles.subtitleWrapper}>
+							<h3 className={styles.subtitle}>Занятость</h3>
+							<p className={styles.description}>
+								{busyness}
+								{` ${NounsDeclension(busyness, ['час', 'часа', 'часов'])} в неделю`}
+							</p>
+						</div>
+					)}
 					<div className={styles.subtitleWrapper}>
-						<h3 className={styles.subtitle}>Занятость</h3>
-						<p className={styles.description}>
-							{busyness}
-							{` ${NounsDeclension(busyness, ['час', 'часа', 'часов'])} в неделю`}
-						</p>
-					</div>
-					<div className={styles.subtitleWrapper}>
-						<h3 className={styles.subtitle}>Контакты</h3>
-						<Link href="#" className={styles.descriptionLink}>
-							{phone_number}
-						</Link>
+						<h3 className={styles.subtitle}>Контакты для связи</h3>
+						<div className={styles.info__sideText}>
+							{email !== null && (
+								<div className={styles.info__contacs__wrapper}>
+									<MailIcon className={styles.info__icons} />
+									<a
+										className={styles.info__contacts}
+										href={`https://mailto:${email}`}>
+										{email}
+									</a>
+								</div>
+							)}
+							{phone_number !== null && (
+								<div className={styles.info__contacs__wrapper}>
+									<MobileIcon className={styles.info__icons} />
+									<p className={styles.info__contacts}>{phone_number}</p>
+								</div>
+							)}
+							{telegram_nick !== null && (
+								<div className={styles.info__contacs__wrapper}>
+									<TelegramIcon className={styles.info__icons} />
+
+									<a
+										className={styles.info__contacts}
+										href={`https://t.me/${telegram_nick}`}>
+										{telegram_nick}
+									</a>
+								</div>
+							)}
+						</div>
 					</div>
 					<div className={styles.subtitleWrapper}>
 						<h3 className={styles.subtitle}>Ссылка на проект</h3>
@@ -164,12 +202,11 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 					</div>
 				</div>
 				<div className={styles.cardsContainer}>
-					{project_specialists?.length ? (
+					{recruitment_status === 'Набор открыт' ? (
 						<h2 className={styles.title}>Требуются в проект</h2>
 					) : null}
-
-					{project_specialists?.map((item) => {
-						return (
+					{project_specialists?.map((item) =>
+						item.is_required ? (
 							<VacancyCard
 								name={name}
 								key={item.id}
@@ -180,8 +217,8 @@ export const ProjectCardDetailed: FC<ProjectCardDetailType> = ({
 								specialists={item.profession}
 								idSpecialty={item.id}
 							/>
-						);
-					})}
+						) : null
+					)}
 				</div>
 			</div>
 		</section>

@@ -41,7 +41,7 @@ export const FormChangePassword: FC<FormChangePasswordProps> = ({
 					type="password"
 					labelName="Старый пароль"
 					error={
-						errors.password
+						errors?.password
 							? `${errors.password?.message}`
 							: serverPasswordError
 					}
@@ -52,7 +52,7 @@ export const FormChangePassword: FC<FormChangePasswordProps> = ({
 					type="password"
 					labelName="Новый пароль"
 					error={
-						errors.newPassword
+						errors?.newPassword
 							? `${errors.newPassword?.message}`
 							: serverPasswordError
 					}
@@ -63,7 +63,7 @@ export const FormChangePassword: FC<FormChangePasswordProps> = ({
 					type="password"
 					labelName="Новый пароль еще раз"
 					error={
-						errors.repeatNewPassword
+						errors?.repeatNewPassword
 							? `${errors.repeatNewPassword?.message}`
 							: serverPasswordError
 					}

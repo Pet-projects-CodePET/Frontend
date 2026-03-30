@@ -128,7 +128,6 @@
 		@extend %baseText;
 		font-size: 16px;
 		width: 280px;
-
 		overflow: hidden;
 		white-space: nowrap;
 		font-weight: 400;
@@ -136,7 +135,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		margin: 0 8px 8px 0;
+		margin: 0;
 	}
 	&__icons {
 		font-size: 24px;
@@ -181,18 +180,19 @@
 		}
 		&__person {
 			gap: 8px;
+			flex-direction: column;
+			margin-bottom: 16px;
 		}
 		&__personImage {
 			width: 48px;
 			height: 48px;
 		}
-		&__likeContainer {
-			width: 20px;
-			height: 20px;
-		}
 		&__likeIcon {
 			width: 16px;
 			height: 16px;
+		}
+		&__wrapper {
+			margin-bottom: 16px;
 		}
 	}
 }

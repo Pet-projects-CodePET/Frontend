@@ -26,11 +26,11 @@ export const Footer = () => {
 					<div>
 						<h3 className={styles.footer__content_title}>Навигация</h3>
 						<div className={styles.footer__content_links}>
-							<Link
+							{/* <Link
 								href="/about-us"
 								className={styles.footer__content_links_item}>
 								О нас
-							</Link>
+							</Link> */}
 							<Link
 								href="/projects"
 								className={styles.footer__content_links_item}>

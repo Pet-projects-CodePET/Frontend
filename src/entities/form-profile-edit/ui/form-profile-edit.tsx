@@ -5,27 +5,17 @@ import { MainButton, Input, Form } from '@/shared/ui';
 import { ProfileLink } from '@/shared/ui/profile-link/profile-link';
 import { Toggler } from '@/shared/ui/toggler/toggler';
 import { TextEditor } from '@/shared/ui/text-editor/text-editor';
-import Plus from '@/shared/assets/icons/plus-large.svg';
 import styles from './form-profile-edit.module.scss';
-import {
-	FormProfileEditProps,
-	TDataErrorChangeProfile,
-	TOption,
-} from './types';
+import { FormProfileEditProps, TDataErrorChangeProfile } from './types';
 import { TContact } from '@/shared/ui/contact-card/types';
-import { CONTACTS } from '@/utils/constants';
-import {
-	generalEmailRegex,
-	nickNameRegex,
-	phoneRegex,
-	urlRegex,
-} from '@/utils/regex-consts';
+import { nickNameRegex, urlRegex } from '@/utils/regex-consts';
 import { COUNTRIES } from '@/shared/constants/countries/countries';
 import SelectWithSearch from '@/shared/ui/select-search/select-search';
 import { Calendar } from '@/shared/ui/calendar/calendar';
 import { IUser } from '@/services/models/IUser';
-import { ContactsList } from '@/entities/contact-list/contact-list';
 import { ProfileAvatarEditor } from '@/entities/profile-avatar-editor/ui/profile-avatar-editor';
+import { mergeContacts } from '@/shared/utils';
+import { ContactsSelector } from '@/widgets/contacts-selector';
 
 export const FormProfileEdit: FC<FormProfileEditProps> = ({
 	handleSubmitForm,
@@ -34,26 +24,23 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 	dataErrorChangeProfile,
 }) => {
 	const [isParticipation, setIsParticipation] = useState<boolean>(
-		userData.ready_to_participate as boolean
+		userData?.ready_to_participate as boolean
 	);
 	const [nickName, setNickName] = useState<string | undefined>(
-		userData.username
+		userData?.username
 	);
-	const [name, setName] = useState<string | undefined>(userData.name);
+	const [name, setName] = useState<string | undefined>(userData?.name);
 	const [aboutText, setAboutText] = useState<string | undefined>(
-		userData.about
+		userData?.about
 	);
 	const [portfolioLink, setPortfolioLink] = useState<string | undefined>(
-		userData.portfolio_link
+		userData?.portfolio_link
 	);
 	const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-	const [country, setCountry] = useState<string | undefined>(userData.country);
-	const [city, setCity] = useState<string | undefined>(userData.city);
+	const [country, setCountry] = useState<string | undefined>(userData?.country);
+	const [city, setCity] = useState<string | undefined>(userData?.city);
 	const [contacts, setContacts] = useState<TContact[]>([]);
-	const [selectedOptionContactType, setSelectedOptionContactType] =
-		useState<TOption | null>(null);
-	const [inputValueContact, setInputValueContact] = useState<string>('');
 
 	const [nickNameErrorText, setNickNameErrorText] = useState<string>();
 	const [nameErrorText, setNameErrorText] = useState<string>();
@@ -64,27 +51,22 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 	const [isPortfolioLinkValid, setIsPortfolioLinkValid] =
 		useState<boolean>(true);
 	const [isReadySubmit, setIsReadySubmit] = useState<boolean>(true);
-	const [addContactErrorText, setAddContactErrorText] = useState<string>('');
 
 	useEffect(() => {
 		const newContacts: TContact[] = [];
-		if (userData.phone_number) {
+		if (userData?.phone_number) {
 			// eslint-disable-next-line camelcase
-			newContacts.push({ phone_number: userData.phone_number });
+			newContacts.push({ phone_number: userData?.phone_number });
 		}
-		if (userData.telegram_nick) {
+		if (userData?.telegram_nick) {
 			// eslint-disable-next-line camelcase
-			newContacts.push({ telegram_nick: userData.telegram_nick });
+			newContacts.push({ telegram_nick: userData?.telegram_nick });
 		}
-		if (userData.email) {
-			newContacts.push({ email: userData.email });
+		if (userData?.email) {
+			newContacts.push({ email: userData?.email });
 		}
 		setContacts(newContacts);
 	}, [userData]);
-
-	useEffect(() => {
-		setAddContactErrorText('');
-	}, [contacts]);
 
 	const checkObjectFields = (obj: TDataErrorChangeProfile): void => {
 		for (const [key] of Object.entries(obj)) {
@@ -145,27 +127,8 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 			case 'city':
 				setCity(event.target.value);
 				break;
-			case 'inputValueContact':
-				if (addContactErrorText !== '') setAddContactErrorText('');
-				setInputValueContact(event.target.value);
-				break;
 			default:
 		}
-	};
-
-	const mergeContacts = (
-		contacts: Record<string, string>[]
-	): Record<string, string> => {
-		const result: Record<string, string> = {};
-
-		for (const contact of contacts) {
-			for (const [key, value] of Object.entries(contact)) {
-				if (!(key in result)) {
-					result[key] = value;
-				}
-			}
-		}
-		return result;
 	};
 
 	const formatDate = (dateObj: Date) => {
@@ -251,59 +214,8 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 		handleSubmitForm(userDataNew);
 	};
 
-	const handleOptionSelect = (option: TOption) => {
-		setSelectedOptionContactType(option);
-	};
-
-	const handleAddContact = () => {
-		if (selectedOptionContactType && inputValueContact) {
-			let isValid = true;
-			const newContact: TContact = {
-				[selectedOptionContactType.value]: inputValueContact,
-			};
-
-			// Проверка формата email
-			if (selectedOptionContactType.value === 'email') {
-				if (!generalEmailRegex.test(inputValueContact)) {
-					setAddContactErrorText('Пожалуйста, введите корректный email адрес.');
-					isValid = false;
-				}
-			}
-			// Проверка формата телефона
-			if (selectedOptionContactType.value === 'phone') {
-				if (!phoneRegex.test(inputValueContact)) {
-					setAddContactErrorText(
-						'Допустимый формат +7XXXXXXXXXX, где X - цифры.'
-					);
-					isValid = false;
-				}
-			}
-			// Проверяем, что контакт такого же типа не существует уже
-			if (
-				isValid &&
-				!contacts.some((contact) =>
-					Object.prototype.hasOwnProperty.call(
-						contact,
-						selectedOptionContactType.value
-					)
-				)
-			) {
-				setContacts([...contacts, newContact]);
-				// setSelectedOptionContactType(null);
-				setInputValueContact('');
-			} else if (!isValid) {
-				// Если данные не валидны, выходим из функции
-				return;
-			} else {
-				setAddContactErrorText(
-					`Контакт типа "${selectedOptionContactType.label}" уже существует.`
-				);
-			}
-		}
-	};
-
-	const initialDate = userData.birthday
-		? new Date(userData.birthday.split('/').reverse().join('/'))
+	const initialDate = userData?.birthday
+		? new Date(userData?.birthday.split('/').reverse().join('/'))
 		: null;
 
 	const handleValueChange = (value: string) => {
@@ -317,7 +229,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 			</div>
 			<Form onSubmit={handleSubmit} className={styles.fields}>
 				<ProfileAvatarEditor
-					image={userData.avatar || ''}
+					image={userData?.avatar || ''}
 					width={250}
 					height={250}
 					onSubmit={handleSubmitForm}
@@ -340,7 +252,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 						labelName="Имя"
 						description={true}
 						descrText="Укажите свое настоящее имя и фамилию"
-						value={name}
+						value={name || ''}
 						onChange={(event) => handleInputChange(event, 'name')}
 						error={nameErrorText}
 					/>
@@ -349,7 +261,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					currentText={aboutText as string}
 					setCurrentText={setAboutText}
 					labelName="О себе"
-					desc="Не более 750 символов"
+					desc="Не более 1500 символов"
 				/>
 				<Input
 					onBlurCapture={validateFields}
@@ -359,75 +271,11 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 					placeholder="http..."
 					description={true}
 					descrText="Добавьте ссылку на любую платформу, где размещено ваше портфолио"
-					value={portfolioLink}
+					value={portfolioLink || ''}
 					onChange={(event) => handleInputChange(event, 'portfolioLink')}
 					error={portfolioLinkErrorText}
 				/>
-
-				<span className={styles.fields__contactsTitle}>Контакты для связи</span>
-				<ContactsList contacts={contacts} setContacts={setContacts} />
-				<div className={styles.fields__addContactWrapper}>
-					<label className={styles.fields__addContactTypeWrapper}>
-						<select
-							className={styles.fields__addContactType}
-							value={selectedOptionContactType?.value || ''}
-							onChange={(event) =>
-								handleOptionSelect(
-									CONTACTS.find(
-										(contact) => contact.value === event.target.value
-									)!
-								)
-							}>
-							{CONTACTS.map((option) => (
-								<option
-									className={styles.fields__addContactTypeListItem}
-									key={option.value}
-									value={option.value}>
-									{option.label}
-								</option>
-							))}
-						</select>
-						<span className={styles.fields__addContactTypeLabel}>
-							Выберите ресурс
-						</span>
-					</label>
-					{selectedOptionContactType?.value === 'phone_number' ? (
-						<Input
-							placeholder="+7XXXXXXXXXX"
-							className={styles.fields__addContactTextValue}
-							name="inputValueContact"
-							labelName=""
-							// type="text"
-							description={false}
-							value={inputValueContact}
-							error={addContactErrorText}
-							onChange={(event) =>
-								handleInputChange(event, 'inputValueContact')
-							}
-						/>
-					) : (
-						<Input
-							className={styles.fields__addContactTextValue}
-							name="inputValueContact"
-							labelName=""
-							// type="text"
-							description={false}
-							value={inputValueContact}
-							error={addContactErrorText}
-							onChange={(event) =>
-								handleInputChange(event, 'inputValueContact')
-							}
-						/>
-					)}
-				</div>
-				<MainButton
-					type="button"
-					onClick={handleAddContact}
-					variant="secondary"
-					width="regular"
-					IconLeft={Plus}>
-					Добавить
-				</MainButton>
+				<ContactsSelector contacts={contacts} setContacts={setContacts} />
 				<div className={styles.fields__datePickerWrapper}>
 					<label className={styles.fields__datePickerTitle}>
 						Дата рождения
@@ -449,7 +297,7 @@ export const FormProfileEdit: FC<FormProfileEditProps> = ({
 						className={styles.fields__locationCity}
 						name="city"
 						labelName="Город"
-						value={city}
+						value={city || ''}
 						onChange={(event) => handleInputChange(event, 'city')}
 					/>
 				</div>

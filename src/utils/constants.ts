@@ -54,3 +54,38 @@ export const CONTACTS = [
 		value: 'phone_number',
 	},
 ];
+export const BUSYNESS = [
+	{
+		id: 1,
+		name: '10 часов в неделю',
+	},
+	{
+		id: 2,
+		name: '20 часов в неделю',
+	},
+	{
+		id: 3,
+		name: '30 часов в неделю',
+	},
+	{
+		id: 4,
+		name: '40 часов в неделю',
+	},
+];
+
+export const DIRECTION = [
+	{
+		id: 1,
+		name: 'Десктоп',
+	},
+	{
+		id: 2,
+		name: 'Веб',
+	},
+	{
+		id: 3,
+		name: 'Мобильная',
+	},
+];
+
+export const EMPTY_LINE = '<p><br></p>';

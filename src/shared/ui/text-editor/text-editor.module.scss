@@ -53,3 +53,27 @@
 		max-height: 280px;
 	}
 }
+
+.error {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	color: $--Foreground-error;
+	font-size: 14px;
+	line-height: 111%;
+	font-family: $--open-sans-font;
+	
+  }
+  
+  .charCount {
+    color: #94a3b8;;
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: 0.25px;
+	margin: 0;
+  }
+  
+  .footer {
+	display: flex;
+	flex-direction: column;
+  }

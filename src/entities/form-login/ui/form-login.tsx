@@ -2,7 +2,7 @@
 
 import React, { FC, useRef } from 'react';
 import Link from 'next/link';
-import { IconButtonList } from '@/entities/icon-button-list';
+//import { IconButtonList } from '@/entities/icon-button-list';
 import { Input, MainButton } from '@/shared/ui';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
@@ -60,10 +60,10 @@ export const FormFieldsLogin: FC<FormLoginProps> = ({
 				</MainButton>
 				<span className={styles.server_error}>{serverErrorText}</span>
 			</div>
-			<div className={styles.container}>
+			{/* <div className={styles.container}>
 				<span className={styles.iconsButtons_line}>или</span>
 				<IconButtonList />
-			</div>
+			</div> */}
 			<div className={styles.container}>
 				<p className={styles.text_registration}>
 					Нет аккаунта?&#160;

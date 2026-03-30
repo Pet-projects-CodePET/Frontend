@@ -1,10 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import { TextEditorProps } from './types';
 import 'react-quill-new/dist/quill.snow.css';
 import styles from './text-editor.module.scss';
 import dynamic from 'next/dynamic';
+import { EMPTY_LINE } from '@/utils/constants';
+
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
-import Quill from 'react-quill-new';
 
 export const TextEditor: FC<TextEditorProps> = ({
 	labelName,
@@ -12,29 +13,53 @@ export const TextEditor: FC<TextEditorProps> = ({
 	desc,
 	setCurrentText,
 	currentText,
+	error: errorChart, // Добавляем проп для внешней ошибки
+	onFocus, 
 	...props
 }) => {
-	//const [value, setValue] = useState<string>('');
 	const [isWindowLoaded, setIsWindowLoaded] = useState<boolean>(false);
+	const [error, setError] = useState<string | null>(null);
+	//const quillRef = useRef(null);
+	const previousTextRef = useRef<string>(currentText || '');
+
 	useEffect(() => {
 		setIsWindowLoaded(true);
 	}, []);
-	const handleChange = (
-		content: string,
-		// eslint-disable-next-line
-		delta: any,
-		// eslint-disable-next-line
-		source: any,
-		editor: Quill.UnprivilegedEditor
-	) => {
-		if (typeof window === 'object') {
-			if (editor.getLength() <= 751) {
-				setCurrentText(content);
-			} else {
-				alert('Превышено количество символов.');
+	
+	// Эффект для синхронизации при внешнем изменении currentText
+	useEffect(() => {
+		if (currentText !== previousTextRef.current) {
+			previousTextRef.current = currentText || '';
+			// Сбрасываем ошибку при внешнем изменении текста
+			if (!currentText || currentText.length === 0) {
+				setError(null);
 			}
 		}
+	}, [currentText]);
+
+	const handleChange = (content: string) => {
+		if (typeof window !== 'object') return;
+
+		const htmlLength = content.length;
+
+		if (htmlLength < 20 && content !== EMPTY_LINE) {
+			setError('Текст должен содержать минимум 20 символов');
+		} else if (htmlLength > 1500) {
+			setError('Текст не должен превышать 1500 символов');
+		} else {
+			setError(null);
+		}
+		setCurrentText(content);
 	};
+
+	const handleFocus = () => {
+		if (onFocus) onFocus();
+		if (error) {
+			setError(null);
+		}
+	  };
+
+	  const errorToShow = error || errorChart;
 
 	const myModule = {
 		toolbar: {
@@ -60,12 +85,21 @@ export const TextEditor: FC<TextEditorProps> = ({
 							theme="snow"
 							value={currentText}
 							onChange={handleChange}
+							onFocus={handleFocus}
 							className={styles.inputMain}
 							{...props}
 						/>
 					)}
 				</div>
-				<p className={styles.desc}>{desc}</p>
+				<div className={styles.footer}>
+					<p className={styles.desc}>{desc}</p>
+					{errorToShow && <p className={styles.error}>{errorToShow}</p>}
+					{!errorToShow && currentText && currentText !== EMPTY_LINE && (
+						<p className={styles.charCount}>
+							{currentText?.length || 0} / 1500 символов (с учётом разметки)
+						</p>
+					)}
+				</div>
 			</div>
 		</div>
 	);
